@@ -45,14 +45,16 @@ body {
 }
 
 h1 {
-  font-size: var(--font-size-4);
+  font-size: clamp(var(--font-size-4), 7.5cqw, var(--font-size-8));
   color: var(--fg-main);
 }
 
 h2 {
-  font-size: var(--font-size-3);
+  font-size: clamp(var(--font-size-4), 7.5cqw, var(--font-size-8));
+  text-transform: uppercase;
   padding-bottom: var(--size-1);
-  color: var(--fg-support);
+  margin-top: 0;
+  color: var(--fg-accent);
   border-bottom: var(--border-size-2) solid var(--fg-accent);
 }
 
@@ -78,6 +80,7 @@ a {
 }
 
 section {
+  container-type: inline-size;
   max-inline-size: var(--content-max-width);
   margin: 0 auto var(--size-8);
 }
