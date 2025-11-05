@@ -7,11 +7,9 @@ const currentYear = new Date().getFullYear();
 ---
 
 <BaseLayout title="nbr.haus">
-  <header class="page-header">
-    <img class="house-image" src={houseImage.src} alt="House" />
-  </header>
-
   <section>
+    <img class="house-image" src={houseImage.src} alt="House" />
+
     <h2>About</h2>
     <p>
       Software Engineer with {experienceInYears} years of experience building frontend architectures and design systems. Currently
@@ -101,17 +99,10 @@ const currentYear = new Date().getFullYear();
     </ul>
 
     <h2>AI</h2>
-
     <p>
       My primary AI assistance tool is <strong><a href="https://claude.com/product/claude-code">Claude Code</a></strong>. I
       prioritize Claude's consistency and quality over chasing every new model release. The terminal integration aligns
       naturally with my workflow, where I spend most of my time.
-    </p>
-    <p>
-      I use Claude Code as a brainstorming and planning tool or the step-by-step implementation of a well worked out plan.
-      While AI can be remarkably helpful and increases productivity, it can also make significant errors. I've learned its
-      capabilities and limitations through daily hands-on experience. It need to be learned as a tool, not a replacement for
-      human creativity.
     </p>
 
     <h2>Connect</h2>
@@ -124,25 +115,13 @@ const currentYear = new Date().getFullYear();
 </BaseLayout>
 
 <style>
-  .page-header {
-    position: relative;
-
-    &:after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: var(--fg-accent);
-      opacity: 0.05;
-    }
-  }
-
   .house-image {
     width: 100%;
     height: 40vh;
     object-fit: cover;
     display: block;
+    box-shadow: var(--shadow-hard);
+    border: var(--border-size-1) solid var(--fg-accent);
+    margin: var(--size-4) auto var(--size-8);
   }
 </style>
