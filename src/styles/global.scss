@@ -10,8 +10,8 @@ body {
 }
 
 body {
-  --hue: 70;
-  --hue-active: 250;
+  --hue: 170;
+  --hue-active: 170;
 
   --bg-main: oklch(90% 0.005 var(--hue));
   --bg-support: oklch(70% 0.01 var(--hue));
@@ -19,7 +19,7 @@ body {
   --fg-main: oklch(45% 0.05 var(--hue));
   --fg-support: oklch(65% 0.01 var(--hue));
   --fg-minor: oklch(75% 0.01 var(--hue));
-  --fg-accent: oklch(65% 0.1 var(--hue-active));
+  --fg-accent: oklch(45% 0.25 var(--hue-active));
 
   --content-max-width: var(--size-content-3);
   --font-family: "BerkeleyMono";
