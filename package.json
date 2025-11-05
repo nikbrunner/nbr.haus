@@ -15,8 +15,8 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
   },
   "dependencies": {
-    "@astrojs/vercel": "^7.0.2",
-    "astro": "^4.2.6",
+    "@astrojs/vercel": "^9.0.0",
+    "astro": "^5.15.3",
     "open-props": "^1.5.15"
   },
   "devDependencies": {
