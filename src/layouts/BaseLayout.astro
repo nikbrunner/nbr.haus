@@ -25,7 +25,7 @@ const { title = "nbr.haus" } = Astro.props;
     <main class="content">
       <slot />
     </main>
-    <HuePaintBucket client:load />
+    <HuePaintBucket client:only="react" />
   </body>
 </html>
 

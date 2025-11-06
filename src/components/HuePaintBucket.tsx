@@ -5,7 +5,6 @@ import { Paintbrush } from "lucide-react";
 import styles from "./HuePaintBucket.module.css";
 
 export default function HuePaintBucket() {
-  const [defaultPos, setDefaultPos] = useState({ x: 0, y: 0 });
   const nodeRef = useRef(null);
 
   // Utility functions
@@ -30,24 +29,29 @@ export default function HuePaintBucket() {
     localStorage.setItem("hue-active", hueActive.toString());
   }
 
-  // Initialize position and hue on mount
-  useEffect(() => {
+  // Get initial position from localStorage or generate random position
+  function getInitialPosition() {
     const savedX = localStorage.getItem("bucket-x");
     const savedY = localStorage.getItem("bucket-y");
 
     if (savedX && savedY) {
-      setDefaultPos({ x: parseFloat(savedX), y: parseFloat(savedY) });
-    } else {
-      // Random position with padding from edges
-      const padding = 80;
-      const maxX = window.innerWidth - padding;
-      const maxY = window.innerHeight - padding;
-      const randomX = Math.random() * (maxX - padding) + padding;
-      const randomY = Math.random() * (maxY - padding) + padding;
-      setDefaultPos({ x: randomX, y: randomY });
+      return { x: parseFloat(savedX), y: parseFloat(savedY) };
     }
 
-    // Restore hue
+    // Random position with padding from edges
+    const padding = 80;
+    const maxX = window.innerWidth - padding;
+    const maxY = window.innerHeight - padding;
+    const randomX = Math.random() * (maxX - padding) + padding;
+    const randomY = Math.random() * (maxY - padding) + padding;
+    return { x: randomX, y: randomY };
+  }
+
+  // Use lazy initializer to get position from localStorage immediately (no flash)
+  const [defaultPos] = useState(getInitialPosition);
+
+  // Restore hue from localStorage on mount
+  useEffect(() => {
     const savedHue = localStorage.getItem("hue");
     const savedHueActive = localStorage.getItem("hue-active");
 
