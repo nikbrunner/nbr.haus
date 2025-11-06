@@ -20,3 +20,6 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 .vercel
+
+# auto-generated CSS module types
+*.module.css.d.ts

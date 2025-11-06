@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Draggable from "react-draggable";
 import type { DraggableData, DraggableEvent } from "react-draggable";
 import { Paintbrush } from "lucide-react";
-import styles from "./HuePaintBucket.module.scss";
+import styles from "./HuePaintBucket.module.css";
 
 export default function HuePaintBucket() {
   const [defaultPos, setDefaultPos] = useState({ x: 0, y: 0 });

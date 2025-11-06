@@ -8,13 +8,14 @@ Personal portfolio website built with Astro, deployed on Vercel. Uses server-sid
 
 ## Development Commands
 
-| Command           | Purpose                                      |
-| ----------------- | -------------------------------------------- |
-| `npm run dev`     | Start local dev server at `localhost:3000`   |
-| `npm run build`   | Build production site to `./dist/`           |
-| `npm run preview` | Preview production build locally             |
-| `npm run format`  | Format all files with Prettier               |
-| `npm run lint`    | Lint TypeScript/JavaScript files with ESLint |
+| Command            | Purpose                                                              |
+| ------------------ | -------------------------------------------------------------------- |
+| `npm run dev`      | Start dev server + CSS module type generation at `localhost:3000`   |
+| `npm run build`    | Build production site to `./dist/`                                   |
+| `npm run preview`  | Preview production build locally                                     |
+| `npm run format`   | Format all files with Prettier                                       |
+| `npm run lint`     | Lint TypeScript/JavaScript files with ESLint                         |
+| `npm run css-types`| Watch and generate TypeScript definitions for CSS modules            |
 
 ## Architecture
 
@@ -30,11 +31,11 @@ Personal portfolio website built with Astro, deployed on Vercel. Uses server-sid
 ```
 src/
 ├── assets/images/      # Static image assets
-├── components/         # Astro components (Header, Footer, Navigation, Hr)
+├── components/         # Astro and React components
 ├── layouts/            # BaseLayout.astro - root layout for all pages
 ├── pages/              # File-based routing (index.astro, personal.astro, 404.astro)
 ├── styles/
-│   ├── global.scss     # Global styles with custom properties
+│   ├── global.css      # Global styles with custom properties
 │   └── fonts.css       # Berkeley Mono font definitions
 ├── routes.ts           # Route definitions with closed/open states
 └── env.d.ts            # Type definitions
@@ -43,8 +44,9 @@ src/
 ### Styling System
 
 - **Open Props** for standardized design tokens
-- **SCSS** for component-level styles
-- **Custom properties** defined in `global.scss`:
+- **Modern CSS** with native nesting for component-level styles
+- **CSS Modules** for React components (`.module.css` files with auto-generated TypeScript definitions via `typed-css-modules`)
+- **Custom properties** defined in `global.css`:
   - Uses OKLCH color space with configurable hue (`--hue: 170`)
   - Color palette: `--bg-main`, `--bg-support`, `--fg-main`, `--fg-support`, `--fg-minor`, `--fg-accent`
   - Typography: Berkeley Mono font family
@@ -60,7 +62,7 @@ All pages follow this structure:
 1. Import `BaseLayout` from `src/layouts/BaseLayout.astro`
 2. Pass `title` prop to BaseLayout
 3. Structure content in `<section>` tags (automatically constrained to max-width)
-4. Component-level styles using scoped `<style>` or `<style lang="scss">`
+4. Component-level styles using scoped `<style>` tags with modern CSS nesting
 
 ### Routes System
 
