@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Job from "../components/Job.astro";
 import houseImage from "../assets/images/house.jpg";
 
 const experienceInYears = new Date().getFullYear() - 2020;
@@ -22,51 +23,55 @@ const currentYear = new Date().getFullYear();
 
   <section>
     <h2>Work</h2>
-    <h3>DealerCenter Digital — Software Engineer (2020-{currentYear})</h3>
-    <p>
-      Led major architectural migrations across a mature Electron application serving bike retailers. Migrated the
-      application from <span class="highlight">legacy Redux to Redux Toolkit</span> and championed <span class="highlight"
-        >TanStack Query adoption</span
-      > with comprehensive <span class="highlight">code guidelines and best practices documentation</span>.
-    </p>
-    <p>
-      Designed and implemented a <span class="highlight">comprehensive 10-variant color system</span> with
-      <span class="highlight">Figma integration</span>, affecting the entire codebase. Built BikeCenter's <span
-        class="highlight">custom design system from scratch</span
-      > using React, TypeScript, and SCSS.
-    </p>
-    <p>
-      Completely rebuilt a Vendure storefront from a <span class="highlight">Remix template to TanStack Start/Router</span> with
-      TanStack Form, GraphQL, and Tailwind CSS.
-    </p>
-    <p>
-      Established <span class="highlight">technical standards</span> and <span class="highlight">coding conventions</span> across
-      the team, including <span class="highlight">translation guidelines</span>, <span class="highlight"
-        >BEM naming conventions</span
-      >, and <span class="highlight">TypeScript best practices</span>.
-    </p>
-    <p>
-      <span class="highlight">Mentored junior developers</span> through pair programming and code reviews, creating extensive
-      documentation for knowledge transfer.
-    </p>
-    <p>
-      Coordinated cross-functional teams as <span class="highlight">technical hub</span> between management, backend, and frontend,
-      facilitating communication and ensuring alignment on architectural decisions.
-    </p>
 
-    <h3>diva-e — Junior Frontend Developer (2020)</h3>
-    <p>
-      Worked on BayWa's e-commerce platform at a digital agency. Built features with their design system, <span
-        class="highlight">created documentation for an undocumented internal framework</span
-      >, and developed an internal Instagram-like tool using React, GraphQL, and Apollo. Started during COVID-19, worked
-      primarily remote while onboarding independently.
-    </p>
+    <Job company="DealerCenter Digital" role="Software Engineer" period={`2020–${currentYear}`}>
+      <p>
+        Led major architectural migrations across a mature Electron application serving bike retailers. Migrated the
+        application from <span class="highlight">legacy Redux to Redux Toolkit</span> and championed <span class="highlight"
+          >TanStack Query adoption</span
+        > with comprehensive <span class="highlight">code guidelines and best practices documentation</span>.
+      </p>
+      <p>
+        Designed and implemented a <span class="highlight">comprehensive 10-variant color system</span> with
+        <span class="highlight">Figma integration</span>, affecting the entire codebase. Built BikeCenter's <span
+          class="highlight">custom design system from scratch</span
+        > using React, TypeScript, and SCSS.
+      </p>
+      <p>
+        Completely rebuilt a Vendure storefront from a <span class="highlight">Remix template to TanStack Start/Router</span>
+        with TanStack Form, GraphQL, and Tailwind CSS.
+      </p>
+      <p>
+        Established <span class="highlight">technical standards</span> and <span class="highlight">coding conventions</span>
+        across the team, including <span class="highlight">translation guidelines</span>, <span class="highlight"
+          >BEM naming conventions</span
+        >, and <span class="highlight">TypeScript best practices</span>.
+      </p>
+      <p>
+        <span class="highlight">Mentored junior developers</span> through pair programming and code reviews, creating extensive
+        documentation for knowledge transfer.
+      </p>
+      <p>
+        Coordinated cross-functional teams as <span class="highlight">technical hub</span> between management, backend, and
+        frontend, facilitating communication and ensuring alignment on architectural decisions.
+      </p>
+    </Job>
 
-    <h3>Campudus — Intern (2019-2020)</h3>
-    <p>
-      Built a fullstack accessories ordering application from scratch (design, architecture, backend, frontend) during a
-      3-month internship at DealerCenter Digital's sister company.
-    </p>
+    <Job company="diva-e" role="Junior Frontend Developer" period="2020">
+      <p>
+        Worked on BayWa's e-commerce platform at a digital agency. Built features with their design system, <span
+          class="highlight">created documentation for an undocumented internal framework</span
+        >, and developed an internal Instagram-like tool using React, GraphQL, and Apollo. Started during COVID-19, worked
+        primarily remote while onboarding independently.
+      </p>
+    </Job>
+
+    <Job company="Campudus" role="Intern" period="2019–2020">
+      <p>
+        Built a fullstack accessories ordering application from scratch (design, architecture, backend, frontend) during a
+        3-month internship at DealerCenter Digital's sister company.
+      </p>
+    </Job>
   </section>
 
   <section>

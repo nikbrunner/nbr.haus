@@ -1,0 +1,48 @@
+---
+export interface Props {
+  company: string;
+  role: string;
+  period: string;
+}
+
+const { company, role, period } = Astro.props;
+---
+
+<div class="job">
+  <h3 class="company">{company}</h3>
+  <div class="role">{role}</div>
+  <div class="period">{period}</div>
+  <slot />
+</div>
+
+<style>
+  .job {
+    margin-block-end: var(--size-10);
+
+    &:last-of-type {
+      margin-block-end: 0;
+    }
+  }
+
+  .company {
+    font-size: var(--font-size-4);
+    font-weight: bold;
+    color: var(--fg-main);
+    margin-block-end: var(--size-2);
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .role {
+    font-size: var(--font-size-2);
+    color: var(--fg-support);
+    margin-block-end: var(--size-1);
+  }
+
+  .period {
+    font-size: var(--font-size-1);
+    font-style: italic;
+    color: var(--fg-minor);
+    margin-block-end: var(--size-5);
+  }
+</style>
