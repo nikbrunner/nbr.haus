@@ -17,8 +17,8 @@ body {
   --bg-support: oklch(70% 0.01 var(--hue));
 
   --fg-main: oklch(45% 0.05 var(--hue));
-  --fg-support: oklch(65% 0.01 var(--hue));
-  --fg-minor: oklch(75% 0.01 var(--hue));
+  --fg-support: oklch(50% 0.05 var(--hue));
+  --fg-minor: oklch(55% 0.05 var(--hue));
   --fg-accent: oklch(45% 0.25 var(--hue-active));
 
   --content-max-width: var(--size-content-3);
