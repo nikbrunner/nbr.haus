@@ -78,10 +78,3 @@ a {
     color: var(--fg-accent);
   }
 }
-
-section {
-  container-type: inline-size;
-  max-inline-size: var(--content-max-width);
-  padding: 0 var(--size-6);
-  margin: 0 auto var(--size-8);
-}

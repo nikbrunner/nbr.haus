@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
 import Job from "../components/Job.astro";
 import houseImage from "../assets/images/house.jpg";
 
@@ -8,21 +9,19 @@ const currentYear = new Date().getFullYear();
 ---
 
 <BaseLayout title="nbr.haus">
-  <section>
+  <Section>
     <img class="house-image" src={houseImage.src} alt="House" />
-  </section>
+  </Section>
 
-  <section>
-    <h2>About</h2>
+  <Section title="About">
     <p>
       Software Engineer with {experienceInYears} years of experience building frontend architectures and design systems. Currently
       seeking new opportunities starting February 2026.
     </p>
     <p>Born in 1984, based in Landshut, Germany. Outside of code, I enjoy hiking, running, and photography.</p>
-  </section>
+  </Section>
 
-  <section>
-    <h2>Work</h2>
+  <Section title="Work">
 
     <Job company="DealerCenter Digital" role="Software Engineer" period={`2020–${currentYear}`}>
       <p>
@@ -76,10 +75,9 @@ const currentYear = new Date().getFullYear();
         3-month internship at DealerCenter Digital's sister company.
       </p>
     </Job>
-  </section>
+  </Section>
 
-  <section>
-    <h2>Projects</h2>
+  <Section title="Projects">
     <h3>Black Atom — <a href="https://black-atom.industries">black-atom.industries</a></h3>
     <p>
       Open-source theming system with 27+ themes across 6 platforms (Neovim, Zed, Ghostty, WezTerm, Tmux, and more). Built
@@ -87,10 +85,9 @@ const currentYear = new Date().getFullYear();
         class="highlight">OKLCH color space</span
       >. Maintained with focus on developer experience and cross-platform consistency.
     </p>
-  </section>
+  </Section>
 
-  <section>
-    <h2>Tech Stack</h2>
+  <Section title="Tech Stack">
     <p>These are the technologies I'm familiar with and regularly use.</p>
     <ul>
       <li><a href="https://react.dev">React</a></li>
@@ -107,10 +104,9 @@ const currentYear = new Date().getFullYear();
       <li><a href="https://www.electronjs.org">Electron</a></li>
       <li><a href="https://redux-toolkit.js.org">Redux (Toolkit)</a></li>
     </ul>
-  </section>
+  </Section>
 
-  <section>
-    <h2>Dev Tools</h2>
+  <Section title="Dev Tools">
     <p>
       I am very passionate about workflow. You can check my <a href="https://github.com/nikbrunner/dots">dotfiles here</a>.
     </p>
@@ -124,25 +120,23 @@ const currentYear = new Date().getFullYear();
       <li><a href="https://github.com/jesseduffield/lazygit">LazyGit</a> (Git GUI)</li>
       <li><a href="https://1password.com">1Password</a> (Password & Secrets manager)</li>
     </ul>
-  </section>
+  </Section>
 
-  <section>
-    <h2>AI</h2>
+  <Section title="AI">
     <p>
       My primary AI assistance tool is <a href="https://claude.com/product/claude-code">Claude Code</a>. I prioritize
       Claude's consistency and quality over chasing every new model release. The terminal integration aligns naturally with
       my workflow, where I spend most of my time.
     </p>
-  </section>
+  </Section>
 
-  <section>
-    <h2>Connect</h2>
+  <Section title="Connect">
     <ul>
       <li><a href="https://www.github.com/nikbrunner">GitHub</a></li>
       <li><a href="mailto:nbr.haus.persuader046@passmail.com">Email (Alias)</a></li>
       <li><a href="https://www.linkedin.com/in/nbru/">LinkedIn</a></li>
     </ul>
-  </section>
+  </Section>
 </BaseLayout>
 
 <style>

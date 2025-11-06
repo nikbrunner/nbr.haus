@@ -1,0 +1,21 @@
+---
+export interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
+---
+
+<section>
+  {title && <h2>{title}</h2>}
+  <slot />
+</section>
+
+<style>
+  section {
+    container-type: inline-size;
+    max-inline-size: var(--content-max-width);
+    padding: 0 var(--size-6);
+    margin: 0 auto var(--size-8);
+  }
+</style>
