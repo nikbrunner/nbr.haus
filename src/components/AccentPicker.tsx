@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import Draggable from "react-draggable";
 import type { DraggableData, DraggableEvent } from "react-draggable";
-import { Paintbrush } from "lucide-react";
-import styles from "./HuePaintBucket.module.css";
+import styles from "./AccentPicker.module.css";
 
-export default function HuePaintBucket() {
+export default function AccentPicker() {
   const nodeRef = useRef(null);
 
   // Utility functions
@@ -71,8 +70,24 @@ export default function HuePaintBucket() {
 
   return (
     <Draggable nodeRef={nodeRef} defaultPosition={defaultPos} onDrag={handleDrag} onStop={handleStop}>
-      <div ref={nodeRef} className={styles.paintBucket}>
-        <Paintbrush />
+      <div ref={nodeRef} className={styles.accentPicker}>
+        <svg className={styles.circle} viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="spinningGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="var(--bg-main)" />
+              <stop offset="50%" stopColor="var(--fg-accent)" />
+              <stop offset="100%" stopColor="var(--bg-main)" />
+            </linearGradient>
+          </defs>
+          <circle
+            cx="24"
+            cy="24"
+            r="22"
+            fill="transparent"
+            stroke="url(#spinningGradient)"
+            strokeWidth="2"
+          />
+        </svg>
       </div>
     </Draggable>
   );

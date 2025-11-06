@@ -1,7 +1,7 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import HuePaintBucket from "../components/HuePaintBucket.tsx";
+import AccentPicker from "../components/AccentPicker.tsx";
 import "../styles/global.css";
 
 export interface Props {
@@ -25,7 +25,7 @@ const { title = "nbr.haus" } = Astro.props;
     <main class="content">
       <slot />
     </main>
-    <HuePaintBucket client:only="react" />
+    <AccentPicker client:only="react" />
   </body>
 </html>
 

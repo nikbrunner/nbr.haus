@@ -1,0 +1,34 @@
+.accentPicker {
+  --picker-size: 5vh;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--picker-size);
+  height: var(--picker-size);
+  cursor: grab;
+  user-select: none;
+  z-index: 9999;
+  box-shadow: inset -4px -6px 0px 10px var(--fg-accent);
+  backdrop-filter: blur(2px);
+  border-radius: 50%;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.circle {
+  width: 100%;
+  height: 100%;
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
