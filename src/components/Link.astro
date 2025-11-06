@@ -1,0 +1,28 @@
+---
+export interface Props {
+  href: string;
+  target?: string;
+  rel?: string;
+}
+
+const { href, target, rel } = Astro.props;
+---
+
+<a href={href} target={target} rel={rel}><slot /></a>
+
+<style>
+  a {
+    color: var(--fg-main);
+    text-decoration-thickness: var(--border-size-2);
+    text-decoration-color: var(--fg-accent);
+    text-underline-offset: var(--border-size-2);
+
+    &:visited {
+      color: var(--fg-main);
+    }
+
+    &:hover {
+      color: var(--fg-accent);
+    }
+  }
+</style>
