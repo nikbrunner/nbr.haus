@@ -1,64 +1,6 @@
-<script>
-  const body = document.querySelector("body");
-  const range = document.querySelector(".hue-slider");
-
-  function setInitialSliderValue() {
-    if (body) {
-      const currentHue = getComputedStyle(body).getPropertyValue("--hue");
-      range?.setAttribute("value", currentHue);
-    }
-  }
-
-  function restoreHues() {
-    const hue = localStorage.getItem("hue");
-    const hueActive = localStorage.getItem("hueActive");
-
-    if (hue && hueActive) {
-      updateCssVars({
-        "--hue": hue,
-        "--hue-active": hueActive
-      });
-      range?.setAttribute("value", hue);
-    }
-  }
-
-  function updateCssVars(values: { [key: string]: string }) {
-    Object.entries(values).forEach(([key, value]) => {
-      body?.style.setProperty(key, value);
-    });
-  }
-
-  function getNextHues(sliderValue: number) {
-    const degreeOffset = 50;
-    const hue = sliderValue;
-    const hueActive = hue + degreeOffset > 360 ? hue + degreeOffset - 360 : hue + degreeOffset;
-
-    return { hue, hueActive };
-  }
-
-  if (body && range) {
-    setInitialSliderValue();
-    restoreHues();
-
-    range.addEventListener("input", e => {
-      if (e?.target instanceof HTMLInputElement) {
-        const { hue, hueActive } = getNextHues(Number(e?.target?.value));
-
-        localStorage.setItem("hue", String(hue));
-        localStorage.setItem("hueActive", String(hueActive));
-
-        updateCssVars({
-          "--hue": String(hue),
-          "--hue-active": String(hueActive)
-        });
-      }
-    });
-  }
-</script>
-
 <footer class="Footer">
   <div class="content">
-    <input class="hue-slider" type="range" min="0" max="360" step="1" value="0" />
+    <!-- Footer content can be added here in the future -->
   </div>
 </footer>
 
@@ -72,51 +14,11 @@
     border-top: var(--border-size-2) solid var(--fg-accent);
     background-color: var(--bg-main);
 
-    @media not all and (min-resolution: 0.001dpcm) {
-      backdrop-filter: none;
-      background-color: var(--bg-main);
-    }
-
     .content {
       max-width: var(--content-max-width);
-
       margin: 0 auto;
       display: flex;
       align-items: center;
-    }
-
-    .hue-slider {
-      --thumb-size: var(--size-4);
-
-      -webkit-appearance: none;
-      width: 100%;
-      height: 1px;
-      background-color: var(--bg-support);
-      outline: none;
-      opacity: 0.7;
-      transition: opacity 0.2s ease-in-out;
-
-      &:hover {
-        opacity: 1;
-      }
-
-      &::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: var(--thumb-size);
-        height: var(--thumb-size);
-        background: var(--fg-accent);
-        border-radius: var(--radius-blob-3);
-        cursor: pointer;
-      }
-
-      &::-moz-range-thumb {
-        width: var(--thumb-size);
-        height: var(--thumb-size);
-        background: var(--fg-accent);
-        border-radius: var(--radius-blob-3);
-        cursor: pointer;
-      }
     }
   }
 </style>

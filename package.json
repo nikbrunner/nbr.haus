@@ -15,9 +15,17 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
   },
   "dependencies": {
+    "@astrojs/react": "^4.4.1",
     "@astrojs/vercel": "^9.0.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
     "astro": "^5.15.3",
-    "open-props": "^1.5.15"
+    "lucide-astro": "^0.552.0",
+    "lucide-react": "^0.552.0",
+    "open-props": "^1.5.15",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-draggable": "^4.5.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.19.1",
