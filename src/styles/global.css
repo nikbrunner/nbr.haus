@@ -22,6 +22,7 @@ body {
   --fg-accent: oklch(45% 0.25 var(--hue-active));
 
   --content-max-width: var(--size-content-3);
+
   --font-family: "BerkeleyMono";
 
   --shadow-hard: 15px 15px 0px var(--fg-accent);
@@ -29,7 +30,7 @@ body {
   --accent-picker-size: 135px;
   --accent-picker-shadow: inset 0px 0px calc(var(--accent-picker-size) * 0.1) calc(var(--accent-picker-size) * 0.1)
     var(--fg-accent);
-  --accent-picker-filter: blur(1px) hue-rotate(90deg) contrast(1.2);
+  --accent-picker-filter: blur(calc(var(--accent-picker-size) / 100)) hue-rotate(90deg) contrast(1.2);
 
   font-family: var(--font-family);
   line-height: var(--font-lineheight-3);
@@ -67,19 +68,4 @@ h3 {
   font-size: var(--font-size-2);
   padding-bottom: var(--size-1);
   color: var(--fg-main);
-}
-
-a {
-  color: var(--fg-main);
-  text-decoration-thickness: var(--border-size-2);
-  text-decoration-color: var(--fg-accent);
-  text-underline-offset: var(--border-size-2);
-
-  &:visited {
-    color: var(--fg-main);
-  }
-
-  &:hover {
-    color: var(--fg-accent);
-  }
 }
