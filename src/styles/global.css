@@ -26,6 +26,11 @@ body {
 
   --shadow-hard: 15px 15px 0px var(--fg-accent);
 
+  --accent-picker-size: 135px;
+  --accent-picker-shadow: inset 0px 0px calc(var(--accent-picker-size) * 0.1) calc(var(--accent-picker-size) * 0.1)
+    var(--fg-accent);
+  --accent-picker-filter: blur(1px) hue-rotate(90deg) contrast(1.2);
+
   font-family: var(--font-family);
   line-height: var(--font-lineheight-3);
   font-size: 100%;

@@ -79,14 +79,7 @@ export default function AccentPicker() {
               <stop offset="100%" stopColor="var(--bg-main)" />
             </linearGradient>
           </defs>
-          <circle
-            cx="24"
-            cy="24"
-            r="22"
-            fill="transparent"
-            stroke="url(#spinningGradient)"
-            strokeWidth="2"
-          />
+          <circle cx="24" cy="24" r="22" fill="transparent" stroke="url(#spinningGradient)" strokeWidth="2" />
         </svg>
       </div>
     </Draggable>

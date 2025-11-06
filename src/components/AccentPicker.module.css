@@ -1,16 +1,14 @@
 .accentPicker {
-  --picker-size: 5vh;
-
   position: fixed;
   top: 0;
   left: 0;
-  width: var(--picker-size);
-  height: var(--picker-size);
+  width: var(--accent-picker-size);
+  height: var(--accent-picker-size);
   cursor: grab;
   user-select: none;
   z-index: 9999;
-  box-shadow: inset -4px -6px 0px 10px var(--fg-accent);
-  backdrop-filter: blur(2px);
+  box-shadow: var(--accent-picker-shadow);
+  backdrop-filter: var(--accent-picker-filter);
   border-radius: 50%;
 
   &:active {
