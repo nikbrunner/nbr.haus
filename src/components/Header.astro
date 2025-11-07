@@ -1,16 +1,17 @@
 ---
-import Navigation from "./Navigation.astro";
+
 ---
 
 <header class="Header">
   <div class="content">
-    <h1>nbr.haus</h1>
-    <!-- <Navigation /> -->
+    <h1><a href="/">nbr.haus</a></h1>
   </div>
 </header>
 
 <style>
   .Header {
+    container-type: size;
+    height: var(--header-height);
     border-bottom: var(--border-size-1) solid var(--fg-accent);
     background-color: var(--bg-main);
     position: sticky;
@@ -18,18 +19,24 @@ import Navigation from "./Navigation.astro";
     z-index: 10;
 
     .content {
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      padding: 0 var(--size-6);
+      padding: 0 15cqw;
+      height: 100cqh;
       max-width: var(--content-max-width);
 
       h1 {
+        font-size: var(--font-size-4);
+        line-height: 100cqh;
         margin: 0;
         font-weight: var(--font-weight-9);
-        color: var(--fg-accent);
+
+        a {
+          color: var(--fg-accent);
+          text-decoration: none;
+
+          &:hover {
+            opacity: 0.8;
+          }
+        }
       }
     }
   }

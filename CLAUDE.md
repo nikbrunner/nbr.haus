@@ -8,14 +8,14 @@ Personal portfolio website built with Astro, deployed on Vercel. Uses server-sid
 
 ## Development Commands
 
-| Command            | Purpose                                                              |
-| ------------------ | -------------------------------------------------------------------- |
-| `npm run dev`      | Start dev server + CSS module type generation at `localhost:3000`   |
-| `npm run build`    | Build production site to `./dist/`                                   |
-| `npm run preview`  | Preview production build locally                                     |
-| `npm run format`   | Format all files with Prettier                                       |
-| `npm run lint`     | Lint TypeScript/JavaScript files with ESLint                         |
-| `npm run css-types`| Watch and generate TypeScript definitions for CSS modules            |
+| Command             | Purpose                                                           |
+| ------------------- | ----------------------------------------------------------------- |
+| `npm run dev`       | Start dev server + CSS module type generation at `localhost:3000` |
+| `npm run build`     | Build production site to `./dist/`                                |
+| `npm run preview`   | Preview production build locally                                  |
+| `npm run format`    | Format all files with Prettier                                    |
+| `npm run lint`      | Lint TypeScript/JavaScript files with ESLint                      |
+| `npm run css-types` | Watch and generate TypeScript definitions for CSS modules         |
 
 ## Architecture
 

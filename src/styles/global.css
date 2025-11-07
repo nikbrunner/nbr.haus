@@ -22,15 +22,18 @@ body {
   --fg-accent: oklch(45% 0.25 var(--hue-active));
 
   --content-max-width: var(--size-content-3);
+  --header-height: var(--size-10);
 
   --font-family: "BerkeleyMono";
+
+  --base-layout-top-padding: var(--size-8);
 
   --shadow-hard: 15px 15px 0px var(--fg-accent);
 
   --accent-picker-size: 135px;
   --accent-picker-shadow: inset 0px 0px calc(var(--accent-picker-size) * 0.1) calc(var(--accent-picker-size) * 0.1)
     var(--fg-accent);
-  --accent-picker-filter: blur(calc(var(--accent-picker-size) / 100)) hue-rotate(90deg) contrast(1.2);
+  --accent-picker-filter: blur(calc(var(--accent-picker-size) / 50)) hue-rotate(90deg) contrast(1.35);
 
   font-family: var(--font-family);
   line-height: var(--font-lineheight-3);

@@ -1,36 +1,131 @@
 ---
 import Header from "../components/Header.astro";
+import SideNav from "../components/SideNav.astro";
 import Footer from "../components/Footer.astro";
-import AccentPicker from "../components/AccentPicker.tsx";
+import AccentPicker from "../components/AccentPicker";
 import "../styles/global.css";
 
 export interface Props {
-  title: string;
+  title?: string;
+  description?: string;
+  ogImage?: string;
 }
 
-const { title = "nbr.haus" } = Astro.props;
+const {
+  title = "Nik Brunner - Software Engineer | Frontend Developer",
+  description = "Software Engineer with 5+ years of experience building frontend architectures and design systems. Specialized in React, TypeScript, and modern web technologies. Available February 2026.",
+  ogImage = "/og-image.jpg"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth;">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary Meta Tags -->
     <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, Astro.url)} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(ogImage, Astro.url)} />
   </head>
   <body>
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: "Nik Brunner",
+        url: "https://www.nbr.haus",
+        image: new URL(ogImage, Astro.url).href,
+        jobTitle: "Software Engineer",
+        description: description,
+        knowsAbout: [
+          "React",
+          "TypeScript",
+          "GraphQL",
+          "Frontend Architecture",
+          "Design Systems",
+          "Tailwind CSS",
+          "TanStack",
+          "Redux",
+          "Electron"
+        ],
+        alumniOf: {
+          "@type": "EducationEvent",
+          name: "Self-taught Web Developer"
+        },
+        workLocation: {
+          "@type": "Place",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Landshut",
+            addressCountry: "Germany"
+          }
+        },
+        sameAs: ["https://github.com/nikbrunner", "https://www.linkedin.com/in/nbru/"]
+      })}
+    />
     <Header />
-    <main class="content">
-      <slot />
-    </main>
+    <div class="layout">
+      <SideNav />
+      <main class="content">
+        <slot />
+      </main>
+    </div>
     <AccentPicker client:only="react" />
   </body>
 </html>
 
 <style>
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr auto var(--size-8) minmax(0, var(--content-max-width)) 1fr;
+    margin: 0 auto;
+    padding-top: var(--base-layout-top-padding);
+  }
+
+  nav {
+    grid-column: 2;
+  }
+
   .content {
+    grid-column: 4;
     min-height: inherit;
+    padding-bottom: 100vh;
+  }
+
+  @media (max-width: 768px) {
+    .layout {
+      grid-template-columns: 1fr;
+    }
+
+    nav {
+      display: none;
+    }
+
+    .content {
+      grid-column: 1;
+    }
   }
 </style>

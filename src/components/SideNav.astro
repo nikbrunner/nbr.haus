@@ -1,0 +1,52 @@
+---
+const sections = [
+  { name: "About", href: "#about" },
+  { name: "Work", href: "#work" },
+  { name: "Projects", href: "#projects" },
+  { name: "Tech Stack", href: "#tech-stack" },
+  { name: "Dev Tools", href: "#dev-tools" },
+  { name: "AI", href: "#ai" },
+  { name: "Connect", href: "#connect" }
+];
+---
+
+<nav class="SideNav">
+  {sections.map(section => <a href={section.href}>{section.name}</a>)}
+</nav>
+
+<style>
+  .SideNav {
+    position: sticky;
+    /* top: var(--header-height); */
+    top: calc(var(--header-height) + var(--base-layout-top-padding));
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-3);
+    /* padding: var(--size-4); */
+    text-align: right;
+    align-self: start;
+    height: fit-content;
+
+    a {
+      color: var(--fg-support);
+      text-decoration: none;
+      font-size: var(--font-size-1);
+      transition: color 0.2s;
+      white-space: nowrap;
+
+      &:hover {
+        color: var(--fg-accent);
+      }
+
+      &:active {
+        color: var(--fg-main);
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .SideNav {
+      display: none;
+    }
+  }
+</style>
