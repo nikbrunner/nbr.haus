@@ -99,25 +99,28 @@ const currentUrl = Astro.url;
 </html>
 
 <style>
+  /* Mobile base styles */
   .layout {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     margin: 0 auto;
     padding-top: var(--base-layout-top-padding);
   }
 
   .content {
+    grid-column: 1;
     min-height: inherit;
     padding-bottom: 100vh;
   }
 
-  @media (max-width: 768px) {
+  /* Desktop styles (md and above) */
+  @media (min-width: 768px) {
     .layout {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(3, 1fr);
     }
 
     .content {
-      grid-column: 1;
+      grid-column: auto;
     }
   }
 </style>

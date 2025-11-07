@@ -15,39 +15,41 @@ const sections = [
 </nav>
 
 <style>
+  /* Mobile: hide navigation */
   .SideNav {
-    position: sticky;
-    top: calc(var(--header-height) + var(--base-layout-top-padding));
-    display: flex;
-    flex-direction: column;
-    gap: var(--size-3);
-    text-align: right;
-    align-self: start;
-    height: fit-content;
-
-    a {
-      color: var(--fg-support);
-      text-decoration: none;
-      font-size: var(--font-size-1);
-      transition: color 0.2s;
-      white-space: nowrap;
-
-      &:hover {
-        color: var(--fg-accent);
-        text-decoration: underline;
-        text-underline-offset: var(--size-1);
-        text-decoration-thickness: var(--size-1);
-      }
-
-      &:active {
-        color: var(--fg-main);
-      }
-    }
+    display: none;
   }
 
-  @media (max-width: 768px) {
+  /* Desktop: show and style navigation (md and above) */
+  @media (min-width: 768px) {
     .SideNav {
-      display: none;
+      display: flex;
+      position: sticky;
+      top: calc(var(--header-height) + var(--base-layout-top-padding));
+      flex-direction: column;
+      gap: var(--size-3);
+      text-align: right;
+      align-self: start;
+      height: fit-content;
+
+      a {
+        color: var(--fg-support);
+        text-decoration: none;
+        font-size: var(--font-size-1);
+        transition: color 0.2s;
+        white-space: nowrap;
+
+        &:hover {
+          color: var(--fg-accent);
+          text-decoration: underline;
+          text-underline-offset: var(--size-1);
+          text-decoration-thickness: var(--size-1);
+        }
+
+        &:active {
+          color: var(--fg-main);
+        }
+      }
     }
   }
 </style>
