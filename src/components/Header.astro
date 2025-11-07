@@ -3,14 +3,14 @@
 ---
 
 <header class="Header">
-  <div class="content">
-    <h1><a href="/">nbr.haus</a></h1>
-  </div>
+  <h1><a href="/">nbr<span>.</span>haus</a></h1>
 </header>
 
 <style>
   .Header {
-    container-type: size;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
     height: var(--header-height);
     border-bottom: var(--border-size-1) solid var(--fg-accent);
     background-color: var(--bg-main);
@@ -18,24 +18,25 @@
     top: 0;
     z-index: 10;
 
-    .content {
-      padding: 0 15cqw;
-      height: 100cqh;
-      max-width: var(--content-max-width);
+    & > * {
+      padding: 0 var(--size-4);
+    }
 
-      h1 {
-        font-size: var(--font-size-4);
-        line-height: 100cqh;
-        margin: 0;
-        font-weight: var(--font-weight-9);
+    h1 {
+      font-size: var(--font-size-4);
+      font-weight: var(--font-weight-9);
+      margin: 0;
 
-        a {
+      a {
+        color: var(--fg-main);
+        text-decoration: none;
+
+        &:hover {
+          opacity: 0.8;
+        }
+
+        span {
           color: var(--fg-accent);
-          text-decoration: none;
-
-          &:hover {
-            opacity: 0.8;
-          }
         }
       }
     }
