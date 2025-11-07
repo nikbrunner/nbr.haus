@@ -11,161 +11,185 @@ const currentYear = new Date().getFullYear();
 ---
 
 <BaseLayout>
-  <Section>
-    <img
-      class="house-image"
-      src={houseImage.src}
-      alt="Nik Brunner's personal website - a black and white photograph of a modernist house representing his digital home"
-    />
-  </Section>
+  <div class="column-left">
+    <Section title="Work">
+      <Job company="DealerCenter Digital" role="Software Engineer" period={`2020–${currentYear}`}>
+        <p>
+          Led major architectural migrations across a mature Electron application serving bike retailers. Migrated the
+          application from <Highlight>legacy Redux to Redux Toolkit</Highlight> and championed <Highlight
+            >TanStack Query adoption</Highlight
+          > with comprehensive <Highlight>code guidelines and best practices documentation</Highlight>.
+        </p>
+        <p>
+          Designed and implemented a <Highlight>comprehensive 10-variant color system</Highlight> with
+          <Highlight>Figma integration</Highlight>, affecting the entire codebase. Built BikeCenter's <Highlight
+            >custom design system from scratch</Highlight
+          > using React, TypeScript, and SCSS.
+        </p>
+        <p>
+          Completely rebuilt a Vendure storefront from a <Highlight>Remix template to TanStack Start/Router</Highlight>
+          with TanStack Form, GraphQL, and Tailwind CSS.
+        </p>
+        <p>
+          Established <Highlight>technical standards</Highlight> and <Highlight>coding conventions</Highlight>
+          across the team, including <Highlight>translation guidelines</Highlight>, <Highlight
+            >BEM naming conventions</Highlight
+          >, and <Highlight>TypeScript best practices</Highlight>.
+        </p>
+        <p>
+          <Highlight>Mentored junior developers</Highlight> through pair programming and code reviews, creating extensive documentation
+          for knowledge transfer.
+        </p>
+        <p>
+          Coordinated cross-functional teams as <Highlight>technical hub</Highlight> between management, backend, and frontend,
+          facilitating communication and ensuring alignment on architectural decisions.
+        </p>
+      </Job>
 
-  <Section title="About">
-    <p>
-      I'm <Highlight>Nik Brunner</Highlight>, a Software Engineer with {experienceInYears} years of experience building frontend
-      architectures and design systems. Currently seeking new opportunities starting February 2026.
-    </p>
-    <p>Born in 1984, based in Landshut, Germany. Outside of code, I enjoy hiking, running, and photography.</p>
-  </Section>
+      <Job company="diva-e" role="Junior Frontend Developer" period="2020">
+        <p>
+          <Highlight>Junior Frontend Developer at digital agency</Highlight>. Contributed to <Highlight
+            >BayWa's e-commerce platform</Highlight
+          > and built internal tooling. Created framework documentation during onboarding. Successfully navigated remote work
+          transition during COVID-19 outbreak.
+        </p>
+        <p>
+          Built an <Highlight>internal social platform using React, GraphQL (Apollo), and SCSS</Highlight> while working on BayWa's
+          e-commerce site. Created onboarding documentation for the company's proprietary framework.
+        </p>
+      </Job>
 
-  <Section title="Work">
-    <Job company="DealerCenter Digital" role="Software Engineer" period={`2020–${currentYear}`}>
-      <p>
-        Led major architectural migrations across a mature Electron application serving bike retailers. Migrated the
-        application from <Highlight>legacy Redux to Redux Toolkit</Highlight> and championed <Highlight
-          >TanStack Query adoption</Highlight
-        > with comprehensive <Highlight>code guidelines and best practices documentation</Highlight>.
-      </p>
-      <p>
-        Designed and implemented a <Highlight>comprehensive 10-variant color system</Highlight> with
-        <Highlight>Figma integration</Highlight>, affecting the entire codebase. Built BikeCenter's <Highlight
-          >custom design system from scratch</Highlight
-        > using React, TypeScript, and SCSS.
-      </p>
-      <p>
-        Completely rebuilt a Vendure storefront from a <Highlight>Remix template to TanStack Start/Router</Highlight>
-        with TanStack Form, GraphQL, and Tailwind CSS.
-      </p>
-      <p>
-        Established <Highlight>technical standards</Highlight> and <Highlight>coding conventions</Highlight>
-        across the team, including <Highlight>translation guidelines</Highlight>, <Highlight
-          >BEM naming conventions</Highlight
-        >, and <Highlight>TypeScript best practices</Highlight>.
-      </p>
-      <p>
-        <Highlight>Mentored junior developers</Highlight> through pair programming and code reviews, creating extensive documentation
-        for knowledge transfer.
-      </p>
-      <p>
-        Coordinated cross-functional teams as <Highlight>technical hub</Highlight> between management, backend, and frontend,
-        facilitating communication and ensuring alignment on architectural decisions.
-      </p>
-    </Job>
+      <Job company="Campudus" role="Intern" period="2019–2020">
+        <p>
+          Built a fullstack accessories ordering application from scratch (design, architecture, backend, frontend) during a
+          3-month internship at DealerCenter Digital's sister company.
+        </p>
+      </Job>
+    </Section>
 
-    <Job company="diva-e" role="Junior Frontend Developer" period="2020">
+    <Section title="Projects">
+      <h3>
+        Black Atom — <Link href="https://black-atom.industries" target="_blank" rel="noopener noreferrer"
+          >black-atom.industries</Link
+        >
+      </h3>
       <p>
-        <Highlight>Junior Frontend Developer at digital agency</Highlight>. Contributed to <Highlight
-          >BayWa's e-commerce platform</Highlight
-        > and built internal tooling. Created framework documentation during onboarding. Successfully navigated remote work transition
-        during COVID-19 outbreak.
+        Open-source theming system with 27+ themes across 6 platforms (Neovim, Zed, Ghostty, WezTerm, Tmux, and more). Built
+        with an <Highlight>adapter pattern</Highlight> for consistent theme generation from a central source using <Highlight
+          >OKLCH color space</Highlight
+        >. Maintained with focus on developer experience and cross-platform consistency.
       </p>
+    </Section>
+  </div>
+
+  <div class="column-right">
+    <Section>
+      <img
+        class="house-image"
+        src={houseImage.src}
+        alt="Nik Brunner's personal website - a black and white photograph of a modernist house representing his digital home"
+      />
+    </Section>
+
+    <Section title="About">
       <p>
-        Built an <Highlight>internal social platform using React, GraphQL (Apollo), and SCSS</Highlight> while working on BayWa's
-        e-commerce site. Created onboarding documentation for the company's proprietary framework.
+        I'm <Highlight>Nik Brunner</Highlight>, a Software Engineer with {experienceInYears} years of experience building frontend
+        architectures and design systems. Currently seeking new opportunities starting February 2026.
       </p>
-    </Job>
+      <p>Born in 1984, based in Landshut, Germany. Outside of code, I enjoy hiking, running, and photography.</p>
+    </Section>
 
-    <Job company="Campudus" role="Intern" period="2019–2020">
+    <Section title="Tech Stack">
+      <p>These are the technologies I'm familiar with and regularly use.</p>
+      <ul>
+        <li><Link href="https://react.dev" target="_blank" rel="noopener noreferrer">React</Link></li>
+        <li><Link href="https://www.typescriptlang.org" target="_blank" rel="noopener noreferrer">TypeScript</Link></li>
+        <li><Link href="https://graphql.org" target="_blank" rel="noopener noreferrer">GraphQL</Link></li>
+        <li><Link href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer">Tailwind CSS</Link></li>
+        <li><Link href="https://tanstack.com/start" target="_blank" rel="noopener noreferrer">TanStack Start</Link></li>
+        <li><Link href="https://tanstack.com/router" target="_blank" rel="noopener noreferrer">TanStack Router</Link></li>
+        <li><Link href="https://tanstack.com/query" target="_blank" rel="noopener noreferrer">TanStack Query</Link></li>
+        <li><Link href="https://tanstack.com/form" target="_blank" rel="noopener noreferrer">TanStack Form</Link></li>
+        <li><Link href="https://ui.shadcn.com" target="_blank" rel="noopener noreferrer">ShadCN</Link></li>
+        <li><Link href="https://sass-lang.com" target="_blank" rel="noopener noreferrer">SCSS</Link></li>
+        <li><Link href="https://nodejs.org" target="_blank" rel="noopener noreferrer">Node.js</Link></li>
+        <li><Link href="https://www.electronjs.org" target="_blank" rel="noopener noreferrer">Electron</Link></li>
+        <li><Link href="https://redux-toolkit.js.org" target="_blank" rel="noopener noreferrer">Redux (Toolkit)</Link></li>
+      </ul>
+    </Section>
+
+    <Section title="Dev Tools">
       <p>
-        Built a fullstack accessories ordering application from scratch (design, architecture, backend, frontend) during a
-        3-month internship at DealerCenter Digital's sister company.
-      </p>
-    </Job>
-  </Section>
-
-  <Section title="Projects">
-    <h3>
-      Black Atom — <Link href="https://black-atom.industries" target="_blank" rel="noopener noreferrer"
-        >black-atom.industries</Link
-      >
-    </h3>
-    <p>
-      Open-source theming system with 27+ themes across 6 platforms (Neovim, Zed, Ghostty, WezTerm, Tmux, and more). Built
-      with an <Highlight>adapter pattern</Highlight> for consistent theme generation from a central source using <Highlight
-        >OKLCH color space</Highlight
-      >. Maintained with focus on developer experience and cross-platform consistency.
-    </p>
-  </Section>
-
-  <Section title="Tech Stack">
-    <p>These are the technologies I'm familiar with and regularly use.</p>
-    <ul>
-      <li><Link href="https://react.dev" target="_blank" rel="noopener noreferrer">React</Link></li>
-      <li><Link href="https://www.typescriptlang.org" target="_blank" rel="noopener noreferrer">TypeScript</Link></li>
-      <li><Link href="https://graphql.org" target="_blank" rel="noopener noreferrer">GraphQL</Link></li>
-      <li><Link href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer">Tailwind CSS</Link></li>
-      <li><Link href="https://tanstack.com/start" target="_blank" rel="noopener noreferrer">TanStack Start</Link></li>
-      <li><Link href="https://tanstack.com/router" target="_blank" rel="noopener noreferrer">TanStack Router</Link></li>
-      <li><Link href="https://tanstack.com/query" target="_blank" rel="noopener noreferrer">TanStack Query</Link></li>
-      <li><Link href="https://tanstack.com/form" target="_blank" rel="noopener noreferrer">TanStack Form</Link></li>
-      <li><Link href="https://ui.shadcn.com" target="_blank" rel="noopener noreferrer">ShadCN</Link></li>
-      <li><Link href="https://sass-lang.com" target="_blank" rel="noopener noreferrer">SCSS</Link></li>
-      <li><Link href="https://nodejs.org" target="_blank" rel="noopener noreferrer">Node.js</Link></li>
-      <li><Link href="https://www.electronjs.org" target="_blank" rel="noopener noreferrer">Electron</Link></li>
-      <li><Link href="https://redux-toolkit.js.org" target="_blank" rel="noopener noreferrer">Redux (Toolkit)</Link></li>
-    </ul>
-  </Section>
-
-  <Section title="Dev Tools">
-    <p>
-      I am very passionate about workflow. You can check my <Link
-        href="https://github.com/nikbrunner/dots"
-        target="_blank"
-        rel="noopener noreferrer">dotfiles here</Link
-      >.
-    </p>
-    <ul>
-      <li>
-        <Link
-          href="https://github.com/nikbrunner/dots/tree/main/common/.config/nvim"
+        I am very passionate about workflow. You can check my <Link
+          href="https://github.com/nikbrunner/dots"
           target="_blank"
-          rel="noopener noreferrer">Neovim</Link
-        > (Primary editor)
-      </li>
-      <li><Link href="https://zed.dev" target="_blank" rel="noopener noreferrer">Zed</Link> (Secondary editor)</li>
-      <li><Link href="https://ghostty.dev" target="_blank" rel="noopener noreferrer">Ghostty</Link> (Terminal)</li>
-      <li>
-        <Link href="https://github.com/tmux/tmux/wiki" target="_blank" rel="noopener noreferrer">Tmux</Link> (Terminal multiplexer)
-      </li>
-      <li>
-        <Link href="https://github.com/jesseduffield/lazygit" target="_blank" rel="noopener noreferrer">LazyGit</Link> (Git GUI)
-      </li>
-      <li>
-        <Link href="https://1password.com" target="_blank" rel="noopener noreferrer">1Password</Link> (Password & Secrets manager)
-      </li>
-    </ul>
-  </Section>
+          rel="noopener noreferrer">dotfiles here</Link
+        >.
+      </p>
+      <ul>
+        <li>
+          <Link
+            href="https://github.com/nikbrunner/dots/tree/main/common/.config/nvim"
+            target="_blank"
+            rel="noopener noreferrer">Neovim</Link
+          > (Primary editor)
+        </li>
+        <li><Link href="https://zed.dev" target="_blank" rel="noopener noreferrer">Zed</Link> (Secondary editor)</li>
+        <li><Link href="https://ghostty.dev" target="_blank" rel="noopener noreferrer">Ghostty</Link> (Terminal)</li>
+        <li>
+          <Link href="https://github.com/tmux/tmux/wiki" target="_blank" rel="noopener noreferrer">Tmux</Link> (Terminal multiplexer)
+        </li>
+        <li>
+          <Link href="https://github.com/jesseduffield/lazygit" target="_blank" rel="noopener noreferrer">LazyGit</Link> (Git
+          GUI)
+        </li>
+        <li>
+          <Link href="https://1password.com" target="_blank" rel="noopener noreferrer">1Password</Link> (Password & Secrets manager)
+        </li>
+      </ul>
+    </Section>
 
-  <Section title="AI">
-    <p>
-      My primary AI assistance tool is <Link
-        href="https://claude.com/product/claude-code"
-        target="_blank"
-        rel="noopener noreferrer">Claude Code</Link
-      >. I prioritize Claude's consistency and quality over chasing every new model release. The terminal integration aligns
-      naturally with my workflow, where I spend most of my time.
-    </p>
-  </Section>
+    <Section title="AI">
+      <p>
+        My primary AI assistance tool is <Link
+          href="https://claude.com/product/claude-code"
+          target="_blank"
+          rel="noopener noreferrer">Claude Code</Link
+        >. I prioritize Claude's consistency and quality over chasing every new model release. The terminal integration
+        aligns naturally with my workflow, where I spend most of my time.
+      </p>
+    </Section>
 
-  <Section title="Connect">
-    <ul>
-      <li><Link href="https://www.github.com/nikbrunner" target="_blank" rel="noopener noreferrer">GitHub</Link></li>
-      <li><Link href="mailto:nbr.haus.persuader046@passmail.com">Email (Alias)</Link></li>
-      <li><Link href="https://www.linkedin.com/in/nbru/" target="_blank" rel="noopener noreferrer">LinkedIn</Link></li>
-    </ul>
-  </Section>
+    <Section title="Connect">
+      <ul>
+        <li><Link href="https://www.github.com/nikbrunner" target="_blank" rel="noopener noreferrer">GitHub</Link></li>
+        <li><Link href="mailto:nbr.haus.persuader046@passmail.com">Email (Alias)</Link></li>
+        <li><Link href="https://www.linkedin.com/in/nbru/" target="_blank" rel="noopener noreferrer">LinkedIn</Link></li>
+      </ul>
+    </Section>
+  </div>
 </BaseLayout>
 
 <style>
+  /* Mobile: columns stack naturally */
+  .column-left,
+  .column-right {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-8);
+  }
+
+  /* Desktop: position in grid columns */
+  @media (min-width: 768px) {
+    .column-left {
+      grid-column: 2;
+    }
+
+    .column-right {
+      grid-column: 3;
+    }
+  }
+
   .house-image {
     aspect-ratio: 1 / 1;
     width: 100%;

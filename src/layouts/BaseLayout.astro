@@ -1,6 +1,5 @@
 ---
 import Header from "../components/Header.astro";
-import SideNav from "../components/SideNav.astro";
 import AccentPicker from "../components/AccentPicker";
 import "../styles/global.css";
 
@@ -88,12 +87,9 @@ const currentUrl = Astro.url;
       })}
     />
     <Header />
-    <div class="layout">
-      <SideNav />
-      <main class="content">
-        <slot />
-      </main>
-    </div>
+    <main class="layout">
+      <slot />
+    </main>
     <AccentPicker client:only="react" />
   </body>
 </html>
@@ -103,24 +99,18 @@ const currentUrl = Astro.url;
   .layout {
     display: grid;
     grid-template-columns: 1fr;
+    gap: var(--size-8);
     margin: 0 auto;
-    padding-top: var(--base-layout-top-padding);
-  }
-
-  .content {
-    grid-column: 1;
-    min-height: inherit;
+    padding: var(--base-layout-top-padding) var(--size-6);
     padding-bottom: 100vh;
   }
 
-  /* Desktop styles (md and above) */
+  /* Desktop styles (md and above) - 4 column grid */
   @media (min-width: 768px) {
     .layout {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .content {
-      grid-column: auto;
+      grid-template-columns: 1fr minmax(0, var(--content-max-width)) minmax(0, var(--content-max-width)) 1fr;
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 </style>
