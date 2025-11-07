@@ -51,6 +51,7 @@ const currentUrl = Astro.url;
   </head>
   <body>
     <script
+      is:inline
       type="application/ld+json"
       set:html={JSON.stringify({
         "@context": "https://schema.org",
@@ -100,13 +101,12 @@ const currentUrl = Astro.url;
 <style>
   .layout {
     display: grid;
-    grid-template-columns: 1fr auto var(--size-8) minmax(0, var(--content-max-width)) 1fr;
+    grid-template-columns: repeat(3, 1fr);
     margin: 0 auto;
     padding-top: var(--base-layout-top-padding);
   }
 
   .content {
-    grid-column: 4;
     min-height: inherit;
     padding-bottom: 100vh;
   }
