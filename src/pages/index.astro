@@ -4,7 +4,7 @@ import Section from "../components/Section.astro";
 import Job from "../components/Job.astro";
 import Highlight from "../components/Highlight.astro";
 import Link from "../components/Link.astro";
-import houseImage from "../assets/images/house.jpg";
+import ProfilePicture from "../components/ProfilePicture.astro";
 
 const experienceInYears = new Date().getFullYear() - 2020;
 const currentYear = new Date().getFullYear();
@@ -84,11 +84,7 @@ const currentYear = new Date().getFullYear();
 
   <div class="column-right">
     <Section>
-      <img
-        class="house-image"
-        src={houseImage.src}
-        alt="Nik Brunner's personal website - a black and white photograph of a modernist house representing his digital home"
-      />
+      <ProfilePicture />
     </Section>
 
     <Section title="About">
@@ -188,14 +184,5 @@ const currentYear = new Date().getFullYear();
     .column-right {
       grid-column: 3;
     }
-  }
-
-  .house-image {
-    aspect-ratio: 1 / 1;
-    width: 100%;
-    object-fit: cover;
-    display: block;
-    box-shadow: var(--shadow-hard);
-    border: var(--border-size-1) solid var(--fg-accent);
   }
 </style>
