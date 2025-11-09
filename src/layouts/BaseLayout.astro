@@ -87,30 +87,18 @@ const currentUrl = Astro.url;
       })}
     />
     <Header />
-    <main class="layout">
+
+    <main class="base-layout">
       <slot />
     </main>
+
     <AccentPicker client:only="react" />
   </body>
 </html>
 
 <style>
-  /* Mobile base styles */
-  .layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--size-8);
+  .base-layout {
     margin: 0 auto;
     padding: var(--base-layout-top-padding) var(--size-6);
-    padding-bottom: 100vh;
-  }
-
-  /* Desktop styles (md and above) - 4 column grid */
-  @media (min-width: 768px) {
-    .layout {
-      grid-template-columns: 1fr minmax(0, var(--content-max-width)) minmax(0, var(--content-max-width)) 1fr;
-      padding-left: 0;
-      padding-right: 0;
-    }
   }
 </style>
