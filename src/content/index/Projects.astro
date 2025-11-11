@@ -1,5 +1,5 @@
 ---
-import Link from "../../components/Link.astro";
+import Project from "../../components/Project.astro";
 import Highlight from "../../components/Highlight.astro";
 ---
 
@@ -7,30 +7,38 @@ import Highlight from "../../components/Highlight.astro";
   Projects are never finished, but they are always in progress. Here are some of my projects as a developer.
 </p>
 
-<div class="project">
-  <h3>
-    <Link href="https://black-atom.industries" target="_blank" rel="noopener noreferrer">Black Atom Industries</Link>
-  </h3>
-  <p>Open-source theming system with 27+ themes across many platforms (Neovim, Zed, Ghostty, WezTerm, Tmux, and more).</p>
-  <p>
-    Built with an <Highlight>adapter pattern</Highlight>
-    for consistent theme generation from a central source using <Highlight>OKLCH color space</Highlight>.
-  </p>
-  <p>Maintained with focus on developer experience and cross-platform consistency.</p>
-</div>
+<div class="projects">
+  <Project
+    title="Black Atom Industries"
+    stack={["TypeScript"]}
+    topics={["OKLCH", "Adapter Pattern", "Color Theory"]}
+    status="Active"
+    platforms={["Neovim", "Zed", "Ghostty", "WezTerm", "Tmux"]}
+    metrics={[{ label: "Themes", value: "27+" }]}
+    primaryLink={{ url: "https://black-atom.industries", type: "Live Site" }}
+    additionalLinks={[{ url: "https://github.com/nikbrunner/black-atom", type: "GitHub" }]}
+  >
+    <p>Open-source theming system with 27+ themes across many platforms.</p>
+    <p>
+      Built with an <Highlight>adapter pattern</Highlight> for consistent theme generation from a central source using <Highlight>OKLCH color space</Highlight>.
+    </p>
+    <p>Maintained with focus on developer experience and cross-platform consistency.</p>
+  </Project>
 
-<div class="project">
-  <h3>
-    <Link href="https://github.com/nikbrunner/awdcs" target="_blank" rel="noopener noreferrer">AWDCS</Link>
-  </h3>
-  <p>
-    Scope-based keymap architecture for modal editors organizing bindings by operational context (App, Workspace, Document,
-    Change, Symbol) rather than tool-specific functions.
-  </p>
-  <p>
-    Features <Highlight>systematic prefix patterns</Highlight> and
-    <Highlight>semantic naming</Highlight> for consistent, memorable keybindings across workflows.
-  </p>
+  <Project
+    title="AWDCS"
+    stack={[]}
+    topics={["Keymapping", "Architecture Pattern", "UX Design"]}
+    status="Active"
+    primaryLink={{ url: "https://github.com/nikbrunner/awdcs", type: "GitHub" }}
+  >
+    <p>
+      Scope-based keymap architecture for modal editors organizing bindings by operational context (App, Workspace, Document, Change, Symbol) rather than tool-specific functions.
+    </p>
+    <p>
+      Features <Highlight>systematic prefix patterns</Highlight> and <Highlight>semantic naming</Highlight> for consistent, memorable keybindings across workflows.
+    </p>
+  </Project>
 </div>
 
 <style>
@@ -39,14 +47,9 @@ import Highlight from "../../components/Highlight.astro";
     color: var(--fg-support);
   }
 
-  h3 {
-    background-color: var(--bg-support);
-    padding: var(--size-2) var(--size-4);
-    border-radius: var(--radius-2);
-    border: var(--border-size-2) solid var(--fg-accent);
-  }
-
-  .project p:first-of-type {
-    font-weight: var(--font-weight-9);
+  .projects {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-6);
   }
 </style>
