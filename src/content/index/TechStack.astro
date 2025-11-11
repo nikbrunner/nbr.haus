@@ -1,20 +1,65 @@
 ---
 import Link from "../../components/Link.astro";
+
+const technologies = [
+  { name: "React", url: "https://react.dev", color: "#61DAFB" },
+  { name: "TypeScript", url: "https://www.typescriptlang.org", color: "#3178C6" },
+  { name: "GraphQL", url: "https://graphql.org", color: "#E10098" },
+  { name: "Tailwind CSS", url: "https://tailwindcss.com", color: "#06B6D4" },
+  { name: "TanStack Start", url: "https://tanstack.com/start", color: "#EF4444" },
+  { name: "TanStack Router", url: "https://tanstack.com/router", color: "#EF4444" },
+  { name: "TanStack Query", url: "https://tanstack.com/query", color: "#EF4444" },
+  { name: "TanStack Form", url: "https://tanstack.com/form", color: "#EF4444" },
+  { name: "ShadCN", url: "https://ui.shadcn.com", color: "#000000" },
+  { name: "SCSS", url: "https://sass-lang.com", color: "#c69" },
+  { name: "Node.js", url: "https://nodejs.org", color: "#339933" },
+  { name: "Electron", url: "https://www.electronjs.org", color: "#47848F" },
+  { name: "Redux (Toolkit)", url: "https://redux-toolkit.js.org", color: "#764ABC" }
+];
 ---
 
 <p>These are the technologies I'm familiar with and regularly use.</p>
-<ul>
-  <li><Link href="https://react.dev" target="_blank" rel="noopener noreferrer">React</Link></li>
-  <li><Link href="https://www.typescriptlang.org" target="_blank" rel="noopener noreferrer">TypeScript</Link></li>
-  <li><Link href="https://graphql.org" target="_blank" rel="noopener noreferrer">GraphQL</Link></li>
-  <li><Link href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer">Tailwind CSS</Link></li>
-  <li><Link href="https://tanstack.com/start" target="_blank" rel="noopener noreferrer">TanStack Start</Link></li>
-  <li><Link href="https://tanstack.com/router" target="_blank" rel="noopener noreferrer">TanStack Router</Link></li>
-  <li><Link href="https://tanstack.com/query" target="_blank" rel="noopener noreferrer">TanStack Query</Link></li>
-  <li><Link href="https://tanstack.com/form" target="_blank" rel="noopener noreferrer">TanStack Form</Link></li>
-  <li><Link href="https://ui.shadcn.com" target="_blank" rel="noopener noreferrer">ShadCN</Link></li>
-  <li><Link href="https://sass-lang.com" target="_blank" rel="noopener noreferrer">SCSS</Link></li>
-  <li><Link href="https://nodejs.org" target="_blank" rel="noopener noreferrer">Node.js</Link></li>
-  <li><Link href="https://www.electronjs.org" target="_blank" rel="noopener noreferrer">Electron</Link></li>
-  <li><Link href="https://redux-toolkit.js.org" target="_blank" rel="noopener noreferrer">Redux (Toolkit)</Link></li>
+<ul class="tech-grid">
+  {
+    technologies.map(tech => (
+      <li>
+        <Link href={tech.url} target="_blank" rel="noopener noreferrer" style={`--tech-color: ${tech.color};`}>
+          {tech.name}
+        </Link>
+      </li>
+    ))
+  }
 </ul>
+
+<style>
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0 0;
+  }
+
+  .tech-grid li {
+    padding: 0;
+  }
+
+  .tech-grid li :global(a) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--size-2) var(--size-4);
+    background-color: var(--tech-color);
+    color: var(--fg-contrast);
+    border: var(--border-size-2) solid var(--fg-accent);
+    font-weight: var(--font-weight-9);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: var(--shadow-hard-5);
+  }
+
+  .tech-grid li :global(a:hover) {
+    transform: translateY(-3px);
+  }
+</style>
