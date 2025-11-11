@@ -2,31 +2,29 @@
   border: var(--border-size-2) solid var(--fg-minor);
   display: flex;
   flex-direction: column;
-  gap: var(--size-5);
+  gap: var(--size-3);
   padding: var(--size-5);
 }
 
 .title {
-  background-color: var(--bg-support);
-  padding: var(--size-3) var(--size-4);
-  border: var(--border-size-2) solid var(--fg-accent);
   margin: 0;
   font-size: var(--font-size-3);
 }
 
 .metadata {
+  container-type: inline-size;
   display: flex;
   flex-direction: column;
   gap: 0;
   background-color: var(--bg-support);
-  border: var(--border-size-1) solid var(--fg-minor);
+  border: var(--border-size-1) dashed var(--fg-minor);
   padding: var(--size-3) var(--size-4);
   font-size: var(--font-size-0);
 }
 
 .metadataItem {
   display: grid;
-  grid-template-columns: 8rem 1fr;
+  grid-template-columns: 20cqw 1fr;
   gap: var(--size-3);
   padding: var(--size-2) 0;
   align-items: center;
@@ -54,7 +52,7 @@
 
 .tag {
   display: inline-flex;
-  padding: var(--size-1) var(--size-2);
+  padding: 0 var(--size-1);
   border: var(--border-size-1) solid var(--fg-minor);
   background-color: var(--bg-main);
   font-family: var(--font-family-mono);
@@ -65,12 +63,16 @@
 .description {
   display: flex;
   flex-direction: column;
-  gap: var(--size-3);
+  gap: var(--size-2);
   font-size: var(--font-size-1);
 
   :global(p:first-child) {
     font-weight: var(--font-weight-9);
   }
+}
+
+.description p {
+  margin: 0;
 }
 
 .links {

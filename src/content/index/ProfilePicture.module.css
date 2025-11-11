@@ -9,7 +9,7 @@
   display: block;
   box-shadow: var(--shadow-hard-15);
   border: var(--border-size-2) solid var(--fg-accent);
-  filter: grayscale(50%);
+  filter: grayscale(100%) contrast(1.35);
 }
 
 .profileImageOverlay {
