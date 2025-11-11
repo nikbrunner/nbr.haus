@@ -25,5 +25,8 @@
 }
 
 .techGrid li :global(a:hover) {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
+  background-color: var(--tech-color);
+  color: var(--fg-contrast);
+  box-shadow: 10px 10px 0px var(--bg-support);
 }
