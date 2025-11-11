@@ -3,12 +3,13 @@ export interface Props {
   href: string;
   target?: string;
   rel?: string;
+  style?: astroHTML.JSX.CSSProperties | null | undefined;
 }
 
-const { href, target, rel } = Astro.props;
+const { href, target, rel, style } = Astro.props;
 ---
 
-<a href={href} target={target} rel={rel}><slot /></a>
+<a href={href} target={target} rel={rel} style={style}><slot /></a>
 
 <style>
   a {

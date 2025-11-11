@@ -3,14 +3,50 @@ import Link from "../../components/Link.astro";
 import Highlight from "../../components/Highlight.astro";
 ---
 
-<h3>
-  Black Atom — <Link href="https://black-atom.industries" target="_blank" rel="noopener noreferrer"
-    >black-atom.industries</Link
-  >
-</h3>
-<p>
-  Open-source theming system with 27+ themes across 6 platforms (Neovim, Zed, Ghostty, WezTerm, Tmux, and more). Built with
-  an <Highlight>adapter pattern</Highlight> for consistent theme generation from a central source using <Highlight
-    >OKLCH color space</Highlight
-  >. Maintained with focus on developer experience and cross-platform consistency.
+<p class="intro">
+  Projects are never finished, but they are always in progress. Here are some of my projects as a developer.
 </p>
+
+<div class="project">
+  <h3>
+    <Link href="https://black-atom.industries" target="_blank" rel="noopener noreferrer">Black Atom Industries</Link>
+  </h3>
+  <p>Open-source theming system with 27+ themes across many platforms (Neovim, Zed, Ghostty, WezTerm, Tmux, and more).</p>
+  <p>
+    Built with an <Highlight>adapter pattern</Highlight>
+    for consistent theme generation from a central source using <Highlight>OKLCH color space</Highlight>.
+  </p>
+  <p>Maintained with focus on developer experience and cross-platform consistency.</p>
+</div>
+
+<div class="project">
+  <h3>
+    <Link href="https://github.com/nikbrunner/awdcs" target="_blank" rel="noopener noreferrer">AWDCS</Link>
+  </h3>
+  <p>
+    Scope-based keymap architecture for modal editors organizing bindings by operational context (App, Workspace, Document,
+    Change, Symbol) rather than tool-specific functions.
+  </p>
+  <p>
+    Features <Highlight>systematic prefix patterns</Highlight> and
+    <Highlight>semantic naming</Highlight> for consistent, memorable keybindings across workflows.
+  </p>
+</div>
+
+<style>
+  .intro {
+    font-style: italic;
+    color: var(--fg-support);
+  }
+
+  h3 {
+    background-color: var(--bg-support);
+    padding: var(--size-2) var(--size-4);
+    border-radius: var(--radius-2);
+    border: var(--border-size-2) solid var(--fg-accent);
+  }
+
+  .project p:first-of-type {
+    font-weight: var(--font-weight-9);
+  }
+</style>

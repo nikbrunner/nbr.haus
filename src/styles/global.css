@@ -15,12 +15,13 @@ body {
   --hue-active: 170;
 
   --bg-main: oklch(90% 0.005 var(--hue));
-  --bg-support: oklch(70% 0.01 var(--hue));
+  --bg-support: oklch(85% 0.005 var(--hue));
 
   --fg-main: oklch(40% 0.05 var(--hue));
   --fg-support: oklch(50% 0.05 var(--hue));
   --fg-minor: oklch(60% 0.05 var(--hue));
   --fg-accent: oklch(45% 0.25 var(--hue-active));
+  --fg-contrast: oklch(98% 0.05 var(--hue-active));
 
   --content-max-width: var(--size-content-3);
   --header-height: var(--size-10);
@@ -29,7 +30,8 @@ body {
 
   --base-layout-top-padding: var(--size-8);
 
-  --shadow-hard: 15px 15px 0px var(--fg-accent);
+  --shadow-hard-5: 5px 5px 0px var(--fg-accent);
+  --shadow-hard-15: 15px 15px 0px var(--fg-accent);
 
   --accent-picker-size: 135px;
   --accent-picker-shadow: inset 0px 0px calc(var(--accent-picker-size) * 0.1) calc(var(--accent-picker-size) * 0.1)
