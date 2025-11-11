@@ -7,7 +7,7 @@
   width: 100%;
   object-fit: cover;
   display: block;
-  box-shadow: var(--shadow-hard-15);
+  box-shadow: var(--shadow-hard-5);
   border: var(--border-size-2) solid var(--fg-accent);
 }
 

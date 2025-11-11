@@ -1,10 +1,18 @@
 .project {
-  border: var(--border-size-2) solid var(--fg-minor);
+  border: var(--border-size-2) solid var(--fg-accent);
   display: flex;
   flex-direction: column;
   gap: var(--size-3);
   padding: var(--size-5);
   box-shadow: var(--shadow-hard-5);
+  background-color: var(--bg-main);
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    oklch(90% 0.005 var(--hue)) 10px,
+    oklch(90% 0.005 var(--hue)) 11px
+  );
 }
 
 .title {
@@ -17,7 +25,7 @@
 .value,
 .tag,
 .description {
-  font-size: 3cqw;
+  font-size: 3.5cqw;
 }
 
 .metadata {
@@ -26,7 +34,7 @@
   flex-direction: column;
   gap: 0;
   background-color: var(--bg-support);
-  border: var(--border-size-1) dashed var(--fg-minor);
+  border: var(--border-size-1) dashed var(--fg-accent);
   padding: var(--size-2) var(--size-3);
 }
 
@@ -38,7 +46,7 @@
   align-items: center;
 
   &:not(:last-child) {
-    border-bottom: 1px dashed var(--fg-minor);
+    border-bottom: 1px dashed var(--fg-accent);
   }
 }
 
@@ -90,8 +98,7 @@
   display: inline-flex;
   padding: var(--size-2) var(--size-3);
   border: var(--border-size-2) solid var(--fg-accent);
-  /* background-color: var(--bg-support); */
-  font-family: var(--font-family-mono);
+  background-color: var(--bg-support);
   font-size: var(--font-size-0);
   color: var(--fg-main);
   text-decoration: none;

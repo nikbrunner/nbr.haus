@@ -16,7 +16,7 @@
   align-items: center;
   justify-content: center;
   padding: var(--size-1) var(--size-2);
-  color: var(--fg-main);
+  color: var(--fg-accent);
   border: var(--border-size-2) solid var(--tech-color);
   box-shadow: 5px 5px 0px var(--tech-color);
   font-weight: var(--font-weight-9);
