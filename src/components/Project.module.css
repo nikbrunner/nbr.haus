@@ -4,11 +4,20 @@
   flex-direction: column;
   gap: var(--size-3);
   padding: var(--size-5);
+  box-shadow: var(--shadow-hard-5);
 }
 
 .title {
   margin: 0;
-  font-size: var(--font-size-3);
+  font-size: var(--font-size-2);
+  color: var(--fg-accent);
+}
+
+.label,
+.value,
+.tag,
+.description {
+  font-size: 3cqw;
 }
 
 .metadata {
@@ -18,8 +27,7 @@
   gap: 0;
   background-color: var(--bg-support);
   border: var(--border-size-1) dashed var(--fg-minor);
-  padding: var(--size-3) var(--size-4);
-  font-size: var(--font-size-0);
+  padding: var(--size-2) var(--size-3);
 }
 
 .metadataItem {
@@ -55,8 +63,6 @@
   padding: 0 var(--size-1);
   border: var(--border-size-1) solid var(--fg-minor);
   background-color: var(--bg-main);
-  font-family: var(--font-family-mono);
-  font-size: var(--font-size-0);
   color: var(--fg-main);
 }
 
@@ -64,7 +70,6 @@
   display: flex;
   flex-direction: column;
   gap: var(--size-2);
-  font-size: var(--font-size-1);
 
   :global(p:first-child) {
     font-weight: var(--font-weight-9);
@@ -84,8 +89,8 @@
 .linkBadge {
   display: inline-flex;
   padding: var(--size-2) var(--size-3);
-  border: var(--border-size-1) solid var(--fg-minor);
-  background-color: var(--bg-support);
+  border: var(--border-size-2) solid var(--fg-accent);
+  /* background-color: var(--bg-support); */
   font-family: var(--font-family-mono);
   font-size: var(--font-size-0);
   color: var(--fg-main);
@@ -98,12 +103,13 @@
 
   &:hover {
     border-color: var(--fg-accent);
-    background-color: var(--bg-main);
-    transform: translateY(-1px);
+    background-color: var(--fg-accent);
+    color: var(--fg-contrast);
+    transform: translateY(-2px);
+    box-shadow: 5px 5px 0px var(--bg-support);
   }
 
   &.primary {
-    border-width: var(--border-size-2);
     font-weight: var(--font-weight-7);
   }
 }

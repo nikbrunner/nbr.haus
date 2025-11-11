@@ -11,16 +11,16 @@ body {
 }
 
 body {
-  --hue: 170;
-  --hue-active: 170;
+  --hue: 0;
+  --hue-active: 180;
 
-  --bg-main: oklch(90% 0.005 var(--hue));
-  --bg-support: oklch(85% 0.005 var(--hue));
+  --bg-main: oklch(95% 0.005 var(--hue));
+  --bg-support: oklch(90% 0.005 var(--hue));
 
-  --fg-main: oklch(40% 0.05 var(--hue));
-  --fg-support: oklch(50% 0.05 var(--hue));
-  --fg-minor: oklch(60% 0.05 var(--hue));
-  --fg-accent: oklch(45% 0.25 var(--hue-active));
+  --fg-main: oklch(40% 0.01 var(--hue));
+  --fg-support: oklch(50% 0.01 var(--hue));
+  --fg-minor: oklch(60% 0.01 var(--hue));
+  --fg-accent: oklch(45% 0.35 var(--hue-active));
   --fg-contrast: oklch(98% 0.05 var(--hue-active));
 
   --content-max-width: var(--size-content-3);
