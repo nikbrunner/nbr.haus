@@ -1,4 +1,6 @@
 ---
+import styles from "./Job.module.css";
+
 export interface Props {
   company: string;
   role: string;
@@ -8,42 +10,11 @@ export interface Props {
 const { company, role, period } = Astro.props;
 ---
 
-<div class="job">
-  <h3 class="company">{company}</h3>
-  <div class="role-and-period">
-    <div class="role">{role}</div>
-    <div class="period">{period}</div>
+<div class={styles.job}>
+  <h3 class={styles.company}>{company}</h3>
+  <div class={styles.roleAndPeriod}>
+    <div class={styles.role}>{role}</div>
+    <div class={styles.period}>{period}</div>
   </div>
   <slot />
 </div>
-
-<style>
-  .job {
-    margin-bottom: var(--size-10);
-  }
-
-  .company {
-    font-size: var(--font-size-4);
-    font-weight: bold;
-    color: var(--fg-main);
-    margin: 0;
-    padding-bottom: 0;
-    border-bottom: none;
-  }
-
-  .role-and-period {
-    display: flex;
-    align-items: center;
-    gap: var(--size-2);
-  }
-
-  .role {
-    font-size: var(--font-size-2);
-    color: var(--fg-support);
-  }
-
-  .period {
-    font-size: var(--font-size-1);
-    color: var(--fg-minor);
-  }
-</style>

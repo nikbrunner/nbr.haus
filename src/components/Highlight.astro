@@ -1,7 +1,5 @@
-<span class="highlight"><slot /></span>
+---
+import styles from "./Highlight.module.css";
+---
 
-<style>
-  .highlight {
-    color: var(--fg-accent);
-  }
-</style>
+<span class={styles.highlight}><slot /></span>

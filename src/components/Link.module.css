@@ -1,0 +1,14 @@
+.link {
+  color: var(--fg-main);
+  text-decoration-thickness: var(--border-size-2);
+  text-decoration-color: var(--fg-accent);
+  text-underline-offset: var(--border-size-2);
+}
+
+.link:visited {
+  color: var(--fg-main);
+}
+
+.link:hover {
+  color: var(--fg-accent);
+}

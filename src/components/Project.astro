@@ -1,4 +1,6 @@
 ---
+import styles from "./Project.module.css";
+
 interface Props {
   title: string;
   status: "Active" | "Maintained" | "Complete" | "Archived";
@@ -25,22 +27,22 @@ const { title, stack, topics, status, primaryLink, year, platforms, metrics, add
 const allLinks = [primaryLink, ...(additionalLinks || [])];
 ---
 
-<article class="project">
-  <h3 class="title">{title}</h3>
+<article class={styles.project}>
+  <h3 class={styles.title}>{title}</h3>
 
-  <div class="metadata">
-    <div class="metadata-item">
-      <span class="label">Status:</span>
-      <span class="value">{status}</span>
+  <div class={styles.metadata}>
+    <div class={styles.metadataItem}>
+      <span class={styles.label}>Status:</span>
+      <span class={styles.value}>{status}</span>
     </div>
 
     {
       stack.length > 0 && (
-        <div class="metadata-item">
-          <span class="label">Stack:</span>
-          <div class="tags">
+        <div class={styles.metadataItem}>
+          <span class={styles.label}>Stack:</span>
+          <div class={styles.tags}>
             {stack.map(tech => (
-              <span class="tag">{tech}</span>
+              <span class={styles.tag}>{tech}</span>
             ))}
           </div>
         </div>
@@ -49,11 +51,11 @@ const allLinks = [primaryLink, ...(additionalLinks || [])];
 
     {
       topics.length > 0 && (
-        <div class="metadata-item">
-          <span class="label">Topics:</span>
-          <div class="tags">
+        <div class={styles.metadataItem}>
+          <span class={styles.label}>Topics:</span>
+          <div class={styles.tags}>
             {topics.map(topic => (
-              <span class="tag">{topic}</span>
+              <span class={styles.tag}>{topic}</span>
             ))}
           </div>
         </div>
@@ -62,18 +64,18 @@ const allLinks = [primaryLink, ...(additionalLinks || [])];
 
     {
       year && (
-        <div class="metadata-item">
-          <span class="label">Year:</span>
-          <span class="value">{year}</span>
+        <div class={styles.metadataItem}>
+          <span class={styles.label}>Year:</span>
+          <span class={styles.value}>{year}</span>
         </div>
       )
     }
 
     {
       platforms && platforms.length > 0 && (
-        <div class="metadata-item">
-          <span class="label">Platforms:</span>
-          <span class="value">{platforms.join(", ")}</span>
+        <div class={styles.metadataItem}>
+          <span class={styles.label}>Platforms:</span>
+          <span class={styles.value}>{platforms.join(", ")}</span>
         </div>
       )
     }
@@ -82,9 +84,9 @@ const allLinks = [primaryLink, ...(additionalLinks || [])];
       metrics && metrics.length > 0 && (
         <>
           {metrics.map(metric => (
-            <div class="metadata-item">
-              <span class="label">{metric.label}:</span>
-              <span class="value">{metric.value}</span>
+            <div class={styles.metadataItem}>
+              <span class={styles.label}>{metric.label}:</span>
+              <span class={styles.value}>{metric.value}</span>
             </div>
           ))}
         </>
@@ -92,127 +94,22 @@ const allLinks = [primaryLink, ...(additionalLinks || [])];
     }
   </div>
 
-  <div class="description">
+  <div class={styles.description}>
     <slot />
   </div>
 
-  <div class="links">
+  <div class={styles.links}>
     {
       allLinks.map((link, index) => (
-        <a href={link.url} target="_blank" rel="noopener noreferrer" class:list={["link-badge", { primary: index === 0 }]}>
+        <a
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class:list={[styles.linkBadge, { [styles.primary]: index === 0 }]}
+        >
           {link.type}
         </a>
       ))
     }
   </div>
 </article>
-
-<style>
-  .project {
-    border: var(--border-size-2) solid var(--fg-minor);
-    display: flex;
-    flex-direction: column;
-    gap: var(--size-5);
-    padding: var(--size-5);
-  }
-
-  .title {
-    background-color: var(--bg-support);
-    padding: var(--size-3) var(--size-4);
-    border: var(--border-size-2) solid var(--fg-accent);
-    margin: 0;
-    font-size: var(--font-size-3);
-  }
-
-  .metadata {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    background-color: var(--bg-support);
-    border: var(--border-size-1) solid var(--fg-minor);
-    padding: var(--size-3) var(--size-4);
-    font-size: var(--font-size-0);
-  }
-
-  .metadata-item {
-    display: grid;
-    grid-template-columns: 8rem 1fr;
-    gap: var(--size-3);
-    padding: var(--size-2) 0;
-    align-items: center;
-
-    &:not(:last-child) {
-      border-bottom: 1px dashed var(--fg-minor);
-    }
-  }
-
-  .label {
-    font-family: var(--font-family-mono);
-    color: var(--fg-support);
-    white-space: nowrap;
-  }
-
-  .value {
-    color: var(--fg-main);
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--size-2);
-  }
-
-  .tag {
-    display: inline-flex;
-    padding: var(--size-1) var(--size-2);
-    border: var(--border-size-1) solid var(--fg-minor);
-    background-color: var(--bg-main);
-    font-family: var(--font-family-mono);
-    font-size: var(--font-size-0);
-    color: var(--fg-main);
-  }
-
-  .description {
-    display: flex;
-    flex-direction: column;
-    gap: var(--size-3);
-    font-size: var(--font-size-1);
-
-    :global(p:first-child) {
-      font-weight: var(--font-weight-9);
-    }
-  }
-
-  .links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--size-2);
-  }
-
-  .link-badge {
-    display: inline-flex;
-    padding: var(--size-2) var(--size-3);
-    border: var(--border-size-1) solid var(--fg-minor);
-    background-color: var(--bg-support);
-    font-family: var(--font-family-mono);
-    font-size: var(--font-size-0);
-    color: var(--fg-main);
-    text-decoration: none;
-    cursor: pointer;
-    transition:
-      border-color 0.2s,
-      background-color 0.2s,
-      transform 0.1s;
-
-    &:hover {
-      border-color: var(--fg-accent);
-      background-color: var(--bg-main);
-      transform: translateY(-1px);
-    }
-
-    &.primary {
-      border-width: var(--border-size-2);
-      font-weight: var(--font-weight-7);
-    }
-  }
-</style>

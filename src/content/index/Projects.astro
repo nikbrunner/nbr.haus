@@ -1,13 +1,14 @@
 ---
-import Project from "../../components/Project.astro";
 import Highlight from "../../components/Highlight.astro";
+import Project from "../../components/Project.astro";
+import styles from "./Projects.module.css";
 ---
 
-<p class="intro">
+<p class={styles.intro}>
   Projects are never finished, but they are always in progress. Here are some of my projects as a developer.
 </p>
 
-<div class="projects">
+<div class={styles.projects}>
   <Project
     title="Black Atom Industries"
     stack={["TypeScript"]}
@@ -20,10 +21,8 @@ import Highlight from "../../components/Highlight.astro";
   >
     <p>Open-source theming system with 27+ themes across many platforms.</p>
     <p>
-      Built with an <Highlight>adapter pattern</Highlight> for consistent theme generation from a central source using <Highlight
-        >OKLCH color space</Highlight
-      ><!--
-      -->.
+      Built with an <Highlight>adapter pattern</Highlight> for consistent theme generation from a central source using
+      <Highlight>OKLCH color space</Highlight>.
     </p>
     <p>Maintained with focus on developer experience and cross-platform consistency.</p>
   </Project>
@@ -45,16 +44,3 @@ import Highlight from "../../components/Highlight.astro";
     </p>
   </Project>
 </div>
-
-<style>
-  .intro {
-    font-style: italic;
-    color: var(--fg-support);
-  }
-
-  .projects {
-    display: flex;
-    flex-direction: column;
-    gap: var(--size-6);
-  }
-</style>

@@ -3,19 +3,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 import Section from "../components/Section.astro";
 
+import About from "../content/index/About.astro";
+import AI from "../content/index/AI.astro";
+import Connect from "../content/index/Connect.astro";
+import DevTools from "../content/index/DevTools.astro";
 import Jobs from "../content/index/Jobs.astro";
 import ProfilePicture from "../content/index/ProfilePicture.astro";
 import Projects from "../content/index/Projects.astro";
-import About from "../content/index/About.astro";
 import TechStack from "../content/index/TechStack.astro";
-import DevTools from "../content/index/DevTools.astro";
-import AI from "../content/index/AI.astro";
-import Connect from "../content/index/Connect.astro";
+
+import styles from "./_index.module.css";
 ---
 
 <BaseLayout>
-  <div class="layout layout-one-column">
-    <div class="column">
+  <div class:list={[styles.layout, styles.layoutOneColumn]}>
+    <div class={styles.column}>
       <Section><ProfilePicture /></Section>
       <Section title="About"><About /></Section>
       <Section title="Employment"><Jobs /></Section>
@@ -27,8 +29,8 @@ import Connect from "../content/index/Connect.astro";
     </div>
   </div>
 
-  <div class="layout layout-two-columns">
-    <div class="column">
+  <div class:list={[styles.layout, styles.layoutTwoColumns]}>
+    <div class={styles.column}>
       <Section><ProfilePicture /></Section>
       <Section title="About"><About /></Section>
       <Section title="Tech Stack"><TechStack /></Section>
@@ -37,14 +39,14 @@ import Connect from "../content/index/Connect.astro";
       <Section title="Connect"><Connect /></Section>
     </div>
 
-    <div class="column">
+    <div class={styles.column}>
       <Section title="Projects"><Projects /></Section>
       <Section title="Employment"><Jobs /></Section>
     </div>
   </div>
 
-  <div class="layout layout-three-columns">
-    <div class="column">
+  <div class:list={[styles.layout, styles.layoutThreeColumns]}>
+    <div class={styles.column}>
       <Section><ProfilePicture /></Section>
       <Section title="About"><About /></Section>
       <Section title="Connect"><Connect /></Section>
@@ -53,95 +55,34 @@ import Connect from "../content/index/Connect.astro";
       <Section title="AI"><AI /></Section>
     </div>
 
-    <div class="column">
+    <div class={styles.column}>
       <Section title="Work"><Jobs /></Section>
     </div>
 
-    <div class="column">
+    <div class={styles.column}>
       <Section title="Projects"><Projects /></Section>
     </div>
   </div>
 
-  <div class="layout layout-four-columns">
-    <div class="column">
+  <div class:list={[styles.layout, styles.layoutFourColumns]}>
+    <div class={styles.column}>
       <Section><ProfilePicture /></Section>
       <Section title="About"><About /></Section>
       <Section title="Connect"><Connect /></Section>
     </div>
 
-    <div class="column">
+    <div class={styles.column}>
       <Section title="Tech Stack"><TechStack /></Section>
       <Section title="Dev Tools"><DevTools /></Section>
       <Section title="AI"><AI /></Section>
     </div>
 
-    <div class="column">
+    <div class={styles.column}>
       <Section title="Work"><Jobs /></Section>
     </div>
 
-    <div class="column">
+    <div class={styles.column}>
       <Section title="Projects"><Projects /></Section>
     </div>
   </div>
-
-  <style>
-    .column {
-      display: flex;
-      flex-direction: column;
-      gap: var(--size-8);
-    }
-
-    .layout {
-      gap: var(--size-8);
-      justify-content: center;
-    }
-
-    .layout-one-column {
-      max-width: var(--size-content-3);
-      margin: 0 auto;
-    }
-
-    .layout-two-columns,
-    .layout-three-columns {
-      display: none;
-    }
-
-    @media (min-width: 1024px) {
-      .layout-one-column {
-        display: none;
-      }
-
-      .layout-two-columns {
-        display: grid;
-        grid-template-columns: repeat(2, var(--size-content-2));
-      }
-    }
-
-    @media (min-width: 1440px) {
-      .layout-one-column,
-      .layout-two-columns {
-        display: none;
-      }
-
-      .layout-three-columns {
-        display: grid;
-        grid-template-columns: repeat(3, var(--size-content-2));
-      }
-    }
-
-    @media (min-width: 1920px) {
-      .layout-three-columns {
-        display: none;
-      }
-
-      .layout {
-        gap: var(--size-10);
-      }
-
-      .layout-four-columns {
-        display: grid;
-        grid-template-columns: repeat(4, var(--size-content-2));
-      }
-    }
-  </style>
 </BaseLayout>

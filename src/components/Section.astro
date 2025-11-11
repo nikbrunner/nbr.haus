@@ -1,4 +1,6 @@
 ---
+import styles from "./Section.module.css";
+
 export interface Props {
   title?: string;
 }
@@ -7,14 +9,7 @@ const { title } = Astro.props;
 const id = title?.toLowerCase().replace(/\s+/g, "-");
 ---
 
-<section id={id}>
+<section id={id} class={styles.section}>
   {title && <h2>{title}</h2>}
   <slot />
 </section>
-
-<style>
-  section {
-    container-type: inline-size;
-    scroll-margin-top: var(--header-height);
-  }
-</style>

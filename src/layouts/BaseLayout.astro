@@ -1,7 +1,8 @@
 ---
-import Header from "../components/Header.astro";
 import AccentPicker from "../components/AccentPicker";
+import Header from "../components/Header.astro";
 import "../styles/global.css";
+import styles from "./BaseLayout.module.css";
 
 export interface Props {
   title?: string;
@@ -88,17 +89,10 @@ const currentUrl = Astro.url;
     />
     <Header />
 
-    <main class="base-layout">
+    <main class={styles.baseLayout}>
       <slot />
     </main>
 
     <AccentPicker client:only="react" />
   </body>
 </html>
-
-<style>
-  .base-layout {
-    margin: 0 auto;
-    padding: var(--base-layout-top-padding) var(--size-6);
-  }
-</style>

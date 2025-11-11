@@ -1,44 +1,7 @@
 ---
-
+import styles from "./Header.module.css";
 ---
 
-<header class="Header">
+<header class={styles.Header}>
   <h1><a href="/">nbr<span>.</span>haus</a></h1>
 </header>
-
-<style>
-  .Header {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    align-items: center;
-    height: var(--header-height);
-    border-bottom: var(--border-size-1) solid var(--fg-accent);
-    background-color: var(--bg-main);
-    position: sticky;
-    top: 0;
-    z-index: 10;
-
-    & > * {
-      padding: 0 var(--size-4);
-    }
-
-    h1 {
-      font-size: var(--font-size-4);
-      font-weight: var(--font-weight-9);
-      margin: 0;
-
-      a {
-        color: var(--fg-main);
-        text-decoration: none;
-
-        &:hover {
-          opacity: 0.8;
-        }
-
-        span {
-          color: var(--fg-accent);
-        }
-      }
-    }
-  }
-</style>

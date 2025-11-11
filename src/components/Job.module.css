@@ -1,0 +1,28 @@
+.job {
+  margin-bottom: var(--size-10);
+}
+
+.company {
+  font-size: var(--font-size-4);
+  font-weight: bold;
+  color: var(--fg-main);
+  margin: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.roleAndPeriod {
+  display: flex;
+  align-items: center;
+  gap: var(--size-2);
+}
+
+.role {
+  font-size: var(--font-size-2);
+  color: var(--fg-support);
+}
+
+.period {
+  font-size: var(--font-size-1);
+  color: var(--fg-minor);
+}
