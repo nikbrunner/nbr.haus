@@ -1,25 +1,14 @@
-# build output
-dist/
-.output/
-.astro/
-
-# dependencies
-node_modules/
-
-# logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-
-# environment variables
-.env
-.env.production
-
-# macOS-specific files
+node_modules
 .DS_Store
-.vercel
-
-# auto-generated CSS module types
-*.module.css.d.ts
+dist
+dist-ssr
+*.local
+count.txt
+.env
+.nitro
+.tanstack
+.wrangler
+.output
+.vinxi
+todos.json
+.vercel/output
