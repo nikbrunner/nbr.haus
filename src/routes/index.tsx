@@ -1,14 +1,14 @@
 import { createFileRoute } from '@tanstack/react-router'
 
 import Section from '../components/Section'
-import About from '../content/index/About'
-import AI from '../content/index/AI'
-import Connect from '../content/index/Connect'
-import DevTools from '../content/index/DevTools'
-import Jobs from '../content/index/Jobs'
-import ProfilePicture from '../content/index/ProfilePicture'
-import Projects from '../content/index/Projects'
-import TechStack from '../content/index/TechStack'
+import About from '../content-blocks/index/About'
+import AI from '../content-blocks/index/AI'
+import Connect from '../content-blocks/index/Connect'
+import DevTools from '../content-blocks/index/DevTools'
+import Jobs from '../content-blocks/index/Jobs'
+import ProfilePicture from '../content-blocks/index/ProfilePicture'
+import Projects from '../content-blocks/index/Projects'
+import TechStack from '../content-blocks/index/TechStack'
 
 import styles from './index.module.css'
 
