@@ -1,9 +1,0 @@
-.intro {
-  color: var(--fg-support);
-}
-
-.projects {
-  display: flex;
-  flex-direction: column;
-  gap: var(--size-6);
-}
