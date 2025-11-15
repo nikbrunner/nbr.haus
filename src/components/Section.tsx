@@ -1,11 +1,11 @@
 import styles from "./Section.module.css";
 
-interface SectionProps {
+interface Props {
   title?: string;
   children: React.ReactNode;
 }
 
-export default function Section({ title, children }: SectionProps) {
+export default function Section({ title, children }: Props) {
   const id = title?.toLowerCase().replace(/\s+/g, "-");
 
   return (

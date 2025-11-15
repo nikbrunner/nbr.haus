@@ -1,6 +1,6 @@
 import styles from "./Link.module.css";
 
-interface LinkProps {
+interface Props {
   href: string;
   target?: string;
   rel?: string;
@@ -8,13 +8,7 @@ interface LinkProps {
   children: React.ReactNode;
 }
 
-export default function Link({
-  href,
-  target,
-  rel,
-  style,
-  children,
-}: LinkProps) {
+export default function Link({ href, target, rel, style, children }: Props) {
   return (
     <a
       href={href}

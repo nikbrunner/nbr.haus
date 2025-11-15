@@ -1,6 +1,6 @@
 import styles from "./Project.module.css";
 
-interface ProjectProps {
+interface Props {
   title: string;
   status: "Active" | "Maintained" | "Complete" | "Archived";
   stack: string[];
@@ -33,7 +33,7 @@ export default function Project({
   metrics,
   additionalLinks,
   children,
-}: ProjectProps) {
+}: Props) {
   const allLinks = [primaryLink, ...(additionalLinks || [])];
 
   return (
