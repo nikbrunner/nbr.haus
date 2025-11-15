@@ -1,13 +1,15 @@
 {
-  "name": ".",
+  "name": "nbr.haus",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"vite dev --port 3000\" \"npm run css-types\"",
+    "dev": "concurrently \"npm run dev:*\"",
+    "dev:server": "vite dev --port 3000",
+    "dev:css-types": "tcm src/components --watch",
     "build": "vite build",
     "serve": "vite preview",
     "test": "vitest run",
-    "css-types": "tcm src/components --watch"
+    "css-types": "tcm src/components"
   },
   "dependencies": {
     "@tanstack/react-devtools": "^0.7.0",
