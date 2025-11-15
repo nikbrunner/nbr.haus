@@ -1,21 +1,31 @@
-import Link from '../../components/Link'
+import Link from "../../components/Link";
 
 export default function Connect() {
   return (
     <ul>
       <li>
-        <Link href="https://www.github.com/nikbrunner" target="_blank" rel="noopener noreferrer">
+        <Link
+          href="https://www.github.com/nikbrunner"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           GitHub
         </Link>
       </li>
       <li>
-        <Link href="mailto:nbr.haus.persuader046@passmail.com">Email (Alias)</Link>
+        <Link href="mailto:nbr.haus.persuader046@passmail.com">
+          Email (Alias)
+        </Link>
       </li>
       <li>
-        <Link href="https://www.linkedin.com/in/nbru/" target="_blank" rel="noopener noreferrer">
+        <Link
+          href="https://www.linkedin.com/in/nbru/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           LinkedIn
         </Link>
       </li>
     </ul>
-  )
+  );
 }

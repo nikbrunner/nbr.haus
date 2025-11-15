@@ -1,5 +1,5 @@
-import profilePictureImg from '../../assets/images/profile_picture.jpg'
-import styles from './ProfilePicture.module.css'
+import profilePictureImg from "../../assets/images/profile_picture.jpg";
+import styles from "./ProfilePicture.module.css";
 
 export default function ProfilePicture() {
   return (
@@ -11,5 +11,5 @@ export default function ProfilePicture() {
       />
       <div className={styles.profileImageOverlay}></div>
     </div>
-  )
+  );
 }

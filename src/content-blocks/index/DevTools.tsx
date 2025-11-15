@@ -1,11 +1,15 @@
-import Link from '../../components/Link'
+import Link from "../../components/Link";
 
 export default function DevTools() {
   return (
     <>
       <p>
-        I am very passionate about workflow. You can check my{' '}
-        <Link href="https://github.com/nikbrunner/dots" target="_blank" rel="noopener noreferrer">
+        I am very passionate about workflow. You can check my{" "}
+        <Link
+          href="https://github.com/nikbrunner/dots"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           dotfiles here
         </Link>
         .
@@ -18,40 +22,60 @@ export default function DevTools() {
             rel="noopener noreferrer"
           >
             Neovim
-          </Link>{' '}
+          </Link>{" "}
           (Primary editor)
         </li>
         <li>
-          <Link href="https://zed.dev" target="_blank" rel="noopener noreferrer">
+          <Link
+            href="https://zed.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Zed
-          </Link>{' '}
+          </Link>{" "}
           (Secondary editor)
         </li>
         <li>
-          <Link href="https://ghostty.dev" target="_blank" rel="noopener noreferrer">
+          <Link
+            href="https://ghostty.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Ghostty
-          </Link>{' '}
+          </Link>{" "}
           (Terminal)
         </li>
         <li>
-          <Link href="https://github.com/tmux/tmux/wiki" target="_blank" rel="noopener noreferrer">
+          <Link
+            href="https://github.com/tmux/tmux/wiki"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Tmux
-          </Link>{' '}
+          </Link>{" "}
           (Terminal multiplexer)
         </li>
         <li>
-          <Link href="https://github.com/jesseduffield/lazygit" target="_blank" rel="noopener noreferrer">
+          <Link
+            href="https://github.com/jesseduffield/lazygit"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             LazyGit
-          </Link>{' '}
+          </Link>{" "}
           (Git GUI)
         </li>
         <li>
-          <Link href="https://1password.com" target="_blank" rel="noopener noreferrer">
+          <Link
+            href="https://1password.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             1Password
-          </Link>{' '}
+          </Link>{" "}
           (Password & Secrets manager)
         </li>
       </ul>
     </>
-  )
+  );
 }

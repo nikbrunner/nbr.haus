@@ -1,20 +1,20 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
 
-import Section from '../components/Section'
-import About from '../content-blocks/index/About'
-import AI from '../content-blocks/index/AI'
-import Connect from '../content-blocks/index/Connect'
-import DevTools from '../content-blocks/index/DevTools'
-import Jobs from '../content-blocks/index/Jobs'
-import ProfilePicture from '../content-blocks/index/ProfilePicture'
-import Projects from '../content-blocks/index/Projects'
-import TechStack from '../content-blocks/index/TechStack'
+import Section from "../components/Section";
+import About from "../content-blocks/index/About";
+import AI from "../content-blocks/index/AI";
+import Connect from "../content-blocks/index/Connect";
+import DevTools from "../content-blocks/index/DevTools";
+import Jobs from "../content-blocks/index/Jobs";
+import ProfilePicture from "../content-blocks/index/ProfilePicture";
+import Projects from "../content-blocks/index/Projects";
+import TechStack from "../content-blocks/index/TechStack";
 
-import styles from './index.module.css'
+import styles from "./index.module.css";
 
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute("/")({
   component: IndexPage,
-})
+});
 
 function IndexPage() {
   return (
@@ -153,5 +153,5 @@ function IndexPage() {
         </div>
       </div>
     </>
-  )
+  );
 }

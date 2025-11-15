@@ -1,12 +1,11 @@
-import { useEffect, useRef, useState } from "react";
-import { useHydrated } from "@tanstack/react-router";
-import Draggable from "react-draggable";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
 import type { DraggableData, DraggableEvent } from "react-draggable";
+import Draggable from "react-draggable";
 import styles from "./AccentPicker.module.css";
 
 export default function AccentPicker() {
   const nodeRef = useRef(null);
-  const isHydrated = useHydrated();
+  const linearGradientId = useId();
 
   // Utility functions
   function getNextHues(hue: number): { hue: number; hueActive: number } {
@@ -15,12 +14,12 @@ export default function AccentPicker() {
     return { hue, hueActive };
   }
 
-  function updateCssVars(hue: number, hueActive: number): void {
+  const updateCssVars = useCallback((hue: number, hueActive: number): void => {
     if (typeof document !== "undefined") {
       document.body.style.setProperty("--hue", hue.toString());
       document.body.style.setProperty("--hue-active", hueActive.toString());
     }
-  }
+  }, []);
 
   function updateHueFromPosition(x: number): void {
     if (typeof window === "undefined") return;
@@ -61,15 +60,15 @@ export default function AccentPicker() {
 
   // Restore hue from localStorage on mount
   useEffect(() => {
-    if (!isHydrated || typeof localStorage === "undefined") return;
+    if (typeof localStorage === "undefined") return;
 
     const savedHue = localStorage.getItem("hue");
     const savedHueActive = localStorage.getItem("hue-active");
 
     if (savedHue && savedHueActive) {
-      updateCssVars(parseInt(savedHue), parseInt(savedHueActive));
+      updateCssVars(parseInt(savedHue, 10), parseInt(savedHueActive, 10));
     }
-  }, [isHydrated]);
+  }, [updateCssVars]);
 
   const handleDrag = (_e: DraggableEvent, data: DraggableData) => {
     updateHueFromPosition(data.x);
@@ -81,17 +80,40 @@ export default function AccentPicker() {
   };
 
   return (
-    <Draggable nodeRef={nodeRef} defaultPosition={defaultPos} onDrag={handleDrag} onStop={handleStop}>
+    <Draggable
+      nodeRef={nodeRef}
+      defaultPosition={defaultPos}
+      onDrag={handleDrag}
+      onStop={handleStop}
+    >
       <div ref={nodeRef} className={styles.accentPicker}>
-        <svg className={styles.circle} viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          className={styles.circle}
+          viewBox="0 0 48 48"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title>Accent Color Picker</title>
           <defs>
-            <linearGradient id="spinningGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient
+              id={linearGradientId}
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
               <stop offset="0%" stopColor="var(--bg-main)" />
               <stop offset="50%" stopColor="var(--fg-accent)" />
               <stop offset="100%" stopColor="var(--bg-main)" />
             </linearGradient>
           </defs>
-          <circle cx="24" cy="24" r="22" fill="transparent" stroke="url(#spinningGradient)" strokeWidth="2" />
+          <circle
+            cx="24"
+            cy="24"
+            r="22"
+            fill="transparent"
+            stroke="url(#spinningGradient)"
+            strokeWidth="2"
+          />
         </svg>
       </div>
     </Draggable>

@@ -1,4 +1,4 @@
-import styles from './Header.module.css'
+import styles from "./Header.module.css";
 
 export default function Header() {
   return (
@@ -9,5 +9,5 @@ export default function Header() {
         </a>
       </h1>
     </header>
-  )
+  );
 }
