@@ -4,11 +4,13 @@ import { TanStackDevtools } from '@tanstack/react-devtools'
 
 import Header from '../components/Header'
 import AccentPicker from '../components/AccentPicker'
+import NotFound from '../components/NotFound'
 
 import globalCss from '../styles/global.css?url'
 import styles from './BaseLayout.module.css'
 
 export const Route = createRootRoute({
+  notFoundComponent: NotFound,
   head: () => ({
     meta: [
       {
