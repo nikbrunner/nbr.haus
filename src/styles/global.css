@@ -1,0 +1,76 @@
+@import "open-props/style";
+@import "open-props/borders";
+
+@import "./fonts.css";
+
+html,
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  --hue: 0;
+  --hue-active: 180;
+
+  --bg-main: oklch(95% 0.005 var(--hue));
+  --bg-support: oklch(90% 0.005 var(--hue));
+
+  --fg-main: oklch(40% 0.01 var(--hue));
+  --fg-support: oklch(50% 0.01 var(--hue));
+  --fg-minor: oklch(60% 0.01 var(--hue));
+  --fg-accent: oklch(45% 0.35 var(--hue-active));
+  --fg-contrast: oklch(98% 0.05 var(--hue-active));
+
+  --content-max-width: var(--size-content-3);
+  --header-height: var(--size-10);
+
+  --font-family: "BerkeleyMono";
+
+  --base-layout-top-padding: var(--size-8);
+
+  --shadow-hard-5: 5px 5px 0px var(--fg-accent);
+  --shadow-hard-15: 15px 15px 0px var(--fg-accent);
+
+  --accent-picker-size: 135px;
+  --accent-picker-shadow: inset 0px 0px calc(var(--accent-picker-size) * 0.1) calc(var(--accent-picker-size) * 0.1)
+    var(--fg-accent);
+  --accent-picker-filter: blur(calc(var(--accent-picker-size) / 50)) hue-rotate(90deg) contrast(1.35);
+
+  font-family: var(--font-family);
+  line-height: var(--font-lineheight-3);
+  font-size: 100%;
+  background-color: var(--bg-main);
+  color: var(--fg-main);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+h1 {
+  font-size: clamp(var(--font-size-4), 7.5cqw, var(--font-size-8));
+  color: var(--fg-main);
+}
+
+h2 {
+  font-size: clamp(var(--font-size-4), 7.5cqw, var(--font-size-8));
+  text-transform: uppercase;
+  padding-bottom: var(--size-1);
+  margin-top: 0;
+  color: var(--fg-accent);
+  border-bottom: var(--border-size-2) solid var(--fg-accent);
+}
+
+h3 {
+  font-size: var(--font-size-2);
+  color: var(--fg-main);
+}
