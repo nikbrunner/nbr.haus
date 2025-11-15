@@ -11,6 +11,7 @@ import styles from './BaseLayout.module.css'
 
 export const Route = createRootRoute({
   notFoundComponent: NotFound,
+  shellComponent: RootDocument,
   head: () => ({
     meta: [
       {
@@ -76,8 +77,6 @@ export const Route = createRootRoute({
       },
     ],
   }),
-
-  shellComponent: RootDocument,
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
