@@ -15,11 +15,11 @@ export default function Projects() {
           title="Black Atom Industries"
           stack={["TypeScript", "Deno", "OKLCH"]}
           topics={[
-            "Architecture",
-            "Infrastructure",
-            "Colorschemes",
+            "Theming Systems",
+            "Adapter Pattern",
             "Color Theory",
-            "Design Systems",
+            "Cross-Platform Design",
+            "Template Systems",
           ]}
           status="Active"
           platforms={["Neovim", "Zed", "Ghostty", "WezTerm", "Tmux"]}
@@ -33,7 +33,8 @@ export default function Projects() {
           ]}
         >
           <p>
-            Open-source theming system with 27+ themes across many platforms.
+            Open-source cross-platform theming system generating 27+ cohesive
+            themes from a single source.
           </p>
           <p>
             Built with an <Highlight>adapter pattern</Highlight> for consistent
