@@ -14,7 +14,13 @@ export default function Projects() {
         <Project
           title="Black Atom Industries"
           stack={["TypeScript", "Deno", "OKLCH"]}
-          topics={["Colorschemes", "Color Theory"]}
+          topics={[
+            "Architecture",
+            "Infrastructure",
+            "Colorschemes",
+            "Design & Design Systems",
+            "Color Theory",
+          ]}
           status="Active"
           platforms={["Neovim", "Zed", "Ghostty", "WezTerm", "Tmux"]}
           metrics={[{ label: "Themes", value: "27+" }]}
@@ -51,9 +57,9 @@ export default function Projects() {
           }}
         >
           <p>
-            Scope-based keymap architecture for modal editors organizing
-            bindings by operational context (App, Workspace, Document, Change,
-            Symbol) rather than tool-specific functions.
+            AWDCS (App, Workspace, Document, Change, Symbol): A scope-based
+            keymap architecture for modal editors organizing bindings by
+            operational context rather than tool-specific functions.
           </p>
           <p>
             Features <Highlight>systematic prefix patterns</Highlight> and{" "}
