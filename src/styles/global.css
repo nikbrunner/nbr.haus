@@ -65,12 +65,12 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(var(--font-size-4), 7.5cqw, var(--font-size-8));
-  text-transform: uppercase;
-  padding-bottom: var(--size-1);
-  margin-top: 0;
+  border-bottom: var(--border-size-2) dashed var(--fg-accent);
   color: var(--fg-accent);
-  border-bottom: var(--border-size-2) solid var(--fg-accent);
+  font-size: clamp(var(--font-size-4), 7.5cqw, var(--font-size-8));
+  margin-top: 0;
+  padding-bottom: var(--size-1);
+  text-transform: uppercase;
 }
 
 h3 {
