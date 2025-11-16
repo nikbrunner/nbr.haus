@@ -18,6 +18,8 @@ export default function About() {
         independently and making design decisions when needed.
       </p>
 
+      <Hr />
+
       <p>
         <Highlight>
           Currently seeking new opportunities starting February 2026.
