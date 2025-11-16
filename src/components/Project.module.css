@@ -5,15 +5,13 @@
   gap: var(--size-3);
   padding: var(--size-3);
   box-shadow: var(--shadow-hard-5);
-  background:
-    radial-gradient(var(--fg-accent) 0.5px, transparent 1px) 0 0 / 3px 3px,
-    var(--bg-main);
+  background: var(--bg-dots);
 }
 
 .title {
   margin: 0;
   background-color: var(--bg-main);
-  font-size: var(--font-size-2);
+  /* font-size: var(--font-size-2); */
   color: var(--fg-accent);
   padding: var(--size-2) var(--size-3);
 }
@@ -22,7 +20,7 @@
 .value,
 .tag,
 .description {
-  font-size: 3.5cqw;
+  font-size: 4cqw;
 }
 
 .metadata {
@@ -78,7 +76,7 @@
   gap: var(--size-2);
 
   :global(p:first-child) {
-    font-weight: var(--font-weight-9);
+    font-weight: var(--font-weight-7);
   }
 }
 
@@ -96,7 +94,7 @@
   display: inline-flex;
   padding: var(--size-2) var(--size-3);
   border: var(--border-size-2) solid var(--fg-accent);
-  background-color: var(--bg-support);
+  background-color: var(--bg-main);
   font-size: var(--font-size-0);
   color: var(--fg-main);
   text-decoration: none;
