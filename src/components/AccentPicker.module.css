@@ -7,8 +7,8 @@
   cursor: grab;
   user-select: none;
   z-index: 9999;
-  background: var(--bg-dots);
-  border: var(--border-size-2) solid var(--fg-accent);
+  background: var(--fg-accent);
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.1);
   border-radius: 50%;
 
   &:active {
