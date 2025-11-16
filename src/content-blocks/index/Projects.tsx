@@ -68,6 +68,52 @@ export default function Projects() {
             keybindings across workflows.
           </p>
         </Project>
+
+        <Project
+          title="kōyō"
+          stack={["QMK", "C", "Bash"]}
+          topics={[
+            "Keyboard Layouts",
+            "QMK Firmware",
+            "Ergonomics",
+            "Workflow Design",
+            "CLI Tools",
+          ]}
+          status="Active"
+          primaryLink={{
+            url: "https://github.com/nikbrunner/koyo",
+            type: "GitHub",
+          }}
+        >
+          <p>
+            Custom QMK keyboard layout for 36-key split keyboards featuring
+            vim-inspired navigation, smart layer design, and comprehensive CLI
+            tooling for Moonlander and Corne keyboards.
+          </p>
+        </Project>
+
+        <Project
+          title="nbr.nvim"
+          stack={["Lua", "Neovim"]}
+          topics={[
+            "Neovim Configuration",
+            "Developer Tools",
+            "Frontend Development",
+            "Workflow Design",
+            "AWDCS",
+          ]}
+          status="Active"
+          primaryLink={{
+            url: "https://github.com/nikbrunner/dots/tree/main/common/.config/nvim",
+            type: "GitHub",
+          }}
+        >
+          <p>
+            Highly customized Neovim setup for frontend development featuring
+            AWDCS-based keymaps, Lazy.nvim plugin management, and workflows
+            tailored for React and TypeScript.
+          </p>
+        </Project>
       </div>
     </>
   );
