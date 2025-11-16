@@ -1,13 +1,11 @@
+import { TanStackDevtools } from "@tanstack/react-devtools";
 import {
+  ClientOnly,
+  createRootRoute,
   HeadContent,
   Scripts,
-  createRootRoute,
-  ClientOnly,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
-import { TanStackDevtools } from "@tanstack/react-devtools";
-
-import Header from "../components/Header";
 import AccentPicker from "../components/AccentPicker";
 import NotFound from "../components/NotFound";
 
@@ -136,7 +134,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
-        <Header />
+        {/* <Header />  faded out until completed*/}
         <main className={styles.baseLayout}>{children}</main>
         <ClientOnly>
           <AccentPicker />
