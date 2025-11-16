@@ -7,7 +7,7 @@ export default function About() {
   const experienceInYears = new Date().getFullYear() - 2020;
 
   return (
-    <>
+    <div className={styles.about}>
       <p>
         I'm <Highlight>Nik Brunner</Highlight>, a Software Engineer with{" "}
         {experienceInYears} years of experience building frontend architectures
@@ -32,6 +32,6 @@ export default function About() {
         Born in 1984, based in Landshut, Germany. Outside of code, I enjoy
         hiking, running, and photography.
       </p>
-    </>
+    </div>
   );
 }
