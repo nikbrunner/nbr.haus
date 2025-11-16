@@ -109,14 +109,13 @@
     transform 0.1s;
 
   &:hover {
-    border-color: var(--fg-accent);
-    background-color: var(--fg-accent);
-    color: var(--fg-contrast);
     transform: translateY(-2px);
     box-shadow: 5px 5px 0px var(--bg-support);
   }
 
   &.primary {
     font-weight: var(--font-weight-7);
+    background-color: var(--fg-accent);
+    color: var(--fg-contrast);
   }
 }

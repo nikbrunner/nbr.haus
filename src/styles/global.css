@@ -22,7 +22,7 @@ body {
   --fg-support: oklch(50% 0.01 var(--hue));
   --fg-minor: oklch(60% 0.01 var(--hue));
   --fg-accent: oklch(45% 0.35 var(--hue-active));
-  --fg-accent-alt: oklch(45% 0.45 var(--hue-active-alt));
+  --fg-accent-alt: oklch(45% 0.35 var(--hue-active-alt));
   --fg-contrast: oklch(98% 0.05 var(--hue-active));
 
   --content-max-width: var(--size-content-3);
