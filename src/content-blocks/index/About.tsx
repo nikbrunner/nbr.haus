@@ -1,6 +1,8 @@
 import Highlight from "@/components/Highlight";
 import Hr from "@/components/Hr";
 
+import styles from "./About.module.css";
+
 export default function About() {
   const experienceInYears = new Date().getFullYear() - 2020;
 
@@ -20,11 +22,9 @@ export default function About() {
 
       <Hr />
 
-      <p>
-        <Highlight>
-          Currently seeking new opportunities starting February 2026.
-        </Highlight>
-      </p>
+      <div className={styles.lookingFor}>
+        <h1>Currently seeking new opportunities starting February 2026.</h1>
+      </div>
 
       <Hr />
 
