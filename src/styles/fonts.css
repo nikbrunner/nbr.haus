@@ -1,35 +1,73 @@
 @font-face {
-  font-family: "BerkeleyMono";
-  src:
-    url("/fonts/BerkeleyMono-Regular.woff2") format("woff2"),
-    url("/fonts/BerkeleyMono-Regular.woff") format("woff");
+  font-family: "TX-02";
+  src: url("/fonts/TX-02/Condensed/Light-Condensed.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "BerkeleyMono";
-  src:
-    url("/fonts/BerkeleyMono-Italic.woff2") format("woff2"),
-    url("/fonts/BerkeleyMono-Italic.woff") format("woff");
+  font-family: "TX-02";
+  src: url("/fonts/TX-02/Condensed/Light-Condensed-Oblique.ttf")
+    format("truetype");
   font-weight: 300;
   font-style: italic;
 }
 
 @font-face {
-  font-family: "BerkeleyMono";
-  src:
-    url("/fonts/BerkeleyMono-Bold.woff2") format("woff2"),
-    url("/fonts/BerkeleyMono-Bold.woff") format("woff");
+  font-family: "TX-02";
+  src: url("/fonts/TX-02/Condensed/Condensed.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "TX-02";
+  src: url("/fonts/TX-02/Condensed/Condensed-Oblique.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "TX-02";
+  src: url("/fonts/TX-02/Condensed/SemiBold-Condensed.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "TX-02";
+  src: url("/fonts/TX-02/Condensed/SemiBold-Condensed-Oblique.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "TX-02";
+  src: url("/fonts/TX-02/Condensed/Bold-Condensed.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "BerkeleyMono";
-  src:
-    url("/fonts/BerkeleyMono-BoldItalic.woff2") format("woff2"),
-    url("/fonts/BerkeleyMono-BoldItalic.woff") format("woff");
+  font-family: "TX-02";
+  src: url("/fonts/TX-02/Condensed/Bold-Condensed-Oblique.ttf")
+    format("truetype");
   font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "TX-02";
+  src: url("/fonts/TX-02/Condensed/Black-Condensed.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "TX-02";
+  src: url("/fonts/TX-02/Condensed/Black-Condensed-Oblique.ttf")
+    format("truetype");
+  font-weight: 900;
   font-style: italic;
 }
