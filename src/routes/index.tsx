@@ -71,11 +71,11 @@ function IndexPage() {
         </div>
 
         <div className={styles.column}>
-          <Section title="Projects">
-            <Projects />
-          </Section>
           <Section title="Employment">
             <Jobs />
+          </Section>
+          <Section title="Projects">
+            <Projects />
           </Section>
         </div>
       </div>
