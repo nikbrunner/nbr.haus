@@ -1,11 +1,10 @@
-import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { DraggableData, DraggableEvent } from "react-draggable";
 import Draggable from "react-draggable";
 import styles from "./AccentPicker.module.css";
 
 export default function AccentPicker() {
   const nodeRef = useRef(null);
-  const linearGradientId = useId();
 
   // Utility functions
   function getNextHues(hue: number) {
@@ -99,36 +98,7 @@ export default function AccentPicker() {
       onDrag={handleDrag}
       onStop={handleStop}
     >
-      <div ref={nodeRef} className={styles.accentPicker}>
-        <svg
-          className={styles.circle}
-          viewBox="0 0 48 48"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <title>Accent Color Picker</title>
-          <defs>
-            <linearGradient
-              id={linearGradientId}
-              x1="0%"
-              y1="0%"
-              x2="100%"
-              y2="100%"
-            >
-              <stop offset="0%" stopColor="var(--bg-main)" />
-              <stop offset="50%" stopColor="var(--fg-accent)" />
-              <stop offset="100%" stopColor="var(--bg-main)" />
-            </linearGradient>
-          </defs>
-          <circle
-            cx="24"
-            cy="24"
-            r="22"
-            fill="transparent"
-            stroke="url(#spinningGradient)"
-            strokeWidth="2"
-          />
-        </svg>
-      </div>
+      <div ref={nodeRef} className={styles.accentPicker} />
     </Draggable>
   );
 }
