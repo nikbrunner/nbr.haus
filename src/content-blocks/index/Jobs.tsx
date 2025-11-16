@@ -34,9 +34,9 @@ export default function Jobs() {
           Designed and implemented a{" "}
           <Highlight>comprehensive 10-variant color system</Highlight> with{" "}
           <Highlight>Figma integration</Highlight>, affecting 1.6k files across
-          the codebase. Built BikeCenter's{" "}
-          <Highlight>custom design system from scratch</Highlight> using React,
-          TypeScript, and SCSS.
+          the codebase. Built and maintained BikeCenter's{" "}
+          <Highlight>entire component library from scratch</Highlight> using
+          React, TypeScript, and SCSS—no third-party UI frameworks.
         </p>
 
         <p>
