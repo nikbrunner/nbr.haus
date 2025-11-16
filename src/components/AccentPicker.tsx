@@ -8,27 +8,35 @@ export default function AccentPicker() {
   const linearGradientId = useId();
 
   // Utility functions
-  function getNextHues(hue: number): { hue: number; hueActive: number } {
+  function getNextHues(hue: number) {
     const shift = 90;
     const hueActive = hue + shift > 360 ? hue + shift - 360 : hue + shift;
-    return { hue, hueActive };
+    const hueActiveAlt = hueActive + 90;
+    return { hue, hueActive, hueActiveAlt };
   }
 
-  const updateCssVars = useCallback((hue: number, hueActive: number): void => {
-    if (typeof document !== "undefined") {
-      document.body.style.setProperty("--hue", hue.toString());
-      document.body.style.setProperty("--hue-active", hueActive.toString());
-    }
-  }, []);
+  const updateCssVars = useCallback(
+    (hue: number, hueActive: number, hueActiveAlt: number): void => {
+      if (typeof document !== "undefined") {
+        document.body.style.setProperty("--hue", hue.toString());
+        document.body.style.setProperty("--hue-active", hueActive.toString());
+        document.body.style.setProperty(
+          "--hue-active-alt",
+          hueActiveAlt.toString(),
+        );
+      }
+    },
+    [],
+  );
 
   function updateHueFromPosition(x: number): void {
     if (typeof window === "undefined") return;
     const windowWidth = window.innerWidth;
     const hue = Math.round((x / windowWidth) * 360);
     const clampedHue = Math.max(0, Math.min(360, hue));
-    const { hue: finalHue, hueActive } = getNextHues(clampedHue);
+    const { hue: finalHue, hueActive, hueActiveAlt } = getNextHues(clampedHue);
 
-    updateCssVars(finalHue, hueActive);
+    updateCssVars(finalHue, hueActive, hueActiveAlt);
     localStorage.setItem("hue", finalHue.toString());
     localStorage.setItem("hue-active", hueActive.toString());
   }
@@ -64,9 +72,14 @@ export default function AccentPicker() {
 
     const savedHue = localStorage.getItem("hue");
     const savedHueActive = localStorage.getItem("hue-active");
+    const savedHueActiveAlt = localStorage.getItem("hue-active-alt");
 
-    if (savedHue && savedHueActive) {
-      updateCssVars(parseInt(savedHue, 10), parseInt(savedHueActive, 10));
+    if (savedHue && savedHueActive && savedHueActiveAlt) {
+      updateCssVars(
+        parseInt(savedHue, 10),
+        parseInt(savedHueActive, 10),
+        parseInt(savedHueActiveAlt, 10),
+      );
     }
   }, [updateCssVars]);
 
