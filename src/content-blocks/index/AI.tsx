@@ -20,6 +20,7 @@ export default function AI() {
         I use it like a personal assistent for brainstorming, planing, debugging
         and implementing boilerplate.
       </p>
+      <p>I also use personal slash commands and MCP's where applicable.</p>
     </>
   );
 }
