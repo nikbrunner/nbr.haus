@@ -67,6 +67,16 @@ export default function DevTools() {
         </li>
         <li>
           <Link
+            href="https://claude.com/product/claude-code"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Claude Code
+          </Link>{" "}
+          (AI assistant)
+        </li>
+        <li>
+          <Link
             href="https://1password.com"
             target="_blank"
             rel="noopener noreferrer"
