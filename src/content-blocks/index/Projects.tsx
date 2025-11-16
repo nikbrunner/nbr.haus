@@ -18,8 +18,8 @@ export default function Projects() {
             "Architecture",
             "Infrastructure",
             "Colorschemes",
-            "Design & Design Systems",
             "Color Theory",
+            "Design Systems",
           ]}
           status="Active"
           platforms={["Neovim", "Zed", "Ghostty", "WezTerm", "Tmux"]}
@@ -49,7 +49,7 @@ export default function Projects() {
         <Project
           title="AWDCS"
           stack={["Markdown"]}
-          topics={["Keymapping", "Architecture Pattern", "UX Design"]}
+          topics={["Modal Editing", "Workflow Design", "Developer Experience"]}
           status="Active"
           primaryLink={{
             url: "https://github.com/nikbrunner/awdcs",
