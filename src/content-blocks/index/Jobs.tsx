@@ -12,63 +12,61 @@ export default function Jobs() {
         period={`2020–${currentYear}`}
       >
         <p>
-          Led major architectural migrations across a mature Electron
-          application serving bike retailers. Migrated the application from{" "}
-          <Highlight>legacy Redux to Redux Toolkit</Highlight> and championed{" "}
-          <Highlight>TanStack Query adoption</Highlight> with comprehensive{" "}
-          <Highlight>
-            code guidelines and best practices documentation
-          </Highlight>
-          .
+          Worked across the{" "}
+          <Highlight>full spectrum of frontend development</Highlight>—from
+          feature implementation and bug fixes to code reviews, mentoring, and
+          cross-team coordination for a mature Electron application serving
+          hundreds of bike retailers.
         </p>
+
+        <p>
+          Led <Highlight>major architectural migrations</Highlight> by
+          championing <Highlight>TanStack Query adoption</Highlight> and
+          migrating the codebase from{" "}
+          <Highlight>legacy Redux to Redux Toolkit</Highlight>, authoring
+          comprehensive code guidelines and best practices documentation.
+          Completely rebuilt a Vendure storefront from Remix to{" "}
+          <Highlight>TanStack Start/Router</Highlight> with TanStack Query,
+          Form, GraphQL, ShadCN and Tailwind CSS.
+        </p>
+
         <p>
           Designed and implemented a{" "}
           <Highlight>comprehensive 10-variant color system</Highlight> with{" "}
-          <Highlight>Figma integration</Highlight>, affecting the entire
-          codebase. Built BikeCenter's{" "}
+          <Highlight>Figma integration</Highlight>, affecting 1,6k files across
+          the codebase. Built BikeCenter's{" "}
           <Highlight>custom design system from scratch</Highlight> using React,
           TypeScript, and SCSS.
         </p>
+
         <p>
-          Completely rebuilt a Vendure storefront from a{" "}
-          <Highlight>Remix template to TanStack Start/Router</Highlight> with
-          TanStack Form, GraphQL, and Tailwind CSS.
+          Designed internal APIs for state management and GraphQL integration,
+          establishing developer experience patterns across the team.{" "}
+          <Highlight>Bridged design and engineering</Highlight> as a trusted
+          decision-maker for UX and technical feasibility, collaborating with
+          designers as both implementer and advisor.
         </p>
+
         <p>
-          Established <Highlight>technical standards</Highlight> and{" "}
-          <Highlight>coding conventions</Highlight> across the team, including{" "}
-          <Highlight>translation guidelines</Highlight>,{" "}
-          <Highlight>BEM naming conventions</Highlight>, and{" "}
-          <Highlight>TypeScript best practices</Highlight>.
-        </p>
-        <p>
-          <Highlight>Mentored junior developers</Highlight> through pair
-          programming and code reviews, creating extensive documentation for
-          knowledge transfer.
-        </p>
-        <p>
-          Coordinated cross-functional teams as{" "}
+          Mentored junior developers through pair programming and code reviews.
+          Established <Highlight>technical standards and conventions</Highlight>{" "}
+          across the team, including translation guidelines, BEM naming, and
+          TypeScript best practices. Served as{" "}
           <Highlight>technical hub</Highlight> between management, backend, and
-          frontend, facilitating communication and ensuring alignment on
-          architectural decisions.
+          frontend teams.
         </p>
       </Job>
 
       <Job company="diva-e" position="Junior Frontend Developer" period="2020">
         <p>
-          <Highlight>Junior Frontend Developer at digital agency</Highlight>.
-          Contributed to <Highlight>BayWa's e-commerce platform</Highlight> and
-          built internal tooling. Created framework documentation during
-          onboarding. Successfully navigated remote work transition during
-          COVID-19 outbreak.
-        </p>
-        <p>
-          Built an{" "}
+          Contributed to a major <Highlight>e-commerce platform</Highlight> at
+          digital agency. Built an{" "}
           <Highlight>
             internal social platform using React, GraphQL (Apollo), and SCSS
-          </Highlight>{" "}
-          while working on BayWa's e-commerce site. Created onboarding
-          documentation for the company's proprietary framework.
+          </Highlight>
+          . Created onboarding documentation for the company's proprietary
+          framework. Successfully navigated remote work transition during
+          COVID-19 outbreak.
         </p>
       </Job>
 
