@@ -1,0 +1,19 @@
+.connect {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--size-5);
+  margin-top: var(--size-5);
+}
+
+.connect a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fg-accent);
+  transition: color var(--ease-3) var(--duration-2);
+}
+
+.connect a:hover {
+  color: var(--accent);
+}

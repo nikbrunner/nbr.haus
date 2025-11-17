@@ -23,6 +23,7 @@ function IndexPage() {
         <div className={styles.column}>
           <Section>
             <ProfilePicture />
+            <Connect />
           </Section>
           <Section title="About">
             <About />
@@ -42,9 +43,6 @@ function IndexPage() {
           <Section title="AI">
             <AI />
           </Section>
-          <Section title="Connect">
-            <Connect />
-          </Section>
         </div>
       </div>
 
@@ -52,6 +50,7 @@ function IndexPage() {
         <div className={styles.column}>
           <Section>
             <ProfilePicture />
+            <Connect />
           </Section>
           <Section title="About">
             <About />
@@ -64,9 +63,6 @@ function IndexPage() {
           </Section>
           <Section title="AI">
             <AI />
-          </Section>
-          <Section title="Connect">
-            <Connect />
           </Section>
         </div>
 
@@ -84,12 +80,10 @@ function IndexPage() {
         <div className={styles.column}>
           <Section>
             <ProfilePicture />
+            <Connect />
           </Section>
           <Section title="About">
             <About />
-          </Section>
-          <Section title="Connect">
-            <Connect />
           </Section>
           <Section title="Tech Stack">
             <TechStack />
@@ -119,12 +113,10 @@ function IndexPage() {
         <div className={styles.column}>
           <Section>
             <ProfilePicture />
+            <Connect />
           </Section>
           <Section title="About">
             <About />
-          </Section>
-          <Section title="Connect">
-            <Connect />
           </Section>
         </div>
 
