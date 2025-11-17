@@ -1,3 +1,21 @@
+@keyframes orbitAndSpin {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(10px, 0) rotate(90deg);
+  }
+  50% {
+    transform: translate(10px, 10px) rotate(180deg);
+  }
+  75% {
+    transform: translate(0, 10px) rotate(270deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg);
+  }
+}
+
 .accentPicker {
   position: fixed;
   top: 0;
@@ -7,9 +25,21 @@
   cursor: grab;
   user-select: none;
   z-index: 9999;
-  background: var(--fg-accent);
-  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--fg-accent);
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    animation: orbitAndSpin 8s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  &:active::before {
+    animation-play-state: paused;
+  }
 
   &:active {
     cursor: grabbing;
