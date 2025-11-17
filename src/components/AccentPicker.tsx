@@ -1,10 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { DraggableData, DraggableEvent } from "react-draggable";
 import Draggable from "react-draggable";
+import { useRouter, useSearch } from "@tanstack/react-router";
 import styles from "./AccentPicker.module.css";
 
 export default function AccentPicker() {
   const nodeRef = useRef(null);
+  const router = useRouter();
+  const search = useSearch({ from: "/" });
 
   // Utility functions
   function getNextHues(hue: number) {
@@ -41,6 +44,25 @@ export default function AccentPicker() {
     localStorage.setItem("hue-active", hueActive.toString());
   }
 
+  // Get initial hue from query param, localStorage, or random
+  function getInitialHue(): number {
+    // 1. Priority: Query param
+    if (search.hue !== undefined) {
+      return search.hue;
+    }
+
+    // 2. Fallback: localStorage
+    if (typeof localStorage !== "undefined") {
+      const savedHue = localStorage.getItem("hue");
+      if (savedHue) {
+        return parseInt(savedHue, 10);
+      }
+    }
+
+    // 3. Default: random
+    return Math.floor(Math.random() * 360);
+  }
+
   // Get initial position from localStorage or generate random position
   function getInitialPosition() {
     if (typeof window === "undefined" || typeof localStorage === "undefined") {
@@ -66,25 +88,34 @@ export default function AccentPicker() {
   // Use lazy initializer to get position from localStorage immediately (no flash)
   const [defaultPos] = useState(getInitialPosition);
 
-  // Restore hue from localStorage on mount
+  // Initialize hue from query param, localStorage, or random on mount
   useEffect(() => {
-    if (typeof localStorage === "undefined") return;
+    const initialHue = getInitialHue();
+    const { hue, hueActive, hueActiveAlt } = getNextHues(initialHue);
 
-    const savedHue = localStorage.getItem("hue");
-    const savedHueActive = localStorage.getItem("hue-active");
-    const savedHueActiveAlt = localStorage.getItem("hue-active-alt");
+    updateCssVars(hue, hueActive, hueActiveAlt);
 
-    if (savedHue && savedHueActive && savedHueActiveAlt) {
-      updateCssVars(
-        parseInt(savedHue, 10),
-        parseInt(savedHueActive, 10),
-        parseInt(savedHueActiveAlt, 10),
-      );
+    // Store initial hue to localStorage
+    if (typeof localStorage !== "undefined") {
+      localStorage.setItem("hue", hue.toString());
+      localStorage.setItem("hue-active", hueActive.toString());
+      localStorage.setItem("hue-active-alt", hueActiveAlt.toString());
     }
-  }, [updateCssVars]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [updateCssVars, search.hue]);
 
   const handleDrag = (_e: DraggableEvent, data: DraggableData) => {
+    const windowWidth = window.innerWidth;
+    const hue = Math.round((data.x / windowWidth) * 360);
+    const clampedHue = Math.max(0, Math.min(360, hue));
+
     updateHueFromPosition(data.x);
+
+    // Update URL with new hue (replace history to avoid pollution)
+    router.navigate({
+      search: { hue: clampedHue },
+      replace: true,
+    });
   };
 
   const handleStop = (_e: DraggableEvent, data: DraggableData) => {
