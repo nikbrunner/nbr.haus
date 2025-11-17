@@ -3,15 +3,22 @@
   justify-content: center;
   align-items: center;
   gap: var(--size-5);
-  margin-top: var(--size-5);
+  background: var(--bg-dots);
+  padding: var(--size-2) var(--size-3);
 }
 
 .connect a {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--fg-accent);
-  transition: color var(--ease-3) var(--duration-2);
+  color: var(--fg-accent-alt);
+  background: var(--bg-main);
+  padding: var(--size-1) var(--size-2);
+  border: var(--border-size-2) solid var(--fg-accent);
+}
+
+.connect a:visited {
+  color: var(--fg-accent-alt);
 }
 
 .connect a:hover {
