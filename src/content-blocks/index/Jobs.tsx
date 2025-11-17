@@ -2,14 +2,12 @@ import Highlight from "../../components/Highlight";
 import Job from "../../components/Job";
 
 export default function Jobs() {
-  const currentYear = new Date().getFullYear();
-
   return (
     <>
       <Job
         company="DealerCenter Digital"
         position="Software Engineer"
-        period={`2020–${currentYear}`}
+        period="2020–2026"
       >
         <p>
           Worked across the{" "}
