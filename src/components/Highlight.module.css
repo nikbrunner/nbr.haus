@@ -1,3 +1,4 @@
 .highlight {
   color: var(--fg-accent-alt);
+  font-weight: var(--font-weight-4);
 }
