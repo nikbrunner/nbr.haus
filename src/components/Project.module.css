@@ -1,4 +1,5 @@
 .project {
+  container-type: inline-size;
   border: var(--border-size-2) solid var(--fg-accent);
   display: flex;
   flex-direction: column;
@@ -11,15 +12,15 @@
 .title {
   margin: 0;
   background-color: var(--bg-main);
-  /* font-size: var(--font-size-2); */
   color: var(--fg-accent);
   padding: var(--size-2) var(--size-3);
+  border-left: var(--border-size-3) solid var(--fg-accent);
 }
 
 .label,
 .value,
 .tag {
-  font-size: 4cqw;
+  font-size: 4.5cqw;
 }
 
 .metadata {
@@ -62,7 +63,7 @@
 .tag {
   display: inline-flex;
   padding: 0 var(--size-1);
-  border: var(--border-size-1) solid var(--fg-minor);
+  border: var(--border-size-1) dotted var(--fg-minor);
   background-color: var(--bg-main);
   color: var(--fg-main);
 }
