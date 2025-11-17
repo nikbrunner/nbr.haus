@@ -10,7 +10,8 @@ export default function AccentPicker() {
   function getNextHues(hue: number) {
     const shift = 90;
     const hueActive = hue + shift > 360 ? hue + shift - 360 : hue + shift;
-    const hueActiveAlt = hueActive + 90;
+    const hueActiveAlt =
+      hueActive + 180 > 360 ? hueActive + 180 - 360 : hueActive + 180;
     return { hue, hueActive, hueActiveAlt };
   }
 
