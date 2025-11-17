@@ -13,7 +13,7 @@ body {
 body {
   --hue: 0;
   --hue-active: 180;
-  --hue-active-alt: 270;
+  --hue-active-alt: 360;
 
   --bg-main: oklch(95% 0.005 var(--hue));
   --bg-support: oklch(90% 0.005 var(--hue));
@@ -22,7 +22,7 @@ body {
   --fg-support: oklch(50% 0.01 var(--hue));
   --fg-minor: oklch(60% 0.01 var(--hue));
   --fg-accent: oklch(45% 0.35 var(--hue-active));
-  --fg-accent-alt: oklch(45% 0.35 var(--hue-active-alt));
+  --fg-accent-alt: oklch(45% 0.5 var(--hue-active-alt));
   --fg-contrast: oklch(98% 0.05 var(--hue-active));
 
   --content-max-width: var(--size-content-3);
