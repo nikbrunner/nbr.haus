@@ -103,7 +103,7 @@ function IndexPage() {
         </div>
 
         <div className={styles.column}>
-          <Section title="Work">
+          <Section title="Employment">
             <Jobs />
           </Section>
         </div>
@@ -141,7 +141,7 @@ function IndexPage() {
         </div>
 
         <div className={styles.column}>
-          <Section title="Work">
+          <Section title="Employment">
             <Jobs />
           </Section>
         </div>
