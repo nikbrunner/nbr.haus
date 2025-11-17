@@ -20,7 +20,7 @@
 .label,
 .value,
 .tag {
-  font-size: 4.5cqw;
+  font-size: clamp(var(--font-size-0), 4cqw, var(--font-size-2));
 }
 
 .metadata {
@@ -34,7 +34,7 @@
 
 .metadataItem {
   display: grid;
-  grid-template-columns: 20cqw 1fr;
+  grid-template-columns: 25cqw 1fr;
   gap: var(--size-3);
   padding: var(--size-2) 0;
   align-items: center;
