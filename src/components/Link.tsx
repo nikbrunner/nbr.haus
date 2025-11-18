@@ -1,23 +1,11 @@
 import styles from "./Link.module.css";
 
-interface Props {
-  href: string;
-  target?: string;
-  rel?: string;
-  style?: React.CSSProperties;
-  children: React.ReactNode;
-}
+type Props = React.ComponentProps<"a">;
 
-export default function Link({ href, target, rel, style, children }: Props) {
+export default function Link(props: Props) {
   return (
-    <a
-      href={href}
-      target={target}
-      rel={rel}
-      style={style}
-      className={styles.link}
-    >
-      {children}
+    <a {...props} className={styles.link}>
+      {props.children}
     </a>
   );
 }
