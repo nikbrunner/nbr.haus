@@ -3,16 +3,28 @@ import {
   ClientOnly,
   createRootRoute,
   HeadContent,
+  retainSearchParams,
   Scripts,
+  stripSearchParams,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import AccentPicker from "../components/AccentPicker";
 import NotFound from "../components/NotFound";
-
 import globalCss from "../styles/global.css?url";
+import {
+  defaultRootSearchParams,
+  rootSearchParamsSchema,
+} from "../validators/rootSearchParams";
 import styles from "./BaseLayout.module.css";
 
 export const Route = createRootRoute({
+  validateSearch: rootSearchParamsSchema,
+  search: {
+    middlewares: [
+      stripSearchParams(defaultRootSearchParams),
+      retainSearchParams(["hue"]),
+    ],
+  },
   notFoundComponent: NotFound,
   shellComponent: RootDocument,
   head: () => ({

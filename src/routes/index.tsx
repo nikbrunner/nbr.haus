@@ -14,14 +14,6 @@ import styles from "./index.module.css";
 
 export const Route = createFileRoute("/")({
   component: IndexPage,
-  validateSearch: (search: Record<string, unknown>) => {
-    return {
-      hue:
-        typeof search.hue === "number"
-          ? Math.max(0, Math.min(360, search.hue))
-          : undefined,
-    };
-  },
 });
 
 function IndexPage() {

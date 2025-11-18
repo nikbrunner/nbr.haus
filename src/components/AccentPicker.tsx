@@ -1,7 +1,7 @@
+import { useRouter, useSearch } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { DraggableData, DraggableEvent } from "react-draggable";
 import Draggable from "react-draggable";
-import { useRouter, useSearch } from "@tanstack/react-router";
 import styles from "./AccentPicker.module.css";
 
 export default function AccentPicker() {
@@ -10,13 +10,13 @@ export default function AccentPicker() {
   const search = useSearch({ from: "/" });
 
   // Utility functions
-  function getNextHues(hue: number) {
+  const getNextHues = useCallback((hue: number) => {
     const shift = 90;
     const hueActive = hue + shift > 360 ? hue + shift - 360 : hue + shift;
     const hueActiveAlt =
       hueActive + 180 > 360 ? hueActive + 180 - 360 : hueActive + 180;
     return { hue, hueActive, hueActiveAlt };
-  }
+  }, []);
 
   const updateCssVars = useCallback(
     (hue: number, hueActive: number, hueActiveAlt: number): void => {
@@ -45,7 +45,7 @@ export default function AccentPicker() {
   }
 
   // Get initial hue from query param, localStorage, or random
-  function getInitialHue(): number {
+  const getInitialHue = useCallback((): number => {
     // 1. Priority: Query param
     if (search.hue !== undefined) {
       return search.hue;
@@ -61,7 +61,7 @@ export default function AccentPicker() {
 
     // 3. Default: random
     return Math.floor(Math.random() * 360);
-  }
+  }, [search.hue]);
 
   // Get initial position from localStorage or generate random position
   function getInitialPosition() {
@@ -101,8 +101,7 @@ export default function AccentPicker() {
       localStorage.setItem("hue-active", hueActive.toString());
       localStorage.setItem("hue-active-alt", hueActiveAlt.toString());
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [updateCssVars, search.hue]);
+  }, [getInitialHue, getNextHues, updateCssVars]);
 
   const handleDrag = (_e: DraggableEvent, data: DraggableData) => {
     const windowWidth = window.innerWidth;
@@ -113,7 +112,8 @@ export default function AccentPicker() {
 
     // Update URL with new hue (replace history to avoid pollution)
     router.navigate({
-      search: { hue: clampedHue },
+      to: "/",
+      search: (prev) => ({ ...prev, hue: clampedHue }),
       replace: true,
     });
   };
