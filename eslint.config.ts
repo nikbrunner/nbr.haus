@@ -14,7 +14,7 @@ const gitignorePath = fileURLToPath(new URL(".gitignore", import.meta.url));
 export default defineConfig([
   includeIgnoreFile(gitignorePath, "Imported .gitignore patterns"),
   {
-    ignores: [".claude/*", ".vscode/*"]
+    ignores: [".claude/*", ".vscode/*", "package-lock.json"]
   },
   {
     files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
@@ -46,7 +46,7 @@ export default defineConfig([
     extends: ["json/recommended"]
   },
   {
-    files: ["**/*.jsonc"],
+    files: ["**/*.jsonc", "**/tsconfig*.json"],
     plugins: { json },
     language: "json/jsonc",
     extends: ["json/recommended"]
@@ -67,6 +67,28 @@ export default defineConfig([
     files: ["**/*.css"],
     plugins: { css },
     language: "css/css",
-    extends: ["css/recommended"]
+    extends: ["css/recommended"],
+    languageOptions: {
+      tolerant: true
+    },
+    rules: {
+      "css/no-invalid-properties": ["error", { allowUnknownVariables: true }],
+      "css/use-baseline": [
+        "error",
+        {
+          allowProperties: ["user-select"],
+          allowSelectors: ["nesting"]
+        }
+      ]
+    }
+  },
+  {
+    // global.css uses nested CSS custom properties in oklch() color functions
+    // ESLint resolves var(--hue) to bare numbers (e.g., "0", "180") and incorrectly
+    // flags them as invalid colors, even though they're valid hue values in context
+    files: ["src/styles/global.css"],
+    rules: {
+      "css/no-invalid-properties": "off"
+    }
   }
 ]);

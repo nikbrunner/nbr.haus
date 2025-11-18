@@ -28,7 +28,7 @@ body {
   --content-max-width: var(--size-content-3);
   --header-height: var(--size-10);
 
-  --font-family: "TX-02";
+  --font-family: "TX-02", monospace;
 
   --base-layout-top-padding: var(--size-8);
 
