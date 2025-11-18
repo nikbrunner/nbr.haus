@@ -37,6 +37,7 @@ npm run test            # Run Vitest tests
 ## Architecture
 
 ### Routing & SSR
+
 - **TanStack Start** with file-based routing in `src/routes/`
 - Routes auto-generate type-safe route tree at `src/routeTree.gen.ts` (do not edit manually)
 - Root layout in `src/routes/__root.tsx` handles:
@@ -46,6 +47,7 @@ npm run test            # Run Vitest tests
 - Single route (`/`) defined in `src/routes/index.tsx` with responsive multi-column layouts
 
 ### Component Architecture
+
 - **Functional components only** - no class components
 - **CSS Modules** for styling (`.module.css` files)
   - TypeScript types auto-generated via `typed-css-modules` (tcm)
@@ -54,34 +56,42 @@ npm run test            # Run Vitest tests
 - **Open Props** for design tokens (CSS custom properties)
 
 ### Content Structure
+
 Components in `src/components/`:
+
 - Presentational/dumb components (Header, Project, Job, Section, Link, etc.)
 
 Content blocks in `src/content-blocks/index/`:
+
 - Smart content containers for the index route (About, Projects, Jobs, TechStack, DevTools, AI, Connect, ProfilePicture)
 - These consume the dumb components and provide content
 
 ### Responsive Layout Pattern
+
 The index route renders **four different layouts** (1, 2, 3, and 4 columns) with CSS controlling which displays based on viewport. All layouts use the same Section and content-block components but arrange them differently.
 
 ### Styling Conventions
+
 - CSS Modules for component-scoped styles
 - Global styles in `src/styles/global.css`
 - Custom properties from Open Props for consistent design tokens
 - Semantic class names (`.project`, `.metadata`, `.links`, etc.)
 
 ### DevTools
+
 - **TanStack DevTools** configured in root route with Router panel
 - **TanStack Router DevTools Panel** integrated
 - Client-only components wrapped with `<ClientOnly>`
 
 ## TypeScript Configuration
+
 - Strict mode enabled with all recommended TypeScript strictness
 - `noUnusedLocals`, `noUnusedParameters`, `noFallthroughCasesInSwitch` enforced
 - Module resolution: `bundler`
 - Path aliases: `@/*` → `./src/*`
 
 ## Biome Configuration
+
 - Formatter: 2-space indentation, double quotes for JS
 - Linter: recommended rules enabled
   - `useUniqueElementIds`: error
@@ -91,6 +101,7 @@ The index route renders **four different layouts** (1, 2, 3, and 4 columns) with
 - VCS integration with git
 
 ## Key Dependencies
+
 - **TanStack Start** - SSR framework
 - **TanStack Router** - File-based routing with type safety
 - **React 19** - UI framework
@@ -103,7 +114,9 @@ The index route renders **four different layouts** (1, 2, 3, and 4 columns) with
 - **concurrently** - Run multiple npm scripts
 
 ## Build Configuration (vite.config.ts)
+
 Plugins in order:
+
 1. `@tanstack/devtools-vite` - DevTools integration
 2. `nitro` - Server engine for SSR
 3. `vite-tsconfig-paths` - Path alias support
@@ -111,6 +124,7 @@ Plugins in order:
 5. `@vitejs/plugin-react` - React support
 
 ## Important Notes
+
 - `src/routeTree.gen.ts` is auto-generated - never edit manually
 - CSS Module `.d.ts` files are auto-generated - excluded from Biome
 - Development uses port 3000

@@ -32,10 +32,10 @@ export default function AI() {
         >
           Claude Code
         </Link>
-        . I use it like a personal assistant for brainstorming, planning, debugging
-        and implementing boilerplate. When the task feels manageable by AI code
-        generation, I work out detailed plans and then let Claude Code handle
-        the implementation, while reviewing the code step by step.
+        . I use it like a personal assistant for brainstorming, planning,
+        debugging and implementing boilerplate. When the task feels manageable
+        by AI code generation, I work out detailed plans and then let Claude
+        Code handle the implementation, while reviewing the code step by step.
       </p>
 
       <p>I also use personal slash commands and MCPs where applicable.</p>

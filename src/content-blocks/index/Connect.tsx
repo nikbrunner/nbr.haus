@@ -13,10 +13,7 @@ export default function Connect() {
       >
         <Github />
       </Link>
-      <Link
-        href="mailto:nbr.haus.persuader046@passmail.com"
-        aria-label="Email"
-      >
+      <Link href="mailto:nbr.haus.persuader046@passmail.com" aria-label="Email">
         <Mail />
       </Link>
       <Link

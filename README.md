@@ -1,4 +1,4 @@
-Welcome to your new TanStack app! 
+Welcome to your new TanStack app!
 
 # Getting Started
 
@@ -29,10 +29,8 @@ npm run test
 
 This project uses [Tailwind CSS](https://tailwindcss.com/) for styling.
 
-
-
-
 ## Routing
+
 This project uses [TanStack Router](https://tanstack.com/router). The initial setup is a file based router. Which means that the routes are managed as files in `src/routes`.
 
 ### Adding A Route
@@ -68,8 +66,8 @@ In the File Based Routing setup the layout is located in `src/routes/__root.tsx`
 Here is an example layout that includes a header:
 
 ```tsx
-import { Outlet, createRootRoute } from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+import { Outlet, createRootRoute } from "@tanstack/react-router";
+import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 
 import { Link } from "@tanstack/react-router";
 
@@ -85,14 +83,13 @@ export const Route = createRootRoute({
       <Outlet />
       <TanStackRouterDevtools />
     </>
-  ),
-})
+  )
+});
 ```
 
 The `<TanStackRouterDevtools />` component is not required so you can remove it if you don't want it in your layout.
 
 More information on layouts can be found in the [Layouts documentation](https://tanstack.com/router/latest/docs/framework/react/guide/routing-concepts#layouts).
-
 
 ## Data Fetching
 
@@ -116,12 +113,12 @@ const peopleRoute = createRoute({
     const data = peopleRoute.useLoaderData();
     return (
       <ul>
-        {data.results.map((person) => (
+        {data.results.map(person => (
           <li key={person.name}>{person.name}</li>
         ))}
       </ul>
     );
-  },
+  }
 });
 ```
 
@@ -171,7 +168,7 @@ const rootRoute = createRootRoute({
       <ReactQueryDevtools buttonPosition="top-right" />
       <TanStackRouterDevtools />
     </>
-  ),
+  )
 });
 ```
 
@@ -187,15 +184,15 @@ function App() {
     queryKey: ["people"],
     queryFn: () =>
       fetch("https://swapi.dev/api/people")
-        .then((res) => res.json())
-        .then((data) => data.results as { name: string }[]),
-    initialData: [],
+        .then(res => res.json())
+        .then(data => data.results as { name: string }[]),
+    initialData: []
   });
 
   return (
     <div>
       <ul>
-        {data.map((person) => (
+        {data.map(person => (
           <li key={person.name}>{person.name}</li>
         ))}
       </ul>
@@ -231,9 +228,7 @@ function App() {
   const count = useStore(countStore);
   return (
     <div>
-      <button onClick={() => countStore.setState((n) => n + 1)}>
-        Increment - {count}
-      </button>
+      <button onClick={() => countStore.setState(n => n + 1)}>Increment - {count}</button>
     </div>
   );
 }
@@ -254,7 +249,7 @@ const countStore = new Store(0);
 
 const doubledStore = new Derived({
   fn: () => countStore.state * 2,
-  deps: [countStore],
+  deps: [countStore]
 });
 doubledStore.mount();
 
@@ -264,9 +259,7 @@ function App() {
 
   return (
     <div>
-      <button onClick={() => countStore.setState((n) => n + 1)}>
-        Increment - {count}
-      </button>
+      <button onClick={() => countStore.setState(n => n + 1)}>Increment - {count}</button>
       <div>Doubled - {doubledCount}</div>
     </div>
   );
