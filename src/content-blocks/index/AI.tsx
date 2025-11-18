@@ -5,13 +5,12 @@ export default function AI() {
   return (
     <>
       <p>
-        I am lucky enough to have entered the industry before AI became a thing.
-        To have the learning hill to climb, with no tab completion or ChatGPT. I
-        think this is very valuable. And I think it's still very valuable and
-        even necessary to learn coding in the AI era. I would never recommend a
-        Junior Developer to use AI during their initial learning phase. I could
-        never use AI effectively as I do now, if I had not learned this craft
-        without it.
+        I am lucky enough to have entered the industry before AI became a thing. To
+        have the learning hill to climb, with no tab completion or ChatGPT. I think
+        this is very valuable. And I think it's still very valuable and even
+        necessary to learn coding in the AI era. I would never recommend a Junior
+        Developer to use AI during their initial learning phase. I could never use AI
+        effectively as I do now, if I had not learned this craft without it.
       </p>
 
       <p>
@@ -32,10 +31,10 @@ export default function AI() {
         >
           Claude Code
         </Link>
-        . I use it like a personal assistant for brainstorming, planning,
-        debugging and implementing boilerplate. When the task feels manageable
-        by AI code generation, I work out detailed plans and then let Claude
-        Code handle the implementation, while reviewing the code step by step.
+        . I use it like a personal assistant for brainstorming, planning, debugging
+        and implementing boilerplate. When the task feels manageable by AI code
+        generation, I work out detailed plans and then let Claude Code handle the
+        implementation, while reviewing the code step by step.
       </p>
 
       <p>I also use personal slash commands and MCPs where applicable.</p>

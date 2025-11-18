@@ -23,13 +23,10 @@ export default function AccentPicker() {
       if (typeof document !== "undefined") {
         document.body.style.setProperty("--hue", hue.toString());
         document.body.style.setProperty("--hue-accent", hueActive.toString());
-        document.body.style.setProperty(
-          "--hue-accent-alt",
-          hueActiveAlt.toString(),
-        );
+        document.body.style.setProperty("--hue-accent-alt", hueActiveAlt.toString());
       }
     },
-    [],
+    []
   );
 
   function updateHueFromPosition(x: number): void {
@@ -113,8 +110,8 @@ export default function AccentPicker() {
     // Update URL with new hue (replace history to avoid pollution)
     router.navigate({
       to: "/",
-      search: (prev) => ({ ...prev, hue: clampedHue }),
-      replace: true,
+      search: prev => ({ ...prev, hue: clampedHue }),
+      replace: true
     });
   };
 

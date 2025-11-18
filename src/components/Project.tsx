@@ -32,7 +32,7 @@ export default function Project({
   platforms,
   metrics,
   additionalLinks,
-  children,
+  children
 }: Props) {
   const allLinks = [primaryLink, ...(additionalLinks || [])];
 
@@ -50,7 +50,7 @@ export default function Project({
           <div className={styles.metadataItem}>
             <span className={styles.label}>Stack:</span>
             <div className={styles.tags}>
-              {stack.map((tech) => (
+              {stack.map(tech => (
                 <span key={tech} className={styles.tag}>
                   {tech}
                 </span>
@@ -63,7 +63,7 @@ export default function Project({
           <div className={styles.metadataItem}>
             <span className={styles.label}>Topics:</span>
             <div className={styles.tags}>
-              {topics.map((topic) => (
+              {topics.map(topic => (
                 <span key={topic} className={styles.tag}>
                   {topic}
                 </span>
@@ -88,7 +88,7 @@ export default function Project({
 
         {metrics &&
           metrics.length > 0 &&
-          metrics.map((metric) => (
+          metrics.map(metric => (
             <div key={metric.label} className={styles.metadataItem}>
               <span className={styles.label}>{metric.label}:</span>
               <span className={styles.value}>{metric.value}</span>

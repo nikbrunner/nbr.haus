@@ -6,8 +6,8 @@ export default function Projects() {
   return (
     <>
       <p className={styles.intro}>
-        Projects are never finished, but they are always in progress. Here are
-        some of my projects as a developer.
+        Projects are never finished, but they are always in progress. Here are some
+        of my projects as a developer.
       </p>
 
       <div className={styles.projects}>
@@ -19,26 +19,26 @@ export default function Projects() {
             "Adapter Pattern",
             "Color Theory",
             "Cross-Platform Design",
-            "Template Systems",
+            "Template Systems"
           ]}
           status="Active"
           platforms={["Neovim", "Zed", "Ghostty", "WezTerm", "Tmux"]}
           metrics={[{ label: "Themes", value: "27+" }]}
           primaryLink={{
             url: "https://black-atom.industries",
-            type: "Live Site",
+            type: "Live Site"
           }}
           additionalLinks={[
-            { url: "https://github.com/nikbrunner/black-atom", type: "GitHub" },
+            { url: "https://github.com/nikbrunner/black-atom", type: "GitHub" }
           ]}
         >
           <p>
-            Open-source cross-platform theming system generating 27+ cohesive
-            themes from a single source.
+            Open-source cross-platform theming system generating 27+ cohesive themes
+            from a single source.
           </p>
           <p>
-            Built with an <Highlight>adapter pattern</Highlight> for consistent
-            theme generation from a central source using{" "}
+            Built with an <Highlight>adapter pattern</Highlight> for consistent theme
+            generation from a central source using{" "}
             <Highlight>OKLCH color space</Highlight>.
           </p>
           <p>
@@ -54,13 +54,13 @@ export default function Projects() {
           status="Active"
           primaryLink={{
             url: "https://github.com/nikbrunner/awdcs",
-            type: "GitHub",
+            type: "GitHub"
           }}
         >
           <p>
-            AWDCS (App, Workspace, Document, Change, Symbol): A scope-based
-            keymap architecture for modal editors organizing bindings by
-            operational context rather than tool-specific functions.
+            AWDCS (App, Workspace, Document, Change, Symbol): A scope-based keymap
+            architecture for modal editors organizing bindings by operational context
+            rather than tool-specific functions.
           </p>
           <p>
             Features <Highlight>systematic prefix patterns</Highlight> and{" "}
@@ -77,12 +77,12 @@ export default function Projects() {
             "QMK Firmware",
             "Ergonomics",
             "Workflow Design",
-            "CLI Tools",
+            "CLI Tools"
           ]}
           status="Active"
           primaryLink={{
             url: "https://github.com/nikbrunner/koyo",
-            type: "GitHub",
+            type: "GitHub"
           }}
         >
           <p>
@@ -100,18 +100,18 @@ export default function Projects() {
             "Developer Tools",
             "Frontend Development",
             "Workflow Design",
-            "AWDCS",
+            "AWDCS"
           ]}
           status="Active"
           primaryLink={{
             url: "https://github.com/nikbrunner/dots/tree/main/common/.config/nvim",
-            type: "GitHub",
+            type: "GitHub"
           }}
         >
           <p>
             Highly customized Neovim setup for frontend development featuring
-            AWDCS-based keymaps, Lazy.nvim plugin management, and workflows
-            tailored for React and TypeScript.
+            AWDCS-based keymaps, Lazy.nvim plugin management, and workflows tailored
+            for React and TypeScript.
           </p>
         </Project>
       </div>

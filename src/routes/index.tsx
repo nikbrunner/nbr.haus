@@ -13,7 +13,7 @@ import TechStack from "../content-blocks/index/TechStack";
 import styles from "./index.module.css";
 
 export const Route = createFileRoute("/")({
-  component: IndexPage,
+  component: IndexPage
 });
 
 function IndexPage() {

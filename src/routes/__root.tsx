@@ -5,7 +5,7 @@ import {
   HeadContent,
   retainSearchParams,
   Scripts,
-  stripSearchParams,
+  stripSearchParams
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import AccentPicker from "../components/AccentPicker";
@@ -13,7 +13,7 @@ import NotFound from "../components/NotFound";
 import globalCss from "../styles/global.css?url";
 import {
   defaultRootSearchParams,
-  rootSearchParamsSchema,
+  rootSearchParamsSchema
 } from "../validators/rootSearchParams";
 import styles from "./BaseLayout.module.css";
 
@@ -22,92 +22,92 @@ export const Route = createRootRoute({
   search: {
     middlewares: [
       stripSearchParams(defaultRootSearchParams),
-      retainSearchParams(["hue"]),
-    ],
+      retainSearchParams(["hue"])
+    ]
   },
   notFoundComponent: NotFound,
   shellComponent: RootDocument,
   head: () => ({
     meta: [
       {
-        charSet: "UTF-8",
+        charSet: "UTF-8"
       },
       {
         name: "viewport",
-        content: "width=device-width",
+        content: "width=device-width"
       },
       {
         name: "description",
         content:
-          "Software Engineer with 5+ years of experience building frontend architectures and design systems. Specialized in React, TypeScript, and modern web technologies. Available February 2026.",
+          "Software Engineer with 5+ years of experience building frontend architectures and design systems. Specialized in React, TypeScript, and modern web technologies. Available February 2026."
       },
       {
         name: "robots",
-        content: "index, follow",
+        content: "index, follow"
       },
       {
         property: "og:type",
-        content: "website",
+        content: "website"
       },
       {
         property: "og:title",
-        content: "Nik Brunner - Software Engineer | Frontend Developer",
+        content: "Nik Brunner - Software Engineer | Frontend Developer"
       },
       {
         property: "og:description",
         content:
-          "Software Engineer with 5+ years of experience building frontend architectures and design systems. Specialized in React, TypeScript, and modern web technologies. Available February 2026.",
+          "Software Engineer with 5+ years of experience building frontend architectures and design systems. Specialized in React, TypeScript, and modern web technologies. Available February 2026."
       },
       {
         property: "og:image",
-        content: "/og-image.jpg",
+        content: "/og-image.jpg"
       },
       {
         property: "twitter:card",
-        content: "summary_large_image",
+        content: "summary_large_image"
       },
       {
         property: "twitter:title",
-        content: "Nik Brunner - Software Engineer | Frontend Developer",
+        content: "Nik Brunner - Software Engineer | Frontend Developer"
       },
       {
         property: "twitter:description",
         content:
-          "Software Engineer with 5+ years of experience building frontend architectures and design systems. Specialized in React, TypeScript, and modern web technologies. Available February 2026.",
+          "Software Engineer with 5+ years of experience building frontend architectures and design systems. Specialized in React, TypeScript, and modern web technologies. Available February 2026."
       },
       {
         property: "twitter:image",
-        content: "/og-image.jpg",
+        content: "/og-image.jpg"
       },
       {
-        title: "Nik Brunner - Software Engineer | Frontend Developer",
-      },
+        title: "Nik Brunner - Software Engineer | Frontend Developer"
+      }
     ],
     links: [
       {
         rel: "icon",
         type: "image/svg+xml",
-        href: "/favicon.svg",
+        href: "/favicon.svg"
       },
       {
         rel: "stylesheet",
-        href: globalCss,
-      },
-    ],
-  }),
+        href: globalCss
+      }
+    ]
+  })
 });
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: "Nik Brunner",
-    url: "https://www.nbr.haus",
-    image: "https://www.nbr.haus/og-image.jpg",
-    jobTitle: "Software Engineer",
-    description:
+    "name": "Nik Brunner",
+    "url": "https://www.nbr.haus",
+    "image": "https://www.nbr.haus/og-image.jpg",
+    "jobTitle": "Software Engineer",
+    "description":
       "Software Engineer with 5+ years of experience building frontend architectures and design systems. Specialized in React, TypeScript, and modern web technologies. Available February 2026.",
-    knowsAbout: [
+    "knowsAbout": [
       "React",
       "TypeScript",
       "GraphQL",
@@ -116,24 +116,21 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       "Tailwind CSS",
       "TanStack",
       "Redux",
-      "Electron",
+      "Electron"
     ],
-    alumniOf: {
+    "alumniOf": {
       "@type": "EducationEvent",
-      name: "Self-taught Web Developer",
+      "name": "Self-taught Web Developer"
     },
-    workLocation: {
+    "workLocation": {
       "@type": "Place",
-      address: {
+      "address": {
         "@type": "PostalAddress",
-        addressLocality: "Landshut",
-        addressCountry: "Germany",
-      },
+        "addressLocality": "Landshut",
+        "addressCountry": "Germany"
+      }
     },
-    sameAs: [
-      "https://github.com/nikbrunner",
-      "https://www.linkedin.com/in/nbru/",
-    ],
+    "sameAs": ["https://github.com/nikbrunner", "https://www.linkedin.com/in/nbru/"]
   };
 
   return (
@@ -153,13 +150,13 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         </ClientOnly>
         <TanStackDevtools
           config={{
-            position: "bottom-right",
+            position: "bottom-right"
           }}
           plugins={[
             {
               name: "Tanstack Router",
-              render: <TanStackRouterDevtoolsPanel />,
-            },
+              render: <TanStackRouterDevtoolsPanel />
+            }
           ]}
         />
         <Scripts />

@@ -10,7 +10,7 @@ export function getRouter() {
     routeTree,
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,
-    notFoundMode: "root",
+    notFoundMode: "root"
   });
 
   return router;

@@ -1,18 +1,18 @@
 import type { Config } from "prettier";
 
 const config: Config = {
-  printWidth: 120,
-  tabWidth: 2,
-  useTabs: false,
+  arrowParens: "avoid",
+  bracketSameLine: false,
+  bracketSpacing: true,
+  endOfLine: "lf",
+  jsxSingleQuote: false,
+  printWidth: 85,
+  quoteProps: "consistent",
   semi: true,
   singleQuote: false,
-  quoteProps: "as-needed",
-  jsxSingleQuote: false,
+  tabWidth: 2,
   trailingComma: "none",
-  bracketSpacing: true,
-  bracketSameLine: false,
-  arrowParens: "avoid",
-  endOfLine: "lf",
+  useTabs: false
 };
 
 export default config;

@@ -10,8 +10,8 @@ export default function About() {
     <div className={styles.about}>
       <p>
         I'm <Highlight>Nik Brunner</Highlight>, a Software Engineer with{" "}
-        {experienceInYears} years of experience building frontend architectures
-        and design systems.
+        {experienceInYears} years of experience building frontend architectures and
+        design systems.
       </p>
 
       <p>
@@ -29,8 +29,8 @@ export default function About() {
       <Hr />
 
       <p>
-        Born in 1984, based in Landshut, Germany. Outside of code, I enjoy
-        hiking, running, and photography.
+        Born in 1984, based in Landshut, Germany. Outside of code, I enjoy hiking,
+        running, and photography.
       </p>
     </div>
   );

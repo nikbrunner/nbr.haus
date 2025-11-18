@@ -26,21 +26,13 @@ export default function DevTools() {
           (Primary editor)
         </li>
         <li>
-          <Link
-            href="https://zed.dev"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link href="https://zed.dev" target="_blank" rel="noopener noreferrer">
             Zed
           </Link>{" "}
           (Secondary editor)
         </li>
         <li>
-          <Link
-            href="https://ghostty.dev"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link href="https://ghostty.dev" target="_blank" rel="noopener noreferrer">
             Ghostty
           </Link>{" "}
           (Terminal)
