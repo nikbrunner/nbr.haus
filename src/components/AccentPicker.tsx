@@ -22,9 +22,9 @@ export default function AccentPicker() {
     (hue: number, hueActive: number, hueActiveAlt: number): void => {
       if (typeof document !== "undefined") {
         document.body.style.setProperty("--hue", hue.toString());
-        document.body.style.setProperty("--hue-active", hueActive.toString());
+        document.body.style.setProperty("--hue-accent", hueActive.toString());
         document.body.style.setProperty(
-          "--hue-active-alt",
+          "--hue-accent-alt",
           hueActiveAlt.toString(),
         );
       }
