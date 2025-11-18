@@ -14,9 +14,11 @@ const gitignorePath = fileURLToPath(new URL(".gitignore", import.meta.url));
 export default defineConfig([
   includeIgnoreFile(gitignorePath, "Imported .gitignore patterns"),
   {
+    name: "project/ignore-ide-and-tooling-files",
     ignores: [".claude/*", ".vscode/*", "package-lock.json"]
   },
   {
+    name: "project/javascript-and-typescript-base-config",
     files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
     plugins: { js },
     extends: ["js/recommended"],
@@ -24,6 +26,7 @@ export default defineConfig([
   },
   ...tseslint.configs.recommended,
   {
+    name: "project/react-recommended-config",
     files: ["**/*.{js,jsx,ts,tsx}"],
     ...pluginReact.configs.flat.recommended,
     ...pluginReact.configs.flat["jsx-runtime"],
@@ -40,30 +43,35 @@ export default defineConfig([
     }
   },
   {
+    name: "project/json-strict-validation",
     files: ["**/*.json"],
     plugins: { json },
     language: "json/json",
     extends: ["json/recommended"]
   },
   {
+    name: "project/jsonc-with-comments-and-tsconfig",
     files: ["**/*.jsonc", "**/tsconfig*.json"],
     plugins: { json },
     language: "json/jsonc",
     extends: ["json/recommended"]
   },
   {
+    name: "project/json5-extended-syntax",
     files: ["**/*.json5"],
     plugins: { json },
     language: "json/json5",
     extends: ["json/recommended"]
   },
   {
+    name: "project/markdown-commonmark-linting",
     files: ["**/*.md"],
     plugins: { markdown },
     language: "markdown/commonmark",
     extends: ["markdown/recommended"]
   },
   {
+    name: "project/css-modules-with-custom-properties",
     files: ["**/*.css"],
     plugins: { css },
     language: "css/css",
@@ -83,6 +91,7 @@ export default defineConfig([
     }
   },
   {
+    name: "project/global-css-oklch-color-exception",
     // global.css uses nested CSS custom properties in oklch() color functions
     // ESLint resolves var(--hue) to bare numbers (e.g., "0", "180") and incorrectly
     // flags them as invalid colors, even though they're valid hue values in context
