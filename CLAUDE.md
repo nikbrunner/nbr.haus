@@ -24,10 +24,11 @@ npm run serve
 
 # Code quality
 npm run check           # Run all checks (format, lint, compile)
-npm run check:format    # Check formatting (Biome)
-npm run format          # Auto-format code (Biome)
-npm run check:lint      # Check linting (Biome)
-npm run lint            # Auto-fix linting (Biome)
+npm run check:format    # Check formatting (Prettier)
+npm run format          # Auto-format code (Prettier)
+npm run check:lint      # Check linting (ESLint)
+npm run lint            # Auto-fix linting (ESLint)
+npm run lint:inspect    # Inspect ESLint configuration
 npm run check:compile   # TypeScript type checking
 
 # Testing
@@ -42,9 +43,11 @@ npm run test            # Run Vitest tests
 - Routes auto-generate type-safe route tree at `src/routeTree.gen.ts` (do not edit manually)
 - Root layout in `src/routes/__root.tsx` handles:
   - SEO meta tags and structured data (JSON-LD)
-  - Global layout (Header, AccentPicker, DevTools)
-  - Shell component for SSR
+  - Global layout (AccentPicker, DevTools)
+  - Shell component for SSR (`RootDocument`)
+  - Route-level search params validation with Zod
 - Single route (`/`) defined in `src/routes/index.tsx` with responsive multi-column layouts
+- Search params validation defined in `src/validators/rootSearchParams.ts` using Zod
 
 ### Component Architecture
 
@@ -80,25 +83,33 @@ The index route renders **four different layouts** (1, 2, 3, and 4 columns) with
 ### DevTools
 
 - **TanStack DevTools** configured in root route with Router panel
-- **TanStack Router DevTools Panel** integrated
+- **TanStack Router DevTools Panel** integrated as a plugin
 - Client-only components wrapped with `<ClientOnly>`
 
 ## TypeScript Configuration
 
 - Strict mode enabled with all recommended TypeScript strictness
-- `noUnusedLocals`, `noUnusedParameters`, `noFallthroughCasesInSwitch` enforced
+- `noUnusedLocals`, `noUnusedParameters`, `noFallthroughCasesInSwitch`, `noUncheckedSideEffectImports` enforced
 - Module resolution: `bundler`
 - Path aliases: `@/*` → `./src/*`
+- JSX: `react-jsx` (automatic runtime)
 
-## Biome Configuration
+## ESLint Configuration
 
-- Formatter: 2-space indentation, double quotes for JS
-- Linter: recommended rules enabled
-  - `useUniqueElementIds`: error
-  - `noDangerouslySetInnerHtml`: disabled (required for structured data)
-- CSS Modules parsing enabled
-- Auto-organize imports on save
-- VCS integration with git
+- Flat config format in `eslint.config.ts`
+- Plugins: TypeScript ESLint, React, JSON, Markdown, CSS
+- Ignores patterns from `.gitignore` plus `.claude/*` and `.vscode/*`
+- React version detection enabled
+- Recommended rules for all file types
+
+## Prettier Configuration
+
+- 2-space indentation, no tabs
+- Double quotes for strings
+- Semicolons required
+- Print width: 85 characters
+- No trailing commas
+- Arrow function parens: avoid when possible
 
 ## Key Dependencies
 
@@ -107,11 +118,13 @@ The index route renders **four different layouts** (1, 2, 3, and 4 columns) with
 - **React 19** - UI framework
 - **Vite** - Build tool
 - **Vitest** - Testing framework
-- **Biome** - Linting and formatting
+- **ESLint** - Linting (with TypeScript, React, JSON, Markdown, CSS plugins)
+- **Prettier** - Code formatting
 - **typed-css-modules** - CSS Module type generation
 - **Open Props** - CSS design tokens
 - **Lucide React** - Icon library
 - **concurrently** - Run multiple npm scripts
+- **Zod** - Schema validation (used for search params)
 
 ## Build Configuration (vite.config.ts)
 
@@ -126,8 +139,8 @@ Plugins in order:
 ## Important Notes
 
 - `src/routeTree.gen.ts` is auto-generated - never edit manually
-- CSS Module `.d.ts` files are auto-generated - excluded from Biome
+- CSS Module `.d.ts` files are auto-generated - do not commit or edit
 - Development uses port 3000
-- AccentPicker component allows theme customization via CSS custom properties
-- Profile picture uses CSS Modules with custom styling
-- Structured data (JSON-LD) uses `dangerouslySetInnerHTML` (Biome rule disabled for this)
+- AccentPicker component allows theme customization via CSS custom properties (controlled by `hue` search param)
+- Structured data (JSON-LD) uses `dangerouslySetInnerHTML` for SEO
+- Search params are validated with Zod and can be retained across navigation (e.g., `hue` param)
