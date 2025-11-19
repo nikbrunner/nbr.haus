@@ -7,7 +7,7 @@ export default function ProfilePicture() {
       <img
         className={styles.profileImage}
         src={profilePictureImg}
-        alt="Nik Brunner's personal website - a black and white photograph of a modernist house representing his digital home"
+        alt="My personal website - a black and white photograph of a modernist house representing my digital home"
       />
       <div className={styles.profileImageOverlay}></div>
     </div>
