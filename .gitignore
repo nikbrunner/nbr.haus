@@ -13,3 +13,6 @@ count.txt
 todos.json
 .vercel/output
 *.module.css.d.ts
+
+*storybook.log
+storybook-static
