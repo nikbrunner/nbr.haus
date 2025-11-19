@@ -15,7 +15,7 @@ export default function Connect() {
               rel="noopener noreferrer"
               className={styles.link}
             >
-              nikbrunner
+              Profile
             </Link>
           </span>
         </div>
@@ -26,7 +26,7 @@ export default function Connect() {
               href="mailto:nbr.haus.persuader046@passmail.com"
               className={styles.link}
             >
-              nbr.haus.persuader046@passmail.com
+              Message me
             </Link>
           </span>
         </div>
@@ -39,18 +39,14 @@ export default function Connect() {
               rel="noopener noreferrer"
               className={styles.link}
             >
-              nbru
+              Profile
             </Link>
           </span>
         </div>
         <div className={styles.item}>
           <span className={styles.label}>CV:</span>
           <span className={styles.value}>
-            <Link
-              href="/Nikolaus_Brunner_CV.pdf"
-              download
-              className={styles.link}
-            >
+            <Link href="/Nikolaus_Brunner_CV.pdf" download className={styles.link}>
               Download PDF
             </Link>
           </span>
