@@ -80,7 +80,7 @@ export default function Project({
   ];
 
   return (
-    <SpecCard title={title} className={styles.project}>
+    <SpecCard title={title}>
       <SpecList items={specItems} />
 
       <div className={styles.description}>{children}</div>
