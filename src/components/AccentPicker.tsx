@@ -38,7 +38,7 @@ export default function AccentPicker() {
 
     updateCssVars(finalHue, hueActive, hueActiveAlt);
     localStorage.setItem("hue", finalHue.toString());
-    localStorage.setItem("hue-active", hueActive.toString());
+    localStorage.setItem("hue-accent", hueActive.toString());
   }
 
   // Get initial hue from query param, localStorage, or random
@@ -95,8 +95,8 @@ export default function AccentPicker() {
     // Store initial hue to localStorage
     if (typeof localStorage !== "undefined") {
       localStorage.setItem("hue", hue.toString());
-      localStorage.setItem("hue-active", hueActive.toString());
-      localStorage.setItem("hue-active-alt", hueActiveAlt.toString());
+      localStorage.setItem("hue-accent", hueActive.toString());
+      localStorage.setItem("hue-accent-alt", hueActiveAlt.toString());
     }
   }, [getInitialHue, getNextHues, updateCssVars]);
 
