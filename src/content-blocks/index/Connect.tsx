@@ -1,57 +1,60 @@
 import Link from "../../components/Link";
+import SpecCard from "../../components/SpecCard";
+import SpecList from "../../components/SpecList";
 import styles from "./Connect.module.css";
 
 export default function Connect() {
+  const items = [
+    {
+      label: "GitHub:",
+      value: (
+        <Link
+          href="https://www.github.com/nikbrunner"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.link}
+        >
+          Profile
+        </Link>
+      )
+    },
+    {
+      label: "LinkedIn:",
+      value: (
+        <Link
+          href="https://www.linkedin.com/in/nbru/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.link}
+        >
+          Profile
+        </Link>
+      )
+    },
+    {
+      label: "CV:",
+      value: (
+        <Link href="/Nikolaus_Brunner_CV.pdf" download className={styles.link}>
+          Download PDF
+        </Link>
+      )
+    },
+    {
+      label: "Email:",
+      value: (
+        <Link
+          href="mailto:nbr.haus.persuader046@passmail.com"
+          className={styles.link}
+        >
+          Message me
+        </Link>
+      )
+    }
+  ];
+
   return (
-    <section className={styles.connect}>
-      <h3 className={styles.title}>Connect</h3>
-      <div className={styles.list}>
-        <div className={styles.item}>
-          <span className={styles.label}>GitHub:</span>
-          <span className={styles.value}>
-            <Link
-              href="https://www.github.com/nikbrunner"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.link}
-            >
-              Profile
-            </Link>
-          </span>
-        </div>
-        <div className={styles.item}>
-          <span className={styles.label}>Email:</span>
-          <span className={styles.value}>
-            <Link
-              href="mailto:nbr.haus.persuader046@passmail.com"
-              className={styles.link}
-            >
-              Message me
-            </Link>
-          </span>
-        </div>
-        <div className={styles.item}>
-          <span className={styles.label}>LinkedIn:</span>
-          <span className={styles.value}>
-            <Link
-              href="https://www.linkedin.com/in/nbru/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.link}
-            >
-              Profile
-            </Link>
-          </span>
-        </div>
-        <div className={styles.item}>
-          <span className={styles.label}>CV:</span>
-          <span className={styles.value}>
-            <Link href="/Nikolaus_Brunner_CV.pdf" download className={styles.link}>
-              Download PDF
-            </Link>
-          </span>
-        </div>
-      </div>
-    </section>
+    <SpecCard title="Connect">
+      <SpecList items={items} />
+    </SpecCard>
   );
 }

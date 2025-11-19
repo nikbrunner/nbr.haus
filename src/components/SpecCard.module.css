@@ -1,0 +1,18 @@
+.card {
+  container-type: inline-size;
+  border: var(--border-size-2) solid var(--fg-accent);
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-3);
+  padding: var(--size-3);
+  box-shadow: var(--shadow-hard-5);
+  background: var(--bg-dots);
+}
+
+.title {
+  margin: 0;
+  background-color: var(--bg-main);
+  color: var(--fg-accent);
+  padding: var(--size-2) var(--size-3);
+  border-left: var(--border-size-3) solid var(--fg-accent);
+}

@@ -1,3 +1,5 @@
+import SpecCard from "./SpecCard";
+import SpecList from "./SpecList";
 import styles from "./Project.module.css";
 
 interface Props {
@@ -36,65 +38,50 @@ export default function Project({
 }: Props) {
   const allLinks = [primaryLink, ...(additionalLinks || [])];
 
+  const specItems = [
+    { label: "Status:", value: status },
+    ...(stack.length > 0
+      ? [
+          {
+            label: "Stack:",
+            value: (
+              <div className={styles.tags}>
+                {stack.map(tech => (
+                  <span key={tech} className={styles.tag}>
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            )
+          }
+        ]
+      : []),
+    ...(topics.length > 0
+      ? [
+          {
+            label: "Topics:",
+            value: (
+              <div className={styles.tags}>
+                {topics.map(topic => (
+                  <span key={topic} className={styles.tag}>
+                    {topic}
+                  </span>
+                ))}
+              </div>
+            )
+          }
+        ]
+      : []),
+    ...(year ? [{ label: "Year:", value: year }] : []),
+    ...(platforms && platforms.length > 0
+      ? [{ label: "Platforms:", value: platforms.join(", ") }]
+      : []),
+    ...(metrics ? metrics.map(m => ({ label: `${m.label}:`, value: m.value })) : [])
+  ];
+
   return (
-    <article className={styles.project}>
-      <h3 className={styles.title}>{title}</h3>
-
-      <div className={styles.metadata}>
-        <div className={styles.metadataItem}>
-          <span className={styles.label}>Status:</span>
-          <span className={styles.value}>{status}</span>
-        </div>
-
-        {stack.length > 0 && (
-          <div className={styles.metadataItem}>
-            <span className={styles.label}>Stack:</span>
-            <div className={styles.tags}>
-              {stack.map(tech => (
-                <span key={tech} className={styles.tag}>
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {topics.length > 0 && (
-          <div className={styles.metadataItem}>
-            <span className={styles.label}>Topics:</span>
-            <div className={styles.tags}>
-              {topics.map(topic => (
-                <span key={topic} className={styles.tag}>
-                  {topic}
-                </span>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {year && (
-          <div className={styles.metadataItem}>
-            <span className={styles.label}>Year:</span>
-            <span className={styles.value}>{year}</span>
-          </div>
-        )}
-
-        {platforms && platforms.length > 0 && (
-          <div className={styles.metadataItem}>
-            <span className={styles.label}>Platforms:</span>
-            <span className={styles.value}>{platforms.join(", ")}</span>
-          </div>
-        )}
-
-        {metrics &&
-          metrics.length > 0 &&
-          metrics.map(metric => (
-            <div key={metric.label} className={styles.metadataItem}>
-              <span className={styles.label}>{metric.label}:</span>
-              <span className={styles.value}>{metric.value}</span>
-            </div>
-          ))}
-      </div>
+    <SpecCard title={title} className={styles.project}>
+      <SpecList items={specItems} />
 
       <div className={styles.description}>{children}</div>
 
@@ -111,6 +98,6 @@ export default function Project({
           </a>
         ))}
       </div>
-    </article>
+    </SpecCard>
   );
 }
