@@ -1,7 +1,6 @@
 import type { Preview } from "@storybook/react-vite";
 import "../styles/global.css";
 import "../styles/fonts.css";
-import { withRouter } from "./decorators/withRouter";
 
 const preview: Preview = {
   parameters: {
@@ -18,9 +17,7 @@ const preview: Preview = {
       // 'off' - skip a11y checks entirely
       test: "todo"
     }
-  },
-
-  decorators: [withRouter()]
+  }
 };
 
 export default preview;
