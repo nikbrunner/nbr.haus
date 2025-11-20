@@ -41,14 +41,7 @@ export default function Connect() {
     },
     {
       label: "Email:",
-      value: (
-        <Link
-          href="mailto:nbr.haus.persuader046@passmail.com"
-          className={styles.link}
-        >
-          Message me
-        </Link>
-      )
+      value: <Link href="mailto:nik@nbr.haus">nik@nbr.haus</Link>
     }
   ];
 
