@@ -6,10 +6,7 @@ import {
   createRoute,
   createRouter
 } from "@tanstack/react-router";
-import {
-  TanStackRouterDevtools,
-  TanStackRouterDevtoolsPanel
-} from "@tanstack/react-router-devtools";
+import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { rootSearchParamsSchema } from "@/validators/rootSearchParams";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 
