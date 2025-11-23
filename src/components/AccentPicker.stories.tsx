@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import AccentPicker from "./AccentPicker";
 import { withRouter } from "@/storybook/decorators/withRouter";
 import type { RootSearchParams } from "@/validators/rootSearchParams";
