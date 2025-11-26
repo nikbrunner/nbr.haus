@@ -84,6 +84,10 @@ export const Route = createRootRoute({
         content: "https://nbr.haus/og-image.jpg"
       },
       {
+        name: "twitter:url",
+        content: "https://nbr.haus"
+      },
+      {
         title: "Nik Brunner - Software Engineer | Frontend Developer"
       }
     ],
