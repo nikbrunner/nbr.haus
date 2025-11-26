@@ -51,33 +51,37 @@ export const Route = createRootRoute({
       },
       {
         property: "og:title",
-        content: "Nik Brunner - Software Engineer | Frontend Developer"
+        content: "Nik Brunner - Senior Frontend Developer"
       },
       {
         property: "og:description",
         content:
-          "Software Engineer with 5+ years of experience building frontend architectures and design systems. Specialized in React, TypeScript, and modern web technologies. Available February 2026."
+          "Frontend Engineer with 5 years of experience. React, TypeScript, Design Systems, Technical Architecture."
       },
       {
         property: "og:image",
-        content: "/og-image.jpg"
+        content: "https://nbr.haus/og-image.jpg"
       },
       {
-        property: "twitter:card",
+        property: "og:url",
+        content: "https://nbr.haus"
+      },
+      {
+        name: "twitter:card",
         content: "summary_large_image"
       },
       {
-        property: "twitter:title",
-        content: "Nik Brunner - Software Engineer | Frontend Developer"
+        name: "twitter:title",
+        content: "Nik Brunner - Senior Frontend Developer"
       },
       {
-        property: "twitter:description",
+        name: "twitter:description",
         content:
-          "Software Engineer with 5+ years of experience building frontend architectures and design systems. Specialized in React, TypeScript, and modern web technologies. Available February 2026."
+          "Frontend Engineer with 5 years of experience. React, TypeScript, Design Systems, Technical Architecture."
       },
       {
-        property: "twitter:image",
-        content: "/og-image.jpg"
+        name: "twitter:image",
+        content: "https://nbr.haus/og-image.jpg"
       },
       {
         title: "Nik Brunner - Software Engineer | Frontend Developer"
