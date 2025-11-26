@@ -56,7 +56,7 @@ export const Route = createRootRoute({
       {
         property: "og:description",
         content:
-          "Frontend Engineer with 5 years of experience. React, TypeScript, Design Systems, Technical Architecture."
+          "Senior Frontend Engineer with 5 years of experience. React, TypeScript, Design Systems, Technical Architecture."
       },
       {
         property: "og:image",
