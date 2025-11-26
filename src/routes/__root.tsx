@@ -88,7 +88,7 @@ export const Route = createRootRoute({
         content: "https://nbr.haus"
       },
       {
-        title: "Nik Brunner - Software Engineer | Frontend Developer"
+        title: "Nik Brunner - Senior Frontend Developer & Software Engineer"
       }
     ],
     links: [
