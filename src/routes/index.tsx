@@ -34,7 +34,7 @@ function IndexPage() {
           <Section title="Projects">
             <Projects />
           </Section>
-          <Section title="Tech Stack">
+          <Section>
             <TechStack />
           </Section>
           <Section title="Dev Tools">
@@ -55,7 +55,7 @@ function IndexPage() {
           <Section title="About">
             <About />
           </Section>
-          <Section title="Tech Stack">
+          <Section>
             <TechStack />
           </Section>
           <Section title="Dev Tools">
@@ -85,7 +85,7 @@ function IndexPage() {
           <Section title="About">
             <About />
           </Section>
-          <Section title="Tech Stack">
+          <Section>
             <TechStack />
           </Section>
           <Section title="Dev Tools">
@@ -121,7 +121,7 @@ function IndexPage() {
         </div>
 
         <div className={styles.column}>
-          <Section title="Tech Stack">
+          <Section>
             <TechStack />
           </Section>
           <Section title="Dev Tools">
