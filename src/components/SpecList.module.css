@@ -9,7 +9,7 @@
 
 .item {
   display: grid;
-  grid-template-columns: 25cqw 1fr;
+  grid-template-columns: 35cqw 1fr;
   gap: var(--size-3);
   padding: var(--size-2) 0;
   align-items: center;
