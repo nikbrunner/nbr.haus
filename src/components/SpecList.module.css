@@ -22,12 +22,9 @@
 .label {
   font-family: var(--font-family-mono);
   color: var(--fg-support);
-  white-space: nowrap;
 }
 
 .value {
   color: var(--fg-main);
-  display: flex;
-  align-items: center;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
