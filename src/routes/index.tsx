@@ -37,7 +37,7 @@ function IndexPage() {
           <Section>
             <TechStack />
           </Section>
-          <Section title="Dev Tools">
+          <Section>
             <DevTools />
           </Section>
           <Section title="AI">
@@ -58,7 +58,7 @@ function IndexPage() {
           <Section>
             <TechStack />
           </Section>
-          <Section title="Dev Tools">
+          <Section>
             <DevTools />
           </Section>
           <Section title="AI">
@@ -88,7 +88,7 @@ function IndexPage() {
           <Section>
             <TechStack />
           </Section>
-          <Section title="Dev Tools">
+          <Section>
             <DevTools />
           </Section>
           <Section title="AI">
@@ -124,7 +124,7 @@ function IndexPage() {
           <Section>
             <TechStack />
           </Section>
-          <Section title="Dev Tools">
+          <Section>
             <DevTools />
           </Section>
           <Section title="AI">
