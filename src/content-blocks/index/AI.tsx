@@ -7,7 +7,7 @@ export default function AI() {
       <p>
         I am lucky enough to have entered the industry before AI became a thing. To
         have the learning hill to climb, with no tab completion or ChatGPT. I think
-        this is very valuable. And I think it's still very valuable and even
+        this is was very valuable. And I think it's still very valuable and even
         necessary to learn coding in the AI era. I would never recommend a Junior
         Developer to use AI during their initial learning phase. I could never use AI
         effectively as I do now, if I had not learned this craft without it.
@@ -23,21 +23,58 @@ export default function AI() {
       </p>
 
       <p>
-        That's why I'm deliberate about how I use it. My primary AI tool is{" "}
+        That's why I'm deliberate about how I use it. I use{" "}
         <Link
           href="https://claude.com/product/claude-code"
           target="_blank"
           rel="noopener noreferrer"
         >
           Claude Code
-        </Link>
-        . I use it like a personal assistant for brainstorming, planning, debugging
-        and implementing boilerplate. When the task feels manageable by AI code
+        </Link>{" "}
+        as my primary AI assistent. When the task feels manageable by AI code
         generation, I work out detailed plans and then let Claude Code handle the
         implementation, while reviewing the code step by step.
       </p>
 
-      <p>I also use personal slash commands and MCPs where applicable.</p>
+      <div>
+        <p>
+          I also use personal slash commands and{" "}
+          <Link href="https://modelcontextprotocol.io/docs/getting-started/intro">
+            MCP's
+          </Link>{" "}
+          where applicable.
+        </p>
+
+        <p>I use these three MCPs the most:</p>
+        <ul>
+          <li>
+            <Link
+              href="https://ref.tools/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ref.tools MCP
+            </Link>
+            - For looking up and indexing documentation
+          </li>
+          <li>
+            <Link href="https://exa.ai" target="_blank" rel="noopener noreferrer">
+              Exa MCP
+            </Link>
+            - For a better web search
+          </li>
+          <li>
+            <Link
+              href="https://github.com/ChromeDevTools/chrome-devtools-mcp/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Chrome DevTools MCP
+            </Link>
+            - So the AI can have its own browser
+          </li>
+        </ul>
+      </div>
     </>
   );
 }
