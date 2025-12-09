@@ -66,17 +66,21 @@ export default function AccentPicker() {
       return { x: 100, y: 100 }; // Default SSR position
     }
 
+    const padding = 80;
+    const maxX = window.innerWidth - padding;
+    const maxY = window.innerHeight - padding;
+
     const savedX = localStorage.getItem("bucket-x");
     const savedY = localStorage.getItem("bucket-y");
 
     if (savedX && savedY) {
-      return { x: parseFloat(savedX), y: parseFloat(savedY) };
+      // Clamp saved position to current viewport bounds
+      const x = Math.max(padding, Math.min(parseFloat(savedX), maxX));
+      const y = Math.max(padding, Math.min(parseFloat(savedY), maxY));
+      return { x, y };
     }
 
     // Random position with padding from edges
-    const padding = 80;
-    const maxX = window.innerWidth - padding;
-    const maxY = window.innerHeight - padding;
     const randomX = Math.random() * (maxX - padding) + padding;
     const randomY = Math.random() * (maxY - padding) + padding;
     return { x: randomX, y: randomY };
