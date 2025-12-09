@@ -32,7 +32,7 @@ const items: Array<{
   value: React.ReactNode;
 }> = [
   {
-    label: "Primary editor:",
+    label: "Editor:",
     value: (
       <Link
         href="https://github.com/nikbrunner/dots/tree/main/common/.config/nvim"
@@ -40,14 +40,6 @@ const items: Array<{
         rel="noopener noreferrer"
       >
         Neovim
-      </Link>
-    )
-  },
-  {
-    label: "Secondary editor:",
-    value: (
-      <Link href="https://zed.dev" target="_blank" rel="noopener noreferrer">
-        Zed
       </Link>
     )
   },
