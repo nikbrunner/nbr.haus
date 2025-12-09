@@ -1,47 +1,39 @@
-@keyframes orbitAndSpin {
-  0% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  25% {
-    transform: translate(10px, 0) rotate(90deg);
-  }
-  50% {
-    transform: translate(10px, 10px) rotate(180deg);
-  }
-  75% {
-    transform: translate(0, 10px) rotate(270deg);
-  }
-  100% {
-    transform: translate(0, 0) rotate(360deg);
-  }
-}
-
 .accentPicker {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: var(--accent-picker-size);
-  height: var(--accent-picker-size);
-  cursor: grab;
-  user-select: none;
+  bottom: var(--size-3);
+  left: var(--size-3);
+  right: var(--size-3);
+  display: flex;
+  justify-content: center;
   z-index: 9999;
+}
 
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: var(--fg-accent);
-    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.1);
-    border-radius: 50%;
-    animation: orbitAndSpin 8s ease-in-out infinite;
-    transform-origin: center;
-  }
+.swatchList {
+  display: flex;
+  align-items: center;
+  height: var(--size-8);
+  gap: var(--size-4);
+  padding: var(--size-2) var(--size-6);
+  border-left: var(--size-2) solid var(--fg-accent);
+  border-right: var(--size-2) solid var(--fg-accent);
+  /* box-shadow: var(--shadow-hard-5); */
+  background: var(--bg-dots);
+}
 
-  &:active::before {
-    animation-play-state: paused;
-  }
+.swatch {
+  width: var(--size-6);
+  height: var(--size-6);
+  cursor: pointer;
+  border: none;
+  transition:
+    transform 0.1s ease-out,
+    box-shadow 0.15s ease-out;
+}
 
-  &:active {
-    cursor: grabbing;
-  }
+.swatch:hover {
+  transform: scale(1.35);
+}
+
+.active {
+  transform: scale(1.35);
 }

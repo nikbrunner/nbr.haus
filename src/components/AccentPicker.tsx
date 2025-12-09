@@ -1,13 +1,15 @@
 import { useRouter, useSearch } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { DraggableData, DraggableEvent } from "react-draggable";
-import Draggable from "react-draggable";
 import styles from "./AccentPicker.module.css";
 
+const PRESET_HUES = [80, 144, 288];
+
 export default function AccentPicker() {
-  const nodeRef = useRef(null);
   const router = useRouter();
   const search = useSearch({ from: "/" });
+  const pickerRef = useRef<HTMLDivElement>(null);
+
+  const [isOpen, setIsOpen] = useState(false);
 
   // Utility functions
   const getNextHues = useCallback((hue: number) => {
@@ -29,18 +31,6 @@ export default function AccentPicker() {
     []
   );
 
-  function updateHueFromPosition(x: number): void {
-    if (typeof window === "undefined") return;
-    const windowWidth = window.innerWidth;
-    const hue = Math.round((x / windowWidth) * 360);
-    const clampedHue = Math.max(0, Math.min(360, hue));
-    const { hue: finalHue, hueActive, hueActiveAlt } = getNextHues(clampedHue);
-
-    updateCssVars(finalHue, hueActive, hueActiveAlt);
-    localStorage.setItem("hue", finalHue.toString());
-    localStorage.setItem("hue-accent", hueActive.toString());
-  }
-
   // Get initial hue from query param, localStorage, or random
   const getInitialHue = useCallback((): number => {
     // 1. Priority: Query param
@@ -56,38 +46,11 @@ export default function AccentPicker() {
       }
     }
 
-    // 3. Default: random
-    return Math.floor(Math.random() * 360);
+    // 3. Default: random from presets
+    return PRESET_HUES[Math.floor(Math.random() * PRESET_HUES.length)];
   }, [search.hue]);
 
-  // Get initial position from localStorage or generate random position
-  function getInitialPosition() {
-    if (typeof window === "undefined" || typeof localStorage === "undefined") {
-      return { x: 100, y: 100 }; // Default SSR position
-    }
-
-    const padding = 80;
-    const maxX = window.innerWidth - padding;
-    const maxY = window.innerHeight - padding;
-
-    const savedX = localStorage.getItem("bucket-x");
-    const savedY = localStorage.getItem("bucket-y");
-
-    if (savedX && savedY) {
-      // Clamp saved position to current viewport bounds
-      const x = Math.max(padding, Math.min(parseFloat(savedX), maxX));
-      const y = Math.max(padding, Math.min(parseFloat(savedY), maxY));
-      return { x, y };
-    }
-
-    // Random position with padding from edges
-    const randomX = Math.random() * (maxX - padding) + padding;
-    const randomY = Math.random() * (maxY - padding) + padding;
-    return { x: randomX, y: randomY };
-  }
-
-  // Use lazy initializer to get position from localStorage immediately (no flash)
-  const [defaultPos] = useState(getInitialPosition);
+  const [selectedHue, setSelectedHue] = useState(getInitialHue);
 
   // Initialize hue from query param, localStorage, or random on mount
   useEffect(() => {
@@ -95,6 +58,7 @@ export default function AccentPicker() {
     const { hue, hueActive, hueActiveAlt } = getNextHues(initialHue);
 
     updateCssVars(hue, hueActive, hueActiveAlt);
+    setSelectedHue(hue);
 
     // Store initial hue to localStorage
     if (typeof localStorage !== "undefined") {
@@ -104,34 +68,54 @@ export default function AccentPicker() {
     }
   }, [getInitialHue, getNextHues, updateCssVars]);
 
-  const handleDrag = (_e: DraggableEvent, data: DraggableData) => {
-    const windowWidth = window.innerWidth;
-    const hue = Math.round((data.x / windowWidth) * 360);
-    const clampedHue = Math.max(0, Math.min(360, hue));
+  // Click outside handler
+  useEffect(() => {
+    if (!isOpen) return;
 
-    updateHueFromPosition(data.x);
+    const handleClickOutside = (e: MouseEvent) => {
+      if (pickerRef.current && !pickerRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    };
 
-    // Update URL with new hue (replace history to avoid pollution)
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOpen]);
+
+  const handleSelectHue = (hue: number) => {
+    const { hue: finalHue, hueActive, hueActiveAlt } = getNextHues(hue);
+    updateCssVars(finalHue, hueActive, hueActiveAlt);
+    setSelectedHue(finalHue);
+    setIsOpen(false);
+
+    localStorage.setItem("hue", finalHue.toString());
+    localStorage.setItem("hue-accent", hueActive.toString());
+    localStorage.setItem("hue-accent-alt", hueActiveAlt.toString());
+
     router.navigate({
       to: "/",
-      search: prev => ({ ...prev, hue: clampedHue }),
+      search: prev => ({ ...prev, hue: finalHue }),
+      resetScroll: false,
       replace: true
     });
   };
 
-  const handleStop = (_e: DraggableEvent, data: DraggableData) => {
-    localStorage.setItem("bucket-x", data.x.toString());
-    localStorage.setItem("bucket-y", data.y.toString());
-  };
+  // Get the accent hue (what actually shows on the page)
+  const getAccentHue = (hue: number) => (hue + 90 > 360 ? hue + 90 - 360 : hue + 90);
 
   return (
-    <Draggable
-      nodeRef={nodeRef}
-      defaultPosition={defaultPos}
-      onDrag={handleDrag}
-      onStop={handleStop}
-    >
-      <div ref={nodeRef} className={styles.accentPicker} />
-    </Draggable>
+    <div ref={pickerRef} className={styles.accentPicker}>
+      <div className={styles.swatchList}>
+        {PRESET_HUES.map(hue => (
+          <button
+            key={hue}
+            className={`${styles.swatch} ${selectedHue === hue ? styles.active : ""}`}
+            style={{ backgroundColor: `oklch(45% 0.35 ${getAccentHue(hue)})` }}
+            onClick={() => handleSelectHue(hue)}
+            aria-label={`Select accent color`}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
