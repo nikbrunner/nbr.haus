@@ -1,5 +1,7 @@
 import Highlight from "@/components/Highlight";
 import Link from "@/components/Link";
+import SpecCard from "../../components/SpecCard";
+import SpecList from "../../components/SpecList";
 
 export default function AI() {
   return (
@@ -37,43 +39,62 @@ export default function AI() {
       </p>
 
       <div>
-        <p>
-          I also use personal slash commands and{" "}
-          <Link href="https://modelcontextprotocol.io/docs/getting-started/intro">
-            MCP's
-          </Link>{" "}
-          where applicable.
-        </p>
-
-        <p>I use these three MCPs the most:</p>
-        <ul>
-          <li>
-            <Link
-              href="https://ref.tools/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              ref.tools MCP
-            </Link>
-            - For looking up and indexing documentation
-          </li>
-          <li>
-            <Link href="https://exa.ai" target="_blank" rel="noopener noreferrer">
-              Exa MCP
-            </Link>
-            - For a better web search
-          </li>
-          <li>
-            <Link
-              href="https://github.com/ChromeDevTools/chrome-devtools-mcp/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Chrome DevTools MCP
-            </Link>
-            - So the AI can have its own browser
-          </li>
-        </ul>
+        <SpecCard
+          title="MCP's"
+          description={
+            <>
+              <p>
+                I also use personal slash commands and{" "}
+                <Link href="https://modelcontextprotocol.io/docs/getting-started/intro">
+                  MCP's
+                </Link>{" "}
+                where applicable.
+              </p>
+              <p>These are the most used MCP's for AI assistance.</p>
+            </>
+          }
+        >
+          <SpecList
+            items={[
+              {
+                label: "Documentation Lookup",
+                value: (
+                  <Link
+                    href="https://ref.tools/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    ref.tools
+                  </Link>
+                )
+              },
+              {
+                label: "Better Web Search",
+                value: (
+                  <Link
+                    href="https://exa.ai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Exa
+                  </Link>
+                )
+              },
+              {
+                label: "Browser",
+                value: (
+                  <Link
+                    href="https://github.com/ChromeDevTools/chrome-devtools-mcp/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Chrome DevTools
+                  </Link>
+                )
+              }
+            ]}
+          />
+        </SpecCard>
       </div>
     </>
   );

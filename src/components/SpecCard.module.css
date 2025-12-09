@@ -16,3 +16,9 @@
   padding: var(--size-2) var(--size-3);
   border-left: var(--border-size-3) solid var(--fg-accent);
 }
+
+.description {
+  margin: 0;
+  background-color: var(--bg-main);
+  padding: var(--size-2) var(--size-3);
+}
