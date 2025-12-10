@@ -3,4 +3,13 @@
   scroll-margin-top: var(--header-height);
   display: grid;
   gap: var(--size-3);
+
+  & h2 {
+    margin-bottom: 0;
+  }
+
+  & p:first-of-type {
+    font-weight: var(--font-weight-7);
+    margin-bottom: var(--size-7);
+  }
 }
