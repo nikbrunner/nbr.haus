@@ -4,20 +4,21 @@
   left: var(--size-3);
   right: var(--size-3);
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   z-index: 9999;
 }
 
 .swatchList {
   display: flex;
   align-items: center;
-  height: var(--size-8);
+  height: var(--size-9);
   gap: var(--size-4);
   padding: var(--size-2) var(--size-6);
   border-left: var(--size-2) solid var(--fg-accent);
   border-right: var(--size-2) solid var(--fg-accent);
-  /* box-shadow: var(--shadow-hard-5); */
   background: var(--bg-dots);
+  box-shadow: var(--shadow-hard-5);
+  border: var(--border-size-2) solid var(--fg-accent);
 }
 
 .swatch {
