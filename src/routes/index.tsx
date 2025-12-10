@@ -31,9 +31,6 @@ function IndexPage() {
           <Section title="Employment">
             <Jobs />
           </Section>
-          <Section title="Projects">
-            <Projects />
-          </Section>
           <Section>
             <TechStack />
           </Section>
@@ -42,6 +39,9 @@ function IndexPage() {
           </Section>
           <Section title="AI">
             <AI />
+            <Section title="Projects">
+              <Projects />
+            </Section>
           </Section>
         </div>
       </div>
