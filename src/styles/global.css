@@ -113,15 +113,15 @@ html[data-color-mode="dark"] {
 }
 
 h1 {
-  font-size: clamp(var(--font-size-4), 7.5cqw, var(--font-size-8));
+  font-size: var(--font-size-fluid-3);
   font-weight: var(--font-weight-9);
   color: var(--fg-main);
 }
 
 h2 {
+  font-size: var(--font-size-fluid-3);
   border-bottom: var(--border-size-2) dashed var(--fg-accent);
   color: var(--fg-accent);
-  font-size: clamp(var(--font-size-4), 7.5cqw, var(--font-size-8));
   margin-top: 0;
   padding-bottom: var(--size-1);
   text-transform: uppercase;
@@ -129,13 +129,14 @@ h2 {
 }
 
 h3 {
-  font-size: clamp(var(--font-size-3), 7.5cqw, var(--font-size-5));
+  font-size: var(--font-size-fluid-2);
   font-weight: var(--font-weight-9);
   line-height: var(--font-lineheight-1);
   color: var(--fg-main);
 }
 
 p {
+  font-size: var(--font-size-fluid-0);
   font-weight: var(--font-weight-3);
   margin: 0 0 var(--size-3);
 }
