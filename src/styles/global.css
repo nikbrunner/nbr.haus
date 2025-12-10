@@ -3,6 +3,32 @@
 
 @import "./fonts.css";
 
+/* Component styles - consolidated here to ensure SSR includes them */
+/* Routes */
+@import "../routes/BaseLayout.css";
+@import "../routes/index.css";
+
+/* Components */
+@import "../components/AccentPicker.css";
+@import "../components/ColorModePicker.css";
+@import "../components/Header.css";
+@import "../components/Highlight.css";
+@import "../components/Hr.css";
+@import "../components/Job.css";
+@import "../components/Link.css";
+@import "../components/Project.css";
+@import "../components/Section.css";
+@import "../components/SpecCard.css";
+@import "../components/SpecGrid.css";
+@import "../components/SpecList.css";
+@import "../components/StylePicker.css";
+
+/* Content blocks */
+@import "../content-blocks/index/About.css";
+@import "../content-blocks/index/Connect.css";
+@import "../content-blocks/index/ProfilePicture.css";
+@import "../content-blocks/index/Projects.css";
+
 html {
   color-scheme: light dark;
 }

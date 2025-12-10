@@ -1,6 +1,5 @@
 import AccentPicker from "./AccentPicker";
 import ColorModePicker from "./ColorModePicker";
-import "./StylePicker.css";
 
 export default function StylePicker() {
   return (

@@ -1,5 +1,4 @@
 import { cx } from "class-variance-authority";
-import "./SpecList.css";
 
 interface Props {
   items: Array<{

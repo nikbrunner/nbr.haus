@@ -1,7 +1,6 @@
 import Link from "../../components/Link";
 import SpecCard from "../../components/SpecCard";
 import SpecList from "../../components/SpecList";
-import "./Connect.css";
 
 export default function Connect() {
   const items = [

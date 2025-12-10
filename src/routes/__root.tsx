@@ -15,7 +15,6 @@ import {
   defaultRootSearchParams,
   rootSearchParamsSchema
 } from "../validators/rootSearchParams";
-import "./BaseLayout.css";
 
 export const Route = createRootRoute({
   validateSearch: rootSearchParamsSchema,

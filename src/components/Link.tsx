@@ -1,5 +1,4 @@
 import { cx } from "class-variance-authority";
-import "./Link.css";
 
 type Props = React.ComponentProps<"a">;
 

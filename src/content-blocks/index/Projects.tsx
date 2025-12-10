@@ -1,6 +1,5 @@
 import Highlight from "../../components/Highlight";
 import Project from "../../components/Project";
-import "./Projects.css";
 
 export default function Projects() {
   return (

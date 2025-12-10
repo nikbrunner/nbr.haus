@@ -2,7 +2,6 @@ import { useRouter, useSearch } from "@tanstack/react-router";
 import { cva } from "class-variance-authority";
 import { useCallback, useEffect, useState } from "react";
 import type { ColorMode } from "@/validators/rootSearchParams";
-import "./ColorModePicker.css";
 
 const option = cva("color-mode-picker__option", {
   variants: {

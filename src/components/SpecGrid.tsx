@@ -1,5 +1,4 @@
 import Link from "./Link";
-import "./SpecGrid.css";
 
 interface Props {
   items: Array<{

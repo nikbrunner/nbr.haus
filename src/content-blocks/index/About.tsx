@@ -1,5 +1,4 @@
 import Highlight from "@/components/Highlight";
-import "./About.css";
 
 export default function About() {
   const experienceInYears = new Date().getFullYear() - 2020;

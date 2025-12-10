@@ -10,8 +10,6 @@ import ProfilePicture from "../content-blocks/index/ProfilePicture";
 import Projects from "../content-blocks/index/Projects";
 import TechStack from "../content-blocks/index/TechStack";
 
-import "./index.css";
-
 export const Route = createFileRoute("/")({
   component: IndexPage
 });

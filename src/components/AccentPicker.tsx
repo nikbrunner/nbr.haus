@@ -1,7 +1,6 @@
 import { useRouter, useSearch } from "@tanstack/react-router";
 import { cva } from "class-variance-authority";
 import { useCallback, useEffect, useState } from "react";
-import "./AccentPicker.css";
 
 const swatch = cva("accent-picker__swatch", {
   variants: {

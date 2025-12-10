@@ -1,5 +1,4 @@
 import { cx } from "class-variance-authority";
-import "./SpecCard.css";
 
 interface Props {
   title?: string;

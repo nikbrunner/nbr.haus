@@ -1,7 +1,6 @@
 import { cva } from "class-variance-authority";
 import SpecCard from "./SpecCard";
 import SpecList from "./SpecList";
-import "./Project.css";
 
 const badge = cva("project__badge", {
   variants: {

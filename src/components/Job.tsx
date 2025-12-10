@@ -1,5 +1,3 @@
-import "./Job.css";
-
 interface Props {
   company: string;
   position: string;
