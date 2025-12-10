@@ -88,7 +88,7 @@ const items: Array<{
     )
   },
   {
-    label: "Password & Secrets manager:",
+    label: "Secrets:",
     value: (
       <Link href="https://1password.com" target="_blank" rel="noopener noreferrer">
         1Password
