@@ -14,7 +14,7 @@ export default function Connect() {
           rel="noopener noreferrer"
           className={styles.link}
         >
-          Profile
+          github.com/nikbrunner
         </Link>
       )
     },
@@ -27,7 +27,7 @@ export default function Connect() {
           rel="noopener noreferrer"
           className={styles.link}
         >
-          Profile
+          linkedin.com/in/nbru/
         </Link>
       )
     },
