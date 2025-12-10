@@ -1,9 +1,3 @@
-.about {
-  & p:first-child {
-    font-weight: var(--font-weight-7);
-  }
-}
-
 .lookingFor {
   background: var(--bg-dots);
   padding: var(--size-3) var(--size-4);

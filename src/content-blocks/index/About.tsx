@@ -1,5 +1,4 @@
 import Highlight from "@/components/Highlight";
-import Hr from "@/components/Hr";
 
 import styles from "./About.module.css";
 
@@ -9,6 +8,9 @@ export default function About() {
   return (
     <div className={styles.about}>
       <p>
+        Hi, there!
+        <br />
+        <br />
         I'm <Highlight>Nik Brunner</Highlight>, a Software Engineer with{" "}
         {experienceInYears} years of experience building frontend architectures and
         design systems.
@@ -20,18 +22,27 @@ export default function About() {
         independently and making design decisions when needed.
       </p>
 
-      <Hr />
-
-      <div className={styles.lookingFor}>
-        <h1>Currently seeking new opportunities starting February 2026.</h1>
-      </div>
-
-      <Hr />
+      <p>
+        I identify what needs doing, prioritize my own work, and know when to reach
+        out for input. But I also love being part of a good team working towards a
+        shared goal.
+      </p>
 
       <p>
-        Born in 1984, based in Landshut, Germany. Outside of code, I enjoy hiking,
-        running, and photography.
+        I am very passionate about building and using products, and am probably the
+        guy that will contact support about features or bugs, and regularly check its
+        change logs and GitHub releases.
       </p>
+
+      <p>
+        I was born in 1984 in Landshut, Germany where I am currently still living.
+        Outside of code, I enjoy hiking, reading, music and photography, and I'm also
+        a little crazy about keyboards.
+      </p>
+
+      <div className={styles.lookingFor}>
+        <h1>I am currently seeking new opportunities starting February 2026.</h1>
+      </div>
     </div>
   );
 }
