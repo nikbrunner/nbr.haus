@@ -17,7 +17,7 @@
 }
 
 .StylePicker__separator {
-  width: 1px;
-  height: var(--size-5);
-  background: var(--fg-minor);
+  width: 3px;
+  height: 100%;
+  background: var(--fg-accent);
 }
