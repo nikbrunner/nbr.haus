@@ -17,8 +17,8 @@ export const Route = createFileRoute("/")({
 function IndexPage() {
   return (
     <>
-      <div className="index__layout index__layout--one-column">
-        <div className="index__column">
+      <div className="Index__layout Index__layout--one-column">
+        <div className="Index__column">
           <Section>
             <ProfilePicture />
             <Connect />
@@ -44,8 +44,8 @@ function IndexPage() {
         </div>
       </div>
 
-      <div className="index__layout index__layout--two-columns">
-        <div className="index__column">
+      <div className="Index__layout Index__layout--two-columns">
+        <div className="Index__column">
           <Section>
             <ProfilePicture />
             <Connect />
@@ -64,7 +64,7 @@ function IndexPage() {
           </Section>
         </div>
 
-        <div className="index__column">
+        <div className="Index__column">
           <Section title="Employment">
             <Jobs />
           </Section>
@@ -74,8 +74,8 @@ function IndexPage() {
         </div>
       </div>
 
-      <div className="index__layout index__layout--three-columns">
-        <div className="index__column">
+      <div className="Index__layout Index__layout--three-columns">
+        <div className="Index__column">
           <Section>
             <ProfilePicture />
             <Connect />
@@ -94,21 +94,21 @@ function IndexPage() {
           </Section>
         </div>
 
-        <div className="index__column">
+        <div className="Index__column">
           <Section title="Employment">
             <Jobs />
           </Section>
         </div>
 
-        <div className="index__column">
+        <div className="Index__column">
           <Section title="Projects">
             <Projects />
           </Section>
         </div>
       </div>
 
-      <div className="index__layout index__layout--four-columns">
-        <div className="index__column">
+      <div className="Index__layout Index__layout--four-columns">
+        <div className="Index__column">
           <Section>
             <ProfilePicture />
             <Connect />
@@ -118,7 +118,7 @@ function IndexPage() {
           </Section>
         </div>
 
-        <div className="index__column">
+        <div className="Index__column">
           <Section>
             <TechStack />
           </Section>
@@ -130,13 +130,13 @@ function IndexPage() {
           </Section>
         </div>
 
-        <div className="index__column">
+        <div className="Index__column">
           <Section title="Employment">
             <Jobs />
           </Section>
         </div>
 
-        <div className="index__column">
+        <div className="Index__column">
           <Section title="Projects">
             <Projects />
           </Section>

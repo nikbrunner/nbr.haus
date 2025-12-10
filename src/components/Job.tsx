@@ -7,11 +7,11 @@ interface Props {
 
 export default function Job({ company, position, period, children }: Props) {
   return (
-    <div className="job">
-      <h3 className="job__company">{company}</h3>
-      <div className="job__header">
-        <div className="job__role">{position}</div>
-        <div className="job__period">{period}</div>
+    <div className="Job">
+      <h3 className="Job__company">{company}</h3>
+      <div className="Job__header">
+        <div className="Job__role">{position}</div>
+        <div className="Job__period">{period}</div>
       </div>
       {children}
     </div>

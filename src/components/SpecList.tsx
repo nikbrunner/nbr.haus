@@ -12,11 +12,11 @@ export default function SpecList({ items, className }: Props) {
   if (items.length === 0) return null;
 
   return (
-    <div className={cx("spec-list", className)}>
+    <div className={cx("SpecList", className)}>
       {items.map((item, index) => (
-        <div key={index} className="spec-list__item">
-          <span className="spec-list__label">{item.label}</span>
-          <span className="spec-list__value">{item.value}</span>
+        <div key={index} className="SpecList__item">
+          <span className="SpecList__label">{item.label}</span>
+          <span className="SpecList__value">{item.value}</span>
         </div>
       ))}
     </div>

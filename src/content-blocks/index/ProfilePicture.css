@@ -1,8 +1,8 @@
-.profile-picture {
+.ProfilePicture {
   position: relative;
 }
 
-.profile-picture__image {
+.ProfilePicture__image {
   aspect-ratio: 1 / 1;
   width: 100%;
   object-fit: cover;
@@ -11,7 +11,7 @@
   border: var(--border-size-2) solid var(--fg-accent);
 }
 
-.profile-picture__overlay {
+.ProfilePicture__overlay {
   position: absolute;
   top: 0;
   left: 0;

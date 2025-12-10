@@ -4,7 +4,7 @@ type Props = React.ComponentProps<"a">;
 
 export default function Link(props: Props) {
   return (
-    <a {...props} className={cx("link", props.className)}>
+    <a {...props} className={cx("Link", props.className)}>
       {props.children}
     </a>
   );

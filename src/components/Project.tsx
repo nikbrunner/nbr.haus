@@ -2,10 +2,10 @@ import { cva } from "class-variance-authority";
 import SpecCard from "./SpecCard";
 import SpecList from "./SpecList";
 
-const badge = cva("project__badge", {
+const badge = cva("Project__badge", {
   variants: {
     primary: {
-      true: "project__badge--primary"
+      true: "Project__badge--primary"
     }
   }
 });
@@ -53,9 +53,9 @@ export default function Project({
           {
             label: "Stack:",
             value: (
-              <div className="project__tags">
+              <div className="Project__tags">
                 {stack.map(tech => (
-                  <span key={tech} className="project__tag">
+                  <span key={tech} className="Project__tag">
                     {tech}
                   </span>
                 ))}
@@ -69,9 +69,9 @@ export default function Project({
           {
             label: "Topics:",
             value: (
-              <div className="project__tags">
+              <div className="Project__tags">
                 {topics.map(topic => (
-                  <span key={topic} className="project__tag">
+                  <span key={topic} className="Project__tag">
                     {topic}
                   </span>
                 ))}
@@ -91,9 +91,9 @@ export default function Project({
     <SpecCard title={title}>
       <SpecList items={specItems} />
 
-      <div className="project__description">{children}</div>
+      <div className="Project__description">{children}</div>
 
-      <div className="project__links">
+      <div className="Project__links">
         {allLinks.map((link, index) => (
           <a
             key={link.url}

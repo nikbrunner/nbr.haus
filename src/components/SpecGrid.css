@@ -1,4 +1,4 @@
-.spec-grid {
+.SpecGrid {
   display: flex;
   flex-wrap: wrap;
   gap: var(--size-2);
@@ -6,7 +6,7 @@
   background-color: var(--bg-main);
 }
 
-.spec-grid__tag {
+.SpecGrid__tag {
   display: inline-flex;
   padding: var(--size-1) var(--size-2);
   border: var(--border-size-1) dotted var(--fg-minor);

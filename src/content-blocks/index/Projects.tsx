@@ -4,12 +4,12 @@ import Project from "../../components/Project";
 export default function Projects() {
   return (
     <>
-      <p className="projects__intro">
+      <p className="Projects__intro">
         Projects are never finished, but they are always in progress. Here are some
         of my projects as a developer.
       </p>
 
-      <div className="projects__list">
+      <div className="Projects__list">
         <Project
           title="Black Atom Industries"
           stack={["TypeScript", "Deno", "OKLCH"]}

@@ -1,7 +1,7 @@
 export default function Hr() {
   return (
-    <div className="hr">
-      <hr className="hr__line" />
+    <div className="Hr">
+      <hr className="Hr__line" />
     </div>
   );
 }

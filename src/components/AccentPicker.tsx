@@ -2,10 +2,10 @@ import { useRouter, useSearch } from "@tanstack/react-router";
 import { cva } from "class-variance-authority";
 import { useCallback, useEffect, useState } from "react";
 
-const swatch = cva("accent-picker__swatch", {
+const swatch = cva("AccentPicker__swatch", {
   variants: {
     active: {
-      true: "accent-picker__swatch--active"
+      true: "AccentPicker__swatch--active"
     }
   }
 });
@@ -94,7 +94,7 @@ export default function AccentPicker() {
   const getAccentHue = (hue: number) => (hue + 90 > 360 ? hue + 90 - 360 : hue + 90);
 
   return (
-    <div className="accent-picker">
+    <div className="AccentPicker">
       {PRESET_HUES.map(hue => (
         <button
           key={hue}

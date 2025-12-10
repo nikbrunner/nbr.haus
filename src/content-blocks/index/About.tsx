@@ -4,7 +4,7 @@ export default function About() {
   const experienceInYears = new Date().getFullYear() - 2020;
 
   return (
-    <div className="about">
+    <div className="About">
       <p>
         Hi there!
         <br />
@@ -37,7 +37,7 @@ export default function About() {
         photography — and I have a slight keyboard obsession.
       </p>
 
-      <div className="about__looking-for">
+      <div className="About__looking-for">
         <h1>I am currently seeking new opportunities starting February 2026.</h1>
       </div>
     </div>

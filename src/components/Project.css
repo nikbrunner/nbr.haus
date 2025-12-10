@@ -1,10 +1,10 @@
-.project__tags {
+.Project__tags {
   display: flex;
   flex-wrap: wrap;
   gap: var(--size-2);
 }
 
-.project__tag {
+.Project__tag {
   display: inline-flex;
   padding: 0 var(--size-1);
   border: var(--border-size-1) dotted var(--fg-minor);
@@ -12,7 +12,7 @@
   color: var(--fg-main);
 }
 
-.project__description {
+.Project__description {
   display: flex;
   flex-direction: column;
   background-color: var(--bg-main);
@@ -28,13 +28,13 @@
   }
 }
 
-.project__links {
+.Project__links {
   display: flex;
   flex-wrap: wrap;
   gap: var(--size-2);
 }
 
-.project__badge {
+.Project__badge {
   display: inline-flex;
   padding: var(--size-2) var(--size-3);
   border: var(--border-size-2) solid var(--fg-accent);
@@ -54,7 +54,7 @@
   }
 }
 
-.project__badge--primary {
+.Project__badge--primary {
   font-weight: var(--font-weight-7);
   background-color: var(--fg-accent);
   color: var(--fg-contrast);

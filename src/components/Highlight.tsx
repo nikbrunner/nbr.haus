@@ -3,5 +3,5 @@ interface Props {
 }
 
 export default function Highlight({ children }: Props) {
-  return <span className="highlight">{children}</span>;
+  return <span className="Highlight">{children}</span>;
 }

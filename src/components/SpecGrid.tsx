@@ -9,14 +9,14 @@ interface Props {
 
 export default function SpecGrid({ items }: Props) {
   return (
-    <div className="spec-grid">
+    <div className="SpecGrid">
       {items.map(item => (
         <Link
           key={item.name}
           href={item.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="spec-grid__tag"
+          className="SpecGrid__tag"
         >
           {item.name}
         </Link>

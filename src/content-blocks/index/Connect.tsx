@@ -11,7 +11,7 @@ export default function Connect() {
           href="https://www.github.com/nikbrunner"
           target="_blank"
           rel="noopener noreferrer"
-          className="connect__link"
+          className="Connect__link"
         >
           github.com/nikbrunner
         </Link>
@@ -24,7 +24,7 @@ export default function Connect() {
           href="https://www.linkedin.com/in/nbru/"
           target="_blank"
           rel="noopener noreferrer"
-          className="connect__link"
+          className="Connect__link"
         >
           linkedin.com/in/nbru/
         </Link>
@@ -33,7 +33,7 @@ export default function Connect() {
     {
       label: "CV:",
       value: (
-        <Link href="/Nikolaus_Brunner_CV.pdf" download className="connect__link">
+        <Link href="/Nikolaus_Brunner_CV.pdf" download className="Connect__link">
           Download PDF
         </Link>
       )

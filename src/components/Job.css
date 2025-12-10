@@ -1,8 +1,8 @@
-.job {
+.Job {
   margin-bottom: var(--size-10);
 }
 
-.job__company {
+.Job__company {
   font-size: var(--font-size-4);
   font-weight: bold;
   color: var(--fg-accent);
@@ -11,20 +11,20 @@
   border-bottom: none;
 }
 
-.job__header {
+.Job__header {
   display: flex;
   align-items: center;
   gap: var(--size-2);
   margin-bottom: var(--size-3);
 }
 
-.job__role {
+.Job__role {
   font-size: var(--font-size-2);
   color: var(--fg-support);
   font-weight: var(--font-weight-6);
 }
 
-.job__period {
+.Job__period {
   font-size: var(--font-size-1);
   color: var(--fg-minor);
 }

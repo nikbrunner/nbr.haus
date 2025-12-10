@@ -1,11 +1,11 @@
-.style-picker {
+.StylePicker {
   position: fixed;
   bottom: var(--size-3);
   left: var(--size-3);
   z-index: 9999;
 }
 
-.style-picker__container {
+.StylePicker__container {
   display: flex;
   align-items: center;
   height: var(--size-9);
@@ -16,7 +16,7 @@
   border: var(--border-size-2) solid var(--fg-accent);
 }
 
-.style-picker__separator {
+.StylePicker__separator {
   width: 1px;
   height: var(--size-5);
   background: var(--fg-minor);

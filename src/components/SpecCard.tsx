@@ -14,9 +14,9 @@ export default function SpecCard({
   className
 }: Props) {
   return (
-    <article className={cx("spec-card", className)}>
-      {title && <h3 className="spec-card__title">{title}</h3>}
-      {description && <div className="spec-card__description">{description}</div>}
+    <article className={cx("SpecCard", className)}>
+      {title && <h3 className="SpecCard__title">{title}</h3>}
+      {description && <div className="SpecCard__description">{description}</div>}
       {children}
     </article>
   );

@@ -1,4 +1,4 @@
-.link {
+.Link {
   color: var(--fg-main);
   font-weight: var(--font-weight-7);
   text-decoration-thickness: var(--border-size-2);
@@ -6,10 +6,10 @@
   text-underline-offset: var(--border-size-2);
 }
 
-.link:visited {
+.Link:visited {
   color: var(--fg-accent);
 }
 
-.link:hover {
+.Link:hover {
   color: var(--fg-accent);
 }

@@ -3,10 +3,10 @@ import { cva } from "class-variance-authority";
 import { useCallback, useEffect, useState } from "react";
 import type { ColorMode } from "@/validators/rootSearchParams";
 
-const option = cva("color-mode-picker__option", {
+const option = cva("ColorModePicker__option", {
   variants: {
     active: {
-      true: "color-mode-picker__option--active"
+      true: "ColorModePicker__option--active"
     }
   }
 });
@@ -80,7 +80,7 @@ export default function ColorModePicker() {
   };
 
   return (
-    <div className="color-mode-picker">
+    <div className="ColorModePicker">
       {COLOR_MODE_OPTIONS.map(opt => (
         <button
           key={opt.value}

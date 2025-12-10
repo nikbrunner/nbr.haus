@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <header className="header">
+    <header className="Header">
       <h1>
         <a href="/">
           nbr<span>.</span>haus

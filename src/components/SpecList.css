@@ -1,4 +1,4 @@
-.spec-list {
+.SpecList {
   container-type: inline-size;
   display: flex;
   flex-direction: column;
@@ -7,24 +7,24 @@
   padding: var(--size-2) var(--size-3);
 }
 
-.spec-list__item {
+.SpecList__item {
   display: grid;
   grid-template-columns: 35cqw 1fr;
   gap: var(--size-3);
   padding: var(--size-2) 0;
   align-items: center;
+  font-size: var(--font-size-fluid-0);
 
   &:not(:last-child) {
     border-bottom: 1px dashed var(--fg-accent);
   }
 }
 
-.spec-list__label {
-  font-family: var(--font-family-mono);
+.SpecList__label {
   color: var(--fg-support);
 }
 
-.spec-list__value {
+.SpecList__value {
   color: var(--fg-main);
   overflow-wrap: break-word;
 }
