@@ -1,4 +1,4 @@
-.list {
+.spec-list {
   container-type: inline-size;
   display: flex;
   flex-direction: column;
@@ -7,7 +7,7 @@
   padding: var(--size-2) var(--size-3);
 }
 
-.item {
+.spec-list__item {
   display: grid;
   grid-template-columns: 35cqw 1fr;
   gap: var(--size-3);
@@ -19,12 +19,12 @@
   }
 }
 
-.label {
+.spec-list__label {
   font-family: var(--font-family-mono);
   color: var(--fg-support);
 }
 
-.value {
+.spec-list__value {
   color: var(--fg-main);
   overflow-wrap: break-word;
 }

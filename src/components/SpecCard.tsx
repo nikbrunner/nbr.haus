@@ -1,4 +1,5 @@
-import styles from "./SpecCard.module.css";
+import { cx } from "class-variance-authority";
+import "./SpecCard.css";
 
 interface Props {
   title?: string;
@@ -14,9 +15,9 @@ export default function SpecCard({
   className
 }: Props) {
   return (
-    <article className={`${styles.card} ${className || ""}`}>
-      {title && <h3 className={styles.title}>{title}</h3>}
-      {description && <div className={styles.description}>{description}</div>}
+    <article className={cx("spec-card", className)}>
+      {title && <h3 className="spec-card__title">{title}</h3>}
+      {description && <div className="spec-card__description">{description}</div>}
       {children}
     </article>
   );

@@ -1,10 +1,10 @@
-.accentPicker {
+.accent-picker {
   display: flex;
   align-items: center;
   gap: var(--size-4);
 }
 
-.swatch {
+.accent-picker__swatch {
   width: var(--size-6);
   height: var(--size-6);
   cursor: pointer;
@@ -14,10 +14,10 @@
     box-shadow 0.15s ease-out;
 }
 
-.swatch:hover {
+.accent-picker__swatch:hover {
   transform: scale(1.35);
 }
 
-.active {
+.accent-picker__swatch--active {
   transform: scale(1.35);
 }

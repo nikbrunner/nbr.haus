@@ -1,8 +1,8 @@
-import styles from "./Header.module.css";
+import "./Header.css";
 
 export default function Header() {
   return (
-    <header className={styles.Header}>
+    <header className="header">
       <h1>
         <a href="/">
           nbr<span>.</span>haus

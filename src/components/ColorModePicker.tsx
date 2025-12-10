@@ -1,7 +1,16 @@
 import { useRouter, useSearch } from "@tanstack/react-router";
+import { cva } from "class-variance-authority";
 import { useCallback, useEffect, useState } from "react";
 import type { ColorMode } from "@/validators/rootSearchParams";
-import styles from "./ColorModePicker.module.css";
+import "./ColorModePicker.css";
+
+const option = cva("color-mode-picker__option", {
+  variants: {
+    active: {
+      true: "color-mode-picker__option--active"
+    }
+  }
+});
 
 const COLOR_MODE_OPTIONS: { value: ColorMode; label: string }[] = [
   { value: "light", label: "LT" },
@@ -31,7 +40,8 @@ export default function ColorModePicker() {
     return "system";
   }, [search.colorMode]);
 
-  const [selectedColorMode, setSelectedColorMode] = useState<ColorMode>(getInitialColorMode);
+  const [selectedColorMode, setSelectedColorMode] =
+    useState<ColorMode>(getInitialColorMode);
 
   const applyColorMode = useCallback((colorMode: ColorMode) => {
     if (typeof document !== "undefined") {
@@ -71,15 +81,15 @@ export default function ColorModePicker() {
   };
 
   return (
-    <div className={styles.colorModePicker}>
-      {COLOR_MODE_OPTIONS.map(option => (
+    <div className="color-mode-picker">
+      {COLOR_MODE_OPTIONS.map(opt => (
         <button
-          key={option.value}
-          className={`${styles.option} ${selectedColorMode === option.value ? styles.active : ""}`}
-          onClick={() => handleSelect(option.value)}
-          aria-label={`Select ${option.value} color mode`}
+          key={opt.value}
+          className={option({ active: selectedColorMode === opt.value })}
+          onClick={() => handleSelect(opt.value)}
+          aria-label={`Select ${opt.value} color mode`}
         >
-          {option.label}
+          {opt.label}
         </button>
       ))}
     </div>

@@ -1,5 +1,5 @@
 import Link from "./Link";
-import styles from "./SpecGrid.module.css";
+import "./SpecGrid.css";
 
 interface Props {
   items: Array<{
@@ -10,14 +10,14 @@ interface Props {
 
 export default function SpecGrid({ items }: Props) {
   return (
-    <div className={styles.grid}>
+    <div className="spec-grid">
       {items.map(item => (
         <Link
           key={item.name}
           href={item.url}
           target="_blank"
           rel="noopener noreferrer"
-          className={styles.tag}
+          className="spec-grid__tag"
         >
           {item.name}
         </Link>

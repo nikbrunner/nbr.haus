@@ -1,11 +1,11 @@
-.colorModePicker {
+.color-mode-picker {
   display: flex;
   align-items: center;
   gap: 0;
   border: var(--border-size-2) solid var(--fg-accent);
 }
 
-.option {
+.color-mode-picker__option {
   padding: var(--size-2) var(--size-3);
   background: var(--bg-main);
   border: none;
@@ -19,10 +19,10 @@
     transform 0.1s ease-out;
 }
 
-.option:hover {
+.color-mode-picker__option:hover {
   color: var(--fg-accent);
 }
 
-.active {
+.color-mode-picker__option--active {
   color: var(--fg-accent);
 }

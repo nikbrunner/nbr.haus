@@ -1,6 +1,15 @@
+import { cva } from "class-variance-authority";
 import SpecCard from "./SpecCard";
 import SpecList from "./SpecList";
-import styles from "./Project.module.css";
+import "./Project.css";
+
+const badge = cva("project__badge", {
+  variants: {
+    primary: {
+      true: "project__badge--primary"
+    }
+  }
+});
 
 interface Props {
   title: string;
@@ -45,9 +54,9 @@ export default function Project({
           {
             label: "Stack:",
             value: (
-              <div className={styles.tags}>
+              <div className="project__tags">
                 {stack.map(tech => (
-                  <span key={tech} className={styles.tag}>
+                  <span key={tech} className="project__tag">
                     {tech}
                   </span>
                 ))}
@@ -61,9 +70,9 @@ export default function Project({
           {
             label: "Topics:",
             value: (
-              <div className={styles.tags}>
+              <div className="project__tags">
                 {topics.map(topic => (
-                  <span key={topic} className={styles.tag}>
+                  <span key={topic} className="project__tag">
                     {topic}
                   </span>
                 ))}
@@ -83,16 +92,16 @@ export default function Project({
     <SpecCard title={title}>
       <SpecList items={specItems} />
 
-      <div className={styles.description}>{children}</div>
+      <div className="project__description">{children}</div>
 
-      <div className={styles.links}>
+      <div className="project__links">
         {allLinks.map((link, index) => (
           <a
             key={link.url}
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={`${styles.linkBadge} ${index === 0 ? styles.primary : ""}`}
+            className={badge({ primary: index === 0 })}
           >
             {link.type}
           </a>

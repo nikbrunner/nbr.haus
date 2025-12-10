@@ -1,4 +1,4 @@
-import styles from "./Job.module.css";
+import "./Job.css";
 
 interface Props {
   company: string;
@@ -9,11 +9,11 @@ interface Props {
 
 export default function Job({ company, position, period, children }: Props) {
   return (
-    <div className={styles.job}>
-      <h3 className={styles.company}>{company}</h3>
-      <div className={styles.roleAndPeriod}>
-        <div className={styles.role}>{position}</div>
-        <div className={styles.period}>{period}</div>
+    <div className="job">
+      <h3 className="job__company">{company}</h3>
+      <div className="job__header">
+        <div className="job__role">{position}</div>
+        <div className="job__period">{period}</div>
       </div>
       {children}
     </div>

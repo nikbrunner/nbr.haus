@@ -1,10 +1,10 @@
-.tags {
+.project__tags {
   display: flex;
   flex-wrap: wrap;
   gap: var(--size-2);
 }
 
-.tag {
+.project__tag {
   display: inline-flex;
   padding: 0 var(--size-1);
   border: var(--border-size-1) dotted var(--fg-minor);
@@ -12,29 +12,29 @@
   color: var(--fg-main);
 }
 
-.description {
+.project__description {
   display: flex;
   flex-direction: column;
   background-color: var(--bg-main);
   padding: var(--size-2);
   gap: var(--size-2);
 
-  :global(p:first-child) {
+  & p:first-child {
     font-weight: var(--font-weight-7);
+  }
+
+  & p {
+    margin: 0;
   }
 }
 
-.description p {
-  margin: 0;
-}
-
-.links {
+.project__links {
   display: flex;
   flex-wrap: wrap;
   gap: var(--size-2);
 }
 
-.linkBadge {
+.project__badge {
   display: inline-flex;
   padding: var(--size-2) var(--size-3);
   border: var(--border-size-2) solid var(--fg-accent);
@@ -52,10 +52,10 @@
     transform: translateY(-2px);
     box-shadow: 5px 5px 0px var(--bg-support);
   }
+}
 
-  &.primary {
-    font-weight: var(--font-weight-7);
-    background-color: var(--fg-accent);
-    color: var(--fg-contrast);
-  }
+.project__badge--primary {
+  font-weight: var(--font-weight-7);
+  background-color: var(--fg-accent);
+  color: var(--fg-contrast);
 }

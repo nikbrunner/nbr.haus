@@ -1,13 +1,13 @@
 import AccentPicker from "./AccentPicker";
 import ColorModePicker from "./ColorModePicker";
-import styles from "./StylePicker.module.css";
+import "./StylePicker.css";
 
 export default function StylePicker() {
   return (
-    <div className={styles.stylePicker}>
-      <div className={styles.container}>
+    <div className="style-picker">
+      <div className="style-picker__container">
         <AccentPicker />
-        <div className={styles.separator} />
+        <div className="style-picker__separator" />
         <ColorModePicker />
       </div>
     </div>

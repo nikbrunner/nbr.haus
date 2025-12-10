@@ -1,9 +1,9 @@
-import styles from "./Hr.module.css";
+import "./Hr.css";
 
 export default function Hr() {
   return (
-    <div className={styles.hr}>
-      <hr className={styles.line} />
+    <div className="hr">
+      <hr className="hr__line" />
     </div>
   );
 }

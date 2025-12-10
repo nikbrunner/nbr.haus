@@ -34,7 +34,7 @@ export default function About() {
       </p>
 
       <p>
-        I was born in 1984. Outside of code, I enjoy hiking, reading, music and
+        I was born in 1984, and outside of code, I enjoy hiking, reading, music and
         photography — and I have a slight keyboard obsession.
       </p>
 

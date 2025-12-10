@@ -1,7 +1,7 @@
 import Link from "../../components/Link";
 import SpecCard from "../../components/SpecCard";
 import SpecList from "../../components/SpecList";
-import styles from "./Connect.module.css";
+import "./Connect.css";
 
 export default function Connect() {
   const items = [
@@ -12,7 +12,7 @@ export default function Connect() {
           href="https://www.github.com/nikbrunner"
           target="_blank"
           rel="noopener noreferrer"
-          className={styles.link}
+          className="connect__link"
         >
           github.com/nikbrunner
         </Link>
@@ -25,7 +25,7 @@ export default function Connect() {
           href="https://www.linkedin.com/in/nbru/"
           target="_blank"
           rel="noopener noreferrer"
-          className={styles.link}
+          className="connect__link"
         >
           linkedin.com/in/nbru/
         </Link>
@@ -34,7 +34,7 @@ export default function Connect() {
     {
       label: "CV:",
       value: (
-        <Link href="/Nikolaus_Brunner_CV.pdf" download className={styles.link}>
+        <Link href="/Nikolaus_Brunner_CV.pdf" download className="connect__link">
           Download PDF
         </Link>
       )

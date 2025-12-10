@@ -1,16 +1,16 @@
 import Highlight from "../../components/Highlight";
 import Project from "../../components/Project";
-import styles from "./Projects.module.css";
+import "./Projects.css";
 
 export default function Projects() {
   return (
     <>
-      <p className={styles.intro}>
+      <p className="projects__intro">
         Projects are never finished, but they are always in progress. Here are some
         of my projects as a developer.
       </p>
 
-      <div className={styles.projects}>
+      <div className="projects__list">
         <Project
           title="Black Atom Industries"
           stack={["TypeScript", "Deno", "OKLCH"]}

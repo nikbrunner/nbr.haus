@@ -1,8 +1,17 @@
 import { useRouter, useSearch } from "@tanstack/react-router";
+import { cva } from "class-variance-authority";
 import { useCallback, useEffect, useState } from "react";
-import styles from "./AccentPicker.module.css";
+import "./AccentPicker.css";
 
-const PRESET_HUES = [80, 144, 288];
+const swatch = cva("accent-picker__swatch", {
+  variants: {
+    active: {
+      true: "accent-picker__swatch--active"
+    }
+  }
+});
+
+const PRESET_HUES = [90, 165, 275];
 
 export default function AccentPicker() {
   const router = useRouter();
@@ -86,11 +95,11 @@ export default function AccentPicker() {
   const getAccentHue = (hue: number) => (hue + 90 > 360 ? hue + 90 - 360 : hue + 90);
 
   return (
-    <div className={styles.accentPicker}>
+    <div className="accent-picker">
       {PRESET_HUES.map(hue => (
         <button
           key={hue}
-          className={`${styles.swatch} ${selectedHue === hue ? styles.active : ""}`}
+          className={swatch({ active: selectedHue === hue })}
           style={{ backgroundColor: `oklch(45% 0.35 ${getAccentHue(hue)})` }}
           onClick={() => handleSelectHue(hue)}
           aria-label={`Select accent color`}

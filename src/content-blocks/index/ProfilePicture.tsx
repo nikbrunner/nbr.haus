@@ -1,15 +1,15 @@
 import profilePictureImg from "../../assets/images/profile_picture.jpg";
-import styles from "./ProfilePicture.module.css";
+import "./ProfilePicture.css";
 
 export default function ProfilePicture() {
   return (
-    <div className={styles.profilePicture}>
+    <div className="profile-picture">
       <img
-        className={styles.profileImage}
+        className="profile-picture__image"
         src={profilePictureImg}
         alt="Nik Brunner's personal website - a black and white photograph of a modernist house representing his digital home"
       />
-      <div className={styles.profileImageOverlay}></div>
+      <div className="profile-picture__overlay"></div>
     </div>
   );
 }

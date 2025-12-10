@@ -22,8 +22,8 @@ body {
   --bg-main: light-dark(oklch(95% 0.005 var(--hue)), oklch(20% 0.005 var(--hue)));
   --bg-support: light-dark(oklch(90% 0.005 var(--hue)), oklch(28% 0.005 var(--hue)));
 
-  --fg-main: light-dark(oklch(40% 0.01 var(--hue)), oklch(85% 0.01 var(--hue)));
-  --fg-support: light-dark(oklch(50% 0.01 var(--hue)), oklch(75% 0.01 var(--hue)));
+  --fg-main: light-dark(oklch(25% 0.01 var(--hue)), oklch(85% 0.01 var(--hue)));
+  --fg-support: light-dark(oklch(30% 0.01 var(--hue)), oklch(75% 0.01 var(--hue)));
   --fg-minor: light-dark(oklch(60% 0.01 var(--hue)), oklch(65% 0.01 var(--hue)));
   --fg-accent: light-dark(
     oklch(45% 0.35 var(--hue-accent)),

@@ -15,7 +15,7 @@ import {
   defaultRootSearchParams,
   rootSearchParamsSchema
 } from "../validators/rootSearchParams";
-import styles from "./BaseLayout.module.css";
+import "./BaseLayout.css";
 
 export const Route = createRootRoute({
   validateSearch: rootSearchParamsSchema,
@@ -152,7 +152,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
         {/* <Header />  faded out until completed*/}
-        <main className={styles.baseLayout}>{children}</main>
+        <main className="base-layout">{children}</main>
         <ClientOnly>
           <StylePicker />
         </ClientOnly>

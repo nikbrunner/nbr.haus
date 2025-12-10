@@ -4,17 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a personal portfolio website built with TanStack Start (SSR framework), React 19, TypeScript, and CSS Modules. The site is a single-page application showcasing profile, projects, work history, tech stack, dev tools, AI usage, and contact information.
+This is a personal portfolio website built with TanStack Start (SSR framework), React 19, TypeScript, and regular CSS with BEM naming convention. The site is a single-page application showcasing profile, projects, work history, tech stack, dev tools, AI usage, and contact information.
 
 ## Development Commands
 
 ```bash
-# Development (runs dev server + CSS types watcher concurrently)
+# Development (runs dev server on port 3000)
 npm run dev
-# Dev server only (port 3000)
-npm run dev:server
-# CSS types watcher only
-npm run dev:css-types
 
 # Build for production
 npm run build
@@ -52,9 +48,12 @@ npm run test            # Run Vitest tests
 ### Component Architecture
 
 - **Functional components only** - no class components
-- **CSS Modules** for styling (`.module.css` files)
-  - TypeScript types auto-generated via `typed-css-modules` (tcm)
-  - Import as: `import styles from "./Component.module.css"`
+- **Regular CSS with BEM naming** for styling (`.css` files)
+  - Import as: `import "./Component.css"`
+  - BEM format: `.block__element--modifier` (e.g., `.project__badge--primary`)
+  - **CVA (class-variance-authority)** for variant handling and conditional classes
+    - Use `cva()` for components with variants
+    - Use `cx()` for simple class composition
 - **Path aliases**: `@/*` maps to `src/*` (configured in tsconfig.json)
 - **Open Props** for design tokens (CSS custom properties)
 
@@ -75,10 +74,10 @@ The index route renders **four different layouts** (1, 2, 3, and 4 columns) with
 
 ### Styling Conventions
 
-- CSS Modules for component-scoped styles
+- **BEM naming convention** for component-scoped styles (e.g., `.spec-card__title`, `.project__badge--primary`)
 - Global styles in `src/styles/global.css`
 - Custom properties from Open Props for consistent design tokens
-- Semantic class names (`.project`, `.metadata`, `.links`, etc.)
+- CSS files co-located with components (e.g., `Component.tsx` + `Component.css`)
 
 ### DevTools
 
@@ -120,10 +119,9 @@ The index route renders **four different layouts** (1, 2, 3, and 4 columns) with
 - **Vitest** - Testing framework
 - **ESLint** - Linting (with TypeScript, React, JSON, Markdown, CSS plugins)
 - **Prettier** - Code formatting
-- **typed-css-modules** - CSS Module type generation
+- **class-variance-authority (CVA)** - CSS class variant handling and composition
 - **Open Props** - CSS design tokens
 - **Lucide React** - Icon library
-- **concurrently** - Run multiple npm scripts
 - **Zod** - Schema validation (used for search params)
 
 ## Build Configuration (vite.config.ts)
@@ -139,7 +137,6 @@ Plugins in order:
 ## Important Notes
 
 - `src/routeTree.gen.ts` is auto-generated - never edit manually
-- CSS Module `.d.ts` files are auto-generated - do not commit or edit
 - Development uses port 3000
 - AccentPicker component allows theme customization via CSS custom properties (controlled by `hue` search param)
 - Structured data (JSON-LD) uses `dangerouslySetInnerHTML` for SEO

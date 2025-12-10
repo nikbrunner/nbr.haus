@@ -1,8 +1,8 @@
-.intro {
+.projects__intro {
   color: var(--fg-support);
 }
 
-.projects {
+.projects__list {
   display: flex;
   flex-direction: column;
   gap: var(--size-6);

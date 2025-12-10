@@ -1,9 +1,9 @@
-import styles from "./Highlight.module.css";
+import "./Highlight.css";
 
 interface Props {
   children: React.ReactNode;
 }
 
 export default function Highlight({ children }: Props) {
-  return <span className={styles.highlight}>{children}</span>;
+  return <span className="highlight">{children}</span>;
 }

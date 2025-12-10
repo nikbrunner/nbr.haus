@@ -1,4 +1,4 @@
-.card {
+.spec-card {
   container-type: inline-size;
   border: var(--border-size-2) solid var(--fg-accent);
   display: flex;
@@ -9,7 +9,7 @@
   background: var(--bg-dots);
 }
 
-.title {
+.spec-card__title {
   margin: 0;
   background-color: var(--bg-main);
   color: var(--fg-accent);
@@ -17,7 +17,7 @@
   border-left: var(--border-size-3) solid var(--fg-accent);
 }
 
-.description {
+.spec-card__description {
   margin: 0;
   background-color: var(--bg-main);
   padding: var(--size-2) var(--size-3);

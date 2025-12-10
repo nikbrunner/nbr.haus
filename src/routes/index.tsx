@@ -10,7 +10,7 @@ import ProfilePicture from "../content-blocks/index/ProfilePicture";
 import Projects from "../content-blocks/index/Projects";
 import TechStack from "../content-blocks/index/TechStack";
 
-import styles from "./index.module.css";
+import "./index.css";
 
 export const Route = createFileRoute("/")({
   component: IndexPage
@@ -19,8 +19,8 @@ export const Route = createFileRoute("/")({
 function IndexPage() {
   return (
     <>
-      <div className={`${styles.layout} ${styles.layoutOneColumn}`}>
-        <div className={styles.column}>
+      <div className="index__layout index__layout--one-column">
+        <div className="index__column">
           <Section>
             <ProfilePicture />
             <Connect />
@@ -46,8 +46,8 @@ function IndexPage() {
         </div>
       </div>
 
-      <div className={`${styles.layout} ${styles.layoutTwoColumns}`}>
-        <div className={styles.column}>
+      <div className="index__layout index__layout--two-columns">
+        <div className="index__column">
           <Section>
             <ProfilePicture />
             <Connect />
@@ -66,7 +66,7 @@ function IndexPage() {
           </Section>
         </div>
 
-        <div className={styles.column}>
+        <div className="index__column">
           <Section title="Employment">
             <Jobs />
           </Section>
@@ -76,8 +76,8 @@ function IndexPage() {
         </div>
       </div>
 
-      <div className={`${styles.layout} ${styles.layoutThreeColumns}`}>
-        <div className={styles.column}>
+      <div className="index__layout index__layout--three-columns">
+        <div className="index__column">
           <Section>
             <ProfilePicture />
             <Connect />
@@ -96,21 +96,21 @@ function IndexPage() {
           </Section>
         </div>
 
-        <div className={styles.column}>
+        <div className="index__column">
           <Section title="Employment">
             <Jobs />
           </Section>
         </div>
 
-        <div className={styles.column}>
+        <div className="index__column">
           <Section title="Projects">
             <Projects />
           </Section>
         </div>
       </div>
 
-      <div className={`${styles.layout} ${styles.layoutFourColumns}`}>
-        <div className={styles.column}>
+      <div className="index__layout index__layout--four-columns">
+        <div className="index__column">
           <Section>
             <ProfilePicture />
             <Connect />
@@ -120,7 +120,7 @@ function IndexPage() {
           </Section>
         </div>
 
-        <div className={styles.column}>
+        <div className="index__column">
           <Section>
             <TechStack />
           </Section>
@@ -132,13 +132,13 @@ function IndexPage() {
           </Section>
         </div>
 
-        <div className={styles.column}>
+        <div className="index__column">
           <Section title="Employment">
             <Jobs />
           </Section>
         </div>
 
-        <div className={styles.column}>
+        <div className="index__column">
           <Section title="Projects">
             <Projects />
           </Section>
