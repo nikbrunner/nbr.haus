@@ -6,6 +6,11 @@ import viteTsConfigPaths from "vite-tsconfig-paths";
 import { nitro } from "nitro/vite";
 
 const config = defineConfig({
+  build: {
+    // Disable CSS code splitting to prevent FOUC in SSR
+    // All CSS will be bundled together and loaded upfront
+    cssCodeSplit: false
+  },
   plugins: [
     devtools(),
     nitro({

@@ -145,8 +145,37 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     <html lang="en" style={{ scrollBehavior: "smooth" }}>
       <head>
         <HeadContent />
+        {/* Inline script to prevent FOUC for color mode - runs before body renders */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                var params = new URLSearchParams(window.location.search);
+                var colorMode = params.get('colorMode') || localStorage.getItem('colorMode') || 'system';
+                if (colorMode !== 'system') {
+                  document.documentElement.setAttribute('data-color-mode', colorMode);
+                }
+              })();
+            `
+          }}
+        />
       </head>
       <body>
+        {/* Inline script to set hue values - must run immediately when body exists */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                var params = new URLSearchParams(window.location.search);
+                var hue = params.get('hue') || localStorage.getItem('hue') || '0';
+                var hueNum = parseInt(hue, 10);
+                document.body.style.setProperty('--hue', hue);
+                document.body.style.setProperty('--hue-accent', String((hueNum + 180) % 360));
+                document.body.style.setProperty('--hue-accent-alt', String((hueNum + 360) % 360));
+              })();
+            `
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
