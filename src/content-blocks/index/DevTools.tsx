@@ -46,25 +46,23 @@ const items: Array<{
   {
     label: "Terminal:",
     value: (
-      <Link href="https://ghostty.dev" target="_blank" rel="noopener noreferrer">
-        Ghostty
-      </Link>
+      <>
+        <Link href="https://ghostty.dev" target="_blank" rel="noopener noreferrer">
+          Ghostty
+        </Link>{" "}
+        &amp;{" "}
+        <Link
+          href="https://github.com/tmux/tmux/wiki"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Tmux
+        </Link>
+      </>
     )
   },
   {
-    label: "Terminal multiplexer:",
-    value: (
-      <Link
-        href="https://github.com/tmux/tmux/wiki"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Tmux
-      </Link>
-    )
-  },
-  {
-    label: "Git GUI:",
+    label: "Git:",
     value: (
       <Link
         href="https://github.com/jesseduffield/lazygit"
