@@ -19,19 +19,19 @@ body {
   --hue-accent: 180;
   --hue-accent-alt: 360;
 
-  --bg-main: light-dark(oklch(95% 0.005 var(--hue)), oklch(12% 0.005 var(--hue)));
-  --bg-support: light-dark(oklch(90% 0.005 var(--hue)), oklch(18% 0.005 var(--hue)));
+  --bg-main: light-dark(oklch(95% 0.005 var(--hue)), oklch(20% 0.005 var(--hue)));
+  --bg-support: light-dark(oklch(90% 0.005 var(--hue)), oklch(28% 0.005 var(--hue)));
 
   --fg-main: light-dark(oklch(40% 0.01 var(--hue)), oklch(85% 0.01 var(--hue)));
   --fg-support: light-dark(oklch(50% 0.01 var(--hue)), oklch(75% 0.01 var(--hue)));
   --fg-minor: light-dark(oklch(60% 0.01 var(--hue)), oklch(65% 0.01 var(--hue)));
   --fg-accent: light-dark(
     oklch(45% 0.35 var(--hue-accent)),
-    oklch(65% 0.35 var(--hue-accent))
+    oklch(65% 0.25 var(--hue-accent))
   );
   --fg-accent-alt: light-dark(
     oklch(45% 0.5 var(--hue-accent-alt)),
-    oklch(65% 0.5 var(--hue-accent-alt))
+    oklch(65% 0.25 var(--hue-accent-alt))
   );
   --fg-contrast: light-dark(
     oklch(98% 0.05 var(--hue-accent)),
@@ -106,7 +106,7 @@ h3 {
 
 p {
   font-weight: var(--font-weight-3);
-  margin: var(--size-1) 0 var(--size-1);
+  margin: 0 0 var(--size-3);
 }
 
 strong {
