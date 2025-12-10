@@ -91,6 +91,42 @@ export const Route = createRootRoute({
       }
     ],
     links: [
+      // Preload critical fonts to prevent layout shift
+      {
+        rel: "preload",
+        href: "/fonts/TX-02/Condensed/Condensed.ttf",
+        as: "font",
+        type: "font/ttf",
+        crossOrigin: "anonymous"
+      },
+      {
+        rel: "preload",
+        href: "/fonts/TX-02/Condensed/Bold-Condensed.ttf",
+        as: "font",
+        type: "font/ttf",
+        crossOrigin: "anonymous"
+      },
+      {
+        rel: "preload",
+        href: "/fonts/TX-02/Condensed/Black-Condensed.ttf",
+        as: "font",
+        type: "font/ttf",
+        crossOrigin: "anonymous"
+      },
+      {
+        rel: "preload",
+        href: "/fonts/TX-02/Condensed/Light-Condensed.ttf",
+        as: "font",
+        type: "font/ttf",
+        crossOrigin: "anonymous"
+      },
+      {
+        rel: "preload",
+        href: "/fonts/TX-02/Condensed/SemiBold-Condensed.ttf",
+        as: "font",
+        type: "font/ttf",
+        crossOrigin: "anonymous"
+      },
       {
         rel: "icon",
         type: "image/svg+xml",
