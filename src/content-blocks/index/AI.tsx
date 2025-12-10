@@ -8,11 +8,14 @@ export default function AI() {
     <>
       <p>
         I am lucky enough to have entered the industry before AI became a thing. To
-        have the learning hill to climb, with no tab completion or ChatGPT. I think
-        this is was very valuable. And I think it's still very valuable and even
-        necessary to learn coding in the AI era. I would never recommend a Junior
-        Developer to use AI during their initial learning phase. I could never use AI
-        effectively as I do now, if I had not learned this craft without it.
+        have the learning hill to climb, with no tab completion or ChatGPT.{" "}
+      </p>
+
+      <p>
+        I think this is was very valuable. And I think it's still very valuable and
+        even necessary to learn coding in the AI era. I would never recommend a
+        Junior Developer to use AI during their initial learning phase. I could never
+        use AI effectively as I do now, if I had not learned this craft without it.
       </p>
 
       <p>
