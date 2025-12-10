@@ -1,0 +1,27 @@
+.colorModePicker {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.option {
+  padding: var(--size-2) var(--size-3);
+  background: var(--bg-main);
+  border: none;
+  color: var(--fg-main);
+  font-family: var(--font-family);
+  font-size: var(--font-size-1);
+  font-weight: var(--font-weight-7);
+  cursor: pointer;
+  transition:
+    color 0.1s ease-out,
+    transform 0.1s ease-out;
+}
+
+.option:hover {
+  color: var(--fg-accent);
+}
+
+.active {
+  color: var(--fg-accent);
+}

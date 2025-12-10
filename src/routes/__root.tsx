@@ -8,7 +8,7 @@ import {
   stripSearchParams
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
-import AccentPicker from "../components/AccentPicker";
+import StylePicker from "../components/StylePicker";
 import NotFound from "../components/NotFound";
 import globalCss from "../styles/global.css?url";
 import {
@@ -22,7 +22,7 @@ export const Route = createRootRoute({
   search: {
     middlewares: [
       stripSearchParams(defaultRootSearchParams),
-      retainSearchParams(["hue"])
+      retainSearchParams(["hue", "colorMode"])
     ]
   },
   notFoundComponent: NotFound,
@@ -154,7 +154,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         {/* <Header />  faded out until completed*/}
         <main className={styles.baseLayout}>{children}</main>
         <ClientOnly>
-          <AccentPicker />
+          <StylePicker />
         </ClientOnly>
         <TanStackDevtools
           config={{

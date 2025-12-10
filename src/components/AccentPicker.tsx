@@ -1,5 +1,5 @@
 import { useRouter, useSearch } from "@tanstack/react-router";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "./AccentPicker.module.css";
 
 const PRESET_HUES = [80, 144, 288];
@@ -7,9 +7,6 @@ const PRESET_HUES = [80, 144, 288];
 export default function AccentPicker() {
   const router = useRouter();
   const search = useSearch({ from: "/" });
-  const pickerRef = useRef<HTMLDivElement>(null);
-
-  const [isOpen, setIsOpen] = useState(false);
 
   // Utility functions
   const getNextHues = useCallback((hue: number) => {
@@ -68,25 +65,10 @@ export default function AccentPicker() {
     }
   }, [getInitialHue, getNextHues, updateCssVars]);
 
-  // Click outside handler
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const handleClickOutside = (e: MouseEvent) => {
-      if (pickerRef.current && !pickerRef.current.contains(e.target as Node)) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [isOpen]);
-
   const handleSelectHue = (hue: number) => {
     const { hue: finalHue, hueActive, hueActiveAlt } = getNextHues(hue);
     updateCssVars(finalHue, hueActive, hueActiveAlt);
     setSelectedHue(finalHue);
-    setIsOpen(false);
 
     localStorage.setItem("hue", finalHue.toString());
     localStorage.setItem("hue-accent", hueActive.toString());
@@ -104,18 +86,16 @@ export default function AccentPicker() {
   const getAccentHue = (hue: number) => (hue + 90 > 360 ? hue + 90 - 360 : hue + 90);
 
   return (
-    <div ref={pickerRef} className={styles.accentPicker}>
-      <div className={styles.swatchList}>
-        {PRESET_HUES.map(hue => (
-          <button
-            key={hue}
-            className={`${styles.swatch} ${selectedHue === hue ? styles.active : ""}`}
-            style={{ backgroundColor: `oklch(45% 0.35 ${getAccentHue(hue)})` }}
-            onClick={() => handleSelectHue(hue)}
-            aria-label={`Select accent color`}
-          />
-        ))}
-      </div>
+    <div className={styles.accentPicker}>
+      {PRESET_HUES.map(hue => (
+        <button
+          key={hue}
+          className={`${styles.swatch} ${selectedHue === hue ? styles.active : ""}`}
+          style={{ backgroundColor: `oklch(45% 0.35 ${getAccentHue(hue)})` }}
+          onClick={() => handleSelectHue(hue)}
+          aria-label={`Select accent color`}
+        />
+      ))}
     </div>
   );
 }

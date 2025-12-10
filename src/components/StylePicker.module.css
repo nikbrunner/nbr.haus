@@ -1,0 +1,23 @@
+.stylePicker {
+  position: fixed;
+  bottom: var(--size-3);
+  left: var(--size-3);
+  z-index: 9999;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  height: var(--size-9);
+  gap: var(--size-4);
+  padding: var(--size-2) var(--size-4);
+  background: var(--bg-dots);
+  box-shadow: var(--shadow-hard-5);
+  border: var(--border-size-2) solid var(--fg-accent);
+}
+
+.separator {
+  width: 1px;
+  height: var(--size-5);
+  background: var(--fg-minor);
+}
