@@ -1,14 +1,6 @@
-import { cva } from "class-variance-authority";
+import Badge from "./Badge";
 import SpecCard from "./SpecCard";
 import SpecList from "./SpecList";
-
-const badge = cva("Project__badge", {
-  variants: {
-    primary: {
-      true: "Project__badge--primary"
-    }
-  }
-});
 
 interface Props {
   title: string;
@@ -95,15 +87,15 @@ export default function Project({
 
       <div className="Project__links">
         {allLinks.map((link, index) => (
-          <a
+          <Badge
             key={link.url}
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={badge({ primary: index === 0 })}
+            variant={index === 0 ? "primary" : "default"}
           >
             {link.type}
-          </a>
+          </Badge>
         ))}
       </div>
     </SpecCard>

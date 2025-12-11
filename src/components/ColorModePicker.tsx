@@ -1,15 +1,7 @@
 import { useRouter, useSearch } from "@tanstack/react-router";
-import { cva } from "class-variance-authority";
+import { cx } from "class-variance-authority";
 import { useCallback, useEffect, useState } from "react";
 import type { ColorMode } from "@/validators/rootSearchParams";
-
-const option = cva("ColorModePicker__option", {
-  variants: {
-    active: {
-      true: "ColorModePicker__option--active"
-    }
-  }
-});
 
 const COLOR_MODE_OPTIONS: { value: ColorMode; label: string }[] = [
   { value: "light", label: "LT" },
@@ -84,7 +76,10 @@ export default function ColorModePicker() {
       {COLOR_MODE_OPTIONS.map(opt => (
         <button
           key={opt.value}
-          className={option({ active: selectedColorMode === opt.value })}
+          className={cx(
+            "ColorModePicker__option",
+            selectedColorMode === opt.value && "ColorModePicker__option--active"
+          )}
           onClick={() => handleSelect(opt.value)}
           aria-label={`Select ${opt.value} color mode`}
         >
