@@ -5,19 +5,69 @@
   z-index: 9999;
 }
 
-.StylePicker__container {
+/* Collapsed view - summary row */
+.StylePicker__collapsed {
   display: flex;
   align-items: center;
-  height: var(--size-9);
-  gap: var(--size-4);
-  padding: var(--size-2) var(--size-4);
+  gap: var(--size-3);
+  padding: var(--size-2) var(--size-3);
+  background: var(--bg-dots);
+  box-shadow: var(--shadow-hard-5);
+  border: var(--border-size-2) solid var(--fg-accent);
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-size: var(--font-size-1);
+  font-weight: var(--font-weight-9);
+  color: var(--fg-main);
+  transition: transform 0.1s ease-out;
+}
+
+.StylePicker__collapsed:hover {
+  transform: translateY(-2px);
+}
+
+.StylePicker__swatch {
+  width: var(--size-5);
+  height: var(--size-5);
+  flex-shrink: 0;
+}
+
+.StylePicker__label {
+  color: var(--fg-accent);
+}
+
+/* Expanded view - hidden by default on mobile */
+.StylePicker__expanded {
+  display: none;
+  flex-direction: column;
+  gap: var(--size-2);
+  padding: var(--size-3);
   background: var(--bg-dots);
   box-shadow: var(--shadow-hard-5);
   border: var(--border-size-2) solid var(--fg-accent);
 }
 
-.StylePicker__separator {
-  width: 3px;
-  height: 100%;
-  background: var(--fg-accent);
+.StylePicker__row {
+  display: flex;
+  justify-content: center;
+}
+
+/* When expanded on mobile */
+.StylePicker--expanded .StylePicker__collapsed {
+  display: none;
+}
+
+.StylePicker--expanded .StylePicker__expanded {
+  display: flex;
+}
+
+/* Desktop: always show expanded, hide collapsed */
+@media (min-width: 1024px) {
+  .StylePicker__collapsed {
+    display: none;
+  }
+
+  .StylePicker__expanded {
+    display: flex;
+  }
 }

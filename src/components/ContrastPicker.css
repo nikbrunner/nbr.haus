@@ -1,0 +1,28 @@
+.ContrastPicker {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: var(--border-size-2) solid var(--fg-accent);
+}
+
+.ContrastPicker__option {
+  padding: var(--size-2) var(--size-3);
+  background: var(--bg-main);
+  border: none;
+  color: var(--fg-main);
+  font-family: var(--font-family);
+  font-size: var(--font-size-1);
+  font-weight: var(--font-weight-9);
+  cursor: pointer;
+  transition:
+    color 0.1s ease-out,
+    transform 0.1s ease-out;
+}
+
+.ContrastPicker__option:hover {
+  color: var(--fg-accent);
+}
+
+.ContrastPicker__option--active {
+  color: var(--fg-accent);
+}
