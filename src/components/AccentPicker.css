@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  background: var(--bg-main);
   border: var(--border-size-2) solid var(--fg-accent);
 }
 
@@ -10,16 +11,18 @@
   height: var(--size-6);
   margin: var(--size-2) 0;
   cursor: pointer;
-  border: none;
+  border: var(--border-size-2) solid transparent;
+  outline: var(--border-size-2) solid transparent;
+  outline-offset: var(--border-size-1);
   transition:
-    transform 0.1s ease-out,
-    box-shadow 0.15s ease-out;
+    outline-color 0.1s ease-out,
+    border-color 0.1s ease-out;
 }
 
 .AccentPicker__swatch:hover {
-  transform: scale(1.35);
+  border-color: var(--fg-main);
 }
 
 .AccentPicker__swatch--active {
-  transform: scale(1.35);
+  outline-color: var(--fg-main);
 }
