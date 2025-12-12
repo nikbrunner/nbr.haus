@@ -115,7 +115,9 @@ export default function StylePicker() {
           aria-label="Toggle style picker"
           aria-expanded={isExpanded}
         >
-          {CONTRAST_LABELS[currentContrast]}
+          <span className="StylePicker__summary-label">
+            {CONTRAST_LABELS[currentContrast]}
+          </span>
         </button>
         <div className="StylePicker__picker">
           <ContrastPicker />
@@ -130,7 +132,9 @@ export default function StylePicker() {
           aria-label="Toggle style picker"
           aria-expanded={isExpanded}
         >
-          {COLOR_MODE_LABELS[currentColorMode]}
+          <span className="StylePicker__summary-label">
+            {COLOR_MODE_LABELS[currentColorMode]}
+          </span>
         </button>
         <div className="StylePicker__picker">
           <ColorModePicker />
