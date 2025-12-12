@@ -28,7 +28,7 @@ export default function AccentPicker() {
     []
   );
 
-  // Get initial hue from query param, localStorage, or random
+  // Get initial hue from query param, localStorage, or default
   const getInitialHue = useCallback((): number => {
     // 1. Priority: Query param
     if (search.hue !== undefined) {
@@ -43,8 +43,8 @@ export default function AccentPicker() {
       }
     }
 
-    // 3. Default: random from presets
-    return PRESET_HUES[Math.floor(Math.random() * PRESET_HUES.length)];
+    // 3. Default: first preset (deterministic for SSR)
+    return PRESET_HUES[0];
   }, [search.hue]);
 
   const [selectedHue, setSelectedHue] = useState(getInitialHue);
