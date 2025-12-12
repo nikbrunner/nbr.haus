@@ -94,10 +94,14 @@ export default function StylePicker() {
         aria-label="Toggle style picker"
         aria-expanded={isExpanded}
       >
-        <span
-          className="StylePicker__swatch"
-          style={{ backgroundColor: `oklch(45% 0.35 ${getAccentHue(currentHue)})` }}
-        />
+        <span className="StylePicker__label">
+          <span
+            className="StylePicker__swatch"
+            style={{
+              backgroundColor: `oklch(45% 0.35 ${getAccentHue(currentHue)})`
+            }}
+          />
+        </span>
         <span className="StylePicker__label">
           {CONTRAST_LABELS[currentContrast]}
         </span>

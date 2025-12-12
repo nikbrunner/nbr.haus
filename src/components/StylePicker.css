@@ -7,7 +7,10 @@
 
 /* Collapsed view - summary row */
 .StylePicker__collapsed {
-  display: flex;
+  /* display: flex; */
+  display: grid;
+  grid-template-columns: repeat(3, var(--size-8));
+  grid-template-rows: var(--size-8);
   align-items: center;
   gap: var(--size-3);
   padding: var(--size-2) var(--size-3);
@@ -26,14 +29,34 @@
   transform: translateY(-2px);
 }
 
-.StylePicker__swatch {
-  width: var(--size-5);
-  height: var(--size-5);
-  flex-shrink: 0;
+.StylePicker__label {
+  /* padding: var(--size-1) var(--size-2); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background: var(--bg-main);
+  border: var(--border-size-2) solid var(--fg-accent);
+  color: var(--fg-accent);
 }
 
-.StylePicker__label {
-  color: var(--fg-accent);
+.StylePicker__swatch {
+  /* width: var(--size-5); */
+  width: 70%;
+  /* height: var(--size-5); */
+  height: 70%;
+  /* flex-shrink: 0; */
+  background: var(--bg-main);
+  /* padding: var(--size-3); */
+  /* border: var(--border-size-2) solid var(--fg-accent); */
+  /* outline: var(--border-size-2) solid var(--fg-main); */
+  /* outline-offset: var(--border-size-1); */
+}
+
+.StylePicker__swatch-inner {
+  width: 100%;
+  height: 100%;
 }
 
 /* Expanded view - hidden by default on mobile */
