@@ -3,17 +3,59 @@
   bottom: var(--size-3);
   left: var(--size-3);
   z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-2);
 }
 
-/* Collapsed view - summary row */
-.StylePicker__collapsed {
-  /* display: flex; */
+/* Each row: summary + picker */
+.StylePicker__row {
   display: grid;
-  grid-template-columns: repeat(3, var(--size-8));
-  grid-template-rows: var(--size-8);
+  grid-template-columns: var(--size-8) 0fr;
+  align-items: stretch;
+  gap: var(--size-2);
+  transition: grid-template-columns 0.2s ease-out;
+}
+
+/* Staggered delays for expansion */
+.StylePicker--expanded .StylePicker__row:nth-child(1) {
+  transition-delay: 0ms;
+}
+
+.StylePicker--expanded .StylePicker__row:nth-child(2) {
+  transition-delay: 50ms;
+}
+
+.StylePicker--expanded .StylePicker__row:nth-child(3) {
+  transition-delay: 100ms;
+}
+
+/* Staggered delays for collapse (reverse order) */
+.StylePicker:not(.StylePicker--expanded) .StylePicker__row:nth-child(1) {
+  transition-delay: 100ms;
+}
+
+.StylePicker:not(.StylePicker--expanded) .StylePicker__row:nth-child(2) {
+  transition-delay: 50ms;
+}
+
+.StylePicker:not(.StylePicker--expanded) .StylePicker__row:nth-child(3) {
+  transition-delay: 0ms;
+}
+
+/* Expanded: reveal picker column */
+.StylePicker--expanded .StylePicker__row {
+  grid-template-columns: var(--size-8) 1fr;
+}
+
+/* Summary button (clickable label) */
+.StylePicker__summary {
+  display: flex;
   align-items: center;
-  gap: var(--size-3);
-  padding: var(--size-2) var(--size-3);
+  justify-content: center;
+  width: var(--size-8);
+  height: var(--size-8);
+  padding: 0;
   background: var(--bg-dots);
   box-shadow: var(--shadow-hard-5);
   border: var(--border-size-2) solid var(--fg-accent);
@@ -21,80 +63,28 @@
   font-family: var(--font-family);
   font-size: var(--font-size-1);
   font-weight: var(--font-weight-9);
-  color: var(--fg-main);
+  color: var(--fg-accent);
   transition: transform 0.1s ease-out;
 }
 
-.StylePicker__collapsed:hover {
+.StylePicker__summary:hover {
   transform: translateY(-2px);
 }
 
-.StylePicker__label {
-  /* padding: var(--size-1) var(--size-2); */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  background: var(--bg-main);
-  border: var(--border-size-2) solid var(--fg-accent);
-  color: var(--fg-accent);
-}
-
+/* Color swatch in summary */
 .StylePicker__swatch {
-  /* width: var(--size-5); */
   width: 70%;
-  /* height: var(--size-5); */
   height: 70%;
-  /* flex-shrink: 0; */
-  background: var(--bg-main);
-  /* padding: var(--size-3); */
-  /* border: var(--border-size-2) solid var(--fg-accent); */
-  /* outline: var(--border-size-2) solid var(--fg-main); */
-  /* outline-offset: var(--border-size-1); */
 }
 
-.StylePicker__swatch-inner {
-  width: 100%;
+/* Picker container - handles overflow for animation */
+.StylePicker__picker {
+  overflow: hidden;
+  min-width: 0;
+}
+
+/* Make child pickers fill their container */
+.StylePicker__picker > * {
   height: 100%;
 }
 
-/* Expanded view - hidden by default on mobile */
-.StylePicker__expanded {
-  display: none;
-  flex-direction: column;
-  gap: var(--size-2);
-  padding: var(--size-3);
-  background: var(--bg-dots);
-  box-shadow: var(--shadow-hard-5);
-  border: var(--border-size-2) solid var(--fg-accent);
-}
-
-.StylePicker__row {
-  display: flex;
-}
-
-/* All pickers fill their row */
-.StylePicker__row > * {
-  flex: 1;
-}
-
-/* When expanded on mobile */
-.StylePicker--expanded .StylePicker__collapsed {
-  display: none;
-}
-
-.StylePicker--expanded .StylePicker__expanded {
-  display: flex;
-}
-
-/* Desktop: always show expanded, hide collapsed */
-@media (min-width: 1024px) {
-  .StylePicker__collapsed {
-    display: none;
-  }
-
-  .StylePicker__expanded {
-    display: flex;
-  }
-}

@@ -87,38 +87,52 @@ export default function StylePicker() {
 
   return (
     <div className={cx("StylePicker", isExpanded && "StylePicker--expanded")}>
-      {/* Collapsed view - summary row */}
-      <button
-        className="StylePicker__collapsed"
-        onClick={handleToggle}
-        aria-label="Toggle style picker"
-        aria-expanded={isExpanded}
-      >
-        <span className="StylePicker__label">
+      {/* Row 1: Accent */}
+      <div className="StylePicker__row">
+        <button
+          className="StylePicker__summary"
+          onClick={handleToggle}
+          aria-label="Toggle style picker"
+          aria-expanded={isExpanded}
+        >
           <span
             className="StylePicker__swatch"
             style={{
               backgroundColor: `oklch(45% 0.35 ${getAccentHue(currentHue)})`
             }}
           />
-        </span>
-        <span className="StylePicker__label">
-          {CONTRAST_LABELS[currentContrast]}
-        </span>
-        <span className="StylePicker__label">
-          {COLOR_MODE_LABELS[currentColorMode]}
-        </span>
-      </button>
-
-      {/* Expanded view - full grid */}
-      <div className="StylePicker__expanded">
-        <div className="StylePicker__row">
+        </button>
+        <div className="StylePicker__picker">
           <AccentPicker />
         </div>
-        <div className="StylePicker__row">
+      </div>
+
+      {/* Row 2: Contrast */}
+      <div className="StylePicker__row">
+        <button
+          className="StylePicker__summary"
+          onClick={handleToggle}
+          aria-label="Toggle style picker"
+          aria-expanded={isExpanded}
+        >
+          {CONTRAST_LABELS[currentContrast]}
+        </button>
+        <div className="StylePicker__picker">
           <ContrastPicker />
         </div>
-        <div className="StylePicker__row">
+      </div>
+
+      {/* Row 3: Color Mode */}
+      <div className="StylePicker__row">
+        <button
+          className="StylePicker__summary"
+          onClick={handleToggle}
+          aria-label="Toggle style picker"
+          aria-expanded={isExpanded}
+        >
+          {COLOR_MODE_LABELS[currentColorMode]}
+        </button>
+        <div className="StylePicker__picker">
           <ColorModePicker />
         </div>
       </div>
