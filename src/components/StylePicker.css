@@ -15,9 +15,6 @@
   align-items: stretch;
   background: var(--bg-main);
   box-shadow: var(--shadow-hard-5);
-  transition:
-    grid-template-columns 0.2s ease-out,
-    box-shadow 0.1s ease-out;
 }
 
 .StylePicker__picker {
@@ -26,39 +23,9 @@
   border-bottom: var(--border-size-2) solid var(--fg-accent);
 }
 
-/* Staggered delays for expansion */
-.StylePicker--expanded .StylePicker__row:nth-child(1) {
-  transition-delay: 0ms;
-}
-
-.StylePicker--expanded .StylePicker__row:nth-child(2) {
-  transition-delay: 25ms;
-}
-
-.StylePicker--expanded .StylePicker__row:nth-child(3) {
-  transition-delay: 50ms;
-}
-
-/* Staggered delays for collapse (reverse order) */
-.StylePicker:not(.StylePicker--expanded) .StylePicker__row:nth-child(1) {
-  transition-delay: 50ms;
-}
-
-.StylePicker:not(.StylePicker--expanded) .StylePicker__row:nth-child(2) {
-  transition-delay: 25ms;
-}
-
-.StylePicker:not(.StylePicker--expanded) .StylePicker__row:nth-child(3) {
-  transition-delay: 0ms;
-}
-
-/* Expanded: reveal picker column */
-.StylePicker--expanded .StylePicker__row {
-  grid-template-columns: var(--size-8) 1fr;
-}
-
 /* Summary button (clickable label) */
 .StylePicker__summary {
+  flex-shrink: 0;
   container-type: inline-size;
   display: flex;
   align-items: center;
@@ -99,10 +66,9 @@
   }
 }
 
-/* Picker container - handles overflow for animation */
+/* Picker container */
 .StylePicker__picker {
   overflow: hidden;
-  min-width: 0;
 }
 
 /* Make child pickers fill their container */

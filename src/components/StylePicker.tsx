@@ -1,10 +1,17 @@
 import { useSearch } from "@tanstack/react-router";
 import { cx } from "class-variance-authority";
+import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useEffect, useState } from "react";
 import AccentPicker from "./AccentPicker";
 import ColorModePicker from "./ColorModePicker";
 import ContrastPicker from "./ContrastPicker";
 import type { ColorMode, Contrast } from "@/validators/rootSearchParams";
+
+// Animation variants for picker reveal
+const pickerVariants = {
+  hidden: { opacity: 0, width: 0 },
+  visible: { opacity: 1, width: "auto" }
+};
 
 const CONTRAST_LABELS: Record<Contrast, string> = {
   low: "LC",
@@ -104,9 +111,20 @@ export default function StylePicker() {
             />
           </span>
         </div>
-        <div className="StylePicker__picker">
-          <AccentPicker />
-        </div>
+        <AnimatePresence>
+          {isExpanded && (
+            <motion.div
+              className="StylePicker__picker"
+              variants={pickerVariants}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              transition={{ duration: 0.15, delay: isExpanded ? 0 : 0.06 }}
+            >
+              <AccentPicker />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Row 2: Contrast */}
@@ -121,9 +139,20 @@ export default function StylePicker() {
             {CONTRAST_LABELS[currentContrast]}
           </span>
         </button>
-        <div className="StylePicker__picker">
-          <ContrastPicker />
-        </div>
+        <AnimatePresence>
+          {isExpanded && (
+            <motion.div
+              className="StylePicker__picker"
+              variants={pickerVariants}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              transition={{ duration: 0.15, delay: isExpanded ? 0.03 : 0.03 }}
+            >
+              <ContrastPicker />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Row 3: Color Mode */}
@@ -138,9 +167,20 @@ export default function StylePicker() {
             {COLOR_MODE_LABELS[currentColorMode]}
           </span>
         </button>
-        <div className="StylePicker__picker">
-          <ColorModePicker />
-        </div>
+        <AnimatePresence>
+          {isExpanded && (
+            <motion.div
+              className="StylePicker__picker"
+              variants={pickerVariants}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              transition={{ duration: 0.15, delay: isExpanded ? 0.06 : 0 }}
+            >
+              <ColorModePicker />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
