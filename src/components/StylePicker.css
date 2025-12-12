@@ -19,8 +19,10 @@
   transition: box-shadow 0.1s ease-out;
 }
 
-.StylePicker__row:hover {
-  box-shadow: 0px 0px 0px var(--fg-accent);
+.StylePicker__picker {
+  border-top: var(--border-size-2) solid var(--fg-accent);
+  border-right: var(--border-size-2) solid var(--fg-accent);
+  border-bottom: var(--border-size-2) solid var(--fg-accent);
 }
 
 /* Staggered delays for expansion */
@@ -84,8 +86,16 @@
 
 /* Color swatch in summary */
 .StylePicker__swatch {
-  width: 70%;
-  height: 70%;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-main);
+  padding: var(--size-2);
+
+  & > span {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 /* Picker container - handles overflow for animation */

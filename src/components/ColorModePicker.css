@@ -1,7 +1,6 @@
 .ColorModePicker {
   display: flex;
   align-items: center;
-  border: var(--border-size-2) solid var(--fg-accent);
 }
 
 .ColorModePicker__option {

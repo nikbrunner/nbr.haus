@@ -1,7 +1,6 @@
 .ContrastPicker {
   display: flex;
   align-items: center;
-  border: var(--border-size-2) solid var(--fg-accent);
 }
 
 .ContrastPicker__option {

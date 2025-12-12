@@ -89,19 +89,21 @@ export default function StylePicker() {
     <div className={cx("StylePicker", isExpanded && "StylePicker--expanded")}>
       {/* Row 1: Accent */}
       <div className="StylePicker__row">
-        <button
+        <div
+          role="button"
           className="StylePicker__summary"
-          onClick={handleToggle}
           aria-label="Toggle style picker"
           aria-expanded={isExpanded}
+          onClick={handleToggle}
         >
-          <span
-            className="StylePicker__swatch"
-            style={{
-              backgroundColor: `oklch(45% 0.35 ${getAccentHue(currentHue)})`
-            }}
-          />
-        </button>
+          <span className="StylePicker__swatch">
+            <span
+              style={{
+                backgroundColor: `oklch(45% 0.35 ${getAccentHue(currentHue)})`
+              }}
+            />
+          </span>
+        </div>
         <div className="StylePicker__picker">
           <AccentPicker />
         </div>
@@ -111,9 +113,9 @@ export default function StylePicker() {
       <div className="StylePicker__row">
         <button
           className="StylePicker__summary"
-          onClick={handleToggle}
           aria-label="Toggle style picker"
           aria-expanded={isExpanded}
+          onClick={handleToggle}
         >
           <span className="StylePicker__summary-label">
             {CONTRAST_LABELS[currentContrast]}
@@ -128,9 +130,9 @@ export default function StylePicker() {
       <div className="StylePicker__row">
         <button
           className="StylePicker__summary"
-          onClick={handleToggle}
           aria-label="Toggle style picker"
           aria-expanded={isExpanded}
+          onClick={handleToggle}
         >
           <span className="StylePicker__summary-label">
             {COLOR_MODE_LABELS[currentColorMode]}

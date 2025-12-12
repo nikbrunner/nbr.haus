@@ -3,7 +3,6 @@
   align-items: center;
   justify-content: space-evenly;
   background: var(--bg-main);
-  border: var(--border-size-2) solid var(--fg-accent);
 }
 
 .AccentPicker__swatch {
@@ -11,7 +10,7 @@
   height: var(--size-6);
   margin: var(--size-2) 0;
   cursor: pointer;
-  border: var(--border-size-2) solid transparent;
+  border: none;
   outline: var(--border-size-2) solid transparent;
   outline-offset: var(--border-size-1);
   transition:
