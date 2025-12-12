@@ -49,7 +49,11 @@
 
 .StylePicker__row {
   display: flex;
-  justify-content: center;
+}
+
+/* All pickers fill their row */
+.StylePicker__row > * {
+  flex: 1;
 }
 
 /* When expanded on mobile */

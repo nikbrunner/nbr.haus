@@ -1,11 +1,11 @@
 .ContrastPicker {
   display: flex;
   align-items: center;
-  gap: 0;
   border: var(--border-size-2) solid var(--fg-accent);
 }
 
 .ContrastPicker__option {
+  flex: 1;
   padding: var(--size-2) var(--size-3);
   background: var(--bg-main);
   border: none;
@@ -14,6 +14,7 @@
   font-size: var(--font-size-1);
   font-weight: var(--font-weight-9);
   cursor: pointer;
+  text-align: center;
   transition:
     color 0.1s ease-out,
     transform 0.1s ease-out;
