@@ -1,37 +1,39 @@
-import { cx } from "class-variance-authority";
+import { cva, cx, type VariantProps } from "class-variance-authority";
 import "./AccentPickerOption.css";
 
-interface AccentPickerOptionProps {
+const variants = cva("AccentPickerOption", {
+  variants: {
+    variant: {
+      default: "AccentPickerOption--default",
+      active: "AccentPickerOption--active"
+    }
+  },
+  defaultVariants: {
+    variant: "default"
+  }
+});
+
+interface Props extends VariantProps<typeof variants> {
   color: string;
-  isActive?: boolean;
-  onClick?: () => void;
+  onClick: () => void;
   ariaLabel?: string;
 }
 
 export default function AccentPickerOption({
   color,
-  isActive = false,
   onClick,
-  ariaLabel
-}: AccentPickerOptionProps) {
-  const className = cx(
-    "AccentPickerOption",
-    isActive && "AccentPickerOption--active"
-  );
-  const style = { backgroundColor: color };
-
-  // Render as div when used as indicator (no onClick), button when interactive
-  if (!onClick) {
-    return <div className={className} style={style} />;
-  }
-
+  ariaLabel,
+  variant
+}: Props) {
   return (
-    <button
-      className={className}
-      style={style}
-      onClick={onClick}
-      aria-label={ariaLabel}
-      type="button"
-    />
+    <div className={cx(variants({ variant }))}>
+      <button
+        className="AccentPickerOption__button"
+        style={{ backgroundColor: color }}
+        type="button"
+        onClick={onClick}
+        aria-label={ariaLabel}
+      />
+    </div>
   );
 }

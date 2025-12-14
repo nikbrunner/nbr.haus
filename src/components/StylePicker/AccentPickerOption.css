@@ -1,4 +1,7 @@
 .AccentPickerOption {
+}
+
+.AccentPickerOption__button {
   display: block;
   width: var(--size-6);
   height: var(--size-6);
@@ -9,10 +12,12 @@
   transition: outline-color 0.1s ease-out;
 }
 
-.AccentPickerOption:hover {
-  outline-color: var(--fg-main);
-}
+/* .AccentPickerOption__button:hover { */
+/*   outline-color: var(--fg-main); */
+/* } */
 
 .AccentPickerOption--active {
-  outline-color: var(--fg-main);
+  .AccentPickerOption__button {
+    outline-color: var(--fg-main);
+  }
 }

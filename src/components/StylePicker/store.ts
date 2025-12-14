@@ -1,16 +1,16 @@
 import { Store } from "@tanstack/react-store";
-import type { ColorMode, Contrast } from "@/validators/rootSearchParams";
+import type { Hue, ColorMode, Contrast } from "@/validators/rootSearchParams";
 
 // Types
 export interface StyleState {
   isExpanded: boolean;
-  hue: number;
+  hue: Hue;
   contrast: Contrast;
   colorMode: ColorMode;
 }
 
 // Constants
-export const PRESET_HUES = [90, 165, 275];
+export const PRESET_HUES: Hue[] = [90, 165, 275];
 
 export const CONTRAST_OPTIONS: { value: Contrast; label: string }[] = [
   { value: "low", label: "LC" },

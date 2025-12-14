@@ -15,7 +15,6 @@
   align-items: center;
   height: var(--size-8);
   background: var(--bg-main);
-  box-shadow: var(--shadow-hard-5);
 }
 
 /* Indicator button (always visible) */
@@ -35,6 +34,7 @@
   font-size: var(--font-size-1);
   font-weight: var(--font-weight-9);
   color: var(--fg-accent);
+  box-shadow: var(--shadow-hard-5);
 }
 
 .StylePicker__indicator-label {
@@ -52,7 +52,7 @@
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: var(--size-8);
-  align-items: center;
+  place-items: center;
   box-sizing: border-box;
   height: var(--size-8);
   gap: 0;
@@ -62,8 +62,11 @@
   border-left: var(--border-size-2) solid var(--fg-accent);
 }
 
-/* AccentPickerOption needs to fill the grid cell */
-.StylePicker__options .AccentPickerOption {
-  width: 100%;
+/* Option wrappers need to fill the grid cell */
+.StylePicker__options > * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100%;
+  width: 100%;
 }

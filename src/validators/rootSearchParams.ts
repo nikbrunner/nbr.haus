@@ -1,5 +1,8 @@
 import { z } from "zod";
 
+export const hueSchema = z.number().min(0).max(360);
+export type Hue = z.infer<typeof hueSchema>;
+
 export const colorModeSchema = z.enum(["light", "system", "dark"]);
 export type ColorMode = z.infer<typeof colorModeSchema>;
 
