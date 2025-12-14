@@ -72,6 +72,7 @@
   justify-content: center;
   padding-inline: var(--size-2);
   height: 100%;
+  width: 100%;
 
   background: var(--fg-accent);
   color: var(--bg-main);

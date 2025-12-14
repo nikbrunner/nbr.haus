@@ -34,7 +34,7 @@ function PickerRow({
   isExpanded
 }: PickerRowProps) {
   return (
-    <motion.div className="StylePicker__row" layout style={{ originX: 1 }}>
+    <div className="StylePicker__row">
       <div
         role="button"
         className="StylePicker__indicator"
@@ -47,25 +47,24 @@ function PickerRow({
         {isExpanded && (
           <motion.div
             className="StylePicker__options"
-            initial={{ width: 0, opacity: 0 }}
+            initial={{ clipPath: "inset(0 100% 0 0)", opacity: 0 }}
             animate={{
-              width: "auto",
+              clipPath: "inset(0 0% 0 0)",
               opacity: 1,
               transition: {
                 delay,
-                width: { duration: TIMING.optionsExpand, ease: "linear" },
+                clipPath: { duration: TIMING.optionsExpand, ease: "easeOut" },
                 opacity: { duration: TIMING.optionEnter, delay }
               }
             }}
             exit={{
-              width: 0,
+              clipPath: "inset(0 100% 0 0)",
               opacity: 0,
               transition: {
-                width: { duration: TIMING.optionsCollapse, ease: "linear" },
+                clipPath: { duration: TIMING.optionsCollapse, ease: "easeIn" },
                 opacity: { duration: TIMING.optionExit }
               }
             }}
-            style={{ overflow: "hidden" }}
           >
             {options}
           </motion.div>
@@ -75,31 +74,30 @@ function PickerRow({
         {isExpanded && (
           <motion.span
             className="StylePicker__label"
-            initial={{ width: 0, opacity: 0 }}
+            initial={{ clipPath: "inset(0 100% 0 0)", opacity: 0 }}
             animate={{
-              width: "100%",
+              clipPath: "inset(0 0% 0 0)",
               opacity: 1,
               transition: {
                 delay,
-                width: { duration: TIMING.optionsExpand, ease: "linear" },
+                clipPath: { duration: TIMING.optionsExpand, ease: "easeOut" },
                 opacity: { duration: TIMING.optionEnter, delay: delay + 0.05 }
               }
             }}
             exit={{
-              width: 0,
+              clipPath: "inset(0 100% 0 0)",
               opacity: 0,
               transition: {
-                width: { duration: TIMING.optionsCollapse, ease: "linear" },
+                clipPath: { duration: TIMING.optionsCollapse, ease: "easeIn" },
                 opacity: { duration: TIMING.optionExit }
               }
             }}
-            style={{ overflow: "hidden", whiteSpace: "nowrap" }}
           >
             {label}
           </motion.span>
         )}
       </AnimatePresence>
-    </motion.div>
+    </div>
   );
 }
 
@@ -198,10 +196,7 @@ export default function StylePicker() {
   };
 
   return (
-    <motion.div
-      className={cx("StylePicker", isExpanded && "StylePicker--expanded")}
-      layout
-    >
+    <div className={cx("StylePicker", isExpanded && "StylePicker--expanded")}>
       {/* Accent Row */}
       <PickerRow
         label="Accent"
@@ -269,6 +264,6 @@ export default function StylePicker() {
           </Option>
         ))}
       />
-    </motion.div>
+    </div>
   );
 }
