@@ -2,13 +2,102 @@ import { useRouter, useSearch } from "@tanstack/react-router";
 import { useStore } from "@tanstack/react-store";
 import { cx } from "class-variance-authority";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, type ReactNode } from "react";
 import AccentPickerOption from "./AccentPickerOption";
 import ColorModePickerOption from "./ColorModePickerOption";
 import ContrastPickerOption from "./ContrastPickerOption";
 import * as store from "./store";
 import "./StylePicker.css";
 import type { ColorMode, Contrast } from "@/validators/rootSearchParams";
+
+/** Animation timing (seconds) */
+const TIMING = {
+  optionsExpand: 0.12,
+  optionsCollapse: 0.1,
+  optionEnter: 0.08,
+  optionExit: 0.06
+};
+
+interface PickerRowProps {
+  delay?: number;
+  indicator: ReactNode;
+  options: ReactNode;
+  isExpanded: boolean;
+}
+
+function PickerRow({ delay = 0, indicator, options, isExpanded }: PickerRowProps) {
+  return (
+    <motion.div className="StylePicker__row" layout style={{ originX: 1 }}>
+      <div
+        role="button"
+        className="StylePicker__indicator"
+        aria-label="Toggle style picker"
+        aria-expanded={isExpanded}
+      >
+        {indicator}
+      </div>
+      <AnimatePresence mode="wait">
+        {isExpanded && (
+          <motion.div
+            className="StylePicker__options"
+            initial={{ width: 0, opacity: 0 }}
+            animate={{
+              width: "auto",
+              opacity: 1,
+              transition: {
+                delay,
+                width: { duration: TIMING.optionsExpand, ease: "linear" },
+                opacity: { duration: TIMING.optionEnter, delay }
+              }
+            }}
+            exit={{
+              width: 0,
+              opacity: 0,
+              transition: {
+                width: { duration: TIMING.optionsCollapse, ease: "linear" },
+                opacity: { duration: TIMING.optionExit }
+              }
+            }}
+            style={{ overflow: "hidden" }}
+          >
+            {options}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+}
+
+interface OptionProps {
+  children: ReactNode;
+}
+
+function Option({ children }: OptionProps) {
+  return (
+    <motion.div
+      className="StylePicker__option"
+      variants={{
+        collapsed: {
+          opacity: 0
+        },
+        expanded: {
+          opacity: 1,
+          transition: { duration: TIMING.optionEnter, ease: "linear" }
+        },
+        exit: {
+          opacity: 0,
+          transition: { duration: TIMING.optionExit }
+        }
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+// ============================================================================
+// Main Component
+// ============================================================================
 
 export default function StylePicker() {
   const router = useRouter();
@@ -73,146 +162,75 @@ export default function StylePicker() {
     });
   };
 
-  const rows = [
-    {
-      key: "accent",
-      indicator: (
-        <div
-          role="button"
-          className="StylePicker__indicator"
-          aria-label="Toggle style picker"
-          aria-expanded={isExpanded}
-        >
+  return (
+    <motion.div
+      className={cx("StylePicker", isExpanded && "StylePicker--expanded")}
+      layout
+    >
+      {/* Accent Row */}
+      <PickerRow
+        isExpanded={isExpanded}
+        indicator={
           <AccentPickerOption
             onClick={store.toggleExpanded}
             color={`oklch(45% 0.35 ${store.getAccentHue(hue)})`}
           />
-        </div>
-      ),
-      options: (
-        <motion.div
-          className="StylePicker__options"
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: 100 }}
-        >
-          {store.PRESET_HUES.map(presetHue => (
-            <motion.div
-              key={presetHue}
-              className="StylePicker__option"
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.8 }}
-            >
-              <AccentPickerOption
-                color={`oklch(45% 0.35 ${store.getAccentHue(presetHue)})`}
-                variant={hue === presetHue ? "active" : "default"}
-                onClick={() => handleSelectHue(presetHue)}
-                ariaLabel={`Select accent hue ${presetHue}`}
-              />
-            </motion.div>
-          ))}
-        </motion.div>
-      )
-    },
-    {
-      key: "contrast",
-      indicator: (
-        <div
-          role="button"
-          className="StylePicker__indicator"
-          aria-label="Toggle style picker"
-          aria-expanded={isExpanded}
-        >
+        }
+        options={store.PRESET_HUES.map(presetHue => (
+          <Option key={presetHue}>
+            <AccentPickerOption
+              color={`oklch(45% 0.35 ${store.getAccentHue(presetHue)})`}
+              variant={hue === presetHue ? "active" : "default"}
+              onClick={() => handleSelectHue(presetHue)}
+              ariaLabel={`Select accent hue ${presetHue}`}
+            />
+          </Option>
+        ))}
+      />
+
+      {/* Contrast Row */}
+      <PickerRow
+        isExpanded={isExpanded}
+        indicator={
           <ContrastPickerOption
             label={store.CONTRAST_LABELS[contrast]}
             onClick={store.toggleExpanded}
             ariaLabel={`Select ${store.CONTRAST_LABELS[contrast]}`}
           />
-        </div>
-      ),
-      options: (
-        <motion.div
-          className="StylePicker__options"
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: 100 }}
-        >
-          {store.CONTRAST_OPTIONS.map(opt => (
-            <motion.div
-              key={opt.value}
-              className="StylePicker__option"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ staggerChildren: 0.25 }}
-            >
-              <ContrastPickerOption
-                label={opt.label}
-                variant={contrast === opt.value ? "active" : "default"}
-                onClick={() => handleSelectContrast(opt.value)}
-                ariaLabel={`Select ${opt.value} contrast`}
-              />
-            </motion.div>
-          ))}
-        </motion.div>
-      )
-    },
-    {
-      key: "colorMode",
-      indicator: (
-        <div
-          role="button"
-          className="StylePicker__indicator"
-          aria-label="Toggle style picker"
-          aria-expanded={isExpanded}
-        >
+        }
+        options={store.CONTRAST_OPTIONS.map(opt => (
+          <Option key={opt.value}>
+            <ContrastPickerOption
+              label={opt.label}
+              variant={contrast === opt.value ? "active" : "default"}
+              onClick={() => handleSelectContrast(opt.value)}
+              ariaLabel={`Select ${opt.value} contrast`}
+            />
+          </Option>
+        ))}
+      />
+
+      {/* Color Mode Row */}
+      <PickerRow
+        isExpanded={isExpanded}
+        indicator={
           <ColorModePickerOption
             label={store.COLOR_MODE_LABELS[colorMode]}
             onClick={store.toggleExpanded}
             ariaLabel={`Select ${store.COLOR_MODE_LABELS[colorMode]} color mode`}
           />
-        </div>
-      ),
-      options: (
-        <motion.div
-          className="StylePicker__options"
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: 100 }}
-        >
-          {store.COLOR_MODE_OPTIONS.map(opt => (
-            <motion.div
-              key={opt.value}
-              className="StylePicker__option"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{
-                staggerChildren: 0.25
-              }}
-            >
-              <ColorModePickerOption
-                label={opt.label}
-                variant={colorMode === opt.value ? "active" : "default"}
-                onClick={() => handleSelectColorMode(opt.value)}
-                ariaLabel={`Select ${opt.value} color mode`}
-              />
-            </motion.div>
-          ))}
-        </motion.div>
-      )
-    }
-  ];
-
-  return (
-    <div className={cx("StylePicker", isExpanded && "StylePicker--expanded")}>
-      {rows.map(row => (
-        <div key={row.key} className="StylePicker__row">
-          {row.indicator}
-          <AnimatePresence mode="wait">{isExpanded && row.options}</AnimatePresence>
-        </div>
-      ))}
-    </div>
+        }
+        options={store.COLOR_MODE_OPTIONS.map(opt => (
+          <Option key={opt.value}>
+            <ColorModePickerOption
+              label={opt.label}
+              variant={colorMode === opt.value ? "active" : "default"}
+              onClick={() => handleSelectColorMode(opt.value)}
+              ariaLabel={`Select ${opt.value} color mode`}
+            />
+          </Option>
+        ))}
+      />
+    </motion.div>
   );
 }
