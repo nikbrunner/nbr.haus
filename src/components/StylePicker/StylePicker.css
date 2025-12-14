@@ -1,35 +1,30 @@
 .StylePicker {
   position: fixed;
   bottom: var(--size-3);
-  left: var(--size-3);
+  right: var(--size-3);
   z-index: 9999;
   display: flex;
   flex-direction: column;
   gap: var(--size-4);
 }
 
-/* Each row: summary + picker */
+/* Each row: options + indicator (row-reverse so indicator is on right) */
 .StylePicker__row {
-  display: grid;
-  grid-template-columns: var(--size-8) 0fr;
-  align-items: stretch;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  height: var(--size-8);
   background: var(--bg-main);
   box-shadow: var(--shadow-hard-5);
 }
 
-.StylePicker__picker {
-  border-top: var(--border-size-2) solid var(--fg-accent);
-  border-right: var(--border-size-2) solid var(--fg-accent);
-  border-bottom: var(--border-size-2) solid var(--fg-accent);
-}
-
-/* Summary button (clickable label) */
-.StylePicker__summary {
+/* Indicator button (always visible) */
+.StylePicker__indicator {
   flex-shrink: 0;
-  container-type: inline-size;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
   width: var(--size-8);
   height: var(--size-8);
   padding: var(--size-2);
@@ -42,7 +37,7 @@
   color: var(--fg-accent);
 }
 
-.StylePicker__summary-label {
+.StylePicker__indicator-label {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,26 +47,23 @@
   font-size: var(--font-size-fluid-0);
 }
 
-/* Color swatch in summary */
-.StylePicker__swatch {
-  width: 100%;
-  height: 100%;
-  background: var(--bg-main);
-  padding: var(--size-2);
-
-  & > span {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-}
-
-/* Picker container */
-.StylePicker__picker {
+/* Options container (animated) */
+.StylePicker__options {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: var(--size-8);
+  align-items: center;
+  box-sizing: border-box;
+  height: var(--size-8);
+  gap: 0;
   overflow: hidden;
+  border-top: var(--border-size-2) solid var(--fg-accent);
+  border-bottom: var(--border-size-2) solid var(--fg-accent);
+  border-left: var(--border-size-2) solid var(--fg-accent);
 }
 
-/* Make child pickers fill their container */
-.StylePicker__picker > * {
+/* AccentPickerOption needs to fill the grid cell */
+.StylePicker__options .AccentPickerOption {
+  width: 100%;
   height: 100%;
 }

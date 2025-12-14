@@ -1,0 +1,18 @@
+.AccentPickerOption {
+  display: block;
+  width: var(--size-6);
+  height: var(--size-6);
+  border: none;
+  cursor: pointer;
+  outline: var(--border-size-2) solid transparent;
+  outline-offset: var(--border-size-1);
+  transition: outline-color 0.1s ease-out;
+}
+
+.AccentPickerOption:hover {
+  outline-color: var(--fg-main);
+}
+
+.AccentPickerOption--active {
+  outline-color: var(--fg-main);
+}

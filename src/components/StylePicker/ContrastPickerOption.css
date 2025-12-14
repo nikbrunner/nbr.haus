@@ -1,11 +1,10 @@
-.ContrastPicker {
+.ContrastPickerOption {
   display: flex;
   align-items: center;
-}
-
-.ContrastPicker__option {
-  flex: 1;
-  padding: var(--size-2) var(--size-3);
+  justify-content: center;
+  width: var(--size-8);
+  height: var(--size-8);
+  padding: var(--size-2);
   background: var(--bg-main);
   border: none;
   color: var(--fg-main);
@@ -14,15 +13,13 @@
   font-weight: var(--font-weight-9);
   cursor: pointer;
   text-align: center;
-  transition:
-    color 0.1s ease-out,
-    transform 0.1s ease-out;
+  transition: color 0.1s ease-out;
 }
 
-.ContrastPicker__option:hover {
+.ContrastPickerOption:hover {
   color: var(--fg-accent);
 }
 
-.ContrastPicker__option--active {
+.ContrastPickerOption--active {
   color: var(--fg-accent);
 }

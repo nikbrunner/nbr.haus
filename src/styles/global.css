@@ -9,9 +9,6 @@
 @import "../routes/index.css";
 
 /* Components */
-@import "../components/AccentPicker.css";
-@import "../components/ColorModePicker.css";
-@import "../components/ContrastPicker.css";
 @import "../components/Header.css";
 @import "../components/Highlight.css";
 @import "../components/Hr.css";
@@ -22,7 +19,12 @@
 @import "../components/SpecCard.css";
 @import "../components/SpecGrid.css";
 @import "../components/SpecList.css";
-@import "../components/StylePicker.css";
+
+/* StylePicker */
+@import "../components/StylePicker/StylePicker.css";
+@import "../components/StylePicker/AccentPickerOption.css";
+@import "../components/StylePicker/ContrastPickerOption.css";
+@import "../components/StylePicker/ColorModePickerOption.css";
 
 /* Content blocks */
 @import "../content-blocks/index/About.css";
