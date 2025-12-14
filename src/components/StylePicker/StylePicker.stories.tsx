@@ -1,14 +1,24 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import StylePicker from "./StylePicker";
+import { StylePickers, StyleStatus } from "./index";
 import { withRouter } from "@/storybook/decorators/withRouter";
 import type { RootSearchParams } from "@/validators/rootSearchParams";
 
-const meta: Meta<typeof StylePicker> = {
-  component: StylePicker
+// Combined story showing both components together
+function StylePickerCombo() {
+  return (
+    <>
+      <StyleStatus />
+      <StylePickers />
+    </>
+  );
+}
+
+const meta: Meta<typeof StylePickerCombo> = {
+  component: StylePickerCombo
 };
 
 export default meta;
-type Story = StoryObj<typeof StylePicker>;
+type Story = StoryObj<typeof StylePickerCombo>;
 
 export const Default: Story = {
   decorators: [withRouter<RootSearchParams>()]
