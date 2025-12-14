@@ -22,7 +22,8 @@
 @import "../components/SpecList.css";
 
 /* StylePicker */
-@import "../components/StylePicker/StylePicker.css";
+@import "../components/StylePicker/StyleStatus.css";
+@import "../components/StylePicker/StylePickers.css";
 @import "../components/StylePicker/AccentPickerOption.css";
 @import "../components/StylePicker/ContrastPickerOption.css";
 @import "../components/StylePicker/ColorModePickerOption.css";
