@@ -20,12 +20,19 @@ const TIMING = {
 
 interface PickerRowProps {
   delay?: number;
+  label: string;
   indicator: ReactNode;
   options: ReactNode;
   isExpanded: boolean;
 }
 
-function PickerRow({ delay = 0, indicator, options, isExpanded }: PickerRowProps) {
+function PickerRow({
+  delay = 0,
+  label,
+  indicator,
+  options,
+  isExpanded
+}: PickerRowProps) {
   return (
     <motion.div className="StylePicker__row" layout style={{ originX: 1 }}>
       <div
@@ -62,6 +69,34 @@ function PickerRow({ delay = 0, indicator, options, isExpanded }: PickerRowProps
           >
             {options}
           </motion.div>
+        )}
+      </AnimatePresence>
+      <AnimatePresence mode="wait">
+        {isExpanded && (
+          <motion.span
+            className="StylePicker__label"
+            initial={{ width: 0, opacity: 0 }}
+            animate={{
+              width: "100%",
+              opacity: 1,
+              transition: {
+                delay,
+                width: { duration: TIMING.optionsExpand, ease: "linear" },
+                opacity: { duration: TIMING.optionEnter, delay: delay + 0.05 }
+              }
+            }}
+            exit={{
+              width: 0,
+              opacity: 0,
+              transition: {
+                width: { duration: TIMING.optionsCollapse, ease: "linear" },
+                opacity: { duration: TIMING.optionExit }
+              }
+            }}
+            style={{ overflow: "hidden", whiteSpace: "nowrap" }}
+          >
+            {label}
+          </motion.span>
         )}
       </AnimatePresence>
     </motion.div>
@@ -169,6 +204,7 @@ export default function StylePicker() {
     >
       {/* Accent Row */}
       <PickerRow
+        label="Accent"
         isExpanded={isExpanded}
         indicator={
           <AccentPickerOption
@@ -190,6 +226,7 @@ export default function StylePicker() {
 
       {/* Contrast Row */}
       <PickerRow
+        label="Contrast"
         isExpanded={isExpanded}
         indicator={
           <ContrastPickerOption
@@ -212,6 +249,7 @@ export default function StylePicker() {
 
       {/* Color Mode Row */}
       <PickerRow
+        label="Mode"
         isExpanded={isExpanded}
         indicator={
           <ColorModePickerOption

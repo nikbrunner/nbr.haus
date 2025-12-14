@@ -19,6 +19,7 @@
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
+  gap: var(--size-4);
   height: var(--size-8);
 
   background: var(--bg-main);
@@ -26,6 +27,8 @@
 
 /* Indicator button (always visible) */
 .StylePicker__indicator {
+  flex-shrink: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,14 +42,15 @@
 
 /* Options container (animated) */
 .StylePicker__options {
+  flex-shrink: 0;
+
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: var(--size-8);
   place-items: center;
+  gap: var(--size-2);
 
   height: var(--size-8);
-
-  border: var(--border-size-2) solid var(--fg-accent);
 }
 
 .StylePicker__option {
@@ -56,4 +60,26 @@
 
   height: 100%;
   width: 100%;
+
+  border-left: var(--border-size-2) dashed var(--fg-accent);
+  border-right: var(--border-size-2) dashed var(--fg-accent);
+}
+
+/* Row label (visible when expanded) */
+.StylePicker__label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: var(--size-2);
+  height: 100%;
+
+  background: var(--fg-accent);
+  color: var(--bg-main);
+  font-size: var(--font-size-fluid-0);
+  font-weight: var(--font-weight-9);
+
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  border: var(--border-size-2) dashed var(--fg-accent);
 }
