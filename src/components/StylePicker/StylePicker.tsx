@@ -89,23 +89,27 @@ export default function StylePicker() {
           />
         </div>
       ),
-      options: store.PRESET_HUES.map(presetHue => (
-        <motion.div
-          key={presetHue}
-          className="StylePicker__options"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          transition={{ staggerChildren: 0.25 }}
-        >
-          <AccentPickerOption
-            color={`oklch(45% 0.35 ${store.getAccentHue(presetHue)})`}
-            variant={hue === presetHue ? "active" : "default"}
-            onClick={() => handleSelectHue(presetHue)}
-            ariaLabel={`Select accent hue ${presetHue}`}
-          />
-        </motion.div>
-      ))
+      options: (
+        <div className="StylePicker__options">
+          {store.PRESET_HUES.map(presetHue => (
+            <motion.div
+              key={presetHue}
+              className="StylePicker__option"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ staggerChildren: 0.25 }}
+            >
+              <AccentPickerOption
+                color={`oklch(45% 0.35 ${store.getAccentHue(presetHue)})`}
+                variant={hue === presetHue ? "active" : "default"}
+                onClick={() => handleSelectHue(presetHue)}
+                ariaLabel={`Select accent hue ${presetHue}`}
+              />
+            </motion.div>
+          ))}
+        </div>
+      )
     },
     {
       key: "contrast",
@@ -116,26 +120,34 @@ export default function StylePicker() {
           aria-label="Toggle style picker"
           aria-expanded={isExpanded}
         >
-          {store.CONTRAST_LABELS[contrast]}
+          <ContrastPickerOption
+            label={store.CONTRAST_LABELS[contrast]}
+            onClick={store.toggleExpanded}
+            ariaLabel={`Select ${store.CONTRAST_LABELS[contrast]}`}
+          />
         </div>
       ),
-      options: store.CONTRAST_OPTIONS.map(opt => (
-        <motion.div
-          key={opt.value}
-          className="StylePicker__options"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          transition={{ staggerChildren: 0.25 }}
-        >
-          <ContrastPickerOption
-            label={opt.label}
-            isActive={contrast === opt.value}
-            onClick={() => handleSelectContrast(opt.value)}
-            ariaLabel={`Select ${opt.value} contrast`}
-          />
-        </motion.div>
-      ))
+      options: (
+        <div className="StylePicker__options">
+          {store.CONTRAST_OPTIONS.map(opt => (
+            <motion.div
+              key={opt.value}
+              className="StylePicker__option"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ staggerChildren: 0.25 }}
+            >
+              <ContrastPickerOption
+                label={opt.label}
+                variant={contrast === opt.value ? "active" : "default"}
+                onClick={() => handleSelectContrast(opt.value)}
+                ariaLabel={`Select ${opt.value} contrast`}
+              />
+            </motion.div>
+          ))}
+        </div>
+      )
     },
     {
       key: "colorMode",
@@ -146,28 +158,36 @@ export default function StylePicker() {
           aria-label="Toggle style picker"
           aria-expanded={isExpanded}
         >
-          {store.COLOR_MODE_LABELS[colorMode]}
+          <ColorModePickerOption
+            label={store.COLOR_MODE_LABELS[colorMode]}
+            onClick={store.toggleExpanded}
+            ariaLabel={`Select ${store.COLOR_MODE_LABELS[colorMode]} color mode`}
+          />
         </div>
       ),
-      options: store.COLOR_MODE_OPTIONS.map(opt => (
-        <motion.div
-          key={opt.value}
-          className="StylePicker__options"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          transition={{
-            staggerChildren: 0.25
-          }}
-        >
-          <ColorModePickerOption
-            label={opt.label}
-            isActive={colorMode === opt.value}
-            onClick={() => handleSelectColorMode(opt.value)}
-            ariaLabel={`Select ${opt.value} color mode`}
-          />
-        </motion.div>
-      ))
+      options: (
+        <div className="StylePicker__options">
+          {store.COLOR_MODE_OPTIONS.map(opt => (
+            <motion.div
+              key={opt.value}
+              className="StylePicker__option"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{
+                staggerChildren: 0.25
+              }}
+            >
+              <ColorModePickerOption
+                label={opt.label}
+                variant={colorMode === opt.value ? "active" : "default"}
+                onClick={() => handleSelectColorMode(opt.value)}
+                ariaLabel={`Select ${opt.value} color mode`}
+              />
+            </motion.div>
+          ))}
+        </div>
+      )
     }
   ];
 

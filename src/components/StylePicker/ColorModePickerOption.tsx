@@ -1,37 +1,40 @@
-import { cx } from "class-variance-authority";
+import { cva, cx, type VariantProps } from "class-variance-authority";
 import "./ColorModePickerOption.css";
 
-interface ColorModePickerOptionProps {
+const variants = cva("ColorModePickerOption", {
+  variants: {
+    variant: {
+      default: "ColorModePickerOption--default",
+      active: "ColorModePickerOption--active"
+    }
+  },
+  defaultVariants: {
+    variant: "default"
+  }
+});
+
+interface Props extends VariantProps<typeof variants> {
   label: string;
-  isActive?: boolean;
-  onClick?: () => void;
+  onClick: () => void;
   ariaLabel?: string;
 }
 
 export default function ColorModePickerOption({
   label,
-  isActive = false,
   onClick,
-  ariaLabel
-}: ColorModePickerOptionProps) {
-  const className = cx(
-    "ColorModePickerOption",
-    isActive && "ColorModePickerOption--active"
-  );
-
-  // Render as div when used as indicator (no onClick), button when interactive
-  if (!onClick) {
-    return <div className={className}>{label}</div>;
-  }
-
+  ariaLabel,
+  variant
+}: Props) {
   return (
-    <button
-      className={className}
-      onClick={onClick}
-      aria-label={ariaLabel}
-      type="button"
-    >
-      {label}
-    </button>
+    <div className={cx(variants({ variant }))}>
+      <button
+        className="ColorModePickerOption__button"
+        onClick={onClick}
+        aria-label={ariaLabel}
+        type="button"
+      >
+        {label}
+      </button>
+    </div>
   );
 }

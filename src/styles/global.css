@@ -217,3 +217,7 @@ p {
 strong {
   font-weight: var(--font-weight-7);
 }
+
+button {
+  font-family: var(--font-family);
+}

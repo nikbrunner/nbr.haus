@@ -3,9 +3,15 @@
   bottom: var(--size-3);
   right: var(--size-3);
   z-index: 9999;
+
   display: flex;
   flex-direction: column;
+  padding: var(--size-4);
   gap: var(--size-4);
+
+  background: var(--bg-dots);
+  box-shadow: var(--shadow-hard-5);
+  border: var(--border-size-2) solid var(--fg-accent);
 }
 
 /* Each row: options + indicator (row-reverse so indicator is on right) */
@@ -14,27 +20,20 @@
   flex-direction: row-reverse;
   align-items: center;
   height: var(--size-8);
+
   background: var(--bg-main);
 }
 
 /* Indicator button (always visible) */
 .StylePicker__indicator {
-  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
+
   width: var(--size-8);
   height: var(--size-8);
-  padding: var(--size-2);
-  background: var(--bg-dots);
+
   border: var(--border-size-2) solid var(--fg-accent);
-  cursor: pointer;
-  font-family: var(--font-family);
-  font-size: var(--font-size-1);
-  font-weight: var(--font-weight-9);
-  color: var(--fg-accent);
-  box-shadow: var(--shadow-hard-5);
 }
 
 /* Options container (animated) */
@@ -43,20 +42,17 @@
   grid-auto-flow: column;
   grid-auto-columns: var(--size-8);
   place-items: center;
-  box-sizing: border-box;
+
   height: var(--size-8);
-  gap: 0;
-  overflow: hidden;
-  border-top: var(--border-size-2) solid var(--fg-accent);
-  border-bottom: var(--border-size-2) solid var(--fg-accent);
-  border-left: var(--border-size-2) solid var(--fg-accent);
+
+  border: var(--border-size-2) solid var(--fg-accent);
 }
 
-/* Option wrappers need to fill the grid cell */
-.StylePicker__options > * {
+.StylePicker__option {
   display: flex;
   align-items: center;
   justify-content: center;
+
   height: 100%;
   width: 100%;
 }
