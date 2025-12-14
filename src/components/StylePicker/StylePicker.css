@@ -1,13 +1,20 @@
 .StylePicker {
+  /* Fluid sizes: min (mobile), preferred (viewport-based), max (desktop) */
+  --picker-cell: clamp(36px, 8vw, 48px);
+  --picker-gap: clamp(10px, 2vw, 16px);
+  --picker-padding: clamp(10px, 2vw, 16px);
+  --picker-offset: clamp(8px, 2vw, 12px);
+  --picker-font: var(--font-size-fluid-0);
+
   position: fixed;
-  bottom: var(--size-3);
-  right: var(--size-3);
+  bottom: var(--picker-offset);
+  right: var(--picker-offset);
   z-index: 9999;
 
   display: flex;
   flex-direction: column;
-  padding: var(--size-4);
-  gap: var(--size-4);
+  padding: var(--picker-padding);
+  gap: var(--picker-gap);
 
   background: var(--bg-dots);
   box-shadow: var(--shadow-hard-5);
@@ -19,8 +26,8 @@
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
-  gap: var(--size-4);
-  height: var(--size-8);
+  gap: var(--picker-gap);
+  height: var(--picker-cell);
 
   background: var(--bg-main);
 }
@@ -33,8 +40,8 @@
   align-items: center;
   justify-content: center;
 
-  width: var(--size-8);
-  height: var(--size-8);
+  width: var(--picker-cell);
+  height: var(--picker-cell);
   background: var(--bg-main);
 
   border: var(--border-size-2) solid var(--fg-accent);
@@ -46,11 +53,11 @@
 
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: var(--size-8);
+  grid-auto-columns: var(--picker-cell);
   place-items: center;
-  gap: var(--size-2);
+  gap: calc(var(--picker-gap) / 2);
 
-  height: var(--size-8);
+  height: var(--picker-cell);
 }
 
 .StylePicker__option {
@@ -70,13 +77,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-inline: var(--size-2);
+  padding-inline: calc(var(--picker-gap) / 2);
   height: 100%;
   width: 100%;
 
   background: var(--fg-accent);
   color: var(--bg-main);
-  font-size: var(--font-size-fluid-0);
+  font-size: var(--picker-font);
   font-weight: var(--font-weight-9);
 
   text-transform: uppercase;

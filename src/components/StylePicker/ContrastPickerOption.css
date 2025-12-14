@@ -8,7 +8,7 @@
   cursor: pointer;
   color: var(--fg-main);
 
-  font-size: var(--font-size-fluid-0);
+  font-size: var(--picker-font, var(--font-size-fluid-0));
   font-weight: var(--font-weight-9);
   text-align: center;
 
