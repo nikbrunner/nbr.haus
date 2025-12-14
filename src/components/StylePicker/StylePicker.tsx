@@ -6,21 +6,7 @@ import { useEffect } from "react";
 import AccentPickerOption from "./AccentPickerOption";
 import ColorModePickerOption from "./ColorModePickerOption";
 import ContrastPickerOption from "./ContrastPickerOption";
-import {
-  COLOR_MODE_LABELS,
-  COLOR_MODE_OPTIONS,
-  CONTRAST_LABELS,
-  CONTRAST_OPTIONS,
-  PRESET_HUES,
-  getAccentHue,
-  initializeFromParams,
-  setColorMode,
-  setContrast,
-  setExpanded,
-  setHue,
-  styleStore,
-  toggleExpanded
-} from "./store";
+import * as store from "./store";
 import "./StylePicker.css";
 import type { ColorMode, Contrast } from "@/validators/rootSearchParams";
 
@@ -28,14 +14,14 @@ export default function StylePicker() {
   const router = useRouter();
   const search = useSearch({ from: "/" });
 
-  const isExpanded = useStore(styleStore, s => s.isExpanded);
-  const hue = useStore(styleStore, s => s.hue);
-  const contrast = useStore(styleStore, s => s.contrast);
-  const colorMode = useStore(styleStore, s => s.colorMode);
+  const isExpanded = useStore(store.styleStore, s => s.isExpanded);
+  const hue = useStore(store.styleStore, s => s.hue);
+  const contrast = useStore(store.styleStore, s => s.contrast);
+  const colorMode = useStore(store.styleStore, s => s.colorMode);
 
   // Initialize from URL params or localStorage on mount
   useEffect(() => {
-    initializeFromParams({
+    store.initializeFromParams({
       hue: search.hue,
       contrast: search.contrast,
       colorMode: search.colorMode
@@ -49,7 +35,7 @@ export default function StylePicker() {
     const handleClickOutside = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (!target.closest(".StylePicker")) {
-        setExpanded(false);
+        store.setExpanded(false);
       }
     };
 
@@ -58,7 +44,7 @@ export default function StylePicker() {
   }, [isExpanded]);
 
   const handleSelectHue = (newHue: number) => {
-    setHue(newHue);
+    store.setHue(newHue);
     router.navigate({
       to: "/",
       search: prev => ({ ...prev, hue: newHue }),
@@ -68,7 +54,7 @@ export default function StylePicker() {
   };
 
   const handleSelectContrast = (newContrast: Contrast) => {
-    setContrast(newContrast);
+    store.setContrast(newContrast);
     router.navigate({
       to: "/",
       search: prev => ({ ...prev, contrast: newContrast }),
@@ -78,7 +64,7 @@ export default function StylePicker() {
   };
 
   const handleSelectColorMode = (newColorMode: ColorMode) => {
-    setColorMode(newColorMode);
+    store.setColorMode(newColorMode);
     router.navigate({
       to: "/",
       search: prev => ({ ...prev, colorMode: newColorMode }),
@@ -98,12 +84,12 @@ export default function StylePicker() {
           aria-expanded={isExpanded}
         >
           <AccentPickerOption
-            onClick={toggleExpanded}
-            color={`oklch(45% 0.35 ${getAccentHue(hue)})`}
+            onClick={store.toggleExpanded}
+            color={`oklch(45% 0.35 ${store.getAccentHue(hue)})`}
           />
         </div>
       ),
-      options: PRESET_HUES.map(presetHue => (
+      options: store.PRESET_HUES.map(presetHue => (
         <motion.div
           key={presetHue}
           className="StylePicker__options"
@@ -113,7 +99,7 @@ export default function StylePicker() {
           transition={{ staggerChildren: 0.25 }}
         >
           <AccentPickerOption
-            color={`oklch(45% 0.35 ${getAccentHue(presetHue)})`}
+            color={`oklch(45% 0.35 ${store.getAccentHue(presetHue)})`}
             variant={hue === presetHue ? "active" : "default"}
             onClick={() => handleSelectHue(presetHue)}
             ariaLabel={`Select accent hue ${presetHue}`}
@@ -130,10 +116,10 @@ export default function StylePicker() {
           aria-label="Toggle style picker"
           aria-expanded={isExpanded}
         >
-          {CONTRAST_LABELS[contrast]}
+          {store.CONTRAST_LABELS[contrast]}
         </div>
       ),
-      options: CONTRAST_OPTIONS.map(opt => (
+      options: store.CONTRAST_OPTIONS.map(opt => (
         <motion.div
           key={opt.value}
           className="StylePicker__options"
@@ -160,10 +146,10 @@ export default function StylePicker() {
           aria-label="Toggle style picker"
           aria-expanded={isExpanded}
         >
-          {COLOR_MODE_LABELS[colorMode]}
+          {store.COLOR_MODE_LABELS[colorMode]}
         </div>
       ),
-      options: COLOR_MODE_OPTIONS.map(opt => (
+      options: store.COLOR_MODE_OPTIONS.map(opt => (
         <motion.div
           key={opt.value}
           className="StylePicker__options"

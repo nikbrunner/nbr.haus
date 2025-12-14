@@ -37,16 +37,6 @@
   box-shadow: var(--shadow-hard-5);
 }
 
-.StylePicker__indicator-label {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg-main);
-  width: 100%;
-  height: 100%;
-  font-size: var(--font-size-fluid-0);
-}
-
 /* Options container (animated) */
 .StylePicker__options {
   display: grid;
