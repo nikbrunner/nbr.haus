@@ -9,6 +9,7 @@
 @import "../routes/index.css";
 
 /* Components */
+@import "../components/Badge.css";
 @import "../components/Header.css";
 @import "../components/Highlight.css";
 @import "../components/Hr.css";
