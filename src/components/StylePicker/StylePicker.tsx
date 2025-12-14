@@ -90,15 +90,19 @@ export default function StylePicker() {
         </div>
       ),
       options: (
-        <div className="StylePicker__options">
+        <motion.div
+          className="StylePicker__options"
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 100 }}
+        >
           {store.PRESET_HUES.map(presetHue => (
             <motion.div
               key={presetHue}
               className="StylePicker__option"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ staggerChildren: 0.25 }}
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.8 }}
             >
               <AccentPickerOption
                 color={`oklch(45% 0.35 ${store.getAccentHue(presetHue)})`}
@@ -108,7 +112,7 @@ export default function StylePicker() {
               />
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       )
     },
     {
@@ -128,7 +132,12 @@ export default function StylePicker() {
         </div>
       ),
       options: (
-        <div className="StylePicker__options">
+        <motion.div
+          className="StylePicker__options"
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 100 }}
+        >
           {store.CONTRAST_OPTIONS.map(opt => (
             <motion.div
               key={opt.value}
@@ -146,7 +155,7 @@ export default function StylePicker() {
               />
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       )
     },
     {
@@ -166,7 +175,12 @@ export default function StylePicker() {
         </div>
       ),
       options: (
-        <div className="StylePicker__options">
+        <motion.div
+          className="StylePicker__options"
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 100 }}
+        >
           {store.COLOR_MODE_OPTIONS.map(opt => (
             <motion.div
               key={opt.value}
@@ -186,7 +200,7 @@ export default function StylePicker() {
               />
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       )
     }
   ];
@@ -196,7 +210,7 @@ export default function StylePicker() {
       {rows.map(row => (
         <div key={row.key} className="StylePicker__row">
           {row.indicator}
-          <AnimatePresence>{isExpanded && row.options}</AnimatePresence>
+          <AnimatePresence mode="wait">{isExpanded && row.options}</AnimatePresence>
         </div>
       ))}
     </div>
