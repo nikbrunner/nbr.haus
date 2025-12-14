@@ -1,4 +1,5 @@
 .Badge {
+  position: relative; /* Fix Safari container-type stacking context bug */
   display: inline-flex;
   padding: var(--size-2) var(--size-3);
   border: var(--border-size-2) solid var(--fg-accent);
