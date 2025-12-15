@@ -198,8 +198,8 @@ export function initializeFromParams(params: {
   applyColorMode(colorMode);
   saveColorModeToStorage(colorMode);
 
-  styleStore.setState(() => ({
-    isExpanded: false,
+  styleStore.setState(s => ({
+    ...s,
     hue,
     contrast,
     colorMode

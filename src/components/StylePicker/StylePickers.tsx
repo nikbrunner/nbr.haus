@@ -1,13 +1,14 @@
 import { useRouter, useSearch } from "@tanstack/react-router";
 import { useStore } from "@tanstack/react-store";
 import { cx } from "class-variance-authority";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import AccentPickerOption from "./AccentPickerOption";
 import ColorModePickerOption from "./ColorModePickerOption";
 import ContrastPickerOption from "./ContrastPickerOption";
 import * as store from "./store";
 import "./StylePickers.css";
 import type { ColorMode, Contrast } from "@/validators/rootSearchParams";
+import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 
 interface PickerRowProps {
   label: string;
@@ -36,6 +37,9 @@ export default function StylePickers() {
   const contrast = useStore(store.styleStore, s => s.contrast);
   const colorMode = useStore(store.styleStore, s => s.colorMode);
 
+  const closePanel = useCallback(() => store.setExpanded(false), []);
+  useOnClickOutside([".StylePickers", ".StyleStatus"], closePanel, isOpen);
+
   // Cleanup previews on unmount
   useEffect(() => {
     return () => {
@@ -53,21 +57,6 @@ export default function StylePickers() {
       colorMode: search.colorMode
     });
   }, [search.hue, search.contrast, search.colorMode]);
-
-  // Close on click outside
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const handleClickOutside = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (!target.closest(".StylePickers") && !target.closest(".StyleStatus")) {
-        store.setExpanded(false);
-      }
-    };
-
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
-  }, [isOpen]);
 
   // Close on Escape key
   useEffect(() => {
