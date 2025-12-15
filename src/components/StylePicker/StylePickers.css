@@ -78,4 +78,21 @@
   height: var(--picker-cell);
   border-left: var(--border-size-2) dashed var(--fg-accent);
   border-right: var(--border-size-2) dashed var(--fg-accent);
+  transition: border-color 0.1s ease-out;
+}
+
+.StylePickers__option:hover {
+  border: var(--border-size-3) solid var(--fg-accent);
+
+  button {
+    color: var(--fg-accent);
+  }
+}
+
+.StylePickers__option:has([class*="--active"]) {
+  border: var(--border-size-3) solid var(--fg-accent);
+
+  button {
+    color: var(--fg-accent);
+  }
 }

@@ -15,19 +15,4 @@
   height: 100%;
   border: none;
   cursor: pointer;
-  outline: var(--border-size-2) solid transparent;
-  outline-offset: var(--border-size-1);
-  transition: outline-color 0.1s ease-out;
-}
-
-.AccentPickerOption:hover {
-  .AccentPickerOption__button {
-    outline-color: var(--fg-main);
-  }
-}
-
-.AccentPickerOption--active {
-  .AccentPickerOption__button {
-    outline-color: var(--fg-main);
-  }
 }

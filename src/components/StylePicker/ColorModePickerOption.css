@@ -1,4 +1,9 @@
 .ColorModePickerOption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 .ColorModePickerOption__button {
@@ -11,18 +16,4 @@
   font-size: var(--picker-font, var(--font-size-fluid-0));
   font-weight: var(--font-weight-9);
   text-align: center;
-
-  transition: color 0.1s ease-out;
-}
-
-.ColorModePickerOption:hover {
-  .ColorModePickerOption__button {
-    color: var(--fg-accent);
-  }
-}
-
-.ColorModePickerOption--active {
-  .ColorModePickerOption__button {
-    color: var(--fg-accent);
-  }
 }

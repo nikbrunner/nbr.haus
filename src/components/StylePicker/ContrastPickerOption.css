@@ -1,4 +1,9 @@
 .ContrastPickerOption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 .ContrastPickerOption__button {
@@ -11,18 +16,4 @@
   font-size: var(--picker-font, var(--font-size-fluid-0));
   font-weight: var(--font-weight-9);
   text-align: center;
-
-  transition: color 0.1s ease-out;
-}
-
-.ContrastPickerOption:hover {
-  .ContrastPickerOption__button {
-    color: var(--fg-accent);
-  }
-}
-
-.ContrastPickerOption--active {
-  .ContrastPickerOption__button {
-    color: var(--fg-accent);
-  }
 }
