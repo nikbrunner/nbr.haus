@@ -7,7 +7,7 @@
 }
 
 .Link:visited {
-  color: var(--fg-accent);
+  color: var(--fg-main);
 }
 
 .Link:hover {
