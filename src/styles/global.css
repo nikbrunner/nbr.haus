@@ -34,12 +34,6 @@
 @import "../content-blocks/index/ProfilePicture.css";
 @import "../content-blocks/index/Projects.css";
 
-/* Global color transition for smooth theme changes */
-:root {
-  --color-transition-duration: 0.5s;
-  --color-transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
 *,
 *::before,
 *::after {
@@ -48,7 +42,8 @@
     background-color var(--color-transition-duration) var(--color-transition-ease),
     border-color var(--color-transition-duration) var(--color-transition-ease),
     box-shadow var(--color-transition-duration) var(--color-transition-ease),
-    text-decoration-color var(--color-transition-duration) var(--color-transition-ease);
+    text-decoration-color var(--color-transition-duration)
+      var(--color-transition-ease);
 }
 
 html {
@@ -63,6 +58,10 @@ body {
 }
 
 body {
+  /* Global color transition for smooth theme changes */
+  --color-transition-duration: 0.5s;
+  --color-transition-ease: var(--ease-in-5);
+
   --hue: 0;
   --hue-accent: 180;
   --hue-accent-alt: 360;
