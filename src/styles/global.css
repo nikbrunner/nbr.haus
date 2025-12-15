@@ -59,8 +59,8 @@ body {
 
 body {
   /* Global color transition for smooth theme changes */
-  --color-transition-duration: 0.5s;
-  --color-transition-ease: var(--ease-in-5);
+  --color-transition-duration: 0.3s;
+  --color-transition-ease: linear;
 
   --hue: 0;
   --hue-accent: 180;
