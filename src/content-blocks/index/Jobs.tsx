@@ -6,7 +6,7 @@ export default function Jobs() {
     <>
       <Job
         company="DealerCenter Digital"
-        position="Software Engineer"
+        position="Software Engineer / Frontend Lead"
         period="2020–2026"
       >
         <p>

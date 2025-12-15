@@ -29,12 +29,14 @@ export default function About() {
       <p>
         I am very passionate about building and using products, and am probably the
         guy who will contact support about features or bugs, and regularly check its
-        changelogs and GitHub releases.
+        changelogs and GitHub releases. I integrate AI tooling into my daily
+        development workflows.
       </p>
 
       <p>
-        I was born in 1984, and outside of code, I enjoy hiking, reading, music and
-        photography — and I have a slight keyboard obsession.
+        I was born in 1984, and outside of code, I enjoy hiking, reading, landscape
+        photography, music production, workflow optimization, and open source — and
+        I have a slight keyboard obsession.
       </p>
 
       <div className="About__looking-for">
