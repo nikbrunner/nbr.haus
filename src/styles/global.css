@@ -33,6 +33,7 @@
 @import "../content-blocks/index/Connect.css";
 @import "../content-blocks/index/ProfilePicture.css";
 @import "../content-blocks/index/Projects.css";
+@import "../content-blocks/index/DevStack.css";
 
 *,
 *::before,
@@ -236,7 +237,7 @@ h2 {
 
 h3 {
   font-size: var(--font-size-fluid-2);
-  font-weight: var(--font-weight-9);
+  font-weight: var(--font-weight-7);
   line-height: var(--font-lineheight-1);
   color: var(--fg-main);
 }

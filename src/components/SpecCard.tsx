@@ -3,7 +3,7 @@ import { cx } from "class-variance-authority";
 interface Props {
   title?: string;
   description?: React.ReactNode;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
 }
 

@@ -5,7 +5,6 @@
 
 .Job__company {
   font-size: var(--font-size-4);
-  font-weight: bold;
   color: var(--fg-accent);
   margin: 0;
   padding-bottom: 0;
