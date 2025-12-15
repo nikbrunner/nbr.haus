@@ -1,12 +1,4 @@
 .StylePickers {
-  --picker-cell: clamp(36px, 8vw, 48px);
-  --picker-gap: clamp(10px, 2vw, 16px);
-  --picker-padding: clamp(10px, 2vw, 16px);
-  --picker-offset: clamp(8px, 2vw, 12px);
-  --picker-font: var(--font-size-fluid-0);
-  --picker-label-width: clamp(80px, 20vw, 110px);
-
-  /* Calculate StyleStatus width for positioning */
   --status-width: calc(
     var(--picker-cell) + (var(--picker-padding) * 2) + (var(--border-size-2) * 2)
   );
@@ -16,7 +8,7 @@
   /* Position to the left of StyleStatus with gap */
   bottom: calc(var(--picker-offset) + env(safe-area-inset-bottom, 0px));
   right: calc(var(--picker-offset) + var(--status-width) + var(--status-gap));
-  z-index: 9999;
+  z-index: var(--picker-z-index);
 
   display: flex;
   flex-direction: column;
@@ -61,7 +53,7 @@
 
   background: var(--fg-accent);
   color: var(--bg-main);
-  font-size: var(--picker-font);
+  font-size: var(--picker-font-size);
   font-weight: var(--font-weight-9);
 
   text-transform: uppercase;

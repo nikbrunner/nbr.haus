@@ -182,6 +182,16 @@ body {
   background-color: var(--bg-main);
   color: var(--fg-main);
 
+  /* StyleStatus & StylePickers */
+  --picker-cell: clamp(36px, 8vw, 44px);
+  --picker-gap: clamp(10px, 2vw, 16px);
+  --picker-padding: clamp(10px, 2vw, 12px);
+  --picker-offset: clamp(8px, 2vw, 12px);
+  --picker-font-size: clamp(0.65rem, 5cqw, 0.85rem);
+  --picker-label-width: clamp(80px, 20vw, 110px);
+  --picker-z-index: 9999;
+
+  /* Font smoothing */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 

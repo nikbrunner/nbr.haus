@@ -10,15 +10,10 @@
 }
 
 .StyleStatus {
-  --picker-cell: clamp(36px, 8vw, 48px);
-  --picker-gap: clamp(10px, 2vw, 16px);
-  --picker-padding: clamp(10px, 2vw, 16px);
-  --picker-offset: clamp(8px, 2vw, 12px);
-
   position: fixed;
   bottom: calc(var(--picker-offset) + env(safe-area-inset-bottom, 0px));
   right: var(--picker-offset);
-  z-index: 10000;
+  z-index: var(--picker-z-index);
 
   display: flex;
   flex-direction: column;
