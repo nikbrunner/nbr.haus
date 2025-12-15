@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a personal portfolio website built with TanStack Start (SSR framework), React 19, TypeScript, and regular CSS with BEM naming convention. The site is a single-page application showcasing profile, projects, work history, tech stack, dev tools, AI usage, and contact information.
+This is a personal portfolio website built with TanStack Start (SSR framework), React 19, TypeScript, and regular CSS with BEM naming convention. The site is a single-page application showcasing profile, projects, work history, tech stack, and contact information.
 
 ## Development Commands
 
@@ -29,6 +29,10 @@ npm run check:compile   # TypeScript type checking
 
 # Testing
 npm run test            # Run Vitest tests
+
+# Storybook
+npm run storybook       # Start Storybook dev server (port 6006)
+npm run build:storybook # Build static Storybook
 ```
 
 ## Architecture
@@ -39,7 +43,7 @@ npm run test            # Run Vitest tests
 - Routes auto-generate type-safe route tree at `src/routeTree.gen.ts` (do not edit manually)
 - Root layout in `src/routes/__root.tsx` handles:
   - SEO meta tags and structured data (JSON-LD)
-  - Global layout (AccentPicker, DevTools)
+  - Global layout (StylePickers, DevTools)
   - Shell component for SSR (`RootDocument`)
   - Route-level search params validation with Zod
 - Single route (`/`) defined in `src/routes/index.tsx` with responsive multi-column layouts
@@ -57,16 +61,44 @@ npm run test            # Run Vitest tests
 - **Path aliases**: `@/*` maps to `src/*` (configured in tsconfig.json)
 - **Open Props** for design tokens (CSS custom properties)
 
-### Content Structure
+### Directory Structure
 
-Components in `src/components/`:
+```text
+src/
+├── assets/           # Static assets (images, etc.)
+├── components/       # Presentational/dumb components
+│   └── StylePicker/  # Theme customization system
+├── content-blocks/   # Smart content containers
+│   └── index/        # Content blocks for index route
+├── hooks/            # Custom React hooks
+├── routes/           # TanStack Router file-based routes
+├── storybook/        # Storybook configuration
+├── styles/           # Global styles
+└── validators/       # Zod schemas for validation
+```
 
-- Presentational/dumb components (Header, Project, Job, Section, Link, etc.)
+### Components (`src/components/`)
 
-Content blocks in `src/content-blocks/index/`:
+Presentational/dumb components: Header, Project, Job, Section, Link, Badge, SpecCard, SpecList, SpecGrid, Hr, Highlight, NotFound
 
-- Smart content containers for the index route (About, Projects, Jobs, TechStack, DevTools, AI, Connect, ProfilePicture)
-- These consume the dumb components and provide content
+**StylePicker System** (`src/components/StylePicker/`):
+
+- Full theming system with hue (accent color), color mode (light/system/dark), and contrast settings
+- Uses `@tanstack/react-store` for state management
+- Persists preferences to localStorage
+- Supports URL search params for sharing themes
+
+### Content Blocks (`src/content-blocks/index/`)
+
+Smart content containers that consume dumb components and provide content:
+
+- About, Projects, Jobs, DevStack, Connect, ProfilePicture, LookingForJob
+
+### Hooks (`src/hooks/`)
+
+Custom React hooks:
+
+- `useOnClickOutside` - Detect clicks outside a ref element
 
 ### Responsive Layout Pattern
 
@@ -78,6 +110,18 @@ The index route renders **four different layouts** (1, 2, 3, and 4 columns) with
 - Global styles in `src/styles/global.css`
 - Custom properties from Open Props for consistent design tokens
 - CSS files co-located with components (e.g., `Component.tsx` + `Component.css`)
+- StylePicker CSS variables: `--hue`, `--hue-accent`, `--hue-accent-alt`, `--contrast-l`, `--contrast-c`
+
+### State Management
+
+- **`@tanstack/react-store`** for StylePicker state (hue, colorMode, contrast)
+- No global state manager for app data - content is static
+
+### Storybook
+
+- Configuration in `src/storybook/`
+- Stories co-located with components (`*.stories.tsx`)
+- Includes accessibility addon (`@storybook/addon-a11y`)
 
 ### DevTools
 
@@ -96,7 +140,7 @@ The index route renders **four different layouts** (1, 2, 3, and 4 columns) with
 ## ESLint Configuration
 
 - Flat config format in `eslint.config.ts`
-- Plugins: TypeScript ESLint, React, JSON, Markdown, CSS
+- Plugins: TypeScript ESLint, React, JSON, Markdown, CSS, Storybook
 - Ignores patterns from `.gitignore` plus `.claude/*` and `.vscode/*`
 - React version detection enabled
 - Recommended rules for all file types
@@ -114,10 +158,12 @@ The index route renders **four different layouts** (1, 2, 3, and 4 columns) with
 
 - **TanStack Start** - SSR framework
 - **TanStack Router** - File-based routing with type safety
+- **TanStack Store** - Lightweight state management (StylePicker)
 - **React 19** - UI framework
 - **Vite** - Build tool
 - **Vitest** - Testing framework
-- **ESLint** - Linting (with TypeScript, React, JSON, Markdown, CSS plugins)
+- **Storybook** - Component development and documentation
+- **ESLint** - Linting (with TypeScript, React, JSON, Markdown, CSS, Storybook plugins)
 - **Prettier** - Code formatting
 - **class-variance-authority (CVA)** - CSS class variant handling and composition
 - **Open Props** - CSS design tokens
@@ -137,7 +183,8 @@ Plugins in order:
 ## Important Notes
 
 - `src/routeTree.gen.ts` is auto-generated - never edit manually
-- Development uses port 3000
-- AccentPicker component allows theme customization via CSS custom properties (controlled by `hue` search param)
+- Development uses port 3000, Storybook uses port 6006
+- StylePicker allows theme customization via CSS custom properties (controlled by `hue`, `colorMode`, `contrast` search params)
+- Search params `hue` and `colorMode` are retained across navigation
 - Structured data (JSON-LD) uses `dangerouslySetInnerHTML` for SEO
-- Search params are validated with Zod and can be retained across navigation (e.g., `hue` param)
+- Node 22.x required (see `engines` in package.json)
