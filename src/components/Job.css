@@ -13,8 +13,10 @@
 
 .Job__header {
   display: flex;
-  align-items: center;
-  gap: var(--size-2);
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--size-1) var(--size-2);
   margin-bottom: var(--size-3);
 }
 
@@ -27,4 +29,5 @@
 .Job__period {
   font-size: var(--font-size-1);
   color: var(--fg-minor);
+  white-space: nowrap;
 }
