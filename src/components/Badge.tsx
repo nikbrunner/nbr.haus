@@ -14,8 +14,7 @@ const badgeVariants = cva("Badge", {
 });
 
 interface Props
-  extends React.ComponentProps<"a">,
-    VariantProps<typeof badgeVariants> {}
+  extends React.ComponentProps<"a">, VariantProps<typeof badgeVariants> {}
 
 export default function Badge({ variant, className, ...props }: Props) {
   return <a className={cx(badgeVariants({ variant }), className)} {...props} />;

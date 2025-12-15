@@ -35,8 +35,8 @@ export default function About() {
 
       <p>
         I was born in 1984, and outside of code, I enjoy hiking, reading, landscape
-        photography, music production, workflow optimization, and open source — and
-        I have a slight keyboard obsession.
+        photography, music production, workflow optimization, and open source — and I
+        have a slight keyboard obsession.
       </p>
 
       <div className="About__looking-for">

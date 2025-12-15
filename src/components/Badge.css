@@ -8,10 +8,7 @@
   color: var(--fg-main);
   text-decoration: none;
   cursor: pointer;
-  transition:
-    border-color 0.2s,
-    background-color 0.2s,
-    transform 0.1s;
+  transition: transform 0.1s;
 
   &:hover {
     transform: translateY(-2px);
