@@ -37,10 +37,6 @@ export default function About() {
         photography, music production, workflow optimization, and open source — and I
         have a slight keyboard obsession.
       </p>
-
-      <div className="About__looking-for">
-        <h1>I am currently seeking new opportunities starting February 2026.</h1>
-      </div>
     </div>
   );
 }

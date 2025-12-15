@@ -1,0 +1,16 @@
+.LookingForJob {
+  background: var(--bg-dots);
+  padding: var(--size-4) var(--size-6);
+  margin-bottom: var(--size-6);
+
+  & h1 {
+    border: var(--border-size-2) solid var(--fg-accent);
+    background: var(--bg-main);
+
+    padding: var(--size-4);
+    margin: 0;
+
+    font-size: var(--font-size-fluid-1);
+    color: var(--fg-accent);
+  }
+}

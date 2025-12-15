@@ -34,6 +34,7 @@
 @import "../content-blocks/index/ProfilePicture.css";
 @import "../content-blocks/index/Projects.css";
 @import "../content-blocks/index/DevStack.css";
+@import "../content-blocks/index/LookingForJob.css";
 
 *,
 *::before,

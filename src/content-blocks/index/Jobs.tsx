@@ -1,9 +1,12 @@
 import Highlight from "../../components/Highlight";
 import Job from "../../components/Job";
+import LookingForJob from "./LookingForJob";
 
 export default function Jobs() {
   return (
     <>
+      <LookingForJob />
+
       <Job
         company="DealerCenter Digital"
         position="Software Engineer / Frontend Lead"
