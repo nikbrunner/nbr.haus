@@ -17,24 +17,16 @@ interface Props extends VariantProps<typeof variants> {
   color: string;
   onClick: () => void;
   ariaLabel?: string;
-  onMouseEnter?: () => void;
-  onMouseLeave?: () => void;
 }
 
 export default function AccentPickerOption({
   color,
   onClick,
   ariaLabel,
-  variant,
-  onMouseEnter,
-  onMouseLeave
+  variant
 }: Props) {
   return (
-    <div
-      className={cx(variants({ variant }))}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-    >
+    <div className={cx(variants({ variant }))}>
       <button
         className="AccentPickerOption__button"
         style={{ backgroundColor: color }}
