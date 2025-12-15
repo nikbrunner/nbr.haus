@@ -178,6 +178,11 @@ body {
   }
 }
 
+::selection {
+  background-color: var(--fg-accent);
+  color: var(--bg-main);
+}
+
 /* Manual color mode overrides */
 html[data-color-mode="light"] {
   color-scheme: light;
