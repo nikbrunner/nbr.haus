@@ -45,6 +45,10 @@ export const Route = createRootRoute({
         content: "index, follow"
       },
       {
+        name: "theme-color",
+        content: "#000000"
+      },
+      {
         property: "og:type",
         content: "website"
       },
@@ -126,6 +130,10 @@ export const Route = createRootRoute({
         as: "font",
         type: "font/ttf",
         crossOrigin: "anonymous"
+      },
+      {
+        rel: "canonical",
+        href: "https://nbr.haus/"
       },
       {
         rel: "icon",
