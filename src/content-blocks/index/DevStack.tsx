@@ -149,7 +149,8 @@ const technologies = [
   { name: "SCSS", url: "https://sass-lang.com" },
   { name: "Node.js", url: "https://nodejs.org" },
   { name: "Electron", url: "https://www.electronjs.org" },
-  { name: "Redux (Toolkit)", url: "https://redux-toolkit.js.org" }
+  { name: "Redux (Toolkit)", url: "https://redux-toolkit.js.org" },
+  { name: "Storybook", url: "https://storybook.js.org" }
 ];
 
 const devTools: Array<{
