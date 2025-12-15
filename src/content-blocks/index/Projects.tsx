@@ -28,7 +28,10 @@ export default function Projects() {
             type: "Live Site"
           }}
           additionalLinks={[
-            { url: "https://github.com/nikbrunner/black-atom", type: "GitHub" }
+            {
+              url: "https://github.com/black-atom-industries",
+              type: "GitHub"
+            }
           ]}
         >
           <p>
