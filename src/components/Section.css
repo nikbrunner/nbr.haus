@@ -5,7 +5,7 @@
   gap: var(--size-3);
 
   & h2 {
-    margin-bottom: 0;
+    margin-bottom: var(--size-2);
   }
 
   & p:first-of-type {
