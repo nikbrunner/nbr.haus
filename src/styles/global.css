@@ -35,15 +35,19 @@
 @import "../content-blocks/index/Projects.css";
 
 /* Global color transition for smooth theme changes */
+:root {
+  --color-transition-duration: 0.5s;
+}
+
 *,
 *::before,
 *::after {
   transition:
-    color 0.3s ease,
-    background-color 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease,
-    text-decoration-color 0.3s ease;
+    color var(--color-transition-duration) ease,
+    background-color var(--color-transition-duration) ease,
+    border-color var(--color-transition-duration) ease,
+    box-shadow var(--color-transition-duration) ease,
+    text-decoration-color var(--color-transition-duration) ease;
 }
 
 html {
