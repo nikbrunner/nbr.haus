@@ -36,6 +36,15 @@ export default function StylePickers() {
   const contrast = useStore(store.styleStore, s => s.contrast);
   const colorMode = useStore(store.styleStore, s => s.colorMode);
 
+  // Cleanup previews on unmount
+  useEffect(() => {
+    return () => {
+      store.clearHuePreview();
+      store.clearContrastPreview();
+      store.clearColorModePreview();
+    };
+  }, []);
+
   // Initialize from URL params or localStorage on mount
   useEffect(() => {
     store.initializeFromParams({
@@ -116,6 +125,8 @@ export default function StylePickers() {
               color={`oklch(45% 0.35 ${store.getAccentHue(presetHue)})`}
               variant={hue === presetHue ? "active" : "default"}
               onClick={() => handleSelectHue(presetHue)}
+              onMouseEnter={() => store.previewHue(presetHue)}
+              onMouseLeave={store.clearHuePreview}
               ariaLabel={`Select accent hue ${presetHue}`}
             />
           </div>
@@ -129,6 +140,8 @@ export default function StylePickers() {
               label={opt.label}
               variant={contrast === opt.value ? "active" : "default"}
               onClick={() => handleSelectContrast(opt.value)}
+              onMouseEnter={() => store.previewContrast(opt.value)}
+              onMouseLeave={store.clearContrastPreview}
               ariaLabel={`Select ${opt.value} contrast`}
             />
           </div>
@@ -142,6 +155,8 @@ export default function StylePickers() {
               label={opt.label}
               variant={colorMode === opt.value ? "active" : "default"}
               onClick={() => handleSelectColorMode(opt.value)}
+              onMouseEnter={() => store.previewColorMode(opt.value)}
+              onMouseLeave={store.clearColorModePreview}
               ariaLabel={`Select ${opt.value} color mode`}
             />
           </div>

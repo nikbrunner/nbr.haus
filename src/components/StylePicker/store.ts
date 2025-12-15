@@ -205,3 +205,48 @@ export function initializeFromParams(params: {
     colorMode
   }));
 }
+
+// Preview functions - set CSS vars without persisting
+export function previewHue(hue: number) {
+  if (typeof document === "undefined") return;
+  const { hueAccent, hueAccentAlt } = getHueVariants(hue);
+  document.body.style.setProperty("--hue", hue.toString());
+  document.body.style.setProperty("--hue-accent", hueAccent.toString());
+  document.body.style.setProperty("--hue-accent-alt", hueAccentAlt.toString());
+}
+
+export function clearHuePreview() {
+  if (typeof document === "undefined") return;
+  // Reapply the actual stored hue
+  const { hue } = styleStore.state;
+  const { hueAccent, hueAccentAlt } = getHueVariants(hue);
+  applyHueCssVars(hue, hueAccent, hueAccentAlt);
+}
+
+export function previewContrast(contrast: Contrast) {
+  if (typeof document === "undefined") return;
+  const values = CONTRAST_VALUES[contrast];
+  document.body.style.setProperty("--contrast-l", values.l.toString());
+  document.body.style.setProperty("--contrast-c", values.c.toString());
+}
+
+export function clearContrastPreview() {
+  if (typeof document === "undefined") return;
+  // Reapply the actual stored contrast
+  applyContrastCssVars(styleStore.state.contrast);
+}
+
+export function previewColorMode(colorMode: ColorMode) {
+  if (typeof document === "undefined") return;
+  if (colorMode === "system") {
+    document.documentElement.removeAttribute("data-color-mode");
+  } else {
+    document.documentElement.setAttribute("data-color-mode", colorMode);
+  }
+}
+
+export function clearColorModePreview() {
+  if (typeof document === "undefined") return;
+  // Reapply the actual stored color mode
+  applyColorMode(styleStore.state.colorMode);
+}

@@ -17,16 +17,24 @@ interface Props extends VariantProps<typeof variants> {
   label: string;
   onClick: () => void;
   ariaLabel?: string;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 
 export default function ColorModePickerOption({
   label,
   onClick,
   ariaLabel,
-  variant
+  variant,
+  onMouseEnter,
+  onMouseLeave
 }: Props) {
   return (
-    <div className={cx(variants({ variant }))}>
+    <div
+      className={cx(variants({ variant }))}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       <button
         className="ColorModePickerOption__button"
         onClick={onClick}
