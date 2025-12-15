@@ -34,6 +34,23 @@
 @import "../content-blocks/index/ProfilePicture.css";
 @import "../content-blocks/index/Projects.css";
 
+/* Global color transition for smooth theme changes */
+:root {
+  --color-transition-duration: 0.5s;
+  --color-transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*,
+*::before,
+*::after {
+  transition:
+    color var(--color-transition-duration) var(--color-transition-ease),
+    background-color var(--color-transition-duration) var(--color-transition-ease),
+    border-color var(--color-transition-duration) var(--color-transition-ease),
+    box-shadow var(--color-transition-duration) var(--color-transition-ease),
+    text-decoration-color var(--color-transition-duration) var(--color-transition-ease);
+}
+
 html {
   color-scheme: light dark;
 }
