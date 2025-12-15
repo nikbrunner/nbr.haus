@@ -17,36 +17,36 @@ export default function Jobs() {
           retailers.
         </p>
         <p>
-          I led <Highlight>major architectural migrations</Highlight>, championing{" "}
-          <Highlight>TanStack Query adoption</Highlight> and migrating the codebase
-          from <Highlight>legacy Redux to Redux Toolkit</Highlight>. I authored
-          comprehensive code guidelines and best practices documentation, and
-          completely rebuilt a Vendure storefront from Remix to{" "}
+          A major focus was <Highlight>architectural migrations</Highlight>: I
+          championed <Highlight>TanStack Query adoption</Highlight> and migrated the
+          codebase from <Highlight>legacy Redux to Redux Toolkit</Highlight>. This
+          included authoring comprehensive code guidelines and best practices
+          documentation. I also completely rebuilt a Vendure storefront from Remix to{" "}
           <Highlight>TanStack Start/Router</Highlight> with TanStack Query, Form,
           GraphQL, ShadCN and Tailwind CSS.
         </p>
         <p>
-          I designed and implemented a{" "}
+          On the design system side, I created a{" "}
           <Highlight>comprehensive 10-variant color system</Highlight> with{" "}
           <Highlight>Figma integration</Highlight>, affecting 1.6k files across the
-          codebase. I built and maintained BikeCenter's{" "}
-          <Highlight>entire component library from scratch</Highlight> using React,
-          TypeScript, and SCSS—no third-party UI frameworks.
+          codebase. BikeCenter's{" "}
+          <Highlight>entire component library was built from scratch</Highlight>{" "}
+          using React, TypeScript, and SCSS—no third-party UI frameworks.
         </p>
         <p>
-          I designed internal APIs for state management and GraphQL integration,
-          establishing developer experience patterns across the team. I{" "}
-          <Highlight>bridged design and engineering</Highlight> as a trusted
-          decision-maker for UX and technical feasibility, collaborating with
+          I also shaped internal APIs for state management and GraphQL integration,
+          establishing developer experience patterns across the team. As a trusted
+          decision-maker for UX and technical feasibility, I{" "}
+          <Highlight>bridged design and engineering</Highlight>, collaborating with
           designers as both implementer and advisor.
         </p>
         <p>
-          I mentored junior developers through pair programming and code reviews, and
-          established <Highlight>technical standards and conventions</Highlight>{" "}
-          across the team, including translation guidelines, BEM naming, and
-          TypeScript best practices. I served as a{" "}
-          <Highlight>technical hub</Highlight> between management, backend, and
-          frontend teams.
+          Mentoring junior developers through pair programming and code reviews was
+          another key part of the role. I established{" "}
+          <Highlight>technical standards and conventions</Highlight> across the team,
+          including translation guidelines, BEM naming, and TypeScript best
+          practices, and served as a <Highlight>technical hub</Highlight> between
+          management, backend, and frontend teams.
         </p>
       </Job>
 
