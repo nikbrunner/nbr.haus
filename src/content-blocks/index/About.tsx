@@ -29,8 +29,7 @@ export default function About() {
       <p>
         I am very passionate about building and using products, and am probably the
         guy who will contact support about features or bugs, and regularly check its
-        changelogs and GitHub releases. I integrate AI tooling into my daily
-        development workflows.
+        changelogs and GitHub releases.
       </p>
 
       <p>
