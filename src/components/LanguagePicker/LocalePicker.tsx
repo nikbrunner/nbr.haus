@@ -2,7 +2,13 @@ import { useRouter, useSearch } from "@tanstack/react-router";
 import { useStore } from "@tanstack/react-store";
 import { cx } from "class-variance-authority";
 import { useCallback, useEffect } from "react";
-import { i18nStore, setLocale, setExpanded, initializeLocale, LOCALES } from "@/i18n";
+import {
+  i18nStore,
+  setLocale,
+  setExpanded,
+  initializeLocale,
+  LOCALES
+} from "@/i18n";
 import type { Locale } from "@/i18n";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 import "./LocalePicker.css";
@@ -19,7 +25,12 @@ interface LocaleOptionProps {
   ariaLabel?: string;
 }
 
-function LocaleOption({ label, variant = "default", onClick, ariaLabel }: LocaleOptionProps) {
+function LocaleOption({
+  label,
+  variant = "default",
+  onClick,
+  ariaLabel
+}: LocaleOptionProps) {
   return (
     <button
       className={cx("LocaleOption", variant === "active" && "LocaleOption--active")}

@@ -12,9 +12,9 @@ export const index: Widen<typeof en> = {
     independence:
       "Ich erkenne, was zu tun ist, priorisiere meine Arbeit selbst und weiß, wann ich Feedback einholen sollte. Aber ich liebe es auch, Teil eines guten Teams zu sein, das auf ein gemeinsames Ziel hinarbeitet.",
     passion:
-      "Ich bin sehr leidenschaftlich, wenn es darum geht, Produkte zu bauen und zu nutzen. Ich bin wahrscheinlich derjenige, der den Support wegen Features oder Bugs kontaktiert und regelmäßig Changelogs und GitHub-Releases checkt.",
+      "Ich bin leidenschaftlich, wenn es ums Entwickeln und Nutzen von Produkten geht. Ich bin wahrscheinlich derjenige, der den Support wegen Features oder Bugs kontaktiert und regelmäßig Changelogs und GitHub-Releases verfolgt.",
     personal:
-      "Ich wurde 1984 geboren, und abseits vom Code genieße ich Wandern, Lesen, Landschaftsfotografie, Musikproduktion, Workflow-Optimierung und Open Source — und ich habe eine leichte Tastatur-Obsession."
+      "Ich wurde 1984 geboren, und abseits vom Code genieße ich Wandern, Lesen, Landschaftsfotografie, Musikproduktion, Workflow-Optimierung und Open Source — und ich habe eine kleine Tastatur-Obsession."
   },
   jobs: {
     lookingForJob: {
@@ -42,12 +42,12 @@ export const index: Widen<typeof en> = {
       position: "Praktikant",
       period: "2019–2020",
       description:
-        "Ich habe eine Fullstack-Zubehörbestellungs-Anwendung von Grund auf gebaut — Design, Architektur, Backend und Frontend — während eines 3-monatigen Praktikums bei der Schwesterfirma von DealerCenter Digital."
+        "Ich habe eine Fullstack-Anwendung zur Zubehörbestellung von Grund auf gebaut — Design, Architektur, Backend und Frontend — während eines 3-monatigen Praktikums bei der Schwesterfirma von DealerCenter Digital."
     }
   },
   projects: {
     intro:
-      "Projekte sind nie fertig, aber sie sind immer in Arbeit. Hier sind einige meiner Projekte als Entwickler.",
+      "Projekte sind nie wirklich fertig — aber immer in Entwicklung. Hier sind einige meiner Projekte als Entwickler.",
     blackAtom: {
       description1:
         "Open-Source plattformübergreifendes Theming-System, das 27+ kohärente Themes aus einer einzigen Quelle generiert.",
@@ -83,8 +83,7 @@ export const index: Widen<typeof en> = {
     technologies: "Technologien",
     devTools: "Dev Tools",
     ai: "KI",
-    workflowPassion:
-      "Ich bin sehr leidenschaftlich, wenn es um Workflows geht. Meine",
+    workflowPassion: "Workflows sind eine große Leidenschaft von mir. Meine",
     dotfilesHere: "Dotfiles findest du hier",
     aiIntro:
       "Ich hatte das Glück, in die Branche einzusteigen, bevor KI ein Thema wurde. Den Lernberg zu erklimmen, ohne Tab-Completion oder ChatGPT.",
@@ -95,7 +94,7 @@ export const index: Widen<typeof en> = {
     aiLimitsHighlight:
       "und vielleicht am wichtigsten, du wirst keinen Spaß mehr haben",
     aiUsage:
-      "Deshalb bin ich bewusst darin, wie ich sie nutze. Ich verwende Claude Code als meinen primären KI-Assistenten. Wenn die Aufgabe durch KI-Codegenerierung machbar erscheint, arbeite ich detaillierte Pläne aus und lasse dann Claude Code die Implementierung übernehmen, während ich den Code Schritt für Schritt überprüfe.",
+      "Deshalb setze ich sie bewusst ein. Ich verwende Claude Code als meinen primären KI-Assistenten. Wenn die Aufgabe durch KI-Codegenerierung machbar erscheint, arbeite ich detaillierte Pläne aus und lasse dann Claude Code die Implementierung übernehmen, während ich den Code Schritt für Schritt überprüfe.",
     mcps: "MCPs",
     mcpsIntro:
       "Ich nutze auch persönliche Slash-Commands und MCPs, wo es sinnvoll ist.",

@@ -12,8 +12,8 @@
 
   /* StyleStatus height */
   --style-status-height: calc(
-    (var(--picker-cell) * 3) + (var(--picker-gap) * 2) + (var(--picker-padding) * 2) +
-      (var(--border-size-2) * 2)
+    (var(--picker-cell) * 3) + (var(--picker-gap) * 2) +
+      (var(--picker-padding) * 2) + (var(--border-size-2) * 2)
   );
 
   position: fixed;

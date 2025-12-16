@@ -32,9 +32,7 @@ export default function LocaleStatus() {
         }
       }}
     >
-      <div className="LocaleStatus__indicator">
-        {LOCALE_LABELS[locale]}
-      </div>
+      <div className="LocaleStatus__indicator">{LOCALE_LABELS[locale]}</div>
     </div>
   );
 }
