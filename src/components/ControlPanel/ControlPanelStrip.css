@@ -23,12 +23,12 @@
   min-width: var(--strip-cell);
   min-height: var(--strip-cell);
 
-  background: var(--bg-main);
+  background: var(--bg-dots);
 }
 
-/* Dashed separators between modules */
+/* Solid separators between modules - cleaner against dots background */
 .ControlPanelStrip__module + .ControlPanelStrip__module {
-  border-top: var(--border-size-2) dashed var(--fg-accent);
+  border-top: var(--border-size-2) solid var(--fg-accent);
 }
 
 /* Style module has multiple indicators stacked */
