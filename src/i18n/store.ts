@@ -3,12 +3,10 @@ import { DEFAULT_LOCALE, LOCALES, type Locale } from "./types";
 
 interface I18nState {
   locale: Locale;
-  isExpanded: boolean;
 }
 
 export const i18nStore = new Store<I18nState>({
-  locale: DEFAULT_LOCALE,
-  isExpanded: false
+  locale: DEFAULT_LOCALE
 });
 
 // Actions
@@ -17,14 +15,6 @@ export function setLocale(locale: Locale) {
     localStorage.setItem("locale", locale);
   }
   i18nStore.setState(s => ({ ...s, locale }));
-}
-
-export function setExpanded(isExpanded: boolean) {
-  i18nStore.setState(s => ({ ...s, isExpanded }));
-}
-
-export function toggleExpanded() {
-  i18nStore.setState(s => ({ ...s, isExpanded: !s.isExpanded }));
 }
 
 // Storage helpers

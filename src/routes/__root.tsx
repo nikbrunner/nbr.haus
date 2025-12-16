@@ -8,8 +8,7 @@ import {
   stripSearchParams
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
-import { StylePickers, StyleStatus } from "../components/StylePicker";
-import { LocaleStatus, LocalePicker } from "../components/LanguagePicker";
+import { ControlPanel } from "../components/ControlPanel";
 import NotFound from "../components/NotFound";
 import globalCss from "../styles/global.css?url";
 import {
@@ -198,10 +197,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         {/* <Header />  faded out until completed*/}
         <main className="BaseLayout">{children}</main>
         <ClientOnly>
-          <LocaleStatus />
-          <LocalePicker />
-          <StyleStatus />
-          <StylePickers />
+          <ControlPanel />
         </ClientOnly>
         <TanStackDevtools
           config={{

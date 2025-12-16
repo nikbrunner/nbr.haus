@@ -6,8 +6,6 @@ export { LOCALES, DEFAULT_LOCALE } from "./types";
 export {
   i18nStore,
   setLocale,
-  setExpanded,
-  toggleExpanded,
   initializeLocale,
   getLocaleFromStorage
 } from "./store";

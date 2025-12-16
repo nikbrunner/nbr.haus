@@ -1,0 +1,122 @@
+.ControlPanelExpanded {
+  --panel-cell: var(--picker-cell, 32px);
+  --panel-padding: var(--picker-padding, 4px);
+  --panel-gap: var(--picker-gap, 4px);
+  --panel-label-width: var(--picker-label-width, 64px);
+
+  /* Calculate strip width to position panel correctly */
+  --strip-width: calc(
+    var(--panel-cell) + (var(--panel-padding) * 2) + (var(--border-size-2) * 2)
+  );
+
+  position: fixed;
+  right: calc(var(--picker-offset, 16px) + var(--strip-width) + var(--panel-gap));
+  top: 50%;
+  z-index: var(--picker-z-index, 100);
+
+  display: flex;
+  flex-direction: column;
+
+  background: var(--bg-dots);
+  box-shadow: var(--shadow-hard-5);
+  border: var(--border-size-2) solid var(--fg-accent);
+
+  /* Hardware-accelerated slide animation */
+  transform: translateY(-50%)
+    translateX(calc(100% + var(--panel-gap) + var(--strip-width)));
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    transform 0.2s ease-out,
+    opacity 0.15s ease-out,
+    visibility 0.2s;
+}
+
+.ControlPanelExpanded--open {
+  transform: translateY(-50%) translateX(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Sections separated by dashed borders */
+.ControlPanelExpanded__section {
+  display: flex;
+  flex-direction: column;
+  padding: var(--panel-padding);
+  background: var(--bg-main);
+}
+
+.ControlPanelExpanded__section + .ControlPanelExpanded__section {
+  border-top: var(--border-size-2) dashed var(--fg-accent);
+}
+
+/* Row with label + options */
+.ControlPanelExpanded__row {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--panel-gap) / 2);
+  min-height: var(--panel-cell);
+}
+
+.ControlPanelExpanded__row + .ControlPanelExpanded__row {
+  margin-top: calc(var(--panel-gap) / 2);
+}
+
+/* Row label */
+.ControlPanelExpanded__label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--panel-label-width);
+  height: var(--panel-cell);
+  padding-inline: var(--panel-gap);
+
+  background: var(--fg-accent);
+  color: var(--bg-main);
+  font-size: var(--picker-font-size, 12px);
+  font-weight: var(--font-weight-9);
+
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Options container */
+.ControlPanelExpanded__options {
+  display: flex;
+  gap: calc(var(--panel-gap) / 2);
+}
+
+/* Option button */
+.ControlPanelExpanded__option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--panel-cell);
+  height: var(--panel-cell);
+
+  background: var(--bg-main);
+  border: var(--border-size-2) dashed var(--fg-accent);
+  cursor: pointer;
+
+  font-size: var(--picker-font-size, 12px);
+  font-weight: var(--font-weight-9);
+  color: var(--fg-main);
+
+  transition: border-color 0.1s ease-out;
+}
+
+.ControlPanelExpanded__option:hover {
+  border: var(--border-size-3) solid var(--fg-accent);
+  color: var(--fg-accent);
+}
+
+.ControlPanelExpanded__option--active {
+  border: var(--border-size-3) solid var(--fg-accent);
+  color: var(--fg-accent);
+}
+
+/* Color dot for accent options */
+.ControlPanelExpanded__color-dot {
+  width: calc(var(--panel-cell) / 2);
+  height: calc(var(--panel-cell) / 2);
+}

@@ -1,9 +1,16 @@
 import { Store } from "@tanstack/react-store";
 import type { Hue, ColorMode, Contrast } from "@/validators/rootSearchParams";
 
+// Re-export locale types and actions from i18n for convenience
+export { setLocale, initializeLocale, getLocaleFromStorage } from "@/i18n";
+export type { Locale } from "@/i18n";
+
 // Types
-export interface StyleState {
+export interface ControlPanelState {
+  // Panel UI state
   isExpanded: boolean;
+
+  // Style settings
   hue: Hue;
   contrast: Contrast;
   colorMode: ColorMode;
@@ -140,43 +147,44 @@ const DEFAULT_CONTRAST: Contrast = "base";
 const DEFAULT_COLOR_MODE: ColorMode = "system";
 
 // Store
-export const styleStore = new Store<StyleState>({
+export const controlPanelStore = new Store<ControlPanelState>({
   isExpanded: false,
   hue: DEFAULT_HUE,
   contrast: DEFAULT_CONTRAST,
   colorMode: DEFAULT_COLOR_MODE
 });
 
-// Actions
+// Panel actions
 export function toggleExpanded() {
-  styleStore.setState(s => ({ ...s, isExpanded: !s.isExpanded }));
+  controlPanelStore.setState(s => ({ ...s, isExpanded: !s.isExpanded }));
 }
 
 export function setExpanded(isExpanded: boolean) {
-  styleStore.setState(s => ({ ...s, isExpanded }));
+  controlPanelStore.setState(s => ({ ...s, isExpanded }));
 }
 
+// Style actions
 export function setHue(hue: number) {
   const { hueAccent, hueAccentAlt } = getHueVariants(hue);
   applyHueCssVars(hue, hueAccent, hueAccentAlt);
   saveHueToStorage(hue, hueAccent, hueAccentAlt);
-  styleStore.setState(s => ({ ...s, hue }));
+  controlPanelStore.setState(s => ({ ...s, hue }));
 }
 
 export function setContrast(contrast: Contrast) {
   applyContrastCssVars(contrast);
   saveContrastToStorage(contrast);
-  styleStore.setState(s => ({ ...s, contrast }));
+  controlPanelStore.setState(s => ({ ...s, contrast }));
 }
 
 export function setColorMode(colorMode: ColorMode) {
   applyColorMode(colorMode);
   saveColorModeToStorage(colorMode);
-  styleStore.setState(s => ({ ...s, colorMode }));
+  controlPanelStore.setState(s => ({ ...s, colorMode }));
 }
 
-// Initialize from URL params or localStorage
-export function initializeFromParams(params: {
+// Initialize style from URL params or localStorage
+export function initializeStyleFromParams(params: {
   hue?: number;
   contrast?: Contrast;
   colorMode?: ColorMode;
@@ -198,7 +206,7 @@ export function initializeFromParams(params: {
   applyColorMode(colorMode);
   saveColorModeToStorage(colorMode);
 
-  styleStore.setState(s => ({
+  controlPanelStore.setState(s => ({
     ...s,
     hue,
     contrast,
