@@ -28,6 +28,10 @@
 @import "../components/StylePicker/ContrastPickerOption.css";
 @import "../components/StylePicker/ColorModePickerOption.css";
 
+/* LanguagePicker */
+@import "../components/LanguagePicker/LocaleStatus.css";
+@import "../components/LanguagePicker/LocalePicker.css";
+
 /* Content blocks */
 @import "../content-blocks/index/About.css";
 @import "../content-blocks/index/Connect.css";
