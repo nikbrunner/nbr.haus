@@ -1,35 +1,15 @@
-@keyframes slideInFromRight {
-  from {
-    transform: translateY(-50%) translateX(calc(100% + var(--picker-offset)));
-    opacity: 0;
-  }
-  to {
-    transform: translateY(-50%) translateX(0);
-    opacity: 1;
-  }
-}
-
 .ControlPanelStrip {
   --strip-cell: var(--picker-cell, 32px);
   --strip-padding: var(--picker-padding, 4px);
   --strip-gap: var(--picker-gap, 4px);
 
-  position: fixed;
-  right: var(--picker-offset, 16px);
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: var(--picker-z-index, 100);
-
   display: flex;
   flex-direction: column;
 
-  background: var(--bg-dots);
-  box-shadow: var(--shadow-hard-5);
-  border: var(--border-size-2) solid var(--fg-accent);
+  /* Left border separates strip from expanded content - solid so it looks clean when clipped */
+  border-left: var(--border-size-2) solid var(--fg-accent);
 
   cursor: pointer;
-
-  animation: slideInFromRight 0.3s ease-out;
 }
 
 .ControlPanelStrip__module {

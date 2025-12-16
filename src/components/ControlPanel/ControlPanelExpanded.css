@@ -4,38 +4,8 @@
   --panel-gap: var(--picker-gap, 4px);
   --panel-label-width: var(--picker-label-width, 64px);
 
-  /* Calculate strip width to position panel correctly */
-  --strip-width: calc(
-    var(--panel-cell) + (var(--panel-padding) * 2) + (var(--border-size-2) * 2)
-  );
-
-  position: fixed;
-  right: calc(var(--picker-offset, 16px) + var(--strip-width) + var(--panel-gap));
-  top: 50%;
-  z-index: calc(var(--picker-z-index, 100) - 1);
-
   display: flex;
   flex-direction: column;
-
-  background: var(--bg-dots);
-  box-shadow: var(--shadow-hard-5);
-  border: var(--border-size-2) solid var(--fg-accent);
-
-  /* Hardware-accelerated slide animation */
-  transform: translateY(-50%)
-    translateX(calc(100% + var(--panel-gap) + var(--strip-width)));
-  opacity: 0;
-  visibility: hidden;
-  transition:
-    transform 0.2s ease-out,
-    opacity 0.15s ease-out,
-    visibility 0.2s;
-}
-
-.ControlPanelExpanded--open {
-  transform: translateY(-50%) translateX(0);
-  opacity: 1;
-  visibility: visible;
 }
 
 /* Sections separated by dashed borders */

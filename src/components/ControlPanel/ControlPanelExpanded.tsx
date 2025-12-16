@@ -1,6 +1,5 @@
 import { useRouter } from "@tanstack/react-router";
 import { useStore } from "@tanstack/react-store";
-import { cx } from "class-variance-authority";
 import { i18nStore, setLocale, LOCALES, type Locale } from "@/i18n";
 import type { ColorMode, Contrast } from "@/validators/rootSearchParams";
 import * as store from "./store";
@@ -27,13 +26,12 @@ function PickerRow({ label, children }: PickerRowProps) {
 }
 
 /**
- * ControlPanelExpanded - The expanded options panel.
- * Slides in from the right using translateX for 60fps animation.
+ * ControlPanelExpanded - The expanded options panel content (left side).
+ * Revealed via clip-path animation on the parent container.
  */
 export default function ControlPanelExpanded() {
   const router = useRouter();
 
-  const isOpen = store.useSelector(s => s.isExpanded);
   const hue = store.useSelector(s => s.hue);
   const contrast = store.useSelector(s => s.contrast);
   const colorMode = store.useSelector(s => s.colorMode);
@@ -86,10 +84,7 @@ export default function ControlPanelExpanded() {
   };
 
   return (
-    <div
-      className={cx("ControlPanelExpanded", isOpen && "ControlPanelExpanded--open")}
-      aria-hidden={!isOpen}
-    >
+    <div className="ControlPanelExpanded">
       {/* Navigation Section */}
       <div className="ControlPanelExpanded__section">
         <PickerRow label="Nav">

@@ -1,5 +1,7 @@
 import { useSearch } from "@tanstack/react-router";
 import { useCallback, useEffect } from "react";
+import { motion } from "framer-motion";
+import { cx } from "class-variance-authority";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 import { initializeLocale, type Locale } from "@/i18n";
 import ControlPanelStrip from "./ControlPanelStrip";
@@ -9,20 +11,17 @@ import "./ControlPanel.css";
 
 /**
  * ControlPanel - Unified control panel for navigation, locale, and style settings.
- * Consists of a collapsed strip (always visible) and an expanded panel (slides out on toggle).
+ * Outer wrapper provides shadow and clips via overflow:hidden.
+ * Inner content is full-width, positioned to the right.
  */
 export default function ControlPanel() {
   const search = useSearch({ from: "/" });
-  const isOpen = store.useSelector(s => s.isExpanded);
+  const isExpanded = store.useSelector(s => s.isExpanded);
 
   const closePanel = useCallback(() => store.setExpanded(false), []);
 
   // Close on click outside
-  useOnClickOutside(
-    [".ControlPanelStrip", ".ControlPanelExpanded"],
-    closePanel,
-    isOpen
-  );
+  useOnClickOutside([".ControlPanel"], closePanel, isExpanded);
 
   // Initialize from URL params or localStorage on mount
   useEffect(() => {
@@ -36,7 +35,7 @@ export default function ControlPanel() {
 
   // Close on Escape key
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isExpanded) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -46,12 +45,32 @@ export default function ControlPanel() {
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen]);
+  }, [isExpanded]);
 
   return (
-    <>
-      <ControlPanelStrip />
-      <ControlPanelExpanded />
-    </>
+    <div className={cx("ControlPanel", isExpanded && "ControlPanel--expanded")}>
+      <motion.div
+        className="ControlPanel__content"
+        initial={false}
+        animate={isExpanded ? "expanded" : "collapsed"}
+        variants={{
+          collapsed: {
+            clipPath: "inset(0 0 0 calc(100% - var(--strip-total-width)))"
+          },
+          expanded: { clipPath: "inset(0 0 0 0)" }
+        }}
+        transition={{
+          type: "tween",
+          ease: "linear",
+          duration: 0.15
+        }}
+      >
+        {/* Expanded options on the left */}
+        <ControlPanelExpanded />
+
+        {/* Strip indicators on the right - always visible */}
+        <ControlPanelStrip />
+      </motion.div>
+    </div>
   );
 }
