@@ -14,10 +14,10 @@ export default function Jobs() {
       >
         <p>
           I worked across the{" "}
-          <Highlight>full spectrum of frontend development</Highlight>—from feature
+          <Highlight>full spectrum of frontend development</Highlight> — from feature
           implementation and bug fixes to code reviews, mentoring, and cross-team
-          coordination for a mature Electron application serving hundreds of bike
-          retailers.
+          coordination for a mature Electron application, the BikeCenter, serving
+          hundreds of bike retailers.
         </p>
         <p>
           A major focus was <Highlight>architectural migrations</Highlight>: I
@@ -68,9 +68,8 @@ export default function Jobs() {
 
       <Job company="Campudus" position="Intern" period="2019–2020">
         <p>
-          I built a fullstack accessories ordering application from scratch—design,
-          architecture, backend, and frontend—during a 3-month internship at
-          DealerCenter Digital's sister company.
+          I built a fullstack accessory ordering application from scratch — design,
+          architecture, backend, and frontend — during a 3-month internship.
         </p>
       </Job>
     </>
