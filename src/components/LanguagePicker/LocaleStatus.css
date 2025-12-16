@@ -1,0 +1,56 @@
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(calc(100% + var(--picker-offset)));
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.LocaleStatus {
+  /* Position above StyleStatus */
+  --style-status-height: calc(
+    (var(--picker-cell) * 3) + (var(--picker-gap) * 2) + (var(--picker-padding) * 2) +
+      (var(--border-size-2) * 2)
+  );
+
+  position: fixed;
+  bottom: calc(
+    var(--picker-offset) + var(--style-status-height) + var(--picker-gap) +
+      env(safe-area-inset-bottom, 0px)
+  );
+  right: var(--picker-offset);
+  z-index: var(--picker-z-index);
+
+  display: flex;
+  flex-direction: column;
+  padding: var(--picker-padding);
+  gap: var(--picker-gap);
+
+  background: var(--bg-dots);
+  box-shadow: var(--shadow-hard-5);
+  border: var(--border-size-2) solid var(--fg-accent);
+
+  cursor: pointer;
+
+  animation: slideInFromRight 0.3s ease-out;
+}
+
+.LocaleStatus__indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--picker-cell);
+  height: var(--picker-cell);
+
+  background: var(--bg-main);
+  color: var(--fg-muted);
+  border: var(--border-size-2) solid var(--fg-accent);
+
+  font-size: var(--picker-font-size);
+  font-weight: var(--font-weight-7);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

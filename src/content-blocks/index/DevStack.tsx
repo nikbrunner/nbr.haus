@@ -4,15 +4,114 @@ import SpecCard from "../../components/SpecCard";
 import SpecGrid from "../../components/SpecGrid";
 import SpecList from "../../components/SpecList";
 import Hr from "../../components/Hr";
+import { useTranslation } from "@/i18n";
 
 export default function DevStack() {
+  const { t } = useTranslation();
+
+  const devTools = [
+    {
+      label: t.index.devStack.editor,
+      value: (
+        <Link
+          href="https://github.com/nikbrunner/dots/tree/main/common/.config/nvim"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Neovim
+        </Link>
+      )
+    },
+    {
+      label: t.index.devStack.terminal,
+      value: (
+        <>
+          <Link href="https://ghostty.dev" target="_blank" rel="noopener noreferrer">
+            Ghostty
+          </Link>{" "}
+          &amp;{" "}
+          <Link
+            href="https://github.com/tmux/tmux/wiki"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Tmux
+          </Link>
+        </>
+      )
+    },
+    {
+      label: t.index.devStack.git,
+      value: (
+        <Link
+          href="https://github.com/jesseduffield/lazygit"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LazyGit
+        </Link>
+      )
+    },
+    {
+      label: t.index.devStack.aiAssistant,
+      value: (
+        <Link
+          href="https://claude.com/product/claude-code"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Claude Code
+        </Link>
+      )
+    },
+    {
+      label: t.index.devStack.secrets,
+      value: (
+        <Link href="https://1password.com" target="_blank" rel="noopener noreferrer">
+          1Password
+        </Link>
+      )
+    }
+  ];
+
+  const mcpItems = [
+    {
+      label: t.index.devStack.docLookup,
+      value: (
+        <Link href="https://ref.tools/" target="_blank" rel="noopener noreferrer">
+          ref.tools
+        </Link>
+      )
+    },
+    {
+      label: t.index.devStack.webSearch,
+      value: (
+        <Link href="https://exa.ai" target="_blank" rel="noopener noreferrer">
+          Exa
+        </Link>
+      )
+    },
+    {
+      label: t.index.devStack.browser,
+      value: (
+        <Link
+          href="https://github.com/ChromeDevTools/chrome-devtools-mcp/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Chrome DevTools
+        </Link>
+      )
+    }
+  ];
+
   return (
     <div className="DevStack">
-      <SpecCard title="Technologies">
+      <SpecCard title={t.index.devStack.technologies}>
         <SpecGrid items={technologies} />
       </SpecCard>
 
-      <SpecCard title="Dev Tools">
+      <SpecCard title={t.index.devStack.devTools}>
         <SpecList items={devTools} />
         <p
           style={{
@@ -21,113 +120,52 @@ export default function DevStack() {
             margin: 0
           }}
         >
-          I am very passionate about workflow. You can check my{" "}
+          {t.index.devStack.workflowPassion}{" "}
           <Link
             href="https://github.com/nikbrunner/dots"
             target="_blank"
             rel="noopener noreferrer"
           >
-            dotfiles here
+            {t.index.devStack.dotfilesHere}
           </Link>
           .
         </p>
       </SpecCard>
 
       <SpecCard
-        title="AI"
+        title={t.index.devStack.ai}
         description={
           <>
+            <p>{t.index.devStack.aiIntro}</p>
+
+            <p>{t.index.devStack.aiLearning}</p>
+
             <p>
-              I am lucky enough to have entered the industry before AI became a
-              thing. To have the learning hill to climb, with no tab completion or
-              ChatGPT.{" "}
+              {t.index.devStack.aiLimits}{" "}
+              <Highlight>{t.index.devStack.aiLimitsHighlight}</Highlight>.
             </p>
 
             <p>
-              I think this is was very valuable. And I think it's still very valuable
-              and even necessary to learn coding in the AI era. I would never
-              recommend a Junior Developer to use AI during their initial learning
-              phase. I could never use AI effectively as I do now, if I had not
-              learned this craft without it.
-            </p>
-
-            <p>
-              The technology is fascinating, but it has real limits. If you rely too
-              heavily on it, you will actively unlearn skills and knowledge -{" "}
-              <Highlight>
-                and maybe most importantly, you will no longer have fun
-              </Highlight>
-              .
-            </p>
-
-            <p>
-              That's why I'm deliberate about how I use it. I use{" "}
+              {t.index.devStack.aiUsage.split("Claude Code")[0]}
               <Link
                 href="https://claude.com/product/claude-code"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Claude Code
-              </Link>{" "}
-              as my primary AI assistent. When the task feels manageable by AI code
-              generation, I work out detailed plans and then let Claude Code handle
-              the implementation, while reviewing the code step by step.
+              </Link>
+              {t.index.devStack.aiUsage.split("Claude Code")[1]}
             </p>
 
             <Hr />
 
-            <h3>MCP's</h3>
+            <h3>{t.index.devStack.mcps}</h3>
 
             <div className="DevStack__mcps">
-              <p>
-                I also use personal slash commands and{" "}
-                <Link href="https://modelcontextprotocol.io/docs/getting-started/intro">
-                  MCP's
-                </Link>{" "}
-                where applicable.
-              </p>
-              <p>These are the most used MCP's for AI assistance.</p>
+              <p>{t.index.devStack.mcpsIntro}</p>
+              <p>{t.index.devStack.mcpsUsed}</p>
 
-              <SpecList
-                items={[
-                  {
-                    label: "Documentation Lookup",
-                    value: (
-                      <Link
-                        href="https://ref.tools/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        ref.tools
-                      </Link>
-                    )
-                  },
-                  {
-                    label: "Better Web Search",
-                    value: (
-                      <Link
-                        href="https://exa.ai"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Exa
-                      </Link>
-                    )
-                  },
-                  {
-                    label: "Browser",
-                    value: (
-                      <Link
-                        href="https://github.com/ChromeDevTools/chrome-devtools-mcp/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Chrome DevTools
-                      </Link>
-                    )
-                  }
-                ]}
-              />
+              <SpecList items={mcpItems} />
             </div>
           </>
         }
@@ -151,72 +189,4 @@ const technologies = [
   { name: "Electron", url: "https://www.electronjs.org" },
   { name: "Redux (Toolkit)", url: "https://redux-toolkit.js.org" },
   { name: "Storybook", url: "https://storybook.js.org" }
-];
-
-const devTools: Array<{
-  label: string;
-  value: React.ReactNode;
-}> = [
-  {
-    label: "Editor:",
-    value: (
-      <Link
-        href="https://github.com/nikbrunner/dots/tree/main/common/.config/nvim"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Neovim
-      </Link>
-    )
-  },
-  {
-    label: "Terminal:",
-    value: (
-      <>
-        <Link href="https://ghostty.dev" target="_blank" rel="noopener noreferrer">
-          Ghostty
-        </Link>{" "}
-        &amp;{" "}
-        <Link
-          href="https://github.com/tmux/tmux/wiki"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Tmux
-        </Link>
-      </>
-    )
-  },
-  {
-    label: "Git:",
-    value: (
-      <Link
-        href="https://github.com/jesseduffield/lazygit"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        LazyGit
-      </Link>
-    )
-  },
-  {
-    label: "AI assistant:",
-    value: (
-      <Link
-        href="https://claude.com/product/claude-code"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Claude Code
-      </Link>
-    )
-  },
-  {
-    label: "Secrets:",
-    value: (
-      <Link href="https://1password.com" target="_blank" rel="noopener noreferrer">
-        1Password
-      </Link>
-    )
-  }
 ];
