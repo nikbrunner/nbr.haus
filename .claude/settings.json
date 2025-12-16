@@ -1,0 +1,61 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path' | { read file_path; if [[ \"$file_path\" =~ \\.(ts|tsx|js|jsx|css|json)$ ]]; then npx eslint --fix \"$file_path\" 2>&1 || true; fi; }",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(cat:*)",
+      "Bash(cp:*)",
+      "Bash(curl:*)",
+      "Bash(find:*)",
+      "Bash(gh repo list:*)",
+      "Bash(ls:*)",
+      "Bash(lsof:*)",
+      "Bash(npm install:*)",
+      "Bash(npm ls:*)",
+      "Bash(npm run check:*)",
+      "Bash(npm run check:compile:*)",
+      "Bash(npm run check:lint:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npm run format:*)",
+      "Bash(npm run lint)",
+      "Bash(npm run storybook:*)",
+      "Bash(npm run test:compile:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(npx biome lint:*)",
+      "Bash(npx biome:*)",
+      "Bash(npx tcm:*)",
+      "Bash(npx tsc:*)",
+      "Bash(xargs kill:*)",
+      "Bash(xargs:*)",
+      "WebFetch(domain:biomejs.dev)",
+      "WebFetch(domain:docs.github.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:tanstack.com)",
+      "WebFetch(domain:v3.nitro.build)",
+      "WebFetch(domain:vite.dev)",
+      "WebFetch(domain:www.answeroverflow.com)",
+      "WebSearch",
+      "mcp__chrome-devtools__*",
+      "mcp__exa__*",
+    ],
+    "deny": [],
+    "ask": []
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "ESLint"
+  ]
+}
