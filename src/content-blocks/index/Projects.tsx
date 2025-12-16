@@ -1,13 +1,12 @@
-import Highlight from "../../components/Highlight";
 import Project from "../../components/Project";
+import { useTranslation } from "@/i18n";
 
 export default function Projects() {
+  const { t } = useTranslation();
+
   return (
     <>
-      <p className="Projects__intro">
-        Projects are never finished, but they are always in progress. Here are some
-        of my projects as a developer.
-      </p>
+      <p className="Projects__intro">{t.index.projects.intro}</p>
 
       <div className="Projects__list">
         <Project
@@ -34,19 +33,9 @@ export default function Projects() {
             }
           ]}
         >
-          <p>
-            Open-source cross-platform theming system generating 27+ cohesive themes
-            from a single source.
-          </p>
-          <p>
-            Built with an <Highlight>adapter pattern</Highlight> for consistent theme
-            generation from a central source using{" "}
-            <Highlight>OKLCH color space</Highlight>.
-          </p>
-          <p>
-            Maintained with focus on developer experience and cross-platform
-            consistency.
-          </p>
+          <p>{t.index.projects.blackAtom.description1}</p>
+          <p>{t.index.projects.blackAtom.description2}</p>
+          <p>{t.index.projects.blackAtom.description3}</p>
         </Project>
 
         <Project
@@ -59,16 +48,8 @@ export default function Projects() {
             type: "GitHub"
           }}
         >
-          <p>
-            AWDCS (App, Workspace, Document, Change, Symbol): A scope-based keymap
-            architecture for modal editors organizing bindings by operational context
-            rather than tool-specific functions.
-          </p>
-          <p>
-            Features <Highlight>systematic prefix patterns</Highlight> and{" "}
-            <Highlight>semantic naming</Highlight> for consistent, memorable
-            keybindings across workflows.
-          </p>
+          <p>{t.index.projects.awdcs.description1}</p>
+          <p>{t.index.projects.awdcs.description2}</p>
         </Project>
 
         <Project
@@ -87,11 +68,7 @@ export default function Projects() {
             type: "GitHub"
           }}
         >
-          <p>
-            Custom QMK keyboard layout for 36-key split keyboards featuring
-            vim-inspired navigation, smart layer design, and comprehensive CLI
-            tooling for Moonlander and Corne keyboards.
-          </p>
+          <p>{t.index.projects.koyo.description}</p>
         </Project>
 
         <Project
@@ -110,11 +87,7 @@ export default function Projects() {
             type: "GitHub"
           }}
         >
-          <p>
-            Highly customized Neovim setup for frontend development featuring
-            AWDCS-based keymaps, Lazy.nvim plugin management, and workflows tailored
-            for React and TypeScript.
-          </p>
+          <p>{t.index.projects.nbrNvim.description}</p>
         </Project>
       </div>
     </>

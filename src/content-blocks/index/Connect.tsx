@@ -1,11 +1,14 @@
 import Link from "../../components/Link";
 import SpecCard from "../../components/SpecCard";
 import SpecList from "../../components/SpecList";
+import { useTranslation } from "@/i18n";
 
 export default function Connect() {
+  const { t } = useTranslation();
+
   const items = [
     {
-      label: "GitHub:",
+      label: t.index.connect.github,
       value: (
         <Link
           href="https://www.github.com/nikbrunner"
@@ -18,7 +21,7 @@ export default function Connect() {
       )
     },
     {
-      label: "LinkedIn:",
+      label: t.index.connect.linkedin,
       value: (
         <Link
           href="https://www.linkedin.com/in/nbru/"
@@ -31,21 +34,21 @@ export default function Connect() {
       )
     },
     {
-      label: "CV:",
+      label: t.index.connect.cv,
       value: (
         <Link href="/Nikolaus_Brunner_CV.pdf" download className="Connect__link">
-          Download PDF
+          {t.index.connect.downloadPdf}
         </Link>
       )
     },
     {
-      label: "Email:",
+      label: t.index.connect.email,
       value: <Link href="mailto:nik@nbr.haus">nik@nbr.haus</Link>
     }
   ];
 
   return (
-    <SpecCard title="Connect">
+    <SpecCard title={t.index.connect.title}>
       <SpecList items={items} />
     </SpecCard>
   );

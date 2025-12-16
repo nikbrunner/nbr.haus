@@ -7,12 +7,15 @@ import DevStack from "../content-blocks/index/DevStack";
 import Jobs from "../content-blocks/index/Jobs";
 import ProfilePicture from "../content-blocks/index/ProfilePicture";
 import Projects from "../content-blocks/index/Projects";
+import { useTranslation } from "@/i18n";
 
 export const Route = createFileRoute("/")({
   component: IndexPage
 });
 
 function IndexPage() {
+  const { t } = useTranslation();
+
   return (
     <>
       <div className="Index__layout Index__layout--one-column">
@@ -23,16 +26,16 @@ function IndexPage() {
           <Section>
             <Connect />
           </Section>
-          <Section title="About">
+          <Section title={t.common.sections.about}>
             <About />
           </Section>
-          <Section title="Employment">
+          <Section title={t.common.sections.employment}>
             <Jobs />
           </Section>
-          <Section title="Dev Stack">
+          <Section title={t.common.sections.devStack}>
             <DevStack />
           </Section>
-          <Section title="Projects">
+          <Section title={t.common.sections.projects}>
             <Projects />
           </Section>
         </div>
@@ -46,19 +49,19 @@ function IndexPage() {
           <Section>
             <Connect />
           </Section>
-          <Section title="About">
+          <Section title={t.common.sections.about}>
             <About />
           </Section>
-          <Section title="Dev Stack">
+          <Section title={t.common.sections.devStack}>
             <DevStack />
           </Section>
         </div>
 
         <div className="Index__column">
-          <Section title="Employment">
+          <Section title={t.common.sections.employment}>
             <Jobs />
           </Section>
-          <Section title="Projects">
+          <Section title={t.common.sections.projects}>
             <Projects />
           </Section>
         </div>
@@ -72,22 +75,22 @@ function IndexPage() {
           <Section>
             <Connect />
           </Section>
-          <Section title="About">
+          <Section title={t.common.sections.about}>
             <About />
           </Section>
-          <Section title="Dev Stack">
+          <Section title={t.common.sections.devStack}>
             <DevStack />
           </Section>
         </div>
 
         <div className="Index__column">
-          <Section title="Employment">
+          <Section title={t.common.sections.employment}>
             <Jobs />
           </Section>
         </div>
 
         <div className="Index__column">
-          <Section title="Projects">
+          <Section title={t.common.sections.projects}>
             <Projects />
           </Section>
         </div>
@@ -101,25 +104,25 @@ function IndexPage() {
           <Section>
             <Connect />
           </Section>
-          <Section title="About">
+          <Section title={t.common.sections.about}>
             <About />
           </Section>
         </div>
 
         <div className="Index__column">
-          <Section title="Dev Stack">
+          <Section title={t.common.sections.devStack}>
             <DevStack />
           </Section>
         </div>
 
         <div className="Index__column">
-          <Section title="Employment">
+          <Section title={t.common.sections.employment}>
             <Jobs />
           </Section>
         </div>
 
         <div className="Index__column">
-          <Section title="Projects">
+          <Section title={t.common.sections.projects}>
             <Projects />
           </Section>
         </div>

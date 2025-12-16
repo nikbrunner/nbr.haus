@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { StylePickers, StyleStatus } from "../components/StylePicker";
+import { LocaleStatus, LocalePicker } from "../components/LanguagePicker";
 import NotFound from "../components/NotFound";
 import globalCss from "../styles/global.css?url";
 import {
@@ -21,7 +22,7 @@ export const Route = createRootRoute({
   search: {
     middlewares: [
       stripSearchParams(defaultRootSearchParams),
-      retainSearchParams(["hue", "colorMode"])
+      retainSearchParams(["hue", "colorMode", "lang"])
     ]
   },
   notFoundComponent: NotFound,
@@ -197,6 +198,8 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         {/* <Header />  faded out until completed*/}
         <main className="BaseLayout">{children}</main>
         <ClientOnly>
+          <LocaleStatus />
+          <LocalePicker />
           <StyleStatus />
           <StylePickers />
         </ClientOnly>

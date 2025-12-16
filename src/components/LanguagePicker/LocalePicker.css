@@ -1,0 +1,134 @@
+.LocalePicker {
+  /* Same width calculation as LocaleStatus for positioning */
+  --status-width: calc(
+    var(--picker-cell) + (var(--picker-padding) * 2) + (var(--border-size-2) * 2)
+  );
+  --status-gap: var(--picker-gap);
+
+  /* LocaleStatus height for vertical positioning */
+  --locale-status-height: calc(
+    var(--picker-cell) + (var(--picker-padding) * 2) + (var(--border-size-2) * 2)
+  );
+
+  /* StyleStatus height */
+  --style-status-height: calc(
+    (var(--picker-cell) * 3) + (var(--picker-gap) * 2) + (var(--picker-padding) * 2) +
+      (var(--border-size-2) * 2)
+  );
+
+  position: fixed;
+  /* Position to the left of LocaleStatus, at same vertical level */
+  bottom: calc(
+    var(--picker-offset) + var(--style-status-height) + var(--picker-gap) +
+      env(safe-area-inset-bottom, 0px)
+  );
+  right: calc(var(--picker-offset) + var(--status-width) + var(--status-gap));
+  z-index: var(--picker-z-index);
+
+  display: flex;
+  flex-direction: column;
+  padding: var(--picker-padding);
+  gap: var(--picker-gap);
+
+  background: var(--bg-dots);
+  box-shadow: var(--shadow-hard-5);
+  border: var(--border-size-2) solid var(--fg-accent);
+
+  /* Slide animation */
+  transform: translateY(calc(100% + var(--picker-offset) * 2));
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    transform 0.2s ease-out,
+    opacity 0.15s ease-out,
+    visibility 0.2s;
+}
+
+.LocalePicker--open {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.LocalePicker__row {
+  display: grid;
+  grid-template-columns: var(--picker-label-width) repeat(2, var(--picker-cell));
+  align-items: center;
+  gap: calc(var(--picker-gap) / 2);
+  height: var(--picker-cell);
+  background: var(--bg-main);
+}
+
+.LocalePicker__label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: var(--picker-gap);
+  height: 100%;
+
+  background: var(--fg-accent);
+  color: var(--bg-main);
+  font-size: var(--picker-font-size);
+  font-weight: var(--font-weight-9);
+
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  border: var(--border-size-2) dashed var(--fg-accent);
+}
+
+.LocalePicker__option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--picker-cell);
+  height: var(--picker-cell);
+  border-left: var(--border-size-2) dashed var(--fg-accent);
+  border-right: var(--border-size-2) dashed var(--fg-accent);
+  transition: border-color 0.1s ease-out;
+}
+
+.LocalePicker__option:hover {
+  border: var(--border-size-3) solid var(--fg-accent);
+}
+
+.LocalePicker__option:hover button {
+  color: var(--fg-accent);
+}
+
+.LocalePicker__option:has(.LocaleOption--active) {
+  border: var(--border-size-3) solid var(--fg-accent);
+}
+
+.LocalePicker__option:has(.LocaleOption--active) button {
+  color: var(--fg-accent);
+}
+
+/* LocaleOption button styles */
+.LocaleOption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  background: transparent;
+  border: none;
+
+  color: var(--fg-muted);
+  font-size: var(--picker-font-size);
+  font-weight: var(--font-weight-7);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  cursor: pointer;
+  transition: color 0.1s ease-out;
+}
+
+.LocaleOption:hover {
+  color: var(--fg-accent);
+}
+
+.LocaleOption--active {
+  color: var(--fg-accent);
+}
