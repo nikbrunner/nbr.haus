@@ -49,7 +49,7 @@
       "WebFetch(domain:www.answeroverflow.com)",
       "WebSearch",
       "mcp__chrome-devtools__*",
-      "mcp__exa__*",
+      "mcp__exa__*"
     ],
     "deny": [],
     "ask": []
