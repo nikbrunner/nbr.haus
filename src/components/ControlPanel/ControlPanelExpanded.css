@@ -12,7 +12,7 @@
   position: fixed;
   right: calc(var(--picker-offset, 16px) + var(--strip-width) + var(--panel-gap));
   top: 50%;
-  z-index: var(--picker-z-index, 100);
+  z-index: calc(var(--picker-z-index, 100) - 1);
 
   display: flex;
   flex-direction: column;
