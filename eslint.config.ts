@@ -88,7 +88,7 @@ export default defineConfig([
         "error",
         {
           allowProperties: ["user-select"],
-          allowSelectors: ["nesting"]
+          allowSelectors: ["nesting", "has", "selection"]
         }
       ]
     }
