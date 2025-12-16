@@ -15,5 +15,8 @@ export {
 // Hooks
 export { useTranslation, useLocale } from "./useTranslation";
 
+// Components
+export { Trans } from "./Trans";
+
 // Translations
 export { translations } from "./translations";

@@ -4,10 +4,8 @@ import type { index as en } from "../en/index";
 export const index: Widen<typeof en> = {
   about: {
     greeting: "Hallo!",
-    introStart: "Ich bin",
-    name: "Nikolaus Brunner",
-    introEnd:
-      "(kurz Nik), Software-Ingenieur aus Landshut, Deutschland, spezialisiert auf Frontend-Architekturen und Design-Systeme — seit {years} Jahren.",
+    intro:
+      "Ich bin <highlight>Nikolaus Brunner</highlight> (kurz Nik), Software-Ingenieur aus Landshut, Deutschland, spezialisiert auf Frontend-Architekturen und Design-Systeme — seit {years} Jahren.",
     ux: "Ich arbeite eng mit Designern zusammen und habe ein gutes Gespür für UX (User Experience) und DX (Developer Experience). Ich kann auch selbstständig arbeiten und Design-Entscheidungen treffen, wenn nötig.",
     independence:
       "Ich erkenne, was zu tun ist, priorisiere meine Arbeit selbst und weiß, wann ich Feedback einholen sollte. Aber ich liebe es auch, Teil eines guten Teams zu sein, das auf ein gemeinsames Ziel hinarbeitet.",
@@ -83,18 +81,16 @@ export const index: Widen<typeof en> = {
     technologies: "Technologien",
     devTools: "Dev Tools",
     ai: "KI",
-    workflowPassion: "Workflows sind eine große Leidenschaft von mir. Meine",
-    dotfilesHere: "Dotfiles findest du hier",
+    workflowInfo:
+      "Workflows sind eine große Leidenschaft von mir. Meine <link>Dotfiles findest du hier</link>.",
     aiIntro:
       "Ich hatte das Glück, in die Branche einzusteigen, bevor KI ein Thema wurde. Den Lernberg zu erklimmen, ohne Tab-Completion oder ChatGPT.",
     aiLearning:
       "Ich denke, das war sehr wertvoll. Und ich denke, es ist immer noch sehr wertvoll und sogar notwendig, Programmieren in der KI-Ära zu lernen. Ich würde einem Junior-Entwickler niemals empfehlen, KI während der anfänglichen Lernphase zu nutzen. Ich könnte KI nicht so effektiv nutzen wie jetzt, wenn ich dieses Handwerk nicht ohne sie gelernt hätte.",
-    aiLimits:
-      "Die Technologie ist faszinierend, aber sie hat echte Grenzen. Wenn du dich zu sehr darauf verlässt, wirst du aktiv Fähigkeiten und Wissen verlernen —",
-    aiLimitsHighlight:
-      "und vielleicht am wichtigsten, du wirst keinen Spaß mehr haben",
+    aiLimitsInfo:
+      "Die Technologie ist faszinierend, aber sie hat echte Grenzen. Wenn du dich zu sehr darauf verlässt, wirst du aktiv Fähigkeiten und Wissen verlernen — <highlight>und vielleicht am wichtigsten, du wirst keinen Spaß mehr haben</highlight>.",
     aiUsage:
-      "Deshalb setze ich sie bewusst ein. Ich verwende Claude Code als meinen primären KI-Assistenten. Wenn die Aufgabe durch KI-Codegenerierung machbar erscheint, arbeite ich detaillierte Pläne aus und lasse dann Claude Code die Implementierung übernehmen, während ich den Code Schritt für Schritt überprüfe.",
+      "Deshalb setze ich sie bewusst ein. Ich verwende <link>Claude Code</link> als meinen primären KI-Assistenten. Wenn die Aufgabe durch KI-Codegenerierung machbar erscheint, arbeite ich detaillierte Pläne aus und lasse dann <link>Claude Code</link> die Implementierung übernehmen, während ich den Code Schritt für Schritt überprüfe.",
     mcps: "MCPs",
     mcpsIntro:
       "Ich nutze auch persönliche Slash-Commands und MCPs, wo es sinnvoll ist.",

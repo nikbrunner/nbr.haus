@@ -1,10 +1,8 @@
 export const index = {
   about: {
     greeting: "Hi there!",
-    introStart: "I'm",
-    name: "Nikolaus Brunner",
-    introEnd:
-      "(Nik for short), a Software Engineer based in Landshut, Germany, specializing in frontend architectures and design systems — {years} years in.",
+    intro:
+      "I'm <highlight>Nikolaus Brunner</highlight> (Nik for short), a Software Engineer based in Landshut, Germany, specializing in frontend architectures and design systems — {years} years in.",
     ux: "I work closely with designers and have a strong sense for UX (user experience) and DX (developer experience). I'm also comfortable working independently and making design decisions when needed.",
     independence:
       "I identify what needs doing, prioritize my own work, and know when to reach out for input. But I also love being part of a good team working towards a shared goal.",
@@ -80,17 +78,16 @@ export const index = {
     technologies: "Technologies",
     devTools: "Dev Tools",
     ai: "AI",
-    workflowPassion: "I am very passionate about workflow. You can check my",
-    dotfilesHere: "dotfiles here",
+    workflowInfo:
+      "I am very passionate about workflow. You can check my <link>dotfiles here</link>.",
     aiIntro:
       "I am lucky enough to have entered the industry before AI became a thing. To have the learning hill to climb, with no tab completion or ChatGPT.",
     aiLearning:
       "I think this is was very valuable. And I think it's still very valuable and even necessary to learn coding in the AI era. I would never recommend a Junior Developer to use AI during their initial learning phase. I could never use AI effectively as I do now, if I had not learned this craft without it.",
-    aiLimits:
-      "The technology is fascinating, but it has real limits. If you rely too heavily on it, you will actively unlearn skills and knowledge —",
-    aiLimitsHighlight: "and maybe most importantly, you will no longer have fun",
+    aiLimitsInfo:
+      "The technology is fascinating, but it has real limits. If you rely too heavily on it, you will actively unlearn skills and knowledge — <highlight>and maybe most importantly, you will no longer have fun</highlight>.",
     aiUsage:
-      "That's why I'm deliberate about how I use it. I use Claude Code as my primary AI assistent. When the task feels manageable by AI code generation, I work out detailed plans and then let Claude Code handle the implementation, while reviewing the code step by step.",
+      "That's why I'm deliberate about how I use it. I use <link>Claude Code</link> as my primary AI assistent. When the task feels manageable by AI code generation, I work out detailed plans and then let <link>Claude Code</link> handle the implementation, while reviewing the code step by step.",
     mcps: "MCP's",
     mcpsIntro: "I also use personal slash commands and MCP's where applicable.",
     mcpsUsed: "These are the most used MCP's for AI assistance.",

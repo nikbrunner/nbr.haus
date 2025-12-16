@@ -4,7 +4,7 @@ import SpecCard from "../../components/SpecCard";
 import SpecGrid from "../../components/SpecGrid";
 import SpecList from "../../components/SpecList";
 import Hr from "../../components/Hr";
-import { useTranslation } from "@/i18n";
+import { useTranslation, Trans } from "@/i18n";
 
 export default function DevStack() {
   const { t } = useTranslation();
@@ -120,15 +120,20 @@ export default function DevStack() {
             margin: 0
           }}
         >
-          {t.index.devStack.workflowPassion}{" "}
-          <Link
-            href="https://github.com/nikbrunner/dots"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {t.index.devStack.dotfilesHere}
-          </Link>
-          .
+          <Trans
+            text={t.index.devStack.workflowInfo}
+            components={{
+              link: children => (
+                <Link
+                  href="https://github.com/nikbrunner/dots"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {children}
+                </Link>
+              )
+            }}
+          />
         </p>
       </SpecCard>
 
@@ -141,20 +146,29 @@ export default function DevStack() {
             <p>{t.index.devStack.aiLearning}</p>
 
             <p>
-              {t.index.devStack.aiLimits}{" "}
-              <Highlight>{t.index.devStack.aiLimitsHighlight}</Highlight>.
+              <Trans
+                text={t.index.devStack.aiLimitsInfo}
+                components={{
+                  highlight: children => <Highlight>{children}</Highlight>
+                }}
+              />
             </p>
 
             <p>
-              {t.index.devStack.aiUsage.split("Claude Code")[0]}
-              <Link
-                href="https://claude.com/product/claude-code"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Claude Code
-              </Link>
-              {t.index.devStack.aiUsage.split("Claude Code")[1]}
+              <Trans
+                text={t.index.devStack.aiUsage}
+                components={{
+                  link: children => (
+                    <Link
+                      href="https://claude.com/product/claude-code"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {children}
+                    </Link>
+                  )
+                }}
+              />
             </p>
 
             <Hr />

@@ -1,5 +1,5 @@
 import Highlight from "@/components/Highlight";
-import { useTranslation } from "@/i18n";
+import { useTranslation, Trans } from "@/i18n";
 
 export default function About() {
   const { t } = useTranslation();
@@ -11,8 +11,12 @@ export default function About() {
         {t.index.about.greeting}
         <br />
         <br />
-        {t.index.about.introStart} <Highlight>{t.index.about.name}</Highlight>{" "}
-        {t.index.about.introEnd.replace("{years}", String(experienceInYears))}
+        <Trans
+          text={t.index.about.intro.replace("{years}", String(experienceInYears))}
+          components={{
+            highlight: children => <Highlight>{children}</Highlight>
+          }}
+        />
       </p>
 
       <p>{t.index.about.ux}</p>
