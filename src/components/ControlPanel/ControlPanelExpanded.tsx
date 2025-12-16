@@ -3,17 +3,7 @@ import { useStore } from "@tanstack/react-store";
 import { cx } from "class-variance-authority";
 import { i18nStore, setLocale, LOCALES, type Locale } from "@/i18n";
 import type { ColorMode, Contrast } from "@/validators/rootSearchParams";
-import {
-  controlPanelStore,
-  setExpanded,
-  setHue,
-  setContrast,
-  setColorMode,
-  getAccentHue,
-  PRESET_HUES,
-  CONTRAST_OPTIONS,
-  COLOR_MODE_OPTIONS
-} from "./store";
+import * as store from "./store";
 import { PickerCell, ColorDot } from "./PickerCell";
 import "./ControlPanelExpanded.css";
 
@@ -43,17 +33,17 @@ function PickerRow({ label, children }: PickerRowProps) {
 export default function ControlPanelExpanded() {
   const router = useRouter();
 
-  const isOpen = useStore(controlPanelStore, s => s.isExpanded);
-  const hue = useStore(controlPanelStore, s => s.hue);
-  const contrast = useStore(controlPanelStore, s => s.contrast);
-  const colorMode = useStore(controlPanelStore, s => s.colorMode);
+  const isOpen = store.useSelector(s => s.isExpanded);
+  const hue = store.useSelector(s => s.hue);
+  const contrast = store.useSelector(s => s.contrast);
+  const colorMode = store.useSelector(s => s.colorMode);
   const locale = useStore(i18nStore, s => s.locale);
 
   // For now, just "/" - will be dynamic when we add more routes
   const navLinks = ["/"] as const;
 
   const handleSelectHue = (newHue: number) => {
-    setHue(newHue);
+    store.setHue(newHue);
     router.navigate({
       to: "/",
       search: prev => ({ ...prev, hue: newHue }),
@@ -63,7 +53,7 @@ export default function ControlPanelExpanded() {
   };
 
   const handleSelectContrast = (newContrast: Contrast) => {
-    setContrast(newContrast);
+    store.setContrast(newContrast);
     router.navigate({
       to: "/",
       search: prev => ({ ...prev, contrast: newContrast }),
@@ -73,7 +63,7 @@ export default function ControlPanelExpanded() {
   };
 
   const handleSelectColorMode = (newColorMode: ColorMode) => {
-    setColorMode(newColorMode);
+    store.setColorMode(newColorMode);
     router.navigate({
       to: "/",
       search: prev => ({ ...prev, colorMode: newColorMode }),
@@ -92,7 +82,7 @@ export default function ControlPanelExpanded() {
       resetScroll: false,
       replace: true
     });
-    setExpanded(false);
+    store.setExpanded(false);
   };
 
   return (
@@ -137,20 +127,20 @@ export default function ControlPanelExpanded() {
       {/* Style Section */}
       <div className="ControlPanelExpanded__section">
         <PickerRow label="Accent">
-          {PRESET_HUES.map(presetHue => (
+          {store.PRESET_HUES.map(presetHue => (
             <PickerCell
               key={presetHue}
               isActive={hue === presetHue}
               onClick={() => handleSelectHue(presetHue)}
               ariaLabel={`Select accent hue ${presetHue}`}
             >
-              <ColorDot hue={getAccentHue(presetHue)} />
+              <ColorDot hue={store.getAccentHue(presetHue)} />
             </PickerCell>
           ))}
         </PickerRow>
 
         <PickerRow label="Contrast">
-          {CONTRAST_OPTIONS.map(opt => (
+          {store.CONTRAST_OPTIONS.map(opt => (
             <PickerCell
               key={opt.value}
               isActive={contrast === opt.value}
@@ -163,7 +153,7 @@ export default function ControlPanelExpanded() {
         </PickerRow>
 
         <PickerRow label="Mode">
-          {COLOR_MODE_OPTIONS.map(opt => (
+          {store.COLOR_MODE_OPTIONS.map(opt => (
             <PickerCell
               key={opt.value}
               isActive={colorMode === opt.value}

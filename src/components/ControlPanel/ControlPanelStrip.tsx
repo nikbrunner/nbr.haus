@@ -1,13 +1,7 @@
 import { useStore } from "@tanstack/react-store";
 import { cx } from "class-variance-authority";
 import { i18nStore } from "@/i18n";
-import {
-  controlPanelStore,
-  toggleExpanded,
-  getAccentHue,
-  CONTRAST_LABELS,
-  COLOR_MODE_LABELS
-} from "./store";
+import * as store from "./store";
 import { PickerCell, ColorDot, RotatedText } from "./PickerCell";
 import "./ControlPanelStrip.css";
 
@@ -22,10 +16,10 @@ const LOCALE_LABELS = {
  * Clicking toggles the expanded panel.
  */
 export default function ControlPanelStrip() {
-  const isExpanded = useStore(controlPanelStore, s => s.isExpanded);
-  const hue = useStore(controlPanelStore, s => s.hue);
-  const contrast = useStore(controlPanelStore, s => s.contrast);
-  const colorMode = useStore(controlPanelStore, s => s.colorMode);
+  const isExpanded = store.useSelector(s => s.isExpanded);
+  const hue = store.useSelector(s => s.hue);
+  const contrast = store.useSelector(s => s.contrast);
+  const colorMode = store.useSelector(s => s.colorMode);
   const locale = useStore(i18nStore, s => s.locale);
 
   // For now, just "/" - will be dynamic when we add more routes
@@ -39,11 +33,11 @@ export default function ControlPanelStrip() {
       tabIndex={0}
       aria-label="Toggle control panel"
       aria-expanded={isExpanded}
-      onClick={toggleExpanded}
+      onClick={store.toggleExpanded}
       onKeyDown={e => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
-          toggleExpanded();
+          store.toggleExpanded();
         }
       }}
     >
@@ -62,10 +56,10 @@ export default function ControlPanelStrip() {
       {/* Style Module */}
       <div className="ControlPanelStrip__module ControlPanelStrip__module--style">
         <PickerCell>
-          <ColorDot hue={getAccentHue(hue)} />
+          <ColorDot hue={store.getAccentHue(hue)} />
         </PickerCell>
-        <PickerCell>{CONTRAST_LABELS[contrast]}</PickerCell>
-        <PickerCell>{COLOR_MODE_LABELS[colorMode]}</PickerCell>
+        <PickerCell>{store.CONTRAST_LABELS[contrast]}</PickerCell>
+        <PickerCell>{store.COLOR_MODE_LABELS[colorMode]}</PickerCell>
       </div>
     </div>
   );

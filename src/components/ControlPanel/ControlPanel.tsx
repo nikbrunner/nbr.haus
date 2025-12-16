@@ -1,11 +1,10 @@
 import { useSearch } from "@tanstack/react-router";
-import { useStore } from "@tanstack/react-store";
 import { useCallback, useEffect } from "react";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 import { initializeLocale, type Locale } from "@/i18n";
 import ControlPanelStrip from "./ControlPanelStrip";
 import ControlPanelExpanded from "./ControlPanelExpanded";
-import { controlPanelStore, setExpanded, initializeStyleFromParams } from "./store";
+import * as store from "./store";
 import "./ControlPanel.css";
 
 /**
@@ -14,9 +13,9 @@ import "./ControlPanel.css";
  */
 export default function ControlPanel() {
   const search = useSearch({ from: "/" });
-  const isOpen = useStore(controlPanelStore, s => s.isExpanded);
+  const isOpen = store.useSelector(s => s.isExpanded);
 
-  const closePanel = useCallback(() => setExpanded(false), []);
+  const closePanel = useCallback(() => store.setExpanded(false), []);
 
   // Close on click outside
   useOnClickOutside(
@@ -27,7 +26,7 @@ export default function ControlPanel() {
 
   // Initialize from URL params or localStorage on mount
   useEffect(() => {
-    initializeStyleFromParams({
+    store.initializeStyleFromParams({
       hue: search.hue,
       contrast: search.contrast,
       colorMode: search.colorMode
@@ -41,7 +40,7 @@ export default function ControlPanel() {
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setExpanded(false);
+        store.setExpanded(false);
       }
     };
 
