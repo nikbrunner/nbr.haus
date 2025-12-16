@@ -8,6 +8,7 @@ import {
   CONTRAST_LABELS,
   COLOR_MODE_LABELS
 } from "./store";
+import { PickerCell, ColorDot, RotatedText } from "./PickerCell";
 import "./ControlPanelStrip.css";
 
 const LOCALE_LABELS = {
@@ -48,35 +49,23 @@ export default function ControlPanelStrip() {
     >
       {/* Navigation Module */}
       <div className="ControlPanelStrip__module">
-        <span
-          className={cx(
-            "ControlPanelStrip__nav-indicator",
-            isLongPath && "ControlPanelStrip__nav-indicator--rotated"
-          )}
-        >
-          {currentPath}
-        </span>
+        <PickerCell>
+          {isLongPath ? <RotatedText>{currentPath}</RotatedText> : currentPath}
+        </PickerCell>
       </div>
 
       {/* Locale Module */}
       <div className="ControlPanelStrip__module">
-        <span className="ControlPanelStrip__locale-indicator">
-          {LOCALE_LABELS[locale]}
-        </span>
+        <PickerCell>{LOCALE_LABELS[locale]}</PickerCell>
       </div>
 
       {/* Style Module */}
       <div className="ControlPanelStrip__module ControlPanelStrip__module--style">
-        <div
-          className="ControlPanelStrip__accent-dot"
-          style={{ backgroundColor: `oklch(45% 0.35 ${getAccentHue(hue)})` }}
-        />
-        <span className="ControlPanelStrip__style-indicator">
-          {CONTRAST_LABELS[contrast]}
-        </span>
-        <span className="ControlPanelStrip__style-indicator">
-          {COLOR_MODE_LABELS[colorMode]}
-        </span>
+        <PickerCell>
+          <ColorDot hue={getAccentHue(hue)} />
+        </PickerCell>
+        <PickerCell>{CONTRAST_LABELS[contrast]}</PickerCell>
+        <PickerCell>{COLOR_MODE_LABELS[colorMode]}</PickerCell>
       </div>
     </div>
   );

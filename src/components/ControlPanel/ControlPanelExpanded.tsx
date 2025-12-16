@@ -14,6 +14,7 @@ import {
   CONTRAST_OPTIONS,
   COLOR_MODE_OPTIONS
 } from "./store";
+import { PickerCell, ColorDot } from "./PickerCell";
 import "./ControlPanelExpanded.css";
 
 const LOCALE_LABELS: Record<Locale, string> = {
@@ -32,35 +33,6 @@ function PickerRow({ label, children }: PickerRowProps) {
       <span className="ControlPanelExpanded__label">{label}</span>
       <div className="ControlPanelExpanded__options">{children}</div>
     </div>
-  );
-}
-
-interface OptionButtonProps {
-  isActive?: boolean;
-  onClick: () => void;
-  ariaLabel?: string;
-  children: React.ReactNode;
-}
-
-function OptionButton({
-  isActive,
-  onClick,
-  ariaLabel,
-  children
-}: OptionButtonProps) {
-  return (
-    <button
-      className={cx(
-        "ControlPanelExpanded__option",
-        isActive && "ControlPanelExpanded__option--active"
-      )}
-      onClick={onClick}
-      aria-label={ariaLabel}
-      aria-pressed={isActive}
-      type="button"
-    >
-      {children}
-    </button>
   );
 }
 
@@ -132,16 +104,16 @@ export default function ControlPanelExpanded() {
       <div className="ControlPanelExpanded__section">
         <PickerRow label="Nav">
           {navLinks.map(path => (
-            <OptionButton
+            <PickerCell
               key={path}
-              isActive={true} // Currently only "/" is active
+              isActive={true}
               onClick={() => {
                 // Navigation will be implemented when we add more routes
               }}
               ariaLabel={`Navigate to ${path}`}
             >
               {path}
-            </OptionButton>
+            </PickerCell>
           ))}
         </PickerRow>
       </div>
@@ -150,14 +122,14 @@ export default function ControlPanelExpanded() {
       <div className="ControlPanelExpanded__section">
         <PickerRow label="Lang">
           {LOCALES.map(loc => (
-            <OptionButton
+            <PickerCell
               key={loc}
               isActive={locale === loc}
               onClick={() => handleSelectLocale(loc)}
               ariaLabel={`Select ${loc === "en" ? "English" : "German"}`}
             >
               {LOCALE_LABELS[loc]}
-            </OptionButton>
+            </PickerCell>
           ))}
         </PickerRow>
       </div>
@@ -166,45 +138,40 @@ export default function ControlPanelExpanded() {
       <div className="ControlPanelExpanded__section">
         <PickerRow label="Accent">
           {PRESET_HUES.map(presetHue => (
-            <OptionButton
+            <PickerCell
               key={presetHue}
               isActive={hue === presetHue}
               onClick={() => handleSelectHue(presetHue)}
               ariaLabel={`Select accent hue ${presetHue}`}
             >
-              <span
-                className="ControlPanelExpanded__color-dot"
-                style={{
-                  backgroundColor: `oklch(45% 0.35 ${getAccentHue(presetHue)})`
-                }}
-              />
-            </OptionButton>
+              <ColorDot hue={getAccentHue(presetHue)} />
+            </PickerCell>
           ))}
         </PickerRow>
 
         <PickerRow label="Contrast">
           {CONTRAST_OPTIONS.map(opt => (
-            <OptionButton
+            <PickerCell
               key={opt.value}
               isActive={contrast === opt.value}
               onClick={() => handleSelectContrast(opt.value)}
               ariaLabel={`Select ${opt.value} contrast`}
             >
               {opt.label}
-            </OptionButton>
+            </PickerCell>
           ))}
         </PickerRow>
 
         <PickerRow label="Mode">
           {COLOR_MODE_OPTIONS.map(opt => (
-            <OptionButton
+            <PickerCell
               key={opt.value}
               isActive={colorMode === opt.value}
               onClick={() => handleSelectColorMode(opt.value)}
               ariaLabel={`Select ${opt.value} color mode`}
             >
               {opt.label}
-            </OptionButton>
+            </PickerCell>
           ))}
         </PickerRow>
       </div>

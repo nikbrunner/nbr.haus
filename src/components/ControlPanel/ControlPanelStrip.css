@@ -55,36 +55,3 @@
 .ControlPanelStrip__module--style {
   gap: calc(var(--strip-gap) / 2);
 }
-
-/* Navigation indicator */
-.ControlPanelStrip__nav-indicator {
-  font-size: var(--picker-font-size, 12px);
-  font-weight: var(--font-weight-9);
-  color: var(--fg-main);
-}
-
-/* Rotated text for long paths */
-.ControlPanelStrip__nav-indicator--rotated {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-}
-
-/* Locale indicator */
-.ControlPanelStrip__locale-indicator {
-  font-size: var(--picker-font-size, 12px);
-  font-weight: var(--font-weight-9);
-  color: var(--fg-main);
-}
-
-/* Accent color dot */
-.ControlPanelStrip__accent-dot {
-  width: calc(var(--strip-cell) / 2);
-  height: calc(var(--strip-cell) / 2);
-}
-
-/* Style text indicators */
-.ControlPanelStrip__style-indicator {
-  font-size: var(--picker-font-size, 12px);
-  font-weight: var(--font-weight-9);
-  color: var(--fg-main);
-}

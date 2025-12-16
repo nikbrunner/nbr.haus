@@ -85,38 +85,3 @@
   display: flex;
   gap: calc(var(--panel-gap) / 2);
 }
-
-/* Option button */
-.ControlPanelExpanded__option {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--panel-cell);
-  height: var(--panel-cell);
-
-  background: var(--bg-main);
-  border: var(--border-size-2) dashed var(--fg-accent);
-  cursor: pointer;
-
-  font-size: var(--picker-font-size, 12px);
-  font-weight: var(--font-weight-9);
-  color: var(--fg-main);
-
-  transition: border-color 0.1s ease-out;
-}
-
-.ControlPanelExpanded__option:hover {
-  border: var(--border-size-3) solid var(--fg-accent);
-  color: var(--fg-accent);
-}
-
-.ControlPanelExpanded__option--active {
-  border: var(--border-size-3) solid var(--fg-accent);
-  color: var(--fg-accent);
-}
-
-/* Color dot for accent options */
-.ControlPanelExpanded__color-dot {
-  width: calc(var(--panel-cell) / 2);
-  height: calc(var(--panel-cell) / 2);
-}

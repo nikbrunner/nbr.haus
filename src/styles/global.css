@@ -25,6 +25,7 @@
 @import "../components/ControlPanel/ControlPanel.css";
 @import "../components/ControlPanel/ControlPanelStrip.css";
 @import "../components/ControlPanel/ControlPanelExpanded.css";
+@import "../components/ControlPanel/PickerCell.css";
 
 /* Content blocks */
 @import "../content-blocks/index/About.css";

@@ -1,0 +1,45 @@
+.PickerCell {
+  --cell-size: var(--picker-cell, 32px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--cell-size);
+  height: var(--cell-size);
+
+  background: var(--bg-main);
+
+  font-family: var(--font-family);
+  font-size: var(--picker-font-size, 12px);
+  font-weight: var(--font-weight-9);
+  color: var(--fg-main);
+}
+
+/* Interactive variant (button) */
+.PickerCell--interactive {
+  border: var(--border-size-2) dashed var(--fg-accent);
+  cursor: pointer;
+  transition: border-color 0.1s ease-out;
+}
+
+.PickerCell--interactive:hover {
+  border: var(--border-size-3) solid var(--fg-accent);
+  color: var(--fg-accent);
+}
+
+.PickerCell--active {
+  border: var(--border-size-3) solid var(--fg-accent);
+  color: var(--fg-accent);
+}
+
+/* Color dot for accent display */
+.PickerCell__color-dot {
+  width: calc(var(--picker-cell, 32px) / 2);
+  height: calc(var(--picker-cell, 32px) / 2);
+}
+
+/* Rotated text for long paths */
+.PickerCell__rotated-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
