@@ -6,13 +6,13 @@ export const index: Widen<typeof en> = {
     greeting: "Hallo!",
     intro:
       "Ich bin <highlight>Nikolaus Brunner</highlight> (kurz Nik), Software-Ingenieur aus Landshut, Deutschland, spezialisiert auf Frontend-Architekturen und Design-Systeme — seit {years} Jahren.",
-    ux: "Ich arbeite eng mit Designern zusammen und habe ein gutes Gespür für UX (User Experience) und DX (Developer Experience). Ich kann auch selbstständig arbeiten und Design-Entscheidungen treffen, wenn nötig.",
+    ux: "Ein starkes Gespür für UX (User Experience) und DX (Developer Experience) prägt meine Arbeit—ob in Zusammenarbeit mit Designern oder bei eigenständigen Design-Entscheidungen.",
     independence:
-      "Ich erkenne, was zu tun ist, priorisiere meine Arbeit selbst und weiß, wann ich Feedback einholen sollte. Aber ich liebe es auch, Teil eines guten Teams zu sein, das auf ein gemeinsames Ziel hinarbeitet.",
+      "Prioritäten erkennen und die eigene Arbeit managen liegt mir—ebenso wie zu wissen, wann Feedback gefragt ist. Teil eines guten Teams zu sein, das auf ein gemeinsames Ziel hinarbeitet, ist wo ich aufblühe.",
     passion:
-      "Ich bin leidenschaftlich, wenn es ums Entwickeln und Nutzen von Produkten geht. Ich bin wahrscheinlich derjenige, der den Support wegen Features oder Bugs kontaktiert und regelmäßig Changelogs und GitHub-Releases verfolgt.",
+      "Produkte zu entwickeln und zu nutzen ist eine echte Leidenschaft—ich bin wahrscheinlich derjenige, der den Support wegen Features oder Bugs kontaktiert und regelmäßig Changelogs und GitHub-Releases verfolgt.",
     personal:
-      "Ich wurde 1984 geboren, und abseits vom Code genieße ich Wandern, Lesen, Landschaftsfotografie, Musikproduktion, Workflow-Optimierung und Open Source — und ich habe eine kleine Tastatur-Obsession."
+      "Geboren 1984, und abseits vom Code: Wandern, Lesen, Landschaftsfotografie, Musikproduktion, Workflow-Optimierung und Open Source — plus eine kleine Tastatur-Obsession."
   },
   jobs: {
     lookingForJob: {
@@ -25,7 +25,7 @@ export const index: Widen<typeof en> = {
       p1: "Ich habe das gesamte Spektrum der Frontend-Entwicklung abgedeckt — von Feature-Implementierung und Bugfixes bis hin zu Code-Reviews, Mentoring und teamübergreifender Koordination für eine ausgereifte Electron-Anwendung, die hunderte Fahrradhändler bedient.",
       p2: "Ein Schwerpunkt waren architektonische Migrationen: Ich habe die Einführung von TanStack Query vorangetrieben und die Codebasis von Legacy Redux auf Redux Toolkit migriert. Dazu gehörte das Verfassen umfassender Code-Richtlinien und Best-Practices-Dokumentation. Ich habe auch einen Vendure-Storefront komplett von Remix auf TanStack Start/Router mit TanStack Query, Form, GraphQL, ShadCN und Tailwind CSS umgebaut.",
       p3: "Im Bereich Design-System habe ich ein umfassendes 10-Varianten-Farbsystem mit Figma-Integration erstellt, das 1.600 Dateien in der Codebasis betrifft. Die gesamte Komponentenbibliothek von BikeCenter wurde von Grund auf mit React, TypeScript und SCSS gebaut — ohne Third-Party UI-Frameworks.",
-      p4: "Ich habe auch interne APIs für State-Management und GraphQL-Integration gestaltet und Developer-Experience-Patterns im Team etabliert. Als vertrauenswürdiger Entscheidungsträger für UX und technische Machbarkeit habe ich Design und Engineering verbunden und mit Designern sowohl als Umsetzer als auch als Berater zusammengearbeitet.",
+      p4: "Interne APIs zu verbessern und Developer-Experience-Patterns im Team zu etablieren war ein weiterer Schwerpunkt. Als vertrauenswürdiger Entscheidungsträger für UX und technische Machbarkeit verband ich Design und Engineering und arbeitete mit Designern sowohl als Umsetzer als auch als Berater zusammen.",
       p5: "Das Mentoring von Junior-Entwicklern durch Pair-Programming und Code-Reviews war ein weiterer wichtiger Teil der Rolle. Ich habe technische Standards und Konventionen im Team etabliert, einschließlich Übersetzungsrichtlinien, BEM-Namensgebung und TypeScript-Best-Practices, und diente als technische Schnittstelle zwischen Management, Backend- und Frontend-Teams."
     },
     divaE: {
@@ -84,11 +84,11 @@ export const index: Widen<typeof en> = {
     workflowInfo:
       "Workflows sind eine große Leidenschaft von mir. Meine <link>Dotfiles findest du hier</link>.",
     aiIntro:
-      "Ich hatte das Glück, in die Branche einzusteigen, bevor KI ein Thema wurde. Den Lernberg zu erklimmen, ohne Tab-Completion oder ChatGPT.",
+      "In die Branche einzusteigen, bevor KI ein Thema wurde, bedeutete den Lernberg ohne Tab-Completion oder ChatGPT zu erklimmen.",
     aiLearning:
-      "Ich denke, das war sehr wertvoll. Und ich denke, es ist immer noch sehr wertvoll und sogar notwendig, Programmieren in der KI-Ära zu lernen. Ich würde einem Junior-Entwickler niemals empfehlen, KI während der anfänglichen Lernphase zu nutzen. Ich könnte KI nicht so effektiv nutzen wie jetzt, wenn ich dieses Handwerk nicht ohne sie gelernt hätte.",
+      "Dieses Fundament war unbezahlbar—und ist es noch in der KI-Ära. Für Junioren glänzt KI als Lehrer und Lesepartner für interaktives Lernen, aber nicht als Schreibpartner in der frühen Phase. Ohne dieses Handwerk erst auf die harte Tour gelernt zu haben, könnte ich KI nicht so effektiv nutzen wie jetzt.",
     aiLimitsInfo:
-      "Die Technologie ist faszinierend, aber sie hat echte Grenzen. Wenn du dich zu sehr darauf verlässt, wirst du aktiv Fähigkeiten und Wissen verlernen — <highlight>und vielleicht am wichtigsten, du wirst keinen Spaß mehr haben</highlight>.",
+      "Die Technologie ist faszinierend, aber sie hat echte Grenzen. Sich zu sehr darauf zu verlassen bedeutet, aktiv Fähigkeiten und Wissen zu verlernen — <highlight>und vielleicht am wichtigsten, den Spaß zu verlieren</highlight>.",
     aiUsage:
       "Deshalb setze ich sie bewusst ein. Ich verwende <link>Claude Code</link> als meinen primären KI-Assistenten. Wenn die Aufgabe durch KI-Codegenerierung machbar erscheint, arbeite ich detaillierte Pläne aus und lasse dann <link>Claude Code</link> die Implementierung übernehmen, während ich den Code Schritt für Schritt überprüfe.",
     mcps: "MCPs",

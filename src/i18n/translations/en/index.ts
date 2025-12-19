@@ -3,13 +3,13 @@ export const index = {
     greeting: "Hi there!",
     intro:
       "I'm <highlight>Nikolaus Brunner</highlight> (Nik for short), a Software Engineer based in Landshut, Germany, specializing in frontend architectures and design systems — {years} years in.",
-    ux: "I work closely with designers and have a strong sense for UX (user experience) and DX (developer experience). I'm also comfortable working independently and making design decisions when needed.",
+    ux: "A strong sense for UX (user experience) and DX (developer experience) guides my work—whether collaborating with designers or making design decisions independently.",
     independence:
-      "I identify what needs doing, prioritize my own work, and know when to reach out for input. But I also love being part of a good team working towards a shared goal.",
+      "Identifying priorities and managing my own work comes naturally—as does knowing when to reach out for input. Being part of a good team working towards a shared goal is where I thrive.",
     passion:
-      "I am very passionate about building and using products, and am probably the guy who will contact support about features or bugs, and regularly check its changelogs and GitHub releases.",
+      "Building and using products is a genuine passion—I'm probably the guy who contacts support about features or bugs, and regularly checks changelogs and GitHub releases.",
     personal:
-      "I was born in 1984, and outside of code, I enjoy hiking, reading, landscape photography, music production, workflow optimization, and open source — and I have a slight keyboard obsession."
+      "Born in 1984, and outside of code: hiking, reading, landscape photography, music production, workflow optimization, and open source — plus a slight keyboard obsession."
   },
   jobs: {
     lookingForJob: {
@@ -22,7 +22,7 @@ export const index = {
       p1: "I worked across the full spectrum of frontend development—from feature implementation and bug fixes to code reviews, mentoring, and cross-team coordination for a mature Electron application serving hundreds of bike retailers.",
       p2: "A major focus was architectural migrations: I championed TanStack Query adoption and migrated the codebase from legacy Redux to Redux Toolkit. This included authoring comprehensive code guidelines and best practices documentation. I also completely rebuilt a Vendure storefront from Remix to TanStack Start/Router with TanStack Query, Form, GraphQL, ShadCN and Tailwind CSS.",
       p3: "On the design system side, I created a comprehensive 10-variant color system with Figma integration, affecting 1.6k files across the codebase. BikeCenter's entire component library was built from scratch using React, TypeScript, and SCSS—no third-party UI frameworks.",
-      p4: "I also shaped internal APIs for state management and GraphQL integration, establishing developer experience patterns across the team. As a trusted decision-maker for UX and technical feasibility, I bridged design and engineering, collaborating with designers as both implementer and advisor.",
+      p4: "Improving internal APIs and establishing developer experience patterns across the team were another focus. As a trusted decision-maker for UX and technical feasibility, I bridged design and engineering, collaborating with designers as both implementer and advisor.",
       p5: "Mentoring junior developers through pair programming and code reviews was another key part of the role. I established technical standards and conventions across the team, including translation guidelines, BEM naming, and TypeScript best practices, and served as a technical hub between management, backend, and frontend teams."
     },
     divaE: {
@@ -81,13 +81,13 @@ export const index = {
     workflowInfo:
       "I am very passionate about workflow. You can check my <link>dotfiles here</link>.",
     aiIntro:
-      "I am lucky enough to have entered the industry before AI became a thing. To have the learning hill to climb, with no tab completion or ChatGPT.",
+      "Entering the industry before AI became a thing meant climbing the learning hill with no tab completion or ChatGPT.",
     aiLearning:
-      "I think this is was very valuable. And I think it's still very valuable and even necessary to learn coding in the AI era. I would never recommend a Junior Developer to use AI during their initial learning phase. I could never use AI effectively as I do now, if I had not learned this craft without it.",
+      "That foundation was invaluable—and still is in the AI era. For juniors, AI shines as a teacher and reading partner for interactive learning, but not as a writing partner during the early phases. Without learning this craft the hard way first, I couldn't use AI as effectively as I do now.",
     aiLimitsInfo:
-      "The technology is fascinating, but it has real limits. If you rely too heavily on it, you will actively unlearn skills and knowledge — <highlight>and maybe most importantly, you will no longer have fun</highlight>.",
+      "The technology is fascinating, but it has real limits. Relying too heavily on it means actively unlearning skills and knowledge — <highlight>and maybe most importantly, losing the fun</highlight>.",
     aiUsage:
-      "That's why I'm deliberate about how I use it. I use <link>Claude Code</link> as my primary AI assistent. When the task feels manageable by AI code generation, I work out detailed plans and then let <link>Claude Code</link> handle the implementation, while reviewing the code step by step.",
+      "That's why I'm deliberate about how I use it. I use <link>Claude Code</link> as my primary AI assistant. When the task feels manageable by AI code generation, I work out detailed plans and then let <link>Claude Code</link> handle the implementation, while reviewing the code step by step.",
     mcps: "MCP's",
     mcpsIntro: "I also use personal slash commands and MCP's where applicable.",
     mcpsUsed: "These are the most used MCP's for AI assistance.",
