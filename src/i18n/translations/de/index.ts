@@ -8,7 +8,7 @@ export const index: Widen<typeof en> = {
       "Ich bin <highlight>Nikolaus Brunner</highlight> (kurz Nik), Software-Ingenieur aus Landshut, Deutschland, spezialisiert auf Frontend-Architekturen und Design-Systeme — seit {years} Jahren.",
     ux: "Ein starkes Gespür für UX (User Experience) und DX (Developer Experience) prägt meine Arbeit—ob in Zusammenarbeit mit Designern oder bei eigenständigen Design-Entscheidungen.",
     independence:
-      "Prioritäten erkennen und die eigene Arbeit managen liegt mir—ebenso wie zu wissen, wann Feedback gefragt ist. Teil eines guten Teams zu sein, das auf ein gemeinsames Ziel hinarbeitet, ist wo ich aufblühe.",
+      "Prioritäten erkennen und die eigene Arbeit managen liegt mir—ebenso wie zu wissen, wann Feedback gefragt ist. Teil eines guten Teams zu sein, das auf ein gemeinsames Ziel hinarbeitet—da fühle ich mich wohl.",
     passion:
       "Produkte zu entwickeln und zu nutzen ist eine echte Leidenschaft—ich bin wahrscheinlich derjenige, der den Support wegen Features oder Bugs kontaktiert und regelmäßig Changelogs und GitHub-Releases verfolgt.",
     personal:
@@ -86,7 +86,7 @@ export const index: Widen<typeof en> = {
     aiIntro:
       "In die Branche einzusteigen, bevor KI ein Thema wurde, bedeutete den Lernberg ohne Tab-Completion oder ChatGPT zu erklimmen.",
     aiLearning:
-      "Dieses Fundament war unbezahlbar—und ist es noch in der KI-Ära. Für Junioren glänzt KI als Lehrer und Lesepartner für interaktives Lernen, aber nicht als Schreibpartner in der frühen Phase. Ohne dieses Handwerk erst auf die harte Tour gelernt zu haben, könnte ich KI nicht so effektiv nutzen wie jetzt.",
+      "Das war Gold wert—und ist es noch in der KI-Ära. Für Junioren ist KI gut als Lehrer und Lesepartner für interaktives Lernen, aber nicht als Schreibpartner in der frühen Phase. Ohne dieses Handwerk erst auf die harte Tour gelernt zu haben, könnte ich KI nicht so effektiv nutzen wie jetzt.",
     aiLimitsInfo:
       "Die Technologie ist faszinierend, aber sie hat echte Grenzen. Sich zu sehr darauf zu verlassen bedeutet, aktiv Fähigkeiten und Wissen zu verlernen — <highlight>und vielleicht am wichtigsten, den Spaß zu verlieren</highlight>.",
     aiUsage:
