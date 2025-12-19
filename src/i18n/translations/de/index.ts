@@ -8,7 +8,7 @@ export const index: Widen<typeof en> = {
       "Ich bin <highlight>Nikolaus Brunner</highlight> (kurz Nik), Software-Ingenieur aus Landshut, Deutschland, spezialisiert auf Frontend-Architekturen und Design-Systeme — seit {years} Jahren.",
     ux: "Ein starkes Gespür für UX (User Experience) und DX (Developer Experience) prägt meine Arbeit—ob in Zusammenarbeit mit Designern oder bei eigenständigen Design-Entscheidungen.",
     independence:
-      "Prioritäten erkennen und die eigene Arbeit managen liegt mir—ebenso wie zu wissen, wann Feedback gefragt ist. Teil eines guten Teams zu sein, das auf ein gemeinsames Ziel hinarbeitet—da fühle ich mich wohl.",
+      "Prioritäten erkennen und die eigene Arbeit managen liegt mir—ebenso wie zu wissen, wann Feedback gefragt ist. Teil eines guten Teams zu sein, das auf ein gemeinsames Ziel hinarbeitet—das finde ich am besten.",
     passion:
       "Produkte zu entwickeln und zu nutzen ist eine echte Leidenschaft—ich bin wahrscheinlich derjenige, der den Support wegen Features oder Bugs kontaktiert und regelmäßig Changelogs und GitHub-Releases verfolgt.",
     personal:
