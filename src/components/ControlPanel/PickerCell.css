@@ -13,6 +13,7 @@
   font-size: var(--picker-font-size, 12px);
   font-weight: var(--font-weight-9);
   color: var(--fg-main);
+  border: none;
 }
 
 /* Interactive variant (button) */
@@ -30,6 +31,12 @@
 .PickerCell--active {
   border: var(--border-size-3) solid var(--fg-accent);
   color: var(--fg-accent);
+}
+
+.PickerCell--disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  color: var(--fg-minor);
 }
 
 /* Color dot for accent display */

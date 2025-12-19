@@ -13,7 +13,7 @@ export const index = {
   },
   jobs: {
     lookingForJob: {
-      title: "I am currently seeking new opportunities starting February 2026."
+      title: "Looking for a Senior Frontend role starting February 2026."
     },
     dealerCenter: {
       company: "DealerCenter Digital",
@@ -30,7 +30,7 @@ export const index = {
       position: "Junior Frontend Developer",
       period: "2020",
       description:
-        "I contributed to a major e-commerce platform at a digital agency, and built an internal social platform using React, GraphQL (Apollo), and SCSS. I also created onboarding documentation for the company's proprietary framework. This role started right as COVID-19 hit, so I successfully navigated the transition to fully remote work."
+        "Contributed to a major e-commerce platform and built an internal social platform using React, GraphQL (Apollo), and SCSS. When DealerCenter Digital offered a frontend position, I made the move — an opportunity better aligned with my goals."
     },
     campudus: {
       company: "Campudus",
@@ -41,8 +41,7 @@ export const index = {
     }
   },
   projects: {
-    intro:
-      "Projects are never finished, but they are always in progress. Here are some of my projects as a developer.",
+    intro: "Personal projects I actively maintain and evolve.",
     blackAtom: {
       description1:
         "Open-source cross-platform theming system generating 27+ cohesive themes from a single source.",

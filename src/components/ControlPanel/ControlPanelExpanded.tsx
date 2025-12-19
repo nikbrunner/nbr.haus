@@ -1,4 +1,4 @@
-import { useRouter } from "@tanstack/react-router";
+import { useRouter, useRouterState } from "@tanstack/react-router";
 import { useStore } from "@tanstack/react-store";
 import { i18nStore, setLocale, LOCALES, type Locale } from "@/i18n";
 import type { ColorMode, Contrast } from "@/validators/rootSearchParams";
@@ -31,19 +31,24 @@ function PickerRow({ label, children }: PickerRowProps) {
  */
 export default function ControlPanelExpanded() {
   const router = useRouter();
+  const pathname = useRouterState({ select: s => s.location.pathname });
 
   const hue = store.useSelector(s => s.hue);
   const contrast = store.useSelector(s => s.contrast);
   const colorMode = store.useSelector(s => s.colorMode);
   const locale = useStore(i18nStore, s => s.locale);
 
-  // For now, just "/" - will be dynamic when we add more routes
-  const navLinks = ["/"] as const;
+  const isOnCVPage = pathname === "/cv";
+
+  // Get navigable routes from router, excluding splat/catch-all routes
+  const navLinks = Object.keys(router.routesByPath)
+    .filter(path => !path.includes("$"))
+    .sort((a, b) => a.localeCompare(b));
 
   const handleSelectHue = (newHue: number) => {
     store.setHue(newHue);
     router.navigate({
-      to: "/",
+      to: ".",
       search: prev => ({ ...prev, hue: newHue }),
       resetScroll: false,
       replace: true
@@ -53,7 +58,7 @@ export default function ControlPanelExpanded() {
   const handleSelectContrast = (newContrast: Contrast) => {
     store.setContrast(newContrast);
     router.navigate({
-      to: "/",
+      to: ".",
       search: prev => ({ ...prev, contrast: newContrast }),
       resetScroll: false,
       replace: true
@@ -63,7 +68,7 @@ export default function ControlPanelExpanded() {
   const handleSelectColorMode = (newColorMode: ColorMode) => {
     store.setColorMode(newColorMode);
     router.navigate({
-      to: "/",
+      to: ".",
       search: prev => ({ ...prev, colorMode: newColorMode }),
       resetScroll: false,
       replace: true
@@ -75,7 +80,7 @@ export default function ControlPanelExpanded() {
 
     setLocale(newLocale);
     router.navigate({
-      to: "/",
+      to: ".",
       search: prev => ({ ...prev, lang: newLocale }),
       resetScroll: false,
       replace: true
@@ -83,21 +88,42 @@ export default function ControlPanelExpanded() {
     store.setExpanded(false);
   };
 
+  const handlePrintWithLocale = (printLocale: Locale) => {
+    // Switch locale if different
+    if (printLocale !== locale) {
+      setLocale(printLocale);
+      router.navigate({
+        to: ".",
+        search: prev => ({ ...prev, lang: printLocale }),
+        resetScroll: false,
+        replace: true
+      });
+    }
+
+    store.setExpanded(false);
+
+    // Delay to allow DOM to update with new translations
+    setTimeout(() => {
+      window.print();
+    }, 100);
+  };
+
   return (
     <div className="ControlPanelExpanded">
       {/* Navigation Section */}
       <div className="ControlPanelExpanded__section">
         <PickerRow label="Nav">
-          {navLinks.map(path => (
+          {navLinks.map(navPath => (
             <PickerCell
-              key={path}
-              isActive={true}
+              key={navPath}
+              isActive={pathname === navPath}
               onClick={() => {
-                // Navigation will be implemented when we add more routes
+                router.navigate({ to: navPath });
+                store.setExpanded(false);
               }}
-              ariaLabel={`Navigate to ${path}`}
+              ariaLabel={`Navigate to ${navPath}`}
             >
-              {path}
+              {navPath}
             </PickerCell>
           ))}
         </PickerRow>
@@ -160,6 +186,24 @@ export default function ControlPanelExpanded() {
           ))}
         </PickerRow>
       </div>
+
+      {/* Print Section - only on CV page */}
+      {isOnCVPage && (
+        <div className="ControlPanelExpanded__section">
+          <PickerRow label="Print">
+            {LOCALES.map(loc => (
+              <PickerCell
+                key={loc}
+                isActive={locale === loc}
+                onClick={() => handlePrintWithLocale(loc)}
+                ariaLabel={`Print CV in ${loc === "en" ? "English" : "German"}`}
+              >
+                {LOCALE_LABELS[loc]}
+              </PickerCell>
+            ))}
+          </PickerRow>
+        </div>
+      )}
     </div>
   );
 }

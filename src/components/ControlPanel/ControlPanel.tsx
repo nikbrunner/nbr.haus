@@ -15,7 +15,7 @@ import "./ControlPanel.css";
  * Inner content is full-width, positioned to the right.
  */
 export default function ControlPanel() {
-  const search = useSearch({ from: "/" });
+  const search = useSearch({ strict: false });
   const isExpanded = store.useSelector(s => s.isExpanded);
 
   const closePanel = useCallback(() => store.setExpanded(false), []);

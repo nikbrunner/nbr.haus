@@ -1,4 +1,6 @@
 import { useStore } from "@tanstack/react-store";
+import { useRouterState } from "@tanstack/react-router";
+import { Printer } from "lucide-react";
 import { i18nStore } from "@/i18n";
 import * as store from "./store";
 import { PickerCell, ColorDot } from "./PickerCell";
@@ -19,9 +21,9 @@ export default function ControlPanelStrip() {
   const contrast = store.useSelector(s => s.contrast);
   const colorMode = store.useSelector(s => s.colorMode);
   const locale = useStore(i18nStore, s => s.locale);
+  const pathname = useRouterState({ select: s => s.location.pathname });
 
-  // For now, just "/" - will be dynamic when we add more routes
-  const currentPath = "/";
+  const isOnCVPage = pathname === "/cv";
 
   return (
     <div
@@ -39,7 +41,7 @@ export default function ControlPanelStrip() {
     >
       {/* Navigation Module */}
       <div className="ControlPanelStrip__module">
-        <PickerCell>{currentPath}</PickerCell>
+        <PickerCell>{pathname}</PickerCell>
       </div>
 
       {/* Locale Module */}
@@ -54,6 +56,16 @@ export default function ControlPanelStrip() {
         </PickerCell>
         <PickerCell>{store.CONTRAST_LABELS[contrast]}</PickerCell>
         <PickerCell>{store.COLOR_MODE_LABELS[colorMode]}</PickerCell>
+      </div>
+
+      {/* Print Indicator - only visible on CV page */}
+      <div className="ControlPanelStrip__module">
+        <PickerCell
+          disabled={!isOnCVPage}
+          ariaLabel="Print available via language selection"
+        >
+          <Printer size={16} />
+        </PickerCell>
       </div>
     </div>
   );

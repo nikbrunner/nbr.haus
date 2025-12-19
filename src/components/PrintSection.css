@@ -1,0 +1,14 @@
+/* PrintSection - print-aware section with break control */
+.PrintSection {
+  margin-bottom: var(--size-10);
+
+  & > * {
+    margin-bottom: var(--size-8);
+  }
+}
+
+@media print {
+  .PrintSection--avoid-break {
+    break-inside: avoid;
+  }
+}

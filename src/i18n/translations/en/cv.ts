@@ -1,0 +1,84 @@
+export const cv = {
+  printButton: "Print CV",
+  tagline:
+    "Software Engineer specializing in Frontend Development with {years} years of experience in building modern web applications",
+  summary:
+    "Specialized in design systems, frontend architecture, and large-scale migrations. Led technical decisions affecting thousands of files and mentored junior developers. Comfortable working independently while thriving in collaborative teams. Integrates AI tooling into daily development workflows.",
+  sections: {
+    workExperience: "Work Experience",
+    sideProjects: "Side Projects",
+    technicalSkills: "Technical Skills",
+    priorExperience: "Prior professional experience",
+    education: "Education",
+    interests: "Interests"
+  },
+  jobs: {
+    dealerCenter: {
+      intro:
+        "BikeCenter is an Electron-based point-of-sale application used by hundreds of bike retailers across Germany. I joined as a junior and grew into a frontend lead role, owning architecture decisions, managing frontend priorities, and mentoring newer team members.",
+      bullets: [
+        "Led frontend architecture for BikeCenter (Electron/React application), building and maintaining its custom design system",
+        "Led large-scale framework migrations affecting 1600+ files (Redux → TanStack Query, React Router → TanStack Start)",
+        "Mentored junior developers and established & documented frontend coding standards",
+        "Architected modern GraphQL-based Vendure storefront and coordinated between design and backend teams",
+        "Implemented component testing with Jest and Storybook snapshots",
+        "Integrated external services including analytics (Mixpanel), leasing calculators, and third-party product advisers"
+      ],
+      tech: "React, TypeScript, SCSS, TanStack (Router/Query/Form), Redux, GraphQL, Tailwind CSS, Electron, Node.js"
+    },
+    divaE: {
+      bullets: [
+        "Developed frontend features for enterprise web applications",
+        "Tech: React, TypeScript, SCSS, Node.js"
+      ]
+    },
+    campudus: {
+      bullets: [
+        "Completed full-stack internship developing features with React and Node.js"
+      ]
+    }
+  },
+  projects: {
+    blackAtom: {
+      subtitle: "Open Source Theming System • Creator & Maintainer",
+      bullets: [
+        "Created theming system supporting 27+ themes across 6 platforms (Zed, WezTerm, Alacritty, Ghostty, Neovim)",
+        "Built with TypeScript, featuring automated theme generation and distribution"
+      ]
+    },
+    awdcs: {
+      subtitle: "Modal Editor Keymap Architecture",
+      bullets: [
+        "Designed scope-based keymap system (App, Workspace, Document, Change, Symbol) for modal editors",
+        "Created systematic prefix patterns and semantic naming for consistent, memorable keybindings"
+      ]
+    },
+    koyo: {
+      subtitle: "QMK Keyboard Layout & Firmware",
+      bullets: [
+        "Custom QMK layout for 36-key split keyboards (Moonlander, Corne) with vim-inspired navigation",
+        "Built comprehensive CLI tooling for keyboard configuration and deployment"
+      ]
+    }
+  },
+  skills: {
+    frontend: "Frontend",
+    frontendList:
+      "React, TypeScript, JavaScript, GraphQL, CSS/SCSS/Tailwind, ShadCN, TanStack (Router/Query/Form), Redux, Electron, Node.js, Git",
+    devTools: "Dev Tools",
+    devToolsList: "Neovim, Ghostty, LazyGit, Claude Code",
+    architecture: "Architecture",
+    architectureList:
+      "Design Systems, Component Architecture, Frontend Migrations, UX Collaboration",
+    languages: "Languages",
+    languagesList: "German (Native) • English (Fluent)"
+  },
+  priorExperience: {
+    title: "Event Technology & Audio Engineering (2011–2019)",
+    description:
+      "Extensive background in event technology, professional sound engineering, and photography. Worked at five-star hotels and premium studios, developing strong problem-solving and client communication skills."
+  },
+  education: "Sound Engineering & Mastering, Deutsche Pop Munich (2010–2011)",
+  interests:
+    "Landscape Photography • Workflow Optimization • Open Source • Music Production"
+} as const;

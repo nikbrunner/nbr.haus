@@ -7,10 +7,13 @@
 /* Routes */
 @import "../routes/BaseLayout.css";
 @import "../routes/index.css";
+@import "../routes/cv.css";
 
 /* Components */
 @import "../components/Badge.css";
 @import "../components/Header.css";
+@import "../components/Page.css";
+@import "../components/PrintSection.css";
 @import "../components/Highlight.css";
 @import "../components/Hr.css";
 @import "../components/Job.css";

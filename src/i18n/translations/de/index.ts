@@ -16,7 +16,7 @@ export const index: Widen<typeof en> = {
   },
   jobs: {
     lookingForJob: {
-      title: "Ich suche derzeit neue Möglichkeiten ab Februar 2026."
+      title: "Ich suche eine Senior Frontend-Position ab Februar 2026."
     },
     dealerCenter: {
       company: "DealerCenter Digital",
@@ -33,7 +33,7 @@ export const index: Widen<typeof en> = {
       position: "Junior Frontend-Entwickler",
       period: "2020",
       description:
-        "Ich habe an einer großen E-Commerce-Plattform bei einer Digital-Agentur mitgearbeitet und eine interne Social-Plattform mit React, GraphQL (Apollo) und SCSS gebaut. Ich habe auch Onboarding-Dokumentation für das firmeneigene Framework erstellt. Diese Rolle begann genau, als COVID-19 ausbrach, sodass ich den Übergang zur vollständigen Remote-Arbeit erfolgreich gemeistert habe."
+        "Mitarbeit an einer großen E-Commerce-Plattform und Aufbau einer internen Social-Plattform mit React, GraphQL (Apollo) und SCSS. Als DealerCenter Digital eine Frontend-Position anbot, entschied ich mich für den Wechsel — eine Chance, die besser zu meinen Zielen passte."
     },
     campudus: {
       company: "Campudus",
@@ -44,8 +44,7 @@ export const index: Widen<typeof en> = {
     }
   },
   projects: {
-    intro:
-      "Projekte sind nie wirklich fertig — aber immer in Entwicklung. Hier sind einige meiner Projekte als Entwickler.",
+    intro: "Persönliche Projekte, die ich aktiv pflege und weiterentwickle.",
     blackAtom: {
       description1:
         "Open-Source plattformübergreifendes Theming-System, das 27+ kohärente Themes aus einer einzigen Quelle generiert.",

@@ -1,9 +1,29 @@
-import { cx } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 import "./PickerCell.css";
 
-interface PickerCellProps {
-  /** Whether the cell is in active state (selected) */
-  isActive?: boolean;
+const variants = cva("PickerCell", {
+  variants: {
+    interactive: {
+      true: "PickerCell--interactive",
+      false: ""
+    },
+    isActive: {
+      true: "PickerCell--active",
+      false: ""
+    },
+    disabled: {
+      true: "PickerCell--disabled",
+      false: ""
+    }
+  },
+  defaultVariants: {
+    interactive: false,
+    isActive: false,
+    disabled: false
+  }
+});
+
+type PickerCellProps = {
   /** Click handler - if provided, renders as button */
   onClick?: () => void;
   /** Accessible label for the button */
@@ -12,7 +32,7 @@ interface PickerCellProps {
   children: React.ReactNode;
   /** Additional CSS class */
   className?: string;
-}
+} & VariantProps<typeof variants>;
 
 /**
  * PickerCell - A shared dumb component for picker options and indicators.
@@ -21,17 +41,18 @@ interface PickerCellProps {
  */
 export function PickerCell({
   isActive,
+  disabled,
   onClick,
   ariaLabel,
   children,
   className
 }: PickerCellProps) {
-  const cellClass = cx(
-    "PickerCell",
-    onClick && "PickerCell--interactive",
-    isActive && "PickerCell--active",
+  const cellClass = variants({
+    interactive: !!onClick,
+    isActive,
+    disabled,
     className
-  );
+  });
 
   if (onClick) {
     return (
@@ -39,8 +60,9 @@ export function PickerCell({
         type="button"
         className={cellClass}
         onClick={onClick}
+        disabled={disabled ?? false}
         aria-label={ariaLabel}
-        aria-pressed={isActive}
+        aria-pressed={isActive ?? undefined}
       >
         {children}
       </button>
@@ -61,7 +83,9 @@ interface ColorDotProps {
 export function ColorDot({ hue, className }: ColorDotProps) {
   return (
     <span
-      className={cx("PickerCell__color-dot", className)}
+      className={variants({
+        className: `PickerCell__color-dot ${className ?? ""}`
+      })}
       style={{ backgroundColor: `oklch(45% 0.35 ${hue})` }}
     />
   );
@@ -77,6 +101,6 @@ interface RotatedTextProps {
  */
 export function RotatedText({ children, className }: RotatedTextProps) {
   return (
-    <span className={cx("PickerCell__rotated-text", className)}>{children}</span>
+    <span className={`PickerCell__rotated-text ${className ?? ""}`}>{children}</span>
   );
 }

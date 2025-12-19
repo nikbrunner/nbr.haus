@@ -1,0 +1,7 @@
+/* Page - container for print page control */
+@media print {
+  /* Each page after the first starts on a new page */
+  .Page:not(:first-child) {
+    break-before: page;
+  }
+}
