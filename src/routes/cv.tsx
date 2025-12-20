@@ -184,6 +184,9 @@ function CVPage() {
             <strong>{t.cv.skills.architecture}:</strong>{" "}
             {t.cv.skills.architectureList}
           </p>
+          <p>
+            <strong>{t.cv.skills.languages}:</strong> {t.cv.skills.languagesList}
+          </p>
         </div>
       </PrintSection>
 

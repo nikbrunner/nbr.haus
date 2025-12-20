@@ -71,7 +71,9 @@ export const index = {
     linkedin: "LinkedIn:",
     cv: "CV:",
     email: "Email:",
-    downloadPdf: "Download PDF"
+    downloadPdf: "Download PDF",
+    languages: "Languages:",
+    languagesList: "German (Native) • English (Fluent)"
   },
   devStack: {
     technologies: "Technologies",

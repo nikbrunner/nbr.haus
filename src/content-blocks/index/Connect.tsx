@@ -44,6 +44,10 @@ export default function Connect() {
     {
       label: t.index.connect.email,
       value: <Link href="mailto:nik@nbr.haus">nik@nbr.haus</Link>
+    },
+    {
+      label: t.index.connect.languages,
+      value: t.index.connect.languagesList
     }
   ];
 

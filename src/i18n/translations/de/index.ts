@@ -74,7 +74,9 @@ export const index: Widen<typeof en> = {
     linkedin: "LinkedIn:",
     cv: "Lebenslauf:",
     email: "E-Mail:",
-    downloadPdf: "PDF herunterladen"
+    downloadPdf: "PDF herunterladen",
+    languages: "Sprachen:",
+    languagesList: "Deutsch (Muttersprache) • Englisch (Fließend)"
   },
   devStack: {
     technologies: "Technologien",
