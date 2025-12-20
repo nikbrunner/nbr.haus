@@ -1,0 +1,34 @@
+.ControlPanelOption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-panel-cell);
+  height: var(--control-panel-cell);
+
+  background: var(--bg-main);
+  border: var(--border-size-2) dashed var(--fg-accent);
+
+  font-family: var(--font-family);
+  font-size: var(--control-panel-font-size);
+  font-weight: var(--font-weight-9);
+  color: var(--fg-main);
+
+  cursor: pointer;
+  transition: border-color 0.1s ease-out;
+}
+
+.ControlPanelOption:hover {
+  border: var(--border-size-3) solid var(--fg-accent);
+  color: var(--fg-accent);
+}
+
+.ControlPanelOption--active {
+  border: var(--border-size-3) solid var(--fg-accent);
+  color: var(--fg-accent);
+}
+
+.ControlPanelOption--disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  color: var(--fg-minor);
+}

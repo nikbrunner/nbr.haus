@@ -1,3 +1,7 @@
 export { default as ControlPanel } from "./ControlPanel";
 export * from "./store";
-export { PickerCell, ColorDot, RotatedText } from "./PickerCell";
+export { ControlPanelSection } from "./ControlPanelSection";
+export { ControlPanelRow } from "./ControlPanelRow";
+export { ControlPanelOption } from "./ControlPanelOption";
+export { ControlPanelIndicator } from "./ControlPanelIndicator";
+export { ControlPanelColorDot } from "./ControlPanelColorDot";

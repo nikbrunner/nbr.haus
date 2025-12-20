@@ -26,9 +26,11 @@
 
 /* ControlPanel */
 @import "../components/ControlPanel/ControlPanel.css";
-@import "../components/ControlPanel/ControlPanelStrip.css";
-@import "../components/ControlPanel/ControlPanelExpanded.css";
-@import "../components/ControlPanel/PickerCell.css";
+@import "../components/ControlPanel/ControlPanelSection.css";
+@import "../components/ControlPanel/ControlPanelRow.css";
+@import "../components/ControlPanel/ControlPanelOption.css";
+@import "../components/ControlPanel/ControlPanelIndicator.css";
+@import "../components/ControlPanel/ControlPanelColorDot.css";
 
 /* Content blocks */
 @import "../content-blocks/index/About.css";
@@ -187,13 +189,18 @@ body {
   color: var(--fg-main);
 
   /* ControlPanel */
-  --picker-cell: clamp(36px, 8vw, 44px);
-  --picker-gap: clamp(10px, 2vw, 16px);
-  --picker-padding: clamp(10px, 2vw, 12px);
-  --picker-offset: clamp(8px, 2vw, 12px);
-  --picker-font-size: clamp(0.65rem, 5cqw, 0.85rem);
-  --picker-label-width: clamp(80px, 20vw, 110px);
-  --picker-z-index: 9999;
+  --control-panel-cell: clamp(36px, 8vw, 44px);
+  --control-panel-gap: clamp(10px, 2vw, 16px);
+  --control-panel-padding: clamp(10px, 2vw, 12px);
+  --control-panel-offset: clamp(8px, 2vw, 12px);
+  --control-panel-font-size: clamp(0.65rem, 5cqw, 0.85rem);
+  --control-panel-label-width: clamp(80px, 20vw, 110px);
+  --control-panel-z-index: 9999;
+  /* Strip width = border + cell + padding on both sides + border */
+  --control-panel-strip-width: calc(
+    var(--border-size-2) + var(--control-panel-cell) +
+      (var(--control-panel-padding) * 2) + var(--border-size-2)
+  );
 
   /* Font smoothing */
   -webkit-font-smoothing: antialiased;

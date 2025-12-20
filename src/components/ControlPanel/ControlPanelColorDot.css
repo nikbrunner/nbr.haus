@@ -1,0 +1,5 @@
+.ControlPanelColorDot {
+  display: block;
+  width: calc(var(--control-panel-cell) / 2);
+  height: calc(var(--control-panel-cell) / 2);
+}

@@ -1,18 +1,9 @@
 .ControlPanel {
-  /* Calculate strip width for clip-path */
-  --strip-cell: var(--picker-cell, 32px);
-  --strip-padding: var(--picker-padding, 4px);
-  --border: var(--border-size-2, 2px);
-  /* Strip width = strip's left border + cell + padding on both sides + buffer for clean clip */
-  --strip-total-width: calc(
-    var(--border) + var(--strip-cell) + (var(--strip-padding) * 2) + var(--border)
-  );
-
   position: fixed;
-  right: var(--picker-offset, 16px);
+  right: var(--control-panel-offset);
   top: 50%;
   transform: translateY(-50%);
-  z-index: var(--picker-z-index, 9999);
+  z-index: var(--control-panel-z-index);
 
   /* Shadow applied on outer wrapper - follows clipped content shape */
   filter: drop-shadow(5px 5px 0 var(--fg-accent));
@@ -20,11 +11,13 @@
 
 .ControlPanel__content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 
   background: var(--bg-dots);
   border: var(--border-size-2) solid var(--fg-accent);
 
   /* GPU acceleration for clip-path */
   will-change: clip-path;
+
+  cursor: pointer;
 }

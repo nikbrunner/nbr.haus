@@ -1,0 +1,42 @@
+.ControlPanelSection {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Border between sections */
+.ControlPanelSection + .ControlPanelSection {
+  border-top: var(--border-size-2) dashed var(--fg-accent);
+}
+
+/* Options column (left side - visible when expanded) */
+.ControlPanelSection__options {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: var(--control-panel-padding);
+  background: var(--bg-main);
+}
+
+/* Indicator column (right side - always visible in strip) */
+.ControlPanelSection__indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--control-panel-gap) / 2);
+
+  padding: var(--control-panel-padding);
+  min-width: var(--control-panel-cell);
+  min-height: var(--control-panel-cell);
+
+  background: var(--bg-dots);
+
+  /* Left border separates indicator from options */
+  border-left: var(--border-size-2) solid var(--fg-accent);
+}
+
+/* Solid border between indicator sections (overrides dashed from parent) */
+.ControlPanelSection + .ControlPanelSection .ControlPanelSection__indicator {
+  border-top: var(--border-size-2) solid var(--fg-accent);
+  margin-top: calc(-1 * var(--border-size-2));
+}

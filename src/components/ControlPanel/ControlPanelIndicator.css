@@ -1,0 +1,19 @@
+.ControlPanelIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-panel-cell);
+  height: var(--control-panel-cell);
+
+  background: var(--bg-main);
+  border: none;
+
+  font-family: var(--font-family);
+  font-size: var(--control-panel-font-size);
+  font-weight: var(--font-weight-9);
+  color: var(--fg-main);
+}
+
+.ControlPanelIndicator--disabled {
+  color: var(--fg-minor);
+}
