@@ -1,5 +1,13 @@
-import { cx } from "class-variance-authority";
+import { cva } from "class-variance-authority";
 import "./ControlPanelIndicator.css";
+
+const variants = cva("ControlPanelIndicator", {
+  variants: {
+    disabled: {
+      true: "ControlPanelIndicator--disabled"
+    }
+  }
+});
 
 interface ControlPanelIndicatorProps {
   /** Whether the indicator is visually disabled (grayed out) */
@@ -16,14 +24,5 @@ export function ControlPanelIndicator({
   disabled,
   children
 }: ControlPanelIndicatorProps) {
-  return (
-    <div
-      className={cx(
-        "ControlPanelIndicator",
-        disabled && "ControlPanelIndicator--disabled"
-      )}
-    >
-      {children}
-    </div>
-  );
+  return <div className={variants({ disabled })}>{children}</div>;
 }

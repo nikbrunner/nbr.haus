@@ -1,5 +1,16 @@
-import { cx } from "class-variance-authority";
+import { cva } from "class-variance-authority";
 import "./ControlPanelOption.css";
+
+const variants = cva("ControlPanelOption", {
+  variants: {
+    active: {
+      true: "ControlPanelOption--active"
+    },
+    disabled: {
+      true: "ControlPanelOption--disabled"
+    }
+  }
+});
 
 interface ControlPanelOptionProps {
   /** Click handler - required for interactive option */
@@ -28,11 +39,7 @@ export function ControlPanelOption({
   return (
     <button
       type="button"
-      className={cx(
-        "ControlPanelOption",
-        isActive && "ControlPanelOption--active",
-        disabled && "ControlPanelOption--disabled"
-      )}
+      className={variants({ active: isActive, disabled })}
       onClick={onClick}
       disabled={disabled ?? false}
       aria-label={ariaLabel}
