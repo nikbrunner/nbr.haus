@@ -1,5 +1,10 @@
 .ControlPanelColorDot {
+  --background-color: oklch(0.45 0.35 var(--hue-color));
+  --border-color: oklch(from var(--background-color) 0.75 0.25 h);
+
   display: block;
-  width: calc(var(--control-panel-cell) / 2);
-  height: calc(var(--control-panel-cell) / 2);
+  background-color: var(--background-color);
+  width: calc(var(--control-panel-cell) / 1.5);
+  height: calc(var(--control-panel-cell) / 1.5);
+  border: var(--border-size-3) solid var(--border-color);
 }

@@ -1,4 +1,8 @@
 .ControlPanelOption {
+  --font-color-active: oklch(
+    from var(--fg-accent) clamp(0.05, (0.6 - l) * 1000, 0.975) 0.05 h
+  );
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,14 +21,11 @@
   transition: border-color 0.1s ease-out;
 }
 
+.ControlPanelOption--active,
 .ControlPanelOption:hover {
-  border: var(--border-size-3) solid var(--fg-accent);
-  color: var(--fg-accent);
-}
-
-.ControlPanelOption--active {
-  border: var(--border-size-3) solid var(--fg-accent);
-  color: var(--fg-accent);
+  background: var(--fg-accent);
+  border: var(--border-size-2) solid var(--fg-accent);
+  color: var(--font-color-active);
 }
 
 .ControlPanelOption--disabled {

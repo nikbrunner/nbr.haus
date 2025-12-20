@@ -12,7 +12,11 @@ export function ControlPanelColorDot({ hue }: ControlPanelColorDotProps) {
   return (
     <span
       className="ControlPanelColorDot"
-      style={{ backgroundColor: `oklch(45% 0.35 ${hue})` }}
+      style={
+        {
+          "--hue-color": hue
+        } as React.CSSProperties
+      }
     />
   );
 }
