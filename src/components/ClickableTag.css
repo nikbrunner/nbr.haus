@@ -5,7 +5,7 @@
 
   display: inline-flex;
   padding: var(--size-1) var(--size-2);
-  border: var(--border-size-1) dotted var(--tag-color);
+  border: var(--border-size-1) solid var(--tag-color);
   background-color: var(--bg-main);
   cursor: pointer;
   color: var(--fg-main);
