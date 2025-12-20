@@ -21,7 +21,7 @@ export const index: Widen<typeof en> = {
     dealerCenter: {
       company: "DealerCenter Digital",
       position: "Software-Ingenieur / Frontend-Lead",
-      period: "2020–2026",
+      period: "Sep. 2020 – Jan. 2026",
       p1: "Ich habe das gesamte Spektrum der Frontend-Entwicklung abgedeckt — von Feature-Implementierung und Bugfixes bis hin zu Code-Reviews, Mentoring und teamübergreifender Koordination für eine ausgereifte Electron-Anwendung, die hunderte Fahrradhändler bedient.",
       p2: "Ein Schwerpunkt waren architektonische Migrationen: Ich habe die Einführung von TanStack Query vorangetrieben und die Codebasis von Legacy Redux auf Redux Toolkit migriert. Dazu gehörte das Verfassen umfassender Code-Richtlinien und Best-Practices-Dokumentation. Ich habe auch einen Vendure-Storefront komplett von Remix auf TanStack Start/Router mit TanStack Query, Form, GraphQL, ShadCN und Tailwind CSS umgebaut.",
       p3: "Im Bereich Design-System habe ich ein umfassendes 10-Varianten-Farbsystem mit Figma-Integration erstellt, das 1.600 Dateien in der Codebasis betrifft. Die gesamte Komponentenbibliothek von BikeCenter wurde von Grund auf mit React, TypeScript und SCSS gebaut — ohne Third-Party UI-Frameworks.",
@@ -31,14 +31,14 @@ export const index: Widen<typeof en> = {
     divaE: {
       company: "diva-e",
       position: "Junior Frontend-Entwickler",
-      period: "2020",
+      period: "März 2020 – Sep. 2020",
       description:
         "Mitarbeit an einer großen E-Commerce-Plattform und Aufbau einer internen Social-Plattform mit React, GraphQL (Apollo) und SCSS. Als DealerCenter Digital eine Frontend-Position anbot, entschied ich mich für den Wechsel — eine Chance, die besser zu meinen Zielen passte."
     },
     campudus: {
       company: "Campudus",
       position: "Praktikant",
-      period: "2019–2020",
+      period: "Dez. 2019 – Feb. 2020",
       description:
         "Ich habe eine Fullstack-Anwendung zur Zubehörbestellung von Grund auf gebaut — Design, Architektur, Backend und Frontend — während eines 3-monatigen Praktikums bei der Schwesterfirma von DealerCenter Digital."
     }
