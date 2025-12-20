@@ -1,33 +1,32 @@
+import ClickableTag from "./ClickableTag";
 import SpecList from "./SpecList";
-import Tag from "./Tag";
 
 import "./Job.css";
 import { useTranslation } from "@/i18n";
+import type { Tech } from "@/config";
 
 interface Props {
   company: string;
   position: string;
   period: string;
-  tech: string;
+  tech: Tech[];
   children: React.ReactNode;
 }
 
 export default function Job({ company, position, period, tech, children }: Props) {
   const { t } = useTranslation();
 
-  const techItems = tech.split(", ") ?? [];
-
   const specs = [
     { label: t.common.jobs.meta.position, value: position },
     { label: t.common.jobs.meta.period, value: period },
-    ...(techItems.length > 0
+    ...(tech.length > 0
       ? [
           {
             label: t.common.jobs.meta.tech,
             value: (
               <div className="Job__tags">
-                {techItems.map(item => (
-                  <Tag key={item}>{item}</Tag>
+                {tech.map(item => (
+                  <ClickableTag key={item.name} {...item} />
                 ))}
               </div>
             )

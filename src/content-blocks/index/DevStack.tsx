@@ -1,13 +1,31 @@
+import ClickableTag from "@/components/ClickableTag";
 import Highlight from "@/components/Highlight";
 import Link from "@/components/Link";
 import SpecCard from "../../components/SpecCard";
-import SpecGrid from "../../components/SpecGrid";
 import SpecList from "../../components/SpecList";
 import Hr from "../../components/Hr";
 import { useTranslation, Trans } from "@/i18n";
+import { tech } from "@/config";
 
 export default function DevStack() {
   const { t } = useTranslation();
+
+  const technologies = [
+    tech.react,
+    tech.typescript,
+    tech.graphql,
+    tech.tailwind,
+    tech.tanstackStart,
+    tech.tanstackRouter,
+    tech.tanstackQuery,
+    tech.tanstackForm,
+    tech.shadcn,
+    tech.scss,
+    tech.nodejs,
+    tech.electron,
+    tech.redux,
+    tech.storybook
+  ];
 
   const devTools = [
     {
@@ -108,7 +126,11 @@ export default function DevStack() {
   return (
     <div className="DevStack">
       <SpecCard title={t.index.devStack.technologies}>
-        <SpecGrid items={technologies} />
+        <div className="SpecGrid">
+          {technologies.map(t => (
+            <ClickableTag key={t.name} {...t} />
+          ))}
+        </div>
       </SpecCard>
 
       <SpecCard title={t.index.devStack.devTools}>
@@ -187,20 +209,3 @@ export default function DevStack() {
     </div>
   );
 }
-
-const technologies = [
-  { name: "React", url: "https://react.dev" },
-  { name: "TypeScript", url: "https://www.typescriptlang.org" },
-  { name: "GraphQL", url: "https://graphql.org" },
-  { name: "Tailwind CSS", url: "https://tailwindcss.com" },
-  { name: "TanStack Start", url: "https://tanstack.com/start" },
-  { name: "TanStack Router", url: "https://tanstack.com/router" },
-  { name: "TanStack Query", url: "https://tanstack.com/query" },
-  { name: "TanStack Form", url: "https://tanstack.com/form" },
-  { name: "ShadCN", url: "https://ui.shadcn.com" },
-  { name: "SCSS", url: "https://sass-lang.com" },
-  { name: "Node.js", url: "https://nodejs.org" },
-  { name: "Electron", url: "https://www.electronjs.org" },
-  { name: "Redux (Toolkit)", url: "https://redux-toolkit.js.org" },
-  { name: "Storybook", url: "https://storybook.js.org" }
-];

@@ -2,8 +2,27 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Github, Globe, Linkedin, Mail, MapPin } from "lucide-react";
 
 import profilePicture from "@/assets/images/profile_picture.jpg";
+import { tech } from "@/config";
 import { useTranslation } from "@/i18n";
 import { PrintSection } from "../components/PrintSection";
+
+const jobTech = {
+  dealerCenter: [
+    tech.react,
+    tech.typescript,
+    tech.scss,
+    tech.tanstackRouter,
+    tech.tanstackQuery,
+    tech.tanstackForm,
+    tech.redux,
+    tech.graphql,
+    tech.tailwind,
+    tech.electron,
+    tech.nodejs
+  ],
+  divaE: [tech.react, tech.typescript, tech.scss, tech.nodejs],
+  campudus: [tech.react, tech.nodejs]
+};
 
 export const Route = createFileRoute("/cv")({
   component: CVPage
@@ -65,7 +84,7 @@ function CVPage() {
               {t.index.jobs.dealerCenter.period} • Landshut, Germany
             </span>
             <span className="CV__job-tech">
-              <strong>Tech:</strong> {t.cv.jobs.dealerCenter.tech}
+              <strong>Tech:</strong> {jobTech.dealerCenter.map(t => t.name).join(", ")}
             </span>
           </div>
           <p className="CV__job-intro">{t.cv.jobs.dealerCenter.intro}</p>
@@ -84,7 +103,7 @@ function CVPage() {
               Germany
             </span>
             <span className="CV__job-tech">
-              <strong>Tech:</strong> {t.cv.jobs.divaE.tech}
+              <strong>Tech:</strong> {jobTech.divaE.map(t => t.name).join(", ")}
             </span>
           </div>
           <ul className="CV__job-list">
@@ -101,7 +120,7 @@ function CVPage() {
               Landshut, Germany
             </span>
             <span className="CV__job-tech">
-              <strong>Tech:</strong> {t.cv.jobs.campudus.tech}
+              <strong>Tech:</strong> {jobTech.campudus.map(t => t.name).join(", ")}
             </span>
           </div>
           <ul className="CV__job-list">

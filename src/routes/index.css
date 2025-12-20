@@ -49,7 +49,7 @@
   }
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1800px) {
   .Index__layout--three-columns {
     display: none;
   }

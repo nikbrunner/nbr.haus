@@ -1,0 +1,24 @@
+.ClickableTag.Link {
+  --font-color: oklch(
+    from var(--tag-color) clamp(0.05, (0.6 - l) * 1000, 0.975) 0.05 h
+  );
+
+  display: inline-flex;
+  padding: var(--size-1) var(--size-2);
+  border: var(--border-size-1) dotted var(--tag-color);
+  background-color: var(--bg-main);
+  cursor: pointer;
+  color: var(--fg-main);
+  font-weight: var(--font-weight-7);
+  text-decoration: none;
+  transition:
+    border-color 0.2s,
+    background-color 0.2s,
+    color 0.2s;
+
+  &:hover {
+    border-color: var(--tag-color);
+    background-color: var(--tag-color);
+    color: var(--font-color);
+  }
+}

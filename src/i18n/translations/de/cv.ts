@@ -26,18 +26,15 @@ export const cv: Widen<typeof en> = {
         "Entwarf modernen GraphQL-basierten Vendure-Storefront und koordinierte zwischen Design- und Backend-Teams",
         "Implementierte Komponententests mit Jest und Storybook-Snapshots",
         "Integrierte externe Services wie Analytics (Mixpanel), Leasing-Rechner und Third-Party-Produktberater"
-      ],
-      tech: "React, TypeScript, SCSS, TanStack (Router/Query/Form), Redux, GraphQL, Tailwind CSS, Electron, Node.js"
+      ]
     },
     divaE: {
-      bullets: ["Entwickelte Frontend-Features für Enterprise-Webanwendungen"],
-      tech: "React, TypeScript, SCSS, Node.js"
+      bullets: ["Entwickelte Frontend-Features für Enterprise-Webanwendungen"]
     },
     campudus: {
       bullets: [
         "Absolvierte Fullstack-Praktikum mit Entwicklung von Features in React und Node.js"
-      ],
-      tech: "React, Node.js"
+      ]
     }
   },
   projects: {

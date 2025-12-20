@@ -1,5 +1,6 @@
 import Project from "../../components/Project";
 import { useTranslation } from "@/i18n";
+import { tech } from "@/config";
 
 export default function Projects() {
   const { t } = useTranslation();
@@ -11,7 +12,7 @@ export default function Projects() {
       <div className="Projects__list">
         <Project
           title="Black Atom Industries"
-          stack={["TypeScript", "Deno", "OKLCH"]}
+          stack={[tech.typescript, tech.deno, tech.oklch]}
           topics={[
             "Theming Systems",
             "Adapter Pattern",
@@ -40,7 +41,7 @@ export default function Projects() {
 
         <Project
           title="AWDCS"
-          stack={["Markdown"]}
+          stack={[tech.markdown]}
           topics={["Modal Editing", "Workflow Design", "Developer Experience"]}
           status="Active"
           primaryLink={{
@@ -54,7 +55,7 @@ export default function Projects() {
 
         <Project
           title="kōyō"
-          stack={["QMK", "C", "Bash"]}
+          stack={[tech.qmk, tech.c, tech.bash]}
           topics={[
             "Keyboard Layouts",
             "QMK Firmware",
@@ -73,7 +74,7 @@ export default function Projects() {
 
         <Project
           title="nbr.nvim"
-          stack={["Lua", "Neovim"]}
+          stack={[tech.lua, tech.neovim]}
           topics={[
             "Neovim Configuration",
             "Developer Tools",

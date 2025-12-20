@@ -1,12 +1,14 @@
 import Badge from "./Badge";
+import ClickableTag from "./ClickableTag";
 import SpecCard from "./SpecCard";
 import SpecList from "./SpecList";
 import Tag from "./Tag";
+import type { Tech } from "@/config";
 
 interface Props {
   title: string;
   status: "Active" | "Maintained" | "Complete" | "Archived";
-  stack: string[];
+  stack: Tech[];
   topics: string[];
   primaryLink: {
     url: string;
@@ -47,8 +49,8 @@ export default function Project({
             label: "Stack:",
             value: (
               <div className="Project__tags">
-                {stack.map(tech => (
-                  <Tag key={tech}>{tech}</Tag>
+                {stack.map(t => (
+                  <ClickableTag key={t.name} {...t} />
                 ))}
               </div>
             )

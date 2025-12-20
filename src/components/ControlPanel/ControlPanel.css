@@ -7,9 +7,13 @@
 
   /* Shadow applied on outer wrapper - follows clipped content shape */
   filter: drop-shadow(5px 5px 0 var(--fg-accent));
+
+  /* Allow clicks to pass through the wrapper */
+  pointer-events: none;
 }
 
 .ControlPanel__content {
+  position: relative;
   display: flex;
   flex-direction: column;
 
@@ -20,4 +24,24 @@
   will-change: clip-path;
 
   cursor: pointer;
+
+  /* When collapsed, disable pointer events on main content (clipped area blocks clicks) */
+  pointer-events: none;
+}
+
+/* When collapsed, add a clickable strip area using pseudo-element */
+.ControlPanel:not(.ControlPanel--expanded) .ControlPanel__content::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: var(--control-panel-strip-width);
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* When expanded, enable pointer events on the entire content */
+.ControlPanel--expanded .ControlPanel__content {
+  pointer-events: auto;
 }

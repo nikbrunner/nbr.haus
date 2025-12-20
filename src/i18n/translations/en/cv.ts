@@ -23,18 +23,15 @@ export const cv = {
         "Architected modern GraphQL-based Vendure storefront and coordinated between design and backend teams",
         "Implemented component testing with Jest and Storybook snapshots",
         "Integrated external services including analytics (Mixpanel), leasing calculators, and third-party product advisers"
-      ],
-      tech: "React, TypeScript, SCSS, TanStack (Router/Query/Form), Redux, GraphQL, Tailwind CSS, Electron, Node.js"
+      ]
     },
     divaE: {
-      bullets: ["Developed frontend features for enterprise web applications"],
-      tech: "React, TypeScript, SCSS, Node.js"
+      bullets: ["Developed frontend features for enterprise web applications"]
     },
     campudus: {
       bullets: [
         "Completed full-stack internship developing features with React and Node.js"
-      ],
-      tech: "React, Node.js"
+      ]
     }
   },
   projects: {

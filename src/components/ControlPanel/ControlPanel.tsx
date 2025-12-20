@@ -1,8 +1,4 @@
-import {
-  useSearch,
-  useRouter,
-  useRouterState
-} from "@tanstack/react-router";
+import { useSearch, useRouter, useRouterState } from "@tanstack/react-router";
 import { useStore } from "@tanstack/react-store";
 import { useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
