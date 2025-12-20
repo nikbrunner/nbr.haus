@@ -64,6 +64,9 @@ function CVPage() {
               {t.index.jobs.dealerCenter.company} •{" "}
               {t.index.jobs.dealerCenter.period} • Landshut, Germany
             </span>
+            <span className="CV__job-tech">
+              <strong>Tech:</strong> {t.cv.jobs.dealerCenter.tech}
+            </span>
           </div>
           <p className="CV__job-intro">{t.cv.jobs.dealerCenter.intro}</p>
           <ul className="CV__job-list">
@@ -71,9 +74,6 @@ function CVPage() {
               <li key={i}>{bullet}</li>
             ))}
           </ul>
-          <p className="CV__job-tech">
-            <strong>Tech:</strong> {t.cv.jobs.dealerCenter.tech}
-          </p>
         </article>
 
         <article className="CV__job">
@@ -82,6 +82,9 @@ function CVPage() {
             <span className="CV__job-company">
               {t.index.jobs.divaE.company} • {t.index.jobs.divaE.period} • Munich,
               Germany
+            </span>
+            <span className="CV__job-tech">
+              <strong>Tech:</strong> {t.cv.jobs.divaE.tech}
             </span>
           </div>
           <ul className="CV__job-list">
@@ -96,6 +99,9 @@ function CVPage() {
             <span className="CV__job-company">
               {t.index.jobs.campudus.company} • {t.index.jobs.campudus.period} •
               Landshut, Germany
+            </span>
+            <span className="CV__job-tech">
+              <strong>Tech:</strong> {t.cv.jobs.campudus.tech}
             </span>
           </div>
           <ul className="CV__job-list">

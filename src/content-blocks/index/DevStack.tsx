@@ -112,7 +112,7 @@ export default function DevStack() {
       </SpecCard>
 
       <SpecCard title={t.index.devStack.devTools}>
-        <SpecList items={devTools} />
+        <SpecList items={devTools} padding="small" />
         <p
           style={{
             padding: "var(--size-2)",

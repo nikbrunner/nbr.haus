@@ -12,5 +12,12 @@ export const common = {
     ogTitle: "Nik Brunner - Senior Frontend Developer",
     ogDescription:
       "Senior Frontend Engineer with 5 years of experience. React, TypeScript, Design Systems, Technical Architecture."
+  },
+  jobs: {
+    meta: {
+      position: "Position",
+      period: "Period",
+      tech: "Tech"
+    }
   }
 } as const;

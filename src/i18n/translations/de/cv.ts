@@ -30,15 +30,14 @@ export const cv: Widen<typeof en> = {
       tech: "React, TypeScript, SCSS, TanStack (Router/Query/Form), Redux, GraphQL, Tailwind CSS, Electron, Node.js"
     },
     divaE: {
-      bullets: [
-        "Entwickelte Frontend-Features für Enterprise-Webanwendungen",
-        "Tech: React, TypeScript, SCSS, Node.js"
-      ]
+      bullets: ["Entwickelte Frontend-Features für Enterprise-Webanwendungen"],
+      tech: "React, TypeScript, SCSS, Node.js"
     },
     campudus: {
       bullets: [
         "Absolvierte Fullstack-Praktikum mit Entwicklung von Features in React und Node.js"
-      ]
+      ],
+      tech: "React, Node.js"
     }
   },
   projects: {

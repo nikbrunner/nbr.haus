@@ -1,6 +1,7 @@
 import Badge from "./Badge";
 import SpecCard from "./SpecCard";
 import SpecList from "./SpecList";
+import Tag from "./Tag";
 
 interface Props {
   title: string;
@@ -47,9 +48,7 @@ export default function Project({
             value: (
               <div className="Project__tags">
                 {stack.map(tech => (
-                  <span key={tech} className="Project__tag">
-                    {tech}
-                  </span>
+                  <Tag key={tech}>{tech}</Tag>
                 ))}
               </div>
             )
@@ -63,9 +62,7 @@ export default function Project({
             value: (
               <div className="Project__tags">
                 {topics.map(topic => (
-                  <span key={topic} className="Project__tag">
-                    {topic}
-                  </span>
+                  <Tag key={topic}>{topic}</Tag>
                 ))}
               </div>
             )
@@ -81,7 +78,7 @@ export default function Project({
 
   return (
     <SpecCard title={title}>
-      <SpecList items={specItems} />
+      <SpecList items={specItems} padding="small" />
 
       <div className="Project__description">{children}</div>
 

@@ -27,15 +27,14 @@ export const cv = {
       tech: "React, TypeScript, SCSS, TanStack (Router/Query/Form), Redux, GraphQL, Tailwind CSS, Electron, Node.js"
     },
     divaE: {
-      bullets: [
-        "Developed frontend features for enterprise web applications",
-        "Tech: React, TypeScript, SCSS, Node.js"
-      ]
+      bullets: ["Developed frontend features for enterprise web applications"],
+      tech: "React, TypeScript, SCSS, Node.js"
     },
     campudus: {
       bullets: [
         "Completed full-stack internship developing features with React and Node.js"
-      ]
+      ],
+      tech: "React, Node.js"
     }
   },
   projects: {

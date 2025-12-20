@@ -1,6 +1,5 @@
 .Job {
   margin-bottom: var(--size-8);
-  container-type: inline-size;
 }
 
 .Job__company {
@@ -11,29 +10,9 @@
   border-bottom: none;
 }
 
-.Job__header {
+.Job__tags {
   display: flex;
-  flex-direction: column;
-  gap: var(--size-1);
-  margin-bottom: var(--size-3);
-}
-
-.Job__role {
-  font-size: var(--font-size-2);
-  color: var(--fg-support);
-  font-weight: var(--font-weight-6);
-}
-
-.Job__period {
-  font-size: var(--font-size-1);
-  color: var(--fg-minor);
-}
-
-@container (min-width: 400px) {
-  .Job__header {
-    flex-direction: row;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: var(--size-2);
-  }
+  flex-wrap: wrap;
+  gap: var(--size-2);
+  margin-bottom: var(--size-8);
 }

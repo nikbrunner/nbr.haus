@@ -15,5 +15,12 @@ export const common: Widen<typeof en> = {
     ogTitle: "Nik Brunner - Senior Frontend-Entwickler",
     ogDescription:
       "Senior Frontend-Ingenieur mit 5 Jahren Erfahrung. React, TypeScript, Design-Systeme, Technische Architektur."
+  },
+  jobs: {
+    meta: {
+      position: "Position",
+      period: "Zeitraum",
+      tech: "Tech"
+    }
   }
 };

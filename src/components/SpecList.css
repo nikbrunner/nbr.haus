@@ -4,15 +4,19 @@
   flex-direction: column;
   gap: 0;
   background-color: var(--bg-main);
-  padding: var(--size-2) var(--size-3);
+}
+
+.SpecList-padding--small {
+  padding: var(--size-4);
 }
 
 .SpecList__item {
   display: grid;
-  grid-template-columns: 35cqw 1fr;
   gap: var(--size-3);
+  width: 100%;
   padding: var(--size-2) 0;
-  align-items: center;
+  align-items: start;
+  align-self: start;
   font-size: var(--font-size-fluid-0);
 
   &:not(:last-child) {
@@ -22,9 +26,11 @@
 
 .SpecList__label {
   color: var(--fg-support);
+  margin: 0;
 }
 
 .SpecList__value {
   color: var(--fg-main);
   overflow-wrap: break-word;
+  margin: 0;
 }

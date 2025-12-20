@@ -49,7 +49,7 @@ export default function Connect() {
 
   return (
     <SpecCard title={t.index.connect.title}>
-      <SpecList items={items} />
+      <SpecList items={items} padding="small" />
     </SpecCard>
   );
 }

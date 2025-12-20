@@ -4,14 +4,6 @@
   gap: var(--size-2);
 }
 
-.Project__tag {
-  display: inline-flex;
-  padding: 0 var(--size-1);
-  border: var(--border-size-1) dotted var(--fg-minor);
-  background-color: var(--bg-main);
-  color: var(--fg-main);
-}
-
 .Project__description {
   display: flex;
   flex-direction: column;
