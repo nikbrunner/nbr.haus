@@ -63,9 +63,7 @@ export const OnHeading: Story = {
 
 export const Comparison: Story = {
   render: () => (
-    <div
-      style={{ display: "flex", flexDirection: "column", gap: "2rem" }}
-    >
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
       <div>
         <strong>Subtle (default):</strong>{" "}
         <GlitchEffect intensity="subtle">Watch for the glitch...</GlitchEffect>
@@ -84,6 +82,21 @@ export const Comparison: Story = {
           CRT monitor vibes
         </GlitchEffect>
       </div>
+    </div>
+  )
+};
+
+export const MultipleInstances: Story = {
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+      <p style={{ marginBottom: "1rem", opacity: 0.7 }}>
+        Each instance has randomized timing - watch how they glitch independently:
+      </p>
+      {Array.from({ length: 6 }).map((_, i) => (
+        <div key={i} style={{ fontSize: "1.25rem" }}>
+          <GlitchEffect intensity="subtle">Instance {i + 1}</GlitchEffect>
+        </div>
+      ))}
     </div>
   )
 };

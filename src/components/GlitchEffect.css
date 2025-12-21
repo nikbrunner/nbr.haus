@@ -7,7 +7,7 @@
 .GlitchEffect--subtle {
   animation:
     glitch-jitter 0.1s infinite,
-    glitch-flicker 5s infinite;
+    glitch-flicker 5s var(--glitch-delay, 0s) infinite;
 }
 
 .GlitchEffect--subtle::before,
@@ -26,91 +26,137 @@
 .GlitchEffect--subtle::before {
   animation:
     glitch-jitter-offset 0.15s infinite,
-    glitch-rgb-flare-red 5s infinite;
+    glitch-rgb-flare-red 5s
+      calc(var(--glitch-delay, 0s) + var(--glitch-delay-before, 0s)) infinite;
   box-shadow: -2px 0 0 oklch(65% 0.3 25 / 0.4);
 }
 
 .GlitchEffect--subtle::after {
   animation:
     glitch-jitter-offset 0.12s infinite reverse,
-    glitch-rgb-flare-cyan 5s infinite;
+    glitch-rgb-flare-cyan 5s
+      calc(var(--glitch-delay, 0s) + var(--glitch-delay-after, 0s)) infinite;
   box-shadow: 2px 0 0 oklch(65% 0.25 220 / 0.4);
 }
 
-/* Medium glitch - more noticeable, periodic distortion */
+/* Medium glitch - more noticeable jitter and RGB separation */
 .GlitchEffect--medium {
-  animation: glitch-flicker 4s infinite;
+  animation:
+    glitch-jitter-medium 0.08s infinite,
+    glitch-flicker 4s var(--glitch-delay, 0s) infinite;
 }
 
 .GlitchEffect--medium::before,
 .GlitchEffect--medium::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  opacity: 0;
-}
-
-.GlitchEffect--medium::before {
-  animation: glitch-medium-left 4s infinite;
-  color: oklch(70% 0.25 0);
-}
-
-.GlitchEffect--medium::after {
-  animation: glitch-medium-right 4s infinite;
-  color: oklch(70% 0.25 220);
-}
-
-/* Strong glitch - very noticeable, constant distortion */
-.GlitchEffect--strong {
-  animation: glitch-flicker 2s infinite;
-}
-
-.GlitchEffect--strong::before,
-.GlitchEffect--strong::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  opacity: 0;
-}
-
-.GlitchEffect--strong::before {
-  animation: glitch-strong-left 2s infinite;
-  color: oklch(70% 0.3 0);
-}
-
-.GlitchEffect--strong::after {
-  animation: glitch-strong-right 2s infinite;
-  color: oklch(70% 0.3 220);
-}
-
-/* Scanlines overlay */
-.GlitchEffect--scanlines::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    oklch(0% 0 0 / 0.03) 2px,
-    oklch(0% 0 0 / 0.03) 4px
-  );
   pointer-events: none;
-  z-index: 1;
+  background: inherit;
+  mix-blend-mode: screen;
+}
+
+.GlitchEffect--medium::before {
+  animation:
+    glitch-jitter-offset-medium 0.12s infinite,
+    glitch-rgb-flare-red-medium 4s
+      calc(var(--glitch-delay, 0s) + var(--glitch-delay-before, 0s)) infinite;
+  box-shadow: -3px 0 0 oklch(65% 0.35 25 / 0.5);
+}
+
+.GlitchEffect--medium::after {
+  animation:
+    glitch-jitter-offset-medium 0.1s infinite reverse,
+    glitch-rgb-flare-cyan-medium 4s
+      calc(var(--glitch-delay, 0s) + var(--glitch-delay-after, 0s)) infinite;
+  box-shadow: 3px 0 0 oklch(65% 0.3 220 / 0.5);
+}
+
+/* Strong glitch - intense jitter and RGB separation */
+.GlitchEffect--strong {
+  animation:
+    glitch-jitter-strong 0.05s infinite,
+    glitch-flicker-strong 2s var(--glitch-delay, 0s) infinite;
+}
+
+.GlitchEffect--strong::before,
+.GlitchEffect--strong::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: inherit;
+  mix-blend-mode: screen;
+}
+
+.GlitchEffect--strong::before {
+  animation:
+    glitch-jitter-offset-strong 0.08s infinite,
+    glitch-rgb-flare-red-strong 2s
+      calc(var(--glitch-delay, 0s) + var(--glitch-delay-before, 0s)) infinite;
+  box-shadow: -4px 0 0 oklch(70% 0.4 25 / 0.6);
+}
+
+.GlitchEffect--strong::after {
+  animation:
+    glitch-jitter-offset-strong 0.06s infinite reverse,
+    glitch-rgb-flare-cyan-strong 2s
+      calc(var(--glitch-delay, 0s) + var(--glitch-delay-after, 0s)) infinite;
+  box-shadow: 4px 0 0 oklch(70% 0.35 220 / 0.6);
+}
+
+/* Scanlines overlay - animated sweep line on main element */
+.GlitchEffect--scanlines {
+  background:
+    /* Sweeping bright line */
+    linear-gradient(
+      to bottom,
+      transparent 0%,
+      oklch(100% 0 0 / 0) 45%,
+      oklch(100% 0 0 / 0.12) 49%,
+      oklch(100% 0 0 / 0.2) 50%,
+      oklch(100% 0 0 / 0.12) 51%,
+      oklch(100% 0 0 / 0) 55%,
+      transparent 100%
+    ),
+    /* Static scanlines pattern */
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        oklch(0% 0 0 / 0.03) 2px,
+        oklch(0% 0 0 / 0.03) 4px
+      );
+  background-size:
+    100% 300%,
+    100% 100%;
+  animation:
+    glitch-jitter 0.1s infinite,
+    glitch-flicker 5s var(--glitch-delay, 0s) infinite,
+    glitch-scanline-sweep 4s linear infinite;
 }
 
 /* Keyframes */
+
+/* Scanline sweep - moves bright line from top to bottom */
+@keyframes glitch-scanline-sweep {
+  0% {
+    background-position:
+      0 -100%,
+      0 0;
+  }
+  100% {
+    background-position:
+      0 200%,
+      0 0;
+  }
+}
 
 /* Base jitter - constant micro-movement */
 @keyframes glitch-jitter {
@@ -312,137 +358,386 @@
   }
 }
 
-/* Medium intensity keyframes */
-@keyframes glitch-medium-left {
-  0%,
-  100% {
-    opacity: 0;
-    transform: translateX(0);
-  }
-  45% {
-    opacity: 0;
-  }
-  46% {
-    opacity: 0.4;
-    transform: translateX(-2px);
-  }
-  47% {
-    opacity: 0;
-  }
-  92% {
-    opacity: 0;
-  }
-  93% {
-    opacity: 0.4;
-    transform: translateX(-2px);
-  }
-  94% {
-    opacity: 0;
-  }
-}
-
-@keyframes glitch-medium-right {
-  0%,
-  100% {
-    opacity: 0;
-    transform: translateX(0);
-  }
-  46% {
-    opacity: 0;
-  }
-  47% {
-    opacity: 0.4;
-    transform: translateX(2px);
-  }
-  48% {
-    opacity: 0;
-  }
-  93% {
-    opacity: 0;
-  }
-  94% {
-    opacity: 0.4;
-    transform: translateX(2px);
-  }
-  95% {
-    opacity: 0;
-  }
-}
-
-/* Strong intensity keyframes */
-@keyframes glitch-strong-left {
-  0%,
-  100% {
-    opacity: 0;
-    transform: translateX(0) skewX(0);
+/* Medium intensity jitter - faster, larger movement */
+@keyframes glitch-jitter-medium {
+  0% {
+    transform: translate(0, 0);
   }
   20% {
-    opacity: 0;
+    transform: translate(-1px, 0.5px);
   }
-  21% {
-    opacity: 0.5;
-    transform: translateX(-3px) skewX(-2deg);
-  }
-  22% {
-    opacity: 0;
+  40% {
+    transform: translate(1px, -0.5px);
   }
   60% {
-    opacity: 0;
+    transform: translate(-0.5px, -1px);
   }
-  61% {
-    opacity: 0.5;
-    transform: translateX(-2px) skewX(1deg);
+  80% {
+    transform: translate(1px, 0.5px);
   }
-  62% {
-    opacity: 0;
-  }
-  90% {
-    opacity: 0;
-  }
-  91% {
-    opacity: 0.6;
-    transform: translateX(-4px) skewX(-1deg);
-  }
-  93% {
-    opacity: 0;
+  100% {
+    transform: translate(-1px, 0);
   }
 }
 
-@keyframes glitch-strong-right {
+@keyframes glitch-jitter-offset-medium {
+  0% {
+    opacity: 0.25;
+    transform: translate(0, 0);
+  }
+  25% {
+    opacity: 0.35;
+    transform: translate(2px, 0.5px);
+  }
+  50% {
+    opacity: 0.2;
+    transform: translate(-2px, -0.5px);
+  }
+  75% {
+    opacity: 0.4;
+    transform: translate(1px, -1px);
+  }
+  100% {
+    opacity: 0.25;
+    transform: translate(-1px, 0.5px);
+  }
+}
+
+/* Medium RGB flare - red channel */
+@keyframes glitch-rgb-flare-red-medium {
   0%,
   100% {
-    opacity: 0;
-    transform: translateX(0) skewX(0);
+    opacity: 0.25;
+    transform: translateX(-2px);
+    box-shadow: -3px 0 0 oklch(65% 0.35 25 / 0.5);
   }
-  21% {
-    opacity: 0;
+  14% {
+    opacity: 0.25;
+    transform: translateX(-2px);
   }
-  22% {
+  15% {
+    opacity: 0.95;
+    transform: translateX(-8px) skewX(-3deg);
+    box-shadow:
+      -5px 0 0 oklch(70% 0.45 25 / 0.95),
+      -10px 0 0 oklch(70% 0.4 140 / 0.7),
+      -14px 0 0 oklch(65% 0.35 260 / 0.5);
+  }
+  17% {
+    opacity: 0.6;
+    transform: translateX(-4px) skewX(1deg);
+  }
+  19% {
+    opacity: 0.25;
+    transform: translateX(-2px) skewX(0);
+    box-shadow: -3px 0 0 oklch(65% 0.35 25 / 0.5);
+  }
+  54% {
+    opacity: 0.25;
+    transform: translateX(-2px);
+  }
+  55% {
+    opacity: 0.9;
+    transform: translateX(-7px) skewX(-2deg);
+    box-shadow:
+      -4px 0 0 oklch(70% 0.45 25 / 0.9),
+      -9px 0 0 oklch(70% 0.4 140 / 0.7),
+      -13px 0 0 oklch(65% 0.35 260 / 0.5);
+  }
+  58% {
+    opacity: 0.25;
+    transform: translateX(-2px) skewX(0);
+    box-shadow: -3px 0 0 oklch(65% 0.35 25 / 0.5);
+  }
+}
+
+/* Medium RGB flare - cyan channel */
+@keyframes glitch-rgb-flare-cyan-medium {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: translateX(2px);
+    box-shadow: 3px 0 0 oklch(65% 0.3 220 / 0.5);
+  }
+  15% {
+    opacity: 0.25;
+    transform: translateX(2px);
+  }
+  16% {
+    opacity: 0.95;
+    transform: translateX(8px) skewX(3deg);
+    box-shadow:
+      5px 0 0 oklch(70% 0.45 220 / 0.95),
+      10px 0 0 oklch(65% 0.4 280 / 0.7),
+      14px 0 0 oklch(70% 0.35 25 / 0.5);
+  }
+  18% {
     opacity: 0.5;
-    transform: translateX(3px) skewX(2deg);
+    transform: translateX(4px) skewX(-1deg);
   }
-  23% {
-    opacity: 0;
+  20% {
+    opacity: 0.25;
+    transform: translateX(2px) skewX(0);
+    box-shadow: 3px 0 0 oklch(65% 0.3 220 / 0.5);
   }
-  61% {
-    opacity: 0;
+  55% {
+    opacity: 0.25;
+    transform: translateX(2px);
   }
-  62% {
-    opacity: 0.5;
-    transform: translateX(2px) skewX(-1deg);
+  56% {
+    opacity: 0.9;
+    transform: translateX(7px) skewX(2deg);
+    box-shadow:
+      4px 0 0 oklch(70% 0.45 220 / 0.9),
+      9px 0 0 oklch(65% 0.4 280 / 0.7),
+      13px 0 0 oklch(70% 0.35 25 / 0.5);
+  }
+  59% {
+    opacity: 0.25;
+    transform: translateX(2px) skewX(0);
+    box-shadow: 3px 0 0 oklch(65% 0.3 220 / 0.5);
+  }
+}
+
+/* Strong intensity jitter - fastest, largest movement */
+@keyframes glitch-jitter-strong {
+  0% {
+    transform: translate(0, 0) skewX(0);
+  }
+  20% {
+    transform: translate(-2px, 1px) skewX(-0.5deg);
+  }
+  40% {
+    transform: translate(2px, -1px) skewX(0.5deg);
+  }
+  60% {
+    transform: translate(-1px, -1.5px) skewX(-0.3deg);
+  }
+  80% {
+    transform: translate(1.5px, 1px) skewX(0.3deg);
+  }
+  100% {
+    transform: translate(-1.5px, 0.5px) skewX(0);
+  }
+}
+
+@keyframes glitch-jitter-offset-strong {
+  0% {
+    opacity: 0.4;
+    transform: translate(0, 0);
+  }
+  25% {
+    opacity: 0.55;
+    transform: translate(3px, 1px);
+  }
+  50% {
+    opacity: 0.35;
+    transform: translate(-3px, -1px);
+  }
+  75% {
+    opacity: 0.6;
+    transform: translate(2px, -1.5px);
+  }
+  100% {
+    opacity: 0.4;
+    transform: translate(-2px, 1px);
+  }
+}
+
+/* Strong flicker - more dramatic */
+@keyframes glitch-flicker-strong {
+  0%,
+  100% {
+    opacity: 1;
+    filter: none;
+  }
+  10% {
+    opacity: 0.75;
+    filter: brightness(1.2) contrast(1.15);
+  }
+  12% {
+    opacity: 1;
+    filter: none;
+  }
+  35% {
+    opacity: 0.85;
+    filter: brightness(1.1);
+  }
+  37% {
+    opacity: 1;
+    filter: none;
+  }
+  60% {
+    opacity: 0.7;
+    filter: brightness(1.25) contrast(1.1);
   }
   63% {
-    opacity: 0;
+    opacity: 1;
+    filter: none;
   }
-  91% {
-    opacity: 0;
+  85% {
+    opacity: 0.8;
+    filter: brightness(1.15) contrast(1.05);
   }
-  92% {
-    opacity: 0.6;
-    transform: translateX(4px) skewX(1deg);
+  88% {
+    opacity: 1;
+    filter: none;
   }
-  94% {
-    opacity: 0;
+}
+
+/* Strong RGB flare - red channel */
+@keyframes glitch-rgb-flare-red-strong {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: translateX(-3px);
+    box-shadow: -4px 0 0 oklch(70% 0.4 25 / 0.6);
+  }
+  9% {
+    opacity: 0.4;
+    transform: translateX(-3px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(-12px) skewX(-4deg);
+    box-shadow:
+      -6px 0 0 oklch(75% 0.5 25 / 1),
+      -12px 0 0 oklch(75% 0.45 140 / 0.8),
+      -18px 0 0 oklch(70% 0.4 260 / 0.6);
+  }
+  13% {
+    opacity: 0.4;
+    transform: translateX(-3px) skewX(0);
+    box-shadow: -4px 0 0 oklch(70% 0.4 25 / 0.6);
+  }
+  34% {
+    opacity: 0.4;
+    transform: translateX(-3px);
+  }
+  35% {
+    opacity: 0.95;
+    transform: translateX(-10px) skewX(-3deg);
+    box-shadow:
+      -5px 0 0 oklch(75% 0.5 25 / 0.95),
+      -11px 0 0 oklch(75% 0.45 140 / 0.75),
+      -16px 0 0 oklch(70% 0.4 260 / 0.55);
+  }
+  38% {
+    opacity: 0.4;
+    transform: translateX(-3px) skewX(0);
+    box-shadow: -4px 0 0 oklch(70% 0.4 25 / 0.6);
+  }
+  59% {
+    opacity: 0.4;
+    transform: translateX(-3px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-11px) skewX(-3deg);
+    box-shadow:
+      -6px 0 0 oklch(75% 0.5 25 / 1),
+      -12px 0 0 oklch(75% 0.45 140 / 0.8),
+      -17px 0 0 oklch(70% 0.4 260 / 0.6);
+  }
+  63% {
+    opacity: 0.4;
+    transform: translateX(-3px) skewX(0);
+    box-shadow: -4px 0 0 oklch(70% 0.4 25 / 0.6);
+  }
+  84% {
+    opacity: 0.4;
+    transform: translateX(-3px);
+  }
+  85% {
+    opacity: 0.9;
+    transform: translateX(-9px) skewX(-2deg);
+    box-shadow:
+      -5px 0 0 oklch(75% 0.5 25 / 0.9),
+      -10px 0 0 oklch(75% 0.45 140 / 0.7),
+      -15px 0 0 oklch(70% 0.4 260 / 0.5);
+  }
+  88% {
+    opacity: 0.4;
+    transform: translateX(-3px) skewX(0);
+    box-shadow: -4px 0 0 oklch(70% 0.4 25 / 0.6);
+  }
+}
+
+/* Strong RGB flare - cyan channel */
+@keyframes glitch-rgb-flare-cyan-strong {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: translateX(3px);
+    box-shadow: 4px 0 0 oklch(70% 0.35 220 / 0.6);
+  }
+  10% {
+    opacity: 0.4;
+    transform: translateX(3px);
+  }
+  11% {
+    opacity: 1;
+    transform: translateX(12px) skewX(4deg);
+    box-shadow:
+      6px 0 0 oklch(75% 0.5 220 / 1),
+      12px 0 0 oklch(70% 0.45 280 / 0.8),
+      18px 0 0 oklch(75% 0.4 25 / 0.6);
+  }
+  14% {
+    opacity: 0.4;
+    transform: translateX(3px) skewX(0);
+    box-shadow: 4px 0 0 oklch(70% 0.35 220 / 0.6);
+  }
+  35% {
+    opacity: 0.4;
+    transform: translateX(3px);
+  }
+  36% {
+    opacity: 0.95;
+    transform: translateX(10px) skewX(3deg);
+    box-shadow:
+      5px 0 0 oklch(75% 0.5 220 / 0.95),
+      11px 0 0 oklch(70% 0.45 280 / 0.75),
+      16px 0 0 oklch(75% 0.4 25 / 0.55);
+  }
+  39% {
+    opacity: 0.4;
+    transform: translateX(3px) skewX(0);
+    box-shadow: 4px 0 0 oklch(70% 0.35 220 / 0.6);
+  }
+  60% {
+    opacity: 0.4;
+    transform: translateX(3px);
+  }
+  61% {
+    opacity: 1;
+    transform: translateX(11px) skewX(3deg);
+    box-shadow:
+      6px 0 0 oklch(75% 0.5 220 / 1),
+      12px 0 0 oklch(70% 0.45 280 / 0.8),
+      17px 0 0 oklch(75% 0.4 25 / 0.6);
+  }
+  64% {
+    opacity: 0.4;
+    transform: translateX(3px) skewX(0);
+    box-shadow: 4px 0 0 oklch(70% 0.35 220 / 0.6);
+  }
+  85% {
+    opacity: 0.4;
+    transform: translateX(3px);
+  }
+  86% {
+    opacity: 0.9;
+    transform: translateX(9px) skewX(2deg);
+    box-shadow:
+      5px 0 0 oklch(75% 0.5 220 / 0.9),
+      10px 0 0 oklch(70% 0.45 280 / 0.7),
+      15px 0 0 oklch(75% 0.4 25 / 0.5);
+  }
+  89% {
+    opacity: 0.4;
+    transform: translateX(3px) skewX(0);
+    box-shadow: 4px 0 0 oklch(70% 0.35 220 / 0.6);
   }
 }
 

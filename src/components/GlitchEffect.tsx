@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { cva, cx, type VariantProps } from "class-variance-authority";
 import "./GlitchEffect.css";
 
@@ -30,6 +31,16 @@ export default function GlitchEffect({
   scanlines = false,
   disabled = false
 }: Props) {
+  // Generate random delays once per instance for desynchronized animations
+  const delays = useMemo(
+    () => ({
+      base: Math.random() * 3, // 0-3s offset for main animation cycle
+      before: Math.random() * 0.5, // Slight offset for ::before pseudo-element
+      after: Math.random() * 0.5 // Slight offset for ::after pseudo-element
+    }),
+    []
+  );
+
   if (disabled) {
     return <>{children}</>;
   }
@@ -41,6 +52,13 @@ export default function GlitchEffect({
         scanlines && "GlitchEffect--scanlines",
         className
       )}
+      style={
+        {
+          "--glitch-delay": `${delays.base}s`,
+          "--glitch-delay-before": `${delays.before}s`,
+          "--glitch-delay-after": `${delays.after}s`
+        } as React.CSSProperties
+      }
     >
       {children}
     </span>
