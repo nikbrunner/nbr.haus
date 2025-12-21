@@ -2,16 +2,13 @@ import Job from "../../components/Job";
 import LookingForJob from "./LookingForJob";
 import { useTranslation } from "@/i18n";
 import { tech } from "@/config";
-import GlitchEffect from "../../components/GlitchEffect";
 
 export default function Jobs() {
   const { t } = useTranslation();
 
   return (
     <>
-      <GlitchEffect>
-        <LookingForJob />
-      </GlitchEffect>
+      <LookingForJob />
 
       <Job
         company={t.index.jobs.dealerCenter.company}

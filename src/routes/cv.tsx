@@ -84,7 +84,8 @@ function CVPage() {
               {t.index.jobs.dealerCenter.period} • Landshut, Germany
             </span>
             <span className="CV__job-tech">
-              <strong>Tech:</strong> {jobTech.dealerCenter.map(t => t.name).join(", ")}
+              <strong>Tech:</strong>{" "}
+              {jobTech.dealerCenter.map(t => t.name).join(", ")}
             </span>
           </div>
           <p className="CV__job-intro">{t.cv.jobs.dealerCenter.intro}</p>
