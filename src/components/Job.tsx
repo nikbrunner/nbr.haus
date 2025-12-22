@@ -24,11 +24,11 @@ export default function Job({ company, position, period, tech, children }: Props
           {
             label: t.common.jobs.meta.tech,
             value: (
-              <div className="Job__tags">
+              <span className="Job__tags">
                 {tech.map(item => (
                   <ClickableTag key={item.name} {...item} />
                 ))}
-              </div>
+              </span>
             )
           }
         ]

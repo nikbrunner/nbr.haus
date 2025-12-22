@@ -33,8 +33,8 @@ export default function SpecList({
     <div className={variants({ padding, className })}>
       {items.map((item, index) => (
         <div key={index} className="SpecList__item" style={{ gridTemplateColumns }}>
-          <p className="SpecList__label">{item.label}</p>
-          <p className="SpecList__value">{item.value}</p>
+          <span className="SpecList__label">{item.label}</span>
+          <span className="SpecList__value">{item.value}</span>
         </div>
       ))}
     </div>

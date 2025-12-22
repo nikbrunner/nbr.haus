@@ -2,13 +2,16 @@ import Job from "../../components/Job";
 import LookingForJob from "./LookingForJob";
 import { useTranslation } from "@/i18n";
 import { tech } from "@/config";
+import { ClientOnly } from "@tanstack/react-router";
 
 export default function Jobs() {
   const { t } = useTranslation();
 
   return (
     <>
-      <LookingForJob />
+      <ClientOnly>
+        <LookingForJob />
+      </ClientOnly>
 
       <Job
         company={t.index.jobs.dealerCenter.company}

@@ -50,23 +50,12 @@
 }
 
 @media (min-width: 1800px) {
-  .Index__layout--three-columns {
-    display: none;
-  }
-
   .Index__layout {
     gap: var(--size-10);
   }
 
-  .Index__layout--four-columns {
+  .Index__layout--three-columns {
     display: grid;
-    grid-template-columns: repeat(4, var(--size-content-2));
-  }
-}
-
-@media (min-width: 2440px) {
-  .Index__layout--four-columns {
-    display: grid;
-    grid-template-columns: repeat(4, var(--size-content-3));
+    grid-template-columns: repeat(3, var(--size-content-3));
   }
 }
