@@ -1,6 +1,6 @@
 import "./ControlPanelColorDot.css";
 
-interface ControlPanelColorDotProps {
+interface Props {
   /** Hue value (0-360) for the color dot */
   hue: number;
 }
@@ -8,7 +8,7 @@ interface ControlPanelColorDotProps {
 /**
  * ControlPanelColorDot - A colored dot for accent color display.
  */
-export function ControlPanelColorDot({ hue }: ControlPanelColorDotProps) {
+export function ControlPanelColorDot({ hue }: Props) {
   return (
     <span
       className="ControlPanelColorDot"

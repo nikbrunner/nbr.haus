@@ -13,21 +13,17 @@ const variants = cva("PrintSection", {
   }
 });
 
-type PrintSectionProps = {
+interface Props extends VariantProps<typeof variants> {
   children: ReactNode;
   className?: string;
-} & VariantProps<typeof variants>;
+}
 
 /**
  * PrintSection - A section wrapper with print-aware page break control.
  * Use breakInside="avoid" (default) to keep content together on a page.
  * Use breakInside="auto" to allow content to break across pages.
  */
-export function PrintSection({
-  children,
-  className,
-  breakInside
-}: PrintSectionProps) {
+export function PrintSection({ children, className, breakInside }: Props) {
   return (
     <section className={variants({ breakInside, className })}>{children}</section>
   );

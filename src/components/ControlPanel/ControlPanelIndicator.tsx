@@ -9,7 +9,7 @@ const variants = cva("ControlPanelIndicator", {
   }
 });
 
-interface ControlPanelIndicatorProps {
+interface Props {
   /** Whether the indicator is visually disabled (grayed out) */
   disabled?: boolean;
   /** Content to render inside the indicator */
@@ -20,9 +20,6 @@ interface ControlPanelIndicatorProps {
  * ControlPanelIndicator - Display-only cell for the indicator column.
  * Always renders as a div, shows current value without interactivity.
  */
-export function ControlPanelIndicator({
-  disabled,
-  children
-}: ControlPanelIndicatorProps) {
+export function ControlPanelIndicator({ disabled, children }: Props) {
   return <div className={variants({ disabled })}>{children}</div>;
 }

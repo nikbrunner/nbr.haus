@@ -12,14 +12,14 @@ const variants = cva("SpecList", {
   }
 });
 
-type Props = {
+interface Props extends VariantProps<typeof variants> {
   items: Array<{
     label: React.ReactNode;
     value: React.ReactNode;
   }>;
   className?: string;
   gridTemplateColumns?: React.CSSProperties["gridTemplateColumns"];
-} & VariantProps<typeof variants>;
+}
 
 export default function SpecList({
   items,

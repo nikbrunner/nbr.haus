@@ -1,6 +1,6 @@
 import { cx } from "class-variance-authority";
 
-type Props = React.ComponentProps<"a">;
+interface Props extends React.ComponentProps<"a"> {}
 
 export default function Link(props: Props) {
   return (
