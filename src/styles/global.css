@@ -6,8 +6,8 @@
 /* Component styles - consolidated here to ensure SSR includes them */
 /* Routes */
 @import "../routes/BaseLayout.css";
-@import "../routes/index.css";
-@import "../routes/cv.css";
+@import "../routes/(home)/index.css";
+@import "../routes/cv/cv.css";
 
 /* Components */
 @import "../components/Badge.css";
@@ -33,11 +33,11 @@
 @import "../components/ControlPanel/ControlPanelColorDot.css";
 
 /* Content blocks */
-@import "../content-blocks/index/About.css";
-@import "../content-blocks/index/Connect.css";
+@import "../content-blocks/About/About.css";
+@import "../content-blocks/Connect/Connect.css";
 @import "../content-blocks/index/ProfilePicture.css";
-@import "../content-blocks/index/Projects.css";
-@import "../content-blocks/index/LookingForJob.css";
+@import "../content-blocks/Projects/Projects.css";
+@import "../content-blocks/Jobs/LookingForJob.css";
 
 *,
 *::before,

@@ -1,13 +1,16 @@
-import Project from "../../components/Project";
-import { useTranslation } from "@/i18n";
+import Project from "@/components/Project";
+import { useTexts } from "@/i18n";
 import { tech } from "@/config";
+import { texts as en } from "./Projects.en";
+import { texts as de } from "./Projects.de";
+import "./Projects.css";
 
 export default function Projects() {
-  const { t } = useTranslation();
+  const t = useTexts({ en, de });
 
   return (
     <>
-      <p className="Projects__intro">{t.index.projects.intro}</p>
+      <p className="Projects__intro">{t.intro}</p>
 
       <div className="Projects__list">
         <Project
@@ -34,9 +37,9 @@ export default function Projects() {
             }
           ]}
         >
-          <p>{t.index.projects.blackAtom.description1}</p>
-          <p>{t.index.projects.blackAtom.description2}</p>
-          <p>{t.index.projects.blackAtom.description3}</p>
+          <p>{t.blackAtom.description1}</p>
+          <p>{t.blackAtom.description2}</p>
+          <p>{t.blackAtom.description3}</p>
         </Project>
 
         <Project
@@ -49,8 +52,8 @@ export default function Projects() {
             type: "GitHub"
           }}
         >
-          <p>{t.index.projects.awdcs.description1}</p>
-          <p>{t.index.projects.awdcs.description2}</p>
+          <p>{t.awdcs.description1}</p>
+          <p>{t.awdcs.description2}</p>
         </Project>
 
         <Project
@@ -69,7 +72,7 @@ export default function Projects() {
             type: "GitHub"
           }}
         >
-          <p>{t.index.projects.koyo.description}</p>
+          <p>{t.koyo.description}</p>
         </Project>
 
         <Project
@@ -88,7 +91,7 @@ export default function Projects() {
             type: "GitHub"
           }}
         >
-          <p>{t.index.projects.nbrNvim.description}</p>
+          <p>{t.nbrNvim.description}</p>
         </Project>
       </div>
     </>

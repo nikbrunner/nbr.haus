@@ -1,17 +1,19 @@
 import Highlight from "@/components/Highlight";
-import { useTranslation, Trans } from "@/i18n";
-import SpecCard from "../../components/SpecCard";
-import SpecList from "../../components/SpecList";
-import Link from "../../components/Link";
-import Hr from "../../components/Hr";
+import { useTexts, Trans } from "@/i18n";
+import SpecCard from "@/components/SpecCard";
+import SpecList from "@/components/SpecList";
+import Link from "@/components/Link";
+import { texts as en } from "./About.en";
+import { texts as de } from "./About.de";
+import "./About.css";
 
 export default function About() {
-  const { t } = useTranslation();
+  const t = useTexts({ en, de });
   const experienceInYears = new Date().getFullYear() - 2020;
 
   const devTools = [
     {
-      label: t.index.devStack.editor,
+      label: t.devStack.editor,
       value: (
         <Link
           href="https://github.com/nikbrunner/dots/tree/main/common/.config/nvim"
@@ -23,7 +25,7 @@ export default function About() {
       )
     },
     {
-      label: t.index.devStack.terminal,
+      label: t.devStack.terminal,
       value: (
         <>
           <Link href="https://ghostty.dev" target="_blank" rel="noopener noreferrer">
@@ -41,7 +43,7 @@ export default function About() {
       )
     },
     {
-      label: t.index.devStack.git,
+      label: t.devStack.git,
       value: (
         <Link
           href="https://github.com/jesseduffield/lazygit"
@@ -53,7 +55,7 @@ export default function About() {
       )
     },
     {
-      label: t.index.devStack.secrets,
+      label: t.devStack.secrets,
       value: (
         <Link href="https://1password.com" target="_blank" rel="noopener noreferrer">
           1Password
@@ -61,7 +63,7 @@ export default function About() {
       )
     },
     {
-      label: t.index.devStack.aiAssistant,
+      label: t.devStack.aiAssistant,
       value: (
         <Link
           href="https://claude.com/product/claude-code"
@@ -78,28 +80,28 @@ export default function About() {
     <div className="About">
       <div className="About__section">
         <p>
-          {t.index.about.greeting}
+          {t.about.greeting}
           <br />
           <br />
           <Trans
-            text={t.index.about.intro.replace("{years}", String(experienceInYears))}
+            text={t.about.intro.replace("{years}", String(experienceInYears))}
             components={{
               highlight: children => <Highlight>{children}</Highlight>
             }}
           />
         </p>
 
-        <p>{t.index.about.ux}</p>
+        <p>{t.about.ux}</p>
 
-        <p>{t.index.about.independence}</p>
+        <p>{t.about.independence}</p>
 
-        <p>{t.index.about.passion}</p>
+        <p>{t.about.passion}</p>
 
-        <p>{t.index.about.personal}</p>
+        <p>{t.about.personal}</p>
       </div>
 
       <div className="About__section">
-        <SpecCard title={t.index.devStack.devTools}>
+        <SpecCard title={t.devStack.devTools}>
           <SpecList
             items={devTools}
             padding="small"
@@ -113,7 +115,7 @@ export default function About() {
             }}
           >
             <Trans
-              text={t.index.devStack.workflowInfo}
+              text={t.devStack.workflowInfo}
               components={{
                 link: children => (
                   <Link
@@ -131,15 +133,15 @@ export default function About() {
       </div>
 
       <div className="About__section">
-        <h3>{t.index.devStack.ai}</h3>
+        <h3>{t.devStack.ai}</h3>
 
-        <p>{t.index.devStack.aiIntro}</p>
+        <p>{t.devStack.aiIntro}</p>
 
-        <p>{t.index.devStack.aiLearning}</p>
+        <p>{t.devStack.aiLearning}</p>
 
         <p>
           <Trans
-            text={t.index.devStack.aiLimitsInfo}
+            text={t.devStack.aiLimitsInfo}
             components={{
               highlight: children => <Highlight>{children}</Highlight>
             }}
@@ -148,7 +150,7 @@ export default function About() {
 
         <p>
           <Trans
-            text={t.index.devStack.aiUsage}
+            text={t.devStack.aiUsage}
             components={{
               link: children => (
                 <Link
@@ -164,11 +166,11 @@ export default function About() {
         </p>
 
         <SpecCard
-          title={t.index.devStack.mcps}
+          title={t.devStack.mcps}
           description={
             <>
-              <p>{t.index.devStack.mcpsIntro}</p>
-              <p>{t.index.devStack.mcpsUsed}</p>
+              <p>{t.devStack.mcpsIntro}</p>
+              <p>{t.devStack.mcpsUsed}</p>
             </>
           }
         >
@@ -177,7 +179,7 @@ export default function About() {
             gridTemplateColumns="0.75fr 1fr"
             items={[
               {
-                label: t.index.devStack.docLookup,
+                label: t.devStack.docLookup,
                 value: (
                   <Link
                     href="https://ref.tools/"
@@ -189,7 +191,7 @@ export default function About() {
                 )
               },
               {
-                label: t.index.devStack.webSearch,
+                label: t.devStack.webSearch,
                 value: (
                   <Link
                     href="https://exa.ai"
@@ -201,7 +203,7 @@ export default function About() {
                 )
               },
               {
-                label: t.index.devStack.browser,
+                label: t.devStack.browser,
                 value: (
                   <Link
                     href="https://github.com/ChromeDevTools/chrome-devtools-mcp/"

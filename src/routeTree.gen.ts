@@ -9,65 +9,58 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as CvRouteImport } from './routes/cv'
 import { Route as SplatRouteImport } from './routes/$'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as CvIndexRouteImport } from './routes/cv/index'
+import { Route as homeIndexRouteImport } from './routes/(home)/index'
 
-const CvRoute = CvRouteImport.update({
-  id: '/cv',
-  path: '/cv',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SplatRoute = SplatRouteImport.update({
   id: '/$',
   path: '/$',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
+const CvIndexRoute = CvIndexRouteImport.update({
+  id: '/cv/',
+  path: '/cv/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const homeIndexRoute = homeIndexRouteImport.update({
+  id: '/(home)/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
   '/$': typeof SplatRoute
-  '/cv': typeof CvRoute
+  '/': typeof homeIndexRoute
+  '/cv': typeof CvIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
   '/$': typeof SplatRoute
-  '/cv': typeof CvRoute
+  '/': typeof homeIndexRoute
+  '/cv': typeof CvIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
   '/$': typeof SplatRoute
-  '/cv': typeof CvRoute
+  '/(home)/': typeof homeIndexRoute
+  '/cv/': typeof CvIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$' | '/cv'
+  fullPaths: '/$' | '/' | '/cv'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$' | '/cv'
-  id: '__root__' | '/' | '/$' | '/cv'
+  to: '/$' | '/' | '/cv'
+  id: '__root__' | '/$' | '/(home)/' | '/cv/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
   SplatRoute: typeof SplatRoute
-  CvRoute: typeof CvRoute
+  homeIndexRoute: typeof homeIndexRoute
+  CvIndexRoute: typeof CvIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/cv': {
-      id: '/cv'
-      path: '/cv'
-      fullPath: '/cv'
-      preLoaderRoute: typeof CvRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/$': {
       id: '/$'
       path: '/$'
@@ -75,20 +68,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SplatRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
+    '/cv/': {
+      id: '/cv/'
+      path: '/cv'
+      fullPath: '/cv'
+      preLoaderRoute: typeof CvIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(home)/': {
+      id: '/(home)/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+      preLoaderRoute: typeof homeIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
-  CvRoute: CvRoute,
+  homeIndexRoute: homeIndexRoute,
+  CvIndexRoute: CvIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

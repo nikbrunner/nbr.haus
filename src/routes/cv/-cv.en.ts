@@ -1,4 +1,4 @@
-export const cv = {
+export const texts = {
   printButton: "Print CV",
   tagline:
     "Software Engineer specializing in Frontend Development with {years} years of experience in building modern web applications",
@@ -14,6 +14,9 @@ export const cv = {
   },
   jobs: {
     dealerCenter: {
+      company: "DealerCenter Digital",
+      position: "Software Engineer / Frontend Lead",
+      period: "Sep 2020 – Jan 2026",
       intro:
         "BikeCenter is an Electron-based point-of-sale application used by hundreds of bike retailers across Germany. I joined as a junior and grew into a frontend lead role, owning architecture decisions, managing frontend priorities, and mentoring newer team members.",
       bullets: [
@@ -26,9 +29,15 @@ export const cv = {
       ]
     },
     divaE: {
+      company: "diva-e",
+      position: "Junior Frontend Developer",
+      period: "Mar 2020 – Sep 2020",
       bullets: ["Developed frontend features for enterprise web applications"]
     },
     campudus: {
+      company: "Campudus",
+      position: "Intern",
+      period: "Dec 2019 – Feb 2020",
       bullets: [
         "Completed full-stack internship developing features with React and Node.js"
       ]

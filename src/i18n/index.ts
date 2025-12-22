@@ -11,10 +11,9 @@ export {
 } from "./store";
 
 // Hooks
-export { useTranslation, useLocale } from "./useTranslation";
+export { useLocale } from "./useTranslation";
+export { useTexts } from "./useTexts";
+export { useSharedTexts } from "./useSharedTexts";
 
 // Components
 export { Trans } from "./Trans";
-
-// Translations
-export { translations } from "./translations";

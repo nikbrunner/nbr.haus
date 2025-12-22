@@ -1,7 +1,7 @@
-import type { Widen } from "../../types";
-import type { cv as en } from "../en/cv";
+import type { Widen } from "@/i18n";
+import type { texts as en } from "./-cv.en";
 
-export const cv: Widen<typeof en> = {
+export const texts: Widen<typeof en> = {
   printButton: "Lebenslauf drucken",
   tagline:
     "Software-Ingenieur mit Spezialisierung auf Frontend-Entwicklung und {years} Jahren Erfahrung im Bau moderner Webanwendungen",
@@ -17,6 +17,9 @@ export const cv: Widen<typeof en> = {
   },
   jobs: {
     dealerCenter: {
+      company: "DealerCenter Digital",
+      position: "Software-Ingenieur / Frontend-Lead",
+      period: "Sep. 2020 – Jan. 2026",
       intro:
         "BikeCenter ist eine Electron-basierte Point-of-Sale-Anwendung, die von hunderten Fahrradhändlern in Deutschland genutzt wird. Ich startete als Junior und wuchs in eine Frontend-Lead-Rolle hinein, übernahm Architektur-Entscheidungen, managte Frontend-Prioritäten und mentorte neue Teammitglieder.",
       bullets: [
@@ -29,9 +32,15 @@ export const cv: Widen<typeof en> = {
       ]
     },
     divaE: {
+      company: "diva-e",
+      position: "Junior Frontend-Entwickler",
+      period: "März 2020 – Sep. 2020",
       bullets: ["Entwickelte Frontend-Features für Enterprise-Webanwendungen"]
     },
     campudus: {
+      company: "Campudus",
+      position: "Praktikant",
+      period: "Dez. 2019 – Feb. 2020",
       bullets: [
         "Absolvierte Fullstack-Praktikum mit Entwicklung von Features in React und Node.js"
       ]

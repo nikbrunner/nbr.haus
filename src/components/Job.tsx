@@ -2,7 +2,7 @@ import ClickableTag from "./ClickableTag";
 import SpecList from "./SpecList";
 
 import "./Job.css";
-import { useTranslation } from "@/i18n";
+import { useSharedTexts } from "@/i18n";
 import type { Tech } from "@/config";
 
 interface Props {
@@ -14,15 +14,15 @@ interface Props {
 }
 
 export default function Job({ company, position, period, tech, children }: Props) {
-  const { t } = useTranslation();
+  const texts = useSharedTexts();
 
   const specs = [
-    { label: t.common.jobs.meta.position, value: position },
-    { label: t.common.jobs.meta.period, value: period },
+    { label: texts.jobs.meta.position, value: position },
+    { label: texts.jobs.meta.period, value: period },
     ...(tech.length > 0
       ? [
           {
-            label: t.common.jobs.meta.tech,
+            label: texts.jobs.meta.tech,
             value: (
               <span className="Job__tags">
                 {tech.map(item => (

@@ -1,19 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import Section from "../components/Section";
-import About from "../content-blocks/index/About";
-import Connect from "../content-blocks/index/Connect";
-import Jobs from "../content-blocks/index/Jobs";
-import ProfilePicture from "../content-blocks/index/ProfilePicture";
-import Projects from "../content-blocks/index/Projects";
-import { useTranslation } from "@/i18n";
+import Section from "@/components/Section";
+import About from "@/content-blocks/About/About";
+import Connect from "@/content-blocks/Connect/Connect";
+import Jobs from "@/content-blocks/Jobs/Jobs";
+import ProfilePicture from "@/content-blocks/index/ProfilePicture";
+import Projects from "@/content-blocks/Projects/Projects";
+import { useSharedTexts } from "@/i18n";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/(home)/")({
   component: IndexPage
 });
 
 function IndexPage() {
-  const { t } = useTranslation();
+  const shared = useSharedTexts();
 
   return (
     <>
@@ -27,15 +27,15 @@ function IndexPage() {
             <Connect />
           </Section>
 
-          <Section title={t.common.sections.about}>
+          <Section title={shared.sections.about}>
             <About />
           </Section>
 
-          <Section title={t.common.sections.employment}>
+          <Section title={shared.sections.employment}>
             <Jobs />
           </Section>
 
-          <Section title={t.common.sections.projects}>
+          <Section title={shared.sections.projects}>
             <Projects />
           </Section>
         </div>
@@ -51,17 +51,17 @@ function IndexPage() {
             <Connect />
           </Section>
 
-          <Section title={t.common.sections.about}>
+          <Section title={shared.sections.about}>
             <About />
           </Section>
         </div>
 
         <div className="Index__column">
-          <Section title={t.common.sections.employment}>
+          <Section title={shared.sections.employment}>
             <Jobs />
           </Section>
 
-          <Section title={t.common.sections.projects}>
+          <Section title={shared.sections.projects}>
             <Projects />
           </Section>
         </div>
@@ -77,19 +77,19 @@ function IndexPage() {
             <Connect />
           </Section>
 
-          <Section title={t.common.sections.about}>
+          <Section title={shared.sections.about}>
             <About />
           </Section>
         </div>
 
         <div className="Index__column">
-          <Section title={t.common.sections.employment}>
+          <Section title={shared.sections.employment}>
             <Jobs />
           </Section>
         </div>
 
         <div className="Index__column">
-          <Section title={t.common.sections.projects}>
+          <Section title={shared.sections.projects}>
             <Projects />
           </Section>
         </div>
