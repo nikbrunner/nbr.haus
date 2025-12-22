@@ -53,6 +53,14 @@ export default function About() {
       )
     },
     {
+      label: t.index.devStack.secrets,
+      value: (
+        <Link href="https://1password.com" target="_blank" rel="noopener noreferrer">
+          1Password
+        </Link>
+      )
+    },
+    {
       label: t.index.devStack.aiAssistant,
       value: (
         <Link
@@ -63,143 +71,88 @@ export default function About() {
           Claude Code
         </Link>
       )
-    },
-    {
-      label: t.index.devStack.secrets,
-      value: (
-        <Link href="https://1password.com" target="_blank" rel="noopener noreferrer">
-          1Password
-        </Link>
-      )
     }
   ];
 
   return (
     <div className="About">
-      <p>
-        {t.index.about.greeting}
-        <br />
-        <br />
-        <Trans
-          text={t.index.about.intro.replace("{years}", String(experienceInYears))}
-          components={{
-            highlight: children => <Highlight>{children}</Highlight>
-          }}
-        />
-      </p>
-
-      <p>{t.index.about.ux}</p>
-
-      <p>{t.index.about.independence}</p>
-
-      <p>{t.index.about.passion}</p>
-
-      <p>{t.index.about.personal}</p>
-
-      <Hr />
-
-      <SpecCard
-        title={t.index.devStack.ai}
-        description={
-          <>
-            <p>{t.index.devStack.aiIntro}</p>
-
-            <p>{t.index.devStack.aiLearning}</p>
-
-            <p>
-              <Trans
-                text={t.index.devStack.aiLimitsInfo}
-                components={{
-                  highlight: children => <Highlight>{children}</Highlight>
-                }}
-              />
-            </p>
-
-            <p>
-              <Trans
-                text={t.index.devStack.aiUsage}
-                components={{
-                  link: children => (
-                    <Link
-                      href="https://claude.com/product/claude-code"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {children}
-                    </Link>
-                  )
-                }}
-              />
-            </p>
-
-            <Hr />
-
-            <h3>{t.index.devStack.mcps}</h3>
-
-            <div className="DevStack__mcps">
-              <p>{t.index.devStack.mcpsIntro}</p>
-              <p>{t.index.devStack.mcpsUsed}</p>
-
-              <SpecList
-                items={[
-                  {
-                    label: t.index.devStack.docLookup,
-                    value: (
-                      <Link
-                        href="https://ref.tools/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        ref.tools
-                      </Link>
-                    )
-                  },
-                  {
-                    label: t.index.devStack.webSearch,
-                    value: (
-                      <Link
-                        href="https://exa.ai"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Exa
-                      </Link>
-                    )
-                  },
-                  {
-                    label: t.index.devStack.browser,
-                    value: (
-                      <Link
-                        href="https://github.com/ChromeDevTools/chrome-devtools-mcp/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Chrome DevTools
-                      </Link>
-                    )
-                  }
-                ]}
-              />
-            </div>
-          </>
-        }
-      />
-
-      <SpecCard title={t.index.devStack.devTools}>
-        <SpecList items={devTools} padding="small" />
-        <p
-          style={{
-            padding: "var(--size-2)",
-            backgroundColor: "var(--bg-main)",
-            margin: 0
-          }}
-        >
+      <div className="About__section">
+        <p>
+          {t.index.about.greeting}
+          <br />
+          <br />
           <Trans
-            text={t.index.devStack.workflowInfo}
+            text={t.index.about.intro.replace("{years}", String(experienceInYears))}
+            components={{
+              highlight: children => <Highlight>{children}</Highlight>
+            }}
+          />
+        </p>
+
+        <p>{t.index.about.ux}</p>
+
+        <p>{t.index.about.independence}</p>
+
+        <p>{t.index.about.passion}</p>
+
+        <p>{t.index.about.personal}</p>
+      </div>
+
+      <div className="About__section">
+        <SpecCard title={t.index.devStack.devTools}>
+          <SpecList
+            items={devTools}
+            padding="small"
+            gridTemplateColumns="0.75fr 1fr"
+          />
+          <p
+            style={{
+              padding: "var(--size-2)",
+              backgroundColor: "var(--bg-main)",
+              margin: 0
+            }}
+          >
+            <Trans
+              text={t.index.devStack.workflowInfo}
+              components={{
+                link: children => (
+                  <Link
+                    href="https://github.com/nikbrunner/dots"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {children}
+                  </Link>
+                )
+              }}
+            />
+          </p>
+        </SpecCard>
+      </div>
+
+      <div className="About__section">
+        <h3>{t.index.devStack.ai}</h3>
+
+        <p>{t.index.devStack.aiIntro}</p>
+
+        <p>{t.index.devStack.aiLearning}</p>
+
+        <p>
+          <Trans
+            text={t.index.devStack.aiLimitsInfo}
+            components={{
+              highlight: children => <Highlight>{children}</Highlight>
+            }}
+          />
+        </p>
+
+        <p>
+          <Trans
+            text={t.index.devStack.aiUsage}
             components={{
               link: children => (
                 <Link
-                  href="https://github.com/nikbrunner/dots"
+                  href="https://claude.com/product/claude-code"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -209,7 +162,60 @@ export default function About() {
             }}
           />
         </p>
-      </SpecCard>
+
+        <SpecCard
+          title={t.index.devStack.mcps}
+          description={
+            <>
+              <p>{t.index.devStack.mcpsIntro}</p>
+              <p>{t.index.devStack.mcpsUsed}</p>
+            </>
+          }
+        >
+          <SpecList
+            padding="small"
+            gridTemplateColumns="0.75fr 1fr"
+            items={[
+              {
+                label: t.index.devStack.docLookup,
+                value: (
+                  <Link
+                    href="https://ref.tools/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    ref.tools
+                  </Link>
+                )
+              },
+              {
+                label: t.index.devStack.webSearch,
+                value: (
+                  <Link
+                    href="https://exa.ai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Exa
+                  </Link>
+                )
+              },
+              {
+                label: t.index.devStack.browser,
+                value: (
+                  <Link
+                    href="https://github.com/ChromeDevTools/chrome-devtools-mcp/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Chrome DevTools
+                  </Link>
+                )
+              }
+            ]}
+          />
+        </SpecCard>
+      </div>
     </div>
   );
 }
