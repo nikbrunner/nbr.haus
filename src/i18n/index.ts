@@ -11,7 +11,7 @@ export {
 } from "./store";
 
 // Hooks
-export { useLocale } from "./useTranslation";
+export { useLocale } from "./useLocale";
 export { useTexts } from "./useTexts";
 export { useSharedTexts } from "./useSharedTexts";
 

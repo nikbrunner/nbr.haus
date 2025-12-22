@@ -1,4 +1,4 @@
-import { useLocale } from "./useTranslation";
+import { useLocale } from "./useLocale";
 import { texts as en } from "./shared.en";
 import { texts as de } from "./shared.de";
 
