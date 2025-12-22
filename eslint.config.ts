@@ -88,7 +88,8 @@ export default defineConfig([
         "error",
         {
           allowProperties: ["user-select"],
-          allowSelectors: ["nesting", "has", "selection"]
+          allowSelectors: ["nesting", "has", "selection"],
+          allowFunctions: ["oklch", "light-dark"]
         }
       ]
     }

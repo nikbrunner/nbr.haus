@@ -82,8 +82,8 @@ function CVPage() {
           <div className="CV__job-header">
             <h3 className="CV__job-title">{t.jobs.dealerCenter.position}</h3>
             <span className="CV__job-company">
-              {t.jobs.dealerCenter.company} • {t.jobs.dealerCenter.period} • Landshut,
-              Germany
+              {t.jobs.dealerCenter.company} • {t.jobs.dealerCenter.period} •
+              Landshut, Germany
             </span>
             <span className="CV__job-tech">
               <strong>Tech:</strong>{" "}
@@ -105,7 +105,8 @@ function CVPage() {
               {t.jobs.divaE.company} • {t.jobs.divaE.period} • Munich, Germany
             </span>
             <span className="CV__job-tech">
-              <strong>Tech:</strong> {jobTech.divaE.map(tech => tech.name).join(", ")}
+              <strong>Tech:</strong>{" "}
+              {jobTech.divaE.map(tech => tech.name).join(", ")}
             </span>
           </div>
           <ul className="CV__job-list">
@@ -118,10 +119,12 @@ function CVPage() {
           <div className="CV__job-header">
             <h3 className="CV__job-title">{t.jobs.campudus.position}</h3>
             <span className="CV__job-company">
-              {t.jobs.campudus.company} • {t.jobs.campudus.period} • Landshut, Germany
+              {t.jobs.campudus.company} • {t.jobs.campudus.period} • Landshut,
+              Germany
             </span>
             <span className="CV__job-tech">
-              <strong>Tech:</strong> {jobTech.campudus.map(tech => tech.name).join(", ")}
+              <strong>Tech:</strong>{" "}
+              {jobTech.campudus.map(tech => tech.name).join(", ")}
             </span>
           </div>
           <ul className="CV__job-list">

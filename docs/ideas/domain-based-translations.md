@@ -4,7 +4,7 @@
 
 Current structure organizes by page:
 
-```
+```text
 translations/
   de/
     index.ts   # Portfolio page texts
@@ -17,7 +17,7 @@ This leads to duplication — job descriptions, skills, etc. exist in both files
 
 Organize by content domain instead:
 
-```
+```text
 translations/
   de/
     jobs.ts       # All job-related content
