@@ -2,6 +2,8 @@
 @import "open-props/borders";
 
 @import "./fonts.css";
+@import "./spacings.css";
+@import "./flex.css";
 
 /* Component styles - consolidated here to ensure SSR includes them */
 /* Routes */
@@ -34,7 +36,6 @@
 @import "../components/ControlPanel/ControlPanelColorDot.css";
 
 /* Content blocks */
-@import "../content-blocks/About/About.css";
 @import "../content-blocks/Connect/Connect.css";
 @import "../content-blocks/index/ProfilePicture.css";
 @import "../content-blocks/Projects/Projects.css";

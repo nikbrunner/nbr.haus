@@ -5,7 +5,6 @@ import SpecList from "@/components/SpecList";
 import Link from "@/components/Link";
 import { texts as en } from "./About.en";
 import { texts as de } from "./About.de";
-import "./About.css";
 
 export default function About() {
   const t = useTexts({ en, de });
@@ -77,8 +76,8 @@ export default function About() {
   ];
 
   return (
-    <div className="About">
-      <div className="About__section">
+    <div className="flex flex-col gap-fluid-4">
+      <div>
         <p>
           {t.about.greeting}
           <br />
@@ -100,7 +99,7 @@ export default function About() {
         <p>{t.about.personal}</p>
       </div>
 
-      <div className="About__section">
+      <div>
         <SpecCard title={t.devStack.devTools}>
           <SpecList
             items={devTools}
@@ -132,7 +131,7 @@ export default function About() {
         </SpecCard>
       </div>
 
-      <div className="About__section">
+      <div>
         <h3>{t.devStack.ai}</h3>
 
         <p>{t.devStack.aiIntro}</p>
@@ -148,7 +147,7 @@ export default function About() {
           />
         </p>
 
-        <p>
+        <p className="mb-6">
           <Trans
             text={t.devStack.aiUsage}
             components={{
