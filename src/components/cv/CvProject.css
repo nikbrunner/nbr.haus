@@ -1,0 +1,32 @@
+.CvProject {
+  margin-bottom: var(--print-size-3);
+}
+
+.CvProject:last-child {
+  margin-bottom: 0;
+}
+
+.CvProject__title {
+  font-size: var(--print-font-size-2);
+  font-weight: 600;
+  margin: 0;
+  display: inline;
+}
+
+.CvProject__subtitle {
+  font-size: var(--print-font-size-1);
+  color: var(--text-2);
+  font-style: italic;
+  margin-left: var(--print-size-2);
+}
+
+.CvProject__list {
+  margin: var(--print-size-1) 0 0;
+  padding-left: var(--print-size-5);
+  font-size: var(--print-font-size-1);
+  line-height: var(--print-font-lineheight-2);
+}
+
+.CvProject__list li {
+  margin-bottom: var(--print-size-1);
+}

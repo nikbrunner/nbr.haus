@@ -1,5 +1,5 @@
 import type { Widen } from "@/i18n";
-import type { texts as en } from "./-cv.en";
+import type { texts as en } from "./cv.en";
 
 export const texts: Widen<typeof en> = {
   printButton: "Lebenslauf drucken",
@@ -7,6 +7,13 @@ export const texts: Widen<typeof en> = {
     "Software-Ingenieur mit Spezialisierung auf Frontend-Entwicklung und {years} Jahren Erfahrung im Bau moderner Webanwendungen",
   summary:
     "Spezialisiert auf Design-Systeme, Frontend-Architektur und großangelegte Migrationen. Leitete technische Entscheidungen, die tausende Dateien betrafen, und mentorte Junior-Entwickler. Arbeite gerne selbstständig und blühe in kollaborativen Teams auf. Integriert KI-Tools in tägliche Entwicklungs-Workflows.",
+  contact: {
+    location: "Landshut, Deutschland",
+    website: "nbr.haus",
+    email: "nik@nbr.haus",
+    github: "github.com/nikbrunner",
+    linkedin: "linkedin.com/in/nbru"
+  },
   sections: {
     workExperience: "Berufserfahrung",
     sideProjects: "Nebenprojekte",
@@ -20,7 +27,8 @@ export const texts: Widen<typeof en> = {
       company: "DealerCenter Digital",
       position: "Software-Ingenieur / Frontend-Lead",
       period: "Sep. 2020 – Jan. 2026",
-      intro:
+      location: "Landshut, Germany",
+      description:
         "BikeCenter ist eine Electron-basierte Point-of-Sale-Anwendung, die von hunderten Fahrradhändlern in Deutschland genutzt wird. Ich startete als Junior und wuchs in eine Frontend-Lead-Rolle hinein, übernahm Architektur-Entscheidungen, managte Frontend-Prioritäten und mentorte neue Teammitglieder.",
       bullets: [
         "Leitete Frontend-Architektur für BikeCenter (Electron/React-Anwendung), baute und wartete das eigene Design-System",
@@ -35,15 +43,17 @@ export const texts: Widen<typeof en> = {
       company: "diva-e",
       position: "Junior Frontend-Entwickler",
       period: "März 2020 – Sep. 2020",
-      bullets: ["Entwickelte Frontend-Features für Enterprise-Webanwendungen"]
+      location: "Munich, Germany",
+      description:
+        "Mitarbeit an einer großen E-Commerce-Plattform und Aufbau einer internen Social-Plattform mit React, GraphQL (Apollo) und SCSS. Als DealerCenter Digital eine Frontend-Position anbot, entschied ich mich für den Wechsel — eine Chance, die besser zu meinen Zielen passte."
     },
     campudus: {
       company: "Campudus",
       position: "Praktikant",
       period: "Dez. 2019 – Feb. 2020",
-      bullets: [
-        "Absolvierte Fullstack-Praktikum mit Entwicklung von Features in React und Node.js"
-      ]
+      location: "Landshut, Germany",
+      description:
+        "Ich habe eine Fullstack-Anwendung zur Zubehörbestellung von Grund auf gebaut — Design, Architektur, Backend und Frontend — während eines 3-monatigen Praktikums bei der Schwesterfirma von DealerCenter Digital."
     }
   },
   projects: {

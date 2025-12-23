@@ -1,4 +1,5 @@
 export const texts = {
+  name: "Nikolaus Brunner",
   sections: {
     about: "About",
     employment: "Employment",

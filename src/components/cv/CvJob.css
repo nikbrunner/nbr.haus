@@ -1,0 +1,89 @@
+.CvJob {
+  display: flex;
+  flex-direction: column;
+  gap: var(--print-size-4);
+
+  & > * {
+    margin: 0;
+  }
+}
+
+.CvJob__header {
+  display: grid;
+  grid-template-columns: 0.65fr 0.35fr;
+  grid-template-rows: repeat(2, auto);
+  grid-template-areas:
+    "company location"
+    "position period";
+
+  & > * {
+    margin: 0;
+  }
+}
+
+.CvJob__company {
+  grid-area: company;
+  font-size: var(--print-font-size-4);
+  font-weight: var(--font-weight-9);
+  color: var(--fg-accent);
+  align-self: end;
+}
+
+.CvJob__position {
+  grid-area: position;
+  font-size: var(--print-font-size-3);
+  font-weight: var(--font-weight-7);
+  color: var(--fg-main);
+}
+
+.CvJob__location {
+  grid-area: location;
+  align-self: end;
+}
+
+.CvJob__period {
+  grid-area: period;
+}
+
+.CvJob__technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--print-size-1);
+  font-size: var(--print-font-size-1);
+  font-weight: var(--font-weight-4);
+}
+
+.CvJob__period,
+.CvJob__location {
+  display: block;
+  font-size: var(--print-font-size-1);
+  font-weight: var(--font-weight-6);
+  color: var(--fg-support);
+}
+
+.CvJob__intro {
+  font-size: var(--print-font-size-2);
+  font-weight: var(--font-weight-6);
+  line-height: var(--print-font-lineheight-2);
+  margin: 0;
+}
+
+.CvJob__bullets {
+  padding-left: var(--print-size-4);
+  list-style-type: none;
+  font-size: var(--print-font-size-1);
+  line-height: var(--print-font-lineheight-2);
+  margin: 0;
+}
+
+.CvJob__bullets li {
+  position: relative;
+  margin-bottom: var(--print-size-1);
+}
+
+/* Custom bullet styles */
+.CvJob__bullets li::before {
+  position: absolute;
+  left: calc(-1 * var(--print-size-4));
+  content: "-";
+}

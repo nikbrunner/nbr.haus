@@ -1,212 +1,136 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Github, Globe, Linkedin, Mail, MapPin } from "lucide-react";
 
-import profilePicture from "@/assets/images/profile_picture.jpg";
 import { tech } from "@/config";
-import { useTexts } from "@/i18n";
-import { PrintSection } from "@/components/PrintSection";
-import { texts as en } from "./-cv.en";
-import { texts as de } from "./-cv.de";
+import profilePicture from "@/assets/images/profile_picture.jpg";
+import { useSharedTexts, useTexts } from "@/i18n";
 
-const jobTech = {
-  dealerCenter: [
-    tech.react,
-    tech.typescript,
-    tech.scss,
-    tech.tanstackRouter,
-    tech.tanstackQuery,
-    tech.tanstackForm,
-    tech.redux,
-    tech.graphql,
-    tech.tailwind,
-    tech.electron,
-    tech.nodejs
-  ],
-  divaE: [tech.react, tech.typescript, tech.scss, tech.nodejs],
-  campudus: [tech.react, tech.nodejs]
-};
+import { texts as en } from "./cv.en";
+import { texts as de } from "./cv.de";
+
+import { CvSection } from "@/components/cv/CvSection";
+import { CvHeader } from "@/components/cv/CvHeader";
+import { CvJob } from "@/components/cv/CvJob";
+import { CvProject } from "@/components/cv/CvProject";
+import { CvSkills } from "@/components/cv/CvSkills";
+import { CvPriorExperience } from "@/components/cv/CvPriorExperience";
+import { CvInterests } from "@/components/cv/CvInterests";
 
 export const Route = createFileRoute("/cv/")({
-  component: CVPage
+  component: Page
 });
 
-function CVPage() {
-  const t = useTexts({ en, de });
+function Page() {
+  const sharedTexts = useSharedTexts();
+  const texts = useTexts({ en, de });
   const experienceInYears = new Date().getFullYear() - 2020;
 
   return (
     <div className="CV">
-      {/* Header */}
-      <header className="CV__header">
-        <div className="CV__header-content">
-          <h1 className="CV__name">Nikolaus Brunner</h1>
-          <p className="CV__tagline">
-            {t.tagline.replace("{years}", String(experienceInYears))}
-          </p>
-          <p className="CV__summary">
-            {t.summary.replace("{years}", String(experienceInYears))}
-          </p>
+      <CvHeader
+        name={sharedTexts.name}
+        tagline={texts.tagline.replace("{years}", String(experienceInYears))}
+        summary={texts.summary.replace("{years}", String(experienceInYears))}
+        img={profilePicture}
+        contact={{
+          location: texts.contact.location,
+          website: texts.contact.website,
+          email: texts.contact.email,
+          github: texts.contact.github,
+          linkedin: texts.contact.linkedin
+        }}
+      />
+
+      <CvSection title={texts.sections.workExperience} breakInside="auto">
+        <div className="flex flex-col gap-y-6">
+          <CvJob
+            company={texts.jobs.dealerCenter.company}
+            position={texts.jobs.dealerCenter.position}
+            period={texts.jobs.dealerCenter.period}
+            location={texts.jobs.dealerCenter.location}
+            intro={texts.jobs.dealerCenter.description}
+            bullets={texts.jobs.dealerCenter.bullets}
+            technologies={[
+              tech.react,
+              tech.typescript,
+              tech.scss,
+              tech.storybook,
+              tech.tanstackRouter,
+              tech.tanstackQuery,
+              tech.tanstackForm,
+              tech.redux,
+              tech.graphql,
+              tech.tailwind,
+              tech.electron,
+              tech.nodejs
+            ].map(tech => tech.name)}
+          />
+
+          <CvJob
+            company={texts.jobs.divaE.company}
+            position={texts.jobs.divaE.position}
+            period={texts.jobs.divaE.period}
+            location={texts.jobs.divaE.location}
+            intro={texts.jobs.divaE.description}
+            technologies={[tech.react, tech.typescript, tech.scss, tech.nodejs].map(
+              tech => tech.name
+            )}
+          />
+
+          <CvJob
+            company={texts.jobs.campudus.company}
+            position={texts.jobs.campudus.position}
+            period={texts.jobs.campudus.period}
+            location={texts.jobs.campudus.location}
+            intro={texts.jobs.campudus.description}
+            technologies={[tech.react, tech.nodejs].map(tech => tech.name)}
+          />
         </div>
-        <div className="CV__header-aside">
-          <img src={profilePicture} alt="Nikolaus Brunner" className="CV__photo" />
-          <div className="CV__contact">
-            <span>
-              <MapPin size={14} />
-              Landshut, Germany
-            </span>
-            <span>
-              <Globe size={14} />
-              nbr.haus
-            </span>
-            <span>
-              <Mail size={14} />
-              nik@nbr.haus
-            </span>
-            <span>
-              <Github size={14} />
-              github.com/nikbrunner
-            </span>
-            <span>
-              <Linkedin size={14} />
-              linkedin.com/in/nbru
-            </span>
-          </div>
-        </div>
-      </header>
+      </CvSection>
 
-      <PrintSection breakInside="auto">
-        {/* Work Experience */}
-        <h2 className="CV__section-title">{t.sections.workExperience}</h2>
+      <CvSection title={texts.sections.sideProjects} breakInside="auto">
+        <CvProject
+          title="Black Atom"
+          subtitle={texts.projects.blackAtom.subtitle}
+          bullets={texts.projects.blackAtom.bullets}
+        />
+        <CvProject
+          title="AWDCS"
+          subtitle={texts.projects.awdcs.subtitle}
+          bullets={texts.projects.awdcs.bullets}
+        />
+        <CvProject
+          title="kōyō"
+          subtitle={texts.projects.koyo.subtitle}
+          bullets={texts.projects.koyo.bullets}
+        />
+      </CvSection>
 
-        <article className="CV__job">
-          <div className="CV__job-header">
-            <h3 className="CV__job-title">{t.jobs.dealerCenter.position}</h3>
-            <span className="CV__job-company">
-              {t.jobs.dealerCenter.company} • {t.jobs.dealerCenter.period} •
-              Landshut, Germany
-            </span>
-            <span className="CV__job-tech">
-              <strong>Tech:</strong>{" "}
-              {jobTech.dealerCenter.map(tech => tech.name).join(", ")}
-            </span>
-          </div>
-          <p className="CV__job-intro">{t.jobs.dealerCenter.intro}</p>
-          <ul className="CV__job-list">
-            {t.jobs.dealerCenter.bullets.map((bullet, i) => (
-              <li key={i}>{bullet}</li>
-            ))}
-          </ul>
-        </article>
+      <CvSection title={texts.sections.technicalSkills}>
+        <CvSkills
+          categories={[
+            { label: texts.skills.frontend, items: texts.skills.frontendList },
+            { label: texts.skills.devTools, items: texts.skills.devToolsList },
+            {
+              label: texts.skills.architecture,
+              items: texts.skills.architectureList
+            },
+            { label: texts.skills.languages, items: texts.skills.languagesList }
+          ]}
+        />
+      </CvSection>
 
-        <article className="CV__job">
-          <div className="CV__job-header">
-            <h3 className="CV__job-title">{t.jobs.divaE.position}</h3>
-            <span className="CV__job-company">
-              {t.jobs.divaE.company} • {t.jobs.divaE.period} • Munich, Germany
-            </span>
-            <span className="CV__job-tech">
-              <strong>Tech:</strong>{" "}
-              {jobTech.divaE.map(tech => tech.name).join(", ")}
-            </span>
-          </div>
-          <ul className="CV__job-list">
-            {t.jobs.divaE.bullets.map((bullet, i) => (
-              <li key={i}>{bullet}</li>
-            ))}
-          </ul>
-        </article>
-        <article className="CV__job">
-          <div className="CV__job-header">
-            <h3 className="CV__job-title">{t.jobs.campudus.position}</h3>
-            <span className="CV__job-company">
-              {t.jobs.campudus.company} • {t.jobs.campudus.period} • Landshut,
-              Germany
-            </span>
-            <span className="CV__job-tech">
-              <strong>Tech:</strong>{" "}
-              {jobTech.campudus.map(tech => tech.name).join(", ")}
-            </span>
-          </div>
-          <ul className="CV__job-list">
-            {t.jobs.campudus.bullets.map((bullet, i) => (
-              <li key={i}>{bullet}</li>
-            ))}
-          </ul>
-        </article>
-      </PrintSection>
+      <CvSection title={texts.sections.priorExperience}>
+        <CvPriorExperience
+          title={texts.priorExperience.title}
+          description={texts.priorExperience.description}
+          educationLabel={texts.sections.education}
+          education={texts.education}
+        />
+      </CvSection>
 
-      {/* Side Projects */}
-      <PrintSection breakInside="auto">
-        <h2 className="CV__section-title">{t.sections.sideProjects}</h2>
-
-        <article className="CV__project">
-          <h3 className="CV__project-title">Black Atom</h3>
-          <span className="CV__project-subtitle">
-            {t.projects.blackAtom.subtitle}
-          </span>
-          <ul className="CV__project-list">
-            {t.projects.blackAtom.bullets.map((bullet, i) => (
-              <li key={i}>{bullet}</li>
-            ))}
-          </ul>
-        </article>
-
-        <article className="CV__project">
-          <h3 className="CV__project-title">AWDCS</h3>
-          <span className="CV__project-subtitle">{t.projects.awdcs.subtitle}</span>
-          <ul className="CV__project-list">
-            {t.projects.awdcs.bullets.map((bullet, i) => (
-              <li key={i}>{bullet}</li>
-            ))}
-          </ul>
-        </article>
-
-        <article className="CV__project">
-          <h3 className="CV__project-title">kōyō</h3>
-          <span className="CV__project-subtitle">{t.projects.koyo.subtitle}</span>
-          <ul className="CV__project-list">
-            {t.projects.koyo.bullets.map((bullet, i) => (
-              <li key={i}>{bullet}</li>
-            ))}
-          </ul>
-        </article>
-      </PrintSection>
-
-      {/* Technical Skills */}
-      <PrintSection breakInside="avoid">
-        <h2 className="CV__section-title">{t.sections.technicalSkills}</h2>
-        <div className="CV__skills">
-          <p>
-            <strong>{t.skills.frontend}:</strong> {t.skills.frontendList}
-          </p>
-          <p>
-            <strong>{t.skills.devTools}:</strong> {t.skills.devToolsList}
-          </p>
-          <p>
-            <strong>{t.skills.architecture}:</strong> {t.skills.architectureList}
-          </p>
-          <p>
-            <strong>{t.skills.languages}:</strong> {t.skills.languagesList}
-          </p>
-        </div>
-      </PrintSection>
-
-      {/* Prior Experience */}
-      <PrintSection breakInside="avoid">
-        <h2 className="CV__section-title">{t.sections.priorExperience}</h2>
-        <p className="CV__prior">
-          <strong>{t.priorExperience.title}</strong> {t.priorExperience.description}
-        </p>
-        <p className="CV__education">
-          <strong>{t.sections.education}:</strong> {t.education}
-        </p>
-      </PrintSection>
-
-      {/* Interests */}
-      <PrintSection breakInside="avoid">
-        <h2 className="CV__section-title">{t.sections.interests}</h2>
-        <p className="CV__interests">{t.interests}</p>
-      </PrintSection>
+      <CvSection title={texts.sections.interests}>
+        <CvInterests interests={texts.interests} />
+      </CvSection>
     </div>
   );
 }

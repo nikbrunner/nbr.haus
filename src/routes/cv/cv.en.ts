@@ -4,6 +4,13 @@ export const texts = {
     "Software Engineer specializing in Frontend Development with {years} years of experience in building modern web applications",
   summary:
     "Specialized in design systems, frontend architecture, and large-scale migrations. Led technical decisions affecting thousands of files and mentored junior developers. Comfortable working independently while thriving in collaborative teams. Integrates AI tooling into daily development workflows.",
+  contact: {
+    location: "Landshut, Germany",
+    website: "nbr.haus",
+    email: "nik@nbr.haus",
+    github: "github.com/nikbrunner",
+    linkedin: "linkedin.com/in/nbru"
+  },
   sections: {
     workExperience: "Work Experience",
     sideProjects: "Side Projects",
@@ -17,7 +24,8 @@ export const texts = {
       company: "DealerCenter Digital",
       position: "Software Engineer / Frontend Lead",
       period: "Sep 2020 – Jan 2026",
-      intro:
+      location: "Landshut, Germany",
+      description:
         "BikeCenter is an Electron-based point-of-sale application used by hundreds of bike retailers across Germany. I joined as a junior and grew into a frontend lead role, owning architecture decisions, managing frontend priorities, and mentoring newer team members.",
       bullets: [
         "Led frontend architecture for BikeCenter (Electron/React application), building and maintaining its custom design system",
@@ -32,15 +40,17 @@ export const texts = {
       company: "diva-e",
       position: "Junior Frontend Developer",
       period: "Mar 2020 – Sep 2020",
-      bullets: ["Developed frontend features for enterprise web applications"]
+      location: "Munich, Germany",
+      description:
+        "Contributed to a major e-commerce platform and built an internal social platform using React, GraphQL (Apollo), and SCSS. When DealerCenter Digital offered a frontend position, I made the move — an opportunity better aligned with my goals."
     },
     campudus: {
       company: "Campudus",
       position: "Intern",
       period: "Dec 2019 – Feb 2020",
-      bullets: [
-        "Completed full-stack internship developing features with React and Node.js"
-      ]
+      location: "Landshut, Germany",
+      description:
+        "I built a fullstack accessories ordering application from scratch—design, architecture, backend, and frontend—during a 3-month internship at DealerCenter Digital's sister company."
     }
   },
   projects: {

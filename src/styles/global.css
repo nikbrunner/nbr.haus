@@ -4,18 +4,25 @@
 @import "./fonts.css";
 @import "./spacings.css";
 @import "./flex.css";
+@import "./print.css";
 
 /* Component styles - consolidated here to ensure SSR includes them */
 /* Routes */
 @import "../routes/BaseLayout.css";
 @import "../routes/(home)/index.css";
 @import "../routes/cv/cv.css";
+@import "../components/cv/CvHeader.css";
+@import "../components/cv/CvJob.css";
+@import "../components/cv/CvProject.css";
+@import "../components/cv/CvSkills.css";
+@import "../components/cv/CvPriorExperience.css";
+@import "../components/cv/CvInterests.css";
 
 /* Components */
 @import "../components/Badge.css";
 @import "../components/Header.css";
 @import "../components/Page.css";
-@import "../components/PrintSection.css";
+@import "../components/cv/CvSection.css";
 @import "../components/Highlight.css";
 @import "../components/Hr.css";
 @import "../components/Job.css";

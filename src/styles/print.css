@@ -1,0 +1,34 @@
+/* Print-specific CSS variables with absolute units */
+/* A4: 210mm × 297mm, with 15mm margins = ~180mm × 267mm usable */
+
+:root {
+  /* Typography (pt) - mirrors Open Props --font-size-* */
+  --print-font-size-00: 7pt;
+  --print-font-size-0: 8pt;
+  --print-font-size-1: 9pt;
+  --print-font-size-2: 10pt;
+  --print-font-size-3: 11pt;
+  --print-font-size-4: 12pt;
+  --print-font-size-5: 14pt;
+  --print-font-size-6: 18pt;
+  --print-font-size-7: 22pt;
+  --print-font-size-8: 28pt;
+
+  /* Line heights - mirrors Open Props --font-lineheight-* */
+  --print-font-lineheight-0: 1.1;
+  --print-font-lineheight-1: 1.25;
+  --print-font-lineheight-2: 1.35;
+  --print-font-lineheight-3: 1.5;
+
+  /* Spacing (mm) - mirrors Open Props --size-* */
+  --print-size-1: 1mm;
+  --print-size-2: 2mm;
+  --print-size-3: 3mm;
+  --print-size-4: 4mm;
+  --print-size-5: 5mm;
+  --print-size-6: 6mm;
+  --print-size-7: 8mm;
+  --print-size-8: 10mm;
+  --print-size-9: 12mm;
+  --print-size-10: 15mm;
+}
