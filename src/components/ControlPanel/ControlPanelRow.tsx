@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import "./ControlPanelRow.css";
 
 interface ControlPanelRowProps {
   /** Label displayed on the left side of the row */

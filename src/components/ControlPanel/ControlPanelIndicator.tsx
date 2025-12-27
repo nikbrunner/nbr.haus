@@ -1,5 +1,4 @@
 import { cva } from "class-variance-authority";
-import "./ControlPanelIndicator.css";
 
 const variants = cva("ControlPanelIndicator", {
   variants: {

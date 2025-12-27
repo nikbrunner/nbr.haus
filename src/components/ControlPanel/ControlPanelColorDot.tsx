@@ -1,5 +1,3 @@
-import "./ControlPanelColorDot.css";
-
 interface Props {
   /** Hue value (0-360) for the color dot */
   hue: number;

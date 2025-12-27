@@ -19,7 +19,6 @@ import { ControlPanelOption } from "./ControlPanelOption";
 import { ControlPanelIndicator } from "./ControlPanelIndicator";
 import { ControlPanelColorDot } from "./ControlPanelColorDot";
 import * as store from "./store";
-import "./ControlPanel.css";
 
 const LOCALE_LABELS: Record<Locale, string> = {
   en: "EN",

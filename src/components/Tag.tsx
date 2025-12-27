@@ -1,5 +1,3 @@
-import "./Tag.css";
-
 interface Props {
   children: React.ReactNode;
 }

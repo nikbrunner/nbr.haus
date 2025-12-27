@@ -1,7 +1,6 @@
 import ClickableTag from "./ClickableTag";
 import SpecList from "./SpecList";
 
-import "./Job.css";
 import { useTexts } from "@/i18n";
 import type { Tech } from "@/config";
 

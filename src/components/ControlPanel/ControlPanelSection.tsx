@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import "./ControlPanelSection.css";
 
 interface Props {
   /** Content shown in the indicator column (always visible in strip) */

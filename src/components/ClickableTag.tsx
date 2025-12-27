@@ -1,7 +1,5 @@
 import Link from "./Link";
 
-import "./ClickableTag.css";
-
 interface Props {
   name: string;
   url: string;

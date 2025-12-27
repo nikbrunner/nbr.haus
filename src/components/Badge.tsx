@@ -1,5 +1,4 @@
 import { cva, cx, type VariantProps } from "class-variance-authority";
-import "./Badge.css";
 
 const badgeVariants = cva("Badge", {
   variants: {
