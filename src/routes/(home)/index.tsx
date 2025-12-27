@@ -6,7 +6,6 @@ import { tech } from "@/config";
 
 import Section from "@/components/Section";
 import ProfilePicture from "@/components/ProfilePicture";
-import Connect from "@/components/Connect";
 import Job from "@/components/Job";
 import Project from "@/components/Project";
 import LookingForJob from "@/components/LookingForJob";
@@ -16,54 +15,69 @@ import SpecList from "@/components/SpecList";
 import Link from "@/components/Link";
 
 export const Route = createFileRoute("/(home)/")({
-  component: IndexPage
+  component: Page
 });
 
-function IndexPage() {
+function Page() {
   const t = useTexts();
   const experienceInYears = new Date().getFullYear() - 2020;
 
   return (
     <div className="Index">
-      {/* Profile Picture */}
       <Section className="Index__section--profile">
         <ProfilePicture />
       </Section>
 
-      {/* Connect */}
       <Section className="Index__section--connect">
-        <Connect
-          title={t.connect.title}
-          items={{
-            github: {
-              label: t.connect.github,
-              url: "https://www.github.com/nikbrunner",
-              display: "github.com/nikbrunner"
-            },
-            linkedin: {
-              label: t.connect.linkedin,
-              url: "https://www.linkedin.com/in/nbru/",
-              display: "linkedin.com/in/nbru/"
-            },
-            cv: {
-              label: t.connect.cv,
-              url: "/Nikolaus_Brunner_CV.pdf",
-              display: t.connect.downloadPdf
-            },
-            email: {
-              label: t.connect.email,
-              url: "mailto:nik@nbr.haus",
-              display: "nik@nbr.haus"
-            },
-            languages: {
-              label: t.connect.languages,
-              value: t.connect.languagesList
-            }
-          }}
-        />
+        <SpecCard title={t.connect.title}>
+          <SpecList
+            padding="small"
+            items={[
+              {
+                label: t.connect.github,
+                value: (
+                  <Link
+                    href="https://www.github.com/nikbrunner"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    github.com/nikbrunner
+                  </Link>
+                )
+              },
+              {
+                label: t.connect.linkedin,
+                value: (
+                  <Link
+                    href="https://www.linkedin.com/in/nbru/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    linkedin.com/in/nbru/
+                  </Link>
+                )
+              },
+              {
+                label: t.connect.cv,
+                value: (
+                  <Link href="/Nikolaus_Brunner_CV.pdf" download>
+                    {t.connect.downloadPdf}
+                  </Link>
+                )
+              },
+              {
+                label: t.connect.email,
+                value: <Link href="mailto:nik@nbr.haus">nik@nbr.haus</Link>
+              },
+              {
+                label: t.connect.languages,
+                value: t.connect.languagesList
+              }
+            ]}
+          />
+        </SpecCard>
       </Section>
 
-      {/* About */}
       <Section title={t.shared.sections.about} className="Index__section--about">
         <div className="flex flex-col gap-fluid-4">
           <div>
@@ -272,7 +286,6 @@ function IndexPage() {
         </div>
       </Section>
 
-      {/* Employment */}
       <Section
         title={t.shared.sections.employment}
         className="Index__section--employment"
@@ -322,7 +335,6 @@ function IndexPage() {
         </Job>
       </Section>
 
-      {/* Projects */}
       <Section
         title={t.shared.sections.projects}
         className="Index__section--projects"
