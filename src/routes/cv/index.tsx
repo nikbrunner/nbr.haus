@@ -36,8 +36,11 @@ function Page() {
         }}
       />
 
-      <CvSection title={t.shared.sections.workExperience}>
-        <div className="flex flex-col gap-y-6">
+      <CvSection
+        className="print-break-before-page"
+        title={t.shared.sections.workExperience}
+      >
+        <div className="flex flex-col gap-y-8">
           <CvJob
             company={t.jobs.dealerCenter.company}
             position={t.jobs.dealerCenter.position}
@@ -83,7 +86,10 @@ function Page() {
         </div>
       </CvSection>
 
-      <CvSection title={t.shared.sections.sideProjects}>
+      <CvSection
+        className="print-break-before-page"
+        title={t.shared.sections.sideProjects}
+      >
         <CvProject
           title={t.projects.blackAtom.title}
           subtitle={t.projects.blackAtom.subtitle}

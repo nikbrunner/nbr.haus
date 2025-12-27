@@ -31,4 +31,10 @@
   --print-size-8: 10mm;
   --print-size-9: 12mm;
   --print-size-10: 15mm;
+  --print-size-11: 20mm;
+  --print-size-12: 25mm;
+  --print-size-13: 30mm;
+  --print-size-14: 35mm;
+  --print-size-15: 40mm;
+  --print-size-16: 45mm;
 }

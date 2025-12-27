@@ -1,5 +1,5 @@
 .CvSection {
-  margin-bottom: var(--print-size-8);
+  margin-bottom: var(--print-size-12);
 }
 
 .CvSection__title {
@@ -7,6 +7,5 @@
   font-weight: var(--font-weight-9);
   margin-bottom: var(--print-size-4);
   padding-bottom: var(--print-size-2);
-  /* eslint-disable-next-line css/use-baseline -- print-specific property with good support */
   break-after: avoid;
 }

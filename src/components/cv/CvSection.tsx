@@ -1,3 +1,4 @@
+import { cx } from "class-variance-authority";
 import type { ReactNode } from "react";
 
 interface Props {
@@ -8,7 +9,7 @@ interface Props {
 
 export function CvSection({ title, children, className }: Props) {
   return (
-    <section className={className}>
+    <section className={cx("CvSection", className)}>
       {title && <h2 className="CvSection__title">{title}</h2>}
       {children}
     </section>
