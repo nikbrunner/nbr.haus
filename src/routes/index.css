@@ -1,52 +1,36 @@
 .IndexPage {
   margin: 0 auto;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: var(--size-8);
   max-width: var(--size-content-3);
-
-  margin: 0 auto;
   padding: var(--base-layout-top-padding) var(--size-6);
-
-  align-items: start;
-  grid-template-areas:
-    "profile"
-    "connect"
-    "about"
-    "employment"
-    "projects";
 }
 
-.IndexPage__section--profile {
-  grid-area: profile;
-}
-
-.IndexPage__section--connect {
-  grid-area: connect;
-}
-
-.IndexPage__section--about {
-  grid-area: about;
-}
-
-.IndexPage__section--employment {
-  grid-area: employment;
-}
-
-.IndexPage__section--projects {
-  grid-area: projects;
+.IndexPage__column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-8);
 }
 
 /* Two columns: 768px+ */
 @media (min-width: 768px) {
   .IndexPage {
+    display: grid;
     max-width: none;
     grid-template-columns: var(--size-content-2) var(--size-content-2);
     justify-content: center;
-    grid-template-areas:
-      "profile    employment"
-      "connect    employment"
-      "about      projects"
-      "about      projects";
+    align-items: start;
+  }
+
+  /* Employment and Projects share a column */
+  .IndexPage__column--projects {
+    grid-column: 2;
+  }
+
+  .IndexPage__column--employment {
+    grid-column: 2;
+    grid-row: 1;
   }
 }
 
@@ -63,10 +47,15 @@
     grid-template-columns: var(--size-content-2) var(--size-content-2) var(
         --size-content-2
       );
-    grid-template-areas:
-      "profile    employment projects"
-      "connect    employment projects"
-      "about      employment projects";
+  }
+
+  .IndexPage__column--employment {
+    grid-column: 2;
+  }
+
+  .IndexPage__column--projects {
+    grid-column: 3;
+    grid-row: 1;
   }
 }
 
@@ -77,5 +66,9 @@
     grid-template-columns: var(--size-content-3) var(--size-content-3) var(
         --size-content-3
       );
+  }
+
+  .IndexPage__column {
+    gap: var(--size-10);
   }
 }
