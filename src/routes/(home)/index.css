@@ -1,61 +1,77 @@
-.Index__column {
-  display: flex;
-  flex-direction: column;
+.Index {
+  display: grid;
   gap: var(--size-8);
-}
-
-.Index__layout {
-  gap: var(--size-8);
-  justify-content: center;
-}
-
-.Index__layout--one-column {
   max-width: var(--size-content-3);
   margin: 0 auto;
+  align-items: start;
+  grid-template-areas:
+    "profile"
+    "connect"
+    "about"
+    "employment"
+    "projects";
 }
 
-.Index__layout--two-columns,
-.Index__layout--three-columns,
-.Index__layout--four-columns {
-  display: none;
+.Index__section--profile {
+  grid-area: profile;
 }
 
+.Index__section--connect {
+  grid-area: connect;
+}
+
+.Index__section--about {
+  grid-area: about;
+}
+
+.Index__section--employment {
+  grid-area: employment;
+}
+
+.Index__section--projects {
+  grid-area: projects;
+}
+
+/* Two columns: 768px+ */
 @media (min-width: 768px) {
-  .Index__layout--one-column {
-    display: none;
-  }
-
-  .Index__layout--two-columns {
-    display: grid;
-    grid-template-columns: repeat(2, var(--size-content-2));
+  .Index {
+    max-width: none;
+    grid-template-columns: var(--size-content-2) var(--size-content-2);
+    justify-content: center;
+    grid-template-areas:
+      "profile    employment"
+      "connect    employment"
+      "about      projects"
+      "about      projects";
   }
 }
 
+/* Two columns wider: 1024px+ */
 @media (min-width: 1024px) {
-  .Index__layout--two-columns {
-    grid-template-columns: repeat(2, var(--size-content-3));
+  .Index {
+    grid-template-columns: var(--size-content-3) var(--size-content-3);
   }
 }
 
+/* Three columns: 1440px+ */
 @media (min-width: 1440px) {
-  .Index__layout--one-column,
-  .Index__layout--two-columns {
-    display: none;
-  }
-
-  .Index__layout--three-columns {
-    display: grid;
-    grid-template-columns: repeat(3, var(--size-content-2));
+  .Index {
+    grid-template-columns: var(--size-content-2) var(--size-content-2) var(
+        --size-content-2
+      );
+    grid-template-areas:
+      "profile    employment projects"
+      "connect    employment projects"
+      "about      employment projects";
   }
 }
 
+/* Three columns wider: 1800px+ */
 @media (min-width: 1800px) {
-  .Index__layout {
+  .Index {
     gap: var(--size-10);
-  }
-
-  .Index__layout--three-columns {
-    display: grid;
-    grid-template-columns: repeat(3, var(--size-content-3));
+    grid-template-columns: var(--size-content-3) var(--size-content-3) var(
+        --size-content-3
+      );
   }
 }

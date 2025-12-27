@@ -1,9 +1,0 @@
-.Projects__intro {
-  color: var(--fg-support);
-}
-
-.Projects__list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--size-10);
-}

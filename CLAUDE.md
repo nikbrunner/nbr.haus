@@ -32,34 +32,35 @@ npm run storybook        # Storybook dev server (port 6006)
 
 ### Routes
 
-| Route | Purpose |
-|-------|---------|
-| `/` | Main portfolio (responsive multi-column layouts) |
-| `/cv` | Print-friendly CV with i18n support |
+| Route | Purpose                                          |
+| ----- | ------------------------------------------------ |
+| `/`   | Main portfolio (responsive multi-column layouts) |
+| `/cv` | Print-friendly CV with i18n support              |
 
-### i18n System (`src/i18n/`)
+### i18n System
 
 Lightweight localization using TanStack Store:
 
+- **Centralized texts** in `src/texts/` - domain-based text files merged into `en.ts` / `de.ts`
+- `useTexts()` - Returns all translations for current locale
 - `useLocale()` - Get current locale
-- `useTexts({ en, de })` - Get route-specific translations
-- `useSharedTexts()` - Get shared translations (name, links, etc.)
-- `<Trans>` component for inline translations
+- `<Trans>` component for inline translations with component interpolation
 - Locale persisted to localStorage and synced with `lang` URL param
 
-Route translations are co-located (e.g., `src/routes/cv/cv.en.ts`, `cv.de.ts`).
+Text structure: `t.shared`, `t.jobs`, `t.projects`, `t.about`, `t.connect`, `t.cv`
 
 ### Component Architecture
 
-- **Dumb components** in `src/components/` - presentational only
-- **Content blocks** in `src/content-blocks/` - smart containers that compose dumb components with data
+- **Dumb components** in `src/components/` - presentational only, receive props
 - **CV components** in `src/components/cv/` - print-optimized for CV route
+- **Routes are smart** - call `useTexts()`, map texts to component props
 - Co-located CSS files with BEM naming (`.block__element--modifier`)
 - **CVA (class-variance-authority)** for variant handling
 
 ### ControlPanel (`src/components/ControlPanel/`)
 
 Theming system with:
+
 - Hue (accent color), color mode (light/system/dark), contrast, and locale settings
 - Uses `@tanstack/react-store` for state
 - Persists to localStorage and syncs with URL search params

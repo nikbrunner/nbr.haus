@@ -7,15 +7,6 @@
   font-weight: var(--font-weight-9);
   margin-bottom: var(--print-size-4);
   padding-bottom: var(--print-size-2);
-}
-
-@media print {
-  .CvSection--avoid-break {
-    break-inside: avoid;
-  }
-
-  .CvSection__title {
-    border-bottom: 1px solid #ccc;
-    break-after: avoid;
-  }
+  /* eslint-disable-next-line css/use-baseline -- print-specific property with good support */
+  break-after: avoid;
 }

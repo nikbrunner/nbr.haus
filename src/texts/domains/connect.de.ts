@@ -1,5 +1,5 @@
-import type { Widen } from "@/i18n";
-import type { texts as en } from "./Connect.en";
+import type { Widen } from "@/i18n/types";
+import type { texts as en } from "./connect.en";
 
 export const texts: Widen<typeof en> = {
   title: "Kontakt",

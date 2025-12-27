@@ -1,0 +1,32 @@
+/* eslint-disable css/use-baseline -- print-specific properties with good browser support */
+@media print {
+  /* break-before */
+  .print-break-before-auto {
+    break-before: auto;
+  }
+  .print-break-before-avoid {
+    break-before: avoid;
+  }
+  .print-break-before-page {
+    break-before: page;
+  }
+
+  /* break-after */
+  .print-break-after-auto {
+    break-after: auto;
+  }
+  .print-break-after-avoid {
+    break-after: avoid;
+  }
+  .print-break-after-page {
+    break-after: page;
+  }
+
+  /* break-inside */
+  .print-break-inside-auto {
+    break-inside: auto;
+  }
+  .print-break-inside-avoid {
+    break-inside: avoid;
+  }
+}

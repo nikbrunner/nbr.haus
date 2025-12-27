@@ -1,4 +1,4 @@
-import type { Widen } from "./types";
+import type { Widen } from "@/i18n/types";
 import type { texts as en } from "./shared.en";
 
 export const texts: Widen<typeof en> = {
@@ -6,7 +6,13 @@ export const texts: Widen<typeof en> = {
   sections: {
     about: "Über mich",
     employment: "Berufserfahrung",
-    projects: "Projekte"
+    projects: "Projekte",
+    workExperience: "Berufserfahrung",
+    sideProjects: "Nebenprojekte",
+    technicalSkills: "Technische Fähigkeiten",
+    priorExperience: "Frühere Berufserfahrung",
+    education: "Ausbildung",
+    interests: "Interessen"
   },
   jobs: {
     meta: {

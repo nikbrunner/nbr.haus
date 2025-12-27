@@ -32,7 +32,7 @@ export function CvJob(props: Props) {
 
       <p className="CvJob__technologies">
         {props.technologies.map(tech => (
-          <Tag>{tech}</Tag>
+          <Tag key={tech}>{tech}</Tag>
         ))}
       </p>
     </article>

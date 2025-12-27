@@ -1,27 +1,14 @@
 import type { ReactNode } from "react";
-import { cva, type VariantProps } from "class-variance-authority";
 
-const variants = cva("CvSection", {
-  variants: {
-    breakInside: {
-      auto: "",
-      avoid: "CvSection--avoid-break"
-    }
-  },
-  defaultVariants: {
-    breakInside: "avoid"
-  }
-});
-
-interface Props extends VariantProps<typeof variants> {
+interface Props {
   title?: string;
   children: ReactNode;
   className?: string;
 }
 
-export function CvSection({ title, children, className, breakInside }: Props) {
+export function CvSection({ title, children, className }: Props) {
   return (
-    <section className={variants({ breakInside, className })}>
+    <section className={className}>
       {title && <h2 className="CvSection__title">{title}</h2>}
       {children}
     </section>

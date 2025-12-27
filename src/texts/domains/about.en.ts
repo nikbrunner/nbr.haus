@@ -1,16 +1,14 @@
 export const texts = {
-  about: {
-    greeting: "Hi there!",
-    intro:
-      "I'm <highlight>Nikolaus Brunner</highlight> (Nik for short), a Software Engineer based in Landshut, Germany, specializing in frontend architectures and design systems — {years} years in.",
-    ux: "A strong sense for UX (user experience) and DX (developer experience) guides my work—whether collaborating with designers or making design decisions independently.",
-    independence:
-      "Identifying priorities and managing my own work comes naturally—as does knowing when to reach out for input. Being part of a good team working towards a shared goal is where I thrive.",
-    passion:
-      "Building and using products is a genuine passion—I'm probably the guy who contacts support about features or bugs, and regularly checks changelogs and GitHub releases.",
-    personal:
-      "Born in 1984, and outside of code: hiking, reading, landscape photography, music production, workflow optimization, and open source — plus a slight keyboard obsession."
-  },
+  greeting: "Hi there!",
+  intro:
+    "I'm <highlight>Nikolaus Brunner</highlight> (Nik for short), a Software Engineer based in Landshut, Germany, specializing in frontend architectures and design systems — {years} years in.",
+  ux: "A strong sense for UX (user experience) and DX (developer experience) guides my work—whether collaborating with designers or making design decisions independently.",
+  independence:
+    "Identifying priorities and managing my own work comes naturally—as does knowing when to reach out for input. Being part of a good team working towards a shared goal is where I thrive.",
+  passion:
+    "Building and using products is a genuine passion—I'm probably the guy who contacts support about features or bugs, and regularly checks changelogs and GitHub releases.",
+  personal:
+    "Born in 1984, and outside of code: hiking, reading, landscape photography, music production, workflow optimization, and open source — plus a slight keyboard obsession.",
   devStack: {
     devTools: "Dev Tools",
     ai: "AI",

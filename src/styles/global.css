@@ -5,34 +5,39 @@
 @import "./spacings.css";
 @import "./flex.css";
 @import "./print.css";
+@import "./print-utils.css";
 
-/* Component styles - consolidated here to ensure SSR includes them */
 /* Routes */
 @import "../routes/BaseLayout.css";
 @import "../routes/(home)/index.css";
 @import "../routes/cv/cv.css";
-@import "../components/cv/CvHeader.css";
-@import "../components/cv/CvJob.css";
-@import "../components/cv/CvProject.css";
-@import "../components/cv/CvSkills.css";
-@import "../components/cv/CvPriorExperience.css";
-@import "../components/cv/CvInterests.css";
 
 /* Components */
 @import "../components/Badge.css";
+@import "../components/ClickableTag.css";
 @import "../components/Header.css";
-@import "../components/Page.css";
-@import "../components/cv/CvSection.css";
 @import "../components/Highlight.css";
 @import "../components/Hr.css";
 @import "../components/Job.css";
 @import "../components/Link.css";
-@import "../components/ClickableTag.css";
+@import "../components/Page.css";
 @import "../components/Project.css";
 @import "../components/Section.css";
 @import "../components/SpecCard.css";
 @import "../components/SpecGrid.css";
 @import "../components/SpecList.css";
+@import "../components/cv/CvHeader.css";
+@import "../components/cv/CvInterests.css";
+@import "../components/cv/CvJob.css";
+@import "../components/cv/CvPriorExperience.css";
+@import "../components/cv/CvProject.css";
+@import "../components/cv/CvSection.css";
+@import "../components/cv/CvSkills.css";
+@import "../components/Connect.css";
+@import "../components/ProfilePicture.css";
+@import "../components/LookingForJob.css";
+@import "../components/GlitchEffect.css";
+@import "../components/Tag.css";
 
 /* ControlPanel */
 @import "../components/ControlPanel/ControlPanel.css";
@@ -41,12 +46,6 @@
 @import "../components/ControlPanel/ControlPanelOption.css";
 @import "../components/ControlPanel/ControlPanelIndicator.css";
 @import "../components/ControlPanel/ControlPanelColorDot.css";
-
-/* Content blocks */
-@import "../content-blocks/Connect/Connect.css";
-@import "../content-blocks/index/ProfilePicture.css";
-@import "../content-blocks/Projects/Projects.css";
-@import "../content-blocks/Jobs/LookingForJob.css";
 
 *,
 *::before,

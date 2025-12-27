@@ -1,19 +1,17 @@
-import type { Widen } from "@/i18n";
-import type { texts as en } from "./About.en";
+import type { Widen } from "@/i18n/types";
+import type { texts as en } from "./about.en";
 
 export const texts: Widen<typeof en> = {
-  about: {
-    greeting: "Hallo!",
-    intro:
-      "Ich bin <highlight>Nikolaus Brunner</highlight> (kurz Nik), Software-Ingenieur aus Landshut, Deutschland, spezialisiert auf Frontend-Architekturen und Design-Systeme — seit {years} Jahren.",
-    ux: "Ein starkes Gespür für UX (User Experience) und DX (Developer Experience) prägt meine Arbeit—ob in Zusammenarbeit mit Designern oder bei eigenständigen Design-Entscheidungen.",
-    independence:
-      "Prioritäten erkennen und die eigene Arbeit managen liegt mir—ebenso wie zu wissen, wann Feedback gefragt ist. Teil eines guten Teams zu sein, das auf ein gemeinsames Ziel hinarbeitet—das finde ich am besten.",
-    passion:
-      "Produkte zu entwickeln und zu nutzen ist eine echte Leidenschaft—ich bin wahrscheinlich derjenige, der den Support wegen Features oder Bugs kontaktiert und regelmäßig Changelogs und GitHub-Releases verfolgt.",
-    personal:
-      "Geboren 1984, und abseits vom Code: Wandern, Lesen, Landschaftsfotografie, Musikproduktion, Workflow-Optimierung und Open Source — plus eine kleine Tastatur-Obsession."
-  },
+  greeting: "Hallo!",
+  intro:
+    "Ich bin <highlight>Nikolaus Brunner</highlight> (kurz Nik), Software-Ingenieur aus Landshut, Deutschland, spezialisiert auf Frontend-Architekturen und Design-Systeme — seit {years} Jahren.",
+  ux: "Ein starkes Gespür für UX (User Experience) und DX (Developer Experience) prägt meine Arbeit—ob in Zusammenarbeit mit Designern oder bei eigenständigen Design-Entscheidungen.",
+  independence:
+    "Prioritäten erkennen und die eigene Arbeit managen liegt mir—ebenso wie zu wissen, wann Feedback gefragt ist. Teil eines guten Teams zu sein, das auf ein gemeinsames Ziel hinarbeitet—das finde ich am besten.",
+  passion:
+    "Produkte zu entwickeln und zu nutzen ist eine echte Leidenschaft—ich bin wahrscheinlich derjenige, der den Support wegen Features oder Bugs kontaktiert und regelmäßig Changelogs und GitHub-Releases verfolgt.",
+  personal:
+    "Geboren 1984, und abseits vom Code: Wandern, Lesen, Landschaftsfotografie, Musikproduktion, Workflow-Optimierung und Open Source — plus eine kleine Tastatur-Obsession.",
   devStack: {
     devTools: "Dev Tools",
     ai: "KI",

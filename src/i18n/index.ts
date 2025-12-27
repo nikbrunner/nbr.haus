@@ -13,7 +13,6 @@ export {
 // Hooks
 export { useLocale } from "./useLocale";
 export { useTexts } from "./useTexts";
-export { useSharedTexts } from "./useSharedTexts";
 
 // Components
 export { Trans } from "./Trans";
