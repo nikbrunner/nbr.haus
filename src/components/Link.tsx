@@ -1,11 +1,12 @@
+import { Link as TsLink } from "@tanstack/react-router";
 import { cx } from "class-variance-authority";
 
-type Props = React.ComponentProps<"a">;
+type Props = React.ComponentProps<typeof TsLink>;
 
 export default function Link(props: Props) {
   return (
-    <a {...props} className={cx("Link", props.className)}>
+    <TsLink {...props} className={cx("Link", props.className)}>
       {props.children}
-    </a>
+    </TsLink>
   );
 }
