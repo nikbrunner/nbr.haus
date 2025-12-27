@@ -5,6 +5,7 @@ import css from "@eslint/css";
 import js from "@eslint/js";
 import json from "@eslint/json";
 import markdown from "@eslint/markdown";
+import noRelativeImportPaths from "eslint-plugin-no-relative-import-paths";
 import pluginReact from "eslint-plugin-react";
 import storybook from "eslint-plugin-storybook";
 import { defineConfig } from "eslint/config";
@@ -28,6 +29,20 @@ export default defineConfig([
   },
   ...tseslint.configs.recommended,
   ...storybook.configs["flat/recommended"],
+  {
+    name: "project/enforce-absolute-imports",
+    files: ["src/**/*.{ts,tsx}"],
+    ignores: ["src/routeTree.gen.ts"],
+    plugins: {
+      "no-relative-import-paths": noRelativeImportPaths
+    },
+    rules: {
+      "no-relative-import-paths/no-relative-import-paths": [
+        "error",
+        { allowSameFolder: true, rootDir: "src", prefix: "@" }
+      ]
+    }
+  },
   {
     name: "project/react-recommended-config",
     files: ["**/*.{js,jsx,ts,tsx}"],

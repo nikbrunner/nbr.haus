@@ -9,13 +9,13 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
-import { ControlPanel } from "../components/ControlPanel";
-import NotFound from "../components/NotFound";
-import globalCss from "../styles/global.css?url";
+import { ControlPanel } from "@/components/ControlPanel";
+import NotFound from "@/components/NotFound";
+import globalCss from "@/styles/global.css?url";
 import {
   defaultRootSearchParams,
   rootSearchParamsSchema
-} from "../validators/rootSearchParams";
+} from "@/validators/rootSearchParams";
 
 export const Route = createRootRoute({
   validateSearch: rootSearchParamsSchema,
