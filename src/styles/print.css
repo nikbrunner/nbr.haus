@@ -19,6 +19,7 @@
   --print-font-lineheight-1: 1.25;
   --print-font-lineheight-2: 1.35;
   --print-font-lineheight-3: 1.5;
+  --print-font-lineheight-4: 1.75;
 
   /* Spacing (mm) - mirrors Open Props --size-* */
   --print-size-1: 1mm;

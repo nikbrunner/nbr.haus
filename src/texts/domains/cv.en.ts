@@ -11,18 +11,6 @@ export const texts = {
     github: "github.com/nikbrunner",
     linkedin: "linkedin.com/in/nbru"
   },
-  skills: {
-    frontend: "Frontend",
-    frontendList:
-      "React, TypeScript, JavaScript, GraphQL, CSS/SCSS/Tailwind, ShadCN, TanStack (Router/Query/Form), Redux, Electron, Node.js, Git",
-    devTools: "Dev Tools",
-    devToolsList: "Neovim, Ghostty, LazyGit, Claude Code",
-    architecture: "Architecture",
-    architectureList:
-      "Design Systems, Component Architecture, Frontend Migrations, UX Collaboration",
-    languages: "Languages",
-    languagesList: "German (Native) • English (Fluent)"
-  },
   priorExperience: {
     title: "Event Technology & Audio Engineering (2011–2019)",
     description:
@@ -30,5 +18,5 @@ export const texts = {
   },
   education: "Sound Engineering & Mastering, Deutsche Pop Munich (2010–2011)",
   interests:
-    "Landscape Photography • Workflow Optimization • Open Source • Music Production"
+    "Landscape Photography, Reading, Workflow Optimization, Open Source, Music Production"
 } as const;

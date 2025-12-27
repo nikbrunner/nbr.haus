@@ -262,7 +262,7 @@ h3 {
 p {
   font-size: var(--font-size-fluid-0);
   font-weight: var(--font-weight-3);
-  margin: 0 0 var(--size-3);
+  margin: 0;
 }
 
 strong {

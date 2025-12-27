@@ -14,18 +14,6 @@ export const texts: Widen<typeof en> = {
     github: "github.com/nikbrunner",
     linkedin: "linkedin.com/in/nbru"
   },
-  skills: {
-    frontend: "Frontend",
-    frontendList:
-      "React, TypeScript, JavaScript, GraphQL, CSS/SCSS/Tailwind, ShadCN, TanStack (Router/Query/Form), Redux, Electron, Node.js, Git",
-    devTools: "Dev Tools",
-    devToolsList: "Neovim, Ghostty, LazyGit, Claude Code",
-    architecture: "Architektur",
-    architectureList:
-      "Design-Systeme, Komponenten-Architektur, Frontend-Migrationen, UX-Zusammenarbeit",
-    languages: "Sprachen",
-    languagesList: "Deutsch (Muttersprache) • Englisch (Fließend)"
-  },
   priorExperience: {
     title: "Veranstaltungstechnik & Audio Engineering (2011–2019)",
     description:
@@ -33,5 +21,5 @@ export const texts: Widen<typeof en> = {
   },
   education: "Sound Engineering & Mastering, Deutsche Pop München (2010–2011)",
   interests:
-    "Landschaftsfotografie • Workflow-Optimierung • Open Source • Musikproduktion"
+    "Landschaftsfotografie, Lesen, Workflow-Optimierung, Open Source, Musikproduktion"
 };

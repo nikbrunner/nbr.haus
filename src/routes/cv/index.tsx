@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { tech } from "@/config";
 import profilePicture from "@/assets/images/profile_picture.jpg";
-import { useTexts } from "@/i18n";
+import { useTexts, Trans } from "@/i18n";
+import Highlight from "@/components/Highlight";
 
 import { CvSection } from "@/components/cv/CvSection";
 import { CvHeader } from "@/components/cv/CvHeader";
@@ -11,6 +12,9 @@ import { CvProject } from "@/components/cv/CvProject";
 import { CvSkills } from "@/components/cv/CvSkills";
 import { CvPriorExperience } from "@/components/cv/CvPriorExperience";
 import { CvInterests } from "@/components/cv/CvInterests";
+import SpecCard from "../../components/SpecCard";
+import SpecList from "../../components/SpecList";
+import Link from "../../components/Link";
 
 export const Route = createFileRoute("/cv/")({
   component: Page
@@ -35,6 +39,25 @@ function Page() {
           linkedin: t.cv.contact.linkedin
         }}
       />
+
+      <CvSection className="flex flex-col gap-2">
+        <p>
+          <strong>
+            {t.about.greeting}
+            <br />
+            <br />
+            <Trans
+              text={t.about.intro.replace("{years}", String(experienceInYears))}
+              components={{
+                highlight: children => <Highlight>{children}</Highlight>
+              }}
+            />
+          </strong>
+        </p>
+        <p>{t.about.ux}</p>
+        <p>{t.about.independence}</p>
+        <p>{t.about.passion}</p>
+      </CvSection>
 
       <CvSection
         className="print-break-before-page"
@@ -104,20 +127,6 @@ function Page() {
           title={t.projects.koyo.title}
           subtitle={t.projects.koyo.subtitle}
           bullets={t.projects.koyo.bullets}
-        />
-      </CvSection>
-
-      <CvSection title={t.shared.sections.technicalSkills}>
-        <CvSkills
-          categories={[
-            { label: t.cv.skills.frontend, items: t.cv.skills.frontendList },
-            { label: t.cv.skills.devTools, items: t.cv.skills.devToolsList },
-            {
-              label: t.cv.skills.architecture,
-              items: t.cv.skills.architectureList
-            },
-            { label: t.cv.skills.languages, items: t.cv.skills.languagesList }
-          ]}
         />
       </CvSection>
 
