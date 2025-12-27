@@ -18,7 +18,7 @@ export function setLocale(locale: Locale) {
 }
 
 // Storage helpers
-export function getLocaleFromStorage(): Locale | null {
+function getLocaleFromStorage(): Locale | null {
   if (typeof localStorage !== "undefined") {
     const saved = localStorage.getItem("locale");
     if (saved && LOCALES.includes(saved as Locale)) {
@@ -26,12 +26,6 @@ export function getLocaleFromStorage(): Locale | null {
     }
   }
   return null;
-}
-
-export function saveLocaleToStorage(locale: Locale) {
-  if (typeof localStorage !== "undefined") {
-    localStorage.setItem("locale", locale);
-  }
 }
 
 // Initialize from URL params or localStorage

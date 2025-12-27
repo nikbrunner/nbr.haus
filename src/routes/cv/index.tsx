@@ -2,19 +2,16 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { tech } from "@/config";
 import profilePicture from "@/assets/images/profile_picture.jpg";
-import { useTexts, Trans } from "@/i18n";
+import { useTexts } from "@/i18n/useTexts";
+import { Trans } from "@/i18n/Trans";
 import Highlight from "@/components/Highlight";
 
 import { CvSection } from "@/components/cv/CvSection";
 import { CvHeader } from "@/components/cv/CvHeader";
 import { CvJob } from "@/components/cv/CvJob";
 import { CvProject } from "@/components/cv/CvProject";
-import { CvSkills } from "@/components/cv/CvSkills";
 import { CvPriorExperience } from "@/components/cv/CvPriorExperience";
 import { CvInterests } from "@/components/cv/CvInterests";
-import SpecCard from "../../components/SpecCard";
-import SpecList from "../../components/SpecList";
-import Link from "../../components/Link";
 
 export const Route = createFileRoute("/cv/")({
   component: Page

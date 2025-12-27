@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { useTexts, Trans } from "@/i18n";
+import { useTexts } from "@/i18n/useTexts";
+import { Trans } from "@/i18n/Trans";
 import { tech } from "@/config";
 
 import Section from "@/components/Section";

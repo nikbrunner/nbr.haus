@@ -20,11 +20,9 @@
 @import "../components/Hr.css";
 @import "../components/Job.css";
 @import "../components/Link.css";
-@import "../components/Page.css";
 @import "../components/Project.css";
 @import "../components/Section.css";
 @import "../components/SpecCard.css";
-@import "../components/SpecGrid.css";
 @import "../components/SpecList.css";
 @import "../components/cv/CvHeader.css";
 @import "../components/cv/CvInterests.css";
@@ -32,7 +30,6 @@
 @import "../components/cv/CvPriorExperience.css";
 @import "../components/cv/CvProject.css";
 @import "../components/cv/CvSection.css";
-@import "../components/cv/CvSkills.css";
 @import "../components/Connect.css";
 @import "../components/ProfilePicture.css";
 @import "../components/LookingForJob.css";

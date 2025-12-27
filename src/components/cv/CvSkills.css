@@ -1,9 +1,0 @@
-.CvSkills p {
-  font-size: var(--print-font-size-2);
-  margin: 0 0 var(--print-size-2);
-  line-height: var(--print-font-lineheight-2);
-}
-
-.CvSkills p:last-child {
-  margin-bottom: 0;
-}

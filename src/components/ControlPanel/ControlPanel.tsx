@@ -5,13 +5,8 @@ import { motion } from "framer-motion";
 import { cx } from "class-variance-authority";
 import { Printer } from "lucide-react";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
-import {
-  i18nStore,
-  setLocale,
-  initializeLocale,
-  LOCALES,
-  type Locale
-} from "@/i18n";
+import { i18nStore, setLocale, initializeLocale } from "@/i18n/store";
+import { LOCALES, type Locale } from "@/i18n/types";
 import type { ColorMode, Contrast } from "@/validators/rootSearchParams";
 import { ControlPanelSection } from "./ControlPanelSection";
 import { ControlPanelRow } from "./ControlPanelRow";

@@ -1,10 +1,6 @@
 import { Store, useStore } from "@tanstack/react-store";
 import type { Hue, ColorMode, Contrast } from "@/validators/rootSearchParams";
 
-// Re-export locale types and actions from i18n for convenience
-export { setLocale, initializeLocale, getLocaleFromStorage } from "@/i18n";
-export type { Locale } from "@/i18n";
-
 // Types
 export interface ControlPanelState {
   // Panel UI state
@@ -25,7 +21,7 @@ export const CONTRAST_OPTIONS: { value: Contrast; label: string }[] = [
   { value: "high", label: "HC" }
 ];
 
-export const CONTRAST_VALUES: Record<Contrast, { l: number; c: number }> = {
+const CONTRAST_VALUES: Record<Contrast, { l: number; c: number }> = {
   low: { l: 1, c: 0.6 },
   base: { l: 1, c: 1 },
   high: { l: 1, c: 1.4 }
@@ -49,8 +45,8 @@ export const COLOR_MODE_LABELS: Record<ColorMode, string> = {
   dark: "DK"
 };
 
-// Helper functions
-export function getHueVariants(hue: number) {
+// Helper functions (internal)
+function getHueVariants(hue: number) {
   const hueAccent = hue + 90 > 360 ? hue + 90 - 360 : hue + 90;
   const hueAccentAlt =
     hueAccent + 180 > 360 ? hueAccent + 180 - 360 : hueAccent + 180;
@@ -61,11 +57,7 @@ export function getAccentHue(hue: number): number {
   return hue + 90 > 360 ? hue + 90 - 360 : hue + 90;
 }
 
-export function applyHueCssVars(
-  hue: number,
-  hueAccent: number,
-  hueAccentAlt: number
-) {
+function applyHueCssVars(hue: number, hueAccent: number, hueAccentAlt: number) {
   if (typeof document !== "undefined") {
     document.body.style.setProperty("--hue", hue.toString());
     document.body.style.setProperty("--hue-accent", hueAccent.toString());
@@ -73,7 +65,7 @@ export function applyHueCssVars(
   }
 }
 
-export function applyContrastCssVars(contrast: Contrast) {
+function applyContrastCssVars(contrast: Contrast) {
   if (typeof document !== "undefined") {
     const values = CONTRAST_VALUES[contrast];
     document.body.style.setProperty("--contrast-l", values.l.toString());
@@ -81,7 +73,7 @@ export function applyContrastCssVars(contrast: Contrast) {
   }
 }
 
-export function applyColorMode(colorMode: ColorMode) {
+function applyColorMode(colorMode: ColorMode) {
   if (typeof document !== "undefined") {
     const html = document.documentElement;
     if (colorMode === "system") {
@@ -92,12 +84,8 @@ export function applyColorMode(colorMode: ColorMode) {
   }
 }
 
-// localStorage helpers
-export function saveHueToStorage(
-  hue: number,
-  hueAccent: number,
-  hueAccentAlt: number
-) {
+// localStorage helpers (internal)
+function saveHueToStorage(hue: number, hueAccent: number, hueAccentAlt: number) {
   if (typeof localStorage !== "undefined") {
     localStorage.setItem("hue", hue.toString());
     localStorage.setItem("hue-accent", hueAccent.toString());
@@ -105,19 +93,19 @@ export function saveHueToStorage(
   }
 }
 
-export function saveContrastToStorage(contrast: Contrast) {
+function saveContrastToStorage(contrast: Contrast) {
   if (typeof localStorage !== "undefined") {
     localStorage.setItem("contrast", contrast);
   }
 }
 
-export function saveColorModeToStorage(colorMode: ColorMode) {
+function saveColorModeToStorage(colorMode: ColorMode) {
   if (typeof localStorage !== "undefined") {
     localStorage.setItem("colorMode", colorMode);
   }
 }
 
-export function getHueFromStorage(): number | null {
+function getHueFromStorage(): number | null {
   if (typeof localStorage !== "undefined") {
     const saved = localStorage.getItem("hue");
     if (saved) return parseInt(saved, 10);
@@ -125,7 +113,7 @@ export function getHueFromStorage(): number | null {
   return null;
 }
 
-export function getContrastFromStorage(): Contrast | null {
+function getContrastFromStorage(): Contrast | null {
   if (typeof localStorage !== "undefined") {
     const saved = localStorage.getItem("contrast") as Contrast | null;
     if (saved && ["low", "base", "high"].includes(saved)) return saved;
@@ -133,7 +121,7 @@ export function getContrastFromStorage(): Contrast | null {
   return null;
 }
 
-export function getColorModeFromStorage(): ColorMode | null {
+function getColorModeFromStorage(): ColorMode | null {
   if (typeof localStorage !== "undefined") {
     const saved = localStorage.getItem("colorMode") as ColorMode | null;
     if (saved && ["light", "system", "dark"].includes(saved)) return saved;

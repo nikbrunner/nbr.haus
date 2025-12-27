@@ -87,7 +87,12 @@ export default defineConfig([
       "css/use-baseline": [
         "error",
         {
-          allowProperties: ["user-select"],
+          allowProperties: [
+            "user-select",
+            "break-after",
+            "break-before",
+            "break-inside"
+          ],
           allowSelectors: ["nesting", "has", "selection"],
           allowFunctions: ["oklch", "light-dark"]
         }

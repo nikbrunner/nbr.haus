@@ -1,7 +1,7 @@
 import ClickableTag from "./ClickableTag";
 import SpecList from "./SpecList";
 
-import { useTexts } from "@/i18n";
+import { useTexts } from "@/i18n/useTexts";
 import type { Tech } from "@/config";
 
 interface Props {

@@ -1,4 +1,3 @@
-/* eslint-disable css/use-baseline -- print-specific properties with good browser support */
 @media print {
   /* break-before */
   .print-break-before-auto {
