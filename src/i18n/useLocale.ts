@@ -1,4 +1,5 @@
 import { useStore } from "@tanstack/react-store";
+
 import { i18nStore } from "./store";
 import type { Locale } from "./types";
 

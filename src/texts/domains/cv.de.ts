@@ -1,4 +1,5 @@
 import type { Widen } from "@/i18n/types";
+
 import type { texts as en } from "./cv.en";
 
 export const texts: Widen<typeof en> = {

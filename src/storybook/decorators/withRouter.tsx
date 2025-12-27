@@ -1,14 +1,15 @@
 import type { Decorator } from "@storybook/react";
+import { TanStackDevtools } from "@tanstack/react-devtools";
 import {
-  RouterProvider,
   createMemoryHistory,
   createRootRoute,
   createRoute,
-  createRouter
+  createRouter,
+  RouterProvider
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+
 import { rootSearchParamsSchema } from "@/validators/rootSearchParams";
-import { TanStackDevtools } from "@tanstack/react-devtools";
 
 interface WithRouterOptions<TSearchParams = Record<string, unknown>> {
   searchParams?: Partial<TSearchParams>;

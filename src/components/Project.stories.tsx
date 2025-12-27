@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import Project from "./Project";
+
 import { tech } from "@/config";
+
+import Project from "./Project";
 
 const meta: Meta<typeof Project> = {
   component: Project

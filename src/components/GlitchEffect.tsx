@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+
 import { cva, cx, type VariantProps } from "class-variance-authority";
 
 const glitchVariants = cva("GlitchEffect", {

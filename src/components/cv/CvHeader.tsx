@@ -1,4 +1,4 @@
-import { MapPin, Globe, Mail, Github, Linkedin } from "lucide-react";
+import { Github, Globe, Linkedin, Mail, MapPin } from "lucide-react";
 
 interface Props {
   name: string;

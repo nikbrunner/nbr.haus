@@ -1,5 +1,6 @@
-import { cx } from "class-variance-authority";
 import type { ReactNode } from "react";
+
+import { cx } from "class-variance-authority";
 
 interface Props {
   title?: string;

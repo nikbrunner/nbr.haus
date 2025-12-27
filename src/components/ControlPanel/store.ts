@@ -1,5 +1,6 @@
 import { Store, useStore } from "@tanstack/react-store";
-import type { Hue, ColorMode, Contrast } from "@/validators/rootSearchParams";
+
+import type { ColorMode, Contrast, Hue } from "@/validators/rootSearchParams";
 
 // Types
 export interface ControlPanelState {

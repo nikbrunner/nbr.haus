@@ -1,15 +1,15 @@
-import storybook from "eslint-plugin-storybook";
+import { fileURLToPath } from "node:url";
 
+import { includeIgnoreFile } from "@eslint/compat";
+import css from "@eslint/css";
 import js from "@eslint/js";
-import globals from "globals";
-import tseslint from "typescript-eslint";
-import pluginReact from "eslint-plugin-react";
 import json from "@eslint/json";
 import markdown from "@eslint/markdown";
-import css from "@eslint/css";
+import pluginReact from "eslint-plugin-react";
+import storybook from "eslint-plugin-storybook";
 import { defineConfig } from "eslint/config";
-import { includeIgnoreFile } from "@eslint/compat";
-import { fileURLToPath } from "node:url";
+import globals from "globals";
+import tseslint from "typescript-eslint";
 
 const gitignorePath = fileURLToPath(new URL(".gitignore", import.meta.url));
 

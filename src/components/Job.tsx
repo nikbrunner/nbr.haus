@@ -1,8 +1,8 @@
+import type { Tech } from "@/config";
+import { useTexts } from "@/i18n/useTexts";
+
 import ClickableTag from "./ClickableTag";
 import SpecList from "./SpecList";
-
-import { useTexts } from "@/i18n/useTexts";
-import type { Tech } from "@/config";
 
 interface Props {
   company: string;

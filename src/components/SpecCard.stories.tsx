@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+
 import SpecCard from "./SpecCard";
 
 const meta: Meta<typeof SpecCard> = {

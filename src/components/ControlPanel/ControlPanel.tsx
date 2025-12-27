@@ -1,18 +1,21 @@
-import { useSearch, useRouter, useRouterState } from "@tanstack/react-router";
-import { useStore } from "@tanstack/react-store";
 import { useCallback, useEffect } from "react";
-import { motion } from "framer-motion";
+
+import { useRouter, useRouterState, useSearch } from "@tanstack/react-router";
+import { useStore } from "@tanstack/react-store";
 import { cx } from "class-variance-authority";
+import { motion } from "framer-motion";
 import { Printer } from "lucide-react";
+
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
-import { i18nStore, setLocale, initializeLocale } from "@/i18n/store";
+import { i18nStore, initializeLocale, setLocale } from "@/i18n/store";
 import { LOCALES, type Locale } from "@/i18n/types";
 import type { ColorMode, Contrast } from "@/validators/rootSearchParams";
-import { ControlPanelSection } from "./ControlPanelSection";
-import { ControlPanelRow } from "./ControlPanelRow";
-import { ControlPanelOption } from "./ControlPanelOption";
-import { ControlPanelIndicator } from "./ControlPanelIndicator";
+
 import { ControlPanelColorDot } from "./ControlPanelColorDot";
+import { ControlPanelIndicator } from "./ControlPanelIndicator";
+import { ControlPanelOption } from "./ControlPanelOption";
+import { ControlPanelRow } from "./ControlPanelRow";
+import { ControlPanelSection } from "./ControlPanelSection";
 import * as store from "./store";
 
 const LOCALE_LABELS: Record<Locale, string> = {

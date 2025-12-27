@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+
 import SpecList from "./SpecList";
 
 const meta: Meta<typeof SpecList> = {

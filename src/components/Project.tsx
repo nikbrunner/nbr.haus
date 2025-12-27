@@ -1,9 +1,10 @@
+import type { Tech } from "@/config";
+
 import Badge from "./Badge";
 import ClickableTag from "./ClickableTag";
 import SpecCard from "./SpecCard";
 import SpecList from "./SpecList";
 import Tag from "./Tag";
-import type { Tech } from "@/config";
 
 interface Props {
   title: string;

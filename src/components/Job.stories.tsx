@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import Job from "./Job";
+
 import { tech } from "@/config";
+
+import Job from "./Job";
 
 const meta: Meta<typeof Job> = {
   component: Job

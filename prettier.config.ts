@@ -1,6 +1,7 @@
+import type { PluginConfig } from "@ianvs/prettier-plugin-sort-imports";
 import type { Config } from "prettier";
 
-const config: Config = {
+const config: Config & PluginConfig = {
   arrowParens: "avoid",
   bracketSameLine: false,
   bracketSpacing: true,
@@ -12,7 +13,20 @@ const config: Config = {
   singleQuote: false,
   tabWidth: 2,
   trailingComma: "none",
-  useTabs: false
+  useTabs: false,
+  plugins: ["@ianvs/prettier-plugin-sort-imports"],
+  importOrder: [
+    "^react$",
+    "",
+    "<THIRD_PARTY_MODULES>",
+    "",
+    "^@/(.*)$",
+    "",
+    "^[.]",
+    "",
+    "\\.css$"
+  ],
+  importOrderTypeScriptVersion: "5.0.0"
 };
 
 export default config;

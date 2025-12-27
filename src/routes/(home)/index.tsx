@@ -1,18 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { useTexts } from "@/i18n/useTexts";
-import { Trans } from "@/i18n/Trans";
-import { tech } from "@/config";
-
-import Section from "@/components/Section";
-import ProfilePicture from "@/components/ProfilePicture";
-import Job from "@/components/Job";
-import Project from "@/components/Project";
-import LookingForJob from "@/components/LookingForJob";
 import Highlight from "@/components/Highlight";
+import Job from "@/components/Job";
+import Link from "@/components/Link";
+import LookingForJob from "@/components/LookingForJob";
+import ProfilePicture from "@/components/ProfilePicture";
+import Project from "@/components/Project";
+import Section from "@/components/Section";
 import SpecCard from "@/components/SpecCard";
 import SpecList from "@/components/SpecList";
-import Link from "@/components/Link";
+import { tech } from "@/config";
+import { Trans } from "@/i18n/Trans";
+import { useTexts } from "@/i18n/useTexts";
 
 export const Route = createFileRoute("/(home)/")({
   component: Page
