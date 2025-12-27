@@ -1,4 +1,4 @@
-.CV {
+.CvPage {
   /* A4 width */
   max-width: 21cm;
   margin: 0 auto;
@@ -14,7 +14,7 @@
     margin: 1.5cm;
   }
 
-  .CV {
+  .CvPage {
     max-width: none;
     padding: 0;
   }

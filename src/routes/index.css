@@ -1,8 +1,12 @@
-.Index {
+.IndexPage {
+  margin: 0 auto;
   display: grid;
   gap: var(--size-8);
   max-width: var(--size-content-3);
+
   margin: 0 auto;
+  padding: var(--base-layout-top-padding) var(--size-6);
+
   align-items: start;
   grid-template-areas:
     "profile"
@@ -12,29 +16,29 @@
     "projects";
 }
 
-.Index__section--profile {
+.IndexPage__section--profile {
   grid-area: profile;
 }
 
-.Index__section--connect {
+.IndexPage__section--connect {
   grid-area: connect;
 }
 
-.Index__section--about {
+.IndexPage__section--about {
   grid-area: about;
 }
 
-.Index__section--employment {
+.IndexPage__section--employment {
   grid-area: employment;
 }
 
-.Index__section--projects {
+.IndexPage__section--projects {
   grid-area: projects;
 }
 
 /* Two columns: 768px+ */
 @media (min-width: 768px) {
-  .Index {
+  .IndexPage {
     max-width: none;
     grid-template-columns: var(--size-content-2) var(--size-content-2);
     justify-content: center;
@@ -48,14 +52,14 @@
 
 /* Two columns wider: 1024px+ */
 @media (min-width: 1024px) {
-  .Index {
+  .IndexPage {
     grid-template-columns: var(--size-content-3) var(--size-content-3);
   }
 }
 
 /* Three columns: 1440px+ */
 @media (min-width: 1440px) {
-  .Index {
+  .IndexPage {
     grid-template-columns: var(--size-content-2) var(--size-content-2) var(
         --size-content-2
       );
@@ -68,7 +72,7 @@
 
 /* Three columns wider: 1800px+ */
 @media (min-width: 1800px) {
-  .Index {
+  .IndexPage {
     gap: var(--size-10);
     grid-template-columns: var(--size-content-3) var(--size-content-3) var(
         --size-content-3

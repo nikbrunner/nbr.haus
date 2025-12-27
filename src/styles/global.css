@@ -8,9 +8,8 @@
 @import "./print-utils.css";
 
 /* Routes */
-@import "../routes/BaseLayout.css";
-@import "../routes/(home)/index.css";
-@import "../routes/cv/cv.css";
+@import "../routes/index.css";
+@import "../routes/cv.css";
 
 /* Components */
 @import "../components/Badge.css";

@@ -196,7 +196,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
         {/* <Header />  faded out until completed*/}
-        <main className="BaseLayout">{children}</main>
+        <main>{children}</main>
         <ClientOnly>
           <ControlPanel />
         </ClientOnly>

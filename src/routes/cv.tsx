@@ -12,7 +12,7 @@ import { tech } from "@/config";
 import { Trans } from "@/i18n/Trans";
 import { useTexts } from "@/i18n/useTexts";
 
-export const Route = createFileRoute("/cv/")({
+export const Route = createFileRoute("/cv")({
   component: Page
 });
 
@@ -21,7 +21,7 @@ function Page() {
   const experienceInYears = new Date().getFullYear() - 2020;
 
   return (
-    <div className="CV">
+    <div className="CvPage">
       <CvHeader
         name={t.shared.name}
         tagline={t.cv.tagline.replace("{years}", String(experienceInYears))}

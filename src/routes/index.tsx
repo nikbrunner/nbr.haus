@@ -13,7 +13,7 @@ import { tech } from "@/config";
 import { Trans } from "@/i18n/Trans";
 import { useTexts } from "@/i18n/useTexts";
 
-export const Route = createFileRoute("/(home)/")({
+export const Route = createFileRoute("/")({
   component: Page
 });
 
@@ -22,12 +22,12 @@ function Page() {
   const experienceInYears = new Date().getFullYear() - 2020;
 
   return (
-    <div className="Index">
-      <Section className="Index__section--profile">
+    <div className="IndexPage">
+      <Section className="IndexPage__section--profile">
         <ProfilePicture />
       </Section>
 
-      <Section className="Index__section--connect">
+      <Section className="IndexPage__section--connect">
         <SpecCard title={t.connect.title}>
           <SpecList
             padding="small"
@@ -77,7 +77,7 @@ function Page() {
         </SpecCard>
       </Section>
 
-      <Section title={t.shared.sections.about} className="Index__section--about">
+      <Section title={t.shared.sections.about} className="IndexPage__section--about">
         <div className="flex flex-col gap-fluid-4">
           <div>
             <p>
@@ -287,7 +287,7 @@ function Page() {
 
       <Section
         title={t.shared.sections.employment}
-        className="Index__section--employment"
+        className="IndexPage__section--employment"
       >
         <LookingForJob title={t.jobs.lookingForJob.title} />
 
@@ -336,7 +336,7 @@ function Page() {
 
       <Section
         title={t.shared.sections.projects}
-        className="Index__section--projects"
+        className="IndexPage__section--projects"
       >
         <p style={{ color: "var(--fg-support)" }}>{t.projects.intro}</p>
 
