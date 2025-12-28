@@ -75,6 +75,24 @@ export default defineConfig([
     }
   },
   {
+    name: "project/control-panel-layout-effect-exception",
+    // ControlPanel uses useLayoutEffect with setState for DOM measurement positioning
+    // This is a legitimate pattern for layout calculations that need synchronous updates
+    files: ["src/components/ControlPanel/ControlPanel.tsx"],
+    rules: {
+      "react-hooks/set-state-in-effect": "off"
+    }
+  },
+  {
+    name: "project/glitch-effect-purity-exception",
+    // GlitchEffect intentionally uses Math.random() for visual variety - each instance
+    // should have different animation delays for a desynchronized glitch effect
+    files: ["src/components/GlitchEffect.tsx"],
+    rules: {
+      "react-hooks/purity": "off"
+    }
+  },
+  {
     name: "project/json-strict-validation",
     files: ["**/*.json"],
     plugins: { json },

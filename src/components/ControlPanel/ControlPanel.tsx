@@ -9,6 +9,7 @@ import { useColorMode } from "@/hooks/useColorMode";
 import { useContrast } from "@/hooks/useContrast";
 import { useHue } from "@/hooks/useHue";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
+import { useOnMount } from "@/hooks/useOnMount";
 import { useLocale } from "@/i18n/useLocale";
 import { useTexts } from "@/i18n/useTexts";
 import { type Locale } from "@/types/i18n";
@@ -19,7 +20,6 @@ import { ControlPanelOption } from "./ControlPanelOption";
 import { ControlPanelPrintHint } from "./ControlPanelPrintHint";
 import { ControlPanelRow } from "./ControlPanelRow";
 import { ControlPanelSection } from "./ControlPanelSection";
-import { useOnMount } from "@/hooks/useOnMount";
 
 /**
  * ControlPanel - Smart container for navigation, locale, and style settings.
