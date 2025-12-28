@@ -5,15 +5,6 @@ import { useSearch } from "@tanstack/react-router";
 import { useLocale } from "@/i18n/useLocale";
 import { getInitialLocale } from "@/i18n/utils";
 
-import {
-  applyColorMode,
-  applyContrastCssVars,
-  applyHueCssVars,
-  getHueVariants,
-  persistColorMode,
-  persistContrast,
-  persistHue
-} from "./styleUtils";
 import { useColorMode } from "./useColorMode";
 import { useContrast } from "./useContrast";
 import { useHue } from "./useHue";
@@ -24,9 +15,9 @@ import { useHue } from "./useHue";
  */
 export function useInitializeStyle() {
   const search = useSearch({ strict: false });
-  const { hue } = useHue();
-  const { contrast } = useContrast();
-  const { colorMode } = useColorMode();
+  const { hue, getHueVariants, applyHueCssVars, persistHue } = useHue();
+  const { contrast, applyContrastCssVars, persistContrast } = useContrast();
+  const { colorMode, applyColorMode, persistColorMode } = useColorMode();
   const { setLocale } = useLocale();
 
   useEffect(() => {

@@ -4,7 +4,11 @@ import { useRouter, useSearch } from "@tanstack/react-router";
 
 import { contrastSchema, type Contrast } from "@/types/style";
 
-import { applyContrastCssVars, persistContrast } from "./styleUtils";
+const CSS_VALUES: Record<Contrast, { l: number; c: number }> = {
+  low: { l: 1, c: 0.6 },
+  base: { l: 1, c: 1 },
+  high: { l: 1, c: 1.4 }
+};
 
 export function useContrast() {
   const router = useRouter();
@@ -25,14 +29,35 @@ export function useContrast() {
     [router]
   );
 
-  return { contrast, setContrast, values: contrastSchema.options };
+  return {
+    contrast,
+    setContrast,
+    values: contrastSchema.options,
+    applyContrastCssVars,
+    persistContrast
+  };
 }
 
+// Storage
 function getContrastFromStorage(): Contrast | null {
   if (typeof localStorage !== "undefined") {
     const saved = localStorage.getItem("contrast") as Contrast | null;
-    if (saved && contrastSchema.parse(saved)) return saved;
+    if (saved && contrastSchema.safeParse(saved).success) return saved;
   }
-
   return null;
+}
+
+function persistContrast(contrast: Contrast) {
+  if (typeof localStorage !== "undefined") {
+    localStorage.setItem("contrast", contrast);
+  }
+}
+
+// CSS
+function applyContrastCssVars(contrast: Contrast) {
+  if (typeof document !== "undefined") {
+    const values = CSS_VALUES[contrast];
+    document.body.style.setProperty("--contrast-l", values.l.toString());
+    document.body.style.setProperty("--contrast-c", values.c.toString());
+  }
 }

@@ -5,7 +5,6 @@ import { cx } from "class-variance-authority";
 import { motion } from "framer-motion";
 import { Printer } from "lucide-react";
 
-import { getAccentHue } from "@/hooks/styleUtils";
 import { useColorMode } from "@/hooks/useColorMode";
 import { useContrast } from "@/hooks/useContrast";
 import { useHue } from "@/hooks/useHue";
@@ -32,7 +31,7 @@ export default function ControlPanel() {
   const t = useTexts();
 
   const [isExpanded, setIsExpanded] = useState(false);
-  const { hue, setHue, presets: huePresets } = useHue();
+  const { hue, setHue, presets: huePresets, getAccentHue } = useHue();
   const { contrast, setContrast, values: contrastValues } = useContrast();
   const { colorMode, setColorMode, values: colorModeValues } = useColorMode();
   const { locale, setLocale } = useLocale();
