@@ -2,13 +2,14 @@ import { useCallback } from "react";
 
 import { useRouter, useSearch } from "@tanstack/react-router";
 
-import { DEFAULT_CONTRAST, type Contrast } from "@/types/style";
+import { CONTRAST_VALUES, DEFAULT_CONTRAST, type Contrast } from "@/types/style";
 
 import { applyContrastCssVars, persistContrast } from "./styleUtils";
 
 interface UseContrastReturn {
   contrast: Contrast;
   setContrast: (contrast: Contrast) => void;
+  values: readonly Contrast[];
 }
 
 export function useContrast(): UseContrastReturn {
@@ -30,5 +31,5 @@ export function useContrast(): UseContrastReturn {
     [router]
   );
 
-  return { contrast, setContrast };
+  return { contrast, setContrast, values: CONTRAST_VALUES };
 }

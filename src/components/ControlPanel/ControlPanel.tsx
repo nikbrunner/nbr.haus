@@ -14,7 +14,6 @@ import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 import { useLocale } from "@/i18n/useLocale";
 import { useTexts } from "@/i18n/useTexts";
 import { LOCALES, type Locale } from "@/types/i18n";
-import { COLOR_MODE_VALUES, CONTRAST_VALUES, PRESET_HUES } from "@/types/style";
 
 import { ControlPanelColorDot } from "./ControlPanelColorDot";
 import { ControlPanelIndicator } from "./ControlPanelIndicator";
@@ -33,9 +32,9 @@ export default function ControlPanel() {
   const t = useTexts();
 
   const [isExpanded, setIsExpanded] = useState(false);
-  const { hue, setHue } = useHue();
-  const { contrast, setContrast } = useContrast();
-  const { colorMode, setColorMode } = useColorMode();
+  const { hue, setHue, presets: huePresets } = useHue();
+  const { contrast, setContrast, values: contrastValues } = useContrast();
+  const { colorMode, setColorMode, values: colorModeValues } = useColorMode();
   const { locale, setLocale } = useLocale();
 
   useInitializeStyle();
@@ -220,7 +219,7 @@ export default function ControlPanel() {
           }
         >
           <ControlPanelRow label={t.controlPanel.rows.accent}>
-            {PRESET_HUES.map(presetHue => (
+            {huePresets.map(presetHue => (
               <ControlPanelOption
                 key={presetHue}
                 isActive={hue === presetHue}
@@ -233,7 +232,7 @@ export default function ControlPanel() {
           </ControlPanelRow>
 
           <ControlPanelRow label={t.controlPanel.rows.contrast}>
-            {CONTRAST_VALUES.map(value => (
+            {contrastValues.map(value => (
               <ControlPanelOption
                 key={value}
                 isActive={contrast === value}
@@ -247,7 +246,7 @@ export default function ControlPanel() {
           </ControlPanelRow>
 
           <ControlPanelRow label={t.controlPanel.rows.mode}>
-            {COLOR_MODE_VALUES.map(value => (
+            {colorModeValues.map(value => (
               <ControlPanelOption
                 key={value}
                 isActive={colorMode === value}

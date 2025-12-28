@@ -2,13 +2,14 @@ import { useCallback } from "react";
 
 import { useRouter, useSearch } from "@tanstack/react-router";
 
-import { DEFAULT_HUE, type Hue } from "@/types/style";
+import { DEFAULT_HUE, PRESET_HUES, type Hue } from "@/types/style";
 
 import { applyHueCssVars, getHueVariants, persistHue } from "./styleUtils";
 
 interface UseHueReturn {
   hue: Hue;
   setHue: (hue: Hue) => void;
+  presets: readonly Hue[];
 }
 
 export function useHue(): UseHueReturn {
@@ -31,5 +32,5 @@ export function useHue(): UseHueReturn {
     [router]
   );
 
-  return { hue, setHue };
+  return { hue, setHue, presets: PRESET_HUES };
 }

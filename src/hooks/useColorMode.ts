@@ -2,13 +2,18 @@ import { useCallback } from "react";
 
 import { useRouter, useSearch } from "@tanstack/react-router";
 
-import { DEFAULT_COLOR_MODE, type ColorMode } from "@/types/style";
+import {
+  COLOR_MODE_VALUES,
+  DEFAULT_COLOR_MODE,
+  type ColorMode
+} from "@/types/style";
 
 import { applyColorMode, persistColorMode } from "./styleUtils";
 
 interface UseColorModeReturn {
   colorMode: ColorMode;
   setColorMode: (colorMode: ColorMode) => void;
+  values: readonly ColorMode[];
 }
 
 export function useColorMode(): UseColorModeReturn {
@@ -30,5 +35,5 @@ export function useColorMode(): UseColorModeReturn {
     [router]
   );
 
-  return { colorMode, setColorMode };
+  return { colorMode, setColorMode, values: COLOR_MODE_VALUES };
 }
