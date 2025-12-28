@@ -8,7 +8,6 @@ import { CvPriorExperience } from "@/components/cv/CvPriorExperience";
 import { CvProject } from "@/components/cv/CvProject";
 import { CvSection } from "@/components/cv/CvSection";
 import Highlight from "@/components/Highlight";
-import { tech } from "@/config";
 import { Trans } from "@/i18n/Trans";
 import { useTexts } from "@/i18n/useTexts";
 
@@ -40,20 +39,20 @@ function Page() {
       <CvSection className="flex flex-col gap-2">
         <p>
           <strong>
-            {t.about.greeting}
+            {t.cv.about.greeting}
             <br />
             <br />
             <Trans
-              text={t.about.intro.replace("{years}", String(experienceInYears))}
+              text={t.cv.about.intro.replace("{years}", String(experienceInYears))}
               components={{
                 highlight: children => <Highlight>{children}</Highlight>
               }}
             />
           </strong>
         </p>
-        <p>{t.about.ux}</p>
-        <p>{t.about.independence}</p>
-        <p>{t.about.passion}</p>
+        <p>{t.cv.about.ux}</p>
+        <p>{t.cv.about.independence}</p>
+        <p>{t.cv.about.passion}</p>
       </CvSection>
 
       <CvSection
@@ -62,46 +61,31 @@ function Page() {
       >
         <div className="flex flex-col gap-y-8">
           <CvJob
-            company={t.jobs.dealerCenter.company}
-            position={t.jobs.dealerCenter.position}
-            period={t.jobs.dealerCenter.period}
-            location={t.jobs.dealerCenter.location}
-            intro={t.jobs.dealerCenter.summary}
-            bullets={t.jobs.dealerCenter.bullets}
-            technologies={[
-              tech.react,
-              tech.typescript,
-              tech.scss,
-              tech.storybook,
-              tech.tanstackRouter,
-              tech.tanstackQuery,
-              tech.tanstackForm,
-              tech.redux,
-              tech.graphql,
-              tech.tailwind,
-              tech.electron,
-              tech.nodejs
-            ].map(t => t.name)}
+            company={t.cv.jobs.dealerCenter.company}
+            position={t.cv.jobs.dealerCenter.position}
+            period={t.cv.jobs.dealerCenter.period}
+            location={t.cv.jobs.dealerCenter.location}
+            intro={t.cv.jobs.dealerCenter.intro}
+            bullets={t.cv.jobs.dealerCenter.bullets}
+            technologies={t.cv.jobs.dealerCenter.technologies}
           />
 
           <CvJob
-            company={t.jobs.divaE.company}
-            position={t.jobs.divaE.position}
-            period={t.jobs.divaE.period}
-            location={t.jobs.divaE.location}
-            intro={t.jobs.divaE.description}
-            technologies={[tech.react, tech.typescript, tech.scss, tech.nodejs].map(
-              t => t.name
-            )}
+            company={t.cv.jobs.divaE.company}
+            position={t.cv.jobs.divaE.position}
+            period={t.cv.jobs.divaE.period}
+            location={t.cv.jobs.divaE.location}
+            intro={t.cv.jobs.divaE.description}
+            technologies={t.cv.jobs.divaE.technologies}
           />
 
           <CvJob
-            company={t.jobs.campudus.company}
-            position={t.jobs.campudus.position}
-            period={t.jobs.campudus.period}
-            location={t.jobs.campudus.location}
-            intro={t.jobs.campudus.description}
-            technologies={[tech.react, tech.nodejs].map(t => t.name)}
+            company={t.cv.jobs.campudus.company}
+            position={t.cv.jobs.campudus.position}
+            period={t.cv.jobs.campudus.period}
+            location={t.cv.jobs.campudus.location}
+            intro={t.cv.jobs.campudus.description}
+            technologies={t.cv.jobs.campudus.technologies}
           />
         </div>
       </CvSection>
@@ -111,19 +95,19 @@ function Page() {
         title={t.shared.sections.sideProjects}
       >
         <CvProject
-          title={t.projects.blackAtom.title}
-          subtitle={t.projects.blackAtom.subtitle}
-          bullets={t.projects.blackAtom.bullets}
+          title={t.cv.projects.blackAtom.title}
+          subtitle={t.cv.projects.blackAtom.subtitle}
+          bullets={t.cv.projects.blackAtom.bullets}
         />
         <CvProject
-          title={t.projects.awdcs.title}
-          subtitle={t.projects.awdcs.subtitle}
-          bullets={t.projects.awdcs.bullets}
+          title={t.cv.projects.awdcs.title}
+          subtitle={t.cv.projects.awdcs.subtitle}
+          bullets={t.cv.projects.awdcs.bullets}
         />
         <CvProject
-          title={t.projects.koyo.title}
-          subtitle={t.projects.koyo.subtitle}
-          bullets={t.projects.koyo.bullets}
+          title={t.cv.projects.koyo.title}
+          subtitle={t.cv.projects.koyo.subtitle}
+          bullets={t.cv.projects.koyo.bullets}
         />
       </CvSection>
 

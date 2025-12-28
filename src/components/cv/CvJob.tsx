@@ -7,7 +7,7 @@ interface Props {
   location: string;
   intro: string;
   bullets?: readonly string[];
-  technologies: string[];
+  technologies: readonly string[];
 }
 
 export function CvJob(props: Props) {
