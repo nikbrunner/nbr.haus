@@ -32,7 +32,7 @@ export default function ControlPanel() {
 
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const { hue, setHue, presets: huePresets, getAccentHue } = useHue();
+  const { hue, hues, setHue, getAccentHue } = useHue();
   const { contrast, contrasts, setContrast } = useContrast();
   const { colorMode, colorModes, setColorMode } = useColorMode();
   const { locale, setLocale } = useLocale();
@@ -219,7 +219,7 @@ export default function ControlPanel() {
           }
         >
           <ControlPanelRow label={t.controlPanel.rows.accent}>
-            {huePresets.map(presetHue => (
+            {hues.map(presetHue => (
               <ControlPanelOption
                 key={presetHue}
                 isActive={hue === presetHue}

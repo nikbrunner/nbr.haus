@@ -15,17 +15,14 @@ import { useHue } from "./useHue";
  */
 export function useInitializeStyle() {
   const search = useSearch({ strict: false });
-  const { hue, getHueVariants, applyHueCssVars, persistHue } = useHue();
+
+  const { hue, setHue } = useHue();
   const { contrast, setContrast } = useContrast();
   const { colorMode, setColorMode } = useColorMode();
   const { setLocale } = useLocale();
 
   useEffect(() => {
-    // Hue
-    const { hueAccent, hueAccentAlt } = getHueVariants(hue);
-    applyHueCssVars(hue, hueAccent, hueAccentAlt);
-    persistHue(hue, hueAccent, hueAccentAlt);
-
+    setHue(hue);
     setContrast(contrast);
     setColorMode(colorMode);
 

@@ -4,12 +4,12 @@ import { useRouter, useSearch } from "@tanstack/react-router";
 
 import { hueSchema, type Hue } from "@/types/style";
 
-const PRESETS: Hue[] = [90, 165, 275];
+const hues: Hue[] = [90, 165, 275];
 
 export function useHue() {
   const router = useRouter();
   const search = useSearch({ strict: false });
-  const hue = search.hue ?? getHueFromStorage() ?? PRESETS[0];
+  const hue = search.hue ?? getHueFromStorage() ?? hues[0];
 
   const setHue = useCallback(
     (newHue: Hue) => {
@@ -29,12 +29,9 @@ export function useHue() {
 
   return {
     hue,
+    hues,
     setHue,
-    presets: PRESETS,
-    getAccentHue,
-    getHueVariants,
-    applyHueCssVars,
-    persistHue
+    getAccentHue
   };
 }
 
