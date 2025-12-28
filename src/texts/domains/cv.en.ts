@@ -18,5 +18,6 @@ export const texts = {
   },
   education: "Sound Engineering & Mastering, Deutsche Pop Munich (2010–2011)",
   interests:
-    "Landscape Photography, Reading, Workflow Optimization, Open Source, Music Production"
+    "Landscape Photography, Reading, Workflow Optimization, Open Source, Music Production",
+  languages: "German (Native) • English (Fluent)"
 } as const;

@@ -23,6 +23,7 @@
   .CvPage {
     max-width: none;
     padding: 0;
+    background: none;
   }
 
   /* Hide UI elements */
