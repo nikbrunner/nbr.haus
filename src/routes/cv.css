@@ -20,10 +20,19 @@
     margin: 1.5cm;
   }
 
+  html,
+  body {
+    background: white !important;
+    background-color: white !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
   .CvPage {
     max-width: none;
     padding: 0;
     background: none;
+    background-color: transparent !important;
   }
 
   /* Hide UI elements */

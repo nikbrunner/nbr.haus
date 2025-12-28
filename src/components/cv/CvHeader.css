@@ -65,8 +65,17 @@
 }
 
 @media print {
+  /* Force desktop grid layout regardless of viewport width (fixes iOS) */
+  .CvHeader {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--print-size-2) var(--print-size-8);
+  }
+
   .CvHeader__photo {
     transform: translateX(calc(var(--print-size-2) * -1));
+    max-height: none;
+    height: 100%;
   }
 }
 
