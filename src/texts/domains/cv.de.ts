@@ -5,7 +5,7 @@ import type { texts as en } from "./cv.en";
 export const texts: Widen<typeof en> = {
   printButton: "Lebenslauf drucken",
   tagline:
-    "Software-Ingenieur mit Spezialisierung auf Frontend-Entwicklung und {years} Jahren Erfahrung im Bau moderner Webanwendungen",
+    "Software-Ingenieur mit Spezialisierung auf Frontend-Entwicklung und {years} Jahren Erfahrung in der Entwicklung moderner Web- und Desktop-Anwendungen",
   summary:
     "Spezialisiert auf Design-Systeme, Frontend-Architektur und großangelegte Migrationen. Leitete technische Entscheidungen, die tausende Dateien betrafen, und mentorte Junior-Entwickler. Arbeite gerne selbstständig und blühe in kollaborativen Teams auf. Integriert KI-Tools in tägliche Entwicklungs-Workflows.",
   contact: {

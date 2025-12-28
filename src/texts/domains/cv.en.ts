@@ -1,7 +1,7 @@
 export const texts = {
   printButton: "Print CV",
   tagline:
-    "Software Engineer specializing in Frontend Development with {years} years of experience in building modern web applications",
+    "Software Engineer specializing in Frontend Development with {years} years of experience building modern web and desktop applications",
   summary:
     "Specialized in design systems, frontend architecture, and large-scale migrations. Led technical decisions affecting thousands of files and mentored junior developers. Comfortable working independently while thriving in collaborative teams. Integrates AI tooling into daily development workflows.",
   contact: {
