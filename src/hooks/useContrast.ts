@@ -2,20 +2,14 @@ import { useCallback } from "react";
 
 import { useRouter, useSearch } from "@tanstack/react-router";
 
-import { CONTRAST_VALUES, DEFAULT_CONTRAST, type Contrast } from "@/types/style";
+import { contrastSchema, type Contrast } from "@/types/style";
 
 import { applyContrastCssVars, persistContrast } from "./styleUtils";
 
-interface UseContrastReturn {
-  contrast: Contrast;
-  setContrast: (contrast: Contrast) => void;
-  values: readonly Contrast[];
-}
-
-export function useContrast(): UseContrastReturn {
+export function useContrast() {
   const router = useRouter();
   const search = useSearch({ strict: false });
-  const contrast = search.contrast ?? DEFAULT_CONTRAST;
+  const contrast = search.contrast ?? getContrastFromStorage() ?? "base";
 
   const setContrast = useCallback(
     (newContrast: Contrast) => {
@@ -31,5 +25,14 @@ export function useContrast(): UseContrastReturn {
     [router]
   );
 
-  return { contrast, setContrast, values: CONTRAST_VALUES };
+  return { contrast, setContrast, values: contrastSchema.options };
+}
+
+function getContrastFromStorage(): Contrast | null {
+  if (typeof localStorage !== "undefined") {
+    const saved = localStorage.getItem("contrast") as Contrast | null;
+    if (saved && contrastSchema.parse(saved)) return saved;
+  }
+
+  return null;
 }

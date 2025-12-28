@@ -2,24 +2,14 @@ import { useCallback } from "react";
 
 import { useRouter, useSearch } from "@tanstack/react-router";
 
-import {
-  COLOR_MODE_VALUES,
-  DEFAULT_COLOR_MODE,
-  type ColorMode
-} from "@/types/style";
+import { colorModeSchema, type ColorMode } from "@/types/style";
 
 import { applyColorMode, persistColorMode } from "./styleUtils";
 
-interface UseColorModeReturn {
-  colorMode: ColorMode;
-  setColorMode: (colorMode: ColorMode) => void;
-  values: readonly ColorMode[];
-}
-
-export function useColorMode(): UseColorModeReturn {
+export function useColorMode() {
   const router = useRouter();
   const search = useSearch({ strict: false });
-  const colorMode = search.colorMode ?? DEFAULT_COLOR_MODE;
+  const colorMode = search.colorMode ?? getColorModeFromStorage() ?? "system";
 
   const setColorMode = useCallback(
     (newColorMode: ColorMode) => {
@@ -35,5 +25,14 @@ export function useColorMode(): UseColorModeReturn {
     [router]
   );
 
-  return { colorMode, setColorMode, values: COLOR_MODE_VALUES };
+  return { colorMode, setColorMode, values: colorModeSchema.options };
+}
+
+function getColorModeFromStorage(): ColorMode | null {
+  if (typeof localStorage !== "undefined") {
+    const saved = localStorage.getItem("colorMode") as ColorMode | null;
+    if (saved && colorModeSchema.safeParse(saved).success) return saved;
+  }
+
+  return null;
 }

@@ -1,13 +1,4 @@
-import {
-  COLOR_MODE_VALUES,
-  CONTRAST_VALUES,
-  DEFAULT_COLOR_MODE,
-  DEFAULT_CONTRAST,
-  DEFAULT_HUE,
-  type ColorMode,
-  type Contrast,
-  type Hue
-} from "@/types/style";
+import type { ColorMode, Contrast } from "@/types/style";
 
 const CONTRAST_CSS_VALUES: Record<Contrast, { l: number; c: number }> = {
   low: { l: 1, c: 0.6 },
@@ -78,42 +69,4 @@ export function persistColorMode(colorMode: ColorMode) {
   if (typeof localStorage !== "undefined") {
     localStorage.setItem("colorMode", colorMode);
   }
-}
-
-// localStorage getters
-function getHueFromStorage(): Hue | null {
-  if (typeof localStorage !== "undefined") {
-    const saved = localStorage.getItem("hue");
-    if (saved) return parseInt(saved, 10);
-  }
-  return null;
-}
-
-function getContrastFromStorage(): Contrast | null {
-  if (typeof localStorage !== "undefined") {
-    const saved = localStorage.getItem("contrast") as Contrast | null;
-    if (saved && CONTRAST_VALUES.includes(saved)) return saved;
-  }
-  return null;
-}
-
-function getColorModeFromStorage(): ColorMode | null {
-  if (typeof localStorage !== "undefined") {
-    const saved = localStorage.getItem("colorMode") as ColorMode | null;
-    if (saved && COLOR_MODE_VALUES.includes(saved)) return saved;
-  }
-  return null;
-}
-
-// Initial value getters (localStorage → default)
-export function getInitialHue(): Hue {
-  return getHueFromStorage() ?? DEFAULT_HUE;
-}
-
-export function getInitialContrast(): Contrast {
-  return getContrastFromStorage() ?? DEFAULT_CONTRAST;
-}
-
-export function getInitialColorMode(): ColorMode {
-  return getColorModeFromStorage() ?? DEFAULT_COLOR_MODE;
 }
