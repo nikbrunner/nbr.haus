@@ -26,6 +26,9 @@
     background-color: white !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+    /* Fix iOS Safari rendering fonts larger in print */
+    font-size: 10pt !important;
+    -webkit-text-size-adjust: 100%;
   }
 
   .CvPage {
