@@ -2,9 +2,9 @@ import { useCallback } from "react";
 
 import { useRouter, useSearch } from "@tanstack/react-router";
 
-import type { ColorMode } from "@/validators/rootSearchParams";
+import { DEFAULT_COLOR_MODE, type ColorMode } from "@/types/style";
 
-import { applyColorMode, DEFAULT_COLOR_MODE, persistColorMode } from "./styleUtils";
+import { applyColorMode, persistColorMode } from "./styleUtils";
 
 interface UseColorModeReturn {
   colorMode: ColorMode;

@@ -1,15 +1,7 @@
 import { z } from "zod";
 
 import { localeSchema } from "@/types/i18n";
-
-const hueSchema = z.number().min(0).max(360);
-export type Hue = z.infer<typeof hueSchema>;
-
-const colorModeSchema = z.enum(["light", "system", "dark"]);
-export type ColorMode = z.infer<typeof colorModeSchema>;
-
-const contrastSchema = z.enum(["low", "base", "high"]);
-export type Contrast = z.infer<typeof contrastSchema>;
+import { colorModeSchema, contrastSchema, hueSchema } from "@/types/style";
 
 export const rootSearchParamsSchema = z.object({
   hue: hueSchema.optional().catch(undefined),

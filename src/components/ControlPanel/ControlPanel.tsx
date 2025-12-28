@@ -5,12 +5,7 @@ import { cx } from "class-variance-authority";
 import { motion } from "framer-motion";
 import { Printer } from "lucide-react";
 
-import {
-  COLOR_MODE_VALUES,
-  CONTRAST_VALUES,
-  getAccentHue,
-  PRESET_HUES
-} from "@/hooks/styleUtils";
+import { getAccentHue } from "@/hooks/styleUtils";
 import { useColorMode } from "@/hooks/useColorMode";
 import { useContrast } from "@/hooks/useContrast";
 import { useHue } from "@/hooks/useHue";
@@ -19,6 +14,7 @@ import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 import { useLocale } from "@/i18n/useLocale";
 import { useTexts } from "@/i18n/useTexts";
 import { LOCALES, type Locale } from "@/types/i18n";
+import { COLOR_MODE_VALUES, CONTRAST_VALUES, PRESET_HUES } from "@/types/style";
 
 import { ControlPanelColorDot } from "./ControlPanelColorDot";
 import { ControlPanelIndicator } from "./ControlPanelIndicator";

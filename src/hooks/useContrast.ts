@@ -2,13 +2,9 @@ import { useCallback } from "react";
 
 import { useRouter, useSearch } from "@tanstack/react-router";
 
-import type { Contrast } from "@/validators/rootSearchParams";
+import { DEFAULT_CONTRAST, type Contrast } from "@/types/style";
 
-import {
-  applyContrastCssVars,
-  DEFAULT_CONTRAST,
-  persistContrast
-} from "./styleUtils";
+import { applyContrastCssVars, persistContrast } from "./styleUtils";
 
 interface UseContrastReturn {
   contrast: Contrast;

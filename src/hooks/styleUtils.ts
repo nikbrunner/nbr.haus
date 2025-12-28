@@ -1,13 +1,13 @@
-import type { ColorMode, Contrast, Hue } from "@/validators/rootSearchParams";
-
-// Constants
-export const PRESET_HUES: Hue[] = [90, 165, 275];
-export const CONTRAST_VALUES: Contrast[] = ["low", "base", "high"];
-export const COLOR_MODE_VALUES: ColorMode[] = ["light", "system", "dark"];
-
-export const DEFAULT_HUE = PRESET_HUES[0];
-export const DEFAULT_CONTRAST: Contrast = "base";
-export const DEFAULT_COLOR_MODE: ColorMode = "system";
+import {
+  COLOR_MODE_VALUES,
+  CONTRAST_VALUES,
+  DEFAULT_COLOR_MODE,
+  DEFAULT_CONTRAST,
+  DEFAULT_HUE,
+  type ColorMode,
+  type Contrast,
+  type Hue
+} from "@/types/style";
 
 const CONTRAST_CSS_VALUES: Record<Contrast, { l: number; c: number }> = {
   low: { l: 1, c: 0.6 },

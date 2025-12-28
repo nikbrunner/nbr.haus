@@ -2,14 +2,9 @@ import { useCallback } from "react";
 
 import { useRouter, useSearch } from "@tanstack/react-router";
 
-import type { Hue } from "@/validators/rootSearchParams";
+import { DEFAULT_HUE, type Hue } from "@/types/style";
 
-import {
-  applyHueCssVars,
-  DEFAULT_HUE,
-  getHueVariants,
-  persistHue
-} from "./styleUtils";
+import { applyHueCssVars, getHueVariants, persistHue } from "./styleUtils";
 
 interface UseHueReturn {
   hue: Hue;
