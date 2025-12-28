@@ -42,6 +42,7 @@
 @import "../components/ControlPanel/ControlPanelOption.css";
 @import "../components/ControlPanel/ControlPanelIndicator.css";
 @import "../components/ControlPanel/ControlPanelColorDot.css";
+@import "../components/ControlPanel/ControlPanelPrintHint.css";
 
 *,
 *::before,

@@ -1,3 +1,5 @@
+import type { MouseEvent } from "react";
+
 import { cva } from "class-variance-authority";
 
 const variants = cva("ControlPanelOption", {
@@ -35,11 +37,16 @@ export function ControlPanelOption({
   ariaLabel,
   children
 }: ControlPanelOptionProps) {
+  const handleClick = (e: MouseEvent) => {
+    e.stopPropagation();
+    onClick();
+  };
+
   return (
     <button
       type="button"
       className={variants({ active: isActive, disabled })}
-      onClick={onClick}
+      onClick={handleClick}
       disabled={disabled ?? false}
       aria-label={ariaLabel}
       aria-pressed={isActive ?? undefined}

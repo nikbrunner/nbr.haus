@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import { useRouter, useRouterState, useSearch } from "@tanstack/react-router";
 import { useStore } from "@tanstack/react-store";
@@ -14,6 +14,7 @@ import type { ColorMode, Contrast } from "@/validators/rootSearchParams";
 import { ControlPanelColorDot } from "./ControlPanelColorDot";
 import { ControlPanelIndicator } from "./ControlPanelIndicator";
 import { ControlPanelOption } from "./ControlPanelOption";
+import { ControlPanelPrintHint } from "./ControlPanelPrintHint";
 import { ControlPanelRow } from "./ControlPanelRow";
 import { ControlPanelSection } from "./ControlPanelSection";
 import * as store from "./store";
@@ -39,6 +40,15 @@ export default function ControlPanel() {
   const locale = useStore(i18nStore, s => s.locale);
 
   const isOnCVPage = pathname === "/cv";
+  const showPrintHint = isOnCVPage && !isExpanded;
+
+  // Refs for positioning the print hint relative to the print indicator
+  const panelRef = useRef<HTMLDivElement>(null);
+  const printIndicatorRef = useRef<HTMLDivElement>(null);
+  const [hintPosition, setHintPosition] = useState<{
+    bottom: number;
+    right: number;
+  } | null>(null);
 
   const closePanel = useCallback(() => store.setExpanded(false), []);
 
@@ -68,6 +78,33 @@ export default function ControlPanel() {
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isExpanded]);
+
+  // Calculate hint position relative to print indicator
+  useLayoutEffect(() => {
+    if (!showPrintHint || !panelRef.current || !printIndicatorRef.current) {
+      setHintPosition(null);
+      return;
+    }
+
+    const panelRect = panelRef.current.getBoundingClientRect();
+    const indicatorRect = printIndicatorRef.current.getBoundingClientRect();
+
+    // Position hint to the left of the indicator, vertically centered
+    const SPACING = 12; // Gap between hint and indicator
+
+    // Calculate bottom: distance from panel bottom to indicator's vertical center
+    const indicatorCenterFromBottom =
+      panelRect.bottom - (indicatorRect.top + indicatorRect.height / 2);
+
+    // Calculate right: distance from panel's right edge to indicator's left edge + spacing
+    const indicatorLeftRelativeToPanel = indicatorRect.left - panelRect.left;
+    const rightValue = panelRect.width - indicatorLeftRelativeToPanel + SPACING;
+
+    setHintPosition({
+      bottom: indicatorCenterFromBottom,
+      right: rightValue
+    });
+  }, [showPrintHint]);
 
   // Get navigable routes from router
   const navLinks = Object.keys(router.routesByPath)
@@ -141,7 +178,10 @@ export default function ControlPanel() {
   };
 
   return (
-    <div className={cx("ControlPanel", isExpanded && "ControlPanel--expanded")}>
+    <div
+      ref={panelRef}
+      className={cx("ControlPanel", isExpanded && "ControlPanel--expanded")}
+    >
       <motion.div
         className="ControlPanel__content"
         role="button"
@@ -267,6 +307,7 @@ export default function ControlPanel() {
 
         {/* Print Section - only on CV page */}
         <ControlPanelSection
+          indicatorRef={printIndicatorRef}
           indicator={
             <ControlPanelIndicator disabled={!isOnCVPage}>
               <Printer size={16} />
@@ -289,6 +330,21 @@ export default function ControlPanel() {
           )}
         </ControlPanelSection>
       </motion.div>
+
+      {/* Print hint - rendered outside clip-path container */}
+      <ControlPanelPrintHint
+        text="Print the CV here"
+        isVisible={showPrintHint && hintPosition !== null}
+        style={
+          hintPosition
+            ? {
+                bottom: hintPosition.bottom,
+                right: hintPosition.right,
+                transform: "translateY(50%)"
+              }
+            : undefined
+        }
+      />
     </div>
   );
 }
