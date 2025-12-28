@@ -9,6 +9,7 @@ import { Printer } from "lucide-react";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 import { i18nStore, initializeLocale, setLocale } from "@/i18n/store";
 import { LOCALES, type Locale } from "@/i18n/types";
+import { useTexts } from "@/i18n/useTexts";
 import type { ColorMode, Contrast } from "@/validators/rootSearchParams";
 
 import { ControlPanelColorDot } from "./ControlPanelColorDot";
@@ -19,11 +20,6 @@ import { ControlPanelRow } from "./ControlPanelRow";
 import { ControlPanelSection } from "./ControlPanelSection";
 import * as store from "./store";
 
-const LOCALE_LABELS: Record<Locale, string> = {
-  en: "EN",
-  de: "DE"
-};
-
 /**
  * ControlPanel - Smart container for navigation, locale, and style settings.
  * Composes ControlPanelSection dumb components and handles all state/routing logic.
@@ -32,6 +28,7 @@ export default function ControlPanel() {
   const search = useSearch({ strict: false });
   const router = useRouter();
   const pathname = useRouterState({ select: s => s.location.pathname });
+  const t = useTexts();
 
   const isExpanded = store.useSelector(s => s.isExpanded);
   const hue = store.useSelector(s => s.hue);
@@ -182,7 +179,7 @@ export default function ControlPanel() {
         className="ControlPanel__content"
         role="button"
         tabIndex={0}
-        aria-label="Toggle control panel"
+        aria-label={t.controlPanel.aria.togglePanel}
         onClick={store.toggleExpanded}
         onKeyDown={e => {
           if (e.key === "Enter" || e.key === " ") {
@@ -208,7 +205,7 @@ export default function ControlPanel() {
         <ControlPanelSection
           indicator={<ControlPanelIndicator>{pathname}</ControlPanelIndicator>}
         >
-          <ControlPanelRow label="Nav">
+          <ControlPanelRow label={t.controlPanel.rows.nav}>
             {navLinks.map(navPath => (
               <ControlPanelOption
                 key={navPath}
@@ -217,7 +214,7 @@ export default function ControlPanel() {
                   router.navigate({ to: navPath });
                   store.setExpanded(false);
                 }}
-                ariaLabel={`Navigate to ${navPath}`}
+                ariaLabel={`${t.controlPanel.aria.navigateTo} ${navPath}`}
               >
                 {navPath}
               </ControlPanelOption>
@@ -228,18 +225,25 @@ export default function ControlPanel() {
         {/* Locale Section */}
         <ControlPanelSection
           indicator={
-            <ControlPanelIndicator>{LOCALE_LABELS[locale]}</ControlPanelIndicator>
+            <ControlPanelIndicator title={t.controlPanel.titles.locale[locale]}>
+              {t.controlPanel.labels.locale[locale]}
+            </ControlPanelIndicator>
           }
         >
-          <ControlPanelRow label="Lang">
+          <ControlPanelRow label={t.controlPanel.rows.lang}>
             {LOCALES.map(loc => (
               <ControlPanelOption
                 key={loc}
                 isActive={locale === loc}
                 onClick={() => handleSelectLocale(loc)}
-                ariaLabel={`Select ${loc === "en" ? "English" : "German"}`}
+                ariaLabel={
+                  loc === "en"
+                    ? t.controlPanel.aria.selectEnglish
+                    : t.controlPanel.aria.selectGerman
+                }
+                title={t.controlPanel.titles.locale[loc]}
               >
-                {LOCALE_LABELS[loc]}
+                {t.controlPanel.labels.locale[loc]}
               </ControlPanelOption>
             ))}
           </ControlPanelRow>
@@ -252,50 +256,52 @@ export default function ControlPanel() {
               <ControlPanelIndicator>
                 <ControlPanelColorDot hue={store.getAccentHue(hue)} />
               </ControlPanelIndicator>
-              <ControlPanelIndicator>
-                {store.CONTRAST_LABELS[contrast]}
+              <ControlPanelIndicator title={t.controlPanel.titles.contrast[contrast]}>
+                {t.controlPanel.labels.contrast[contrast]}
               </ControlPanelIndicator>
-              <ControlPanelIndicator>
-                {store.COLOR_MODE_LABELS[colorMode]}
+              <ControlPanelIndicator title={t.controlPanel.titles.colorMode[colorMode]}>
+                {t.controlPanel.labels.colorMode[colorMode]}
               </ControlPanelIndicator>
             </>
           }
         >
-          <ControlPanelRow label="Accent">
+          <ControlPanelRow label={t.controlPanel.rows.accent}>
             {store.PRESET_HUES.map(presetHue => (
               <ControlPanelOption
                 key={presetHue}
                 isActive={hue === presetHue}
                 onClick={() => handleSelectHue(presetHue)}
-                ariaLabel={`Select accent hue ${presetHue}`}
+                ariaLabel={`${t.controlPanel.aria.selectAccentHue} ${presetHue}`}
               >
                 <ControlPanelColorDot hue={store.getAccentHue(presetHue)} />
               </ControlPanelOption>
             ))}
           </ControlPanelRow>
 
-          <ControlPanelRow label="Contrast">
-            {store.CONTRAST_OPTIONS.map(opt => (
+          <ControlPanelRow label={t.controlPanel.rows.contrast}>
+            {store.CONTRAST_VALUES.map(value => (
               <ControlPanelOption
-                key={opt.value}
-                isActive={contrast === opt.value}
-                onClick={() => handleSelectContrast(opt.value)}
-                ariaLabel={`Select ${opt.value} contrast`}
+                key={value}
+                isActive={contrast === value}
+                onClick={() => handleSelectContrast(value)}
+                ariaLabel={t.controlPanel.aria.selectContrast[value]}
+                title={t.controlPanel.titles.contrast[value]}
               >
-                {opt.label}
+                {t.controlPanel.labels.contrast[value]}
               </ControlPanelOption>
             ))}
           </ControlPanelRow>
 
-          <ControlPanelRow label="Mode">
-            {store.COLOR_MODE_OPTIONS.map(opt => (
+          <ControlPanelRow label={t.controlPanel.rows.mode}>
+            {store.COLOR_MODE_VALUES.map(value => (
               <ControlPanelOption
-                key={opt.value}
-                isActive={colorMode === opt.value}
-                onClick={() => handleSelectColorMode(opt.value)}
-                ariaLabel={`Select ${opt.value} color mode`}
+                key={value}
+                isActive={colorMode === value}
+                onClick={() => handleSelectColorMode(value)}
+                ariaLabel={t.controlPanel.aria.selectColorMode[value]}
+                title={t.controlPanel.titles.colorMode[value]}
               >
-                {opt.label}
+                {t.controlPanel.labels.colorMode[value]}
               </ControlPanelOption>
             ))}
           </ControlPanelRow>
@@ -311,15 +317,20 @@ export default function ControlPanel() {
           }
         >
           {isOnCVPage && (
-            <ControlPanelRow label="Print">
+            <ControlPanelRow label={t.controlPanel.rows.print}>
               {LOCALES.map(loc => (
                 <ControlPanelOption
                   key={loc}
                   isActive={locale === loc}
                   onClick={() => handlePrintWithLocale(loc)}
-                  ariaLabel={`Print CV in ${loc === "en" ? "English" : "German"}`}
+                  ariaLabel={
+                    loc === "en"
+                      ? t.controlPanel.aria.printInEnglish
+                      : t.controlPanel.aria.printInGerman
+                  }
+                  title={t.controlPanel.titles.locale[loc]}
                 >
-                  {LOCALE_LABELS[loc]}
+                  {t.controlPanel.labels.locale[loc]}
                 </ControlPanelOption>
               ))}
             </ControlPanelRow>
@@ -329,7 +340,7 @@ export default function ControlPanel() {
 
       {/* Print hint - rendered outside clip-path container */}
       <ControlPanelPrintHint
-        text="Print the CV here"
+        text={t.controlPanel.printHint}
         isVisible={showPrintHint && hintPosition !== null}
         style={
           hintPosition

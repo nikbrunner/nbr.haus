@@ -16,35 +16,15 @@ export interface ControlPanelState {
 // Constants
 export const PRESET_HUES: Hue[] = [90, 165, 275];
 
-export const CONTRAST_OPTIONS: { value: Contrast; label: string }[] = [
-  { value: "low", label: "LC" },
-  { value: "base", label: "BC" },
-  { value: "high", label: "HC" }
-];
+export const CONTRAST_VALUES: Contrast[] = ["low", "base", "high"];
 
-const CONTRAST_VALUES: Record<Contrast, { l: number; c: number }> = {
+const CONTRAST_CSS_VALUES: Record<Contrast, { l: number; c: number }> = {
   low: { l: 1, c: 0.6 },
   base: { l: 1, c: 1 },
   high: { l: 1, c: 1.4 }
 };
 
-export const COLOR_MODE_OPTIONS: { value: ColorMode; label: string }[] = [
-  { value: "light", label: "LT" },
-  { value: "system", label: "SYS" },
-  { value: "dark", label: "DK" }
-];
-
-export const CONTRAST_LABELS: Record<Contrast, string> = {
-  low: "LC",
-  base: "BC",
-  high: "HC"
-};
-
-export const COLOR_MODE_LABELS: Record<ColorMode, string> = {
-  light: "LT",
-  system: "SYS",
-  dark: "DK"
-};
+export const COLOR_MODE_VALUES: ColorMode[] = ["light", "system", "dark"];
 
 // Helper functions (internal)
 function getHueVariants(hue: number) {
@@ -68,7 +48,7 @@ function applyHueCssVars(hue: number, hueAccent: number, hueAccentAlt: number) {
 
 function applyContrastCssVars(contrast: Contrast) {
   if (typeof document !== "undefined") {
-    const values = CONTRAST_VALUES[contrast];
+    const values = CONTRAST_CSS_VALUES[contrast];
     document.body.style.setProperty("--contrast-l", values.l.toString());
     document.body.style.setProperty("--contrast-c", values.c.toString());
   }

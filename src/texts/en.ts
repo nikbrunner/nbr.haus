@@ -1,5 +1,6 @@
 import { texts as about } from "@/texts/domains/about.en";
 import { texts as connect } from "@/texts/domains/connect.en";
+import { texts as controlPanel } from "@/texts/domains/controlPanel.en";
 import { texts as cv } from "@/texts/domains/cv.en";
 import { texts as jobs } from "@/texts/domains/jobs.en";
 import { texts as projects } from "@/texts/domains/projects.en";
@@ -11,7 +12,8 @@ export const en = {
   projects,
   about,
   connect,
-  cv
+  cv,
+  controlPanel
 } as const;
 
 export type Texts = typeof en;

@@ -22,6 +22,8 @@ interface ControlPanelOptionProps {
   disabled?: boolean;
   /** Accessible label for the button */
   ariaLabel: string;
+  /** Browser native tooltip text */
+  title?: string;
   /** Content to render inside the option */
   children: React.ReactNode;
 }
@@ -35,6 +37,7 @@ export function ControlPanelOption({
   isActive,
   disabled,
   ariaLabel,
+  title,
   children
 }: ControlPanelOptionProps) {
   const handleClick = (e: MouseEvent) => {
@@ -50,6 +53,7 @@ export function ControlPanelOption({
       disabled={disabled ?? false}
       aria-label={ariaLabel}
       aria-pressed={isActive ?? undefined}
+      title={title}
     >
       {children}
     </button>
