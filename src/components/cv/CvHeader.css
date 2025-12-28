@@ -1,8 +1,18 @@
 .CvHeader {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--print-size-2) var(--print-size-8);
-  margin-bottom: var(--print-size-10);
+  display: flex;
+  flex-direction: column-reverse;
+  gap: var(--size-6);
+  margin-bottom: var(--size-8);
+}
+
+/* Desktop: side-by-side layout */
+@media (min-width: 640px) {
+  .CvHeader {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--print-size-2) var(--print-size-8);
+    margin-bottom: var(--print-size-10);
+  }
 }
 
 .CvHeader__texts {
@@ -48,12 +58,19 @@
 
 .CvHeader__photo {
   display: block;
-  /* width: var(--print-photo-size); */
-  /* height: var(--print-photo-size); */
-  height: 100%;
+  width: 100%;
+  max-height: 300px;
   object-fit: cover;
   box-shadow: var(--shadow-hard-5);
   border: var(--border-size-2) solid var(--fg-accent);
+}
+
+/* Desktop: full height photo */
+@media (min-width: 640px) {
+  .CvHeader__photo {
+    max-height: none;
+    height: 100%;
+  }
 }
 
 .CvHeader__contact {

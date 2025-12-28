@@ -1,8 +1,14 @@
 .CvPage {
-  /* A4 width */
   max-width: 21cm;
   margin: 0 auto;
-  padding: 1.5cm;
+  padding: var(--size-6);
+}
+
+/* Desktop: A4-optimized padding */
+@media (min-width: 640px) {
+  .CvPage {
+    padding: 1.5cm;
+  }
 }
 
 /* Print Styles */
