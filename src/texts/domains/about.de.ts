@@ -27,8 +27,7 @@ export const texts: Widen<typeof en> = {
     aiUsage:
       "Deshalb setze ich sie bewusst ein. Ich verwende <link>Claude Code</link> als meinen primären KI-Assistenten. Wenn die Aufgabe durch KI-Codegenerierung machbar erscheint, arbeite ich detaillierte Pläne aus und lasse dann <link>Claude Code</link> die Implementierung übernehmen, während ich den Code Schritt für Schritt überprüfe.",
     mcps: "MCPs",
-    mcpsIntro:
-      "Ich nutze auch persönliche Slash-Commands und MCPs, wo es sinnvoll ist.",
+    mcpsIntro: "Außerdem nutze ich persönliche Slash-Commands und MCPs wo sinnvoll.",
     mcpsUsed: "Das sind die am häufigsten genutzten MCPs für KI-Unterstützung.",
     docLookup: "Dokumentations-Suche",
     webSearch: "Bessere Web-Suche",

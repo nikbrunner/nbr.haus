@@ -22,9 +22,9 @@ export const texts = {
       "The technology is fascinating, but it has real limits. Relying too heavily on it means actively unlearning skills and knowledge — <highlight>and maybe most importantly, losing the fun</highlight>.",
     aiUsage:
       "That's why I'm deliberate about how I use it. I use <link>Claude Code</link> as my primary AI assistant. When the task feels manageable by AI code generation, I work out detailed plans and then let <link>Claude Code</link> handle the implementation, while reviewing the code step by step.",
-    mcps: "MCP's",
-    mcpsIntro: "I also use personal slash commands and MCP's where applicable.",
-    mcpsUsed: "These are the most used MCP's for AI assistance.",
+    mcps: "MCPs",
+    mcpsIntro: "I also use personal slash commands and MCPs where applicable.",
+    mcpsUsed: "These are the most used MCPs for AI assistance.",
     docLookup: "Documentation Lookup",
     webSearch: "Better Web Search",
     browser: "Browser",
