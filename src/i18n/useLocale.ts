@@ -2,9 +2,9 @@ import { useCallback } from "react";
 
 import { useRouter, useSearch } from "@tanstack/react-router";
 
-import { persistLocale } from "./utils";
-
 import { DEFAULT_LOCALE, type Locale } from "@/types/i18n";
+
+import { persistLocale } from "./utils";
 
 /**
  * Returns the current locale and a setter function.

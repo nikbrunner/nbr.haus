@@ -1,4 +1,4 @@
-import { DEFAULT_LOCALE, LOCALES, type Locale } from "../types/i18n";
+import { DEFAULT_LOCALE, LOCALES, type Locale } from "@/types/i18n";
 
 function isValidLocale(value: unknown): value is Locale {
   return typeof value === "string" && LOCALES.includes(value as Locale);

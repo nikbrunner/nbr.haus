@@ -1,16 +1,24 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 
-import { useRouter, useRouterState, useSearch } from "@tanstack/react-router";
+import { useRouter, useRouterState } from "@tanstack/react-router";
 import { cx } from "class-variance-authority";
 import { motion } from "framer-motion";
 import { Printer } from "lucide-react";
 
+import {
+  COLOR_MODE_VALUES,
+  CONTRAST_VALUES,
+  getAccentHue,
+  PRESET_HUES
+} from "@/hooks/styleUtils";
+import { useColorMode } from "@/hooks/useColorMode";
+import { useContrast } from "@/hooks/useContrast";
+import { useHue } from "@/hooks/useHue";
+import { useInitializeStyle } from "@/hooks/useInitializeStyle";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
-import { getInitialLocale } from "@/i18n/utils";
-import { LOCALES, type Locale } from "@/types/i18n";
 import { useLocale } from "@/i18n/useLocale";
 import { useTexts } from "@/i18n/useTexts";
-import type { ColorMode, Contrast } from "@/validators/rootSearchParams";
+import { LOCALES, type Locale } from "@/types/i18n";
 
 import { ControlPanelColorDot } from "./ControlPanelColorDot";
 import { ControlPanelIndicator } from "./ControlPanelIndicator";
@@ -18,23 +26,23 @@ import { ControlPanelOption } from "./ControlPanelOption";
 import { ControlPanelPrintHint } from "./ControlPanelPrintHint";
 import { ControlPanelRow } from "./ControlPanelRow";
 import { ControlPanelSection } from "./ControlPanelSection";
-import * as store from "./store";
 
 /**
  * ControlPanel - Smart container for navigation, locale, and style settings.
  * Composes ControlPanelSection dumb components and handles all state/routing logic.
  */
 export default function ControlPanel() {
-  const search = useSearch({ strict: false });
   const router = useRouter();
   const pathname = useRouterState({ select: s => s.location.pathname });
   const t = useTexts();
 
-  const isExpanded = store.useSelector(s => s.isExpanded);
-  const hue = store.useSelector(s => s.hue);
-  const contrast = store.useSelector(s => s.contrast);
-  const colorMode = store.useSelector(s => s.colorMode);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const { hue, setHue } = useHue();
+  const { contrast, setContrast } = useContrast();
+  const { colorMode, setColorMode } = useColorMode();
   const { locale, setLocale } = useLocale();
+
+  useInitializeStyle();
 
   const isOnCVPage = pathname === "/cv";
   const showPrintHint = isOnCVPage && !isExpanded;
@@ -47,24 +55,10 @@ export default function ControlPanel() {
     right: number;
   } | null>(null);
 
-  const closePanel = useCallback(() => store.setExpanded(false), []);
+  const closePanel = useCallback(() => setIsExpanded(false), []);
 
   // Close on click outside
   useOnClickOutside([".ControlPanel"], closePanel, isExpanded);
-
-  // Initialize from URL params or localStorage on mount
-  useEffect(() => {
-    store.initializeStyleFromParams({
-      hue: search.hue,
-      contrast: search.contrast,
-      colorMode: search.colorMode
-    });
-
-    // Initialize lang param if missing
-    if (search.lang === undefined) {
-      setLocale(getInitialLocale());
-    }
-  }, [search.hue, search.contrast, search.colorMode, search.lang, setLocale]);
 
   // Close on Escape key
   useEffect(() => {
@@ -72,7 +66,7 @@ export default function ControlPanel() {
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        store.setExpanded(false);
+        setIsExpanded(false);
       }
     };
 
@@ -112,47 +106,17 @@ export default function ControlPanel() {
   // Handlers
   // ============================================================================
 
-  const handleSelectHue = (newHue: number) => {
-    store.setHue(newHue);
-    router.navigate({
-      to: ".",
-      search: prev => ({ ...prev, hue: newHue }),
-      resetScroll: false,
-      replace: true
-    });
-  };
-
-  const handleSelectContrast = (newContrast: Contrast) => {
-    store.setContrast(newContrast);
-    router.navigate({
-      to: ".",
-      search: prev => ({ ...prev, contrast: newContrast }),
-      resetScroll: false,
-      replace: true
-    });
-  };
-
-  const handleSelectColorMode = (newColorMode: ColorMode) => {
-    store.setColorMode(newColorMode);
-    router.navigate({
-      to: ".",
-      search: prev => ({ ...prev, colorMode: newColorMode }),
-      resetScroll: false,
-      replace: true
-    });
-  };
-
   const handleSelectLocale = (newLocale: Locale) => {
     if (newLocale === locale) return;
     setLocale(newLocale);
-    store.setExpanded(false);
+    setIsExpanded(false);
   };
 
   const handlePrintWithLocale = (printLocale: Locale) => {
     if (printLocale !== locale) {
       setLocale(printLocale);
     }
-    store.setExpanded(false);
+    setIsExpanded(false);
 
     // Delay to allow DOM to update with new translations
     setTimeout(() => {
@@ -170,11 +134,11 @@ export default function ControlPanel() {
         role="button"
         tabIndex={0}
         aria-label={t.controlPanel.aria.togglePanel}
-        onClick={store.toggleExpanded}
+        onClick={() => setIsExpanded(prev => !prev)}
         onKeyDown={e => {
           if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
-            store.toggleExpanded();
+            setIsExpanded(prev => !prev);
           }
         }}
         initial={false}
@@ -202,7 +166,7 @@ export default function ControlPanel() {
                 isActive={pathname === navPath}
                 onClick={() => {
                   router.navigate({ to: navPath });
-                  store.setExpanded(false);
+                  setIsExpanded(false);
                 }}
                 ariaLabel={`${t.controlPanel.aria.navigateTo} ${navPath}`}
               >
@@ -244,7 +208,7 @@ export default function ControlPanel() {
           indicator={
             <>
               <ControlPanelIndicator>
-                <ControlPanelColorDot hue={store.getAccentHue(hue)} />
+                <ControlPanelColorDot hue={getAccentHue(hue)} />
               </ControlPanelIndicator>
               <ControlPanelIndicator
                 title={t.controlPanel.titles.contrast[contrast]}
@@ -260,24 +224,24 @@ export default function ControlPanel() {
           }
         >
           <ControlPanelRow label={t.controlPanel.rows.accent}>
-            {store.PRESET_HUES.map(presetHue => (
+            {PRESET_HUES.map(presetHue => (
               <ControlPanelOption
                 key={presetHue}
                 isActive={hue === presetHue}
-                onClick={() => handleSelectHue(presetHue)}
+                onClick={() => setHue(presetHue)}
                 ariaLabel={`${t.controlPanel.aria.selectAccentHue} ${presetHue}`}
               >
-                <ControlPanelColorDot hue={store.getAccentHue(presetHue)} />
+                <ControlPanelColorDot hue={getAccentHue(presetHue)} />
               </ControlPanelOption>
             ))}
           </ControlPanelRow>
 
           <ControlPanelRow label={t.controlPanel.rows.contrast}>
-            {store.CONTRAST_VALUES.map(value => (
+            {CONTRAST_VALUES.map(value => (
               <ControlPanelOption
                 key={value}
                 isActive={contrast === value}
-                onClick={() => handleSelectContrast(value)}
+                onClick={() => setContrast(value)}
                 ariaLabel={t.controlPanel.aria.selectContrast[value]}
                 title={t.controlPanel.titles.contrast[value]}
               >
@@ -287,11 +251,11 @@ export default function ControlPanel() {
           </ControlPanelRow>
 
           <ControlPanelRow label={t.controlPanel.rows.mode}>
-            {store.COLOR_MODE_VALUES.map(value => (
+            {COLOR_MODE_VALUES.map(value => (
               <ControlPanelOption
                 key={value}
                 isActive={colorMode === value}
-                onClick={() => handleSelectColorMode(value)}
+                onClick={() => setColorMode(value)}
                 ariaLabel={t.controlPanel.aria.selectColorMode[value]}
                 title={t.controlPanel.titles.colorMode[value]}
               >
