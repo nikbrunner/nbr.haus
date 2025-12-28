@@ -7,9 +7,9 @@
   },
   "scripts": {
     "dev": "vite dev --port 3000",
-    "dev:host": "vite dev --host --port 3000",
     "build": "vite build",
     "serve": "vite preview",
+    "serve:host": "vite preview --host --port 3000",
     "test": "vitest run",
     "check:format": "prettier --check .",
     "format": "prettier --write .",
