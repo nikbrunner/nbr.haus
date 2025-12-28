@@ -7,6 +7,7 @@ import json from "@eslint/json";
 import markdown from "@eslint/markdown";
 import noRelativeImportPaths from "eslint-plugin-no-relative-import-paths";
 import pluginReact from "eslint-plugin-react";
+import * as reactHooks from "eslint-plugin-react-hooks";
 import storybook from "eslint-plugin-storybook";
 import { defineConfig } from "eslint/config";
 import globals from "globals";
@@ -58,6 +59,19 @@ export default defineConfig([
       react: {
         version: "detect"
       }
+    }
+  },
+  {
+    name: "project/react-hooks-rules",
+    files: ["**/*.{js,jsx,ts,tsx}"],
+    ...reactHooks.configs.flat["recommended-latest"]
+  },
+  {
+    name: "project/useOnMount-exhaustive-deps-exception",
+    // useOnMount intentionally uses an empty dependency array to run only on mount
+    files: ["src/hooks/useOnMount.ts"],
+    rules: {
+      "react-hooks/exhaustive-deps": "off"
     }
   },
   {

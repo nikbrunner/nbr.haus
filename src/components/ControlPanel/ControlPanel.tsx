@@ -8,11 +8,10 @@ import { Printer } from "lucide-react";
 import { useColorMode } from "@/hooks/useColorMode";
 import { useContrast } from "@/hooks/useContrast";
 import { useHue } from "@/hooks/useHue";
-import { useInitializeStyle } from "@/hooks/useInitializeStyle";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 import { useLocale } from "@/i18n/useLocale";
 import { useTexts } from "@/i18n/useTexts";
-import { LOCALES, type Locale } from "@/types/i18n";
+import { type Locale } from "@/types/i18n";
 
 import { ControlPanelColorDot } from "./ControlPanelColorDot";
 import { ControlPanelIndicator } from "./ControlPanelIndicator";
@@ -20,6 +19,7 @@ import { ControlPanelOption } from "./ControlPanelOption";
 import { ControlPanelPrintHint } from "./ControlPanelPrintHint";
 import { ControlPanelRow } from "./ControlPanelRow";
 import { ControlPanelSection } from "./ControlPanelSection";
+import { useOnMount } from "@/hooks/useOnMount";
 
 /**
  * ControlPanel - Smart container for navigation, locale, and style settings.
@@ -35,9 +35,14 @@ export default function ControlPanel() {
   const { hue, hues, setHue, getAccentHue } = useHue();
   const { contrast, contrasts, setContrast } = useContrast();
   const { colorMode, colorModes, setColorMode } = useColorMode();
-  const { locale, setLocale } = useLocale();
+  const { locale, locales, setLocale } = useLocale();
 
-  useInitializeStyle();
+  useOnMount(() => {
+    setHue(hue);
+    setContrast(contrast);
+    setColorMode(colorMode);
+    setLocale(locale);
+  });
 
   const isOnCVPage = pathname === "/cv";
   const showPrintHint = isOnCVPage && !isExpanded;
@@ -180,7 +185,7 @@ export default function ControlPanel() {
           }
         >
           <ControlPanelRow label={t.controlPanel.rows.lang}>
-            {LOCALES.map(loc => (
+            {locales.map(loc => (
               <ControlPanelOption
                 key={loc}
                 isActive={locale === loc}
@@ -271,7 +276,7 @@ export default function ControlPanel() {
         >
           {isOnCVPage && (
             <ControlPanelRow label={t.controlPanel.rows.print}>
-              {LOCALES.map(loc => (
+              {locales.map(loc => (
                 <ControlPanelOption
                   key={loc}
                   isActive={locale === loc}
