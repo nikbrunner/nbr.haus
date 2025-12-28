@@ -35,6 +35,11 @@
     background-color: transparent !important;
   }
 
+  /* Override relative gaps with absolute units for iOS consistency */
+  .CvPage .gap-y-8 {
+    row-gap: var(--print-size-8);
+  }
+
   /* Hide UI elements */
   .ControlPanel,
   [data-testid="tanstack_devtools"] {
