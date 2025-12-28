@@ -23,17 +23,6 @@ export const texts: Widen<typeof en> = {
 
   languages: "Deutsch (Muttersprache) • Englisch (Fließend)",
 
-  // CV-specific about section (third person)
-  about: {
-    intro:
-      "<highlight>Nikolaus Brunner</highlight> (kurz Nik), Software-Ingenieur aus Landshut, spezialisiert auf Frontend-Architekturen und Design-Systeme — seit {years} Jahren dabei.",
-    ux: "Gutes Gespür für UX und DX. Kollaboriert gerne mit Designern oder trifft eigenständige Design-Entscheidungen.",
-    independence:
-      "Setzt Prioritäten und organisiert die eigene Arbeit selbstständig, weiß aber auch, wann Feedback gefragt ist. Arbeitet am besten in einem guten Team mit gemeinsamem Ziel.",
-    passion:
-      "Liebt es, Produkte zu bauen und zu nutzen. Wahrscheinlich der, der den Support wegen Features oder Bugs anschreibt und regelmäßig Changelogs und GitHub-Releases checkt."
-  },
-
   // Jobs with shared metadata, CV-specific descriptions (third person)
   jobs: {
     dealerCenter: {

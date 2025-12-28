@@ -1,8 +1,8 @@
 .CvHeader {
   display: flex;
   flex-direction: column-reverse;
-  gap: var(--size-6);
-  margin-bottom: var(--size-12);
+  gap: var(--print-size-6);
+  margin-bottom: var(--print-size-8);
 }
 
 /* Desktop: side-by-side layout */

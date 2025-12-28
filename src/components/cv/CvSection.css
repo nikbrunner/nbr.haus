@@ -1,5 +1,5 @@
 .CvSection {
-  margin-bottom: var(--print-size-12);
+  margin-bottom: var(--print-size-8);
 
   & .CvSection__title {
     font-size: var(--print-font-size-5);

@@ -79,30 +79,26 @@ export default function ControlPanel() {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isExpanded]);
 
-  // Calculate hint position relative to print indicator
+  // Calculate hint position in viewport coordinates (for fixed positioning via Portal)
   useLayoutEffect(() => {
-    if (!showPrintHint || !panelRef.current || !printIndicatorRef.current) {
+    if (!showPrintHint || !printIndicatorRef.current) {
       setHintPosition(null);
       return;
     }
 
-    const panelRect = panelRef.current.getBoundingClientRect();
     const indicatorRect = printIndicatorRef.current.getBoundingClientRect();
 
     // Position hint to the left of the indicator, vertically centered
-    const SPACING = 12; // Gap between hint and indicator
+    const SPACING = indicatorRect.width / 2; // Gap between hint and indicator
 
-    // Calculate bottom: distance from panel bottom to indicator's vertical center
-    const indicatorCenterFromBottom =
-      panelRect.bottom - (indicatorRect.top + indicatorRect.height / 2);
-
-    // Calculate right: distance from panel's right edge to indicator's left edge + spacing
-    const indicatorLeftRelativeToPanel = indicatorRect.left - panelRect.left;
-    const rightValue = panelRect.width - indicatorLeftRelativeToPanel + SPACING;
+    // Calculate viewport-relative coordinates for fixed positioning
+    const bottomFromViewport =
+      window.innerHeight - (indicatorRect.top + indicatorRect.height / 2);
+    const rightFromViewport = window.innerWidth - indicatorRect.left + SPACING;
 
     setHintPosition({
-      bottom: indicatorCenterFromBottom,
-      right: rightValue
+      bottom: bottomFromViewport,
+      right: rightFromViewport
     });
   }, [showPrintHint]);
 

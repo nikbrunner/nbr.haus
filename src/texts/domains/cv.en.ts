@@ -20,17 +20,6 @@ export const texts = {
 
   languages: "German (Native) • English (Fluent)",
 
-  // CV-specific about section (third person)
-  about: {
-    intro:
-      "<highlight>Nikolaus Brunner</highlight> (Nik for short), a Software Engineer based in Landshut, Germany, specializing in frontend architectures and design systems — {years} years in.",
-    ux: "Strong sense for UX (user experience) and DX (developer experience). Loves collaborating with designers or making design decisions independently.",
-    independence:
-      "Naturally identifies priorities and manages own work, but also knows when to reach out for input. Thrives as part of a good team working towards a shared goal.",
-    passion:
-      "Genuinely loves building and using products. Probably the guy who contacts support about features or bugs, and regularly checks changelogs and GitHub releases."
-  },
-
   // Jobs with shared metadata, CV-specific descriptions (third person)
   jobs: {
     dealerCenter: {

@@ -1,6 +1,8 @@
 import Tag from "@/components/Tag";
+import { cx } from "class-variance-authority";
 
 interface Props {
+  className?: string;
   company: string;
   position: string;
   period: string;
@@ -12,7 +14,7 @@ interface Props {
 
 export function CvJob(props: Props) {
   return (
-    <article className="CvJob">
+    <article className={cx("CvJob", props.className)}>
       <div className="CvJob__header">
         <h3 className="CvJob__company">{props.company}</h3>
         <p className="CvJob__location">{props.location}</p>

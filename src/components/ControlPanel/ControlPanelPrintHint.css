@@ -1,34 +1,38 @@
 .ControlPanelPrintHint {
-  position: absolute;
-  /* Position controlled by parent via style prop */
+  --border-width: var(--border-size-2);
+  --arrow-width: var(--size-4);
+
+  position: fixed;
+  z-index: var(--control-panel-z-index);
 
   display: flex;
   align-items: center;
-  gap: var(--size-2);
 
-  padding: var(--size-4) var(--size-6);
-  background: var(--bg-main);
-  border: var(--border-size-2) solid var(--fg-accent);
+  padding: var(--size-2) var(--size-4);
+  background: var(--fg-accent);
+  color: var(--fg-contrast);
+  border: var(--border-width) solid var(--fg-accent);
+  border-right: none;
 
-  font-size: var(--font-size-2);
+  font-size: var(--font-size-1);
   font-weight: var(--font-weight-9);
+  text-transform: uppercase;
 
   white-space: nowrap;
   pointer-events: none;
 
+  /* filter: drop-shadow(5px 5px 0 var(--fg-accent)); */
+
   animation: printHintFadeIn 0.3s ease-out forwards;
 }
 
-/* Arrow pointing right toward the print icon */
-.ControlPanelPrintHint::after {
-  content: "";
+/* Fixed-size SVG arrow at the right edge */
+.ControlPanelPrintHint__arrow {
   position: absolute;
-  right: calc(-1 * var(--size-2) - var(--border-size-2));
-  top: 50%;
-  transform: translateY(-50%);
-
-  border: var(--size-2) solid transparent;
-  border-left-color: var(--fg-accent);
+  left: 100%;
+  top: calc(-1 * var(--border-width));
+  width: var(--arrow-width);
+  height: calc(100% + 2 * var(--border-width));
 }
 
 @keyframes printHintFadeIn {

@@ -7,8 +7,6 @@ import { CvJob } from "@/components/cv/CvJob";
 import { CvPriorExperience } from "@/components/cv/CvPriorExperience";
 import { CvProject } from "@/components/cv/CvProject";
 import { CvSection } from "@/components/cv/CvSection";
-import Highlight from "@/components/Highlight";
-import { Trans } from "@/i18n/Trans";
 import { useTexts } from "@/i18n/useTexts";
 
 export const Route = createFileRoute("/cv")({
@@ -36,26 +34,7 @@ function Page() {
         }}
       />
 
-      <CvSection className="flex flex-col gap-2">
-        <p>
-          <strong>
-            <Trans
-              text={t.cv.about.intro.replace("{years}", String(experienceInYears))}
-              components={{
-                highlight: children => <Highlight>{children}</Highlight>
-              }}
-            />
-          </strong>
-        </p>
-        <p>{t.cv.about.ux}</p>
-        <p>{t.cv.about.independence}</p>
-        <p>{t.cv.about.passion}</p>
-      </CvSection>
-
-      <CvSection
-        className="print-break-before-page"
-        title={t.shared.sections.workExperience}
-      >
+      <CvSection title={t.shared.sections.workExperience}>
         <div className="flex flex-col gap-y-8">
           <CvJob
             company={t.cv.jobs.dealerCenter.company}
@@ -68,6 +47,7 @@ function Page() {
           />
 
           <CvJob
+            className="print-break-before-page"
             company={t.cv.jobs.divaE.company}
             position={t.cv.jobs.divaE.position}
             period={t.cv.jobs.divaE.period}
@@ -87,10 +67,7 @@ function Page() {
         </div>
       </CvSection>
 
-      <CvSection
-        className="print-break-before-page"
-        title={t.shared.sections.sideProjects}
-      >
+      <CvSection title={t.shared.sections.sideProjects}>
         <CvProject
           title={t.cv.projects.blackAtom.title}
           subtitle={t.cv.projects.blackAtom.subtitle}
