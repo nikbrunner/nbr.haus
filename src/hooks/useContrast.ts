@@ -23,7 +23,8 @@ export function useContrast() {
         to: ".",
         search: prev => ({ ...prev, contrast: newContrast }),
         resetScroll: false,
-        replace: true
+        replace: true,
+        viewTransition: true
       });
     },
     [router]
