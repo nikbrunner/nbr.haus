@@ -1,10 +1,11 @@
-import { Github, Globe, Linkedin, Mail, MapPin } from "lucide-react";
+import { Github, Globe, Languages, Linkedin, Mail, MapPin } from "lucide-react";
 
 interface Props {
   name: string;
   tagline: string;
   summary: string;
   img: string;
+  languages: string;
   contact: {
     location: string;
     website: string;
@@ -42,6 +43,10 @@ export function CvHeader(props: Props) {
           <span>
             <Linkedin size={14} />
             {props.contact.linkedin}
+          </span>
+          <span>
+            <Languages size={14} />
+            {props.languages}
           </span>
         </div>
       </div>

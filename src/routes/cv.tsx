@@ -27,6 +27,7 @@ function Page() {
         tagline={t.cv.tagline.replace("{years}", String(experienceInYears))}
         summary={t.cv.summary.replace("{years}", String(experienceInYears))}
         img={profilePicture}
+        languages={t.cv.languages}
         contact={{
           location: t.cv.contact.location,
           website: t.cv.contact.website,

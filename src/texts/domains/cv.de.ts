@@ -22,5 +22,6 @@ export const texts: Widen<typeof en> = {
   },
   education: "Sound Engineering & Mastering, Deutsche Pop München (2010–2011)",
   interests:
-    "Landschaftsfotografie, Lesen, Workflow-Optimierung, Open Source, Musikproduktion"
+    "Landschaftsfotografie, Lesen, Workflow-Optimierung, Open Source, Musikproduktion",
+  languages: "Deutsch (Muttersprache) • Englisch (Fließend)"
 };
