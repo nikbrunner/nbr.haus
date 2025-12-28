@@ -10,7 +10,10 @@ import { DEFAULT_LOCALE, type Locale } from "@/types/i18n";
  * Returns the current locale and a setter function.
  * Locale is read from URL search params, setter updates both URL and localStorage.
  */
-export function useLocale(): [Locale, (locale: Locale) => void] {
+export function useLocale(): {
+  locale: Locale;
+  setLocale: (locale: Locale) => void;
+} {
   const router = useRouter();
   const search = useSearch({ strict: false });
   const locale = search.lang ?? DEFAULT_LOCALE;
@@ -29,5 +32,5 @@ export function useLocale(): [Locale, (locale: Locale) => void] {
     [router]
   );
 
-  return [locale, setLocale];
+  return { locale, setLocale };
 }

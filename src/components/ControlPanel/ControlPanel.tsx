@@ -34,7 +34,7 @@ export default function ControlPanel() {
   const hue = store.useSelector(s => s.hue);
   const contrast = store.useSelector(s => s.contrast);
   const colorMode = store.useSelector(s => s.colorMode);
-  const [locale, setLocale] = useLocale();
+  const { locale, setLocale } = useLocale();
 
   const isOnCVPage = pathname === "/cv";
   const showPrintHint = isOnCVPage && !isExpanded;
