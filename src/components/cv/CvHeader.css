@@ -64,6 +64,12 @@
   border: var(--border-size-2) solid var(--fg-accent);
 }
 
+@media print {
+  .CvHeader__photo {
+    transform: translateX(calc(var(--print-size-2) * -1));
+  }
+}
+
 /* Desktop: full height photo */
 @media (min-width: 640px) {
   .CvHeader__photo {
