@@ -32,9 +32,7 @@ export function useContrast() {
   return {
     contrast,
     setContrast,
-    values: contrastSchema.options,
-    applyContrastCssVars,
-    persistContrast
+    contrasts: contrastSchema.options
   };
 }
 

@@ -16,7 +16,7 @@ import { useHue } from "./useHue";
 export function useInitializeStyle() {
   const search = useSearch({ strict: false });
   const { hue, getHueVariants, applyHueCssVars, persistHue } = useHue();
-  const { contrast, applyContrastCssVars, persistContrast } = useContrast();
+  const { contrast, setContrast } = useContrast();
   const { colorMode, setColorMode } = useColorMode();
   const { setLocale } = useLocale();
 
@@ -26,10 +26,7 @@ export function useInitializeStyle() {
     applyHueCssVars(hue, hueAccent, hueAccentAlt);
     persistHue(hue, hueAccent, hueAccentAlt);
 
-    // Contrast
-    applyContrastCssVars(contrast);
-    persistContrast(contrast);
-
+    setContrast(contrast);
     setColorMode(colorMode);
 
     // Locale
