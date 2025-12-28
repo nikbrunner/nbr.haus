@@ -39,13 +39,13 @@ npm run storybook        # Storybook dev server (port 6006)
 
 ### i18n System
 
-Lightweight localization using TanStack Store:
+Lightweight localization using URL search params as source of truth:
 
 - **Centralized texts** in `src/texts/` - domain-based text files merged into `en.ts` / `de.ts`
 - `useTexts()` - Returns all translations for current locale
-- `useLocale()` - Get current locale
+- `useLocale()` - Returns `[locale, setLocale]` tuple (like useState)
 - `<Trans>` component for inline translations with component interpolation
-- Locale persisted to localStorage and synced with `lang` URL param
+- URL `lang` param is source of truth, localStorage for persistence across sessions
 
 Text structure: `t.shared`, `t.jobs`, `t.projects`, `t.about`, `t.connect`, `t.cv`
 

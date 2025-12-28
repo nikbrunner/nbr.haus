@@ -1,5 +1,6 @@
-import Tag from "@/components/Tag";
 import { cx } from "class-variance-authority";
+
+import Tag from "@/components/Tag";
 
 interface Props {
   className?: string;

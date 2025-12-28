@@ -1,6 +1,6 @@
 import { Store } from "@tanstack/react-store";
 
-import { DEFAULT_LOCALE, LOCALES, type Locale } from "./types";
+import { DEFAULT_LOCALE, LOCALES, type Locale } from "../types/i18n";
 
 interface I18nState {
   locale: Locale;

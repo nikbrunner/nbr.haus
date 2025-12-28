@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import { useRouter, useRouterState, useSearch } from "@tanstack/react-router";
-import { useStore } from "@tanstack/react-store";
 import { cx } from "class-variance-authority";
 import { motion } from "framer-motion";
 import { Printer } from "lucide-react";
 
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
-import { i18nStore, initializeLocale, setLocale } from "@/i18n/store";
-import { LOCALES, type Locale } from "@/i18n/types";
+import { getInitialLocale } from "@/i18n/utils";
+import { LOCALES, type Locale } from "@/types/i18n";
+import { useLocale } from "@/i18n/useLocale";
 import { useTexts } from "@/i18n/useTexts";
 import type { ColorMode, Contrast } from "@/validators/rootSearchParams";
 
@@ -34,7 +34,7 @@ export default function ControlPanel() {
   const hue = store.useSelector(s => s.hue);
   const contrast = store.useSelector(s => s.contrast);
   const colorMode = store.useSelector(s => s.colorMode);
-  const locale = useStore(i18nStore, s => s.locale);
+  const [locale, setLocale] = useLocale();
 
   const isOnCVPage = pathname === "/cv";
   const showPrintHint = isOnCVPage && !isExpanded;
@@ -59,8 +59,12 @@ export default function ControlPanel() {
       contrast: search.contrast,
       colorMode: search.colorMode
     });
-    initializeLocale(search.lang as Locale | undefined);
-  }, [search.hue, search.contrast, search.colorMode, search.lang]);
+
+    // Initialize lang param if missing
+    if (search.lang === undefined) {
+      setLocale(getInitialLocale());
+    }
+  }, [search.hue, search.contrast, search.colorMode, search.lang, setLocale]);
 
   // Close on Escape key
   useEffect(() => {
@@ -140,28 +144,14 @@ export default function ControlPanel() {
 
   const handleSelectLocale = (newLocale: Locale) => {
     if (newLocale === locale) return;
-
     setLocale(newLocale);
-    router.navigate({
-      to: ".",
-      search: prev => ({ ...prev, lang: newLocale }),
-      resetScroll: false,
-      replace: true
-    });
     store.setExpanded(false);
   };
 
   const handlePrintWithLocale = (printLocale: Locale) => {
     if (printLocale !== locale) {
       setLocale(printLocale);
-      router.navigate({
-        to: ".",
-        search: prev => ({ ...prev, lang: printLocale }),
-        resetScroll: false,
-        replace: true
-      });
     }
-
     store.setExpanded(false);
 
     // Delay to allow DOM to update with new translations
@@ -256,10 +246,14 @@ export default function ControlPanel() {
               <ControlPanelIndicator>
                 <ControlPanelColorDot hue={store.getAccentHue(hue)} />
               </ControlPanelIndicator>
-              <ControlPanelIndicator title={t.controlPanel.titles.contrast[contrast]}>
+              <ControlPanelIndicator
+                title={t.controlPanel.titles.contrast[contrast]}
+              >
                 {t.controlPanel.labels.contrast[contrast]}
               </ControlPanelIndicator>
-              <ControlPanelIndicator title={t.controlPanel.titles.colorMode[colorMode]}>
+              <ControlPanelIndicator
+                title={t.controlPanel.titles.colorMode[colorMode]}
+              >
                 {t.controlPanel.labels.colorMode[colorMode]}
               </ControlPanelIndicator>
             </>

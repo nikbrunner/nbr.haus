@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
-import { createPortal } from "react-dom";
 
 import { cx } from "class-variance-authority";
+import { createPortal } from "react-dom";
 
 interface Props {
   /** Text to display in the hint */

@@ -1,4 +1,4 @@
-import type { Widen } from "@/i18n/types";
+import type { Widen } from "@/types/i18n";
 
 import type { texts as en } from "./cv.en";
 import { texts as jobsTexts } from "./jobs.de";

@@ -1,9 +1,33 @@
-import { useStore } from "@tanstack/react-store";
+import { useCallback } from "react";
 
-import { i18nStore } from "./store";
-import type { Locale } from "./types";
+import { useRouter, useSearch } from "@tanstack/react-router";
 
-// Hook for getting the current locale
-export function useLocale(): Locale {
-  return useStore(i18nStore, s => s.locale);
+import { persistLocale } from "./utils";
+
+import { DEFAULT_LOCALE, type Locale } from "@/types/i18n";
+
+/**
+ * Returns the current locale and a setter function.
+ * Locale is read from URL search params, setter updates both URL and localStorage.
+ */
+export function useLocale(): [Locale, (locale: Locale) => void] {
+  const router = useRouter();
+  const search = useSearch({ strict: false });
+  const locale = search.lang ?? DEFAULT_LOCALE;
+
+  const setLocale = useCallback(
+    (newLocale: Locale) => {
+      persistLocale(newLocale);
+      router.navigate({
+        to: ".",
+        search: prev => ({ ...prev, lang: newLocale }),
+        resetScroll: false,
+        replace: true,
+        viewTransition: true
+      });
+    },
+    [router]
+  );
+
+  return [locale, setLocale];
 }

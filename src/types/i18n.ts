@@ -1,6 +1,8 @@
-export type Locale = "en" | "de";
+import { z } from "zod";
 
-export const LOCALES: Locale[] = ["en", "de"];
+export const localeSchema = z.enum(["en", "de"]);
+export type Locale = z.infer<typeof localeSchema>;
+export const LOCALES = localeSchema.options;
 export const DEFAULT_LOCALE: Locale = "en";
 
 // Utility type: recursively widen string literals to string
