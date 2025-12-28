@@ -7,8 +7,8 @@ export const texts: Widen<typeof en> = {
   blackAtom: {
     title: "Black Atom Industries",
     paragraphs: [
-      "Open-Source plattformübergreifendes Theming-System, das 27+ kohärente Themes aus einer einzigen Quelle generiert.",
-      "Gebaut mit einem Adapter-Pattern für konsistente Theme-Generierung aus einer zentralen Quelle unter Verwendung des OKLCH-Farbraums.",
+      "Open-Source Theming-System, das 27+ konsistente Themes plattformübergreifend aus einer einzigen Quelle generiert.",
+      "Gebaut mit Adapter-Pattern für konsistente Theme-Generierung aus einer zentralen Quelle im OKLCH-Farbraum.",
       "Gepflegt mit Fokus auf Developer Experience und plattformübergreifende Konsistenz."
     ],
     subtitle: "Open Source Theming System • Ersteller & Maintainer",
@@ -20,8 +20,8 @@ export const texts: Widen<typeof en> = {
   awdcs: {
     title: "AWDCS",
     paragraphs: [
-      "AWDCS (App, Workspace, Document, Change, Symbol): Eine scope-basierte Keymap-Architektur für modale Editoren, die Bindings nach operativem Kontext statt nach tool-spezifischen Funktionen organisiert.",
-      "Bietet systematische Präfix-Muster und semantische Benennung für konsistente, einprägsame Keybindings über verschiedene Workflows hinweg."
+      "AWDCS (App, Workspace, Document, Change, Symbol): Scope-basierte Keymap-Architektur für modale Editoren—organisiert Bindings nach operativem Kontext statt nach Tool-spezifischen Funktionen.",
+      "Systematische Präfix-Muster und semantische Benennung für konsistente, einprägsame Keybindings über verschiedene Workflows."
     ],
     subtitle: "Modal Editor Keymap-Architektur",
     bullets: [
@@ -32,7 +32,7 @@ export const texts: Widen<typeof en> = {
   koyo: {
     title: "kōyō",
     paragraphs: [
-      "Benutzerdefiniertes QMK-Tastaturlayout für 36-Tasten-Split-Keyboards mit vim-inspirierter Navigation, intelligentem Layer-Design und umfassenden CLI-Tools für Moonlander- und Corne-Tastaturen."
+      "Custom QMK-Layout für 36-Tasten Split-Keyboards mit Vim-inspirierter Navigation, smartem Layer-Design und CLI-Tools für Moonlander und Corne."
     ],
     subtitle: "QMK Tastaturlayout & Firmware",
     bullets: [
@@ -43,7 +43,7 @@ export const texts: Widen<typeof en> = {
   nbrNvim: {
     title: "nbr.nvim",
     paragraphs: [
-      "Hochgradig angepasstes Neovim-Setup für Frontend-Entwicklung mit AWDCS-basierten Keymaps, Lazy.nvim Plugin-Management und Workflows, die auf React und TypeScript zugeschnitten sind."
+      "Stark angepasstes Neovim-Setup für Frontend-Entwicklung mit AWDCS-Keymaps, Lazy.nvim Plugin-Management und Workflows für React und TypeScript."
     ]
   }
 };
