@@ -27,9 +27,7 @@ export function useColorMode() {
   return {
     colorMode,
     setColorMode,
-    values: colorModeSchema.options,
-    applyColorMode,
-    persistColorMode
+    colorModes: colorModeSchema.options
   };
 }
 

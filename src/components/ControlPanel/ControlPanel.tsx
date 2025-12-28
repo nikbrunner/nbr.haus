@@ -31,9 +31,10 @@ export default function ControlPanel() {
   const t = useTexts();
 
   const [isExpanded, setIsExpanded] = useState(false);
+
   const { hue, setHue, presets: huePresets, getAccentHue } = useHue();
   const { contrast, setContrast, values: contrastValues } = useContrast();
-  const { colorMode, setColorMode, values: colorModeValues } = useColorMode();
+  const { colorMode, colorModes, setColorMode } = useColorMode();
   const { locale, setLocale } = useLocale();
 
   useInitializeStyle();
@@ -245,7 +246,7 @@ export default function ControlPanel() {
           </ControlPanelRow>
 
           <ControlPanelRow label={t.controlPanel.rows.mode}>
-            {colorModeValues.map(value => (
+            {colorModes.map(value => (
               <ControlPanelOption
                 key={value}
                 isActive={colorMode === value}

@@ -17,7 +17,7 @@ export function useInitializeStyle() {
   const search = useSearch({ strict: false });
   const { hue, getHueVariants, applyHueCssVars, persistHue } = useHue();
   const { contrast, applyContrastCssVars, persistContrast } = useContrast();
-  const { colorMode, applyColorMode, persistColorMode } = useColorMode();
+  const { colorMode, setColorMode } = useColorMode();
   const { setLocale } = useLocale();
 
   useEffect(() => {
@@ -30,9 +30,7 @@ export function useInitializeStyle() {
     applyContrastCssVars(contrast);
     persistContrast(contrast);
 
-    // Color Mode
-    applyColorMode(colorMode);
-    persistColorMode(colorMode);
+    setColorMode(colorMode);
 
     // Locale
     if (search.lang === undefined) {
