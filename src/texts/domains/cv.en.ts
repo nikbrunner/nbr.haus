@@ -22,7 +22,6 @@ export const texts = {
 
   // CV-specific about section (third person)
   about: {
-    greeting: "Hi there!",
     intro:
       "<highlight>Nikolaus Brunner</highlight> (Nik for short), a Software Engineer based in Landshut, Germany, specializing in frontend architectures and design systems — {years} years in.",
     ux: "Strong sense for UX (user experience) and DX (developer experience). Loves collaborating with designers or making design decisions independently.",

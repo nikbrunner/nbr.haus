@@ -25,7 +25,6 @@ export const texts: Widen<typeof en> = {
 
   // CV-specific about section (third person)
   about: {
-    greeting: "Hallo!",
     intro:
       "<highlight>Nikolaus Brunner</highlight> (kurz Nik), Software-Ingenieur aus Landshut, spezialisiert auf Frontend-Architekturen und Design-Systeme — seit {years} Jahren dabei.",
     ux: "Gutes Gespür für UX und DX. Kollaboriert gerne mit Designern oder trifft eigenständige Design-Entscheidungen.",

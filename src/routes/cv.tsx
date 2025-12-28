@@ -39,9 +39,6 @@ function Page() {
       <CvSection className="flex flex-col gap-2">
         <p>
           <strong>
-            {t.cv.about.greeting}
-            <br />
-            <br />
             <Trans
               text={t.cv.about.intro.replace("{years}", String(experienceInYears))}
               components={{
