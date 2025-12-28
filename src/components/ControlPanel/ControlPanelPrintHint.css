@@ -21,7 +21,7 @@
   white-space: nowrap;
   pointer-events: none;
 
-  /* filter: drop-shadow(5px 5px 0 var(--fg-accent)); */
+  filter: drop-shadow(5px 5px 0 var(--fg-accent-alt));
 
   animation: printHintFadeIn 0.3s ease-out forwards;
 }

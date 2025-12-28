@@ -28,15 +28,7 @@ export function ControlPanelPrintHint({ text, isVisible, style }: Props) {
         viewBox="0 0 20 100"
         preserveAspectRatio="none"
       >
-        <path
-          d="M 0,0 L 20,50 L 0,100"
-          fill="var(--fg-accent)"
-          stroke="var(--fg-accent)"
-          strokeWidth="2"
-          vectorEffect="non-scaling-stroke"
-          strokeLinejoin="miter"
-          strokeMiterlimit="10"
-        />
+        <path d="M 0,0 L 20,50 L 0,100" fill="var(--fg-accent)" />
       </svg>
     </div>
   );
