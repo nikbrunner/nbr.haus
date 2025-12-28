@@ -7,7 +7,7 @@ export const texts: Widen<typeof en> = {
   tagline:
     "Software-Ingenieur mit Spezialisierung auf Frontend-Entwicklung und {years} Jahren Erfahrung in der Entwicklung moderner Web- und Desktop-Anwendungen",
   summary:
-    "Spezialisiert auf Design-Systeme, Frontend-Architektur und großangelegte Migrationen. Leitete technische Entscheidungen, die tausende Dateien betrafen, und mentorte Junior-Entwickler. Arbeite gerne selbstständig und blühe in kollaborativen Teams auf. Integriert KI-Tools in tägliche Entwicklungs-Workflows.",
+    "Spezialisiert auf Design-Systeme, Frontend-Architektur und großangelegte Migrationen. Verantwortete technische Entscheidungen mit Impact auf tausende Dateien und mentorte Junior-Entwickler. Arbeite gerne selbstständig, aber am besten im Team. Nutzt KI-Tools gezielt im Entwicklungsalltag.",
   contact: {
     location: "Landshut, Deutschland",
     website: "nbr.haus",
@@ -18,7 +18,7 @@ export const texts: Widen<typeof en> = {
   priorExperience: {
     title: "Veranstaltungstechnik & Audio Engineering (2011–2019)",
     description:
-      "Umfangreicher Hintergrund in Veranstaltungstechnik, professionellem Sound Engineering und Fotografie. Arbeitete in Fünf-Sterne-Hotels und Premium-Studios und entwickelte starke Problemlösungs- und Kundenkommunikationsfähigkeiten."
+      "Hintergrund in Veranstaltungstechnik, Sound Engineering und Fotografie. Arbeitete in Fünf-Sterne-Hotels und Premium-Studios—mit viel Erfahrung in Problemlösung und Kundenkommunikation."
   },
   education: "Sound Engineering & Mastering, Deutsche Pop München (2010–2011)",
   interests:
