@@ -10,15 +10,18 @@ import { useOnMount } from "@/hooks/useOnMount";
 import { useLocale } from "@/i18n/useLocale";
 import { useTexts } from "@/i18n/useTexts";
 
-import { ControlPanelColorDot } from "./ControlPanelColorDot";
+import { ControlPanelColorDot } from "@/components/ControlPanel/ControlPanelColorDot";
 import {
   ControlPanelExpanded,
   ControlPanelExpandedSection
-} from "./ControlPanelExpanded";
-import { ControlPanelIndicator } from "./ControlPanelIndicator";
-import { ControlPanelOption } from "./ControlPanelOption";
-import { ControlPanelRow } from "./ControlPanelRow";
-import { ControlPanelStrip, ControlPanelStripSection } from "./ControlPanelStrip";
+} from "@/components/ControlPanel/ControlPanelExpanded";
+import { ControlPanelIndicator } from "@/components/ControlPanel/ControlPanelIndicator";
+import { ControlPanelOption } from "@/components/ControlPanel/ControlPanelOption";
+import { ControlPanelRow } from "@/components/ControlPanel/ControlPanelRow";
+import {
+  ControlPanelStrip,
+  ControlPanelStripSection
+} from "@/components/ControlPanel/ControlPanelStrip";
 
 /**
  * ControlPanel - Smart container for navigation, locale, and style settings.
