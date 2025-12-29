@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import Hr from "./Hr";
+import Hr from "@/components/Hr";
 
 const meta: Meta<typeof Hr> = {
   component: Hr

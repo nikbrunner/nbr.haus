@@ -1,6 +1,5 @@
+import type { texts as en } from "@/texts/domains/projects.en";
 import type { Widen } from "@/types/i18n";
-
-import type { texts as en } from "./projects.en";
 
 export const texts: Widen<typeof en> = {
   intro: "Persönliche Projekte, die ich aktiv pflege und weiterentwickle.",

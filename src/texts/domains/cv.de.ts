@@ -1,8 +1,7 @@
+import type { texts as en } from "@/texts/domains/cv.en";
+import { texts as jobsTexts } from "@/texts/domains/jobs.de";
+import { texts as projectsTexts } from "@/texts/domains/projects.de";
 import type { Widen } from "@/types/i18n";
-
-import type { texts as en } from "./cv.en";
-import { texts as jobsTexts } from "./jobs.de";
-import { texts as projectsTexts } from "./projects.de";
 
 export const texts: Widen<typeof en> = {
   tagline:

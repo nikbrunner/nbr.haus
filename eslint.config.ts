@@ -38,10 +38,9 @@ export default defineConfig([
       "no-relative-import-paths": noRelativeImportPaths
     },
     rules: {
-      "no-relative-import-paths/no-relative-import-paths": [
-        "error",
-        { allowSameFolder: true, rootDir: "src", prefix: "@" }
-      ]
+      // Plugin options are broken (Issue #35), using without options
+      // This catches ../ imports but also flags ./ same-folder imports
+      "no-relative-import-paths/no-relative-import-paths": "error"
     }
   },
   {

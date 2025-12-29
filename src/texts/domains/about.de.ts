@@ -1,6 +1,5 @@
+import type { texts as en } from "@/texts/domains/about.en";
 import type { Widen } from "@/types/i18n";
-
-import type { texts as en } from "./about.en";
 
 export const texts: Widen<typeof en> = {
   greeting: "Hallo!",

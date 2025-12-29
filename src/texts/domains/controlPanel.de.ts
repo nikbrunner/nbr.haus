@@ -1,6 +1,5 @@
+import type { texts as en } from "@/texts/domains/controlPanel.en";
 import type { Widen } from "@/types/i18n";
-
-import type { texts as en } from "./controlPanel.en";
 
 export const texts: Widen<typeof en> = {
   rows: {

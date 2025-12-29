@@ -1,4 +1,4 @@
-import GlitchEffect from "./GlitchEffect";
+import GlitchEffect from "@/components/GlitchEffect";
 
 interface Props {
   title: string;

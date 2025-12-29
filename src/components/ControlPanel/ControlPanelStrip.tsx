@@ -3,7 +3,7 @@ import type { KeyboardEvent, ReactNode } from "react";
 import { cx } from "class-variance-authority";
 import { createPortal } from "react-dom";
 
-import "./ControlPanelStrip.css";
+import "src/components/ControlPanel/ControlPanelStrip.css";
 
 interface Props {
   isExpanded: boolean;

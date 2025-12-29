@@ -1,5 +1,5 @@
-import { texts as jobsTexts } from "./jobs.en";
-import { texts as projectsTexts } from "./projects.en";
+import { texts as jobsTexts } from "@/texts/domains/jobs.en";
+import { texts as projectsTexts } from "@/texts/domains/projects.en";
 
 export const texts = {
   tagline:

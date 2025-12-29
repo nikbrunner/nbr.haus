@@ -1,6 +1,5 @@
+import type { texts as en } from "@/texts/domains/shared.en";
 import type { Widen } from "@/types/i18n";
-
-import type { texts as en } from "./shared.en";
 
 export const texts: Widen<typeof en> = {
   name: "Nikolaus Brunner",

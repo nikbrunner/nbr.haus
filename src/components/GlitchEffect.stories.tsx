@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import GlitchEffect from "./GlitchEffect";
+import GlitchEffect from "@/components/GlitchEffect";
 
 const meta: Meta<typeof GlitchEffect> = {
   title: "Components/GlitchEffect",

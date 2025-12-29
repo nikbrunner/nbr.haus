@@ -1,8 +1,7 @@
+import { useLocale } from "@/i18n/useLocale";
 import { de } from "@/texts/de";
 import { en, type Texts } from "@/texts/en";
 import type { Locale, Widen } from "@/types/i18n";
-
-import { useLocale } from "./useLocale";
 
 type WidenedTexts = Widen<Texts>;
 

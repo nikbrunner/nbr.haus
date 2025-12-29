@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import Highlight from "./Highlight";
+import Highlight from "@/components/Highlight";
 
 const meta: Meta<typeof Highlight> = {
   component: Highlight

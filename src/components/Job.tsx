@@ -1,8 +1,7 @@
+import ClickableTag from "@/components/ClickableTag";
+import SpecList from "@/components/SpecList";
 import type { Tech } from "@/config";
 import { useTexts } from "@/i18n/useTexts";
-
-import ClickableTag from "./ClickableTag";
-import SpecList from "./SpecList";
 
 interface Props {
   company: string;
