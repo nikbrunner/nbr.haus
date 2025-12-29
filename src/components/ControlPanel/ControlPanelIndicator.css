@@ -1,4 +1,5 @@
 .ControlPanelIndicator {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,4 +17,30 @@
 
 .ControlPanelIndicator--disabled {
   color: var(--fg-minor);
+}
+
+/* CSS Tooltip - appears to the left of the indicator */
+.ControlPanelIndicator[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  right: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+
+  padding: 4px 8px;
+  background: var(--bg-main);
+  border: var(--border-size-1) solid var(--fg-accent);
+  color: var(--fg-main);
+
+  font-size: var(--font-size-0);
+  font-weight: var(--font-weight-5);
+  white-space: nowrap;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease-out;
+}
+
+.ControlPanelIndicator[data-tooltip]:hover::after {
+  opacity: 1;
 }

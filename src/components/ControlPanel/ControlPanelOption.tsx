@@ -53,7 +53,7 @@ export function ControlPanelOption({
       disabled={disabled ?? false}
       aria-label={ariaLabel}
       aria-pressed={isActive ?? undefined}
-      title={title}
+      data-tooltip={title}
     >
       {children}
     </button>

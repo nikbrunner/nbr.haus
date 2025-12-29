@@ -23,7 +23,7 @@ interface Props {
  */
 export function ControlPanelIndicator({ disabled, title, children }: Props) {
   return (
-    <div className={variants({ disabled })} title={title}>
+    <div className={variants({ disabled })} data-tooltip={title}>
       {children}
     </div>
   );
