@@ -4,8 +4,7 @@ export const texts = {
     lang: "Lang",
     accent: "Accent",
     contrast: "Contrast",
-    mode: "Mode",
-    print: "Print"
+    mode: "Mode"
   },
   labels: {
     contrast: {
@@ -23,7 +22,6 @@ export const texts = {
       de: "DE"
     }
   },
-  printHint: "Print the CV here",
   aria: {
     togglePanel: "Toggle control panel",
     navigateTo: "Navigate to",
@@ -39,9 +37,7 @@ export const texts = {
       light: "Select light mode",
       system: "Select system mode",
       dark: "Select dark mode"
-    },
-    printInEnglish: "Print CV in English",
-    printInGerman: "Print CV in German"
+    }
   },
   titles: {
     contrast: {

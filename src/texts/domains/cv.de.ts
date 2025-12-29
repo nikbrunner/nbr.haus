@@ -5,8 +5,6 @@ import { texts as jobsTexts } from "./jobs.de";
 import { texts as projectsTexts } from "./projects.de";
 
 export const texts: Widen<typeof en> = {
-  printButton: "Lebenslauf drucken",
-
   tagline:
     "Software-Ingenieur mit Spezialisierung auf Frontend-Entwicklung und {years} Jahren Erfahrung in der Entwicklung moderner Web- und Desktop-Anwendungen",
 

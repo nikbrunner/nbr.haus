@@ -7,6 +7,7 @@
 /* Desktop: A4-optimized padding */
 @media (min-width: 640px) {
   .CvPage {
+    /* Keep in Sync with scripts/generate-cv-pdf.ts */
     padding: 1.5cm;
   }
 }
@@ -17,13 +18,13 @@
   /* eslint-disable css/use-baseline, css/no-invalid-at-rules */
   @page {
     size: A4;
+    /* Keep in Sync with scripts/generate-cv-pdf.ts */
     margin: 1.5cm;
   }
 
   .CvPage {
     max-width: none;
     padding: 0;
-    background: none;
   }
 
   /* Hide UI elements */

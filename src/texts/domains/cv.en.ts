@@ -2,8 +2,6 @@ import { texts as jobsTexts } from "./jobs.en";
 import { texts as projectsTexts } from "./projects.en";
 
 export const texts = {
-  printButton: "Print CV",
-
   tagline:
     "Software Engineer specializing in Frontend Development with {years} years of experience building modern web and desktop applications",
 

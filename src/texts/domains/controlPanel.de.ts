@@ -8,8 +8,7 @@ export const texts: Widen<typeof en> = {
     lang: "Sprache",
     accent: "Akzent",
     contrast: "Kontrast",
-    mode: "Modus",
-    print: "Drucken"
+    mode: "Modus"
   },
   labels: {
     contrast: {
@@ -27,7 +26,6 @@ export const texts: Widen<typeof en> = {
       de: "DE"
     }
   },
-  printHint: "Lebenslauf hier drucken",
   aria: {
     togglePanel: "Kontrollpanel umschalten",
     navigateTo: "Navigiere zu",
@@ -43,9 +41,7 @@ export const texts: Widen<typeof en> = {
       light: "Hellen Modus auswählen",
       system: "System Modus auswählen",
       dark: "Dunklen Modus auswählen"
-    },
-    printInEnglish: "Lebenslauf auf Englisch drucken",
-    printInGerman: "Lebenslauf auf Deutsch drucken"
+    }
   },
   titles: {
     contrast: {

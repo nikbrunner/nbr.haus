@@ -8,7 +8,8 @@ export const texts: Widen<typeof en> = {
   linkedin: "LinkedIn:",
   cv: "Lebenslauf:",
   email: "E-Mail:",
-  visitCvPage: "Druckfreundlicher Lebenslauf",
+  downloadCvEn: "EN",
+  downloadCvDe: "DE",
   languages: "Sprachen:",
   languagesList: "Deutsch (Muttersprache) • Englisch (Fließend)"
 };

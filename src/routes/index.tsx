@@ -61,9 +61,23 @@ function Page() {
                 {
                   label: t.connect.cv,
                   value: (
-                    <Link to="/cv" download>
-                      {t.connect.visitCvPage}
-                    </Link>
+                    <>
+                      <a
+                        className="Link"
+                        href="/Nikolaus_Brunner_CV_EN.pdf"
+                        download
+                      >
+                        {t.connect.downloadCvEn}
+                      </a>
+                      {" / "}
+                      <a
+                        className="Link"
+                        href="/Nikolaus_Brunner_CV_DE.pdf"
+                        download
+                      >
+                        {t.connect.downloadCvDe}
+                      </a>
+                    </>
                   )
                 },
                 {

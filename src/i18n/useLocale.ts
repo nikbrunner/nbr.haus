@@ -38,13 +38,13 @@ function isValidLocale(value: unknown): value is Locale {
 }
 
 function getLocaleFromStorage(): Locale | null {
-  if (typeof localStorage === "undefined") return null;
+  if (typeof localStorage.getItem === "undefined") return null;
   const saved = localStorage.getItem("locale");
   return isValidLocale(saved) ? saved : null;
 }
 
 function getLocaleFromBrowser(): Locale | null {
-  if (typeof navigator === "undefined") return null;
+  if (typeof navigator.language === "undefined") return null;
   const browserLang = navigator.language.split("-")[0];
   return isValidLocale(browserLang) ? browserLang : null;
 }
@@ -54,7 +54,6 @@ function getInitialLocale(): Locale {
 }
 
 function persistLocale(locale: Locale): void {
-  if (typeof localStorage !== "undefined") {
-    localStorage.setItem("locale", locale);
-  }
+  if (typeof localStorage.setItem === "undefined") return;
+  localStorage.setItem("locale", locale);
 }

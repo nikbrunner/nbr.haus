@@ -1,9 +1,8 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { useRouter, useRouterState } from "@tanstack/react-router";
 import { cx } from "class-variance-authority";
 import { motion } from "framer-motion";
-import { Printer } from "lucide-react";
 
 import { useColorMode } from "@/hooks/useColorMode";
 import { useContrast } from "@/hooks/useContrast";
@@ -17,7 +16,6 @@ import { type Locale } from "@/types/i18n";
 import { ControlPanelColorDot } from "./ControlPanelColorDot";
 import { ControlPanelIndicator } from "./ControlPanelIndicator";
 import { ControlPanelOption } from "./ControlPanelOption";
-import { ControlPanelPrintHint } from "./ControlPanelPrintHint";
 import { ControlPanelRow } from "./ControlPanelRow";
 import { ControlPanelSection } from "./ControlPanelSection";
 
@@ -44,17 +42,7 @@ export default function ControlPanel() {
     setLocale(locale);
   });
 
-  const isOnCVPage = pathname === "/cv";
-  const showPrintHint = isOnCVPage && !isExpanded;
-
-  // Refs for positioning the print hint relative to the print indicator
   const panelRef = useRef<HTMLDivElement>(null);
-  const printIndicatorRef = useRef<HTMLDivElement>(null);
-  const [hintPosition, setHintPosition] = useState<{
-    bottom: number;
-    right: number;
-  } | null>(null);
-
   const closePanel = useCallback(() => setIsExpanded(false), []);
 
   // Close on click outside
@@ -74,32 +62,9 @@ export default function ControlPanel() {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isExpanded]);
 
-  // Calculate hint position in viewport coordinates (for fixed positioning via Portal)
-  useLayoutEffect(() => {
-    if (!showPrintHint || !printIndicatorRef.current) {
-      setHintPosition(null);
-      return;
-    }
-
-    const indicatorRect = printIndicatorRef.current.getBoundingClientRect();
-
-    // Position hint to the left of the indicator, vertically centered
-    const SPACING = indicatorRect.width / 2; // Gap between hint and indicator
-
-    // Calculate viewport-relative coordinates for fixed positioning
-    const bottomFromViewport =
-      window.innerHeight - (indicatorRect.top + indicatorRect.height / 2);
-    const rightFromViewport = window.innerWidth - indicatorRect.left + SPACING;
-
-    setHintPosition({
-      bottom: bottomFromViewport,
-      right: rightFromViewport
-    });
-  }, [showPrintHint]);
-
-  // Get navigable routes from router
+  // Get navigable routes from router (filter out /cv which is only for PDF generation)
   const navLinks = Object.keys(router.routesByPath)
-    .filter(path => !path.includes("$"))
+    .filter(path => !path.includes("$") && path !== "/cv")
     .sort((a, b) => a.localeCompare(b));
 
   // ============================================================================
@@ -110,18 +75,6 @@ export default function ControlPanel() {
     if (newLocale === locale) return;
     setLocale(newLocale);
     setIsExpanded(false);
-  };
-
-  const handlePrintWithLocale = (printLocale: Locale) => {
-    if (printLocale !== locale) {
-      setLocale(printLocale);
-    }
-    setIsExpanded(false);
-
-    // Delay to allow DOM to update with new translations
-    setTimeout(() => {
-      window.print();
-    }, 100);
   };
 
   return (
@@ -264,52 +217,7 @@ export default function ControlPanel() {
             ))}
           </ControlPanelRow>
         </ControlPanelSection>
-
-        {/* Print Section - only on CV page */}
-        <ControlPanelSection
-          indicatorRef={printIndicatorRef}
-          indicator={
-            <ControlPanelIndicator disabled={!isOnCVPage}>
-              <Printer size={16} />
-            </ControlPanelIndicator>
-          }
-        >
-          {isOnCVPage && (
-            <ControlPanelRow label={t.controlPanel.rows.print}>
-              {locales.map(loc => (
-                <ControlPanelOption
-                  key={loc}
-                  isActive={locale === loc}
-                  onClick={() => handlePrintWithLocale(loc)}
-                  ariaLabel={
-                    loc === "en"
-                      ? t.controlPanel.aria.printInEnglish
-                      : t.controlPanel.aria.printInGerman
-                  }
-                  title={t.controlPanel.titles.locale[loc]}
-                >
-                  {t.controlPanel.labels.locale[loc]}
-                </ControlPanelOption>
-              ))}
-            </ControlPanelRow>
-          )}
-        </ControlPanelSection>
       </motion.div>
-
-      {/* Print hint - rendered outside clip-path container */}
-      <ControlPanelPrintHint
-        text={t.controlPanel.printHint}
-        isVisible={showPrintHint && hintPosition !== null}
-        style={
-          hintPosition
-            ? {
-                bottom: hintPosition.bottom,
-                right: hintPosition.right,
-                transform: "translateY(50%)"
-              }
-            : undefined
-        }
-      />
     </div>
   );
 }
