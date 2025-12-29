@@ -1,7 +1,4 @@
 .ControlPanelIndicator {
-  position: relative;
-  z-index: 1;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,9 +12,6 @@
   font-size: var(--control-panel-font-size);
   font-weight: var(--font-weight-9);
   color: var(--fg-main);
-
-  cursor: pointer;
-  pointer-events: auto;
 }
 
 .ControlPanelIndicator--disabled {

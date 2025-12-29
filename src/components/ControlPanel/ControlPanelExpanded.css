@@ -1,0 +1,28 @@
+.ControlPanelExpanded {
+  position: fixed;
+  right: calc(
+    var(--control-panel-offset) + var(--control-panel-strip-width) +
+      var(--control-panel-gap)
+  );
+  top: 50%;
+  z-index: var(--control-panel-z-index);
+
+  display: flex;
+  flex-direction: column;
+
+  background: var(--bg-main);
+  border: var(--border-size-2) solid var(--fg-accent);
+  box-shadow: var(--shadow-hard-5);
+}
+
+/* Section wrapper for grouped rows */
+.ControlPanelExpanded__section {
+  display: flex;
+  flex-direction: column;
+  padding: var(--control-panel-padding);
+}
+
+/* Border between sections */
+.ControlPanelExpanded__section + .ControlPanelExpanded__section {
+  border-top: var(--border-size-2) dashed var(--fg-accent);
+}

@@ -37,7 +37,6 @@
 
 /* ControlPanel */
 @import "../components/ControlPanel/ControlPanel.css";
-@import "../components/ControlPanel/ControlPanelSection.css";
 @import "../components/ControlPanel/ControlPanelRow.css";
 @import "../components/ControlPanel/ControlPanelOption.css";
 @import "../components/ControlPanel/ControlPanelIndicator.css";

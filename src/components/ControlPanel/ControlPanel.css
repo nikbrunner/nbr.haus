@@ -1,48 +1,5 @@
-.ControlPanel {
-  position: fixed;
-  right: var(--control-panel-offset);
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: var(--control-panel-z-index);
+/* ControlPanel.css - Now mostly empty since Strip and Expanded handle their own styles */
+/* This file is kept for potential future shared styles or CSS imports */
 
-  /* Shadow applied on outer wrapper - follows clipped content shape */
-  filter: drop-shadow(5px 5px 0 var(--fg-accent));
-
-  /* Allow clicks to pass through the wrapper */
-  pointer-events: none;
-}
-
-.ControlPanel__content {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-
-  background: var(--bg-dots);
-  border: var(--border-size-2) solid var(--fg-accent);
-
-  /* GPU acceleration for clip-path */
-  will-change: clip-path;
-
-  cursor: pointer;
-
-  /* When collapsed, disable pointer events on main content (clipped area blocks clicks) */
-  pointer-events: none;
-}
-
-/* When collapsed, add a clickable strip area using pseudo-element */
-.ControlPanel:not(.ControlPanel--expanded) .ControlPanel__content::after {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: var(--control-panel-strip-width);
-  pointer-events: auto;
-  cursor: pointer;
-}
-
-/* When expanded, enable pointer events on the entire content */
-.ControlPanel--expanded .ControlPanel__content {
-  pointer-events: auto;
-}
+@import "./ControlPanelStrip.css";
+@import "./ControlPanelExpanded.css";

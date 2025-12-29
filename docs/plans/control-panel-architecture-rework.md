@@ -11,7 +11,7 @@ The current ControlPanel uses `clip-path` animation to reveal/hide the expanded 
 
 ## Current Architecture
 
-```
+```text
 ControlPanel (fixed, right side)
 └── ControlPanel__content (motion.div with clip-path animation)
     ├── Sections with indicators + options
@@ -22,7 +22,7 @@ ControlPanelPrintHint (Portal - escapes clip-path)
 
 ## Proposed Architecture
 
-```
+```text
                                     ┌─────────────────────┐
    Expanded Panel slides in         │                     │
    from right, UNDER the strip      │    Strip (Portal)   │  ← Always visible
@@ -44,6 +44,7 @@ ControlPanelPrintHint (Portal - escapes clip-path)
 ## Implementation Steps
 
 ### Step 1: Create ControlPanelStrip component
+
 - Extract indicator column into its own component
 - Render via Portal to `document.body`
 - Fixed positioning on right edge
@@ -51,6 +52,7 @@ ControlPanelPrintHint (Portal - escapes clip-path)
 - Handle click to toggle expanded state
 
 ### Step 2: Create ControlPanelExpanded component
+
 - Contains the rows (labels + options)
 - Render via Portal to `document.body`
 - Lower z-index (slides under strip)
@@ -58,16 +60,19 @@ ControlPanelPrintHint (Portal - escapes clip-path)
 - Right edge aligns with or overlaps under strip
 
 ### Step 3: Animation
+
 - Expanded panel: `transform: translateX(100%)` → `translateX(0)`
 - Strip stays stationary
 - Panel appears to slide out from behind the strip
 
 ### Step 4: Visual continuity
+
 - Shared border style between strip and panel
 - Shadow on the combined shape (or just on panel)
 - Strip's left border connects with panel's right edge
 
 ### Step 5: Clean up
+
 - Remove clip-path animation
 - Remove pseudo-element click hack
 - Remove z-index/pointer-events workarounds

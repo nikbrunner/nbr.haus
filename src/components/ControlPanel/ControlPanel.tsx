@@ -1,8 +1,6 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { useRouter, useRouterState } from "@tanstack/react-router";
-import { cx } from "class-variance-authority";
-import { motion } from "framer-motion";
 
 import { useColorMode } from "@/hooks/useColorMode";
 import { useContrast } from "@/hooks/useContrast";
@@ -14,14 +12,18 @@ import { useTexts } from "@/i18n/useTexts";
 import { type Locale } from "@/types/i18n";
 
 import { ControlPanelColorDot } from "./ControlPanelColorDot";
+import {
+  ControlPanelExpanded,
+  ControlPanelExpandedSection
+} from "./ControlPanelExpanded";
 import { ControlPanelIndicator } from "./ControlPanelIndicator";
 import { ControlPanelOption } from "./ControlPanelOption";
 import { ControlPanelRow } from "./ControlPanelRow";
-import { ControlPanelSection } from "./ControlPanelSection";
+import { ControlPanelStrip, ControlPanelStripSection } from "./ControlPanelStrip";
 
 /**
  * ControlPanel - Smart container for navigation, locale, and style settings.
- * Composes ControlPanelSection dumb components and handles all state/routing logic.
+ * Composed of Strip (always visible) and Expanded panel (slides in/out).
  */
 export default function ControlPanel() {
   const router = useRouter();
@@ -42,11 +44,15 @@ export default function ControlPanel() {
     setLocale(locale);
   });
 
-  const panelRef = useRef<HTMLDivElement>(null);
   const closePanel = useCallback(() => setIsExpanded(false), []);
+  const togglePanel = useCallback(() => setIsExpanded(prev => !prev), []);
 
-  // Close on click outside
-  useOnClickOutside([".ControlPanel"], closePanel, isExpanded);
+  // Close on click outside (target both strip and expanded panel)
+  useOnClickOutside(
+    [".ControlPanelStrip", ".ControlPanelExpanded"],
+    closePanel,
+    isExpanded
+  );
 
   // Close on Escape key
   useEffect(() => {
@@ -78,40 +84,43 @@ export default function ControlPanel() {
   };
 
   return (
-    <div
-      ref={panelRef}
-      className={cx("ControlPanel", isExpanded && "ControlPanel--expanded")}
-    >
-      <motion.div
-        className="ControlPanel__content"
-        role="button"
-        tabIndex={0}
-        aria-label={t.controlPanel.aria.togglePanel}
-        onClick={() => setIsExpanded(prev => !prev)}
-        onKeyDown={e => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            setIsExpanded(prev => !prev);
-          }
-        }}
-        initial={false}
-        animate={isExpanded ? "expanded" : "collapsed"}
-        variants={{
-          collapsed: {
-            clipPath: "inset(0 0 0 calc(100% - var(--control-panel-strip-width)))"
-          },
-          expanded: { clipPath: "inset(0 0 0 0)" }
-        }}
-        transition={{
-          type: "tween",
-          ease: "linear",
-          duration: 0.15
-        }}
+    <>
+      {/* Strip - Always visible indicator column */}
+      <ControlPanelStrip
+        isExpanded={isExpanded}
+        onToggle={togglePanel}
+        ariaLabel={t.controlPanel.aria.togglePanel}
       >
-        {/* Navigation Section */}
-        <ControlPanelSection
-          indicator={<ControlPanelIndicator>{pathname}</ControlPanelIndicator>}
-        >
+        {/* Navigation indicator */}
+        <ControlPanelStripSection>
+          <ControlPanelIndicator>{pathname}</ControlPanelIndicator>
+        </ControlPanelStripSection>
+
+        {/* Locale indicator */}
+        <ControlPanelStripSection>
+          <ControlPanelIndicator title={t.controlPanel.titles.locale[locale]}>
+            {t.controlPanel.labels.locale[locale]}
+          </ControlPanelIndicator>
+        </ControlPanelStripSection>
+
+        {/* Style indicators */}
+        <ControlPanelStripSection>
+          <ControlPanelIndicator>
+            <ControlPanelColorDot hue={getAccentHue(hue)} />
+          </ControlPanelIndicator>
+          <ControlPanelIndicator title={t.controlPanel.titles.contrast[contrast]}>
+            {t.controlPanel.labels.contrast[contrast]}
+          </ControlPanelIndicator>
+          <ControlPanelIndicator title={t.controlPanel.titles.colorMode[colorMode]}>
+            {t.controlPanel.labels.colorMode[colorMode]}
+          </ControlPanelIndicator>
+        </ControlPanelStripSection>
+      </ControlPanelStrip>
+
+      {/* Expanded panel - Slides in from right */}
+      <ControlPanelExpanded isExpanded={isExpanded}>
+        {/* Navigation options */}
+        <ControlPanelExpandedSection>
           <ControlPanelRow label={t.controlPanel.rows.nav}>
             {navLinks.map(navPath => (
               <ControlPanelOption
@@ -127,16 +136,10 @@ export default function ControlPanel() {
               </ControlPanelOption>
             ))}
           </ControlPanelRow>
-        </ControlPanelSection>
+        </ControlPanelExpandedSection>
 
-        {/* Locale Section */}
-        <ControlPanelSection
-          indicator={
-            <ControlPanelIndicator title={t.controlPanel.titles.locale[locale]}>
-              {t.controlPanel.labels.locale[locale]}
-            </ControlPanelIndicator>
-          }
-        >
+        {/* Locale options */}
+        <ControlPanelExpandedSection>
           <ControlPanelRow label={t.controlPanel.rows.lang}>
             {locales.map(loc => (
               <ControlPanelOption
@@ -154,28 +157,10 @@ export default function ControlPanel() {
               </ControlPanelOption>
             ))}
           </ControlPanelRow>
-        </ControlPanelSection>
+        </ControlPanelExpandedSection>
 
-        {/* Style Section */}
-        <ControlPanelSection
-          indicator={
-            <>
-              <ControlPanelIndicator>
-                <ControlPanelColorDot hue={getAccentHue(hue)} />
-              </ControlPanelIndicator>
-              <ControlPanelIndicator
-                title={t.controlPanel.titles.contrast[contrast]}
-              >
-                {t.controlPanel.labels.contrast[contrast]}
-              </ControlPanelIndicator>
-              <ControlPanelIndicator
-                title={t.controlPanel.titles.colorMode[colorMode]}
-              >
-                {t.controlPanel.labels.colorMode[colorMode]}
-              </ControlPanelIndicator>
-            </>
-          }
-        >
+        {/* Style options */}
+        <ControlPanelExpandedSection>
           <ControlPanelRow label={t.controlPanel.rows.accent}>
             {hues.map(presetHue => (
               <ControlPanelOption
@@ -216,8 +201,8 @@ export default function ControlPanel() {
               </ControlPanelOption>
             ))}
           </ControlPanelRow>
-        </ControlPanelSection>
-      </motion.div>
-    </div>
+        </ControlPanelExpandedSection>
+      </ControlPanelExpanded>
+    </>
   );
 }

@@ -1,0 +1,34 @@
+.ControlPanelStrip {
+  position: fixed;
+  right: var(--control-panel-offset);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: calc(var(--control-panel-z-index) + 1);
+
+  display: flex;
+  flex-direction: column;
+
+  background: var(--bg-dots);
+  border: var(--border-size-2) solid var(--fg-accent);
+
+  cursor: pointer;
+  filter: drop-shadow(5px 5px 0 var(--fg-accent));
+}
+
+/* Section wrapper for grouped indicators */
+.ControlPanelStrip__section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--control-panel-gap) / 2);
+  padding: var(--control-panel-padding);
+  min-width: var(--control-panel-cell);
+  min-height: var(--control-panel-cell);
+  background: var(--bg-dots);
+}
+
+/* Border between sections */
+.ControlPanelStrip__section + .ControlPanelStrip__section {
+  border-top: var(--border-size-2) solid var(--fg-accent);
+}
