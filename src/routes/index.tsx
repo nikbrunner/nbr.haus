@@ -461,6 +461,27 @@ function Page() {
                 <p key={i}>{p}</p>
               ))}
             </Project>
+
+            <Project
+              title={t.projects.nbrHaus.title}
+              stack={[tech.typescript, tech.react, tech.tanstackStart]}
+              topics={["SSR", "File-based Routing", "Theming", "i18n", "BEM"]}
+              status="Active"
+              primaryLink={{
+                url: "https://nbr.haus",
+                type: "Live Site"
+              }}
+              additionalLinks={[
+                {
+                  url: "https://github.com/nikbrunner/nbr.haus",
+                  type: "GitHub"
+                }
+              ]}
+            >
+              {t.projects.nbrHaus.paragraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </Project>
           </div>
         </Section>
       </div>

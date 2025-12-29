@@ -1,9 +1,10 @@
+import { cx } from "class-variance-authority";
+
 import CopyButton from "@/components/CopyButton";
 import GlitchEffect from "@/components/GlitchEffect";
 import Highlight from "@/components/Highlight";
 import Hint from "@/components/Hint";
 import { Trans } from "@/i18n/Trans";
-import { cx } from "class-variance-authority";
 
 interface Props {
   title: string;

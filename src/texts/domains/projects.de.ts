@@ -44,5 +44,17 @@ export const texts: Widen<typeof en> = {
     paragraphs: [
       "Stark angepasstes Neovim-Setup für Frontend-Entwicklung mit AWDCS-Keymaps, Lazy.nvim Plugin-Management und Workflows für React und TypeScript."
     ]
+  },
+  nbrHaus: {
+    title: "nbr.haus",
+    paragraphs: [
+      "Persönliches Portfolio, gebaut mit TanStack Start mit SSR, dateibasiertem Routing und einem eigenen Theming-System mit Farbton-Auswahl und Farbmodi.",
+      "Leichtgewichtige i18n-Implementierung mit URL-Suchparametern als Quelle der Wahrheit und localStorage-Persistenz."
+    ],
+    subtitle: "Persönliches Portfolio • TanStack Start",
+    bullets: [
+      "Erstellte Portfolio mit TanStack Start (SSR) mit eigenem Theming-System und i18n",
+      "Implementierte URL-gesteuerte Zustandsverwaltung für Theme-Präferenzen und Sprache"
+    ]
   }
 };
