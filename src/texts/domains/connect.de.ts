@@ -9,5 +9,6 @@ export const texts: Widen<typeof en> = {
   email: "E-Mail:",
   downloadCv: "Herunterladen",
   languages: "Sprachen:",
-  languagesList: "Deutsch (Muttersprache) • Englisch (Fließend)"
+  languagesList: "Deutsch (Muttersprache) • Englisch (Fließend)",
+  copyEmailTooltip: "E-Mail kopieren"
 };

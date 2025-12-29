@@ -34,6 +34,7 @@
 @import "../components/LookingForJob.css";
 @import "../components/GlitchEffect.css";
 @import "../components/Tag.css";
+@import "../components/CopyButton.css";
 
 /* ControlPanel */
 @import "../components/ControlPanel/ControlPanelStrip.css";

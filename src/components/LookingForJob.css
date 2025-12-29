@@ -3,6 +3,10 @@
   padding: var(--size-4) var(--size-6);
   margin-bottom: var(--size-6);
 
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-4);
+
   & h1 {
     border: var(--border-size-2) solid var(--fg-accent);
     background: var(--bg-main);
@@ -12,5 +16,35 @@
 
     font-size: var(--font-size-fluid-1);
     color: var(--fg-accent);
+  }
+}
+
+.LookingForJob__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--size-4);
+}
+
+.LookingForJob__cta {
+  padding: var(--size-2) var(--size-4);
+
+  background: var(--fg-accent);
+  border: var(--border-size-2) dashed var(--fg-accent);
+
+  font-family: var(--font-family);
+  font-size: var(--font-size-1);
+  font-weight: var(--font-weight-9);
+  color: var(--fg-contrast);
+  text-decoration: none;
+
+  cursor: pointer;
+  transition:
+    background 0.1s ease-out,
+    transform 0.1s ease-out,
+    border-style 0.1s ease-out;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 5px 5px 0px var(--bg-support);
   }
 }

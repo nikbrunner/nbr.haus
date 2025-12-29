@@ -3,7 +3,10 @@ import type { Widen } from "@/types/i18n";
 
 export const texts: Widen<typeof en> = {
   lookingForJob: {
-    title: "Ich suche eine Senior Frontend-Position ab Februar 2026."
+    title:
+      "Ich suche eine <highlight>Senior Frontend-Position</highlight> ab Februar 2026.",
+    cta: "Schreib mir!",
+    copyEmailTooltip: "E-Mail kopieren"
   },
   dealerCenter: {
     company: "DealerCenter Digital",

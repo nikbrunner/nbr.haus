@@ -6,5 +6,6 @@ export const texts = {
   email: "Email:",
   downloadCv: "Download",
   languages: "Languages:",
-  languagesList: "German (Native) • English (Fluent)"
+  languagesList: "German (Native) • English (Fluent)",
+  copyEmailTooltip: "Copy email"
 } as const;

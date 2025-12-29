@@ -1,0 +1,49 @@
+.CopyButton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--size-1);
+
+  background: var(--bg-main);
+  border: var(--border-size-2) solid var(--fg-accent);
+
+  color: var(--fg-accent);
+
+  cursor: pointer;
+  transition:
+    background 0.1s ease-out,
+    border-style 0.1s ease-out;
+}
+
+.CopyButton:hover {
+  background: var(--fg-accent);
+  border-style: solid;
+  color: var(--bg-main);
+}
+
+/* CSS Tooltip */
+.CopyButton[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+
+  padding: 4px 8px;
+  background: var(--bg-main);
+  border: var(--border-size-1) solid var(--fg-accent);
+  color: var(--fg-main);
+
+  font-size: var(--font-size-0);
+  font-weight: var(--font-weight-5);
+  white-space: nowrap;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease-out;
+}
+
+.CopyButton[data-tooltip]:hover::after {
+  opacity: 1;
+}
