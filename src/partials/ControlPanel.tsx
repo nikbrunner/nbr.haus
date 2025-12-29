@@ -19,7 +19,6 @@ import { useColorMode } from "@/hooks/useColorMode";
 import { useContrast } from "@/hooks/useContrast";
 import { useHue } from "@/hooks/useHue";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
-import { useOnMount } from "@/hooks/useOnMount";
 import { useLocale } from "@/i18n/useLocale";
 import { useTexts } from "@/i18n/useTexts";
 
@@ -38,13 +37,6 @@ export default function ControlPanel() {
   const { contrast, contrasts, setContrast } = useContrast();
   const { colorMode, colorModes, setColorMode } = useColorMode();
   const { locale, locales, setLocale } = useLocale();
-
-  useOnMount(() => {
-    setHue(hue);
-    setContrast(contrast);
-    setColorMode(colorMode);
-    setLocale(locale);
-  });
 
   const closePanel = useCallback(() => setIsExpanded(false), []);
   const togglePanel = useCallback(() => setIsExpanded(prev => !prev), []);

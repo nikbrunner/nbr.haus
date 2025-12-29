@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 
 import { useHydrated, useRouter, useSearch } from "@tanstack/react-router";
 
@@ -15,6 +15,12 @@ export function useContrast() {
   const search = useSearch({ strict: false });
   const hydrated = useHydrated();
   const contrast = search.contrast ?? getContrastFromStorage(hydrated) ?? "base";
+
+  // Apply CSS vars reactively when hydrated or contrast changes
+  useEffect(() => {
+    if (!hydrated) return;
+    applyContrastCssVars(contrast);
+  }, [hydrated, contrast]);
 
   const setContrast = useCallback(
     (newContrast: Contrast) => {

@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 
 import { useHydrated, useRouter, useSearch } from "@tanstack/react-router";
 
@@ -10,6 +10,12 @@ export function useColorMode() {
   const hydrated = useHydrated();
   const colorMode =
     search.colorMode ?? getColorModeFromStorage(hydrated) ?? "system";
+
+  // Apply color mode reactively when hydrated or colorMode changes
+  useEffect(() => {
+    if (!hydrated) return;
+    applyColorMode(colorMode);
+  }, [hydrated, colorMode]);
 
   const setColorMode = useCallback(
     (newColorMode: ColorMode) => {

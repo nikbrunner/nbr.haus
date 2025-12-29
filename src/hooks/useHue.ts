@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 
 import { useHydrated, useRouter, useSearch } from "@tanstack/react-router";
 
@@ -11,6 +11,13 @@ export function useHue() {
   const search = useSearch({ strict: false });
   const hydrated = useHydrated();
   const hue = search.hue ?? getHueFromStorage(hydrated) ?? hues[0];
+
+  // Apply CSS vars reactively when hydrated or hue changes
+  useEffect(() => {
+    if (!hydrated) return;
+    const { hueAccent, hueAccentAlt } = getHueVariants(hue);
+    applyHueCssVars(hue, hueAccent, hueAccentAlt);
+  }, [hydrated, hue]);
 
   const setHue = useCallback(
     (newHue: Hue) => {
