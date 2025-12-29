@@ -1,13 +1,15 @@
 import { useCallback } from "react";
 
-import { useRouter, useSearch } from "@tanstack/react-router";
+import { useHydrated, useRouter, useSearch } from "@tanstack/react-router";
 
 import { colorModeSchema, type ColorMode } from "@/types/style";
 
 export function useColorMode() {
   const router = useRouter();
   const search = useSearch({ strict: false });
-  const colorMode = search.colorMode ?? getColorModeFromStorage() ?? "system";
+  const hydrated = useHydrated();
+  const colorMode =
+    search.colorMode ?? getColorModeFromStorage(hydrated) ?? "system";
 
   const setColorMode = useCallback(
     (newColorMode: ColorMode) => {
@@ -32,11 +34,10 @@ export function useColorMode() {
 }
 
 // Storage
-function getColorModeFromStorage(): ColorMode | null {
-  if (typeof localStorage !== "undefined") {
-    const saved = localStorage.getItem("colorMode") as ColorMode | null;
-    if (saved && colorModeSchema.safeParse(saved).success) return saved;
-  }
+function getColorModeFromStorage(hydrated: boolean): ColorMode | null {
+  if (!hydrated) return null;
+  const saved = localStorage.getItem("colorMode") as ColorMode | null;
+  if (saved && colorModeSchema.safeParse(saved).success) return saved;
   return null;
 }
 

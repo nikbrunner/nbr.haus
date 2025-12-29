@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 
-import { useRouter, useSearch } from "@tanstack/react-router";
+import { useHydrated, useRouter, useSearch } from "@tanstack/react-router";
 
 import { localeSchema, type Locale } from "@/types/i18n";
 
@@ -14,7 +14,8 @@ const defaultLocale: Locale = "en";
 export function useLocale() {
   const router = useRouter();
   const search = useSearch({ strict: false });
-  const locale = search.lang ?? getInitialLocale() ?? defaultLocale;
+  const hydrated = useHydrated();
+  const locale = search.lang ?? getInitialLocale(hydrated) ?? defaultLocale;
 
   const setLocale = useCallback(
     (newLocale: Locale) => {
@@ -38,22 +39,21 @@ function isValidLocale(value: unknown): value is Locale {
 }
 
 function getLocaleFromStorage(): Locale | null {
-  if (typeof localStorage.getItem === "undefined") return null;
   const saved = localStorage.getItem("locale");
   return isValidLocale(saved) ? saved : null;
 }
 
 function getLocaleFromBrowser(): Locale | null {
-  if (typeof navigator.language === "undefined") return null;
   const browserLang = navigator.language.split("-")[0];
   return isValidLocale(browserLang) ? browserLang : null;
 }
 
-function getInitialLocale(): Locale {
+function getInitialLocale(hydrated: boolean): Locale | null {
+  if (!hydrated) return null;
   return getLocaleFromStorage() ?? getLocaleFromBrowser() ?? defaultLocale;
 }
 
 function persistLocale(locale: Locale): void {
-  if (typeof localStorage.setItem === "undefined") return;
+  if (typeof localStorage === "undefined") return;
   localStorage.setItem("locale", locale);
 }

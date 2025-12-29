@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 
-import { useRouter, useSearch } from "@tanstack/react-router";
+import { useHydrated, useRouter, useSearch } from "@tanstack/react-router";
 
 import { contrastSchema, type Contrast } from "@/types/style";
 
@@ -13,7 +13,8 @@ const CSS_VALUES: Record<Contrast, { l: number; c: number }> = {
 export function useContrast() {
   const router = useRouter();
   const search = useSearch({ strict: false });
-  const contrast = search.contrast ?? getContrastFromStorage() ?? "base";
+  const hydrated = useHydrated();
+  const contrast = search.contrast ?? getContrastFromStorage(hydrated) ?? "base";
 
   const setContrast = useCallback(
     (newContrast: Contrast) => {
@@ -38,11 +39,10 @@ export function useContrast() {
 }
 
 // Storage
-function getContrastFromStorage(): Contrast | null {
-  if (typeof localStorage !== "undefined") {
-    const saved = localStorage.getItem("contrast") as Contrast | null;
-    if (saved && contrastSchema.safeParse(saved).success) return saved;
-  }
+function getContrastFromStorage(hydrated: boolean): Contrast | null {
+  if (!hydrated) return null;
+  const saved = localStorage.getItem("contrast") as Contrast | null;
+  if (saved && contrastSchema.safeParse(saved).success) return saved;
   return null;
 }
 

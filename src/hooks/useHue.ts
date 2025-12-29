@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 
-import { useRouter, useSearch } from "@tanstack/react-router";
+import { useHydrated, useRouter, useSearch } from "@tanstack/react-router";
 
 import { hueSchema, type Hue } from "@/types/style";
 
@@ -9,7 +9,8 @@ const hues: Hue[] = [90, 165, 275];
 export function useHue() {
   const router = useRouter();
   const search = useSearch({ strict: false });
-  const hue = search.hue ?? getHueFromStorage() ?? hues[0];
+  const hydrated = useHydrated();
+  const hue = search.hue ?? getHueFromStorage(hydrated) ?? hues[0];
 
   const setHue = useCallback(
     (newHue: Hue) => {
@@ -36,13 +37,12 @@ export function useHue() {
 }
 
 // Storage
-function getHueFromStorage(): Hue | null {
-  if (typeof localStorage !== "undefined") {
-    const saved = localStorage.getItem("hue");
-    if (saved) {
-      const parsed = parseInt(saved, 10);
-      if (hueSchema.safeParse(parsed).success) return parsed;
-    }
+function getHueFromStorage(hydrated: boolean): Hue | null {
+  if (!hydrated) return null;
+  const saved = localStorage.getItem("hue");
+  if (saved) {
+    const parsed = parseInt(saved, 10);
+    if (hueSchema.safeParse(parsed).success) return parsed;
   }
   return null;
 }
