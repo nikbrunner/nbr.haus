@@ -3,6 +3,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 import { chromium } from "playwright";
+
 import { localeSchema, type Locale } from "@/types/i18n";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));

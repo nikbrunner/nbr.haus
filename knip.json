@@ -19,8 +19,7 @@
     "@testing-library/dom",
     "@testing-library/react",
     "@vitest/coverage-v8",
-    "web-vitals",
-    "h3"
+    "web-vitals"
   ],
   "storybook": {
     "entry": ["src/**/*.stories.tsx"]
