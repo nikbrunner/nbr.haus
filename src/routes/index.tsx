@@ -37,6 +37,26 @@ function Page() {
               padding="small"
               items={[
                 {
+                  label: t.connect.languages,
+                  value: t.connect.languagesList
+                },
+                {
+                  label: t.connect.email,
+                  value: <Link href="mailto:nik@nbr.haus">nik@nbr.haus</Link>
+                },
+                {
+                  label: t.connect.cv,
+                  value: (
+                    <a
+                      className="Link"
+                      href={`/Nikolaus_Brunner_CV_${locale}.pdf`}
+                      download
+                    >
+                      {t.connect.downloadCv}
+                    </a>
+                  )
+                },
+                {
                   label: t.connect.github,
                   value: (
                     <Link
@@ -59,26 +79,6 @@ function Page() {
                       linkedin.com/in/nbru/
                     </Link>
                   )
-                },
-                {
-                  label: t.connect.cv,
-                  value: (
-                    <a
-                      className="Link"
-                      href={`/Nikolaus_Brunner_CV_${locale}.pdf`}
-                      download
-                    >
-                      {t.connect.downloadCv}
-                    </a>
-                  )
-                },
-                {
-                  label: t.connect.email,
-                  value: <Link href="mailto:nik@nbr.haus">nik@nbr.haus</Link>
-                },
-                {
-                  label: t.connect.languages,
-                  value: t.connect.languagesList
                 }
               ]}
             />
