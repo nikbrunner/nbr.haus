@@ -2,14 +2,6 @@ import { useCallback, useEffect, useState } from "react";
 
 import { useRouter, useRouterState } from "@tanstack/react-router";
 
-import { useColorMode } from "@/hooks/useColorMode";
-import { useContrast } from "@/hooks/useContrast";
-import { useHue } from "@/hooks/useHue";
-import { useOnClickOutside } from "@/hooks/useOnClickOutside";
-import { useOnMount } from "@/hooks/useOnMount";
-import { useLocale } from "@/i18n/useLocale";
-import { useTexts } from "@/i18n/useTexts";
-
 import { ControlPanelColorDot } from "@/components/ControlPanel/ControlPanelColorDot";
 import {
   ControlPanelExpanded,
@@ -22,6 +14,13 @@ import {
   ControlPanelStrip,
   ControlPanelStripSection
 } from "@/components/ControlPanel/ControlPanelStrip";
+import { useColorMode } from "@/hooks/useColorMode";
+import { useContrast } from "@/hooks/useContrast";
+import { useHue } from "@/hooks/useHue";
+import { useOnClickOutside } from "@/hooks/useOnClickOutside";
+import { useOnMount } from "@/hooks/useOnMount";
+import { useLocale } from "@/i18n/useLocale";
+import { useTexts } from "@/i18n/useTexts";
 
 /**
  * ControlPanel - Smart container for navigation, locale, and style settings.

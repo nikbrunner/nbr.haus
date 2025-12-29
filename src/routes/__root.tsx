@@ -9,8 +9,8 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
-import ControlPanel from "@/partials/ControlPanel";
 import NotFound from "@/components/NotFound";
+import ControlPanel from "@/partials/ControlPanel";
 import globalCss from "@/styles/global.css?url";
 import {
   defaultRootSearchParams,
