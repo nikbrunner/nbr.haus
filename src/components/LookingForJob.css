@@ -1,14 +1,13 @@
 .LookingForJob {
   background: var(--bg-dots);
-  padding: var(--size-4) var(--size-6);
-  margin-bottom: var(--size-6);
+  padding: var(--size-6) var(--size-8);
 
   display: flex;
   flex-direction: column;
-  gap: var(--size-4);
+  gap: var(--size-6);
 
   & h1 {
-    border: var(--border-size-2) solid var(--fg-accent);
+    border: var(--border-size-4) solid var(--fg-accent);
     background: var(--bg-main);
 
     padding: var(--size-4);
@@ -16,13 +15,14 @@
 
     font-size: var(--font-size-fluid-1);
     color: var(--fg-accent);
+    text-transform: uppercase;
   }
 }
 
 .LookingForJob__actions {
   display: flex;
   align-items: center;
-  gap: var(--size-4);
+  gap: var(--size-6);
 }
 
 .LookingForJob__cta {

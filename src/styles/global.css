@@ -35,6 +35,7 @@
 @import "../components/GlitchEffect.css";
 @import "../components/Tag.css";
 @import "../components/CopyButton.css";
+@import "../components/Hint.css";
 
 /* ControlPanel */
 @import "../components/ControlPanel/ControlPanelStrip.css";
@@ -268,4 +269,5 @@ strong {
 
 button {
   font-family: var(--font-family);
+  border: none;
 }

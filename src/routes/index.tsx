@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import CopyButton from "@/components/CopyButton";
 import Highlight from "@/components/Highlight";
+import Hint from "@/components/Hint";
 import Job from "@/components/Job";
 import Link from "@/components/Link";
 import LookingForJob from "@/components/LookingForJob";
@@ -44,12 +45,14 @@ function Page() {
                 {
                   label: t.connect.email,
                   value: (
-                    <span className="flex items-center gap-x-4">
+                    <span className="flex items-center gap-x-2">
                       <Link href="mailto:nik@nbr.haus">nik@nbr.haus</Link>
-                      <CopyButton
-                        value="nik@nbr.haus"
-                        tooltip={t.connect.copyEmailTooltip}
-                      />
+                      <Hint title={t.connect.copyEmailTooltip}>
+                        <CopyButton
+                          value="nik@nbr.haus"
+                          ariaLabel={t.connect.copyEmailTooltip}
+                        />
+                      </Hint>
                     </span>
                   )
                 },
@@ -313,8 +316,10 @@ function Page() {
           className="IndexPage__section--employment"
         >
           <LookingForJob
+            className="mb-6"
             title={t.jobs.lookingForJob.title}
             cta={t.jobs.lookingForJob.cta}
+            email="nik@nbr.haus"
             copyEmailTooltip={t.jobs.lookingForJob.copyEmailTooltip}
           />
 

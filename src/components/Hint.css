@@ -1,0 +1,28 @@
+.Hint {
+  position: relative;
+  display: inline-flex;
+}
+
+.Hint__tooltip {
+  position: absolute;
+
+  padding: 4px 8px;
+  background: var(--bg-main);
+  border: var(--border-size-1) solid var(--fg-accent);
+  color: var(--fg-main);
+
+  font-size: var(--font-size-0);
+  font-weight: var(--font-weight-5);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.Hint__tooltip--top {
+  bottom: calc(100% + 8px);
+  left: 50%;
+}
+
+.Hint__tooltip--left {
+  right: calc(100% + 8px);
+  top: 50%;
+}

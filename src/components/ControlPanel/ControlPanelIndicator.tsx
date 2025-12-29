@@ -11,8 +11,6 @@ const variants = cva("ControlPanelIndicator", {
 interface Props {
   /** Whether the indicator is visually disabled (grayed out) */
   disabled?: boolean;
-  /** Browser native tooltip text */
-  title?: string;
   /** Content to render inside the indicator */
   children: React.ReactNode;
 }
@@ -21,10 +19,6 @@ interface Props {
  * ControlPanelIndicator - Display-only cell for the indicator column.
  * Always renders as a div, shows current value without interactivity.
  */
-export function ControlPanelIndicator({ disabled, title, children }: Props) {
-  return (
-    <div className={variants({ disabled })} data-tooltip={title}>
-      {children}
-    </div>
-  );
+export function ControlPanelIndicator({ disabled, children }: Props) {
+  return <div className={variants({ disabled })}>{children}</div>;
 }

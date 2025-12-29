@@ -1,19 +1,27 @@
 import CopyButton from "@/components/CopyButton";
 import GlitchEffect from "@/components/GlitchEffect";
 import Highlight from "@/components/Highlight";
+import Hint from "@/components/Hint";
 import { Trans } from "@/i18n/Trans";
+import { cx } from "class-variance-authority";
 
 interface Props {
   title: string;
   cta: string;
+  email: string;
   copyEmailTooltip: string;
+  className?: string;
 }
 
-const EMAIL = "nik@nbr.haus";
-
-export default function LookingForJob({ title, cta, copyEmailTooltip }: Props) {
+export default function LookingForJob({
+  title,
+  cta,
+  copyEmailTooltip,
+  email,
+  className
+}: Props) {
   return (
-    <div className="LookingForJob">
+    <div className={cx("LookingForJob", className)}>
       <GlitchEffect scanlines>
         <h1>
           <Trans
@@ -25,10 +33,12 @@ export default function LookingForJob({ title, cta, copyEmailTooltip }: Props) {
         </h1>
       </GlitchEffect>
       <div className="LookingForJob__actions">
-        <a href={`mailto:${EMAIL}`} className="LookingForJob__cta">
+        <a href={`mailto:${email}`} className="LookingForJob__cta">
           {cta}
         </a>
-        <CopyButton value={EMAIL} tooltip={copyEmailTooltip} />
+        <Hint title={copyEmailTooltip}>
+          <CopyButton value={email} ariaLabel={copyEmailTooltip} size={24} />
+        </Hint>
       </div>
     </div>
   );

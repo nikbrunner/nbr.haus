@@ -14,6 +14,7 @@ import {
   ControlPanelStrip,
   ControlPanelStripSection
 } from "@/components/ControlPanel/ControlPanelStrip";
+import Hint from "@/components/Hint";
 import { useColorMode } from "@/hooks/useColorMode";
 import { useContrast } from "@/hooks/useContrast";
 import { useHue } from "@/hooks/useHue";
@@ -89,9 +90,11 @@ export default function ControlPanel() {
 
         {/* Locale indicator */}
         <ControlPanelStripSection>
-          <ControlPanelIndicator title={t.controlPanel.titles.locale[locale]}>
-            {t.controlPanel.labels.locale[locale]}
-          </ControlPanelIndicator>
+          <Hint title={t.controlPanel.titles.locale[locale]} position="left">
+            <ControlPanelIndicator>
+              {t.controlPanel.labels.locale[locale]}
+            </ControlPanelIndicator>
+          </Hint>
         </ControlPanelStripSection>
 
         {/* Style indicators */}
@@ -99,12 +102,16 @@ export default function ControlPanel() {
           <ControlPanelIndicator>
             <ControlPanelColorDot hue={getAccentHue(hue)} />
           </ControlPanelIndicator>
-          <ControlPanelIndicator title={t.controlPanel.titles.contrast[contrast]}>
-            {t.controlPanel.labels.contrast[contrast]}
-          </ControlPanelIndicator>
-          <ControlPanelIndicator title={t.controlPanel.titles.colorMode[colorMode]}>
-            {t.controlPanel.labels.colorMode[colorMode]}
-          </ControlPanelIndicator>
+          <Hint title={t.controlPanel.titles.contrast[contrast]} position="left">
+            <ControlPanelIndicator>
+              {t.controlPanel.labels.contrast[contrast]}
+            </ControlPanelIndicator>
+          </Hint>
+          <Hint title={t.controlPanel.titles.colorMode[colorMode]} position="left">
+            <ControlPanelIndicator>
+              {t.controlPanel.labels.colorMode[colorMode]}
+            </ControlPanelIndicator>
+          </Hint>
         </ControlPanelStripSection>
       </ControlPanelStrip>
 
@@ -133,24 +140,24 @@ export default function ControlPanel() {
         <ControlPanelExpandedSection>
           <ControlPanelRow label={t.controlPanel.rows.lang}>
             {locales.map(loc => (
-              <ControlPanelOption
-                key={loc}
-                isActive={locale === loc}
-                onClick={() => {
-                  if (loc === locale) return;
+              <Hint key={loc} title={t.controlPanel.titles.locale[loc]}>
+                <ControlPanelOption
+                  isActive={locale === loc}
+                  onClick={() => {
+                    if (loc === locale) return;
 
-                  setLocale(loc);
-                  setIsExpanded(false);
-                }}
-                ariaLabel={
-                  loc === "en"
-                    ? t.controlPanel.aria.selectEnglish
-                    : t.controlPanel.aria.selectGerman
-                }
-                title={t.controlPanel.titles.locale[loc]}
-              >
-                {t.controlPanel.labels.locale[loc]}
-              </ControlPanelOption>
+                    setLocale(loc);
+                    setIsExpanded(false);
+                  }}
+                  ariaLabel={
+                    loc === "en"
+                      ? t.controlPanel.aria.selectEnglish
+                      : t.controlPanel.aria.selectGerman
+                  }
+                >
+                  {t.controlPanel.labels.locale[loc]}
+                </ControlPanelOption>
+              </Hint>
             ))}
           </ControlPanelRow>
         </ControlPanelExpandedSection>
@@ -172,29 +179,29 @@ export default function ControlPanel() {
 
           <ControlPanelRow label={t.controlPanel.rows.contrast}>
             {contrasts.map(value => (
-              <ControlPanelOption
-                key={value}
-                isActive={contrast === value}
-                onClick={() => setContrast(value)}
-                ariaLabel={t.controlPanel.aria.selectContrast[value]}
-                title={t.controlPanel.titles.contrast[value]}
-              >
-                {t.controlPanel.labels.contrast[value]}
-              </ControlPanelOption>
+              <Hint key={value} title={t.controlPanel.titles.contrast[value]}>
+                <ControlPanelOption
+                  isActive={contrast === value}
+                  onClick={() => setContrast(value)}
+                  ariaLabel={t.controlPanel.aria.selectContrast[value]}
+                >
+                  {t.controlPanel.labels.contrast[value]}
+                </ControlPanelOption>
+              </Hint>
             ))}
           </ControlPanelRow>
 
           <ControlPanelRow label={t.controlPanel.rows.mode}>
             {colorModes.map(value => (
-              <ControlPanelOption
-                key={value}
-                isActive={colorMode === value}
-                onClick={() => setColorMode(value)}
-                ariaLabel={t.controlPanel.aria.selectColorMode[value]}
-                title={t.controlPanel.titles.colorMode[value]}
-              >
-                {t.controlPanel.labels.colorMode[value]}
-              </ControlPanelOption>
+              <Hint key={value} title={t.controlPanel.titles.colorMode[value]}>
+                <ControlPanelOption
+                  isActive={colorMode === value}
+                  onClick={() => setColorMode(value)}
+                  ariaLabel={t.controlPanel.aria.selectColorMode[value]}
+                >
+                  {t.controlPanel.labels.colorMode[value]}
+                </ControlPanelOption>
+              </Hint>
             ))}
           </ControlPanelRow>
         </ControlPanelExpandedSection>

@@ -1,7 +1,7 @@
 export const texts = {
   lookingForJob: {
     title:
-      "Looking for a <highlight>Senior Frontend role</highlight> starting February 2026.",
+      "Looking for a <highlight>Senior Frontend role</highlight> starting <highlight>February 2026.</highlight>",
     cta: "Write me!",
     copyEmailTooltip: "Copy email"
   },

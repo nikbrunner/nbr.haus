@@ -3,7 +3,6 @@
     from var(--fg-accent) clamp(0.05, (0.6 - l) * 1000, 0.975) 0.05 h
   );
 
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,30 +32,4 @@
   pointer-events: none;
   cursor: not-allowed;
   color: var(--fg-minor);
-}
-
-/* CSS Tooltip - appears above the option */
-.ControlPanelOption[data-tooltip]::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  bottom: calc(100% + 8px);
-  left: 50%;
-  transform: translateX(-50%);
-
-  padding: 4px 8px;
-  background: var(--bg-main);
-  border: var(--border-size-1) solid var(--fg-accent);
-  color: var(--fg-main);
-
-  font-size: var(--font-size-0);
-  font-weight: var(--font-weight-5);
-  white-space: nowrap;
-
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.15s ease-out;
-}
-
-.ControlPanelOption[data-tooltip]:hover::after {
-  opacity: 1;
 }
