@@ -9,7 +9,6 @@ import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 import { useOnMount } from "@/hooks/useOnMount";
 import { useLocale } from "@/i18n/useLocale";
 import { useTexts } from "@/i18n/useTexts";
-import { type Locale } from "@/types/i18n";
 
 import { ControlPanelColorDot } from "./ControlPanelColorDot";
 import {
@@ -73,16 +72,6 @@ export default function ControlPanel() {
     .filter(path => !path.includes("$") && path !== "/cv")
     .sort((a, b) => a.localeCompare(b));
 
-  // ============================================================================
-  // Handlers
-  // ============================================================================
-
-  const handleSelectLocale = (newLocale: Locale) => {
-    if (newLocale === locale) return;
-    setLocale(newLocale);
-    setIsExpanded(false);
-  };
-
   return (
     <>
       {/* Strip - Always visible indicator column */}
@@ -145,7 +134,12 @@ export default function ControlPanel() {
               <ControlPanelOption
                 key={loc}
                 isActive={locale === loc}
-                onClick={() => handleSelectLocale(loc)}
+                onClick={() => {
+                  if (loc === locale) return;
+
+                  setLocale(loc);
+                  setIsExpanded(false);
+                }}
                 ariaLabel={
                   loc === "en"
                     ? t.controlPanel.aria.selectEnglish
