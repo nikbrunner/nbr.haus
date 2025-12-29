@@ -10,3 +10,8 @@ Personal portfolio website built with TanStack Start, React 19, and TypeScript.
 npm install
 npm run dev
 ```
+
+## TODO
+
+- [ ] `Button` component (Is `Badge` not really a button?)
+- [ ] Improve color token naming
