@@ -1,5 +1,0 @@
-/* ControlPanel.css - Now mostly empty since Strip and Expanded handle their own styles */
-/* This file is kept for potential future shared styles or CSS imports */
-
-@import "./ControlPanelStrip.css";
-@import "./ControlPanelExpanded.css";
