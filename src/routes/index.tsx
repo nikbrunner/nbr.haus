@@ -11,6 +11,7 @@ import SpecCard from "@/components/SpecCard";
 import SpecList from "@/components/SpecList";
 import { tech } from "@/config";
 import { Trans } from "@/i18n/Trans";
+import { useLocale } from "@/i18n/useLocale";
 import { useTexts } from "@/i18n/useTexts";
 
 export const Route = createFileRoute("/")({
@@ -19,6 +20,7 @@ export const Route = createFileRoute("/")({
 
 function Page() {
   const t = useTexts();
+  const { locale } = useLocale();
   const experienceInYears = new Date().getFullYear() - 2020;
 
   return (
@@ -61,23 +63,13 @@ function Page() {
                 {
                   label: t.connect.cv,
                   value: (
-                    <>
-                      <a
-                        className="Link"
-                        href="/Nikolaus_Brunner_CV_EN.pdf"
-                        download
-                      >
-                        {t.connect.downloadCvEn}
-                      </a>
-                      {" / "}
-                      <a
-                        className="Link"
-                        href="/Nikolaus_Brunner_CV_DE.pdf"
-                        download
-                      >
-                        {t.connect.downloadCvDe}
-                      </a>
-                    </>
+                    <a
+                      className="Link"
+                      href={`/Nikolaus_Brunner_CV_${locale}.pdf`}
+                      download
+                    >
+                      {t.connect.downloadCv}
+                    </a>
                   )
                 },
                 {

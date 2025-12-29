@@ -4,8 +4,7 @@ export const texts = {
   linkedin: "LinkedIn:",
   cv: "CV:",
   email: "Email:",
-  downloadCvEn: "EN",
-  downloadCvDe: "DE",
+  downloadCv: "Download",
   languages: "Languages:",
   languagesList: "German (Native) • English (Fluent)"
 } as const;
