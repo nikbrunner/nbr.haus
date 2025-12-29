@@ -17,7 +17,7 @@
     "lint": "eslint --fix .",
     "lint:inspect": "eslint --inspect-config",
     "check:compile": "tsc --noEmit",
-    "check": "npm run check:format && npm run check:lint && npm run check:compile && npm run knip && npm run build",
+    "check": "npm run check:format && npm run check:lint && npm run check:compile && npm run knip",
     "knip": "knip",
     "storybook": "storybook dev -p 6006 -c src/storybook",
     "build:storybook": "storybook build -c src/storybook",
