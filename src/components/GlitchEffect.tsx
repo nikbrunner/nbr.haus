@@ -1,21 +1,9 @@
 import { useMemo } from "react";
 
-import { cva, cx, type VariantProps } from "class-variance-authority";
+import { useHydrated } from "@tanstack/react-router";
+import { cx } from "class-variance-authority";
 
-const glitchVariants = cva("GlitchEffect", {
-  variants: {
-    intensity: {
-      subtle: "GlitchEffect--subtle",
-      medium: "GlitchEffect--medium",
-      strong: "GlitchEffect--strong"
-    }
-  },
-  defaultVariants: {
-    intensity: "subtle"
-  }
-});
-
-interface Props extends VariantProps<typeof glitchVariants> {
+interface Props {
   children: React.ReactNode;
   className?: string;
   /** Enable scanline overlay effect */
@@ -27,18 +15,22 @@ interface Props extends VariantProps<typeof glitchVariants> {
 export default function GlitchEffect({
   children,
   className,
-  intensity,
   scanlines = false,
   disabled = false
 }: Props) {
-  // Generate random delays once per instance for desynchronized animations
+  const hydrated = useHydrated();
+
+  // Generate random delays only client-side after hydration to avoid mismatch
   const delays = useMemo(
-    () => ({
-      base: Math.random() * 3, // 0-3s offset for main animation cycle
-      before: Math.random() * 0.5, // Slight offset for ::before pseudo-element
-      after: Math.random() * 0.5 // Slight offset for ::after pseudo-element
-    }),
-    []
+    () =>
+      hydrated
+        ? {
+            base: Math.random() * 3, // 0-3s offset for main animation cycle
+            before: Math.random() * 0.5, // Slight offset for ::before pseudo-element
+            after: Math.random() * 0.5 // Slight offset for ::after pseudo-element
+          }
+        : { base: 0, before: 0, after: 0 },
+    [hydrated]
   );
 
   if (disabled) {
@@ -48,7 +40,7 @@ export default function GlitchEffect({
   return (
     <span
       className={cx(
-        glitchVariants({ intensity }),
+        "GlitchEffect",
         scanlines && "GlitchEffect--scanlines",
         className
       )}

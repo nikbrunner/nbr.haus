@@ -1,17 +1,11 @@
 .GlitchEffect {
   position: relative;
   display: inline-block;
+  animation: glitch-luminosity 2.5s var(--glitch-delay, 0s) infinite;
 }
 
-/* Subtle glitch - constant jitter with occasional spikes */
-.GlitchEffect--subtle {
-  animation:
-    glitch-jitter 0.1s infinite,
-    glitch-flicker 5s var(--glitch-delay, 0s) infinite;
-}
-
-.GlitchEffect--subtle::before,
-.GlitchEffect--subtle::after {
+.GlitchEffect::before,
+.GlitchEffect::after {
   content: "";
   position: absolute;
   top: 0;
@@ -23,95 +17,19 @@
   mix-blend-mode: screen;
 }
 
-.GlitchEffect--subtle::before {
-  animation:
-    glitch-jitter-offset 0.15s infinite,
-    glitch-rgb-flare-red 5s
-      calc(var(--glitch-delay, 0s) + var(--glitch-delay-before, 0s)) infinite;
-  box-shadow: -2px 0 0 oklch(65% 0.3 25 / 0.4);
-}
-
-.GlitchEffect--subtle::after {
-  animation:
-    glitch-jitter-offset 0.12s infinite reverse,
-    glitch-rgb-flare-cyan 5s
-      calc(var(--glitch-delay, 0s) + var(--glitch-delay-after, 0s)) infinite;
-  box-shadow: 2px 0 0 oklch(65% 0.25 220 / 0.4);
-}
-
-/* Medium glitch - more noticeable jitter and RGB separation */
-.GlitchEffect--medium {
-  animation:
-    glitch-jitter-medium 0.08s infinite,
-    glitch-flicker 4s var(--glitch-delay, 0s) infinite;
-}
-
-.GlitchEffect--medium::before,
-.GlitchEffect--medium::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  background: inherit;
-  mix-blend-mode: screen;
-}
-
-.GlitchEffect--medium::before {
-  animation:
-    glitch-jitter-offset-medium 0.12s infinite,
-    glitch-rgb-flare-red-medium 4s
-      calc(var(--glitch-delay, 0s) + var(--glitch-delay-before, 0s)) infinite;
+.GlitchEffect::before {
+  animation: glitch-rgb-flare-red 4s
+    calc(var(--glitch-delay, 0s) + var(--glitch-delay-before, 0s)) infinite;
   box-shadow: -3px 0 0 oklch(65% 0.35 25 / 0.5);
 }
 
-.GlitchEffect--medium::after {
-  animation:
-    glitch-jitter-offset-medium 0.1s infinite reverse,
-    glitch-rgb-flare-cyan-medium 4s
-      calc(var(--glitch-delay, 0s) + var(--glitch-delay-after, 0s)) infinite;
+.GlitchEffect::after {
+  animation: glitch-rgb-flare-cyan 4s
+    calc(var(--glitch-delay, 0s) + var(--glitch-delay-after, 0s)) infinite;
   box-shadow: 3px 0 0 oklch(65% 0.3 220 / 0.5);
 }
 
-/* Strong glitch - intense jitter and RGB separation */
-.GlitchEffect--strong {
-  animation:
-    glitch-jitter-strong 0.05s infinite,
-    glitch-flicker-strong 2s var(--glitch-delay, 0s) infinite;
-}
-
-.GlitchEffect--strong::before,
-.GlitchEffect--strong::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  background: inherit;
-  mix-blend-mode: screen;
-}
-
-.GlitchEffect--strong::before {
-  animation:
-    glitch-jitter-offset-strong 0.08s infinite,
-    glitch-rgb-flare-red-strong 2s
-      calc(var(--glitch-delay, 0s) + var(--glitch-delay-before, 0s)) infinite;
-  box-shadow: -4px 0 0 oklch(70% 0.4 25 / 0.6);
-}
-
-.GlitchEffect--strong::after {
-  animation:
-    glitch-jitter-offset-strong 0.06s infinite reverse,
-    glitch-rgb-flare-cyan-strong 2s
-      calc(var(--glitch-delay, 0s) + var(--glitch-delay-after, 0s)) infinite;
-  box-shadow: 4px 0 0 oklch(70% 0.35 220 / 0.6);
-}
-
-/* Scanlines overlay - animated sweep line on main element */
+/* Scanlines overlay */
 .GlitchEffect--scanlines {
   background:
     /* Sweeping bright line */
@@ -137,14 +55,13 @@
     100% 300%,
     100% 100%;
   animation:
-    glitch-jitter 0.1s infinite,
-    glitch-flicker 5s var(--glitch-delay, 0s) infinite,
+    glitch-luminosity 2.5s var(--glitch-delay, 0s) infinite,
     glitch-scanline-sweep 4s linear infinite;
 }
 
 /* Keyframes */
 
-/* Scanline sweep - moves bright line from top to bottom */
+/* Scanline sweep */
 @keyframes glitch-scanline-sweep {
   0% {
     background-position:
@@ -158,287 +75,127 @@
   }
 }
 
-/* Base jitter - constant micro-movement */
-@keyframes glitch-jitter {
+/* CRT luminosity flicker */
+@keyframes glitch-luminosity {
   0% {
-    transform: translate(0, 0);
-  }
-  20% {
-    transform: translate(-0.5px, 0);
-  }
-  40% {
-    transform: translate(0.5px, 0.5px);
-  }
-  60% {
-    transform: translate(0, -0.5px);
-  }
-  80% {
-    transform: translate(0.5px, 0);
-  }
-  100% {
-    transform: translate(-0.5px, 0.5px);
-  }
-}
-
-/* Offset jitter for pseudo-elements - creates RGB separation */
-@keyframes glitch-jitter-offset {
-  0% {
-    opacity: 0.15;
-    transform: translate(0, 0);
-  }
-  25% {
-    opacity: 0.2;
-    transform: translate(1px, 0);
-  }
-  50% {
-    opacity: 0.1;
-    transform: translate(-1px, 0.5px);
-  }
-  75% {
-    opacity: 0.25;
-    transform: translate(0.5px, -0.5px);
-  }
-  100% {
-    opacity: 0.15;
-    transform: translate(-0.5px, 0);
-  }
-}
-
-@keyframes glitch-flicker {
-  0%,
-  100% {
     opacity: 1;
     filter: none;
   }
-  20% {
+  4% {
+    opacity: 0.9;
+    filter: brightness(1.08) contrast(1.04);
+  }
+  6% {
     opacity: 1;
     filter: none;
+  }
+  11% {
+    opacity: 0.88;
+    filter: brightness(1.1) contrast(1.05);
+  }
+  13% {
+    opacity: 1;
+    filter: none;
+  }
+  19% {
+    opacity: 0.92;
+    filter: brightness(1.06);
   }
   21% {
+    opacity: 1;
+    filter: none;
+  }
+  28% {
+    opacity: 0.86;
+    filter: brightness(1.12) contrast(1.06);
+  }
+  30% {
+    opacity: 1;
+    filter: none;
+  }
+  38% {
+    opacity: 0.91;
+    filter: brightness(1.07);
+  }
+  40% {
+    opacity: 1;
+    filter: none;
+  }
+  48% {
+    opacity: 0.87;
+    filter: brightness(1.1) contrast(1.05);
+  }
+  50% {
+    opacity: 1;
+    filter: none;
+  }
+  59% {
+    opacity: 0.9;
+    filter: brightness(1.08);
+  }
+  61% {
+    opacity: 1;
+    filter: none;
+  }
+  69% {
     opacity: 0.85;
-    filter: brightness(1.1) contrast(1.1);
-  }
-  22% {
-    opacity: 1;
-    filter: none;
-  }
-  70% {
-    opacity: 1;
-    filter: none;
+    filter: brightness(1.12) contrast(1.06);
   }
   71% {
-    opacity: 0.9;
-    filter: brightness(1.05);
+    opacity: 1;
+    filter: none;
   }
-  72% {
-    opacity: 0.8;
-    filter: brightness(1.15) contrast(1.05);
+  79% {
+    opacity: 0.89;
+    filter: brightness(1.09) contrast(1.04);
   }
-  73% {
+  81% {
+    opacity: 1;
+    filter: none;
+  }
+  90% {
+    opacity: 0.91;
+    filter: brightness(1.07);
+  }
+  92% {
+    opacity: 1;
+    filter: none;
+  }
+  100% {
     opacity: 1;
     filter: none;
   }
 }
 
-/* RGB flare keyframes - red channel */
+/* RGB flare - red channel */
 @keyframes glitch-rgb-flare-red {
   0%,
   100% {
-    opacity: 0.15;
-    transform: translateX(-1px);
-    box-shadow: -2px 0 0 oklch(65% 0.3 25 / 0.4);
-  }
-  /* First spike - RED flares */
-  19% {
-    opacity: 0.15;
-    transform: translateX(-1px);
-  }
-  20% {
-    opacity: 0.9;
-    transform: translateX(-6px) skewX(-2deg);
-    box-shadow:
-      -4px 0 0 oklch(65% 0.4 25 / 0.9),
-      -8px 0 0 oklch(65% 0.35 140 / 0.6);
-  }
-  21% {
-    opacity: 0.7;
-    transform: translateX(-3px) skewX(1deg);
-    box-shadow:
-      -3px 0 0 oklch(65% 0.35 25 / 0.7),
-      -6px 0 0 oklch(65% 0.3 140 / 0.4);
-  }
-  23% {
-    opacity: 0.15;
-    transform: translateX(-1px) skewX(0);
-    box-shadow: -2px 0 0 oklch(65% 0.3 25 / 0.4);
-  }
-  /* Second spike - RGB separation */
-  69% {
-    opacity: 0.15;
-    transform: translateX(-1px);
-  }
-  70% {
-    opacity: 0.85;
-    transform: translateX(-5px) skewX(-1deg);
-    box-shadow:
-      -3px 0 0 oklch(70% 0.4 25 / 0.85),
-      -7px 0 0 oklch(70% 0.35 140 / 0.7),
-      -10px 0 0 oklch(60% 0.3 260 / 0.5);
-  }
-  72% {
-    opacity: 0.5;
-    transform: translateX(-2px);
-    box-shadow:
-      -2px 0 0 oklch(65% 0.3 25 / 0.5),
-      -4px 0 0 oklch(65% 0.25 140 / 0.3);
-  }
-  74% {
-    opacity: 0.15;
-    transform: translateX(-1px) skewX(0);
-    box-shadow: -2px 0 0 oklch(65% 0.3 25 / 0.4);
-  }
-}
-
-/* RGB flare keyframes - cyan/blue channel */
-@keyframes glitch-rgb-flare-cyan {
-  0%,
-  100% {
-    opacity: 0.15;
-    transform: translateX(1px);
-    box-shadow: 2px 0 0 oklch(65% 0.25 220 / 0.4);
-  }
-  /* First spike - BLUE/CYAN flares */
-  20% {
-    opacity: 0.15;
-    transform: translateX(1px);
-  }
-  21% {
-    opacity: 0.85;
-    transform: translateX(5px) skewX(2deg);
-    box-shadow:
-      4px 0 0 oklch(65% 0.4 220 / 0.9),
-      7px 0 0 oklch(55% 0.35 280 / 0.6);
-  }
-  22% {
-    opacity: 0.6;
-    transform: translateX(3px) skewX(-1deg);
-    box-shadow:
-      3px 0 0 oklch(65% 0.35 220 / 0.6),
-      5px 0 0 oklch(55% 0.3 280 / 0.4);
-  }
-  24% {
-    opacity: 0.15;
-    transform: translateX(1px) skewX(0);
-    box-shadow: 2px 0 0 oklch(65% 0.25 220 / 0.4);
-  }
-  /* Second spike - full RGB */
-  70% {
-    opacity: 0.15;
-    transform: translateX(1px);
-  }
-  71% {
-    opacity: 0.9;
-    transform: translateX(6px) skewX(1deg);
-    box-shadow:
-      3px 0 0 oklch(70% 0.4 220 / 0.85),
-      6px 0 0 oklch(60% 0.35 280 / 0.7),
-      9px 0 0 oklch(65% 0.3 25 / 0.5);
-  }
-  73% {
-    opacity: 0.4;
-    transform: translateX(2px);
-    box-shadow:
-      2px 0 0 oklch(65% 0.3 220 / 0.4),
-      4px 0 0 oklch(55% 0.25 280 / 0.3);
-  }
-  75% {
-    opacity: 0.15;
-    transform: translateX(1px) skewX(0);
-    box-shadow: 2px 0 0 oklch(65% 0.25 220 / 0.4);
-  }
-}
-
-/* Medium intensity jitter - faster, larger movement */
-@keyframes glitch-jitter-medium {
-  0% {
-    transform: translate(0, 0);
-  }
-  20% {
-    transform: translate(-1px, 0.5px);
-  }
-  40% {
-    transform: translate(1px, -0.5px);
-  }
-  60% {
-    transform: translate(-0.5px, -1px);
-  }
-  80% {
-    transform: translate(1px, 0.5px);
-  }
-  100% {
-    transform: translate(-1px, 0);
-  }
-}
-
-@keyframes glitch-jitter-offset-medium {
-  0% {
     opacity: 0.25;
-    transform: translate(0, 0);
-  }
-  25% {
-    opacity: 0.35;
-    transform: translate(2px, 0.5px);
-  }
-  50% {
-    opacity: 0.2;
-    transform: translate(-2px, -0.5px);
-  }
-  75% {
-    opacity: 0.4;
-    transform: translate(1px, -1px);
-  }
-  100% {
-    opacity: 0.25;
-    transform: translate(-1px, 0.5px);
-  }
-}
-
-/* Medium RGB flare - red channel */
-@keyframes glitch-rgb-flare-red-medium {
-  0%,
-  100% {
-    opacity: 0.25;
-    transform: translateX(-2px);
     box-shadow: -3px 0 0 oklch(65% 0.35 25 / 0.5);
   }
   14% {
     opacity: 0.25;
-    transform: translateX(-2px);
   }
   15% {
-    opacity: 0.95;
-    transform: translateX(-8px) skewX(-3deg);
+    opacity: 0.9;
     box-shadow:
       -5px 0 0 oklch(70% 0.45 25 / 0.95),
       -10px 0 0 oklch(70% 0.4 140 / 0.7),
       -14px 0 0 oklch(65% 0.35 260 / 0.5);
   }
   17% {
-    opacity: 0.6;
-    transform: translateX(-4px) skewX(1deg);
+    opacity: 0.55;
   }
   19% {
     opacity: 0.25;
-    transform: translateX(-2px) skewX(0);
     box-shadow: -3px 0 0 oklch(65% 0.35 25 / 0.5);
   }
   54% {
     opacity: 0.25;
-    transform: translateX(-2px);
   }
   55% {
-    opacity: 0.9;
-    transform: translateX(-7px) skewX(-2deg);
+    opacity: 0.85;
     box-shadow:
       -4px 0 0 oklch(70% 0.45 25 / 0.9),
       -9px 0 0 oklch(70% 0.4 140 / 0.7),
@@ -446,47 +203,39 @@
   }
   58% {
     opacity: 0.25;
-    transform: translateX(-2px) skewX(0);
     box-shadow: -3px 0 0 oklch(65% 0.35 25 / 0.5);
   }
 }
 
-/* Medium RGB flare - cyan channel */
-@keyframes glitch-rgb-flare-cyan-medium {
+/* RGB flare - cyan channel */
+@keyframes glitch-rgb-flare-cyan {
   0%,
   100% {
     opacity: 0.25;
-    transform: translateX(2px);
     box-shadow: 3px 0 0 oklch(65% 0.3 220 / 0.5);
   }
   15% {
     opacity: 0.25;
-    transform: translateX(2px);
   }
   16% {
-    opacity: 0.95;
-    transform: translateX(8px) skewX(3deg);
+    opacity: 0.9;
     box-shadow:
       5px 0 0 oklch(70% 0.45 220 / 0.95),
       10px 0 0 oklch(65% 0.4 280 / 0.7),
       14px 0 0 oklch(70% 0.35 25 / 0.5);
   }
   18% {
-    opacity: 0.5;
-    transform: translateX(4px) skewX(-1deg);
+    opacity: 0.45;
   }
   20% {
     opacity: 0.25;
-    transform: translateX(2px) skewX(0);
     box-shadow: 3px 0 0 oklch(65% 0.3 220 / 0.5);
   }
   55% {
     opacity: 0.25;
-    transform: translateX(2px);
   }
   56% {
-    opacity: 0.9;
-    transform: translateX(7px) skewX(2deg);
+    opacity: 0.85;
     box-shadow:
       4px 0 0 oklch(70% 0.45 220 / 0.9),
       9px 0 0 oklch(65% 0.4 280 / 0.7),
@@ -494,250 +243,7 @@
   }
   59% {
     opacity: 0.25;
-    transform: translateX(2px) skewX(0);
     box-shadow: 3px 0 0 oklch(65% 0.3 220 / 0.5);
-  }
-}
-
-/* Strong intensity jitter - fastest, largest movement */
-@keyframes glitch-jitter-strong {
-  0% {
-    transform: translate(0, 0) skewX(0);
-  }
-  20% {
-    transform: translate(-2px, 1px) skewX(-0.5deg);
-  }
-  40% {
-    transform: translate(2px, -1px) skewX(0.5deg);
-  }
-  60% {
-    transform: translate(-1px, -1.5px) skewX(-0.3deg);
-  }
-  80% {
-    transform: translate(1.5px, 1px) skewX(0.3deg);
-  }
-  100% {
-    transform: translate(-1.5px, 0.5px) skewX(0);
-  }
-}
-
-@keyframes glitch-jitter-offset-strong {
-  0% {
-    opacity: 0.4;
-    transform: translate(0, 0);
-  }
-  25% {
-    opacity: 0.55;
-    transform: translate(3px, 1px);
-  }
-  50% {
-    opacity: 0.35;
-    transform: translate(-3px, -1px);
-  }
-  75% {
-    opacity: 0.6;
-    transform: translate(2px, -1.5px);
-  }
-  100% {
-    opacity: 0.4;
-    transform: translate(-2px, 1px);
-  }
-}
-
-/* Strong flicker - more dramatic */
-@keyframes glitch-flicker-strong {
-  0%,
-  100% {
-    opacity: 1;
-    filter: none;
-  }
-  10% {
-    opacity: 0.75;
-    filter: brightness(1.2) contrast(1.15);
-  }
-  12% {
-    opacity: 1;
-    filter: none;
-  }
-  35% {
-    opacity: 0.85;
-    filter: brightness(1.1);
-  }
-  37% {
-    opacity: 1;
-    filter: none;
-  }
-  60% {
-    opacity: 0.7;
-    filter: brightness(1.25) contrast(1.1);
-  }
-  63% {
-    opacity: 1;
-    filter: none;
-  }
-  85% {
-    opacity: 0.8;
-    filter: brightness(1.15) contrast(1.05);
-  }
-  88% {
-    opacity: 1;
-    filter: none;
-  }
-}
-
-/* Strong RGB flare - red channel */
-@keyframes glitch-rgb-flare-red-strong {
-  0%,
-  100% {
-    opacity: 0.4;
-    transform: translateX(-3px);
-    box-shadow: -4px 0 0 oklch(70% 0.4 25 / 0.6);
-  }
-  9% {
-    opacity: 0.4;
-    transform: translateX(-3px);
-  }
-  10% {
-    opacity: 1;
-    transform: translateX(-12px) skewX(-4deg);
-    box-shadow:
-      -6px 0 0 oklch(75% 0.5 25 / 1),
-      -12px 0 0 oklch(75% 0.45 140 / 0.8),
-      -18px 0 0 oklch(70% 0.4 260 / 0.6);
-  }
-  13% {
-    opacity: 0.4;
-    transform: translateX(-3px) skewX(0);
-    box-shadow: -4px 0 0 oklch(70% 0.4 25 / 0.6);
-  }
-  34% {
-    opacity: 0.4;
-    transform: translateX(-3px);
-  }
-  35% {
-    opacity: 0.95;
-    transform: translateX(-10px) skewX(-3deg);
-    box-shadow:
-      -5px 0 0 oklch(75% 0.5 25 / 0.95),
-      -11px 0 0 oklch(75% 0.45 140 / 0.75),
-      -16px 0 0 oklch(70% 0.4 260 / 0.55);
-  }
-  38% {
-    opacity: 0.4;
-    transform: translateX(-3px) skewX(0);
-    box-shadow: -4px 0 0 oklch(70% 0.4 25 / 0.6);
-  }
-  59% {
-    opacity: 0.4;
-    transform: translateX(-3px);
-  }
-  60% {
-    opacity: 1;
-    transform: translateX(-11px) skewX(-3deg);
-    box-shadow:
-      -6px 0 0 oklch(75% 0.5 25 / 1),
-      -12px 0 0 oklch(75% 0.45 140 / 0.8),
-      -17px 0 0 oklch(70% 0.4 260 / 0.6);
-  }
-  63% {
-    opacity: 0.4;
-    transform: translateX(-3px) skewX(0);
-    box-shadow: -4px 0 0 oklch(70% 0.4 25 / 0.6);
-  }
-  84% {
-    opacity: 0.4;
-    transform: translateX(-3px);
-  }
-  85% {
-    opacity: 0.9;
-    transform: translateX(-9px) skewX(-2deg);
-    box-shadow:
-      -5px 0 0 oklch(75% 0.5 25 / 0.9),
-      -10px 0 0 oklch(75% 0.45 140 / 0.7),
-      -15px 0 0 oklch(70% 0.4 260 / 0.5);
-  }
-  88% {
-    opacity: 0.4;
-    transform: translateX(-3px) skewX(0);
-    box-shadow: -4px 0 0 oklch(70% 0.4 25 / 0.6);
-  }
-}
-
-/* Strong RGB flare - cyan channel */
-@keyframes glitch-rgb-flare-cyan-strong {
-  0%,
-  100% {
-    opacity: 0.4;
-    transform: translateX(3px);
-    box-shadow: 4px 0 0 oklch(70% 0.35 220 / 0.6);
-  }
-  10% {
-    opacity: 0.4;
-    transform: translateX(3px);
-  }
-  11% {
-    opacity: 1;
-    transform: translateX(12px) skewX(4deg);
-    box-shadow:
-      6px 0 0 oklch(75% 0.5 220 / 1),
-      12px 0 0 oklch(70% 0.45 280 / 0.8),
-      18px 0 0 oklch(75% 0.4 25 / 0.6);
-  }
-  14% {
-    opacity: 0.4;
-    transform: translateX(3px) skewX(0);
-    box-shadow: 4px 0 0 oklch(70% 0.35 220 / 0.6);
-  }
-  35% {
-    opacity: 0.4;
-    transform: translateX(3px);
-  }
-  36% {
-    opacity: 0.95;
-    transform: translateX(10px) skewX(3deg);
-    box-shadow:
-      5px 0 0 oklch(75% 0.5 220 / 0.95),
-      11px 0 0 oklch(70% 0.45 280 / 0.75),
-      16px 0 0 oklch(75% 0.4 25 / 0.55);
-  }
-  39% {
-    opacity: 0.4;
-    transform: translateX(3px) skewX(0);
-    box-shadow: 4px 0 0 oklch(70% 0.35 220 / 0.6);
-  }
-  60% {
-    opacity: 0.4;
-    transform: translateX(3px);
-  }
-  61% {
-    opacity: 1;
-    transform: translateX(11px) skewX(3deg);
-    box-shadow:
-      6px 0 0 oklch(75% 0.5 220 / 1),
-      12px 0 0 oklch(70% 0.45 280 / 0.8),
-      17px 0 0 oklch(75% 0.4 25 / 0.6);
-  }
-  64% {
-    opacity: 0.4;
-    transform: translateX(3px) skewX(0);
-    box-shadow: 4px 0 0 oklch(70% 0.35 220 / 0.6);
-  }
-  85% {
-    opacity: 0.4;
-    transform: translateX(3px);
-  }
-  86% {
-    opacity: 0.9;
-    transform: translateX(9px) skewX(2deg);
-    box-shadow:
-      5px 0 0 oklch(75% 0.5 220 / 0.9),
-      10px 0 0 oklch(70% 0.45 280 / 0.7),
-      15px 0 0 oklch(75% 0.4 25 / 0.5);
-  }
-  89% {
-    opacity: 0.4;
-    transform: translateX(3px) skewX(0);
-    box-shadow: 4px 0 0 oklch(70% 0.35 220 / 0.6);
   }
 }
 

@@ -7,7 +7,7 @@ interface Props {
 export default function LookingForJob({ title }: Props) {
   return (
     <div className="LookingForJob">
-      <GlitchEffect intensity="medium" scanlines>
+      <GlitchEffect scanlines>
         <h1>{title}</h1>
       </GlitchEffect>
     </div>
