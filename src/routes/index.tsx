@@ -6,6 +6,7 @@ import Hint from "@/components/Hint";
 import Job from "@/components/Job";
 import Link from "@/components/Link";
 import LookingForJob from "@/components/LookingForJob";
+import Note from "@/components/Note";
 import ProfilePicture from "@/components/ProfilePicture";
 import Project from "@/components/Project";
 import Section from "@/components/Section";
@@ -130,6 +131,7 @@ function Page() {
               <p>{t.about.independence}</p>
               <p>{t.about.passion}</p>
               <p>{t.about.personal}</p>
+              <Note>{t.about.iAnecdote}</Note>
             </div>
 
             <div>

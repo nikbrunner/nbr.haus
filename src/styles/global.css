@@ -36,6 +36,7 @@
 @import "../components/Tag.css";
 @import "../components/CopyButton.css";
 @import "../components/Hint.css";
+@import "../components/Note.css";
 
 /* ControlPanel */
 @import "../components/ControlPanel/ControlPanelStrip.css";

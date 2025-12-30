@@ -12,15 +12,17 @@ export const texts: Widen<typeof en> = {
     "Ich liebe es, Produkte zu bauen und zu nutzen, und bin wahrscheinlich der, der den Support wegen Features oder Bugs anschreibt und regelmäßig Changelogs und GitHub-Releases checkt.",
   personal:
     "Ich bin 1984 geboren und abseits vom Code mag ich Wandern, Laufen, Bouldern, Kochen, Lesen und Fotografie. Außerdem interessiere ich mich sehr für Design in all seinen Formen, wie Architektur, Kunst und Typografie... Und ich habe eine gewisse Tastatur-Obsession.",
+  iAnecdote:
+    'Ich weiß, dass jeder Satz gerade (und dieser hier) mit "Ich" angefangen hat, aber es fühlte sich einfach total komisch an, über mich selbst zu sprechen, ohne "Ich" zu benutzen. :)',
   devStack: {
     devTools: "Dev Tools",
     ai: "KI",
     workflowInfo:
       "Ich bin ein großer Workflow-Nerd. Meine <link>Dotfiles findest du hier</link>.",
     aiIntro:
-      "Ich bin in die Branche eingestiegen, bevor KI ein Thema war. Den Lernberg ohne Tab-Completion oder ChatGPT zu erklimmen.",
+      "Ich bin in die Branche eingestiegen, bevor KI ein Thema war. Ich habe den Berg ohne ChatGPT oder Tab-Completion erklimmen.",
     aiLearning:
-      "Das war Gold wert, und ist es noch. Für Junioren ist KI super als Lehrer und Lesepartner, aber nicht als Schreibpartner in der Lernphase. Ohne das Handwerk erst auf die harte Tour gelernt zu haben, könnte ich KI nicht so effektiv nutzen.",
+      "Das war Gold wert, und ist es immer noch. Für Junioren finde ich es als Lehrer und Lesepartner super, aber nicht als Schreibpartner in der anfänglichen Lernphase. Ich denke es ist sehr wichtig zum Lernen die Probleme selbst zu lösen und die Lösungen auch selbst niederzuschreiben... oder die Versuche.",
     aiLimitsInfo:
       "Die Technologie ist faszinierend, hat aber echte Grenzen. Wer sich zu sehr darauf verlässt, verlernt aktiv Skills und Wissen, <highlight>und verliert vielleicht das Wichtigste: den Spaß</highlight>.",
     aiUsage:

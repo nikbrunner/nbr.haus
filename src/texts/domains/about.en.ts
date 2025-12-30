@@ -9,19 +9,21 @@ export const texts = {
     "I genuinely love building and using products. I'm probably the guy who contacts support about features or bugs, and regularly checks changelogs and GitHub releases.",
   personal:
     "I was born in 1984, and outside of code I enjoy hiking, running, bouldering, cooking, reading, and photography. I also have a strong interest in design in all its forms, like architecture, art and typography... Plus I have a slight keyboard obsession.",
+  iAnecdote:
+    'I know that every sentence above (and this one) started with "I", but it felt absolutely awkward trying to speak about myself without using "I". :)',
   devStack: {
     devTools: "Dev Tools",
     ai: "AI",
     workflowInfo:
       "I am very passionate about workflow. You can check my <link>dotfiles here</link>.",
     aiIntro:
-      "I entered the industry before AI became a thing, climbing the learning hill with no tab completion or ChatGPT.",
+      "I entered the industry before AI became a thing. I climbed that hill without ChatGPT or tab completion.",
     aiLearning:
-      "That foundation was invaluable, and still is. For juniors, AI shines as a teacher and reading partner for interactive learning, but not as a writing partner during the early phases. Without learning this craft the hard way first, I couldn't use AI as effectively as I do now.",
+      "That foundation was invaluable, and still is. For juniors I think AI shines as a teacher and reading partner, but not as a writing partner during the early phases. I think it's important to learn to solve problems yourself and to also write down the solutions... or the attempts.",
     aiLimitsInfo:
       "The technology is fascinating, but it has real limits. Relying too heavily on it means actively unlearning skills and knowledge, <highlight>and maybe most importantly, losing the fun</highlight>.",
     aiUsage:
-      "That's why I'm deliberate about how I use it. I use <link>Claude Code</link> as my primary AI assistant. When the task feels manageable by AI code generation, I work out detailed plans and then let <link>Claude Code</link> handle the implementation, while reviewing the code step by step.",
+      "That's why I'm deliberate about how I use it. I use <link>Claude Code</link> as my primary AI assistant. I don't jump from model to model each week, but rather try to learn to get the most out of what I'm given. I think that for the last 1,5 years, Anthropic has built out the best integrations and DX for AI assistance.",
     mcps: "MCPs",
     mcpsIntro: "I also use personal slash commands and MCPs where applicable.",
     mcpsUsed: "These are the most used MCPs for AI assistance.",
