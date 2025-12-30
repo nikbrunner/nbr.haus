@@ -2,6 +2,7 @@ export const texts = {
   title: "Connect",
   github: "GitHub:",
   linkedin: "LinkedIn:",
+  instagram: "Instagram:",
   cv: "CV:",
   email: "Email:",
   downloadCv: "Download",
