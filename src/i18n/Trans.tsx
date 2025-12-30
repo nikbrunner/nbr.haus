@@ -13,7 +13,7 @@ const defaultComponents: Record<string, ComponentRenderer> = {
 
 interface TransProps {
   /** Translation string with tags like <link>text</link> or <highlight>text</highlight> */
-  text: string;
+  children: string;
   /** Map of tag names to render functions. Merged with defaults (strong, em, highlight). */
   components?: Record<string, ComponentRenderer>;
 }
@@ -23,14 +23,14 @@ interface TransProps {
  *
  * @example
  * // Translation: "Check out my <link>dotfiles here</link>."
- * <Trans
- *   text={t.index.devStack.workflowInfo}
- *   components={{
- *     link: (children) => <Link href="https://...">{children}</Link>
- *   }}
- * />
+ * <Trans components={{ link: (children) => <Link href="...">{children}</Link> }}>
+ *   {t.index.devStack.workflowInfo}
+ * </Trans>
+ *
+ * // With defaults only (strong, em, highlight)
+ * <Trans>{t.about.ux}</Trans>
  */
-export function Trans({ text, components = {} }: TransProps) {
+export function Trans({ children: text, components = {} }: TransProps) {
   const mergedComponents = { ...defaultComponents, ...components };
 
   // Regex to match <tagName>content</tagName>
@@ -54,7 +54,7 @@ export function Trans({ text, components = {} }: TransProps) {
       // Recursively process nested tags in content
       const hasNestedTags = /<\w+>.*?<\/\w+>/.test(content);
       const renderedContent = hasNestedTags ? (
-        <Trans text={content} components={mergedComponents} />
+        <Trans components={mergedComponents}>{content}</Trans>
       ) : (
         content
       );

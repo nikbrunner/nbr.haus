@@ -24,7 +24,7 @@ export default function LookingForJob({
     <div className={cx("LookingForJob", className)}>
       <GlitchEffect scanlines>
         <h1>
-          <Trans text={title} />
+          <Trans>{title}</Trans>
         </h1>
       </GlitchEffect>
       <div className="LookingForJob__actions">

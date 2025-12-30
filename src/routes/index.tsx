@@ -119,17 +119,17 @@ function Page() {
                 {t.about.greeting}
                 <br />
                 <br />
-                <Trans text={t.about.intro.replace("{years}", String(experienceInYears))} />
+                <Trans>{t.about.intro.replace("{years}", String(experienceInYears))}</Trans>
               </p>
               <p>
-                <Trans text={t.about.ux} />
+                <Trans>{t.about.ux}</Trans>
               </p>
               <p>{t.about.independence}</p>
               <p>
-                <Trans text={t.about.passion} />
+                <Trans>{t.about.passion}</Trans>
               </p>
               <p>
-                <Trans text={t.about.personal} />
+                <Trans>{t.about.personal}</Trans>
               </p>
               <Note>{t.about.iAnecdote}</Note>
             </div>
@@ -220,7 +220,6 @@ function Page() {
                   }}
                 >
                   <Trans
-                    text={t.about.devStack.workflowInfo}
                     components={{
                       link: children => (
                         <Link
@@ -232,7 +231,9 @@ function Page() {
                         </Link>
                       )
                     }}
-                  />
+                  >
+                    {t.about.devStack.workflowInfo}
+                  </Trans>
                 </p>
               </SpecCard>
             </div>
@@ -240,15 +241,14 @@ function Page() {
             <div>
               <h3>{t.about.devStack.ai}</h3>
               <p>
-                <Trans text={t.about.devStack.aiIntro} />
+                <Trans>{t.about.devStack.aiIntro}</Trans>
               </p>
               <p>{t.about.devStack.aiLearning}</p>
               <p>
-                <Trans text={t.about.devStack.aiLimitsInfo} />
+                <Trans>{t.about.devStack.aiLimitsInfo}</Trans>
               </p>
               <p className="mb-6">
                 <Trans
-                  text={t.about.devStack.aiUsage}
                   components={{
                     link: children => (
                       <Link
@@ -260,7 +260,9 @@ function Page() {
                       </Link>
                     )
                   }}
-                />
+                >
+                  {t.about.devStack.aiUsage}
+                </Trans>
               </p>
 
               <SpecCard
