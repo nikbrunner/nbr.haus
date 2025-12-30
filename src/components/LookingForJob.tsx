@@ -38,7 +38,7 @@ export default function LookingForJob({
           {cta}
         </a>
         <Hint title={copyEmailTooltip}>
-          <CopyButton value={email} ariaLabel={copyEmailTooltip} size={24} />
+          <CopyButton value={email} ariaLabel={copyEmailTooltip} />
         </Hint>
       </div>
     </div>
