@@ -91,6 +91,18 @@ function Page() {
                       linkedin.com/in/nbru/
                     </Link>
                   )
+                },
+                {
+                  label: t.connect.instagram,
+                  value: (
+                    <Link
+                      to="https://www.instagram.com/nikolaus.brunner"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      nikolaus.brunner
+                    </Link>
+                  )
                 }
               ]}
             />

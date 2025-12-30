@@ -98,5 +98,5 @@ export const texts = {
   education: "Sound Engineering & Mastering, Deutsche Pop Munich (2010–2011)",
 
   interests:
-    "Landscape Photography, Reading, Workflow Optimization, Open Source, Music Production"
+    "Hiking, Running, Bouldering, Cooking, Reading, Photography, All forms of Design"
 } as const;

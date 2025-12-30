@@ -8,7 +8,7 @@ export const texts = {
   passion:
     "I genuinely love building and using products. I'm probably the guy who contacts support about features or bugs, and regularly checks changelogs and GitHub releases.",
   personal:
-    "I was born in 1984. Outside of code I enjoy hiking, reading, landscape photography, music production, workflow optimization, and open source. Plus I have a slight keyboard obsession.",
+    "I was born in 1984, and outside of code I enjoy hiking, running, bouldering, cooking, reading, and photography. I also have a strong interest in design in all its forms, like architecture, art and typography... Plus I have a slight keyboard obsession.",
   devStack: {
     devTools: "Dev Tools",
     ai: "AI",

@@ -11,7 +11,7 @@ export const texts: Widen<typeof en> = {
   passion:
     "Ich liebe es, Produkte zu bauen und zu nutzen, und bin wahrscheinlich der, der den Support wegen Features oder Bugs anschreibt und regelmäßig Changelogs und GitHub-Releases checkt.",
   personal:
-    "Ich bin 1984 geboren und abseits vom Code mag ich Wandern, Lesen, Landschaftsfotografie, Musikproduktion, Workflow-Optimierung und Open Source. Dazu kommt eine leichte Tastatur-Obsession.",
+    "Ich bin 1984 geboren und abseits vom Code mag ich Wandern, Laufen, Bouldern, Kochen, Lesen und Fotografie. Außerdem interessiere ich mich sehr für Design in all seinen Formen, wie Architektur, Kunst und Typografie... Und ich habe eine gewisse Tastatur-Obsession.",
   devStack: {
     devTools: "Dev Tools",
     ai: "KI",

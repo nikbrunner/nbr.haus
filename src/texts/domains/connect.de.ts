@@ -5,6 +5,7 @@ export const texts: Widen<typeof en> = {
   title: "Kontakt",
   github: "GitHub:",
   linkedin: "LinkedIn:",
+  instagram: "Instagram:",
   cv: "Lebenslauf:",
   email: "E-Mail:",
   downloadCv: "Herunterladen",
