@@ -2,7 +2,6 @@ import { cx } from "class-variance-authority";
 
 import CopyButton from "@/components/CopyButton";
 import GlitchEffect from "@/components/GlitchEffect";
-import Highlight from "@/components/Highlight";
 import Hint from "@/components/Hint";
 import { Trans } from "@/i18n/Trans";
 
@@ -25,12 +24,7 @@ export default function LookingForJob({
     <div className={cx("LookingForJob", className)}>
       <GlitchEffect scanlines>
         <h1>
-          <Trans
-            text={title}
-            components={{
-              highlight: children => <Highlight>{children}</Highlight>
-            }}
-          />
+          <Trans text={title} />
         </h1>
       </GlitchEffect>
       <div className="LookingForJob__actions">

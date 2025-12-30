@@ -1,12 +1,21 @@
 import type { ReactNode } from "react";
 
+import Highlight from "@/components/Highlight";
+
 type ComponentRenderer = (children: ReactNode) => ReactNode;
+
+/** Default component renderers for common tags */
+const defaultComponents: Record<string, ComponentRenderer> = {
+  strong: children => <strong>{children}</strong>,
+  em: children => <em>{children}</em>,
+  highlight: children => <Highlight>{children}</Highlight>
+};
 
 interface TransProps {
   /** Translation string with tags like <link>text</link> or <highlight>text</highlight> */
   text: string;
-  /** Map of tag names to render functions */
-  components: Record<string, ComponentRenderer>;
+  /** Map of tag names to render functions. Merged with defaults (strong, em, highlight). */
+  components?: Record<string, ComponentRenderer>;
 }
 
 /**
@@ -21,7 +30,9 @@ interface TransProps {
  *   }}
  * />
  */
-export function Trans({ text, components }: TransProps) {
+export function Trans({ text, components = {} }: TransProps) {
+  const mergedComponents = { ...defaultComponents, ...components };
+
   // Regex to match <tagName>content</tagName>
   const tagPattern = /<(\w+)>(.*?)<\/\1>/g;
 
@@ -37,13 +48,13 @@ export function Trans({ text, components }: TransProps) {
     }
 
     const [, tagName, content] = match;
-    const renderer = components[tagName];
+    const renderer = mergedComponents[tagName];
 
     if (renderer) {
       // Recursively process nested tags in content
       const hasNestedTags = /<\w+>.*?<\/\w+>/.test(content);
       const renderedContent = hasNestedTags ? (
-        <Trans text={content} components={components} />
+        <Trans text={content} components={mergedComponents} />
       ) : (
         content
       );

@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import CopyButton from "@/components/CopyButton";
-import Highlight from "@/components/Highlight";
 import Hint from "@/components/Hint";
 import Job from "@/components/Job";
 import Link from "@/components/Link";
@@ -120,31 +119,17 @@ function Page() {
                 {t.about.greeting}
                 <br />
                 <br />
-                <Trans
-                  text={t.about.intro.replace("{years}", String(experienceInYears))}
-                  components={{
-                    highlight: children => <Highlight>{children}</Highlight>
-                  }}
-                />
+                <Trans text={t.about.intro.replace("{years}", String(experienceInYears))} />
               </p>
               <p>
-                <Trans
-                  text={t.about.ux}
-                  components={{ strong: children => <strong>{children}</strong> }}
-                />
+                <Trans text={t.about.ux} />
               </p>
               <p>{t.about.independence}</p>
               <p>
-                <Trans
-                  text={t.about.passion}
-                  components={{ strong: children => <strong>{children}</strong> }}
-                />
+                <Trans text={t.about.passion} />
               </p>
               <p>
-                <Trans
-                  text={t.about.personal}
-                  components={{ strong: children => <strong>{children}</strong> }}
-                />
+                <Trans text={t.about.personal} />
               </p>
               <Note>{t.about.iAnecdote}</Note>
             </div>
@@ -255,19 +240,11 @@ function Page() {
             <div>
               <h3>{t.about.devStack.ai}</h3>
               <p>
-                <Trans
-                  text={t.about.devStack.aiIntro}
-                  components={{ strong: children => <strong>{children}</strong> }}
-                />
+                <Trans text={t.about.devStack.aiIntro} />
               </p>
               <p>{t.about.devStack.aiLearning}</p>
               <p>
-                <Trans
-                  text={t.about.devStack.aiLimitsInfo}
-                  components={{
-                    highlight: children => <Highlight>{children}</Highlight>
-                  }}
-                />
+                <Trans text={t.about.devStack.aiLimitsInfo} />
               </p>
               <p className="mb-6">
                 <Trans
