@@ -127,10 +127,25 @@ function Page() {
                   }}
                 />
               </p>
-              <p>{t.about.ux}</p>
+              <p>
+                <Trans
+                  text={t.about.ux}
+                  components={{ strong: children => <strong>{children}</strong> }}
+                />
+              </p>
               <p>{t.about.independence}</p>
-              <p>{t.about.passion}</p>
-              <p>{t.about.personal}</p>
+              <p>
+                <Trans
+                  text={t.about.passion}
+                  components={{ strong: children => <strong>{children}</strong> }}
+                />
+              </p>
+              <p>
+                <Trans
+                  text={t.about.personal}
+                  components={{ strong: children => <strong>{children}</strong> }}
+                />
+              </p>
               <Note>{t.about.iAnecdote}</Note>
             </div>
 
@@ -239,7 +254,12 @@ function Page() {
 
             <div>
               <h3>{t.about.devStack.ai}</h3>
-              <p>{t.about.devStack.aiIntro}</p>
+              <p>
+                <Trans
+                  text={t.about.devStack.aiIntro}
+                  components={{ strong: children => <strong>{children}</strong> }}
+                />
+              </p>
               <p>{t.about.devStack.aiLearning}</p>
               <p>
                 <Trans

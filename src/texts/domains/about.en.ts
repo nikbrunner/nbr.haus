@@ -2,13 +2,13 @@ export const texts = {
   greeting: "Hi there!",
   intro:
     "I'm <highlight>Nikolaus Brunner</highlight> (Nik for short), a Software Engineer based in Landshut, Germany, specializing in frontend architectures and design systems — {years} years in.",
-  ux: "I have a strong sense for UX (user experience) and DX (developer experience). I love collaborating with designers or making design decisions independently.",
+  ux: "I have a strong sense for <strong>UX</strong> (user experience) and <strong>DX</strong> (developer experience). I love collaborating with designers or making design decisions independently.",
   independence:
-    "I naturally identify priorities and manage my own work, but I also know when to reach out for input. Being part of a good team working towards a shared goal is where I thrive.",
+    "I naturally identify priorities and manage my own work, but I also know when to reach out for input. Being part of a good team working towards a shared goal is what I enjoy most.",
   passion:
-    "I genuinely love building and using products. I'm probably the guy who contacts support about features or bugs, and regularly checks changelogs and GitHub releases.",
+    "I <strong>genuinely love</strong> building and using products. I'm probably the guy who contacts support about features or bugs, and regularly checks changelogs and GitHub releases.",
   personal:
-    "I was born in 1984, and outside of code I enjoy hiking, running, bouldering, cooking, reading, and photography. I also have a strong interest in design in all its forms, like architecture, art and typography... Plus I have a slight keyboard obsession.",
+    "I was born in 1984, and outside of code I enjoy hiking, running, bouldering, cooking, reading, and photography. I also have a strong interest in design in all its forms, like architecture, art and typography... Plus I have a slight <strong>keyboard obsession</strong>.",
   iAnecdote:
     'I know that every sentence above (and this one) started with "I", but it felt absolutely awkward trying to speak about myself without using "I". :)',
   devStack: {
@@ -17,7 +17,7 @@ export const texts = {
     workflowInfo:
       "I am very passionate about workflow. You can check my <link>dotfiles here</link>.",
     aiIntro:
-      "I entered the industry before AI became a thing. I climbed that hill without ChatGPT or tab completion.",
+      "I entered the industry <strong>before AI</strong> became a thing. I climbed that hill without ChatGPT or tab completion.",
     aiLearning:
       "That foundation was invaluable, and still is. For juniors I think AI shines as a teacher and reading partner, but not as a writing partner during the early phases. I think it's important to learn to solve problems yourself and to also write down the solutions... or the attempts.",
     aiLimitsInfo:
