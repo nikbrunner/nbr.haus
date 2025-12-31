@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 
 import { useRouter, useRouterState } from "@tanstack/react-router";
+import { ArrowUp } from "lucide-react";
 
 import { routeSectionsConfig } from "@/components/ControlPanel/config";
 import { ControlPanelColorDot } from "@/components/ControlPanel/ControlPanelColorDot";
@@ -166,7 +167,7 @@ export default function ControlPanel() {
                     }}
                     ariaLabel={`${t.controlPanel.aria.scrollTo} ${t.shared.sections.top}`}
                   >
-                    {t.shared.sections.top}
+                    {t.shared.sections.top} <ArrowUp size={14} />
                   </ControlPanelOption>
                   {currentSections.map(section => (
                     <ControlPanelOption
