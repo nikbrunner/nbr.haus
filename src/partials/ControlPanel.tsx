@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 
 import { useRouter, useRouterState } from "@tanstack/react-router";
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, ArrowUpToLine, PilcrowRight } from "lucide-react";
 
 import { routeSectionsConfig } from "@/components/ControlPanel/config";
 import { ControlPanelColorDot } from "@/components/ControlPanel/ControlPanelColorDot";
@@ -167,8 +167,12 @@ export default function ControlPanel() {
                     }}
                     ariaLabel={`${t.controlPanel.aria.scrollTo} ${t.shared.sections.top}`}
                   >
+                    <ArrowUpToLine
+                      size={14}
+                      strokeWidth={3}
+                      style={{ marginRight: "var(--size-1)" }}
+                    />
                     {t.shared.sections.top}
-                    <ArrowUp size={14} strokeWidth={3} style={{ marginLeft: "var(--size-1)" }} />
                   </ControlPanelOption>
                   {currentSections.map(section => (
                     <ControlPanelOption
@@ -178,6 +182,11 @@ export default function ControlPanel() {
                       onClick={() => handleSectionClick(section.id)}
                       ariaLabel={`${t.controlPanel.aria.scrollTo} ${t.shared.sections[section.labelKey]}`}
                     >
+                      <PilcrowRight
+                        size={14}
+                        strokeWidth={3}
+                        style={{ marginRight: "var(--size-2)" }}
+                      />
                       {t.shared.sections[section.labelKey]}
                     </ControlPanelOption>
                   ))}
