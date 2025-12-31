@@ -84,7 +84,7 @@ export default function ControlPanel() {
 
   // Get navigable routes from router (filter out /cv which is only for PDF generation)
   const navLinks = Object.keys(router.routesByPath)
-    .filter(path => !path.includes("$") && path !== "/cv")
+    .filter(path => !path.includes("$"))
     .sort((a, b) => a.localeCompare(b));
 
   return (
@@ -138,7 +138,8 @@ export default function ControlPanel() {
                 {navLinks.map(navPath => (
                   <ControlPanelOption
                     key={navPath}
-                    width="auto"
+                    width="full"
+                    align="left"
                     isActive={pathname === navPath}
                     onClick={() => {
                       router.navigate({ to: navPath });
@@ -160,6 +161,7 @@ export default function ControlPanel() {
                     <ControlPanelOption
                       key={section.id}
                       width="full"
+                      align="left"
                       onClick={() => handleSectionClick(section.id)}
                       ariaLabel={`${t.controlPanel.aria.scrollTo} ${t.shared.sections[section.labelKey]}`}
                     >

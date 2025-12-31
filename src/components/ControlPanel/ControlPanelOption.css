@@ -38,3 +38,8 @@
 .ControlPanelOption--width-full {
   width: 100%;
 }
+
+.ControlPanelOption--align-left {
+  justify-content: flex-start;
+  padding-inline-start: var(--size-2);
+}

@@ -32,7 +32,8 @@ function NavigationDemo({ routes, sections }: NavigationDemoProps) {
             {routes.map((route, i) => (
               <ControlPanelOption
                 key={route}
-                width="auto"
+                width="full"
+                align="left"
                 isActive={i === 0}
                 onClick={() => {}}
                 ariaLabel={`Navigate to ${route}`}
@@ -51,6 +52,7 @@ function NavigationDemo({ routes, sections }: NavigationDemoProps) {
                 <ControlPanelOption
                   key={section}
                   width="full"
+                  align="left"
                   onClick={() => {}}
                   ariaLabel={`Scroll to ${section}`}
                 >

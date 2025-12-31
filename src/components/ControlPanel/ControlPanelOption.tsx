@@ -14,10 +14,15 @@ const variants = cva("ControlPanelOption", {
       default: "",
       auto: "ControlPanelOption--width-auto",
       full: "ControlPanelOption--width-full"
+    },
+    align: {
+      center: "",
+      left: "ControlPanelOption--align-left"
     }
   },
   defaultVariants: {
-    width: "default"
+    width: "default",
+    align: "center"
   }
 });
 
@@ -41,6 +46,7 @@ export function ControlPanelOption({
   isActive,
   disabled,
   width,
+  align,
   ariaLabel,
   children
 }: ControlPanelOptionProps) {
@@ -52,7 +58,7 @@ export function ControlPanelOption({
   return (
     <button
       type="button"
-      className={variants({ active: isActive, disabled, width })}
+      className={variants({ active: isActive, disabled, width, align })}
       onClick={handleClick}
       disabled={disabled ?? false}
       aria-label={ariaLabel}
