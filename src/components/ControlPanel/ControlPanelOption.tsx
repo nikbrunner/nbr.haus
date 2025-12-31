@@ -12,6 +12,7 @@ const variants = cva("ControlPanelOption", {
     },
     width: {
       default: "",
+      auto: "ControlPanelOption--width-auto",
       full: "ControlPanelOption--width-full"
     }
   },

@@ -46,6 +46,17 @@
 
 .ControlPanelExpanded__navigation .ControlPanelRow__options {
   flex-direction: column;
+  max-height: 40vh;
+  overflow-y: auto;
+
+  /* Hide scrollbar but keep functionality */
+  /* eslint-disable-next-line css/use-baseline */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.ControlPanelExpanded__navigation .ControlPanelRow__options::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Opera */
 }
 
 /* Mobile: stack routes horizontally, sections vertically */
@@ -70,10 +81,21 @@
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     flex-wrap: nowrap;
+
+    /* Hide scrollbar but keep functionality */
+    /* eslint-disable-next-line css/use-baseline */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
-  /* Sections: vertical list */
+  .ControlPanelExpanded__routes .ControlPanelRow__options::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Sections: vertical scrollable list */
   .ControlPanelExpanded__sections .ControlPanelRow__options {
     align-items: stretch;
+    max-height: 35vh;
+    overflow-y: auto;
   }
 }

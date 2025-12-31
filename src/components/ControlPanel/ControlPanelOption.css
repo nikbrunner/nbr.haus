@@ -30,6 +30,11 @@
   color: var(--fg-minor);
 }
 
+.ControlPanelOption--width-auto {
+  width: auto;
+  padding-inline: var(--size-3);
+}
+
 .ControlPanelOption--width-full {
   width: 100%;
 }

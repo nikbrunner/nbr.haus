@@ -138,6 +138,7 @@ export default function ControlPanel() {
                 {navLinks.map(navPath => (
                   <ControlPanelOption
                     key={navPath}
+                    width="auto"
                     isActive={pathname === navPath}
                     onClick={() => {
                       router.navigate({ to: navPath });
