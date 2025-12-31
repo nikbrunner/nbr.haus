@@ -24,9 +24,7 @@ export const routeSectionsConfig: Record<string, SectionConfig[]> = {
   "/cv": [
     { id: "work-experience", labelKey: "workExperience" },
     { id: "side-projects", labelKey: "sideProjects" },
-    { id: "technical-skills", labelKey: "technicalSkills" },
     { id: "prior-experience", labelKey: "priorExperience" },
-    { id: "education", labelKey: "education" },
     { id: "interests", labelKey: "interests" }
   ]
 };

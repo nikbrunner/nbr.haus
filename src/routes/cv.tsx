@@ -34,7 +34,7 @@ function Page() {
         }}
       />
 
-      <CvSection title={t.shared.sections.workExperience}>
+      <CvSection id="work-experience" title={t.shared.sections.workExperience}>
         <div className="flex flex-col gap-y-8">
           <CvJob
             company={t.cv.jobs.dealerCenter.company}
@@ -67,7 +67,7 @@ function Page() {
         </div>
       </CvSection>
 
-      <CvSection title={t.shared.sections.sideProjects}>
+      <CvSection id="side-projects" title={t.shared.sections.sideProjects}>
         <CvProject
           title={t.cv.projects.blackAtom.title}
           subtitle={t.cv.projects.blackAtom.subtitle}
@@ -85,7 +85,7 @@ function Page() {
         />
       </CvSection>
 
-      <CvSection title={t.shared.sections.priorExperience}>
+      <CvSection id="prior-experience" title={t.shared.sections.priorExperience}>
         <CvPriorExperience
           title={t.cv.priorExperience.title}
           description={t.cv.priorExperience.description}
@@ -94,7 +94,7 @@ function Page() {
         />
       </CvSection>
 
-      <CvSection title={t.shared.sections.interests}>
+      <CvSection id="interests" title={t.shared.sections.interests}>
         <CvInterests interests={t.cv.interests} />
       </CvSection>
     </div>
