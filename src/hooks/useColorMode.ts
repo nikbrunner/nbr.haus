@@ -2,18 +2,19 @@ import { useCallback, useEffect } from "react";
 
 import { useHydrated, useRouter, useSearch } from "@tanstack/react-router";
 
-import { colorModeSchema, type ColorMode } from "@/types/style";
+import { colorModeSchema, defaultColorMode, type ColorMode } from "@/types/style";
 
 export function useColorMode() {
   const router = useRouter();
   const search = useSearch({ strict: false });
   const hydrated = useHydrated();
   const colorMode =
-    search.colorMode ?? getColorModeFromStorage(hydrated) ?? "system";
+    search.colorMode ?? getColorModeFromStorage(hydrated) ?? defaultColorMode;
 
   // Apply color mode reactively when hydrated or colorMode changes
   useEffect(() => {
     if (!hydrated) return;
+
     applyColorMode(colorMode);
   }, [hydrated, colorMode]);
 
@@ -42,8 +43,14 @@ export function useColorMode() {
 // Storage
 function getColorModeFromStorage(hydrated: boolean): ColorMode | null {
   if (!hydrated) return null;
-  const saved = localStorage.getItem("colorMode") as ColorMode | null;
-  if (saved && colorModeSchema.safeParse(saved).success) return saved;
+
+  const saved = localStorage.getItem("colorMode");
+
+  if (saved) {
+    const validated = colorModeSchema.safeParse(saved);
+    if (validated.success) return validated.data;
+  }
+
   return null;
 }
 

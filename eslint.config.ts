@@ -113,10 +113,10 @@ export default defineConfig([
     extends: ["json/recommended"]
   },
   {
-    name: "project/markdown-commonmark-linting",
+    name: "project/markdown-gfm-linting",
     files: ["**/*.md"],
     plugins: { markdown },
-    language: "markdown/commonmark",
+    language: "markdown/gfm",
     extends: ["markdown/recommended"]
   },
   {

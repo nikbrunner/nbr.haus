@@ -2,7 +2,7 @@ import { useCallback, useEffect } from "react";
 
 import { useHydrated, useRouter, useSearch } from "@tanstack/react-router";
 
-import { contrastSchema, type Contrast } from "@/types/style";
+import { contrastSchema, defaultContrast, type Contrast } from "@/types/style";
 
 const CSS_VALUES: Record<Contrast, { l: number; c: number }> = {
   low: { l: 1, c: 0.6 },
@@ -14,11 +14,13 @@ export function useContrast() {
   const router = useRouter();
   const search = useSearch({ strict: false });
   const hydrated = useHydrated();
-  const contrast = search.contrast ?? getContrastFromStorage(hydrated) ?? "base";
+  const contrast =
+    search.contrast ?? getContrastFromStorage(hydrated) ?? defaultContrast;
 
   // Apply CSS vars reactively when hydrated or contrast changes
   useEffect(() => {
     if (!hydrated) return;
+
     applyContrastCssVars(contrast);
   }, [hydrated, contrast]);
 
@@ -47,8 +49,14 @@ export function useContrast() {
 // Storage
 function getContrastFromStorage(hydrated: boolean): Contrast | null {
   if (!hydrated) return null;
-  const saved = localStorage.getItem("contrast") as Contrast | null;
-  if (saved && contrastSchema.safeParse(saved).success) return saved;
+
+  const saved = localStorage.getItem("contrast");
+
+  if (saved) {
+    const validated = contrastSchema.safeParse(saved);
+    if (validated.success) return validated.data;
+  }
+
   return null;
 }
 

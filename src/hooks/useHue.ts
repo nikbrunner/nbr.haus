@@ -2,19 +2,18 @@ import { useCallback, useEffect } from "react";
 
 import { useHydrated, useRouter, useSearch } from "@tanstack/react-router";
 
-import { hueSchema, type Hue } from "@/types/style";
-
-const hues: Hue[] = [90, 165, 275];
+import { defaultHue, hues, hueSchema, type Hue } from "@/types/style";
 
 export function useHue() {
   const router = useRouter();
   const search = useSearch({ strict: false });
   const hydrated = useHydrated();
-  const hue = search.hue ?? getHueFromStorage(hydrated) ?? hues[0];
+  const hue = search.hue ?? getHueFromStorage(hydrated) ?? defaultHue;
 
   // Apply CSS vars reactively when hydrated or hue changes
   useEffect(() => {
     if (!hydrated) return;
+
     const { hueAccent, hueAccentAlt } = getHueVariants(hue);
     applyHueCssVars(hue, hueAccent, hueAccentAlt);
   }, [hydrated, hue]);
@@ -46,11 +45,14 @@ export function useHue() {
 // Storage
 function getHueFromStorage(hydrated: boolean): Hue | null {
   if (!hydrated) return null;
+
   const saved = localStorage.getItem("hue");
+
   if (saved) {
-    const parsed = parseInt(saved, 10);
-    if (hueSchema.safeParse(parsed).success) return parsed;
+    const validated = hueSchema.safeParse(saved);
+    if (validated.success) return validated.data;
   }
+
   return null;
 }
 

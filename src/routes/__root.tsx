@@ -186,9 +186,30 @@ function RootDocument({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <html lang="en" style={{ scrollBehavior: "smooth" }}>
+    <html lang="en" style={{ scrollBehavior: "smooth" }} suppressHydrationWarning>
       <head>
         <HeadContent />
+        {/* Blocking script to prevent flash of incorrect color scheme */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var params = new URLSearchParams(window.location.search);
+                  var colorMode = params.get('colorMode');
+
+                  if (!colorMode || (colorMode !== 'light' && colorMode !== 'dark')) {
+                    colorMode = localStorage.getItem('colorMode');
+                  }
+
+                  if (colorMode === 'light' || colorMode === 'dark') {
+                    document.documentElement.setAttribute('data-color-mode', colorMode);
+                  }
+                } catch (e) {}
+              })();
+            `
+          }}
+        />
       </head>
       <body>
         <script
