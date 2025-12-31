@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 
 import { useRouter, useRouterState } from "@tanstack/react-router";
-import { ArrowUp, ArrowUpToLine, PilcrowRight } from "lucide-react";
+import { ArrowUpToLine, PilcrowRight } from "lucide-react";
 
 import { routeSectionsConfig } from "@/components/ControlPanel/config";
 import { ControlPanelColorDot } from "@/components/ControlPanel/ControlPanelColorDot";
@@ -49,14 +49,21 @@ export default function ControlPanel() {
   const currentSections = routeSectionsConfig[pathname] ?? [];
 
   // Handler for section navigation
+  // On iOS Safari, smooth scroll fails when competing with panel animation.
+  // Close panel first, wait for animation, then scroll.
   const handleSectionClick = useCallback(
     (sectionId: string) => {
       const element = document.getElementById(sectionId);
-      if (element) {
+      if (!element) return;
+
+      if (isMobile) {
+        closePanel();
+        // Wait for panel exit animation (200ms) before scrolling
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 250);
+      } else {
         element.scrollIntoView({ behavior: "smooth", block: "start" });
-        if (isMobile) {
-          closePanel();
-        }
       }
     },
     [isMobile, closePanel]
@@ -162,8 +169,15 @@ export default function ControlPanel() {
                     width="full"
                     align="left"
                     onClick={() => {
-                      window.scrollTo({ top: 0, behavior: "smooth" });
-                      if (isMobile) closePanel();
+                      if (isMobile) {
+                        closePanel();
+                        // Wait for panel exit animation before scrolling (iOS Safari fix)
+                        setTimeout(() => {
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                        }, 250);
+                      } else {
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }
                     }}
                     ariaLabel={`${t.controlPanel.aria.scrollTo} ${t.shared.sections.top}`}
                   >
