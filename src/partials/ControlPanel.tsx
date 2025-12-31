@@ -157,14 +157,14 @@ export default function ControlPanel() {
         {/* Style options */}
         <ControlPanelExpandedSection>
           <ControlPanelRow label={t.controlPanel.rows.accent}>
-            {Object.values(hues).map(hue => (
+            {Object.values(hues).map(huePresets => (
               <ControlPanelOption
-                key={hue}
-                isActive={hue === hue}
-                onClick={() => setHue(hue)}
-                ariaLabel={`${t.controlPanel.aria.selectAccentHue} ${hue}`}
+                key={huePresets}
+                isActive={huePresets === hue}
+                onClick={() => setHue(huePresets)}
+                ariaLabel={`${t.controlPanel.aria.selectAccentHue} ${huePresets}`}
               >
-                <ControlPanelColorDot hue={getAccentHue(hue)} />
+                <ControlPanelColorDot hue={getAccentHue(huePresets)} />
               </ControlPanelOption>
             ))}
           </ControlPanelRow>
