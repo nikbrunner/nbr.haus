@@ -1,8 +1,4 @@
 .ControlPanelOption {
-  --font-color-active: oklch(
-    from var(--fg-accent) clamp(0.05, (0.6 - l) * 1000, 0.975) 0.05 h
-  );
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,9 +19,9 @@
 
 .ControlPanelOption--active,
 .ControlPanelOption:hover {
-  background: var(--fg-accent);
+  background: var(--bg-accent);
   border: var(--border-size-2) solid var(--fg-accent);
-  color: var(--font-color-active);
+  color: var(--fg-on-accent);
 }
 
 .ControlPanelOption--disabled {

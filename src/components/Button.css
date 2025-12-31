@@ -23,8 +23,8 @@
 
   &.Button--primary {
     font-weight: var(--font-weight-7);
-    background-color: var(--fg-accent);
-    color: var(--fg-contrast);
+    background-color: var(--bg-accent);
+    color: var(--fg-on-accent);
   }
 
   &.Button--large {

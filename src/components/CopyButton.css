@@ -14,6 +14,6 @@
 }
 
 .CopyButton:hover {
-  background: var(--fg-accent);
-  color: var(--bg-main);
+  background: var(--bg-accent);
+  color: var(--fg-on-accent);
 }

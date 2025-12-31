@@ -81,6 +81,29 @@ body {
   --contrast-l: 1;
   --contrast-c: 1;
 
+  /* Accent colors (base definitions) */
+  --accent: light-dark(
+    oklch(
+      calc(0.5 + (0.45 - 0.5) * var(--contrast-l)) calc(0.35 * var(--contrast-c))
+        var(--hue-accent)
+    ),
+    oklch(
+      calc(0.5 + (0.65 - 0.5) * var(--contrast-l)) calc(0.25 * var(--contrast-c))
+        var(--hue-accent)
+    )
+  );
+
+  --accent-alt: light-dark(
+    oklch(
+      calc(0.5 + (0.45 - 0.5) * var(--contrast-l)) calc(0.5 * var(--contrast-c))
+        var(--hue-accent-alt)
+    ),
+    oklch(
+      calc(0.5 + (0.65 - 0.5) * var(--contrast-l)) calc(0.25 * var(--contrast-c))
+        var(--hue-accent-alt)
+    )
+  );
+
   /* Background colors with contrast adjustment */
   /* Formula: 0.5 + (baseL - 0.5) * contrastL */
   --bg-main: light-dark(
@@ -104,7 +127,9 @@ body {
     )
   );
 
-  /* Foreground colors with contrast adjustment */
+  --bg-accent: var(--accent);
+  --bg-accent-alt: var(--accent-alt);
+
   --fg-main: light-dark(
     oklch(
       calc(0.5 + (0.25 - 0.5) * var(--contrast-l)) calc(0.01 * var(--contrast-c))
@@ -135,27 +160,9 @@ body {
         var(--hue)
     )
   );
-  --fg-accent: light-dark(
-    oklch(
-      calc(0.5 + (0.45 - 0.5) * var(--contrast-l)) calc(0.35 * var(--contrast-c))
-        var(--hue-accent)
-    ),
-    oklch(
-      calc(0.5 + (0.65 - 0.5) * var(--contrast-l)) calc(0.25 * var(--contrast-c))
-        var(--hue-accent)
-    )
-  );
-  --fg-accent-alt: light-dark(
-    oklch(
-      calc(0.5 + (0.45 - 0.5) * var(--contrast-l)) calc(0.5 * var(--contrast-c))
-        var(--hue-accent-alt)
-    ),
-    oklch(
-      calc(0.5 + (0.65 - 0.5) * var(--contrast-l)) calc(0.25 * var(--contrast-c))
-        var(--hue-accent-alt)
-    )
-  );
-  --fg-contrast: light-dark(
+  --fg-accent: var(--accent);
+  --fg-accent-alt: var(--accent-alt);
+  --fg-on-accent: light-dark(
     oklch(
       calc(0.5 + (0.98 - 0.5) * var(--contrast-l)) calc(0.05 * var(--contrast-c))
         var(--hue-accent)
@@ -221,7 +228,7 @@ body {
 }
 
 ::selection {
-  background-color: var(--fg-accent);
+  background-color: var(--bg-accent);
   color: var(--bg-main);
 }
 
