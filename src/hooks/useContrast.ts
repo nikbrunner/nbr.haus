@@ -2,13 +2,12 @@ import { useCallback, useEffect } from "react";
 
 import { useHydrated, useRouter, useSearch } from "@tanstack/react-router";
 
-import { contrastSchema, defaultContrast, type Contrast } from "@/types/style";
-
-const CSS_VALUES: Record<Contrast, { l: number; c: number }> = {
-  low: { l: 1, c: 0.6 },
-  base: { l: 1, c: 1 },
-  high: { l: 1, c: 1.4 }
-};
+import {
+  contrastChromaValues,
+  contrastSchema,
+  defaultContrast,
+  type Contrast
+} from "@/types/style";
 
 export function useContrast() {
   const router = useRouter();
@@ -69,8 +68,9 @@ function persistContrast(contrast: Contrast) {
 // CSS
 function applyContrastCssVars(contrast: Contrast) {
   if (typeof document !== "undefined") {
-    const values = CSS_VALUES[contrast];
-    document.body.style.setProperty("--contrast-l", values.l.toString());
-    document.body.style.setProperty("--contrast-c", values.c.toString());
+    document.body.style.setProperty(
+      "--chroma",
+      contrastChromaValues[contrast].toString()
+    );
   }
 }

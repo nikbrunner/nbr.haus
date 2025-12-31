@@ -77,100 +77,49 @@ body {
   --hue-accent: 180;
   --hue-accent-alt: 360;
 
-  /* Contrast multipliers: low=0.85, base=1, high=1.15 */
-  --contrast-l: 1;
-  --contrast-c: 1;
+  /* Chroma multiplier: low=0.6, base=1, high=1.4 */
+  --chroma: 1;
 
-  /* Accent colors (base definitions) */
+  /* Accent colors */
   --accent: light-dark(
-    oklch(
-      calc(0.5 + (0.45 - 0.5) * var(--contrast-l)) calc(0.35 * var(--contrast-c))
-        var(--hue-accent)
-    ),
-    oklch(
-      calc(0.5 + (0.65 - 0.5) * var(--contrast-l)) calc(0.25 * var(--contrast-c))
-        var(--hue-accent)
-    )
+    oklch(0.45 calc(0.35 * var(--chroma)) var(--hue-accent)),
+    oklch(0.65 calc(0.25 * var(--chroma)) var(--hue-accent))
   );
-
   --accent-alt: light-dark(
-    oklch(
-      calc(0.5 + (0.45 - 0.5) * var(--contrast-l)) calc(0.5 * var(--contrast-c))
-        var(--hue-accent-alt)
-    ),
-    oklch(
-      calc(0.5 + (0.65 - 0.5) * var(--contrast-l)) calc(0.25 * var(--contrast-c))
-        var(--hue-accent-alt)
-    )
+    oklch(0.45 calc(0.5 * var(--chroma)) var(--hue-accent-alt)),
+    oklch(0.65 calc(0.25 * var(--chroma)) var(--hue-accent-alt))
   );
 
-  /* Background colors with contrast adjustment */
-  /* Formula: 0.5 + (baseL - 0.5) * contrastL */
+  /* Background colors */
   --bg-main: light-dark(
-    oklch(
-      calc(0.5 + (0.95 - 0.5) * var(--contrast-l)) calc(0.005 * var(--contrast-c))
-        var(--hue)
-    ),
-    oklch(
-      calc(0.5 + (0.2 - 0.5) * var(--contrast-l)) calc(0.005 * var(--contrast-c))
-        var(--hue)
-    )
+    oklch(0.95 calc(0.005 * var(--chroma)) var(--hue)),
+    oklch(0.2 calc(0.005 * var(--chroma)) var(--hue))
   );
   --bg-support: light-dark(
-    oklch(
-      calc(0.5 + (0.9 - 0.5) * var(--contrast-l)) calc(0.005 * var(--contrast-c))
-        var(--hue)
-    ),
-    oklch(
-      calc(0.5 + (0.28 - 0.5) * var(--contrast-l)) calc(0.005 * var(--contrast-c))
-        var(--hue)
-    )
+    oklch(0.9 calc(0.005 * var(--chroma)) var(--hue)),
+    oklch(0.28 calc(0.005 * var(--chroma)) var(--hue))
   );
-
   --bg-accent: var(--accent);
   --bg-accent-alt: var(--accent-alt);
 
+  /* Foreground colors */
   --fg-main: light-dark(
-    oklch(
-      calc(0.5 + (0.25 - 0.5) * var(--contrast-l)) calc(0.01 * var(--contrast-c))
-        var(--hue)
-    ),
-    oklch(
-      calc(0.5 + (0.85 - 0.5) * var(--contrast-l)) calc(0.01 * var(--contrast-c))
-        var(--hue)
-    )
+    oklch(0.25 calc(0.01 * var(--chroma)) var(--hue)),
+    oklch(0.85 calc(0.01 * var(--chroma)) var(--hue))
   );
   --fg-support: light-dark(
-    oklch(
-      calc(0.5 + (0.3 - 0.5) * var(--contrast-l)) calc(0.01 * var(--contrast-c))
-        var(--hue)
-    ),
-    oklch(
-      calc(0.5 + (0.75 - 0.5) * var(--contrast-l)) calc(0.01 * var(--contrast-c))
-        var(--hue)
-    )
+    oklch(0.3 calc(0.01 * var(--chroma)) var(--hue)),
+    oklch(0.75 calc(0.01 * var(--chroma)) var(--hue))
   );
   --fg-minor: light-dark(
-    oklch(
-      calc(0.5 + (0.6 - 0.5) * var(--contrast-l)) calc(0.01 * var(--contrast-c))
-        var(--hue)
-    ),
-    oklch(
-      calc(0.5 + (0.65 - 0.5) * var(--contrast-l)) calc(0.01 * var(--contrast-c))
-        var(--hue)
-    )
+    oklch(0.6 calc(0.01 * var(--chroma)) var(--hue)),
+    oklch(0.65 calc(0.01 * var(--chroma)) var(--hue))
   );
   --fg-accent: var(--accent);
   --fg-accent-alt: var(--accent-alt);
   --fg-on-accent: light-dark(
-    oklch(
-      calc(0.5 + (0.98 - 0.5) * var(--contrast-l)) calc(0.05 * var(--contrast-c))
-        var(--hue-accent)
-    ),
-    oklch(
-      calc(0.5 + (0.15 - 0.5) * var(--contrast-l)) calc(0.05 * var(--contrast-c))
-        var(--hue-accent)
-    )
+    oklch(0.98 calc(0.05 * var(--chroma)) var(--hue-accent)),
+    oklch(0.15 calc(0.05 * var(--chroma)) var(--hue-accent))
   );
 
   --content-max-width: var(--size-content-3);
