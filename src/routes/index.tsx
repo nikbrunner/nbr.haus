@@ -341,6 +341,7 @@ function Page() {
               tech.react,
               tech.typescript,
               tech.scss,
+              tech.storybook,
               tech.tanstackStart,
               tech.tanstackRouter,
               tech.tanstackQuery,
@@ -474,7 +475,12 @@ function Page() {
 
             <Project
               title={t.projects.nbrHaus.title}
-              stack={[tech.typescript, tech.react, tech.tanstackStart]}
+              stack={[
+                tech.typescript,
+                tech.react,
+                tech.tanstackStart,
+                tech.storybook
+              ]}
               topics={["SSR", "File-based Routing", "Theming", "i18n", "BEM"]}
               status="Active"
               primaryLink={{
