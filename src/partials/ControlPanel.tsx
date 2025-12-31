@@ -167,7 +167,8 @@ export default function ControlPanel() {
                     }}
                     ariaLabel={`${t.controlPanel.aria.scrollTo} ${t.shared.sections.top}`}
                   >
-                    {t.shared.sections.top} <ArrowUp size={14} />
+                    {t.shared.sections.top}
+                    <ArrowUp size={14} strokeWidth={3} style={{ marginLeft: "var(--size-1)" }} />
                   </ControlPanelOption>
                   {currentSections.map(section => (
                     <ControlPanelOption
