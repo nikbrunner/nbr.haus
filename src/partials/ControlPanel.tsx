@@ -157,6 +157,17 @@ export default function ControlPanel() {
             {currentSections.length > 0 && (
               <div className="ControlPanelExpanded__sections">
                 <ControlPanelRow label={t.controlPanel.rows.sections}>
+                  <ControlPanelOption
+                    width="full"
+                    align="left"
+                    onClick={() => {
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                      if (isMobile) closePanel();
+                    }}
+                    ariaLabel={`${t.controlPanel.aria.scrollTo} ${t.shared.sections.top}`}
+                  >
+                    {t.shared.sections.top}
+                  </ControlPanelOption>
                   {currentSections.map(section => (
                     <ControlPanelOption
                       key={section.id}

@@ -4,6 +4,7 @@ import type { Widen } from "@/types/i18n";
 export const texts: Widen<typeof en> = {
   name: "Nikolaus Brunner",
   sections: {
+    top: "Oben",
     connect: "Kontakt",
     about: "Über mich",
     employment: "Berufserfahrung",
