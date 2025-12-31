@@ -1,9 +1,10 @@
-.Badge {
+.Button {
   position: relative; /* Fix Safari container-type stacking context bug */
   display: inline-flex;
   padding: var(--size-2) var(--size-3);
   border: var(--border-size-2) solid var(--fg-accent);
   background-color: var(--bg-main);
+  font-family: var(--font-family);
   font-size: var(--font-size-0);
   color: var(--fg-main);
   text-decoration: none;
@@ -14,10 +15,21 @@
     transform: translateY(-2px);
     box-shadow: 5px 5px 0px var(--bg-support);
   }
-}
 
-.Badge--primary {
-  font-weight: var(--font-weight-7);
-  background-color: var(--fg-accent);
-  color: var(--fg-contrast);
+  /* Use nesting to increase specificity over .Link */
+  &.Button--secondary {
+    background-color: var(--bg-main);
+  }
+
+  &.Button--primary {
+    font-weight: var(--font-weight-7);
+    background-color: var(--fg-accent);
+    color: var(--fg-contrast);
+  }
+
+  &.Button--large {
+    padding: var(--size-2) var(--size-4);
+    font-size: var(--font-size-1);
+    font-weight: var(--font-weight-9);
+  }
 }

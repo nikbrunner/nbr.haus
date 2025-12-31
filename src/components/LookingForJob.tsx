@@ -1,5 +1,6 @@
 import { cx } from "class-variance-authority";
 
+import Button from "@/components/Button";
 import CopyButton from "@/components/CopyButton";
 import GlitchEffect from "@/components/GlitchEffect";
 import Hint from "@/components/Hint";
@@ -28,9 +29,9 @@ export default function LookingForJob({
         </h1>
       </GlitchEffect>
       <div className="LookingForJob__actions">
-        <a href={`mailto:${email}`} className="LookingForJob__cta">
-          {cta}
-        </a>
+        <Button variant="primary" size="large" asChild>
+          <a href={`mailto:${email}`}>{cta}</a>
+        </Button>
         <Hint title={copyEmailTooltip}>
           <CopyButton value={email} ariaLabel={copyEmailTooltip} />
         </Hint>

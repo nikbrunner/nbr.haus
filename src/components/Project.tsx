@@ -1,4 +1,4 @@
-import Badge from "@/components/Badge";
+import Button from "@/components/Button";
 import ClickableTag from "@/components/ClickableTag";
 import SpecCard from "@/components/SpecCard";
 import SpecList from "@/components/SpecList";
@@ -86,15 +86,15 @@ export default function Project({
 
       <div className="Project__links">
         {allLinks.map((link, index) => (
-          <Badge
+          <Button
             key={link.url}
-            href={link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            variant={index === 0 ? "primary" : "default"}
+            variant={index === 0 ? "primary" : "secondary"}
+            asChild
           >
-            {link.type}
-          </Badge>
+            <a href={link.url} target="_blank" rel="noopener noreferrer">
+              {link.type}
+            </a>
+          </Button>
         ))}
       </div>
     </SpecCard>

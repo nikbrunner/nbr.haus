@@ -3,7 +3,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import CopyButton from "@/components/CopyButton";
 import Hint from "@/components/Hint";
 import Job from "@/components/Job";
-import Link from "@/components/Link";
 import LookingForJob from "@/components/LookingForJob";
 import Note from "@/components/Note";
 import ProfilePicture from "@/components/ProfilePicture";
@@ -46,7 +45,7 @@ function Page() {
                   label: t.connect.email,
                   value: (
                     <span className="flex items-center gap-x-2">
-                      <Link href="mailto:nik@nbr.haus">nik@nbr.haus</Link>
+                      <a href="mailto:nik@nbr.haus">nik@nbr.haus</a>
                       <Hint title={t.connect.copyEmailTooltip}>
                         <CopyButton
                           value="nik@nbr.haus"
@@ -59,11 +58,7 @@ function Page() {
                 {
                   label: t.connect.cv,
                   value: (
-                    <a
-                      className="Link"
-                      href={`/Nikolaus_Brunner_CV_${locale}.pdf`}
-                      download
-                    >
+                    <a href={`/Nikolaus_Brunner_CV_${locale}.pdf`} download>
                       {t.connect.downloadCv}
                     </a>
                   )
@@ -71,37 +66,37 @@ function Page() {
                 {
                   label: t.connect.github,
                   value: (
-                    <Link
+                    <a
                       href="https://www.github.com/nikbrunner"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       github.com/nikbrunner
-                    </Link>
+                    </a>
                   )
                 },
                 {
                   label: t.connect.linkedin,
                   value: (
-                    <Link
+                    <a
                       href="https://www.linkedin.com/in/nbru/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       linkedin.com/in/nbru/
-                    </Link>
+                    </a>
                   )
                 },
                 {
                   label: t.connect.instagram,
                   value: (
-                    <Link
-                      to="https://www.instagram.com/nikolaus.brunner"
+                    <a
+                      href="https://www.instagram.com/nikolaus.brunner"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       nikolaus.brunner
-                    </Link>
+                    </a>
                   )
                 }
               ]}
@@ -119,7 +114,9 @@ function Page() {
                 {t.about.greeting}
                 <br />
                 <br />
-                <Trans>{t.about.intro.replace("{years}", String(experienceInYears))}</Trans>
+                <Trans>
+                  {t.about.intro.replace("{years}", String(experienceInYears))}
+                </Trans>
               </p>
               <p>
                 <Trans>{t.about.ux}</Trans>
@@ -141,71 +138,71 @@ function Page() {
                     {
                       label: t.about.devStack.editor,
                       value: (
-                        <Link
+                        <a
                           href="https://github.com/nikbrunner/dots/tree/main/common/.config/nvim"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
                           Neovim
-                        </Link>
+                        </a>
                       )
                     },
                     {
                       label: t.about.devStack.terminal,
                       value: (
                         <>
-                          <Link
+                          <a
                             href="https://ghostty.dev"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
                             Ghostty
-                          </Link>{" "}
+                          </a>{" "}
                           &amp;{" "}
-                          <Link
+                          <a
                             href="https://github.com/tmux/tmux/wiki"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
                             Tmux
-                          </Link>
+                          </a>
                         </>
                       )
                     },
                     {
                       label: t.about.devStack.git,
                       value: (
-                        <Link
+                        <a
                           href="https://github.com/jesseduffield/lazygit"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
                           LazyGit
-                        </Link>
+                        </a>
                       )
                     },
                     {
                       label: t.about.devStack.secrets,
                       value: (
-                        <Link
+                        <a
                           href="https://1password.com"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
                           1Password
-                        </Link>
+                        </a>
                       )
                     },
                     {
                       label: t.about.devStack.aiAssistant,
                       value: (
-                        <Link
+                        <a
                           href="https://claude.com/product/claude-code"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
                           Claude Code
-                        </Link>
+                        </a>
                       )
                     }
                   ]}
@@ -222,13 +219,13 @@ function Page() {
                   <Trans
                     components={{
                       link: children => (
-                        <Link
+                        <a
                           href="https://github.com/nikbrunner/dots"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
                           {children}
-                        </Link>
+                        </a>
                       )
                     }}
                   >
@@ -251,13 +248,13 @@ function Page() {
                 <Trans
                   components={{
                     link: children => (
-                      <Link
+                      <a
                         href="https://claude.com/product/claude-code"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         {children}
-                      </Link>
+                      </a>
                     )
                   }}
                 >
@@ -281,37 +278,37 @@ function Page() {
                     {
                       label: t.about.devStack.docLookup,
                       value: (
-                        <Link
+                        <a
                           href="https://ref.tools/"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
                           ref.tools
-                        </Link>
+                        </a>
                       )
                     },
                     {
                       label: t.about.devStack.webSearch,
                       value: (
-                        <Link
+                        <a
                           href="https://exa.ai"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
                           Exa
-                        </Link>
+                        </a>
                       )
                     },
                     {
                       label: t.about.devStack.browser,
                       value: (
-                        <Link
+                        <a
                           href="https://github.com/nicholasoxford/chrome-devtools-mcp/"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
                           Chrome DevTools
-                        </Link>
+                        </a>
                       )
                     }
                   ]}

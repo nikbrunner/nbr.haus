@@ -14,8 +14,9 @@ npm run dev
 ## TODO
 
 - [x] `<Hint />` component
-- [ ] `Button` component (Is `Badge` not really a button?)
+- [x] `Button` component (Is `Badge` not really a button?)
+- [x] Add this website to projects
 - [ ] Improve color token naming
-- [ ] [<Typo /> Component](./docs/plans/typo-component-system.md)
+- [ ] [Typo Component](./docs/plans/typo-component-system.md)
 - [ ] Improve documentation
-- [ ] Add this website to projects
+- [ ] fix: initial color mode

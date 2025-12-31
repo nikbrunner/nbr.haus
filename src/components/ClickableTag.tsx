@@ -1,5 +1,3 @@
-import Link from "@/components/Link";
-
 interface Props {
   name: string;
   url: string;
@@ -8,7 +6,7 @@ interface Props {
 
 export default function ClickableTag({ name, url, color }: Props) {
   return (
-    <Link
+    <a
       className="ClickableTag"
       href={url}
       target="_blank"
@@ -16,6 +14,6 @@ export default function ClickableTag({ name, url, color }: Props) {
       style={{ "--tag-color": color } as React.CSSProperties}
     >
       {name}
-    </Link>
+    </a>
   );
 }

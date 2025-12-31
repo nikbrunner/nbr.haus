@@ -24,27 +24,3 @@
   align-items: center;
   gap: var(--size-6);
 }
-
-.LookingForJob__cta {
-  padding: var(--size-2) var(--size-4);
-
-  background: var(--fg-accent);
-  border: var(--border-size-2) dashed var(--fg-accent);
-
-  font-family: var(--font-family);
-  font-size: var(--font-size-1);
-  font-weight: var(--font-weight-9);
-  color: var(--fg-contrast);
-  text-decoration: none;
-
-  cursor: pointer;
-  transition:
-    background 0.1s ease-out,
-    transform 0.1s ease-out,
-    border-style 0.1s ease-out;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 5px 5px 0px var(--bg-support);
-  }
-}
