@@ -28,7 +28,7 @@ function NavigationDemo({ routes, sections }: NavigationDemoProps) {
       <div className="ControlPanelExpanded__navigation">
         {/* Routes column */}
         <div className="ControlPanelExpanded__routes">
-          <ControlPanelRow label="NAV">
+          <ControlPanelRow label="Page">
             {routes.map((route, i) => (
               <ControlPanelOption
                 key={route}

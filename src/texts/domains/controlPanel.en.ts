@@ -1,6 +1,6 @@
 export const texts = {
   rows: {
-    nav: "Nav",
+    nav: "Page",
     sections: "Sections",
     lang: "Lang",
     accent: "Accent",

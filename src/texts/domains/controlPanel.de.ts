@@ -3,7 +3,7 @@ import type { Widen } from "@/types/i18n";
 
 export const texts: Widen<typeof en> = {
   rows: {
-    nav: "Nav",
+    nav: "Seite",
     sections: "Bereiche",
     lang: "Sprache",
     accent: "Akzent",
