@@ -1,6 +1,7 @@
 export const texts = {
   rows: {
     nav: "Nav",
+    sections: "Sections",
     lang: "Lang",
     accent: "Accent",
     contrast: "Contrast",
@@ -25,6 +26,7 @@ export const texts = {
   aria: {
     togglePanel: "Toggle control panel",
     navigateTo: "Navigate to",
+    scrollTo: "Scroll to",
     selectEnglish: "Select English",
     selectGerman: "Select German",
     selectAccentHue: "Select accent hue",

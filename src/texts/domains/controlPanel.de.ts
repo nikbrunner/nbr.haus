@@ -4,6 +4,7 @@ import type { Widen } from "@/types/i18n";
 export const texts: Widen<typeof en> = {
   rows: {
     nav: "Nav",
+    sections: "Bereiche",
     lang: "Sprache",
     accent: "Akzent",
     contrast: "Kontrast",
@@ -28,6 +29,7 @@ export const texts: Widen<typeof en> = {
   aria: {
     togglePanel: "Kontrollpanel umschalten",
     navigateTo: "Navigiere zu",
+    scrollTo: "Scrollen zu",
     selectEnglish: "Englisch auswählen",
     selectGerman: "Deutsch auswählen",
     selectAccentHue: "Akzentfarbe auswählen",

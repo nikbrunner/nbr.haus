@@ -32,7 +32,7 @@ function Page() {
           <ProfilePicture />
         </Section>
 
-        <Section className="IndexPage__section--connect">
+        <Section id="connect" className="IndexPage__section--connect">
           <SpecCard title={t.connect.title}>
             <SpecList
               padding="small"

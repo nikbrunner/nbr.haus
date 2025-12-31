@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 
 import { useRouter, useRouterState } from "@tanstack/react-router";
 
+import { routeSectionsConfig } from "@/components/ControlPanel/config";
 import { ControlPanelColorDot } from "@/components/ControlPanel/ControlPanelColorDot";
 import {
   ControlPanelExpanded,
@@ -18,6 +19,7 @@ import Hint from "@/components/Hint";
 import { useColorMode } from "@/hooks/useColorMode";
 import { useContrast } from "@/hooks/useContrast";
 import { useHue } from "@/hooks/useHue";
+import { useIsMobile } from "@/hooks/useIsMobile";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 import { useLocale } from "@/i18n/useLocale";
 import { useTexts } from "@/i18n/useTexts";
@@ -30,6 +32,7 @@ export default function ControlPanel() {
   const router = useRouter();
   const pathname = useRouterState({ select: s => s.location.pathname });
   const t = useTexts();
+  const isMobile = useIsMobile();
 
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -40,6 +43,23 @@ export default function ControlPanel() {
 
   const closePanel = useCallback(() => setIsExpanded(false), []);
   const togglePanel = useCallback(() => setIsExpanded(prev => !prev), []);
+
+  // Get sections for current route
+  const currentSections = routeSectionsConfig[pathname] ?? [];
+
+  // Handler for section navigation
+  const handleSectionClick = useCallback(
+    (sectionId: string) => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (isMobile) {
+          closePanel();
+        }
+      }
+    },
+    [isMobile, closePanel]
+  );
 
   // Close on click outside (target both strip and expanded panel)
   useOnClickOutside(
@@ -109,23 +129,46 @@ export default function ControlPanel() {
 
       {/* Expanded panel - Slides in from right */}
       <ControlPanelExpanded isExpanded={isExpanded}>
-        {/* Navigation options */}
+        {/* Navigation options - two-column on desktop, stacked on mobile */}
         <ControlPanelExpandedSection>
-          <ControlPanelRow label={t.controlPanel.rows.nav}>
-            {navLinks.map(navPath => (
-              <ControlPanelOption
-                key={navPath}
-                isActive={pathname === navPath}
-                onClick={() => {
-                  router.navigate({ to: navPath });
-                  setIsExpanded(false);
-                }}
-                ariaLabel={`${t.controlPanel.aria.navigateTo} ${navPath}`}
-              >
-                {navPath}
-              </ControlPanelOption>
-            ))}
-          </ControlPanelRow>
+          <div className="ControlPanelExpanded__navigation">
+            {/* Routes column */}
+            <div className="ControlPanelExpanded__routes">
+              <ControlPanelRow label={t.controlPanel.rows.nav}>
+                {navLinks.map(navPath => (
+                  <ControlPanelOption
+                    key={navPath}
+                    isActive={pathname === navPath}
+                    onClick={() => {
+                      router.navigate({ to: navPath });
+                      setIsExpanded(false);
+                    }}
+                    ariaLabel={`${t.controlPanel.aria.navigateTo} ${navPath}`}
+                  >
+                    {navPath}
+                  </ControlPanelOption>
+                ))}
+              </ControlPanelRow>
+            </div>
+
+            {/* Sections column */}
+            {currentSections.length > 0 && (
+              <div className="ControlPanelExpanded__sections">
+                <ControlPanelRow label={t.controlPanel.rows.sections}>
+                  {currentSections.map(section => (
+                    <ControlPanelOption
+                      key={section.id}
+                      width="full"
+                      onClick={() => handleSectionClick(section.id)}
+                      ariaLabel={`${t.controlPanel.aria.scrollTo} ${t.shared.sections[section.labelKey]}`}
+                    >
+                      {t.shared.sections[section.labelKey]}
+                    </ControlPanelOption>
+                  ))}
+                </ControlPanelRow>
+              </div>
+            )}
+          </div>
         </ControlPanelExpandedSection>
 
         {/* Locale options */}

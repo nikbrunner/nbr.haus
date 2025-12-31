@@ -26,3 +26,54 @@
 .ControlPanelExpanded__section + .ControlPanelExpanded__section {
   border-top: var(--border-size-2) dashed var(--fg-accent);
 }
+
+/* Navigation container - two-column layout for routes and sections */
+.ControlPanelExpanded__navigation {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: calc(var(--control-panel-gap) / 2);
+}
+
+/* Override ControlPanelRow to stack label on top with vertical options */
+.ControlPanelExpanded__navigation .ControlPanelRow {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.ControlPanelExpanded__navigation .ControlPanelRow__label {
+  width: auto;
+}
+
+.ControlPanelExpanded__navigation .ControlPanelRow__options {
+  flex-direction: column;
+}
+
+/* Mobile: stack routes horizontally, sections vertically */
+@media (max-width: 767px) {
+  .ControlPanelExpanded__navigation {
+    display: flex;
+    flex-direction: column;
+    gap: var(--control-panel-gap);
+  }
+
+  /* Routes: horizontal scrollable */
+  .ControlPanelExpanded__routes .ControlPanelRow {
+    flex-direction: row;
+  }
+
+  .ControlPanelExpanded__routes .ControlPanelRow__label {
+    width: var(--control-panel-label-width);
+  }
+
+  .ControlPanelExpanded__routes .ControlPanelRow__options {
+    flex-direction: row;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+  }
+
+  /* Sections: vertical list */
+  .ControlPanelExpanded__sections .ControlPanelRow__options {
+    align-items: stretch;
+  }
+}

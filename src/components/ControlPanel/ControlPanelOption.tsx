@@ -1,6 +1,6 @@
 import type { MouseEvent } from "react";
 
-import { cva } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 
 const variants = cva("ControlPanelOption", {
   variants: {
@@ -9,17 +9,22 @@ const variants = cva("ControlPanelOption", {
     },
     disabled: {
       true: "ControlPanelOption--disabled"
+    },
+    width: {
+      default: "",
+      full: "ControlPanelOption--width-full"
     }
+  },
+  defaultVariants: {
+    width: "default"
   }
 });
 
-interface ControlPanelOptionProps {
+interface ControlPanelOptionProps extends VariantProps<typeof variants> {
   /** Click handler - required for interactive option */
   onClick: () => void;
   /** Whether this option is currently selected */
   isActive?: boolean;
-  /** Whether the option is disabled */
-  disabled?: boolean;
   /** Accessible label for the button */
   ariaLabel: string;
   /** Content to render inside the option */
@@ -34,6 +39,7 @@ export function ControlPanelOption({
   onClick,
   isActive,
   disabled,
+  width,
   ariaLabel,
   children
 }: ControlPanelOptionProps) {
@@ -45,7 +51,7 @@ export function ControlPanelOption({
   return (
     <button
       type="button"
-      className={variants({ active: isActive, disabled })}
+      className={variants({ active: isActive, disabled, width })}
       onClick={handleClick}
       disabled={disabled ?? false}
       aria-label={ariaLabel}
