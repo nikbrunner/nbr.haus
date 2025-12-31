@@ -1,13 +1,14 @@
-{
-  "$schema": "https://unpkg.com/knip@5/schema.json",
-  "entry": ["src/router.tsx", "src/routes/**/*.tsx", "server/**/*.ts"],
-  "project": ["src/**/*.{ts,tsx}", "server/**/*.ts"],
-  "ignore": [
+import type { KnipConfig } from "knip";
+
+const config: KnipConfig = {
+  entry: ["src/router.tsx", "src/routes/**/*.tsx", "server/**/*.ts"],
+  project: ["src/**/*.{ts,tsx}", "server/**/*.ts"],
+  ignore: [
     "src/routeTree.gen.ts",
     "src/storybook/**/*.ts",
     "src/storybook/**/*.tsx"
   ],
-  "ignoreDependencies": [
+  ignoreDependencies: [
     "open-props",
     "@tanstack/react-router-ssr-query",
     "@tanstack/router-plugin",
@@ -21,7 +22,9 @@
     "@vitest/coverage-v8",
     "web-vitals"
   ],
-  "storybook": {
-    "entry": ["src/**/*.stories.tsx"]
+  storybook: {
+    entry: ["src/**/*.stories.tsx"]
   }
-}
+};
+
+export default config;
