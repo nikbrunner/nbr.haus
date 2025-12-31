@@ -5,8 +5,8 @@ import { cva, cx, type VariantProps } from "class-variance-authority";
 const buttonVariants = cva("Button", {
   variants: {
     variant: {
-      secondary: "Button--secondary",
-      primary: "Button--primary"
+      default: "",
+      accent: "Button--accent"
     },
     size: {
       default: "",
@@ -14,7 +14,7 @@ const buttonVariants = cva("Button", {
     }
   },
   defaultVariants: {
-    variant: "secondary",
+    variant: "default",
     size: "default"
   }
 });
@@ -25,7 +25,7 @@ type Props = React.ComponentProps<"button"> &
   };
 
 export default function Button({
-  variant,
+  variant = "default",
   size,
   className,
   type = "button",

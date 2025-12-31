@@ -17,6 +17,6 @@ npm run dev
 - [x] `Button` component (Is `Badge` not really a button?)
 - [x] Add this website to projects
 - [x] fix: initial color mode
-- [ ] Improve color token naming
+- [x] Improve color token naming
 - [ ] [Typo Component](./docs/plans/typo-component-system.md)
 - [ ] Improve documentation

@@ -16,12 +16,7 @@
     box-shadow: 5px 5px 0px var(--bg-support);
   }
 
-  /* Use nesting to increase specificity over .Link */
-  &.Button--secondary {
-    background-color: var(--bg-main);
-  }
-
-  &.Button--primary {
+  &.Button--accent {
     font-weight: var(--font-weight-7);
     background-color: var(--bg-accent);
     color: var(--fg-on-accent);

@@ -87,9 +87,9 @@ export default function Project({
       <div className="Project__links">
         {allLinks.map((link, index) => (
           <Button
-            key={link.url}
-            variant={index === 0 ? "primary" : "secondary"}
             asChild
+            key={link.url}
+            variant={index === 0 ? "accent" : undefined}
           >
             <a href={link.url} target="_blank" rel="noopener noreferrer">
               {link.type}

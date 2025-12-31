@@ -9,31 +9,30 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-export const Secondary: Story = {
+export const Default: Story = {
   args: {
-    variant: "secondary",
-    children: "Secondary Button"
+    children: "Default Button"
   }
 };
 
-export const Primary: Story = {
+export const Accent: Story = {
   args: {
-    variant: "primary",
-    children: "Primary Button"
+    variant: "accent",
+    children: "Accent Button"
   }
 };
 
-export const PrimaryLarge: Story = {
+export const AccentLarge: Story = {
   args: {
-    variant: "primary",
+    variant: "accent",
     size: "large",
-    children: "Large Primary Button"
+    children: "Large Accent Button"
   }
 };
 
 export const AsChildWithAnchor: Story = {
   args: {
-    variant: "primary",
+    variant: "accent",
     asChild: true,
     children: <a href="https://example.com">Link as Button</a>
   }
@@ -41,7 +40,6 @@ export const AsChildWithAnchor: Story = {
 
 export const AsChildExternal: Story = {
   args: {
-    variant: "secondary",
     asChild: true,
     children: (
       <a href="https://example.com" target="_blank" rel="noopener noreferrer">

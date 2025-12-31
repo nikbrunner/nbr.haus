@@ -29,7 +29,7 @@ export default function LookingForJob({
         </h1>
       </GlitchEffect>
       <div className="LookingForJob__actions">
-        <Button variant="primary" size="large" asChild>
+        <Button variant="accent" size="large" asChild>
           <a href={`mailto:${email}`}>{cta}</a>
         </Button>
         <Hint title={copyEmailTooltip}>
