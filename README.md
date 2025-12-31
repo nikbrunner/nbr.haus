@@ -4,19 +4,17 @@ Personal portfolio website built with TanStack Start, React 19, and TypeScript.
 
 **Live:** [nbr.haus](https://nbr.haus)
 
-## Development
+## Quick Start
 
 ```bash
 npm install
 npm run dev
 ```
 
-## TODO
+## Documentation
 
-- [x] `<Hint />` component
-- [x] `Button` component (Is `Badge` not really a button?)
-- [x] Add this website to projects
-- [x] fix: initial color mode
-- [x] Improve color token naming
-- [ ] [Typo Component](./docs/plans/typo-component-system.md)
-- [ ] Improve documentation
+- [Architecture](./docs/architecture.md) - System overview, routing, i18n, theming
+- [Components](./docs/components.md) - Component patterns and structure
+- [Styling](./docs/styling.md) - CSS conventions and theming
+- [Content](./docs/content.md) - Adding routes, translations, content
+- [Testing](./docs/testing.md) - Testing tools and Storybook

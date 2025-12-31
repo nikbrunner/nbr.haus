@@ -2,6 +2,14 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+For detailed documentation, see `docs/`:
+
+- [architecture.md](./docs/architecture.md) - Routing, i18n, theming
+- [components.md](./docs/components.md) - Component patterns
+- [styling.md](./docs/styling.md) - CSS conventions
+- [content.md](./docs/content.md) - Adding content
+- [testing.md](./docs/testing.md) - Testing and Storybook
+
 ## Project Overview
 
 Personal portfolio website built with TanStack Start (SSR framework), React 19, TypeScript, and regular CSS with BEM naming convention.
@@ -43,19 +51,30 @@ Lightweight localization using URL search params as source of truth:
 
 - **Centralized texts** in `src/texts/` - domain-based text files merged into `en.ts` / `de.ts`
 - `useTexts()` - Returns all translations for current locale
-- `useLocale()` - Returns `[locale, setLocale]` tuple (like useState)
-- `<Trans>` component for inline translations with component interpolation
+- `useLocale()` - Returns `{ locale, setLocale }` object
 - URL `lang` param is source of truth, localStorage for persistence across sessions
 
 Text structure: `t.shared`, `t.jobs`, `t.projects`, `t.about`, `t.connect`, `t.cv`
 
+See [docs/architecture.md](./docs/architecture.md) and [docs/content.md](./docs/content.md) for details.
+
 ### Component Architecture
 
-- **Dumb components** in `src/components/` - presentational only, receive props
-- **CV components** in `src/components/cv/` - print-optimized for CV route
-- **Routes are smart** - call `useTexts()`, map texts to component props
-- Co-located CSS files with BEM naming (`.block__element--modifier`)
-- **CVA (class-variance-authority)** for variant handling
+**Core pattern:** Smart routes → Partials → Dumb components
+
+```txt
+src/routes/        → Smart (hooks, data, minimal styling)
+src/partials/      → Compositions (reusable across routes, no styling)
+src/components/    → Dumb (props only, all styling here)
+```
+
+- **Routes** call hooks (`useTexts()`, etc.) and pass data down
+- **Partials** compose multiple components (e.g., ControlPanel)
+- **Components** are self-contained with co-located CSS
+- Styling lives in components only, not in routes or partials
+- CVA for variant handling
+
+See [docs/components.md](./docs/components.md) for details.
 
 ### ControlPanel (`src/components/ControlPanel/`)
 
@@ -70,7 +89,9 @@ Theming system with:
 - BEM naming for component-scoped styles
 - Global styles in `src/styles/global.css`
 - Open Props for design tokens
-- CSS variables: `--hue`, `--hue-accent`, `--hue-accent-alt`, `--contrast-l`, `--contrast-c`
+- CSS variables: `--hue`, `--hue-accent`, `--chroma`, `--bg-*`, `--fg-*`
+
+See [docs/styling.md](./docs/styling.md) for details.
 
 ### Shared Configuration
 
