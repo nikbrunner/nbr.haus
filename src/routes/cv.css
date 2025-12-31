@@ -28,9 +28,10 @@
   }
 
   /* Hide UI elements */
-  .ControlPanel,
+  .ControlPanelStrip,
+  .ControlPanelExpanded,
   [data-testid="tanstack_devtools"] {
-    display: none;
-    visibility: hidden;
+    display: none !important;
+    visibility: hidden !important;
   }
 }
