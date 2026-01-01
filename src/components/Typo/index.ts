@@ -1,8 +1,8 @@
-import { H1, h1Variants } from "./Typo.H1";
-import { H2, h2Variants } from "./Typo.H2";
-import { H3, h3Variants } from "./Typo.H3";
-import { H4, h4Variants } from "./Typo.H4";
-import { P, pVariants } from "./Typo.P";
+import { H1, h1Variants } from "src/components/Typo/Typo.H1";
+import { H2, h2Variants } from "src/components/Typo/Typo.H2";
+import { H3, h3Variants } from "src/components/Typo/Typo.H3";
+import { H4, h4Variants } from "src/components/Typo/Typo.H4";
+import { P, pVariants } from "src/components/Typo/Typo.P";
 
 export type { TypoColor } from "./Typo.types";
 

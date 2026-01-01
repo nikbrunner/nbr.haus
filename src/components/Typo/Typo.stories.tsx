@@ -1,6 +1,7 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Typo } from ".";
+import Flex from "@/components/Flex";
+import { Typo } from "@/components/Typo";
 
 const meta: Meta = {
   title: "Components/Typo",
@@ -19,11 +20,9 @@ const meta: Meta = {
 export default meta;
 
 export const ArticleExample: StoryObj = {
-  name: "Article Layout",
+  name: "Article Layout (Prose)",
   render: () => (
-    <article
-      style={{ display: "flex", flexDirection: "column", gap: "var(--size-4)" }}
-    >
+    <article>
       <Typo.H1>Building Modern Web Applications</Typo.H1>
       <Typo.P color="support">
         A comprehensive guide to creating performant, accessible, and maintainable
@@ -61,123 +60,37 @@ export const ArticleExample: StoryObj = {
   )
 };
 
-export const SectionHeaders: StoryObj = {
-  name: "Section Headers",
-  render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "var(--size-6)" }}>
-      <section>
-        <Typo.H2>Experience</Typo.H2>
-        <Typo.P>
-          Over five years of professional experience building scalable web
-          applications, design systems, and developer tooling for companies ranging
-          from startups to enterprise organizations.
-        </Typo.P>
-      </section>
-
-      <section>
-        <Typo.H2>Projects</Typo.H2>
-        <Typo.P>
-          A curated selection of open source contributions and personal projects that
-          demonstrate expertise in frontend architecture, performance optimization,
-          and developer experience.
-        </Typo.P>
-      </section>
-
-      <section>
-        <Typo.H2>About</Typo.H2>
-        <Typo.P>
-          Software engineer passionate about creating intuitive user interfaces and
-          robust developer tools. Currently focused on TypeScript, React, and the
-          evolving ecosystem of modern web technologies.
-        </Typo.P>
-      </section>
-    </div>
-  )
-};
-
-export const ColorHierarchy: StoryObj = {
-  name: "Color Hierarchy",
-  render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "var(--size-4)" }}>
-      <div>
-        <Typo.H3 color="main">Primary Content</Typo.H3>
-        <Typo.P>
-          Main color is used for primary content that demands the most attention.
-          This includes body text, important headings, and key information that users
-          need to read and understand.
-        </Typo.P>
-      </div>
-
-      <div>
-        <Typo.H3 color="support">Supporting Content</Typo.H3>
-        <Typo.P color="support">
-          Support color provides visual hierarchy for secondary information. Use it
-          for descriptions, metadata, timestamps, and content that complements the
-          primary text without competing for attention.
-        </Typo.P>
-      </div>
-
-      <div>
-        <Typo.H3 color="minor">Tertiary Content</Typo.H3>
-        <Typo.P color="minor">
-          Minor color is reserved for the least prominent text elements. Captions,
-          disclaimers, and auxiliary information that users may not need to read in
-          full benefit from this subtle treatment.
-        </Typo.P>
-      </div>
-
-      <div>
-        <Typo.H3 color="accent">Accent Highlights</Typo.H3>
-        <Typo.P>
-          Accent color draws attention to interactive elements, calls to action, and
-          content that should stand out from the surrounding text. Use sparingly to
-          maintain its visual impact.
-        </Typo.P>
-      </div>
-
-      <div>
-        <Typo.H3 color="accentAlt">Complementary Accent</Typo.H3>
-        <Typo.P>
-          The alternate accent provides a complementary color for situations where
-          you need visual distinction from the primary accent while maintaining the
-          same level of prominence.
-        </Typo.P>
-      </div>
-    </div>
-  )
-};
-
 export const HeadingScale: StoryObj = {
-  name: "Heading Scale",
+  name: "Heading Scale (Prose)",
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "var(--size-4)" }}>
-      <Typo.H1>Page Title — H1</Typo.H1>
+    <div>
+      <Typo.H1>Page Title</Typo.H1>
       <Typo.P color="support">
         Reserved for the main page title. There should only be one H1 per page for
         accessibility and SEO purposes.
       </Typo.P>
 
-      <Typo.H2>Section Header — H2</Typo.H2>
+      <Typo.H2>Section Header</Typo.H2>
       <Typo.P color="support">
         Used to divide the page into major sections. The decorated variant adds
         visual distinction with an underline and uppercase treatment.
       </Typo.P>
 
       <Typo.H2 variant="default" color="main">
-        Plain Section Header — H2
+        Plain Section Header
       </Typo.H2>
       <Typo.P color="support">
         The plain H2 variant without decoration, useful when you need a section
         header without the visual emphasis of the border.
       </Typo.P>
 
-      <Typo.H3>Subsection — H3</Typo.H3>
+      <Typo.H3>Subsection</Typo.H3>
       <Typo.P color="support">
         Organizes content within sections. Job titles, project names, and feature
         headings typically use this level.
       </Typo.P>
 
-      <Typo.H4>Detail Heading — H4</Typo.H4>
+      <Typo.H4>Detail Heading</Typo.H4>
       <Typo.P color="support">
         The smallest heading level for fine-grained content organization. Use for
         labels, card titles, or nested subsections.
@@ -186,12 +99,52 @@ export const HeadingScale: StoryObj = {
   )
 };
 
-export const MixedContent: StoryObj = {
-  name: "Mixed Content",
+export const ColorHierarchy: StoryObj = {
+  name: "Color Hierarchy (Prose)",
   render: () => (
-    <article
-      style={{ display: "flex", flexDirection: "column", gap: "var(--size-4)" }}
-    >
+    <div>
+      <Typo.H3 color="main">Primary Content</Typo.H3>
+      <Typo.P>
+        Main color is used for primary content that demands the most attention. This
+        includes body text, important headings, and key information that users need
+        to read and understand.
+      </Typo.P>
+
+      <Typo.H3 color="support">Supporting Content</Typo.H3>
+      <Typo.P color="support">
+        Support color provides visual hierarchy for secondary information. Use it for
+        descriptions, metadata, timestamps, and content that complements the primary
+        text without competing for attention.
+      </Typo.P>
+
+      <Typo.H3 color="minor">Tertiary Content</Typo.H3>
+      <Typo.P color="minor">
+        Minor color is reserved for the least prominent text elements. Captions,
+        disclaimers, and auxiliary information that users may not need to read in
+        full benefit from this subtle treatment.
+      </Typo.P>
+
+      <Typo.H3 color="accent">Accent Highlights</Typo.H3>
+      <Typo.P>
+        Accent color draws attention to interactive elements, calls to action, and
+        content that should stand out from the surrounding text. Use sparingly to
+        maintain its visual impact.
+      </Typo.P>
+
+      <Typo.H3 color="accentAlt">Complementary Accent</Typo.H3>
+      <Typo.P>
+        The alternate accent provides a complementary color for situations where you
+        need visual distinction from the primary accent while maintaining the same
+        level of prominence.
+      </Typo.P>
+    </div>
+  )
+};
+
+export const MixedContent: StoryObj = {
+  name: "Mixed Content (Prose)",
+  render: () => (
+    <article>
       <Typo.H1>Nik Brunner</Typo.H1>
       <Typo.P color="support">
         Software Engineer based in Munich, Germany. Specializing in frontend
@@ -228,5 +181,43 @@ export const MixedContent: StoryObj = {
         variants.
       </Typo.P>
     </article>
+  )
+};
+
+export const FlexOverride: StoryObj = {
+  name: "Flex Gap Override",
+  render: () => (
+    <div>
+      <Typo.P color="support">
+        When using Flex, child margins are reset to 0 and gap controls spacing
+        instead. This is useful for layout components where you need precise control.
+      </Typo.P>
+
+      <Flex direction="column" gap="6">
+        <section>
+          <Typo.H2>Experience</Typo.H2>
+          <Typo.P>
+            Over five years of professional experience building scalable web
+            applications, design systems, and developer tooling.
+          </Typo.P>
+        </section>
+
+        <section>
+          <Typo.H2>Projects</Typo.H2>
+          <Typo.P>
+            A curated selection of open source contributions and personal projects
+            demonstrating expertise in frontend architecture.
+          </Typo.P>
+        </section>
+
+        <section>
+          <Typo.H2>About</Typo.H2>
+          <Typo.P>
+            Software engineer passionate about creating intuitive user interfaces and
+            robust developer tools.
+          </Typo.P>
+        </section>
+      </Flex>
+    </div>
   )
 };

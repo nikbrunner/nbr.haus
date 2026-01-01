@@ -1,5 +1,7 @@
 import { cx } from "class-variance-authority";
 
+import { Typo } from "@/components/Typo";
+
 interface Props {
   /** Explicit ID override (falls back to title-derived ID) */
   id?: string;
@@ -14,7 +16,7 @@ export default function Section({ id, title, children, className }: Props) {
 
   return (
     <section id={sectionId} className={cx("Section", className)}>
-      {title && <h2>{title}</h2>}
+      {title && <Typo.H2>{title}</Typo.H2>}
       {children}
     </section>
   );

@@ -183,35 +183,6 @@ html[data-color-mode="dark"] {
   color-scheme: dark;
 }
 
-h1 {
-  font-size: var(--font-size-fluid-3);
-  font-weight: var(--font-weight-9);
-  color: var(--color-fg-main);
-}
-
-h2 {
-  font-size: var(--font-size-fluid-3);
-  border-bottom: var(--border-size-2) dashed var(--color-fg-accent);
-  color: var(--color-fg-accent);
-  margin-top: 0;
-  padding-bottom: var(--size-1);
-  text-transform: uppercase;
-  font-weight: var(--font-weight-9);
-}
-
-h3 {
-  font-size: var(--font-size-fluid-2);
-  font-weight: var(--font-weight-7);
-  line-height: var(--font-lineheight-1);
-  color: var(--color-fg-main);
-}
-
-p {
-  font-size: var(--font-size-fluid-0);
-  font-weight: var(--font-weight-3);
-  margin: 0 0 var(--size-6);
-}
-
 strong {
   font-weight: var(--font-weight-7);
 }

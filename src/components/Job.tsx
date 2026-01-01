@@ -1,5 +1,6 @@
 import ClickableTag from "@/components/ClickableTag";
 import SpecList from "@/components/SpecList";
+import { Typo } from "@/components/Typo";
 import type { Tech } from "@/config";
 import { useTexts } from "@/i18n/useTexts";
 
@@ -35,7 +36,7 @@ export default function Job({ company, position, period, tech, children }: Props
 
   return (
     <div className="Job">
-      <h3 className="Job__company">{company}</h3>
+      <Typo.H3 className="Job__company">{company}</Typo.H3>
       <SpecList items={specs} />
       {children}
     </div>

@@ -1,5 +1,7 @@
 import { cx } from "class-variance-authority";
 
+import { Typo } from "@/components/Typo";
+
 interface Props {
   title?: string;
   description?: React.ReactNode;
@@ -15,7 +17,7 @@ export default function SpecCard({
 }: Props) {
   return (
     <article className={cx("SpecCard", className)}>
-      {title && <h3 className="SpecCard__title">{title}</h3>}
+      {title && <Typo.H3 className="SpecCard__title">{title}</Typo.H3>}
       {description && <div className="SpecCard__description">{description}</div>}
       {children}
     </article>

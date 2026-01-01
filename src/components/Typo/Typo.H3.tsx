@@ -1,8 +1,6 @@
 import { cva, cx, type VariantProps } from "class-variance-authority";
 
-import { colorVariants } from "./Typo.colors";
-
-import "./Typo.H3.css";
+import { colorVariants } from "@/components/Typo/Typo.colors";
 
 export const h3Variants = cva("Typo-H3", {
   variants: {
@@ -13,9 +11,8 @@ export const h3Variants = cva("Typo-H3", {
   }
 });
 
-interface Props
-  extends Omit<React.ComponentProps<"h3">, "color">,
-    VariantProps<typeof h3Variants> {}
+type Props = Omit<React.ComponentProps<"h3">, "color"> &
+  VariantProps<typeof h3Variants>;
 
 export function H3({ children, className, color, ...props }: Props) {
   return (

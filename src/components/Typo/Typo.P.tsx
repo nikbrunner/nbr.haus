@@ -1,8 +1,6 @@
 import { cva, cx, type VariantProps } from "class-variance-authority";
 
-import { colorVariants } from "./Typo.colors";
-
-import "./Typo.P.css";
+import { colorVariants } from "@/components/Typo/Typo.colors";
 
 export const pVariants = cva("Typo-P", {
   variants: {
@@ -13,9 +11,8 @@ export const pVariants = cva("Typo-P", {
   }
 });
 
-interface Props
-  extends Omit<React.ComponentProps<"p">, "color">,
-    VariantProps<typeof pVariants> {}
+type Props = Omit<React.ComponentProps<"p">, "color"> &
+  VariantProps<typeof pVariants>;
 
 export function P({ children, className, color, ...props }: Props) {
   return (
