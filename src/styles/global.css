@@ -93,7 +93,7 @@ body {
   /* Background colors */
   --bg-main: light-dark(
     oklch(0.95 calc(0.005 * var(--chroma)) var(--hue)),
-    oklch(0.2 calc(0.005 * var(--chroma)) var(--hue))
+    oklch(0.25 calc(0.005 * var(--chroma)) var(--hue))
   );
   --bg-support: light-dark(
     oklch(0.9 calc(0.005 * var(--chroma)) var(--hue)),
