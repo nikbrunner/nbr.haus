@@ -1,0 +1,90 @@
+.Flex {
+  display: flex;
+  gap: var(--flex-gap, 0);
+}
+
+/* Reset child margins when using Flex for layout */
+.Flex > * {
+  margin: 0;
+}
+
+/* Inline variant */
+.Flex--inline {
+  display: inline-flex;
+}
+
+/* Direction */
+.Flex--row {
+  flex-direction: row;
+}
+
+.Flex--row-reverse {
+  flex-direction: row-reverse;
+}
+
+.Flex--column {
+  flex-direction: column;
+}
+
+.Flex--column-reverse {
+  flex-direction: column-reverse;
+}
+
+/* Wrap */
+.Flex--wrap {
+  flex-wrap: wrap;
+}
+
+.Flex--nowrap {
+  flex-wrap: nowrap;
+}
+
+.Flex--wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
+
+/* Justify */
+.Flex--justify-start {
+  justify-content: flex-start;
+}
+
+.Flex--justify-end {
+  justify-content: flex-end;
+}
+
+.Flex--justify-center {
+  justify-content: center;
+}
+
+.Flex--justify-between {
+  justify-content: space-between;
+}
+
+.Flex--justify-around {
+  justify-content: space-around;
+}
+
+.Flex--justify-evenly {
+  justify-content: space-evenly;
+}
+
+/* Align */
+.Flex--align-start {
+  align-items: flex-start;
+}
+
+.Flex--align-end {
+  align-items: flex-end;
+}
+
+.Flex--align-center {
+  align-items: center;
+}
+
+.Flex--align-baseline {
+  align-items: baseline;
+}
+
+.Flex--align-stretch {
+  align-items: stretch;
+}

@@ -1,25 +1,57 @@
-import { cx } from "class-variance-authority";
+import { cva, cx, type VariantProps } from "class-variance-authority";
 
 import type { ComponentProps } from "@/types/component";
 import { resolveGap, type GapValue } from "@/types/spacing";
 
-interface Props extends ComponentProps {
+import "./Flex.css";
+
+const flexVariants = cva("Flex", {
+  variants: {
+    inline: {
+      true: "Flex--inline"
+    },
+    direction: {
+      "row": "Flex--row",
+      "row-reverse": "Flex--row-reverse",
+      "column": "Flex--column",
+      "column-reverse": "Flex--column-reverse"
+    },
+    wrap: {
+      "wrap": "Flex--wrap",
+      "nowrap": "Flex--nowrap",
+      "wrap-reverse": "Flex--wrap-reverse"
+    },
+    justify: {
+      start: "Flex--justify-start",
+      end: "Flex--justify-end",
+      center: "Flex--justify-center",
+      between: "Flex--justify-between",
+      around: "Flex--justify-around",
+      evenly: "Flex--justify-evenly"
+    },
+    align: {
+      start: "Flex--align-start",
+      end: "Flex--align-end",
+      center: "Flex--align-center",
+      baseline: "Flex--align-baseline",
+      stretch: "Flex--align-stretch"
+    }
+  },
+  defaultVariants: {
+    direction: "row",
+    wrap: "nowrap",
+    justify: "start",
+    align: "stretch"
+  }
+});
+
+interface Props
+  extends ComponentProps,
+    Omit<VariantProps<typeof flexVariants>, "inline"> {
   children: React.ReactNode;
 
   /** Use inline-flex instead of flex. Default: false */
   inline?: boolean;
-
-  /** Flex direction. Default: "row" */
-  direction?: "row" | "row-reverse" | "column" | "column-reverse";
-
-  /** Flex wrap. Default: "nowrap" */
-  wrap?: "wrap" | "nowrap" | "wrap-reverse";
-
-  /** Justify content. Default: "start" */
-  justify?: "start" | "end" | "center" | "between" | "around" | "evenly";
-
-  /** Align items. Default: "stretch" */
-  align?: "start" | "end" | "center" | "baseline" | "stretch";
 
   /** Gap between items using Open Props size scale */
   gap?: GapValue;
@@ -28,45 +60,35 @@ interface Props extends ComponentProps {
   as?: React.ElementType;
 }
 
-const justifyMap: Record<NonNullable<Props["justify"]>, string> = {
-  start: "flex-start",
-  end: "flex-end",
-  center: "center",
-  between: "space-between",
-  around: "space-around",
-  evenly: "space-evenly"
-};
-
-const alignMap: Record<NonNullable<Props["align"]>, string> = {
-  start: "flex-start",
-  end: "flex-end",
-  center: "center",
-  baseline: "baseline",
-  stretch: "stretch"
-};
-
 export default function Flex({
   children,
   inline = false,
-  direction = "row",
-  wrap = "nowrap",
-  justify = "start",
-  align = "stretch",
+  direction,
+  wrap,
+  justify,
+  align,
   gap,
   className,
   as: Component = "div"
 }: Props) {
-  const style: React.CSSProperties = {
-    display: inline ? "inline-flex" : "flex",
-    flexDirection: direction,
-    flexWrap: wrap,
-    justifyContent: justifyMap[justify],
-    alignItems: alignMap[align],
-    gap: gap ? resolveGap(gap) : undefined
-  };
+  const style = gap
+    ? ({ "--flex-gap": resolveGap(gap) } as React.CSSProperties)
+    : undefined;
 
   return (
-    <Component className={cx("Flex", className)} style={style}>
+    <Component
+      className={cx(
+        flexVariants({
+          inline: inline || undefined,
+          direction,
+          wrap,
+          justify,
+          align
+        }),
+        className
+      )}
+      style={style}
+    >
       {children}
     </Component>
   );

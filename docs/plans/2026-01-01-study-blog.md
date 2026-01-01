@@ -18,11 +18,11 @@ Add a blog section at `/study` following the "rooms in a house" metaphor (like `
 
 ## Tech Stack
 
-| Purpose | Library |
-|---------|---------|
-| Markdown rendering | `react-markdown` |
-| Frontmatter parsing | `gray-matter` |
-| Syntax highlighting | `shiki` |
+| Purpose             | Library          |
+| ------------------- | ---------------- |
+| Markdown rendering  | `react-markdown` |
+| Frontmatter parsing | `gray-matter`    |
+| Syntax highlighting | `shiki`          |
 
 ---
 
@@ -85,10 +85,10 @@ export interface PostFrontmatter {
 }
 
 export interface Post extends PostFrontmatter {
-  slug: string;          // "trust-evolution"
-  locale: "en" | "de";   // from filename
-  readingTime: number;   // calculated
-  content: string;       // raw markdown
+  slug: string; // "trust-evolution"
+  locale: "en" | "de"; // from filename
+  readingTime: number; // calculated
+  content: string; // raw markdown
 }
 ```
 
@@ -99,6 +99,7 @@ export interface Post extends PostFrontmatter {
 ### Phase 1: Dependencies & Infrastructure
 
 1. Install dependencies:
+
    ```bash
    npm install react-markdown gray-matter shiki
    ```
@@ -106,6 +107,7 @@ export interface Post extends PostFrontmatter {
 2. Create `src/lib/study/types.ts` - Post type definitions
 
 3. Create `src/lib/study/readingTime.ts`:
+
    ```typescript
    export function calculateReadingTime(content: string): number {
      const words = content.trim().split(/\s+/).length;
@@ -177,20 +179,24 @@ const modules = import.meta.glob("/src/content/study/*.md", {
 });
 
 export function getAllPosts(): Post[] {
-  return Object.entries(modules).map(([path, content]) => {
-    const filename = path.split("/").pop()!;
-    const [slug, locale] = filename.replace(".md", "").split(".");
-    const { data, content: body } = matter(content as string);
+  return Object.entries(modules)
+    .map(([path, content]) => {
+      const filename = path.split("/").pop()!;
+      const [slug, locale] = filename.replace(".md", "").split(".");
+      const { data, content: body } = matter(content as string);
 
-    return {
-      slug,
-      locale: locale as "en" | "de",
-      content: body,
-      readingTime: calculateReadingTime(body),
-      ...data as PostFrontmatter
-    };
-  }).filter(p => !p.draft)
-    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+      return {
+        slug,
+        locale: locale as "en" | "de",
+        content: body,
+        readingTime: calculateReadingTime(body),
+        ...(data as PostFrontmatter)
+      };
+    })
+    .filter(p => !p.draft)
+    .sort(
+      (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    );
 }
 
 export function getPostBySlug(slug: string, locale: string): Post | undefined {
@@ -244,17 +250,17 @@ const highlightedHtml = await codeToHtml(code, {
 
 ## Critical Files to Modify/Create
 
-| File | Action |
-|------|--------|
-| `package.json` | Add dependencies |
-| `src/lib/study/posts.ts` | Create - content loading |
-| `src/lib/study/types.ts` | Create - type definitions |
-| `src/routes/study/index.tsx` | Create - blog index |
-| `src/routes/study/$slug.tsx` | Create - individual post |
-| `src/components/study/*` | Create - 4 components |
-| `src/texts/domains/study.*.ts` | Create - i18n strings |
-| `src/texts/en.ts` + `de.ts` | Update - add study import |
-| `src/styles/global.css` | Update - import new CSS files |
+| File                           | Action                        |
+| ------------------------------ | ----------------------------- |
+| `package.json`                 | Add dependencies              |
+| `src/lib/study/posts.ts`       | Create - content loading      |
+| `src/lib/study/types.ts`       | Create - type definitions     |
+| `src/routes/study/index.tsx`   | Create - blog index           |
+| `src/routes/study/$slug.tsx`   | Create - individual post      |
+| `src/components/study/*`       | Create - 4 components         |
+| `src/texts/domains/study.*.ts` | Create - i18n strings         |
+| `src/texts/en.ts` + `de.ts`    | Update - add study import     |
+| `src/styles/global.css`        | Update - import new CSS files |
 
 ---
 

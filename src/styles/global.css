@@ -11,6 +11,7 @@
 @import "../routes/cv.css";
 
 /* Components */
+@import "../components/Flex.css";
 @import "../components/Button.css";
 @import "../components/ClickableTag.css";
 @import "../components/Header.css";

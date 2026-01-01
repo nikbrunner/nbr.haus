@@ -1,5 +1,6 @@
 .Typo-H4 {
   font-size: var(--font-size-fluid-1);
   font-weight: var(--font-weight-6);
-  margin: 0;
+  line-height: var(--font-lineheight-2);
+  margin: 0 0 var(--size-1);
 }
