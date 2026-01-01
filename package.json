@@ -21,7 +21,8 @@
     "knip": "knip",
     "storybook": "storybook dev -p 6006 -c src/storybook",
     "build:storybook": "storybook build -c src/storybook",
-    "generate:cv": "npx tsx scripts/generate-cv-pdf.ts"
+    "generate:cv": "npx tsx scripts/generate-cv-pdf.ts",
+    "docs:ai:ts-router": "rm -f docs/ai/tanstack-router.md && vibe-rules install claude-code @tanstack/react-router --target docs/ai/tanstack-router.md"
   },
   "dependencies": {
     "@tanstack/react-devtools": "0.7.0",
@@ -77,6 +78,7 @@
     "tsx": "^4.19.0",
     "typescript": "^5.7.2",
     "typescript-eslint": "8.47.0",
+    "vibe-rules": "^0.3.91",
     "vite": "7.1.7",
     "vitest": "3.0.5",
     "web-vitals": "5.1.0"

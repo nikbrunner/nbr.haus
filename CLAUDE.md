@@ -110,3 +110,7 @@ See [docs/styling.md](./docs/styling.md) for details.
 - `src/routeTree.gen.ts` is auto-generated - never edit
 - Print styles in CV route for PDF export
 - Structured data (JSON-LD) for SEO
+
+## On-Demand Documentation
+
+TanStack Router documentation is available in `docs/ai/tanstack-router.md` (not auto-loaded to preserve context). Read this file when working on routing tasks. Run `npm run docs:ai:ts-router` after updating TanStack dependencies to refresh.
