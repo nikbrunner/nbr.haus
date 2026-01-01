@@ -184,6 +184,7 @@ export default function ControlPanel() {
                     <ArrowUpToLine
                       size={14}
                       strokeWidth={3}
+                      color="var(--fg-minor)"
                       style={{ marginRight: "var(--size-1)" }}
                     />
                     {t.shared.sections.top}
@@ -199,6 +200,7 @@ export default function ControlPanel() {
                       <PilcrowRight
                         size={14}
                         strokeWidth={3}
+                        color="var(--fg-minor)"
                         style={{ marginRight: "var(--size-2)" }}
                       />
                       {t.shared.sections[section.labelKey]}
