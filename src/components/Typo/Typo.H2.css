@@ -1,0 +1,11 @@
+.Typo-H2 {
+  font-size: var(--font-size-fluid-3);
+  font-weight: var(--font-weight-9);
+  margin: 0;
+}
+
+.Typo-H2--decorated {
+  border-bottom: var(--border-size-2) dashed var(--color-fg-accent);
+  padding-bottom: var(--size-1);
+  text-transform: uppercase;
+}

@@ -101,13 +101,12 @@ src/components/Typo/
 
 ### 7. Remove global typography styles
 
-Delete lines 235-263 from `src/styles/global.css` (h1, h2, h3, p rules).
-Keep `strong` and `button` rules.
+Delete lines 177-204 from `src/styles/global.css` (h1, h2, h3, p rules).
+Keep `strong`, `button`, and `a` rules.
 
 ## Key Files
 
-- `src/styles/global.css` (lines 235-263) - Typography rules to migrate/remove
-- `src/components/Badge.tsx` - Reference for CVA + BEM pattern in this project
+- `src/styles/global.css` (lines 177-204) - Typography rules to migrate/remove
 - Reference: `/Users/nbr/repos/dealercenter-digital/bc-web-client-poc/frontend/src/components/Typo.tsx`
 
 ## Component Example: Typo.H2
@@ -156,7 +155,7 @@ export function H2({ children, className, color, variant, ...props }: Props) {
 }
 
 .Typo-H2--decorated {
-  border-bottom: var(--border-size-2) dashed var(--fg-accent);
+  border-bottom: var(--border-size-2) dashed var(--color-fg-accent);
   padding-bottom: var(--size-1);
   text-transform: uppercase;
 }

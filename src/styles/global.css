@@ -44,6 +44,14 @@
 @import "../components/ControlPanel/ControlPanelIndicator.css";
 @import "../components/ControlPanel/ControlPanelColorDot.css";
 
+/* Typo */
+@import "../components/Typo/Typo.css";
+@import "../components/Typo/Typo.H1.css";
+@import "../components/Typo/Typo.H2.css";
+@import "../components/Typo/Typo.H3.css";
+@import "../components/Typo/Typo.H4.css";
+@import "../components/Typo/Typo.P.css";
+
 html {
   color-scheme: light dark;
 }
