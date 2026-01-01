@@ -68,28 +68,38 @@ Example:
 Colors use OKLCH with CSS `light-dark()` for automatic theme switching:
 
 ```css
-/* Semantic color tokens */
---bg-main        /* Main background */
---bg-support     /* Secondary background */
---bg-accent      /* Accent background */
+/* Semantic color tokens (all prefixed with --color-) */
+--color-bg-main        /* Main background */
+--color-bg-support     /* Secondary background */
+--color-bg-accent      /* Accent background */
 
---fg-main        /* Main text */
---fg-support     /* Secondary text */
---fg-minor       /* Tertiary/muted text */
---fg-accent      /* Accent text */
---fg-on-accent   /* Text on accent background */
+--color-fg-main        /* Main text */
+--color-fg-support     /* Secondary text */
+--color-fg-minor       /* Tertiary/muted text */
+--color-fg-accent      /* Accent text */
+--color-fg-on-accent   /* Text on accent background */
+
+--color-accent         /* Primary accent color */
+--color-accent-alt     /* Complementary accent color */
 ```
 
-### Theme Variables
+### Hue System
 
-Set dynamically by the ControlPanel:
+The accent hue is set by `useAccent` hook, complementary is calculated in CSS:
 
 ```css
---hue            /* Base hue (0-360) */
---hue-accent     /* Accent color hue */
---hue-accent-alt /* Alternative accent hue */
---chroma         /* Saturation multiplier (0.6, 1, 1.4) */
+/* Set dynamically via JS */
+--hue-accent              /* User-selected accent hue (0-360) */
+
+/* Defined in CSS */
+--hue-accent-compl-degree /* Offset for complementary (default: 90) */
+--hue-accent-compl        /* calc(--hue-accent + --hue-accent-compl-degree) */
+
+/* Chroma multiplier for contrast levels */
+--chroma                  /* low=0.6, base=1, high=1.4 */
 ```
+
+Note: oklch wraps hue values automatically, so `--hue-accent-compl` doesn't need clamping.
 
 ### Using Theme Colors
 
@@ -98,14 +108,14 @@ Always use semantic tokens, not raw OKLCH values:
 ```css
 /* Good */
 .Component {
-  color: var(--fg-main);
-  background-color: var(--bg-support);
-  border-color: var(--fg-accent);
+  color: var(--color-fg-main);
+  background-color: var(--color-bg-support);
+  border-color: var(--color-fg-accent);
 }
 
 /* Avoid */
 .Component {
-  color: oklch(0.25 0.01 var(--hue));
+  color: oklch(0.25 0.01 var(--hue-accent));
 }
 ```
 
@@ -182,9 +192,9 @@ html[data-color-mode="dark"] {
 The `light-dark()` function automatically picks the right color:
 
 ```css
---bg-main: light-dark(
-  oklch(0.95 0.005 var(--hue)),
-  /* light mode */ oklch(0.2 0.005 var(--hue)) /* dark mode */
+--color-bg-main: light-dark(
+  oklch(0.95 0.005 var(--hue-accent-compl)),
+  /* light mode */ oklch(0.25 0.005 var(--hue-accent-compl)) /* dark mode */
 );
 ```
 

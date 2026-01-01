@@ -89,7 +89,7 @@ Theming system with:
 - BEM naming for component-scoped styles
 - Global styles in `src/styles/global.css`
 - Open Props for design tokens
-- CSS variables: `--hue`, `--hue-accent`, `--chroma`, `--bg-*`, `--fg-*`
+- CSS variables: `--hue-accent`, `--hue-accent-compl`, `--chroma`, `--color-bg-*`, `--color-fg-*`
 
 See [docs/styling.md](./docs/styling.md) for details.
 
