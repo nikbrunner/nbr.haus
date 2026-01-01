@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import profilePicture from "@/assets/images/profile_picture_2.jpg";
+import profilePicture from "@/assets/images/profile_picture.jpg";
 import { CvHeader } from "@/components/cv/CvHeader";
 import { CvInterests } from "@/components/cv/CvInterests";
 import { CvJob } from "@/components/cv/CvJob";
