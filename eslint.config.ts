@@ -19,7 +19,7 @@ export default defineConfig([
   includeIgnoreFile(gitignorePath, "Imported .gitignore patterns"),
   {
     name: "project/ignore-ide-and-tooling-files",
-    ignores: [".claude/*", ".vscode/*", "package-lock.json"]
+    ignores: [".claude/*", ".vscode/*", "docs/ai/*", "package-lock.json"]
   },
   {
     name: "project/javascript-and-typescript-base-config",
@@ -153,6 +153,14 @@ export default defineConfig([
     files: ["src/styles/global.css"],
     rules: {
       "css/no-invalid-properties": "off"
+    }
+  },
+  {
+    name: "project/cv-css-important-exception",
+    // CV route uses !important for print styles to override browser defaults
+    files: ["src/routes/cv.css"],
+    rules: {
+      "css/no-important": "off"
     }
   }
 ]);
