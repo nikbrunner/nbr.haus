@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import CopyButton from "@/components/CopyButton";
+import Flex from "@/components/Flex";
 import Hint from "@/components/Hint";
 import Job from "@/components/Job";
 import LookingForJob from "@/components/LookingForJob";
@@ -44,7 +45,7 @@ function Page() {
                 {
                   label: t.connect.email,
                   value: (
-                    <span className="flex items-center gap-x-2">
+                    <Flex gap="2" align="center" inline>
                       <a href="mailto:nik@nbr.haus">nik@nbr.haus</a>
                       <Hint title={t.connect.copyEmailTooltip}>
                         <CopyButton
@@ -52,7 +53,7 @@ function Page() {
                           ariaLabel={t.connect.copyEmailTooltip}
                         />
                       </Hint>
-                    </span>
+                    </Flex>
                   )
                 },
                 {
@@ -108,7 +109,7 @@ function Page() {
           title={t.shared.sections.about}
           className="IndexPage__section--about"
         >
-          <div className="flex flex-col gap-fluid-4">
+          <Flex direction="column" gap="fluid-4">
             <div>
               <p>
                 {t.about.greeting}
@@ -315,7 +316,7 @@ function Page() {
                 />
               </SpecCard>
             </div>
-          </div>
+          </Flex>
         </Section>
       </div>
 
@@ -386,7 +387,7 @@ function Page() {
         >
           <p style={{ color: "var(--fg-support)" }}>{t.projects.intro}</p>
 
-          <div className="flex flex-col" style={{ gap: "var(--size-10)" }}>
+          <Flex direction="column" gap="10">
             <Project
               title={t.projects.blackAtom.title}
               stack={[tech.typescript, tech.deno, tech.oklch]}
@@ -498,7 +499,7 @@ function Page() {
                 <p key={i}>{p}</p>
               ))}
             </Project>
-          </div>
+          </Flex>
         </Section>
       </div>
     </div>

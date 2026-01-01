@@ -3,7 +3,6 @@
 
 @import "./fonts.css";
 @import "./spacings.css";
-@import "./flex.css";
 @import "./print.css";
 @import "./print-utils.css";
 
@@ -92,12 +91,12 @@ body {
 
   /* Background colors */
   --bg-main: light-dark(
-    oklch(0.95 calc(0.005 * var(--chroma)) var(--hue)),
-    oklch(0.25 calc(0.005 * var(--chroma)) var(--hue))
+    oklch(0.95 calc(0.005 * var(--chroma)) var(--hue-accent)),
+    oklch(0.25 calc(0.005 * var(--chroma)) var(--hue-accent))
   );
   --bg-support: light-dark(
-    oklch(0.9 calc(0.005 * var(--chroma)) var(--hue)),
-    oklch(0.28 calc(0.005 * var(--chroma)) var(--hue))
+    oklch(0.9 calc(0.005 * var(--chroma)) var(--hue-accent)),
+    oklch(0.28 calc(0.005 * var(--chroma)) var(--hue-accent))
   );
   --bg-accent: var(--accent);
   --bg-accent-alt: var(--accent-alt);

@@ -7,6 +7,7 @@ import { CvJob } from "@/components/cv/CvJob";
 import { CvPriorExperience } from "@/components/cv/CvPriorExperience";
 import { CvProject } from "@/components/cv/CvProject";
 import { CvSection } from "@/components/cv/CvSection";
+import Flex from "@/components/Flex";
 import { useTexts } from "@/i18n/useTexts";
 
 export const Route = createFileRoute("/cv")({
@@ -35,7 +36,7 @@ function Page() {
       />
 
       <CvSection id="work-experience" title={t.shared.sections.workExperience}>
-        <div className="flex flex-col gap-y-8">
+        <Flex direction="column" gap="8">
           <CvJob
             company={t.cv.jobs.dealerCenter.company}
             position={t.cv.jobs.dealerCenter.position}
@@ -64,7 +65,7 @@ function Page() {
             intro={t.cv.jobs.campudus.description}
             technologies={t.cv.jobs.campudus.technologies}
           />
-        </div>
+        </Flex>
       </CvSection>
 
       <CvSection id="side-projects" title={t.shared.sections.sideProjects}>

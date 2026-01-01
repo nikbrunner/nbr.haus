@@ -18,7 +18,6 @@ src/styles/
 ├── global.css      # Main entry, imports everything
 ├── fonts.css       # @font-face declarations
 ├── spacings.css    # Spacing utilities
-├── flex.css        # Flex utilities
 ├── print.css       # Print styles
 └── print-utils.css # Print utility classes
 ```
