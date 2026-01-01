@@ -4,6 +4,6 @@
 
 .Hr__line {
   border-top: none;
-  border-bottom: var(--border-size-1) dashed var(--fg-support);
+  border-bottom: var(--border-size-1) dashed var(--color-fg-support);
   margin: var(--size-2) 0;
 }

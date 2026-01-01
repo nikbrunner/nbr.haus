@@ -25,7 +25,7 @@
   grid-area: company;
   font-size: var(--print-font-size-4);
   font-weight: var(--font-weight-9);
-  color: var(--fg-accent);
+  color: var(--color-fg-accent);
   align-self: end;
 }
 
@@ -33,7 +33,7 @@
   grid-area: position;
   font-size: var(--print-font-size-3);
   font-weight: var(--font-weight-7);
-  color: var(--fg-main);
+  color: var(--color-fg-main);
 }
 
 .CvJob__location {
@@ -58,7 +58,7 @@
   display: block;
   font-size: var(--print-font-size-1);
   font-weight: var(--font-weight-6);
-  color: var(--fg-support);
+  color: var(--color-fg-support);
 }
 
 .CvJob__intro {

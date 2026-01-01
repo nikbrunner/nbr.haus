@@ -7,9 +7,9 @@
   position: absolute;
 
   padding: 4px 8px;
-  background: var(--bg-main);
-  border: var(--border-size-1) solid var(--fg-accent);
-  color: var(--fg-main);
+  background: var(--color-bg-main);
+  border: var(--border-size-1) solid var(--color-fg-accent);
+  color: var(--color-fg-main);
 
   font-size: var(--font-size-0);
   font-weight: var(--font-weight-5);

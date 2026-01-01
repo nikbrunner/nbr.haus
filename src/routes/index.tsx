@@ -213,7 +213,7 @@ function Page() {
                 <p
                   style={{
                     padding: "var(--size-2)",
-                    backgroundColor: "var(--bg-main)",
+                    backgroundColor: "var(--color-bg-main)",
                     margin: 0
                   }}
                 >
@@ -385,7 +385,7 @@ function Page() {
           title={t.shared.sections.projects}
           className="IndexPage__section--projects"
         >
-          <p style={{ color: "var(--fg-support)" }}>{t.projects.intro}</p>
+          <p style={{ color: "var(--color-fg-support)" }}>{t.projects.intro}</p>
 
           <Flex direction="column" gap="10">
             <Project

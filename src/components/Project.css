@@ -7,7 +7,7 @@
 .Project__description {
   display: flex;
   flex-direction: column;
-  background-color: var(--bg-main);
+  background-color: var(--color-bg-main);
   padding: var(--size-2);
   gap: var(--size-2);
 

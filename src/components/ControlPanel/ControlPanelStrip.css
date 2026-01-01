@@ -9,10 +9,10 @@
   flex-direction: column;
 
   background: var(--bg-dots);
-  border: var(--border-size-2) solid var(--fg-accent);
+  border: var(--border-size-2) solid var(--color-fg-accent);
 
   cursor: pointer;
-  filter: drop-shadow(5px 5px 0 var(--fg-accent));
+  filter: drop-shadow(5px 5px 0 var(--color-fg-accent));
 }
 
 /* Section wrapper for grouped indicators */
@@ -30,5 +30,5 @@
 
 /* Border between sections */
 .ControlPanelStrip__section + .ControlPanelStrip__section {
-  border-top: var(--border-size-2) solid var(--fg-accent);
+  border-top: var(--border-size-2) solid var(--color-fg-accent);
 }

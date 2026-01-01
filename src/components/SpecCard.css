@@ -1,6 +1,6 @@
 .SpecCard {
   container-type: inline-size;
-  border: var(--border-size-2) solid var(--fg-accent);
+  border: var(--border-size-2) solid var(--color-fg-accent);
   display: flex;
   flex-direction: column;
   gap: var(--size-3);
@@ -11,14 +11,14 @@
 
 .SpecCard__title {
   margin: 0;
-  background-color: var(--bg-main);
-  color: var(--fg-accent);
+  background-color: var(--color-bg-main);
+  color: var(--color-fg-accent);
   padding: var(--size-2) var(--size-3);
-  border-left: var(--border-size-3) solid var(--fg-accent);
+  border-left: var(--border-size-3) solid var(--color-fg-accent);
 }
 
 .SpecCard__description {
   margin: 0;
-  background-color: var(--bg-main);
+  background-color: var(--color-bg-main);
   padding: var(--size-2) var(--size-3);
 }

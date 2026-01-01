@@ -10,8 +10,8 @@
   display: flex;
   flex-direction: column;
 
-  background: var(--bg-main);
-  border: var(--border-size-2) solid var(--fg-accent);
+  background: var(--color-bg-main);
+  border: var(--border-size-2) solid var(--color-fg-accent);
   box-shadow: var(--shadow-hard-5);
 }
 
@@ -24,7 +24,7 @@
 
 /* Border between sections */
 .ControlPanelExpanded__section + .ControlPanelExpanded__section {
-  border-top: var(--border-size-2) dashed var(--fg-accent);
+  border-top: var(--border-size-2) dashed var(--color-fg-accent);
 }
 
 /* Navigation container - two-column layout for routes and sections */

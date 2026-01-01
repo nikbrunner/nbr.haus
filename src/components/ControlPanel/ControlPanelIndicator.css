@@ -5,15 +5,15 @@
   width: var(--control-panel-cell);
   height: var(--control-panel-cell);
 
-  background: var(--bg-main);
+  background: var(--color-bg-main);
   border: none;
 
   font-family: var(--font-family);
   font-size: var(--control-panel-font-size);
   font-weight: var(--font-weight-9);
-  color: var(--fg-main);
+  color: var(--color-fg-main);
 }
 
 .ControlPanelIndicator--disabled {
-  color: var(--fg-minor);
+  color: var(--color-fg-minor);
 }

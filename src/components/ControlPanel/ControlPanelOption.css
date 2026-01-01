@@ -5,13 +5,13 @@
   width: var(--control-panel-cell);
   height: var(--control-panel-cell);
 
-  background: var(--bg-main);
-  border: var(--border-size-2) dashed var(--fg-accent);
+  background: var(--color-bg-main);
+  border: var(--border-size-2) dashed var(--color-fg-accent);
 
   font-family: var(--font-family);
   font-size: var(--control-panel-font-size);
   font-weight: var(--font-weight-9);
-  color: var(--fg-main);
+  color: var(--color-fg-main);
 
   cursor: pointer;
   transition: border-color 0.1s ease-out;
@@ -19,15 +19,15 @@
 
 .ControlPanelOption--active,
 .ControlPanelOption:hover {
-  background: var(--bg-accent);
-  border: var(--border-size-2) solid var(--fg-accent);
-  color: var(--fg-on-accent);
+  background: var(--color-bg-accent);
+  border: var(--border-size-2) solid var(--color-fg-accent);
+  color: var(--color-fg-on-accent);
 }
 
 .ControlPanelOption--disabled {
   pointer-events: none;
   cursor: not-allowed;
-  color: var(--fg-minor);
+  color: var(--color-fg-minor);
 }
 
 .ControlPanelOption--width-auto {

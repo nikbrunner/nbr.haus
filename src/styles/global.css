@@ -65,43 +65,43 @@ body {
   --chroma: 1;
 
   /* Accent colors */
-  --accent: light-dark(
+  --color-accent: light-dark(
     oklch(0.45 calc(0.25 * var(--chroma)) var(--hue-accent)),
     oklch(0.65 calc(0.25 * var(--chroma)) var(--hue-accent))
   );
-  --accent-alt: light-dark(
+  --color-accent-alt: light-dark(
     oklch(0.45 calc(0.25 * var(--chroma)) var(--hue-accent-compl)),
     oklch(0.65 calc(0.25 * var(--chroma)) var(--hue-accent-compl))
   );
 
   /* Background colors */
-  --bg-main: light-dark(
+  --color-bg-main: light-dark(
     oklch(0.95 calc(0.005 * var(--chroma)) var(--hue-accent-compl)),
     oklch(0.25 calc(0.005 * var(--chroma)) var(--hue-accent-compl))
   );
-  --bg-support: light-dark(
+  --color-bg-support: light-dark(
     oklch(0.9 calc(0.005 * var(--chroma)) var(--hue-accent-compl)),
     oklch(0.28 calc(0.005 * var(--chroma)) var(--hue-accent-compl))
   );
-  --bg-accent: var(--accent);
-  --bg-accent-alt: var(--accent-alt);
+  --color-bg-accent: var(--color-accent);
+  --color-bg-accent-alt: var(--color-accent-alt);
 
   /* Foreground colors */
-  --fg-main: light-dark(
+  --color-fg-main: light-dark(
     oklch(0.25 calc(0.01 * var(--chroma)) var(--hue-accent)),
     oklch(0.85 calc(0.01 * var(--chroma)) var(--hue-accent))
   );
-  --fg-support: light-dark(
+  --color-fg-support: light-dark(
     oklch(0.3 calc(0.01 * var(--chroma)) var(--hue-accent)),
     oklch(0.75 calc(0.01 * var(--chroma)) var(--hue-accent))
   );
-  --fg-minor: light-dark(
+  --color-fg-minor: light-dark(
     oklch(0.6 calc(0.01 * var(--chroma)) var(--hue-accent)),
     oklch(0.65 calc(0.01 * var(--chroma)) var(--hue-accent))
   );
-  --fg-accent: var(--accent);
-  --fg-accent-alt: var(--accent-alt);
-  --fg-on-accent: light-dark(
+  --color-fg-accent: var(--color-accent);
+  --color-fg-accent-alt: var(--color-accent-alt);
+  --color-fg-on-accent: light-dark(
     oklch(0.98 calc(0.05 * var(--chroma)) var(--hue-accent)),
     oklch(0.15 calc(0.05 * var(--chroma)) var(--hue-accent))
   );
@@ -118,20 +118,20 @@ body {
 
   --base-layout-top-padding: var(--size-8);
 
-  --shadow-hard-5: 5px 5px 0px var(--fg-accent);
-  --shadow-hard-15: 15px 15px 0px var(--fg-accent);
+  --shadow-hard-5: 5px 5px 0px var(--color-fg-accent);
+  --shadow-hard-15: 15px 15px 0px var(--color-fg-accent);
 
   --accent-picker-size: var(--size-8);
 
   --bg-dots:
-    radial-gradient(var(--fg-accent) 0.5px, transparent 1px) 0 0 / 3px 3px,
-    var(--bg-main);
+    radial-gradient(var(--color-fg-accent) 0.5px, transparent 1px) 0 0 / 3px 3px,
+    var(--color-bg-main);
 
   font-family: var(--font-family);
   line-height: var(--font-lineheight-3);
   font-size: 100%;
-  background-color: var(--bg-main);
-  color: var(--fg-main);
+  background-color: var(--color-bg-main);
+  color: var(--color-fg-main);
 
   /* ControlPanel */
   --control-panel-cell: clamp(36px, 8vw, 44px);
@@ -161,8 +161,8 @@ body {
 }
 
 ::selection {
-  background-color: var(--bg-accent);
-  color: var(--bg-main);
+  background-color: var(--color-bg-accent);
+  color: var(--color-bg-main);
 }
 
 /* Manual color mode overrides */
@@ -177,13 +177,13 @@ html[data-color-mode="dark"] {
 h1 {
   font-size: var(--font-size-fluid-3);
   font-weight: var(--font-weight-9);
-  color: var(--fg-main);
+  color: var(--color-fg-main);
 }
 
 h2 {
   font-size: var(--font-size-fluid-3);
-  border-bottom: var(--border-size-2) dashed var(--fg-accent);
-  color: var(--fg-accent);
+  border-bottom: var(--border-size-2) dashed var(--color-fg-accent);
+  color: var(--color-fg-accent);
   margin-top: 0;
   padding-bottom: var(--size-1);
   text-transform: uppercase;
@@ -194,7 +194,7 @@ h3 {
   font-size: var(--font-size-fluid-2);
   font-weight: var(--font-weight-7);
   line-height: var(--font-lineheight-1);
-  color: var(--fg-main);
+  color: var(--color-fg-main);
 }
 
 p {
@@ -213,17 +213,17 @@ button {
 }
 
 a {
-  color: var(--fg-main);
+  color: var(--color-fg-main);
   font-weight: var(--font-weight-7);
   text-decoration-thickness: 3px;
-  text-decoration-color: var(--fg-accent);
+  text-decoration-color: var(--color-fg-accent);
   text-underline-offset: var(--border-size-2);
 
   &:visited {
-    color: var(--fg-main);
+    color: var(--color-fg-main);
   }
 
   &:hover {
-    color: var(--fg-accent);
+    color: var(--color-fg-accent);
   }
 }

@@ -6,9 +6,9 @@
   display: inline-flex;
   padding: var(--size-1) var(--size-2);
   border: var(--border-size-1) solid var(--tag-color);
-  background-color: var(--bg-main);
+  background-color: var(--color-bg-main);
   cursor: pointer;
-  color: var(--fg-main);
+  color: var(--color-fg-main);
   font-weight: var(--font-weight-7);
   text-decoration: none;
   transition:

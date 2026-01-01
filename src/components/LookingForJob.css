@@ -7,14 +7,14 @@
   gap: var(--size-6);
 
   & h1 {
-    border: var(--border-size-4) solid var(--fg-accent);
-    background: var(--bg-main);
+    border: var(--border-size-4) solid var(--color-fg-accent);
+    background: var(--color-bg-main);
 
     padding: var(--size-4);
     margin: 0;
 
     font-size: var(--font-size-fluid-1);
-    color: var(--fg-accent);
+    color: var(--color-fg-accent);
     text-transform: uppercase;
   }
 }

@@ -14,7 +14,7 @@ const Box = ({ children }: { children: React.ReactNode }) => (
     style={{
       padding: "var(--size-3)",
       background: "var(--bg-alt)",
-      border: "1px solid var(--fg-support)"
+      border: "1px solid var(--color-fg-support)"
     }}
   >
     {children}
@@ -100,7 +100,7 @@ export const JustifyCenter: Story = {
   },
   decorators: [
     Story => (
-      <div style={{ width: "100%", border: "1px dashed var(--fg-support)" }}>
+      <div style={{ width: "100%", border: "1px dashed var(--color-fg-support)" }}>
         <Story />
       </div>
     )
@@ -119,7 +119,7 @@ export const JustifyBetween: Story = {
   },
   decorators: [
     Story => (
-      <div style={{ width: "100%", border: "1px dashed var(--fg-support)" }}>
+      <div style={{ width: "100%", border: "1px dashed var(--color-fg-support)" }}>
         <Story />
       </div>
     )
@@ -137,7 +137,7 @@ export const AlignCenter: Story = {
           style={{
             padding: "var(--size-6)",
             background: "var(--bg-alt)",
-            border: "1px solid var(--fg-support)"
+            border: "1px solid var(--color-fg-support)"
           }}
         >
           Tall Item
@@ -162,7 +162,7 @@ export const Wrap: Story = {
   },
   decorators: [
     Story => (
-      <div style={{ width: "300px", border: "1px dashed var(--fg-support)" }}>
+      <div style={{ width: "300px", border: "1px dashed var(--color-fg-support)" }}>
         <Story />
       </div>
     )

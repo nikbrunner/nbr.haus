@@ -20,8 +20,8 @@ function NavigationDemo({ routes, sections }: NavigationDemoProps) {
   return (
     <div
       style={{
-        background: "var(--bg-main)",
-        border: "var(--border-size-2) solid var(--fg-accent)",
+        background: "var(--color-bg-main)",
+        border: "var(--border-size-2) solid var(--color-fg-accent)",
         padding: "var(--control-panel-padding)"
       }}
     >

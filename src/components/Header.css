@@ -3,8 +3,8 @@
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
   height: var(--header-height);
-  border-bottom: var(--border-size-1) solid var(--fg-accent);
-  background-color: var(--bg-main);
+  border-bottom: var(--border-size-1) solid var(--color-fg-accent);
+  background-color: var(--color-bg-main);
   position: sticky;
   top: 0;
   z-index: 10;
@@ -19,7 +19,7 @@
     margin: 0;
 
     a {
-      color: var(--fg-main);
+      color: var(--color-fg-main);
       text-decoration: none;
 
       &:hover {
@@ -27,7 +27,7 @@
       }
 
       span {
-        color: var(--fg-accent);
+        color: var(--color-fg-accent);
       }
     }
   }

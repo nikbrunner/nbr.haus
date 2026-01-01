@@ -1,7 +1,7 @@
 .Note {
   padding: var(--size-4) var(--size-5);
-  background-color: var(--bg-support);
-  border-left: var(--border-size-3) solid var(--fg-accent);
+  background-color: var(--color-bg-support);
+  border-left: var(--border-size-3) solid var(--color-fg-accent);
   font-size: var(--font-size-fluid-0);
 }
 

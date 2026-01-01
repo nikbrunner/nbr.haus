@@ -18,8 +18,8 @@
   height: var(--control-panel-cell);
   padding-inline: var(--control-panel-gap);
 
-  background: var(--bg-accent);
-  color: var(--fg-on-accent);
+  background: var(--color-bg-accent);
+  color: var(--color-fg-on-accent);
   font-size: var(--control-panel-font-size);
   font-weight: var(--font-weight-9);
 
