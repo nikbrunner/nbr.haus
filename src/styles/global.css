@@ -44,18 +44,6 @@
 @import "../components/ControlPanel/ControlPanelIndicator.css";
 @import "../components/ControlPanel/ControlPanelColorDot.css";
 
-*,
-*::before,
-*::after {
-  transition:
-    color var(--color-transition-duration) var(--color-transition-ease),
-    background-color var(--color-transition-duration) var(--color-transition-ease),
-    border-color var(--color-transition-duration) var(--color-transition-ease),
-    box-shadow var(--color-transition-duration) var(--color-transition-ease),
-    text-decoration-color var(--color-transition-duration)
-      var(--color-transition-ease);
-}
-
 html {
   color-scheme: light dark;
 }
@@ -68,10 +56,6 @@ body {
 }
 
 body {
-  /* Global color transition for smooth theme changes */
-  --color-transition-duration: 0.3s;
-  --color-transition-ease: linear;
-
   /* Accent hue system (oklch wraps hue values automatically, no clamping needed) */
   --hue-accent: 0;
   --hue-accent-compl-degree: 180;
