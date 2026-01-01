@@ -1,14 +1,17 @@
 import { z } from "zod";
 
-// Hue
-export const hues = {
-  green: 90,
-  blue: 165,
-  red: 275
+// Accent (user-selected hue for accent color)
+export const accents = {
+  red: 15,
+  orange: 90,
+  green: 175,
+  blue: 220
 } as const;
-export const hueSchema = z.enum(hues);
-export type Hue = z.infer<typeof hueSchema>;
-export const defaultHue: Hue = hues.green;
+export type Accent = (typeof accents)[keyof typeof accents];
+export const accentSchema = z.coerce
+  .number()
+  .refine((v): v is Accent => Object.values(accents).includes(v as Accent));
+export const defaultAccent: Accent = accents.green;
 
 // Contrast (chroma multiplier)
 export const contrastSchema = z.enum(["low", "base", "high"]);

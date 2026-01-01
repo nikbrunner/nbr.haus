@@ -17,9 +17,9 @@ import {
   ControlPanelStripSection
 } from "@/components/ControlPanel/ControlPanelStrip";
 import Hint from "@/components/Hint";
+import { useAccent } from "@/hooks/useAccent";
 import { useColorMode } from "@/hooks/useColorMode";
 import { useContrast } from "@/hooks/useContrast";
-import { useHue } from "@/hooks/useHue";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 import { useLocale } from "@/i18n/useLocale";
@@ -37,7 +37,7 @@ export default function ControlPanel() {
 
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const { hue, hues, setHue, getAccentHue } = useHue();
+  const { accent, accents, setAccent } = useAccent();
   const { contrast, contrasts, setContrast } = useContrast();
   const { colorMode, colorModes, setColorMode } = useColorMode();
   const { locale, locales, setLocale } = useLocale();
@@ -120,7 +120,7 @@ export default function ControlPanel() {
         {/* Style indicators */}
         <ControlPanelStripSection>
           <ControlPanelIndicator>
-            <ControlPanelColorDot hue={getAccentHue(hue)} />
+            <ControlPanelColorDot hue={accent} />
           </ControlPanelIndicator>
           <Hint title={t.controlPanel.titles.contrast[contrast]} position="left">
             <ControlPanelIndicator>
@@ -241,14 +241,14 @@ export default function ControlPanel() {
         {/* Style options */}
         <ControlPanelExpandedSection>
           <ControlPanelRow label={t.controlPanel.rows.accent}>
-            {Object.values(hues).map(huePresets => (
+            {Object.values(accents).map(accentPreset => (
               <ControlPanelOption
-                key={huePresets}
-                isActive={huePresets === hue}
-                onClick={() => setHue(huePresets)}
-                ariaLabel={`${t.controlPanel.aria.selectAccentHue} ${huePresets}`}
+                key={accentPreset}
+                isActive={accentPreset === accent}
+                onClick={() => setAccent(accentPreset)}
+                ariaLabel={`${t.controlPanel.aria.selectAccentHue} ${accentPreset}`}
               >
-                <ControlPanelColorDot hue={getAccentHue(huePresets)} />
+                <ControlPanelColorDot hue={accentPreset} />
               </ControlPanelOption>
             ))}
           </ControlPanelRow>

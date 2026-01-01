@@ -22,7 +22,7 @@ export const Route = createRootRoute({
   search: {
     middlewares: [
       stripSearchParams(defaultRootSearchParams),
-      retainSearchParams(["hue", "colorMode", "lang"])
+      retainSearchParams(["accent", "colorMode", "lang"])
     ]
   },
   notFoundComponent: NotFound,

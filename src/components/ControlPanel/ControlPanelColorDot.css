@@ -1,6 +1,14 @@
 .ControlPanelColorDot {
-  --background-color: oklch(0.45 0.35 var(--hue-color));
-  --border-color: oklch(from var(--background-color) 0.75 0.25 h);
+  --hue-color-compl: calc(var(--hue-color) + var(--hue-accent-compl-degree));
+
+  --background-color: light-dark(
+    oklch(0.45 calc(0.25 * var(--chroma)) var(--hue-color)),
+    oklch(0.65 calc(0.25 * var(--chroma)) var(--hue-color))
+  );
+  --border-color: light-dark(
+    oklch(0.45 calc(0.25 * var(--chroma)) var(--hue-color-compl)),
+    oklch(0.65 calc(0.25 * var(--chroma)) var(--hue-color-compl))
+  );
 
   display: block;
   background-color: var(--background-color);
