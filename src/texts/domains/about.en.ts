@@ -24,12 +24,14 @@ export const texts = {
       "The technology is fascinating, but it has real limits. Relying too heavily on it means actively unlearning skills and knowledge, <highlight>and maybe most importantly, losing the fun</highlight>.",
     aiUsage:
       "That's why I'm deliberate about how I use it. I use <link>Claude Code</link> as my primary AI assistant. I don't jump from model to model each week, but rather try to learn to get the most out of what I'm given. I think that for the last 1,5 years, Anthropic has built out the best integrations and DX for AI assistance.",
-    mcps: "MCPs",
-    mcpsIntro: "I also use personal slash commands and MCPs where applicable.",
-    mcpsUsed: "These are the most used MCPs for AI assistance.",
+    aiTools: "AI Tools",
+    aiToolsIntro:
+      "I also use personal slash commands and various AI tools where applicable.",
+    aiToolsUsed: "These are my most used tools for AI-assisted development.",
     docLookup: "Documentation Lookup",
     webSearch: "Better Web Search",
     browser: "Browser",
+    issueTracking: "Issue Tracking",
     editor: "Editor:",
     terminal: "Terminal:",
     git: "Git:",

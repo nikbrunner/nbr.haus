@@ -265,11 +265,11 @@ function Page() {
               </Typo.P>
 
               <SpecCard
-                title={t.about.devStack.mcps}
+                title={t.about.devStack.aiTools}
                 description={
                   <>
-                    <Typo.P>{t.about.devStack.mcpsIntro}</Typo.P>
-                    <Typo.P>{t.about.devStack.mcpsUsed}</Typo.P>
+                    <Typo.P>{t.about.devStack.aiToolsIntro}</Typo.P>
+                    <Typo.P>{t.about.devStack.aiToolsUsed}</Typo.P>
                   </>
                 }
               >
@@ -310,6 +310,18 @@ function Page() {
                           rel="noopener noreferrer"
                         >
                           Chrome DevTools
+                        </a>
+                      )
+                    },
+                    {
+                      label: t.about.devStack.issueTracking,
+                      value: (
+                        <a
+                          href="https://github.com/steveyegge/beads"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Beads
                         </a>
                       )
                     }

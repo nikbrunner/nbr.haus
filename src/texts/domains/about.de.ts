@@ -27,12 +27,14 @@ export const texts: Widen<typeof en> = {
       "Die Technologie ist faszinierend, hat aber echte Grenzen. Wer sich zu sehr darauf verlässt, verlernt aktiv Skills und Wissen, <highlight>und verliert vielleicht das Wichtigste: den Spaß</highlight>.",
     aiUsage:
       "Deshalb setze ich KI bewusst ein. <link>Claude Code</link> ist mein primärer KI-Assistent. Wenn eine Aufgabe durch KI-Codegenerierung machbar ist, arbeite ich einen detaillierten Plan aus, lasse <link>Claude Code</link> implementieren und reviewe den Code Schritt für Schritt.",
-    mcps: "MCPs",
-    mcpsIntro: "Außerdem nutze ich persönliche Slash-Commands und MCPs wo sinnvoll.",
-    mcpsUsed: "Das sind die am häufigsten genutzten MCPs für KI-Unterstützung.",
+    aiTools: "KI-Tools",
+    aiToolsIntro:
+      "Außerdem nutze ich persönliche Slash-Commands und verschiedene KI-Tools wo sinnvoll.",
+    aiToolsUsed: "Das sind meine meistgenutzten Tools für KI-gestützte Entwicklung.",
     docLookup: "Dokumentations-Suche",
     webSearch: "Bessere Web-Suche",
     browser: "Browser",
+    issueTracking: "Issue-Tracking",
     editor: "Editor:",
     terminal: "Terminal:",
     git: "Git:",
