@@ -3,7 +3,6 @@ import { useCallback, useEffect, useState } from "react";
 import { useRouter, useRouterState } from "@tanstack/react-router";
 import { ArrowUpToLine, PilcrowRight } from "lucide-react";
 
-import { routeSectionsConfig } from "@/components/ControlPanel/config";
 import { ControlPanelColorDot } from "@/components/ControlPanel/ControlPanelColorDot";
 import {
   ControlPanelExpanded,
@@ -20,6 +19,7 @@ import Hint from "@/components/Hint";
 import { useAccent } from "@/hooks/useAccent";
 import { useColorMode } from "@/hooks/useColorMode";
 import { useContrast } from "@/hooks/useContrast";
+import { useDynamicSections } from "@/hooks/useDynamicSections";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 import { useLocale } from "@/i18n/useLocale";
@@ -45,8 +45,8 @@ export default function ControlPanel() {
   const closePanel = useCallback(() => setIsExpanded(false), []);
   const togglePanel = useCallback(() => setIsExpanded(prev => !prev), []);
 
-  // Get sections for current route
-  const currentSections = routeSectionsConfig[pathname] ?? [];
+  // Get sections dynamically from DOM (works for all pages)
+  const sections = useDynamicSections();
 
   // Handler for section navigation
   // On iOS Safari, smooth scroll fails when competing with panel animation.
@@ -162,7 +162,7 @@ export default function ControlPanel() {
             </div>
 
             {/* Sections column */}
-            {currentSections.length > 0 && (
+            {sections.length > 0 && (
               <div className="ControlPanelExpanded__sections">
                 <ControlPanelRow label={t.controlPanel.rows.sections}>
                   <ControlPanelOption
@@ -189,13 +189,13 @@ export default function ControlPanel() {
                     />
                     {t.shared.sections.top}
                   </ControlPanelOption>
-                  {currentSections.map(section => (
+                  {sections.map(section => (
                     <ControlPanelOption
                       key={section.id}
                       width="full"
                       align="left"
                       onClick={() => handleSectionClick(section.id)}
-                      ariaLabel={`${t.controlPanel.aria.scrollTo} ${t.shared.sections[section.labelKey]}`}
+                      ariaLabel={`${t.controlPanel.aria.scrollTo} ${section.label}`}
                     >
                       <PilcrowRight
                         size={14}
@@ -203,7 +203,7 @@ export default function ControlPanel() {
                         color="var(--color-fg-minor)"
                         style={{ marginRight: "var(--size-2)" }}
                       />
-                      {t.shared.sections[section.labelKey]}
+                      {section.label}
                     </ControlPanelOption>
                   ))}
                 </ControlPanelRow>

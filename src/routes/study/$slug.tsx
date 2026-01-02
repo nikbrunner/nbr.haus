@@ -1,5 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import Markdown from "react-markdown";
+import rehypeSlug from "rehype-slug";
 
 import { Typo } from "@/components/Typo";
 import { useLocale } from "@/i18n/useLocale";
@@ -93,7 +94,7 @@ function StudyPostPage() {
       </header>
 
       <div className="StudyPost__content">
-        <Markdown>{displayPost.content}</Markdown>
+        <Markdown rehypePlugins={[rehypeSlug]}>{displayPost.content}</Markdown>
       </div>
 
       <nav className="StudyPost__nav">
