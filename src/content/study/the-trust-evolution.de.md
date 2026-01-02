@@ -1,14 +1,11 @@
 ---
-title: "Die Vertrauensevolution - Vom Internet zur KI"
+title: "Die Trust Evolution"
+subtitle: "Vom Internet zur KI"
 publishedAt: "Sunday, November 3rd 2024, 1:00:29 pm"
 excerpt: "Wie wir lernten, dem Internet zu vertrauen, und was das für KI bedeutet."
 tags:
   - philosophy
-  - ai
-  - internet
 ---
-
-# Die Vertrauensevolution - Vom Internet zur KI
 
 Beim Lesen von Yuval Noah Hararis [_Nexus_](https://www.amazon.com/Nexus-Brief-History-Information-Networks/dp/059373422X) fiel mir ein Muster auf, das mich schon länger beschäftigt hatte. Harari argumentiert, dass Informationsnetzwerke schon immer die organisierende Kraft der Menschheit waren—von Steinzeitstämmen bis zu modernen Bürokratien. Aber was mich traf, war nicht die Geschichte. Es war, wie perfekt dieses Muster auf das passt, was gerade mit KI geschieht.
 
@@ -22,7 +19,7 @@ Dann verschob sich etwas. Mitte der 2000er war das Internet nicht nur glaubwürd
 
 Dieses Muster—Skepsis zu Akzeptanz zu Abhängigkeit—geschah so allmählich, dass die meisten von uns es nicht bemerkten. Bis es zur Waffe wurde.
 
-## QAnon: Der Machbarkeitsnachweis
+## QAnon: Der Proof of Concept
 
 Im Oktober 2017 begann eine anonyme Figur namens „Q" kryptische Nachrichten auf 4chan zu posten über Schattenregierungen, die die Welt kontrollieren. Was ein Jahrzehnt früher als Randverschwörungstheorie abgetan worden wäre, wurde stattdessen zu einer Massenbewegung. Warum? Weil unser reflexartiges Vertrauen in digitale Quellen bereits etabliert war. Menschen, die einst alles im Internet hinterfragten, behandelten anonyme Posts nun wie das Evangelium.
 
@@ -38,7 +35,7 @@ Das ist keine Verschwörungstheorie. Das sind die [_New York Times_](https://www
 
 Gleichzeitig holt die Forschung auf, was viele von uns spüren. Princetons Center for Information Technology Policy untersucht [„emotionale Abhängigkeit von KI."](https://blog.citp.princeton.edu/2025/08/20/emotional-reliance-on-ai-design-dependency-and-the-future-of-human-connection/) Arbeiten mit Titeln wie [„Illusions of Intimacy"](https://arxiv.org/abs/2505.11649) dokumentieren die psychologischen Risiken von Mensch-KI-Beziehungen. Bindungstheorie—ursprünglich für Eltern-Kind-Beziehungen entwickelt—wird jetzt auf die Beziehung zwischen Menschen und Chatbots angewandt.
 
-Wir beobachten die Vertrauensevolution in Echtzeit, nur schneller. Die Gesellschaft ist jetzt auf schnelle technologische Adoption eingestellt. Die Skepsis-Phase ist kürzer. Die Abhängigkeits-Phase kommt schneller.
+Wir beobachten die Trust Evolution in Echtzeit, nur schneller. Die Gesellschaft ist jetzt auf schnelle technologische Adoption eingestellt. Die Skepsis-Phase ist kürzer. Die Abhängigkeits-Phase kommt schneller.
 
 ## Die Harari-Warnung
 
@@ -50,7 +47,7 @@ Was passiert, wenn „hat eine KI das verifiziert?" das gleiche Gewicht trägt w
 
 ## Wo uns das hinführt
 
-Ich habe keine saubere Schlussfolgerung. Die Vertrauensevolution ist nichts, was wir aufhalten können—es ist ein Muster so alt wie die menschliche Zivilisation, nur beschleunigt. Was wir tun können, ist es zu erkennen, während es geschieht.
+Ich habe keine saubere Schlussfolgerung. Die Trust Evolution ist nichts, was wir aufhalten können—es ist ein Muster so alt wie die menschliche Zivilisation, nur beschleunigt. Was wir tun können, ist es zu erkennen, während es geschieht.
 
 Das Internet hat uns gelehrt, dass Vertrauen, einmal einer Technologie gegeben, schwer zurückzunehmen ist. Es formt um, wie wir denken, wie wir uns organisieren, wie wir bestimmen, was real ist. KI wird das Gleiche tun, wahrscheinlich schneller und tiefer.
 
