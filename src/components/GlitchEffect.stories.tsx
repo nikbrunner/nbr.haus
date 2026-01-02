@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import GlitchEffect from "@/components/GlitchEffect";
+import { Typo } from "@/components/Typo";
 
 const meta: Meta<typeof GlitchEffect> = {
   title: "Components/GlitchEffect",
@@ -36,18 +37,18 @@ export const WithScanlines: Story = {
 
 export const OnHeading: Story = {
   render: () => (
-    <h1 style={{ fontSize: "3rem", fontWeight: "bold" }}>
+    <Typo.H1 style={{ fontSize: "3rem", fontWeight: "bold" }}>
       <GlitchEffect>Hello World</GlitchEffect>
-    </h1>
+    </Typo.H1>
   )
 };
 
 export const MultipleInstances: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-      <p style={{ marginBottom: "1rem", opacity: 0.7 }}>
+      <Typo.P style={{ marginBottom: "1rem", opacity: 0.7 }}>
         Each instance has randomized timing - watch how they glitch independently:
-      </p>
+      </Typo.P>
       {Array.from({ length: 6 }).map((_, i) => (
         <div key={i} style={{ fontSize: "1.25rem" }}>
           <GlitchEffect>Instance {i + 1}</GlitchEffect>

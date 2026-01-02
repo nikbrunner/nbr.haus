@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import Flex from "@/components/Flex";
+import { Typo } from "@/components/Typo";
 
 const meta: Meta<typeof Flex> = {
   component: Flex
@@ -182,9 +183,9 @@ export const InlineFlex: Story = {
   },
   decorators: [
     Story => (
-      <p>
+      <Typo.P>
         This is text with <Story /> in the middle.
-      </p>
+      </Typo.P>
     )
   ]
 };

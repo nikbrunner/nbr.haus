@@ -4,6 +4,7 @@ import Button from "@/components/Button";
 import CopyButton from "@/components/CopyButton";
 import GlitchEffect from "@/components/GlitchEffect";
 import Hint from "@/components/Hint";
+import { Typo } from "@/components/Typo";
 import { Trans } from "@/i18n/Trans";
 
 interface Props {
@@ -24,9 +25,9 @@ export default function LookingForJob({
   return (
     <div className={cx("LookingForJob", className)}>
       <GlitchEffect scanlines>
-        <h1>
+        <Typo.H1>
           <Trans>{title}</Trans>
-        </h1>
+        </Typo.H1>
       </GlitchEffect>
       <div className="LookingForJob__actions">
         <Button variant="accent" size="large" asChild>

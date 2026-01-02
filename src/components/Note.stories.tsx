@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import Note from "@/components/Note";
+import { Typo } from "@/components/Typo";
 
 const meta: Meta<typeof Note> = {
   component: Note
@@ -19,10 +20,10 @@ export const Default: Story = {
 export const WithParagraph: Story = {
   args: {
     children: (
-      <p>
+      <Typo.P>
         This note contains a paragraph with more detailed information that needs to
         be highlighted for the reader.
-      </p>
+      </Typo.P>
     )
   }
 };

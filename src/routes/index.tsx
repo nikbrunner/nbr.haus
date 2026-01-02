@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import CopyButton from "@/components/CopyButton";
 import Flex from "@/components/Flex";
+import { Typo } from "@/components/Typo";
 import Hint from "@/components/Hint";
 import Job from "@/components/Job";
 import LookingForJob from "@/components/LookingForJob";
@@ -111,24 +112,24 @@ function Page() {
         >
           <Flex direction="column" gap="fluid-4">
             <div>
-              <p>
+              <Typo.P>
                 {t.about.greeting}
                 <br />
                 <br />
                 <Trans>
                   {t.about.intro.replace("{years}", String(experienceInYears))}
                 </Trans>
-              </p>
-              <p>
+              </Typo.P>
+              <Typo.P>
                 <Trans>{t.about.ux}</Trans>
-              </p>
-              <p>{t.about.independence}</p>
-              <p>
+              </Typo.P>
+              <Typo.P>{t.about.independence}</Typo.P>
+              <Typo.P>
                 <Trans>{t.about.passion}</Trans>
-              </p>
-              <p>
+              </Typo.P>
+              <Typo.P>
                 <Trans>{t.about.personal}</Trans>
-              </p>
+              </Typo.P>
               <Note>{t.about.iAnecdote}</Note>
             </div>
 
@@ -210,7 +211,7 @@ function Page() {
                   padding="small"
                   gridTemplateColumns="0.75fr 1fr"
                 />
-                <p
+                <Typo.P
                   style={{
                     padding: "var(--size-2)",
                     backgroundColor: "var(--color-bg-main)",
@@ -232,20 +233,20 @@ function Page() {
                   >
                     {t.about.devStack.workflowInfo}
                   </Trans>
-                </p>
+                </Typo.P>
               </SpecCard>
             </div>
 
             <div>
-              <h3>{t.about.devStack.ai}</h3>
-              <p>
+              <Typo.H3>{t.about.devStack.ai}</Typo.H3>
+              <Typo.P>
                 <Trans>{t.about.devStack.aiIntro}</Trans>
-              </p>
-              <p>{t.about.devStack.aiLearning}</p>
-              <p>
+              </Typo.P>
+              <Typo.P>{t.about.devStack.aiLearning}</Typo.P>
+              <Typo.P>
                 <Trans>{t.about.devStack.aiLimitsInfo}</Trans>
-              </p>
-              <p className="mb-6">
+              </Typo.P>
+              <Typo.P className="mb-6">
                 <Trans
                   components={{
                     link: children => (
@@ -261,14 +262,14 @@ function Page() {
                 >
                   {t.about.devStack.aiUsage}
                 </Trans>
-              </p>
+              </Typo.P>
 
               <SpecCard
                 title={t.about.devStack.mcps}
                 description={
                   <>
-                    <p>{t.about.devStack.mcpsIntro}</p>
-                    <p>{t.about.devStack.mcpsUsed}</p>
+                    <Typo.P>{t.about.devStack.mcpsIntro}</Typo.P>
+                    <Typo.P>{t.about.devStack.mcpsUsed}</Typo.P>
                   </>
                 }
               >
@@ -355,7 +356,7 @@ function Page() {
             ]}
           >
             {t.jobs.dealerCenter.paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
+              <Typo.P key={i}>{p}</Typo.P>
             ))}
           </Job>
 
@@ -365,7 +366,7 @@ function Page() {
             period={t.jobs.divaE.period}
             tech={[tech.react, tech.typescript, tech.scss, tech.nodejs]}
           >
-            <p>{t.jobs.divaE.description}</p>
+            <Typo.P>{t.jobs.divaE.description}</Typo.P>
           </Job>
 
           <Job
@@ -374,7 +375,7 @@ function Page() {
             period={t.jobs.campudus.period}
             tech={[tech.react, tech.nodejs]}
           >
-            <p>{t.jobs.campudus.description}</p>
+            <Typo.P>{t.jobs.campudus.description}</Typo.P>
           </Job>
         </Section>
       </div>
@@ -385,7 +386,7 @@ function Page() {
           title={t.shared.sections.projects}
           className="IndexPage__section--projects"
         >
-          <p style={{ color: "var(--color-fg-support)" }}>{t.projects.intro}</p>
+          <Typo.P style={{ color: "var(--color-fg-support)" }}>{t.projects.intro}</Typo.P>
 
           <Flex direction="column" gap="10">
             <Project
@@ -413,7 +414,7 @@ function Page() {
               ]}
             >
               {t.projects.blackAtom.paragraphs.map((p, i) => (
-                <p key={i}>{p}</p>
+                <Typo.P key={i}>{p}</Typo.P>
               ))}
             </Project>
 
@@ -428,7 +429,7 @@ function Page() {
               }}
             >
               {t.projects.awdcs.paragraphs.map((p, i) => (
-                <p key={i}>{p}</p>
+                <Typo.P key={i}>{p}</Typo.P>
               ))}
             </Project>
 
@@ -449,7 +450,7 @@ function Page() {
               }}
             >
               {t.projects.koyo.paragraphs.map((p, i) => (
-                <p key={i}>{p}</p>
+                <Typo.P key={i}>{p}</Typo.P>
               ))}
             </Project>
 
@@ -470,7 +471,7 @@ function Page() {
               }}
             >
               {t.projects.nbrNvim.paragraphs.map((p, i) => (
-                <p key={i}>{p}</p>
+                <Typo.P key={i}>{p}</Typo.P>
               ))}
             </Project>
 
@@ -496,7 +497,7 @@ function Page() {
               ]}
             >
               {t.projects.nbrHaus.paragraphs.map((p, i) => (
-                <p key={i}>{p}</p>
+                <Typo.P key={i}>{p}</Typo.P>
               ))}
             </Project>
           </Flex>
