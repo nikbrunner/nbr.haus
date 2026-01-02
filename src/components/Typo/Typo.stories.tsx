@@ -242,3 +242,161 @@ export const HighlightUsage: StoryObj = {
     </div>
   )
 };
+
+export const LeadText: StoryObj = {
+  name: "Lead",
+  render: () => (
+    <div>
+      <Typo.H2>Introduction Section</Typo.H2>
+      <Typo.Lead>
+        This is lead text, used for introductory paragraphs that need to stand out
+        from regular body copy. It has a larger font size and bolder weight.
+      </Typo.Lead>
+      <Typo.P>
+        Regular paragraph text follows the lead. Notice the visual hierarchy created
+        by the size and weight difference between lead and body text.
+      </Typo.P>
+    </div>
+  )
+};
+
+export const SmallText: StoryObj = {
+  name: "Small",
+  render: () => (
+    <div>
+      <Typo.H3>Form Field</Typo.H3>
+      <Typo.P>Enter your email address</Typo.P>
+      <Typo.Small>We will never share your email with anyone else.</Typo.Small>
+
+      <Typo.H3>Article Footer</Typo.H3>
+      <Typo.Small color="minor">
+        Published on January 2, 2026 · 5 min read
+      </Typo.Small>
+    </div>
+  )
+};
+
+export const InlineCodeUsage: StoryObj = {
+  name: "InlineCode",
+  render: () => (
+    <div>
+      <Typo.P>
+        Use <Typo.InlineCode>npm install</Typo.InlineCode> to install dependencies.
+        The <Typo.InlineCode>package.json</Typo.InlineCode> file contains all project
+        metadata.
+      </Typo.P>
+
+      <Typo.P color="support">
+        Run <Typo.InlineCode>npm run dev</Typo.InlineCode> to start the development
+        server on <Typo.InlineCode>localhost:3000</Typo.InlineCode>.
+      </Typo.P>
+    </div>
+  )
+};
+
+export const BlockquoteUsage: StoryObj = {
+  name: "Blockquote",
+  render: () => (
+    <div>
+      <Typo.P>Here is an inspiring quote:</Typo.P>
+      <Typo.Blockquote>
+        The best way to predict the future is to invent it.
+      </Typo.Blockquote>
+      <Typo.Small color="minor">— Alan Kay</Typo.Small>
+
+      <Typo.P>Another example with accent color:</Typo.P>
+      <Typo.Blockquote color="accent">
+        Code is like humor. When you have to explain it, it is bad.
+      </Typo.Blockquote>
+    </div>
+  )
+};
+
+export const ListsUsage: StoryObj = {
+  name: "Lists",
+  render: () => (
+    <div>
+      <Typo.H3>Technologies Used</Typo.H3>
+      <Typo.UnorderedList>
+        <li>React 19 with Server Components</li>
+        <li>TypeScript for type safety</li>
+        <li>TanStack Router for file-based routing</li>
+        <li>CSS Modules with Open Props</li>
+      </Typo.UnorderedList>
+
+      <Typo.H3>Getting Started</Typo.H3>
+      <Typo.OrderedList>
+        <li>Clone the repository</li>
+        <li>Install dependencies with npm install</li>
+        <li>Run npm run dev to start development</li>
+        <li>Open localhost:3000 in your browser</li>
+      </Typo.OrderedList>
+
+      <Typo.H3>Minor Color Lists</Typo.H3>
+      <Typo.UnorderedList color="minor">
+        <li>Secondary information</li>
+        <li>Less important details</li>
+        <li>Supporting content</li>
+      </Typo.UnorderedList>
+    </div>
+  )
+};
+
+export const FullArticleWithNewComponents: StoryObj = {
+  name: "Full Article (All Components)",
+  render: () => (
+    <article>
+      <Typo.H1>Getting Started with TanStack Router</Typo.H1>
+      <Typo.Lead>
+        A comprehensive guide to building type-safe, file-based routing in React
+        applications using TanStack Router.
+      </Typo.Lead>
+
+      <Typo.H2>Introduction</Typo.H2>
+      <Typo.P>
+        TanStack Router is a fully type-safe router for React applications. It
+        provides excellent developer experience with features like automatic code
+        splitting and search param validation.
+      </Typo.P>
+
+      <Typo.Blockquote>
+        Type safety is not just about catching bugs early—it is about enabling
+        fearless refactoring and better tooling support.
+      </Typo.Blockquote>
+
+      <Typo.H2>Installation</Typo.H2>
+      <Typo.P>
+        First, install the package using <Typo.InlineCode>npm</Typo.InlineCode>:
+      </Typo.P>
+      <Typo.P>
+        Run <Typo.InlineCode>npm install @tanstack/react-router</Typo.InlineCode> in
+        your project directory.
+      </Typo.P>
+
+      <Typo.H3>Prerequisites</Typo.H3>
+      <Typo.UnorderedList>
+        <li>Node.js 18 or higher</li>
+        <li>React 18 or higher</li>
+        <li>TypeScript 5.0+ recommended</li>
+      </Typo.UnorderedList>
+
+      <Typo.H3>Setup Steps</Typo.H3>
+      <Typo.OrderedList>
+        <li>Install the router package</li>
+        <li>Configure the router in your app entry point</li>
+        <li>Create your first route file</li>
+        <li>Add navigation components</li>
+      </Typo.OrderedList>
+
+      <Typo.H2>Best Practices</Typo.H2>
+      <Typo.P>
+        When building with TanStack Router, keep these{" "}
+        <Typo.Highlight>key principles</Typo.Highlight> in mind.
+      </Typo.P>
+
+      <Typo.Small color="minor">
+        Last updated: January 2, 2026 · Reading time: 8 minutes
+      </Typo.Small>
+    </article>
+  )
+};

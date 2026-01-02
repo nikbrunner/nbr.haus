@@ -1,0 +1,40 @@
+.StudyPostMeta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-3);
+}
+
+.StudyPostMeta__date {
+  font-size: var(--font-size-0);
+  color: var(--color-fg-minor);
+  font-weight: var(--font-weight-5);
+}
+
+.StudyPostMeta__reading-time {
+  font-size: var(--font-size-0);
+  color: var(--color-fg-minor);
+}
+
+.StudyPostMeta__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--size-2);
+}
+
+.StudyPostMeta__tag {
+  font-size: var(--font-size-00);
+  font-weight: var(--font-weight-6);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-fg-accent);
+  padding: var(--size-1) var(--size-2);
+  border: var(--border-size-1) solid var(--color-fg-accent);
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.StudyPostMeta__tag:hover {
+  background-color: var(--color-fg-accent);
+  color: var(--color-fg-on-accent);
+}

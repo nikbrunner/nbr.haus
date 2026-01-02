@@ -9,6 +9,7 @@
 /* Routes */
 @import "../routes/index.css";
 @import "../routes/cv.css";
+@import "../routes/study/route.css";
 
 /* Components */
 @import "../components/Flex.css";
@@ -51,6 +52,16 @@
 @import "../components/Typo/Typo.H3.css";
 @import "../components/Typo/Typo.H4.css";
 @import "../components/Typo/Typo.P.css";
+@import "../components/Typo/Typo.Blockquote.css";
+@import "../components/Typo/Typo.Highlight.css";
+@import "../components/Typo/Typo.InlineCode.css";
+@import "../components/Typo/Typo.Lead.css";
+@import "../components/Typo/Typo.List.css";
+@import "../components/Typo/Typo.Small.css";
+
+/* Study */
+@import "../components/study/StudyPostCard.css";
+@import "../components/study/StudyPostMeta.css";
 
 html {
   color-scheme: light dark;

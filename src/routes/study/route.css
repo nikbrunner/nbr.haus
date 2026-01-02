@@ -1,0 +1,163 @@
+.StudyLayout {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-6);
+  max-width: 75ch;
+  padding: var(--base-layout-top-padding) var(--size-6);
+}
+
+/* Study Index Page */
+.StudyIndex {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-6);
+}
+
+.StudyIndex__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-4);
+}
+
+/* Study Post Page */
+.StudyPost {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-8);
+}
+
+.StudyPost__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-4);
+  padding-bottom: var(--size-6);
+  border-bottom: var(--border-size-2) solid var(--color-fg-accent);
+}
+
+.StudyPost__back {
+  color: var(--color-fg-minor);
+  text-decoration: none;
+  font-size: var(--font-size-0);
+  font-weight: var(--font-weight-6);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color 0.15s ease;
+}
+
+.StudyPost__back:hover {
+  color: var(--color-fg-accent);
+}
+
+.StudyPost__title-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-2);
+}
+
+/* Markdown content container */
+.StudyPost__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-5);
+  line-height: var(--font-lineheight-4);
+}
+
+/* Add accent touch to H2 headings in content */
+.StudyPost__content h2 {
+  margin-top: var(--size-4);
+  padding-bottom: var(--size-2);
+  border-bottom: var(--border-size-1) dashed var(--color-fg-minor);
+}
+
+/* H3 styling */
+.StudyPost__content h3 {
+  margin-top: var(--size-3);
+  color: var(--color-fg-support);
+}
+
+/* Better paragraph spacing */
+.StudyPost__content p + p {
+  margin-top: var(--size-2);
+}
+
+/* List styling within prose */
+.StudyPost__content ul,
+.StudyPost__content ol {
+  padding-left: var(--size-6);
+}
+
+/* Blockquote styling */
+.StudyPost__content blockquote {
+  border-left: var(--border-size-3) solid var(--color-fg-accent);
+  padding-left: var(--size-4);
+  margin-left: 0;
+  color: var(--color-fg-support);
+}
+
+/* Code blocks */
+.StudyPost__content pre {
+  background: var(--color-bg-support);
+  padding: var(--size-4);
+  overflow-x: auto;
+  border: var(--border-size-1) solid var(--color-fg-minor);
+  font-size: var(--font-size-0);
+  line-height: var(--font-lineheight-3);
+}
+
+.StudyPost__content pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Links within content */
+.StudyPost__content a {
+  color: var(--color-fg-accent);
+  text-decoration-color: var(--color-fg-accent);
+}
+
+.StudyPost__content a:hover {
+  color: var(--color-fg-main);
+  background-color: var(--color-fg-accent);
+  text-decoration: none;
+  padding: 0 var(--size-1);
+  margin: 0 calc(var(--size-1) * -1);
+}
+
+/* Emphasis styling */
+.StudyPost__content em {
+  color: var(--color-fg-support);
+  font-style: italic;
+}
+
+/* Post navigation */
+.StudyPost__nav {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--size-4);
+  padding-top: var(--size-6);
+  border-top: var(--border-size-2) solid var(--color-fg-accent);
+  margin-top: var(--size-4);
+}
+
+.StudyPost__nav-link {
+  color: var(--color-fg-minor);
+  text-decoration: none;
+  font-size: var(--font-size-0);
+  font-weight: var(--font-weight-6);
+  max-width: 45%;
+  transition: color 0.15s ease;
+}
+
+.StudyPost__nav-link:hover {
+  color: var(--color-fg-accent);
+}
+
+.StudyPost__nav-link--prev {
+  text-align: left;
+}
+
+.StudyPost__nav-link--next {
+  text-align: right;
+  margin-left: auto;
+}

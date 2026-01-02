@@ -112,14 +112,14 @@ function Page() {
         >
           <Flex direction="column" gap="fluid-4">
             <div>
-              <Typo.P>
+              <Typo.Lead>
                 {t.about.greeting}
                 <br />
                 <br />
                 <Trans>
                   {t.about.intro.replace("{years}", String(experienceInYears))}
                 </Trans>
-              </Typo.P>
+              </Typo.Lead>
               <Typo.P>
                 <Trans>{t.about.ux}</Trans>
               </Typo.P>
