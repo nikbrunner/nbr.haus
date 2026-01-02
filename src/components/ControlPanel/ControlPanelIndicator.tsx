@@ -5,8 +5,8 @@ const variants = cva("ControlPanelIndicator", {
     disabled: {
       true: "ControlPanelIndicator--disabled"
     },
-    multiline: {
-      true: "ControlPanelIndicator--multiline"
+    rotated: {
+      true: "ControlPanelIndicator--rotated"
     }
   }
 });
@@ -14,8 +14,8 @@ const variants = cva("ControlPanelIndicator", {
 interface Props {
   /** Whether the indicator is visually disabled (grayed out) */
   disabled?: boolean;
-  /** Allow content to wrap vertically (for paths with multiple segments) */
-  multiline?: boolean;
+  /** Rotate text vertically (for path display) */
+  rotated?: boolean;
   /** Content to render inside the indicator */
   children: React.ReactNode;
 }
@@ -24,6 +24,6 @@ interface Props {
  * ControlPanelIndicator - Display-only cell for the indicator column.
  * Always renders as a div, shows current value without interactivity.
  */
-export function ControlPanelIndicator({ disabled, multiline, children }: Props) {
-  return <div className={variants({ disabled, multiline })}>{children}</div>;
+export function ControlPanelIndicator({ disabled, rotated, children }: Props) {
+  return <div className={variants({ disabled, rotated })}>{children}</div>;
 }
