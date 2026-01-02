@@ -1,10 +1,59 @@
-# Typo Component System Implementation Plan
+# Typo Component System
 
-## Overview
+## Status: Phase 1 Complete
 
-Create a unified typography component system that becomes the single source of truth, replacing global CSS typography rules.
+## Completed
 
-## API Design
+### Core Infrastructure
+- Types (`Typo.types.ts`), colors (`Typo.colors.ts`), base CSS
+- Components: H1, H2 (with decorated variant), H3, H4, P, Highlight
+- Prose-friendly default margins
+- Storybook stories
+
+### Flex Refactor
+- Converted to CSS classes via CVA
+- Gap via CSS custom property
+- `resetChildMargins` prop (default: `false`)
+
+### Migration
+- Section, Job, SpecCard, NotFound use Typo components
+- Removed global h1/h2/h3/p rules from `global.css`
+- Highlight migrated to Typo.Highlight
+- `src/routes/index.tsx` - ~20 `<p>` → `<Typo.P>`, 1 `<h3>` → `<Typo.H3>`
+- `src/components/LookingForJob.tsx` - `<h1>` → `<Typo.H1>`
+- Story files (Flex, Note, GlitchEffect) migrated
+
+### Skipped (Intentional)
+- `src/components/Header.tsx` - Logo intentionally lowercase
+- `src/components/cv/*` - Print-specific styles, migrate separately
+
+---
+
+## Future Work
+
+### Missing Components
+
+| Component | Purpose | Priority |
+|-----------|---------|----------|
+| `Lead` | Larger intro paragraphs | Medium |
+| `Small` | Small/caption text | Medium |
+| `Large` | Emphasized large text | Low |
+| `Blockquote` | Quoted text blocks | Low |
+| `InlineCode` | Inline code snippets | Low |
+| `UnorderedList` | Styled `<ul>` | Low |
+| `OrderedList` | Styled `<ol>` | Low |
+
+### CV Components Migration
+- `cv/CvHeader.tsx` - `<h1>`
+- `cv/CvJob.tsx` - `<h3>`, `<p>`
+- `cv/CvProject.tsx` - `<h3>`
+- `cv/CvSection.tsx` - `<h2>`
+
+Note: CV has print-specific styles that need careful handling.
+
+---
+
+## API Reference
 
 ```tsx
 // Two orthogonal props
@@ -16,147 +65,21 @@ Create a unified typography component system that becomes the single source of t
 ```
 
 **Props:**
-
 - `color`: main (default) | support | minor | accent | accentAlt
 - `variant`: element-specific (e.g., H2 has "default" | "decorated")
 
-**Defaults match current global.css:**
-
-- H1, H3, H4, P, etc.: `color="main"`
-- H2: `color="accent" variant="decorated"` (preserves current Section styling)
-
-## File Structure
-
-```text
+**File Structure:**
+```
 src/components/Typo/
-├── index.ts              # Barrel file (exports Typo + typoVariants)
-├── Typo.types.ts         # Shared types (TypoColor, etc.)
-├── Typo.colors.ts        # Shared color variant definitions
-├── Typo.css              # Shared color classes
+├── index.ts
+├── Typo.types.ts
+├── Typo.colors.ts
+├── Typo.css
 ├── Typo.H1.tsx + .css
 ├── Typo.H2.tsx + .css
 ├── Typo.H3.tsx + .css
 ├── Typo.H4.tsx + .css
 ├── Typo.P.tsx + .css
-├── Typo.Small.tsx + .css
-├── Typo.Large.tsx + .css
-├── Typo.Lead.tsx + .css
-├── Typo.UnorderedList.tsx + .css
-├── Typo.OrderedList.tsx + .css
-├── Typo.Blockquote.tsx + .css
-├── Typo.InlineCode.tsx + .css
+├── Typo.Highlight.tsx + .css
 └── Typo.stories.tsx
-```
-
-## Implementation Steps
-
-### 1. Create shared infrastructure
-
-- `Typo.types.ts` - TypoColor type
-- `Typo.colors.ts` - Color variant config for CVA
-- `Typo.css` - Shared `.Typo--color-*` classes
-
-### 2. Create components (in order)
-
-1. `Typo.P` (most used)
-2. `Typo.H1`
-3. `Typo.H2` (with "default" and "decorated" variants)
-4. `Typo.H3`
-5. `Typo.H4`
-6. `Typo.Small`
-7. `Typo.Large`
-8. `Typo.Lead`
-9. `Typo.UnorderedList` (no color prop)
-10. `Typo.OrderedList` (no color prop)
-11. `Typo.Blockquote` (no color prop)
-12. `Typo.InlineCode` (no color prop)
-
-### 3. Create barrel file
-
-- `index.ts` exports `Typo` object and `typoVariants`
-
-### 4. Add CSS imports to global.css
-
-### 5. Create Storybook stories
-
-### 6. Migrate usage
-
-**Routes:**
-
-- `src/routes/index.tsx` - raw `<p>`, `<h3>` tags
-- `src/routes/cv.tsx` - raw `<p>` tags
-
-**Components:**
-
-- `Section.tsx` - `<h2>` → `<Typo.H2>` (default props work)
-- `Header.tsx` - `<h1>`
-- `Job.tsx` - `<h3>`
-- `SpecCard.tsx` - `<h3>`
-- `LookingForJob.tsx` - `<h1>`
-- `NotFound.tsx` - `<h1>`
-- `cv/CvHeader.tsx` - `<h1>`
-- `cv/CvJob.tsx` - `<h3>`, `<p>`
-- `cv/CvProject.tsx` - `<h3>`
-- `cv/CvSection.tsx` - `<h2>`
-
-### 7. Remove global typography styles
-
-Delete lines 177-204 from `src/styles/global.css` (h1, h2, h3, p rules).
-Keep `strong`, `button`, and `a` rules.
-
-## Key Files
-
-- `src/styles/global.css` (lines 177-204) - Typography rules to migrate/remove
-- Reference: `/Users/nbr/repos/dealercenter-digital/bc-web-client-poc/frontend/src/components/Typo.tsx`
-
-## Component Example: Typo.H2
-
-```tsx
-// Typo.H2.tsx
-import { cva, cx, type VariantProps } from "class-variance-authority";
-
-import { colorVariants, type TypoColor } from "./Typo.colors";
-
-import "./Typo.H2.css";
-
-export const h2Variants = cva("Typo-H2", {
-  variants: {
-    color: colorVariants,
-    variant: {
-      default: "",
-      decorated: "Typo-H2--decorated"
-    }
-  },
-  defaultVariants: {
-    color: "accent", // Match current global.css
-    variant: "decorated" // Match current global.css
-  }
-});
-
-interface Props
-  extends React.ComponentProps<"h2">,
-    VariantProps<typeof h2Variants> {}
-
-export function H2({ children, className, color, variant, ...props }: Props) {
-  return (
-    <h2 className={cx(h2Variants({ color, variant }), className)} {...props}>
-      {children}
-    </h2>
-  );
-}
-```
-
-```css
-/* Typo.H2.css */
-.Typo-H2 {
-  font-size: var(--font-size-fluid-3);
-  font-weight: var(--font-weight-9);
-  margin-top: 0;
-}
-
-.Typo-H2--decorated {
-  border-bottom: var(--border-size-2) dashed var(--color-fg-accent);
-  padding-bottom: var(--size-1);
-  text-transform: uppercase;
-}
 ```
