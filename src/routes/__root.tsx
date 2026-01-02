@@ -11,6 +11,7 @@ import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
 import NotFound from "@/components/NotFound";
 import ControlPanel from "@/partials/ControlPanel";
+import themeBlockingScript from "@/scripts/theme-blocking.js?raw";
 import globalCss from "@/styles/global.css?url";
 import {
   defaultRootSearchParams,
@@ -189,29 +190,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     <html lang="en" style={{ scrollBehavior: "smooth" }} suppressHydrationWarning>
       <head>
         <HeadContent />
-        {/* Blocking script to prevent flash of incorrect color scheme */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var params = new URLSearchParams(window.location.search);
-                  var colorMode = params.get('colorMode');
-
-                  if (!colorMode || (colorMode !== 'light' && colorMode !== 'dark')) {
-                    colorMode = localStorage.getItem('colorMode');
-                  }
-
-                  if (colorMode === 'light' || colorMode === 'dark') {
-                    document.documentElement.setAttribute('data-color-mode', colorMode);
-                  }
-                } catch (e) {}
-              })();
-            `
-          }}
-        />
       </head>
-      <body>
+      <body suppressHydrationWarning>
+        {/* Blocking script to prevent flash of incorrect theme - see src/scripts/theme-blocking.js */}
+        <script dangerouslySetInnerHTML={{ __html: themeBlockingScript }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

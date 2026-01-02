@@ -1,3 +1,7 @@
+/**
+ * IMPORTANT: Keep color mode logic in sync with src/scripts/theme-blocking.js
+ */
+
 import { useCallback, useEffect } from "react";
 
 import { useHydrated, useRouter, useSearch } from "@tanstack/react-router";

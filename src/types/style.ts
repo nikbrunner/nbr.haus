@@ -1,5 +1,9 @@
 import { z } from "zod";
 
+/**
+ * IMPORTANT: Keep accent values in sync with src/scripts/theme-blocking.js
+ */
+
 // Accent (user-selected hue for accent color)
 export const accents = {
   red: 15,
