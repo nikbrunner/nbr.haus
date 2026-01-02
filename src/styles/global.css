@@ -9,6 +9,7 @@
 /* Routes */
 @import "../routes/index.css";
 @import "../routes/cv.css";
+@import "../routes/study/route.css";
 
 /* Components */
 @import "../components/Flex.css";
