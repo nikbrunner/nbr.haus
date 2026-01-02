@@ -58,6 +58,10 @@
 @import "../components/Typo/Typo.List.css";
 @import "../components/Typo/Typo.Small.css";
 
+/* Study */
+@import "../components/study/StudyPostCard.css";
+@import "../components/study/StudyPostMeta.css";
+
 html {
   color-scheme: light dark;
 }

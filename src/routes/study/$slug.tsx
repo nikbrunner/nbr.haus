@@ -1,7 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import Markdown from "react-markdown";
-import rehypeSlug from "rehype-slug";
 
+import { StudyPostContent, StudyPostMeta } from "@/components/study";
 import { Typo } from "@/components/Typo";
 import { useLocale } from "@/i18n/useLocale";
 import { getAdjacentPosts, getPostBySlug, type StudyPost } from "@/lib/study";
@@ -81,21 +80,17 @@ function StudyPostPage() {
           ← Back to Study
         </Link>
         <Typo.H1>{displayPost.frontmatter.title}</Typo.H1>
-        <Typo.P color="minor">
-          {displayPost.frontmatter.publishedAt} · {displayPost.readingTime} min read
-        </Typo.P>
-        <div className="StudyPost__tags">
-          {displayPost.frontmatter.tags.map((tag: string) => (
-            <span key={tag} className="StudyPost__tag">
-              {tag}
-            </span>
-          ))}
-        </div>
+        <StudyPostMeta
+          publishedAt={displayPost.frontmatter.publishedAt}
+          readingTime={displayPost.readingTime}
+          tags={displayPost.frontmatter.tags}
+        />
       </header>
 
-      <div className="StudyPost__content">
-        <Markdown rehypePlugins={[rehypeSlug]}>{displayPost.content}</Markdown>
-      </div>
+      <StudyPostContent
+        content={displayPost.content}
+        className="StudyPost__content"
+      />
 
       <nav className="StudyPost__nav">
         {adjacent.prev && (

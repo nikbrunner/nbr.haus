@@ -1,5 +1,6 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 
+import { StudyPostCard } from "@/components/study";
 import { Typo } from "@/components/Typo";
 import { useLocale } from "@/i18n/useLocale";
 import { getAllPosts, type StudyPostMeta } from "@/lib/study";
@@ -50,23 +51,11 @@ function StudyIndexPage() {
   return (
     <div className="StudyIndex">
       <Typo.H1>Study</Typo.H1>
-      <ul className="StudyIndex__list">
+      <div className="StudyIndex__list">
         {posts.map((post: StudyPostMeta) => (
-          <li key={post.slug} className="StudyIndex__item">
-            <Link
-              to="/study/$slug"
-              params={{ slug: post.slug }}
-              className="StudyIndex__link"
-            >
-              <Typo.H3>{post.frontmatter.title}</Typo.H3>
-              <Typo.P color="minor">{post.frontmatter.excerpt}</Typo.P>
-              <Typo.P color="minor">
-                {post.frontmatter.publishedAt} · {post.readingTime} min read
-              </Typo.P>
-            </Link>
-          </li>
+          <StudyPostCard key={post.slug} post={post} />
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
