@@ -53,7 +53,7 @@ export const Route = createFileRoute("/blog/")({
   loader: async () => {
     const posts = await getAllPosts({ data: { locale: "en" } });
     return { posts };
-  },
+  }
 });
 ```
 
