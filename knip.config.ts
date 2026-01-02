@@ -10,7 +10,9 @@ const config: KnipConfig = {
   ],
   ignoreIssues: {
     "src/components/Typo/index.ts": ["exports", "types"],
-    "src/validators/rootSearchParams.ts": ["types"]
+    "src/validators/rootSearchParams.ts": ["types"],
+    "src/lib/study/index.ts": ["exports", "types"], // Used in Phase 3+
+    "src/lib/study/types.ts": ["exports"]
   },
   ignoreDependencies: [
     "open-props",
@@ -24,7 +26,8 @@ const config: KnipConfig = {
     "@testing-library/dom",
     "@testing-library/react",
     "@vitest/coverage-v8",
-    "web-vitals"
+    "web-vitals",
+    "shiki" // Used in Phase 3 for syntax highlighting
   ],
   storybook: {
     entry: ["src/**/*.stories.tsx"]

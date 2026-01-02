@@ -1,0 +1,121 @@
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import Markdown from "react-markdown";
+
+import { Typo } from "@/components/Typo";
+import { useLocale } from "@/i18n/useLocale";
+import { getAdjacentPosts, getPostBySlug, type StudyPost } from "@/lib/study";
+
+export const Route = createFileRoute("/study/$slug")({
+  loader: async ({ params }) => {
+    const { slug } = params;
+
+    // Load both locales
+    const [enPost, dePost] = await Promise.all([
+      getPostBySlug({ data: { slug, locale: "en" } }),
+      getPostBySlug({ data: { slug, locale: "de" } })
+    ]);
+
+    // At least one locale must exist
+    if (!enPost && !dePost) {
+      throw notFound();
+    }
+
+    const [enAdjacent, deAdjacent] = await Promise.all([
+      getAdjacentPosts({ data: { slug, locale: "en" } }),
+      getAdjacentPosts({ data: { slug, locale: "de" } })
+    ]);
+
+    return {
+      enPost,
+      dePost,
+      enAdjacent,
+      deAdjacent
+    };
+  },
+  head: ({ loaderData }) => {
+    const post = loaderData?.enPost ?? loaderData?.dePost;
+    const title = post?.frontmatter.title ?? "Post Not Found";
+    const description = post?.frontmatter.excerpt ?? "";
+
+    return {
+      meta: [
+        { title: `${title} - Study - Nik Brunner` },
+        { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:type", content: "article" },
+        {
+          property: "article:published_time",
+          content: post?.frontmatter.publishedAt
+        }
+      ]
+    };
+  },
+  component: StudyPostPage
+});
+
+function StudyPostPage() {
+  const { enPost, dePost, enAdjacent, deAdjacent } = Route.useLoaderData();
+  const { locale } = useLocale();
+
+  const post: StudyPost | null = locale === "de" ? dePost : enPost;
+  const adjacent = locale === "de" ? deAdjacent : enAdjacent;
+
+  // Fallback to other locale if current locale post doesn't exist
+  const displayPost = post ?? (locale === "de" ? enPost : dePost);
+
+  if (!displayPost) {
+    return (
+      <div className="StudyPost">
+        <Typo.H1>Post not found</Typo.H1>
+        <Link to="/study">Back to Study</Link>
+      </div>
+    );
+  }
+
+  return (
+    <article className="StudyPost">
+      <header className="StudyPost__header">
+        <Link to="/study" className="StudyPost__back">
+          ← Back to Study
+        </Link>
+        <Typo.H1>{displayPost.frontmatter.title}</Typo.H1>
+        <Typo.P color="minor">
+          {displayPost.frontmatter.publishedAt} · {displayPost.readingTime} min read
+        </Typo.P>
+        <div className="StudyPost__tags">
+          {displayPost.frontmatter.tags.map((tag: string) => (
+            <span key={tag} className="StudyPost__tag">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </header>
+
+      <div className="StudyPost__content">
+        <Markdown>{displayPost.content}</Markdown>
+      </div>
+
+      <nav className="StudyPost__nav">
+        {adjacent.prev && (
+          <Link
+            to="/study/$slug"
+            params={{ slug: adjacent.prev.slug }}
+            className="StudyPost__nav-link StudyPost__nav-link--prev"
+          >
+            ← {adjacent.prev.frontmatter.title}
+          </Link>
+        )}
+        {adjacent.next && (
+          <Link
+            to="/study/$slug"
+            params={{ slug: adjacent.next.slug }}
+            className="StudyPost__nav-link StudyPost__nav-link--next"
+          >
+            {adjacent.next.frontmatter.title} →
+          </Link>
+        )}
+      </nav>
+    </article>
+  );
+}
