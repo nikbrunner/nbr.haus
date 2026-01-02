@@ -90,9 +90,10 @@ export default function ControlPanel() {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isExpanded]);
 
-  // Get navigable routes from router (filter out /cv which is only for PDF generation)
+  // Get navigable routes from router
+  // Filter out: catch-all routes ($), and /study (WIP, hidden for now)
   const navLinks = Object.keys(router.routesByPath)
-    .filter(path => !path.includes("$"))
+    .filter(path => !path.includes("$") && !path.startsWith("/study"))
     .sort((a, b) => a.localeCompare(b));
 
   return (
