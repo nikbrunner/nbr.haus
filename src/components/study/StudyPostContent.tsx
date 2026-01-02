@@ -4,7 +4,8 @@ import rehypeSlug from "rehype-slug";
 import { Typo } from "@/components/Typo";
 
 const markdownComponents: Components = {
-  h1: ({ children }) => <Typo.H1>{children}</Typo.H1>,
+  // Skip H1 - title is already rendered from frontmatter in the page header
+  h1: () => null,
   h2: ({ children }) => <Typo.H2 variant="default">{children}</Typo.H2>,
   h3: ({ children }) => <Typo.H3>{children}</Typo.H3>,
   h4: ({ children }) => <Typo.H4>{children}</Typo.H4>,
