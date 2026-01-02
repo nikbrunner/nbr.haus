@@ -8,6 +8,10 @@ const config: KnipConfig = {
     "src/storybook/**/*.ts",
     "src/storybook/**/*.tsx"
   ],
+  ignoreIssues: {
+    "src/components/Typo/index.ts": ["exports", "types"],
+    "src/validators/rootSearchParams.ts": ["types"]
+  },
   ignoreDependencies: [
     "open-props",
     "@tanstack/react-router-ssr-query",
