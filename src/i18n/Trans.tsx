@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import Highlight from "@/components/Highlight";
+import { Typo } from "@/components/Typo";
 
 type ComponentRenderer = (children: ReactNode) => ReactNode;
 
@@ -8,7 +8,7 @@ type ComponentRenderer = (children: ReactNode) => ReactNode;
 const defaultComponents: Record<string, ComponentRenderer> = {
   strong: children => <strong>{children}</strong>,
   em: children => <em>{children}</em>,
-  highlight: children => <Highlight>{children}</Highlight>
+  highlight: children => <Typo.Highlight>{children}</Typo.Highlight>
 };
 
 interface TransProps {

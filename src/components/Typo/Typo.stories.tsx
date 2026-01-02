@@ -222,3 +222,23 @@ export const FlexWithResetMargins: StoryObj = {
     </div>
   )
 };
+
+export const HighlightUsage: StoryObj = {
+  name: "Highlight",
+  render: () => (
+    <div>
+      <Typo.P>
+        The <Typo.Highlight>Typo.Highlight</Typo.Highlight> component is used for
+        inline emphasis with the alternate accent color. It renders a{" "}
+        <Typo.Highlight color="accent">bold span</Typo.Highlight> that stands out
+        from surrounding text.
+      </Typo.P>
+
+      <Typo.P color="support">
+        Use it sparingly in prose to draw attention to{" "}
+        <Typo.Highlight>key terms</Typo.Highlight> or{" "}
+        <Typo.Highlight>important concepts</Typo.Highlight>.
+      </Typo.P>
+    </div>
+  )
+};
