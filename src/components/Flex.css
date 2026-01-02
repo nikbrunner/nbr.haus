@@ -3,8 +3,8 @@
   gap: var(--flex-gap, 0);
 }
 
-/* Reset child margins when using Flex for layout */
-.Flex > * {
+/* Optional: Reset child margins when explicitly requested */
+.Flex--reset-margins > * {
   margin: 0;
 }
 

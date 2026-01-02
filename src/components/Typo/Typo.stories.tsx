@@ -184,16 +184,17 @@ export const MixedContent: StoryObj = {
   )
 };
 
-export const FlexOverride: StoryObj = {
-  name: "Flex Gap Override",
+export const FlexWithResetMargins: StoryObj = {
+  name: "Flex with resetChildMargins",
   render: () => (
     <div>
       <Typo.P color="support">
-        When using Flex, child margins are reset to 0 and gap controls spacing
-        instead. This is useful for layout components where you need precise control.
+        When using Flex with resetChildMargins, child margins are reset to 0 and gap
+        controls spacing instead. This is useful for layout components where you need
+        precise control over spacing.
       </Typo.P>
 
-      <Flex direction="column" gap="6">
+      <Flex direction="column" gap="6" resetChildMargins>
         <section>
           <Typo.H2>Experience</Typo.H2>
           <Typo.P>

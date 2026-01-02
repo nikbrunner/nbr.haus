@@ -10,6 +10,9 @@ const flexVariants = cva("Flex", {
     inline: {
       true: "Flex--inline"
     },
+    resetChildMargins: {
+      true: "Flex--reset-margins"
+    },
     direction: {
       "row": "Flex--row",
       "row-reverse": "Flex--row-reverse",
@@ -47,11 +50,14 @@ const flexVariants = cva("Flex", {
 
 interface Props
   extends ComponentProps,
-    Omit<VariantProps<typeof flexVariants>, "inline"> {
+    Omit<VariantProps<typeof flexVariants>, "inline" | "resetChildMargins"> {
   children: React.ReactNode;
 
   /** Use inline-flex instead of flex. Default: false */
   inline?: boolean;
+
+  /** Reset child margins to 0. Default: false */
+  resetChildMargins?: boolean;
 
   /** Gap between items using Open Props size scale */
   gap?: GapValue;
@@ -63,6 +69,7 @@ interface Props
 export default function Flex({
   children,
   inline = false,
+  resetChildMargins = false,
   direction,
   wrap,
   justify,
@@ -80,6 +87,7 @@ export default function Flex({
       className={cx(
         flexVariants({
           inline: inline || undefined,
+          resetChildMargins: resetChildMargins || undefined,
           direction,
           wrap,
           justify,
