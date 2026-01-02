@@ -7,7 +7,7 @@ tags:
   - philosophy
 ---
 
-Beim Lesen von Yuval Noah Hararis [_Nexus_](https://www.amazon.com/Nexus-Brief-History-Information-Networks/dp/059373422X) fiel mir ein Muster auf, das mich schon länger beschäftigt hatte. Harari argumentiert, dass Informationsnetzwerke schon immer die organisierende Kraft der Menschheit waren—von Steinzeitstämmen bis zu modernen Bürokratien. Aber was mich traf, war nicht die Geschichte. Es war, wie perfekt dieses Muster auf das passt, was gerade mit KI geschieht.
+Beim Lesen von Yuval Noah Hararis [_Nexus_](https://www.amazon.com/Nexus-Brief-History-Information-Networks/dp/059373422X) fiel mir ein Muster auf, das mich schon länger beschäftigt hatte. Harari argumentiert, dass Informationsnetzwerke schon immer die organisierende Kraft der Menschheit waren, von Steinzeitstämmen bis zu modernen Bürokratien. Aber was mich traf, war nicht die Geschichte. Es war, wie perfekt dieses Muster auf das passt, was gerade mit KI geschieht.
 
 Wir haben das schon einmal erlebt. Mit dem Internet.
 
@@ -15,9 +15,9 @@ Wir haben das schon einmal erlebt. Mit dem Internet.
 
 Erinnerst du dich, als „glaub nicht alles, was du online liest" die Standardwarnung war? Das Internet war exotisch, unzuverlässig, eine Kuriosität. Wenn etwas nicht in einem Buch oder einer Zeitung stand, war es vermutlich nicht wissenswert.
 
-Dann verschob sich etwas. Mitte der 2000er war das Internet nicht nur glaubwürdig—es wurde _die_ Quelle der Glaubwürdigkeit. Wenn etwas nicht suchbar war, wurde seine Existenz angezweifelt. Wir hörten auf zu fragen „kann ich dem vertrauen?" und fingen an, es anzunehmen. Die Skepsis, die uns einst schützte, löste sich still auf.
+Dann verschob sich etwas. Mitte der 2000er war das Internet nicht nur glaubwürdig. Es wurde _die_ Quelle der Glaubwürdigkeit. Wenn etwas nicht suchbar war, wurde seine Existenz angezweifelt. Wir hörten auf zu fragen „kann ich dem vertrauen?" und fingen an, es anzunehmen. Die Skepsis, die uns einst schützte, löste sich still auf.
 
-Dieses Muster—Skepsis zu Akzeptanz zu Abhängigkeit—geschah so allmählich, dass die meisten von uns es nicht bemerkten. Bis es zur Waffe wurde.
+Dieses Muster von Skepsis zu Akzeptanz zu Abhängigkeit geschah so allmählich, dass die meisten von uns es nicht bemerkten. Bis es zur Waffe wurde.
 
 ## QAnon: Der Proof of Concept
 
@@ -29,17 +29,17 @@ QAnon demonstrierte etwas Entscheidendes: Digitales Vertrauen ist nicht nur pers
 
 Als ich zum ersten Mal über dieses Muster schrieb, war Vertrauen in KI noch größtenteils theoretisch. Nicht mehr.
 
-Schau dir an, was nach der US-Wahl 2024 passierte. [Elon Musk und Larry Ellison sitzen in Trumps Übergangstreffen in Mar-a-Lago](https://www.nytimes.com/2024/12/06/us/politics/trump-elon-musk-silicon-valley.html). [Peter Thiels Schützlinge](https://fortune.com/2025/05/21/peter-thiel-silicon-valley-trump-administration-elon-musk-jd-vance/)—JD Vance als Vizepräsident, David Sacks als „KI- und Krypto-Zar"—gestalten jetzt Politik. Silicon-Valley-Milliardäre führen buchstäblich Vorstellungsgespräche für hochrangige Regierungsposten. Die Menschen, die KI bauen, steuern jetzt direkt, wie sie reguliert wird.
+Schau dir an, was nach der US-Wahl 2024 passierte. [Elon Musk und Larry Ellison sitzen in Trumps Übergangstreffen in Mar-a-Lago](https://www.nytimes.com/2024/12/06/us/politics/trump-elon-musk-silicon-valley.html). [Peter Thiels Schützlinge](https://fortune.com/2025/05/21/peter-thiel-silicon-valley-trump-administration-elon-musk-jd-vance/) wie JD Vance als Vizepräsident und David Sacks als „KI- und Krypto-Zar" gestalten jetzt Politik. Silicon-Valley-Milliardäre führen buchstäblich Vorstellungsgespräche für hochrangige Regierungsposten. Die Menschen, die KI bauen, steuern jetzt direkt, wie sie reguliert wird.
 
 Das ist keine Verschwörungstheorie. Das sind die [_New York Times_](https://www.nytimes.com/2024/10/18/magazine/trump-donors-silicon-valley.html), [_Fortune_](https://fortune.com/2025/05/21/peter-thiel-silicon-valley-trump-administration-elon-musk-jd-vance/), [_Le Monde_](https://www.lemonde.fr/en/international/article/2024/11/15/how-america-s-tech-right-came-to-power_6732989_4.html), die den konfliktreichsten Präsidentenübergang der modernen amerikanischen Geschichte dokumentieren.
 
-Gleichzeitig holt die Forschung auf, was viele von uns spüren. Princetons Center for Information Technology Policy untersucht [„emotionale Abhängigkeit von KI."](https://blog.citp.princeton.edu/2025/08/20/emotional-reliance-on-ai-design-dependency-and-the-future-of-human-connection/) Arbeiten mit Titeln wie [„Illusions of Intimacy"](https://arxiv.org/abs/2505.11649) dokumentieren die psychologischen Risiken von Mensch-KI-Beziehungen. Bindungstheorie—ursprünglich für Eltern-Kind-Beziehungen entwickelt—wird jetzt auf die Beziehung zwischen Menschen und Chatbots angewandt.
+Gleichzeitig holt die Forschung auf, was viele von uns spüren. Princetons Center for Information Technology Policy untersucht [„emotionale Abhängigkeit von KI."](https://blog.citp.princeton.edu/2025/08/20/emotional-reliance-on-ai-design-dependency-and-the-future-of-human-connection/) Arbeiten mit Titeln wie [„Illusions of Intimacy"](https://arxiv.org/abs/2505.11649) dokumentieren die psychologischen Risiken von Mensch-KI-Beziehungen. Bindungstheorie, ursprünglich für Eltern-Kind-Beziehungen entwickelt, wird jetzt auf die Beziehung zwischen Menschen und Chatbots angewandt.
 
 Wir beobachten die Trust Evolution in Echtzeit, nur schneller. Die Gesellschaft ist jetzt auf schnelle technologische Adoption eingestellt. Die Skepsis-Phase ist kürzer. Die Abhängigkeits-Phase kommt schneller.
 
 ## Die Harari-Warnung
 
-Hararis zentraler Punkt in _Nexus_ ist, dass Informationsnetzwerke nicht von Natur aus der Wahrheit dienen. Sie dienen der Macht. Die Druckerpresse verbreitete sowohl die Aufklärung als auch Hexenverfolgungshandbücher. Das Internet ermöglichte Wikipedia und QAnon. KI wird dem gleichen Muster folgen—es ist ein Werkzeug, kein Retter.
+Hararis zentraler Punkt in _Nexus_ ist, dass Informationsnetzwerke nicht von Natur aus der Wahrheit dienen. Sie dienen der Macht. Die Druckerpresse verbreitete sowohl die Aufklärung als auch Hexenverfolgungshandbücher. Das Internet ermöglichte Wikipedia und QAnon. KI wird dem gleichen Muster folgen. Es ist ein Werkzeug, kein Retter.
 
 Die Frage ist nicht, ob KI vertrauenswürdig werden wird. Das wird sie. Die Frage ist: Von wem vertraut, um was zu tun, und wer kontrolliert dieses Vertrauen?
 
@@ -47,7 +47,7 @@ Was passiert, wenn „hat eine KI das verifiziert?" das gleiche Gewicht trägt w
 
 ## Wo uns das hinführt
 
-Ich habe keine saubere Schlussfolgerung. Die Trust Evolution ist nichts, was wir aufhalten können—es ist ein Muster so alt wie die menschliche Zivilisation, nur beschleunigt. Was wir tun können, ist es zu erkennen, während es geschieht.
+Ich habe keine saubere Schlussfolgerung. Die Trust Evolution ist nichts, was wir aufhalten können. Es ist ein Muster so alt wie die menschliche Zivilisation, nur beschleunigt. Was wir tun können, ist es zu erkennen, während es geschieht.
 
 Das Internet hat uns gelehrt, dass Vertrauen, einmal einer Technologie gegeben, schwer zurückzunehmen ist. Es formt um, wie wir denken, wie wir uns organisieren, wie wir bestimmen, was real ist. KI wird das Gleiche tun, wahrscheinlich schneller und tiefer.
 
@@ -57,7 +57,7 @@ Das sollte uns unbehaglich stimmen. Es stimmt mich unbehaglich. Und vielleicht i
 
 ---
 
-_Dieser Text entstand aus der Lektüre von Hararis Nexus und dem Gespräch über die Muster, die mir auffielen, mit einer KI—was für das Thema passend meta erschien._
+_Dieser Text entstand aus der Lektüre von Hararis Nexus und dem Gespräch über die Muster, die mir auffielen, mit einer KI, was für das Thema passend meta erschien._
 
 ---
 

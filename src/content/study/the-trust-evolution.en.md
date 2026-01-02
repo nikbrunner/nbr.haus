@@ -7,7 +7,7 @@ tags:
   - philosophy
 ---
 
-Reading Yuval Noah Harari's [_Nexus_](https://www.amazon.com/Nexus-Brief-History-Information-Networks/dp/059373422X), I noticed a pattern that had been nagging at me for a while. Harari argues that information networks have always been humanity's organizing force—from stone age tribes to modern bureaucracies. But what struck me wasn't the history. It was how perfectly the pattern maps to what's happening right now with AI.
+Reading Yuval Noah Harari's [_Nexus_](https://www.amazon.com/Nexus-Brief-History-Information-Networks/dp/059373422X), I noticed a pattern that had been nagging at me for a while. Harari argues that information networks have always been humanity's organizing force, from stone age tribes to modern bureaucracies. But what struck me wasn't the history. It was how perfectly the pattern maps to what's happening right now with AI.
 
 We've seen this before. With the internet.
 
@@ -15,9 +15,9 @@ We've seen this before. With the internet.
 
 Remember when "don't trust everything you read online" was the standard warning? The internet was exotic, unreliable, a curiosity. If it wasn't in a book or newspaper, it probably wasn't worth knowing.
 
-Then something shifted. By the mid-2000s, the internet wasn't just credible—it became _the_ source of credibility. If something wasn't searchable, its very existence was questionable. We stopped asking "can I trust this?" and started assuming we could. The skepticism that once protected us quietly dissolved.
+Then something shifted. By the mid-2000s, the internet wasn't just credible. It became _the_ source of credibility. If something wasn't searchable, its very existence was questionable. We stopped asking "can I trust this?" and started assuming we could. The skepticism that once protected us quietly dissolved.
 
-This pattern—skepticism to acceptance to dependency—happened so gradually that most of us didn't notice. Until it was weaponized.
+This pattern of skepticism to acceptance to dependency happened so gradually that most of us didn't notice. Until it was weaponized.
 
 ## QAnon: The Proof of Concept
 
@@ -29,17 +29,17 @@ QAnon demonstrated something crucial: digital trust isn't just personal. It can 
 
 When I first wrote about this pattern, AI trust was still mostly theoretical. Not anymore.
 
-Look at what happened after the 2024 U.S. election. [Elon Musk and Larry Ellison sitting in Trump's Mar-a-Lago transition meetings](https://www.nytimes.com/2024/12/06/us/politics/trump-elon-musk-silicon-valley.html). [Peter Thiel's protégés](https://fortune.com/2025/05/21/peter-thiel-silicon-valley-trump-administration-elon-musk-jd-vance/)—JD Vance as Vice President, David Sacks as "AI and crypto czar"—now shaping policy. Silicon Valley billionaires literally conducting interviews for senior government positions. The people building AI are now directly steering how it gets regulated.
+Look at what happened after the 2024 U.S. election. [Elon Musk and Larry Ellison sitting in Trump's Mar-a-Lago transition meetings](https://www.nytimes.com/2024/12/06/us/politics/trump-elon-musk-silicon-valley.html). [Peter Thiel's protégés](https://fortune.com/2025/05/21/peter-thiel-silicon-valley-trump-administration-elon-musk-jd-vance/) like JD Vance as Vice President and David Sacks as "AI and crypto czar" now shaping policy. Silicon Valley billionaires literally conducting interviews for senior government positions. The people building AI are now directly steering how it gets regulated.
 
 This isn't conspiracy theory. This is the [_New York Times_](https://www.nytimes.com/2024/10/18/magazine/trump-donors-silicon-valley.html), [_Fortune_](https://fortune.com/2025/05/21/peter-thiel-silicon-valley-trump-administration-elon-musk-jd-vance/), [_Le Monde_](https://www.lemonde.fr/en/international/article/2024/11/15/how-america-s-tech-right-came-to-power_6732989_4.html) documenting the most conflict-ridden presidential transition in modern American history.
 
-Meanwhile, researchers are catching up to what many of us feel. Princeton's Center for Information Technology Policy is studying ["emotional reliance on AI."](https://blog.citp.princeton.edu/2025/08/20/emotional-reliance-on-ai-design-dependency-and-the-future-of-human-connection/) Papers with titles like ["Illusions of Intimacy"](https://arxiv.org/abs/2505.11649) document the psychological risks of human-AI relationships. Attachment theory—originally developed for parent-child bonds—is now being applied to how people relate to chatbots.
+Meanwhile, researchers are catching up to what many of us feel. Princeton's Center for Information Technology Policy is studying ["emotional reliance on AI."](https://blog.citp.princeton.edu/2025/08/20/emotional-reliance-on-ai-design-dependency-and-the-future-of-human-connection/) Papers with titles like ["Illusions of Intimacy"](https://arxiv.org/abs/2505.11649) document the psychological risks of human-AI relationships. Attachment theory, originally developed for parent-child bonds, is now being applied to how people relate to chatbots.
 
 We're watching the trust evolution happen in real-time, except faster. Society is primed for rapid technological adoption now. The skepticism phase is shorter. The dependency phase comes quicker.
 
 ## The Harari Warning
 
-Harari's central point in _Nexus_ is that information networks don't inherently serve truth. They serve power. The printing press spread both the Enlightenment and witch-hunting manuals. The internet enabled Wikipedia and QAnon. AI will follow the same pattern—it's a tool, not a savior.
+Harari's central point in _Nexus_ is that information networks don't inherently serve truth. They serve power. The printing press spread both the Enlightenment and witch-hunting manuals. The internet enabled Wikipedia and QAnon. AI will follow the same pattern. It's a tool, not a savior.
 
 The question isn't whether AI will become trusted. It will. The question is: trusted by whom, to do what, and who controls that trust?
 
@@ -47,7 +47,7 @@ What happens when "has an AI verified this?" carries the same weight that "I Goo
 
 ## Where This Leaves Us
 
-I don't have a neat conclusion. The trust evolution isn't something we can stop—it's a pattern as old as human civilization, just accelerating. What we can do is recognize it while it's happening.
+I don't have a neat conclusion. The trust evolution isn't something we can stop. It's a pattern as old as human civilization, just accelerating. What we can do is recognize it while it's happening.
 
 The internet taught us that trust, once given to a technology, is hard to take back. It reshapes how we think, how we organize, how we determine what's real. AI will do the same, probably faster and deeper.
 
@@ -57,7 +57,7 @@ That should make us uncomfortable. It makes me uncomfortable. And maybe that dis
 
 ---
 
-_This piece originated from reading Harari's Nexus and discussing the patterns I noticed with an AI—which felt appropriately meta for the subject matter._
+_This piece originated from reading Harari's Nexus and discussing the patterns I noticed with an AI, which felt appropriately meta for the subject matter._
 
 ---
 
