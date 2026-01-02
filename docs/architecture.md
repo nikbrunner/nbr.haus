@@ -32,6 +32,38 @@ URL search params are the source of truth for UI state. Defined in `src/validato
 
 These params are **retained across navigation** via TanStack Router's `retainSearchParams` middleware in `__root.tsx`.
 
+### Server Functions
+
+For server-only code (filesystem access, database queries, etc.), use TanStack Start's `createServerFn`. This ensures code runs only on the server and is not bundled into the client.
+
+```tsx
+import { createServerFn } from "@tanstack/react-start";
+
+// Define the server function
+export const getAllPosts = createServerFn({ method: "GET" })
+  .inputValidator((data: { locale: "en" | "de" }) => data)
+  .handler(async ({ data }) => {
+    // Node.js APIs are safe here - this only runs on server
+    const posts = await readPostsFromFilesystem(data.locale);
+    return posts;
+  });
+
+// Call from route loader
+export const Route = createFileRoute("/blog/")({
+  loader: async () => {
+    const posts = await getAllPosts({ data: { locale: "en" } });
+    return { posts };
+  },
+});
+```
+
+**Key points:**
+
+- Use `.inputValidator()` for type-safe input (note: some docs show `.validator()` but v1.145.0 uses `.inputValidator()`)
+- Node.js imports (`node:fs`, `node:path`) are safe inside the handler
+- Call server functions from route loaders, not at module level
+- Server functions can be called from the client - they become RPC calls
+
 ### Root Layout
 
 `src/routes/__root.tsx` handles:
