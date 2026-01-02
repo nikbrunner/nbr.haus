@@ -18,10 +18,10 @@
   color: var(--color-fg-minor);
 }
 
-/* Rotated variant for path display - vertical text */
+/* Rotated variant for path display - sideways text effect via transform */
 .ControlPanelIndicator--rotated {
-  writing-mode: sideways-lr;
-  text-orientation: mixed;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
   width: var(--control-panel-cell);
   height: auto;
   min-height: var(--control-panel-cell);
