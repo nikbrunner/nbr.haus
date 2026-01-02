@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import CopyButton from "@/components/CopyButton";
 import Flex from "@/components/Flex";
-import { Typo } from "@/components/Typo";
 import Hint from "@/components/Hint";
 import Job from "@/components/Job";
 import LookingForJob from "@/components/LookingForJob";
@@ -12,6 +11,7 @@ import Project from "@/components/Project";
 import Section from "@/components/Section";
 import SpecCard from "@/components/SpecCard";
 import SpecList from "@/components/SpecList";
+import { Typo } from "@/components/Typo";
 import { tech } from "@/config";
 import { Trans } from "@/i18n/Trans";
 import { useLocale } from "@/i18n/useLocale";
@@ -386,7 +386,9 @@ function Page() {
           title={t.shared.sections.projects}
           className="IndexPage__section--projects"
         >
-          <Typo.P style={{ color: "var(--color-fg-support)" }}>{t.projects.intro}</Typo.P>
+          <Typo.P style={{ color: "var(--color-fg-support)" }}>
+            {t.projects.intro}
+          </Typo.P>
 
           <Flex direction="column" gap="10">
             <Project
