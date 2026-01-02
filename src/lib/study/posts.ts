@@ -1,37 +1,40 @@
-import * as fs from "node:fs/promises";
-import * as path from "node:path";
-
 import { createServerFn } from "@tanstack/react-start";
 import matter from "gray-matter";
 
 import { calculateReadingTime } from "@/lib/study/readingTime";
 import type { StudyFrontmatter, StudyPost, StudyPostMeta } from "@/lib/study/types";
 
-const CONTENT_DIR = path.join(process.cwd(), "src/content/study");
+// Bundle content at build time using Vite glob imports
+// This works in both dev and production (including Vercel serverless)
+const contentModules = import.meta.glob<string>("/src/content/study/*.md", {
+  eager: true,
+  query: "?raw",
+  import: "default"
+});
 
 type Locale = "en" | "de";
 
-async function getPostFiles(locale: Locale): Promise<string[]> {
-  try {
-    const files = await fs.readdir(CONTENT_DIR);
-    return files.filter(file => file.endsWith(`.${locale}.md`));
-  } catch {
-    return [];
+function getPostEntries(locale: Locale): Array<{ slug: string; content: string }> {
+  const suffix = `.${locale}.md`;
+  const entries: Array<{ slug: string; content: string }> = [];
+
+  for (const [path, content] of Object.entries(contentModules)) {
+    if (path.endsWith(suffix)) {
+      // Extract slug from path: /src/content/study/my-post.en.md -> my-post
+      const filename = path.split("/").pop() ?? "";
+      const slug = filename.replace(suffix, "");
+      entries.push({ slug, content });
+    }
   }
+
+  return entries;
 }
 
-function extractSlug(filename: string, locale: Locale): string {
-  return filename.replace(`.${locale}.md`, "");
-}
+function fetchAllPosts(locale: Locale): StudyPostMeta[] {
+  const entries = getPostEntries(locale);
 
-async function fetchAllPosts(locale: Locale): Promise<StudyPostMeta[]> {
-  const files = await getPostFiles(locale);
-
-  const posts = await Promise.all(
-    files.map(async file => {
-      const slug = extractSlug(file, locale);
-      const filePath = path.join(CONTENT_DIR, file);
-      const fileContent = await fs.readFile(filePath, "utf-8");
+  const posts = entries
+    .map(({ slug, content: fileContent }) => {
       const { data, content } = matter(fileContent);
       const frontmatter = data as StudyFrontmatter;
 
@@ -44,45 +47,41 @@ async function fetchAllPosts(locale: Locale): Promise<StudyPostMeta[]> {
         readingTime: calculateReadingTime(content)
       };
     })
-  );
-
-  return posts
     .filter((post): post is StudyPostMeta => post !== null)
     .sort(
       (a, b) =>
         new Date(b.frontmatter.publishedAt).getTime() -
         new Date(a.frontmatter.publishedAt).getTime()
     );
+
+  return posts;
 }
 
-async function fetchPostBySlug(
-  slug: string,
-  locale: Locale
-): Promise<StudyPost | null> {
-  const filePath = path.join(CONTENT_DIR, `${slug}.${locale}.md`);
+function fetchPostBySlug(slug: string, locale: Locale): StudyPost | null {
+  const key = `/src/content/study/${slug}.${locale}.md`;
+  const fileContent = contentModules[key];
 
-  try {
-    const fileContent = await fs.readFile(filePath, "utf-8");
-    const { data, content } = matter(fileContent);
-    const frontmatter = data as StudyFrontmatter;
-
-    return {
-      slug,
-      locale,
-      frontmatter,
-      content,
-      readingTime: calculateReadingTime(content)
-    };
-  } catch {
+  if (!fileContent) {
     return null;
   }
+
+  const { data, content } = matter(fileContent);
+  const frontmatter = data as StudyFrontmatter;
+
+  return {
+    slug,
+    locale,
+    frontmatter,
+    content,
+    readingTime: calculateReadingTime(content)
+  };
 }
 
-async function fetchAdjacentPosts(
+function fetchAdjacentPosts(
   currentSlug: string,
   locale: Locale
-): Promise<{ prev: StudyPostMeta | null; next: StudyPostMeta | null }> {
-  const posts = await fetchAllPosts(locale);
+): { prev: StudyPostMeta | null; next: StudyPostMeta | null } {
+  const posts = fetchAllPosts(locale);
   const currentIndex = posts.findIndex(p => p.slug === currentSlug);
 
   if (currentIndex === -1) {
