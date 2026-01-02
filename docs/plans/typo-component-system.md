@@ -5,17 +5,20 @@
 ## Completed
 
 ### Core Infrastructure
+
 - Types (`Typo.types.ts`), colors (`Typo.colors.ts`), base CSS
 - Components: H1, H2 (with decorated variant), H3, H4, P, Highlight
 - Prose-friendly default margins
 - Storybook stories
 
 ### Flex Refactor
+
 - Converted to CSS classes via CVA
 - Gap via CSS custom property
 - `resetChildMargins` prop (default: `false`)
 
 ### Migration
+
 - Section, Job, SpecCard, NotFound use Typo components
 - Removed global h1/h2/h3/p rules from `global.css`
 - Highlight migrated to Typo.Highlight
@@ -24,6 +27,7 @@
 - Story files (Flex, Note, GlitchEffect) migrated
 
 ### Skipped (Intentional)
+
 - `src/components/Header.tsx` - Logo intentionally lowercase
 - `src/components/cv/*` - Print-specific styles, migrate separately
 
@@ -33,17 +37,18 @@
 
 ### Missing Components
 
-| Component | Purpose | Priority |
-|-----------|---------|----------|
-| `Lead` | Larger intro paragraphs | Medium |
-| `Small` | Small/caption text | Medium |
-| `Large` | Emphasized large text | Low |
-| `Blockquote` | Quoted text blocks | Low |
-| `InlineCode` | Inline code snippets | Low |
-| `UnorderedList` | Styled `<ul>` | Low |
-| `OrderedList` | Styled `<ol>` | Low |
+| Component       | Purpose                 | Priority |
+| --------------- | ----------------------- | -------- |
+| `Lead`          | Larger intro paragraphs | Medium   |
+| `Small`         | Small/caption text      | Medium   |
+| `Large`         | Emphasized large text   | Low      |
+| `Blockquote`    | Quoted text blocks      | Low      |
+| `InlineCode`    | Inline code snippets    | Low      |
+| `UnorderedList` | Styled `<ul>`           | Low      |
+| `OrderedList`   | Styled `<ol>`           | Low      |
 
 ### CV Components Migration
+
 - `cv/CvHeader.tsx` - `<h1>`
 - `cv/CvJob.tsx` - `<h3>`, `<p>`
 - `cv/CvProject.tsx` - `<h3>`
@@ -65,10 +70,12 @@ Note: CV has print-specific styles that need careful handling.
 ```
 
 **Props:**
+
 - `color`: main (default) | support | minor | accent | accentAlt
 - `variant`: element-specific (e.g., H2 has "default" | "decorated")
 
 **File Structure:**
+
 ```
 src/components/Typo/
 ├── index.ts
