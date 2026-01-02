@@ -18,15 +18,12 @@
   color: var(--color-fg-minor);
 }
 
-/* Multiline variant for paths with multiple segments */
-.ControlPanelIndicator--multiline {
-  flex-direction: column;
-  width: auto;
+/* Rotated variant for path display - vertical text */
+.ControlPanelIndicator--rotated {
+  writing-mode: sideways-lr;
+  text-orientation: mixed;
+  width: var(--control-panel-cell);
   height: auto;
-  min-width: var(--control-panel-cell);
   min-height: var(--control-panel-cell);
-  padding: var(--size-2);
-  gap: 0;
-  font-size: calc(var(--control-panel-font-size) * 0.85);
-  line-height: 1.2;
+  padding: var(--size-2) 0;
 }
