@@ -24,7 +24,8 @@ export function useLocale() {
         to: ".",
         search: prev => ({ ...prev, lang: newLocale }),
         resetScroll: false,
-        replace: true
+        replace: true,
+        viewTransition: true
       });
     },
     [router]
