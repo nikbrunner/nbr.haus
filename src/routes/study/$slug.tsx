@@ -81,7 +81,12 @@ function StudyPostPage() {
         <Link to="/study" className="StudyPost__back">
           ← {t.study.backToStudy}
         </Link>
-        <Typo.H1>{displayPost.frontmatter.title}</Typo.H1>
+        <div className="StudyPost__title-group">
+          <Typo.H1 color="accent">{displayPost.frontmatter.title}</Typo.H1>
+          {displayPost.frontmatter.subtitle && (
+            <Typo.Lead color="support">{displayPost.frontmatter.subtitle}</Typo.Lead>
+          )}
+        </div>
         <StudyPostMeta
           publishedAt={displayPost.frontmatter.publishedAt}
           readingTime={displayPost.readingTime}

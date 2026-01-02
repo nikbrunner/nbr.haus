@@ -10,6 +10,7 @@ export type StudyTag = (typeof STUDY_TAGS)[number];
 
 export interface StudyFrontmatter {
   title: string;
+  subtitle?: string;
   publishedAt: string; // YYYY-MM-DD
   excerpt: string;
   tags: StudyTag[];

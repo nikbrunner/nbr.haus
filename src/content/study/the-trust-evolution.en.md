@@ -1,14 +1,11 @@
 ---
-title: "The Trust Evolution - From the Internet to AI"
+title: "The Trust Evolution"
+subtitle: "From the Internet to AI"
 publishedAt: "Sunday, November 3rd 2024, 1:00:29 pm"
 excerpt: "How we learned to trust the internet, and what that means for AI."
 tags:
   - philosophy
-  - ai
-  - internet
 ---
-
-# The Trust Evolution - From the Internet to AI
 
 Reading Yuval Noah Harari's [_Nexus_](https://www.amazon.com/Nexus-Brief-History-Information-Networks/dp/059373422X), I noticed a pattern that had been nagging at me for a while. Harari argues that information networks have always been humanity's organizing force—from stone age tribes to modern bureaucracies. But what struck me wasn't the history. It was how perfectly the pattern maps to what's happening right now with AI.
 
