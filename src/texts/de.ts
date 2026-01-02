@@ -5,6 +5,7 @@ import { texts as cv } from "@/texts/domains/cv.de";
 import { texts as jobs } from "@/texts/domains/jobs.de";
 import { texts as projects } from "@/texts/domains/projects.de";
 import { texts as shared } from "@/texts/domains/shared.de";
+import { texts as study } from "@/texts/domains/study.de";
 
 export const de = {
   shared,
@@ -13,5 +14,6 @@ export const de = {
   about,
   connect,
   cv,
-  controlPanel
+  controlPanel,
+  study
 };
