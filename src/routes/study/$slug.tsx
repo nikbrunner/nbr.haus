@@ -3,6 +3,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { StudyPostContent, StudyPostMeta } from "@/components/study";
 import { Typo } from "@/components/Typo";
 import { useLocale } from "@/i18n/useLocale";
+import { useTexts } from "@/i18n/useTexts";
 import { getAdjacentPosts, getPostBySlug, type StudyPost } from "@/lib/study";
 
 export const Route = createFileRoute("/study/$slug")({
@@ -57,6 +58,7 @@ export const Route = createFileRoute("/study/$slug")({
 function StudyPostPage() {
   const { enPost, dePost, enAdjacent, deAdjacent } = Route.useLoaderData();
   const { locale } = useLocale();
+  const t = useTexts();
 
   const post: StudyPost | null = locale === "de" ? dePost : enPost;
   const adjacent = locale === "de" ? deAdjacent : enAdjacent;
@@ -67,8 +69,8 @@ function StudyPostPage() {
   if (!displayPost) {
     return (
       <div className="StudyPost">
-        <Typo.H1>Post not found</Typo.H1>
-        <Link to="/study">Back to Study</Link>
+        <Typo.H1>{t.study.notFound}</Typo.H1>
+        <Link to="/study">{t.study.backToStudy}</Link>
       </div>
     );
   }
@@ -77,12 +79,13 @@ function StudyPostPage() {
     <article className="StudyPost">
       <header className="StudyPost__header">
         <Link to="/study" className="StudyPost__back">
-          ← Back to Study
+          ← {t.study.backToStudy}
         </Link>
         <Typo.H1>{displayPost.frontmatter.title}</Typo.H1>
         <StudyPostMeta
           publishedAt={displayPost.frontmatter.publishedAt}
           readingTime={displayPost.readingTime}
+          minReadText={t.study.minRead}
           tags={displayPost.frontmatter.tags}
         />
       </header>
