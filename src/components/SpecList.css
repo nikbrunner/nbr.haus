@@ -12,9 +12,9 @@
 
 .SpecList__item {
   display: grid;
-  gap: var(--size-3);
   width: 100%;
-  padding: var(--size-4) 0;
+  gap: var(--size-4);
+  padding: var(--size-3) 0;
   align-items: start;
   align-self: start;
   font-size: var(--font-size-fluid-0);
