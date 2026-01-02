@@ -26,5 +26,7 @@ export const routeSectionsConfig: Record<string, SectionConfig[]> = {
     { id: "side-projects", labelKey: "sideProjects" },
     { id: "prior-experience", labelKey: "priorExperience" },
     { id: "interests", labelKey: "interests" }
-  ]
+  ],
+  "/study": [],
+  "/study/": []
 };
