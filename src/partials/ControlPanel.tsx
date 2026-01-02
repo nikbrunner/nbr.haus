@@ -105,7 +105,16 @@ export default function ControlPanel() {
       >
         {/* Navigation indicator */}
         <ControlPanelStripSection>
-          <ControlPanelIndicator>{pathname}</ControlPanelIndicator>
+          <ControlPanelIndicator
+            multiline={pathname.split("/").filter(Boolean).length > 1}
+          >
+            {pathname.split("/").filter(Boolean).length > 1
+              ? pathname
+                  .split("/")
+                  .filter(Boolean)
+                  .map((segment, i) => <span key={i}>/{segment}</span>)
+              : pathname}
+          </ControlPanelIndicator>
         </ControlPanelStripSection>
 
         {/* Locale indicator */}
