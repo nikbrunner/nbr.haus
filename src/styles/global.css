@@ -75,6 +75,12 @@ body {
 }
 
 body {
+  /* Z-index stack (ordered lowest to highest) */
+  --z-base: 0;
+  --z-control-panel: 100;
+  --z-control-panel-strip: 101;
+  --z-tooltip: 200;
+
   /* Accent hue system (oklch wraps hue values automatically, no clamping needed) */
   --hue-accent: 0;
   --hue-accent-compl-degree: 180;
@@ -159,7 +165,6 @@ body {
   --control-panel-offset: clamp(8px, 2vw, 12px);
   --control-panel-font-size: clamp(0.65rem, 5cqw, 0.85rem);
   --control-panel-label-width: clamp(80px, 20vw, 110px);
-  --control-panel-z-index: 9999;
   /* Strip width = border + cell + padding on both sides + border */
   --control-panel-strip-width: calc(
     var(--border-size-2) + var(--control-panel-cell) +

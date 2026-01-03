@@ -91,7 +91,13 @@ export default function ControlPanel() {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isExpanded]);
 
-  const navRoutes: FileRouteTypes["to"][] = ["/", "/cv"];
+  const navRoutes: {
+    to: FileRouteTypes["to"];
+    hint: keyof typeof t.controlPanel.titles.routes;
+  }[] = [
+    { to: "/", hint: "home" },
+    { to: "/cv", hint: "cv" }
+  ];
 
   return (
     <>
@@ -141,20 +147,21 @@ export default function ControlPanel() {
             {/* Routes column */}
             <div className="ControlPanelExpanded__routes">
               <ControlPanelRow label={t.controlPanel.rows.nav}>
-                {navRoutes.map(route => (
-                  <ControlPanelOption
-                    key={route}
-                    width="full"
-                    align="left"
-                    isActive={pathname === route}
-                    onClick={() => {
-                      navigate({ to: route });
-                      setIsExpanded(false);
-                    }}
-                    ariaLabel={`${t.controlPanel.aria.navigateTo} ${route}`}
-                  >
-                    {route}
-                  </ControlPanelOption>
+                {navRoutes.map(({ to, hint }) => (
+                  <Hint key={to} title={t.controlPanel.titles.routes[hint]}>
+                    <ControlPanelOption
+                      width="full"
+                      align="left"
+                      isActive={pathname === to}
+                      onClick={() => {
+                        navigate({ to });
+                        setIsExpanded(false);
+                      }}
+                      ariaLabel={`${t.controlPanel.aria.navigateTo} ${to}`}
+                    >
+                      {to}
+                    </ControlPanelOption>
+                  </Hint>
                 ))}
               </ControlPanelRow>
             </div>

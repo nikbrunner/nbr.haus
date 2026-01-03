@@ -3,7 +3,7 @@
   right: var(--control-panel-offset);
   top: 50%;
   transform: translateY(-50%);
-  z-index: calc(var(--control-panel-z-index) + 1);
+  z-index: var(--z-control-panel-strip);
 
   display: flex;
   flex-direction: column;

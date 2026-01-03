@@ -42,6 +42,10 @@ export const texts = {
     }
   },
   titles: {
+    routes: {
+      home: "Portfolio & About",
+      cv: "Print-friendly CV for PDF export"
+    },
     contrast: {
       low: "Low Contrast",
       base: "Base Contrast",
