@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
-import { useRouter, useRouterState } from "@tanstack/react-router";
+import { useNavigate, useRouterState } from "@tanstack/react-router";
 import { ArrowUpToLine, PilcrowRight } from "lucide-react";
 
 import { ControlPanelColorDot } from "@/components/ControlPanel/ControlPanelColorDot";
@@ -24,13 +24,14 @@ import { useIsMobile } from "@/hooks/useIsMobile";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 import { useLocale } from "@/i18n/useLocale";
 import { useTexts } from "@/i18n/useTexts";
+import type { FileRouteTypes } from "@/routeTree.gen";
 
 /**
  * ControlPanel - Smart container for navigation, locale, and style settings.
  * Composed of Strip (always visible) and Expanded panel (slides in/out).
  */
 export default function ControlPanel() {
-  const router = useRouter();
+  const navigate = useNavigate();
   const pathname = useRouterState({ select: s => s.location.pathname });
   const t = useTexts();
   const isMobile = useIsMobile();
@@ -90,10 +91,7 @@ export default function ControlPanel() {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isExpanded]);
 
-  // Get navigable routes from router (filter out /cv which is only for PDF generation)
-  const navLinks = Object.keys(router.routesByPath)
-    .filter(path => !path.includes("$"))
-    .sort((a, b) => a.localeCompare(b));
+  const navRoutes: FileRouteTypes["to"][] = ["/", "/cv"];
 
   return (
     <>
@@ -143,19 +141,19 @@ export default function ControlPanel() {
             {/* Routes column */}
             <div className="ControlPanelExpanded__routes">
               <ControlPanelRow label={t.controlPanel.rows.nav}>
-                {navLinks.map(navPath => (
+                {navRoutes.map(route => (
                   <ControlPanelOption
-                    key={navPath}
+                    key={route}
                     width="full"
                     align="left"
-                    isActive={pathname === navPath}
+                    isActive={pathname === route}
                     onClick={() => {
-                      router.navigate({ to: navPath });
+                      navigate({ to: route });
                       setIsExpanded(false);
                     }}
-                    ariaLabel={`${t.controlPanel.aria.navigateTo} ${navPath}`}
+                    ariaLabel={`${t.controlPanel.aria.navigateTo} ${route}`}
                   >
-                    {navPath}
+                    {route}
                   </ControlPanelOption>
                 ))}
               </ControlPanelRow>
