@@ -1,9 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 
-import { useRouter, useRouterState } from "@tanstack/react-router";
+import { useNavigate, useRouterState } from "@tanstack/react-router";
 import { ArrowUpToLine, PilcrowRight } from "lucide-react";
 
-import { routeSectionsConfig } from "@/components/ControlPanel/config";
 import { ControlPanelColorDot } from "@/components/ControlPanel/ControlPanelColorDot";
 import {
   ControlPanelExpanded,
@@ -20,17 +19,19 @@ import Hint from "@/components/Hint";
 import { useAccent } from "@/hooks/useAccent";
 import { useColorMode } from "@/hooks/useColorMode";
 import { useContrast } from "@/hooks/useContrast";
+import { useDynamicSections } from "@/hooks/useDynamicSections";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 import { useLocale } from "@/i18n/useLocale";
 import { useTexts } from "@/i18n/useTexts";
+import type { FileRouteTypes } from "@/routeTree.gen";
 
 /**
  * ControlPanel - Smart container for navigation, locale, and style settings.
  * Composed of Strip (always visible) and Expanded panel (slides in/out).
  */
 export default function ControlPanel() {
-  const router = useRouter();
+  const navigate = useNavigate();
   const pathname = useRouterState({ select: s => s.location.pathname });
   const t = useTexts();
   const isMobile = useIsMobile();
@@ -45,8 +46,8 @@ export default function ControlPanel() {
   const closePanel = useCallback(() => setIsExpanded(false), []);
   const togglePanel = useCallback(() => setIsExpanded(prev => !prev), []);
 
-  // Get sections for current route
-  const currentSections = routeSectionsConfig[pathname] ?? [];
+  // Get sections dynamically from DOM (works for all pages)
+  const sections = useDynamicSections();
 
   // Handler for section navigation
   // On iOS Safari, smooth scroll fails when competing with panel animation.
@@ -90,10 +91,13 @@ export default function ControlPanel() {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isExpanded]);
 
-  // Get navigable routes from router (filter out /cv which is only for PDF generation)
-  const navLinks = Object.keys(router.routesByPath)
-    .filter(path => !path.includes("$"))
-    .sort((a, b) => a.localeCompare(b));
+  const navRoutes: {
+    to: FileRouteTypes["to"];
+    hint: keyof typeof t.controlPanel.titles.routes;
+  }[] = [
+    { to: "/", hint: "home" },
+    { to: "/cv", hint: "cv" }
+  ];
 
   return (
     <>
@@ -105,7 +109,7 @@ export default function ControlPanel() {
       >
         {/* Navigation indicator */}
         <ControlPanelStripSection>
-          <ControlPanelIndicator>{pathname}</ControlPanelIndicator>
+          <ControlPanelIndicator rotated>{pathname}</ControlPanelIndicator>
         </ControlPanelStripSection>
 
         {/* Locale indicator */}
@@ -143,26 +147,27 @@ export default function ControlPanel() {
             {/* Routes column */}
             <div className="ControlPanelExpanded__routes">
               <ControlPanelRow label={t.controlPanel.rows.nav}>
-                {navLinks.map(navPath => (
-                  <ControlPanelOption
-                    key={navPath}
-                    width="full"
-                    align="left"
-                    isActive={pathname === navPath}
-                    onClick={() => {
-                      router.navigate({ to: navPath });
-                      setIsExpanded(false);
-                    }}
-                    ariaLabel={`${t.controlPanel.aria.navigateTo} ${navPath}`}
-                  >
-                    {navPath}
-                  </ControlPanelOption>
+                {navRoutes.map(({ to, hint }) => (
+                  <Hint key={to} title={t.controlPanel.titles.routes[hint]}>
+                    <ControlPanelOption
+                      width="full"
+                      align="left"
+                      isActive={pathname === to}
+                      onClick={() => {
+                        navigate({ to });
+                        setIsExpanded(false);
+                      }}
+                      ariaLabel={`${t.controlPanel.aria.navigateTo} ${to}`}
+                    >
+                      {to}
+                    </ControlPanelOption>
+                  </Hint>
                 ))}
               </ControlPanelRow>
             </div>
 
             {/* Sections column */}
-            {currentSections.length > 0 && (
+            {sections.length > 0 && (
               <div className="ControlPanelExpanded__sections">
                 <ControlPanelRow label={t.controlPanel.rows.sections}>
                   <ControlPanelOption
@@ -189,13 +194,13 @@ export default function ControlPanel() {
                     />
                     {t.shared.sections.top}
                   </ControlPanelOption>
-                  {currentSections.map(section => (
+                  {sections.map(section => (
                     <ControlPanelOption
                       key={section.id}
                       width="full"
                       align="left"
                       onClick={() => handleSectionClick(section.id)}
-                      ariaLabel={`${t.controlPanel.aria.scrollTo} ${t.shared.sections[section.labelKey]}`}
+                      ariaLabel={`${t.controlPanel.aria.scrollTo} ${section.label}`}
                     >
                       <PilcrowRight
                         size={14}
@@ -203,7 +208,7 @@ export default function ControlPanel() {
                         color="var(--color-fg-minor)"
                         style={{ marginRight: "var(--size-2)" }}
                       />
-                      {t.shared.sections[section.labelKey]}
+                      {section.label}
                     </ControlPanelOption>
                   ))}
                 </ControlPanelRow>

@@ -4,7 +4,7 @@ import type { Widen } from "@/types/i18n";
 export const texts: Widen<typeof en> = {
   greeting: "Hallo!",
   intro:
-    "Ich bin <highlight>Nikolaus Brunner</highlight> (kurz Nik), Software-Ingenieur aus Landshut, spezialisiert auf Frontend-Architekturen und Design-Systeme — seit {years} Jahren dabei.",
+    "Ich bin <highlight>Nikolaus Brunner</highlight> (kurz Nik), Software-Ingenieur seit {years} Jahren, spezialisiert auf Frontend-Architekturen und Design-Systeme.",
   ux: "Ich habe ein gutes Gespür für <strong>UX</strong> und <strong>DX</strong>. Ich liebe es, mit Designern zu kollaborieren oder eigenständige Design-Entscheidungen zu treffen.",
   independence:
     "Ich setze Prioritäten und organisiere meine Arbeit selbst, weiß aber auch, wann ich Feedback brauche. In einem guten Team auf ein gemeinsames Ziel hinzuarbeiten ist für mich das Beste.",

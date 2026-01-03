@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 
 import { AnimatePresence, motion } from "motion/react";
+import { createPortal } from "react-dom";
 
 type Position = "top" | "left";
 
@@ -10,43 +11,59 @@ interface Props {
   children: React.ReactNode;
 }
 
-const animations = {
-  top: {
-    initial: { opacity: 0, y: 4, scale: 0.95, x: "-50%" },
-    animate: { opacity: 1, y: 0, scale: 1, x: "-50%" },
-    exit: { opacity: 0, y: 4, scale: 0.95, x: "-50%" }
-  },
-  left: {
-    initial: { opacity: 0, x: 4, scale: 0.95, y: "-50%" },
-    animate: { opacity: 1, x: 0, scale: 1, y: "-50%" },
-    exit: { opacity: 0, x: 4, scale: 0.95, y: "-50%" }
-  }
-};
-
 export default function Hint({ title, position = "top", children }: Props) {
   const [isHovered, setIsHovered] = useState(false);
-  const anim = animations[position];
+  const [coords, setCoords] = useState({ x: 0, y: 0 });
+  const triggerRef = useRef<HTMLSpanElement>(null);
+
+  useLayoutEffect(() => {
+    if (!isHovered || !triggerRef.current) return;
+
+    const rect = triggerRef.current.getBoundingClientRect();
+
+    if (position === "top") {
+      setCoords({
+        x: rect.left + rect.width / 2,
+        y: rect.top - 8
+      });
+    } else {
+      setCoords({
+        x: rect.left - 8,
+        y: rect.top + rect.height / 2
+      });
+    }
+  }, [isHovered, position]);
+
+  const tooltipStyle: React.CSSProperties =
+    position === "top"
+      ? { left: coords.x, top: coords.y, transform: "translate(-50%, -100%)" }
+      : { left: coords.x, top: coords.y, transform: "translate(-100%, -50%)" };
 
   return (
     <span
+      ref={triggerRef}
       className="Hint"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {children}
-      <AnimatePresence>
-        {isHovered && (
-          <motion.span
-            className={`Hint__tooltip Hint__tooltip--${position}`}
-            initial={anim.initial}
-            animate={anim.animate}
-            exit={anim.exit}
-            transition={{ type: "spring", stiffness: 500, damping: 25 }}
-          >
-            {title}
-          </motion.span>
-        )}
-      </AnimatePresence>
+      {createPortal(
+        <AnimatePresence>
+          {isHovered && (
+            <motion.span
+              className="Hint__tooltip"
+              style={tooltipStyle}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 500, damping: 25 }}
+            >
+              {title}
+            </motion.span>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </span>
   );
 }

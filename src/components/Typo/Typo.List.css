@@ -1,0 +1,16 @@
+.Typo-List {
+  padding-left: var(--size-6);
+  margin: var(--size-4) 0;
+}
+
+.Typo-List li {
+  margin-bottom: var(--size-2);
+}
+
+.Typo-List--unordered {
+  list-style-type: disc;
+}
+
+.Typo-List--ordered {
+  list-style-type: decimal;
+}

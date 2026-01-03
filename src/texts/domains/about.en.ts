@@ -1,7 +1,7 @@
 export const texts = {
   greeting: "Hi there!",
   intro:
-    "I'm <highlight>Nikolaus Brunner</highlight> (Nik for short), a Software Engineer based in Landshut, Germany, specializing in frontend architectures and design systems — {years} years in.",
+    "I'm <highlight>Nikolaus Brunner</highlight> (Nik for short), a Software Engineer based in Landshut, Germany, specializing in frontend architectures and design systems for {years} years now.",
   ux: "I have a strong sense for <strong>UX</strong> (user experience) and <strong>DX</strong> (developer experience). I love collaborating with designers or making design decisions independently.",
   independence:
     "I naturally identify priorities and manage my own work, but I also know when to reach out for input. Being part of a good team working towards a shared goal is what I enjoy most.",

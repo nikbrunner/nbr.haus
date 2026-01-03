@@ -45,6 +45,10 @@ export const texts: Widen<typeof en> = {
     }
   },
   titles: {
+    routes: {
+      home: "Portfolio & Über mich",
+      cv: "Druckfreundlicher Lebenslauf für PDF-Export"
+    },
     contrast: {
       low: "Niedriger Kontrast",
       base: "Standard Kontrast",

@@ -7,8 +7,4 @@
   & h2 {
     margin-bottom: var(--size-4);
   }
-
-  & p:first-of-type {
-    font-weight: var(--font-weight-7);
-  }
 }
