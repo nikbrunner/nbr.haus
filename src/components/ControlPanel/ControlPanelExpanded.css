@@ -7,6 +7,10 @@
   top: 50%;
   z-index: var(--z-control-panel);
 
+  container-type: inline-size;
+  container-name: control-panel;
+  width: clamp(280px, 30vw, 360px);
+
   display: flex;
   flex-direction: column;
 
@@ -30,7 +34,7 @@
 /* Navigation container - two-column layout for routes and sections */
 .ControlPanelExpanded__navigation {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 30cqw minmax(0, 1fr);
   gap: calc(var(--control-panel-gap) / 2);
 }
 
@@ -61,6 +65,10 @@
 
 /* Mobile: stack routes horizontally, sections vertically */
 @media (max-width: 767px) {
+  .ControlPanelExpanded {
+    width: clamp(200px, 60vw, 300px);
+  }
+
   .ControlPanelExpanded__navigation {
     display: flex;
     flex-direction: column;

@@ -39,6 +39,19 @@
   width: 100%;
 }
 
+/* Prevent icons from shrinking in flex context */
+.ControlPanelOption svg {
+  flex-shrink: 0;
+}
+
+/* Label span for proper text truncation alongside icons */
+.ControlPanelOption__label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
 .ControlPanelOption--align-left {
   justify-content: flex-start;
   padding-inline-start: var(--size-2);

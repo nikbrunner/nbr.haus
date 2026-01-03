@@ -192,7 +192,9 @@ export default function ControlPanel() {
                       color="var(--color-fg-minor)"
                       style={{ marginRight: "var(--size-1)" }}
                     />
-                    {t.shared.sections.top}
+                    <span className="ControlPanelOption__label">
+                      {t.shared.sections.top}
+                    </span>
                   </ControlPanelOption>
                   {sections.map(section => (
                     <ControlPanelOption
@@ -208,7 +210,9 @@ export default function ControlPanel() {
                         color="var(--color-fg-minor)"
                         style={{ marginRight: "var(--size-2)" }}
                       />
-                      {section.label}
+                      <span className="ControlPanelOption__label">
+                        {section.label}
+                      </span>
                     </ControlPanelOption>
                   ))}
                 </ControlPanelRow>
