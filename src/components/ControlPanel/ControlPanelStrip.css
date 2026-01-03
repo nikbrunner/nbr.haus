@@ -1,7 +1,7 @@
 .ControlPanelStrip {
   position: fixed;
   right: var(--control-panel-offset);
-  top: 50%;
+  top: 65%;
   transform: translateY(-50%);
   z-index: var(--z-control-panel-strip);
 
@@ -31,4 +31,10 @@
 /* Border between sections */
 .ControlPanelStrip__section + .ControlPanelStrip__section {
   border-top: var(--border-size-2) solid var(--color-fg-accent);
+}
+
+/* Custom focus style */
+.ControlPanelStrip:focus-visible {
+  outline: var(--border-size-2) solid var(--color-fg-accent);
+  outline-offset: 3px;
 }
