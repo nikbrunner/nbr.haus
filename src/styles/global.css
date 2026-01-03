@@ -159,10 +159,12 @@ body {
   color: var(--color-fg-main);
 
   /* ControlPanel */
+  --control-panel-top-offset: 65%;
+  --control-panel-right-offset: clamp(8px, 2vw, 12px);
+
   --control-panel-cell: clamp(36px, 8vw, 44px);
   --control-panel-gap: clamp(10px, 2vw, 16px);
   --control-panel-padding: clamp(10px, 2vw, 12px);
-  --control-panel-offset: clamp(8px, 2vw, 12px);
   --control-panel-font-size: clamp(0.65rem, 5cqw, 0.85rem);
   --control-panel-label-width: clamp(80px, 20vw, 110px);
   /* Strip width = border + cell + padding on both sides + border */

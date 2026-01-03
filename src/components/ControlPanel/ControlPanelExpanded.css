@@ -1,10 +1,10 @@
 .ControlPanelExpanded {
   position: fixed;
   right: calc(
-    var(--control-panel-offset) + var(--control-panel-strip-width) +
+    var(--control-panel-right-offset) + var(--control-panel-strip-width) +
       var(--control-panel-gap)
   );
-  top: 50%;
+  top: var(--control-panel-top-offset);
   z-index: var(--z-control-panel);
 
   container-type: inline-size;

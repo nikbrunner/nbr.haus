@@ -1,7 +1,7 @@
 .ControlPanelStrip {
   position: fixed;
-  right: var(--control-panel-offset);
-  top: 65%;
+  right: var(--control-panel-right-offset);
+  top: var(--control-panel-top-offset);
   transform: translateY(-50%);
   z-index: var(--z-control-panel-strip);
 
