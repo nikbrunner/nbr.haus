@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import Button from "@/components/Button";
 import CopyButton from "@/components/CopyButton";
 import Flex from "@/components/Flex";
 import Hint from "@/components/Hint";
@@ -23,7 +24,7 @@ export const Route = createFileRoute("/")({
 
 function Page() {
   const t = useTexts();
-  const { locale } = useLocale();
+  const { locale, setLocale } = useLocale();
   const experienceInYears = new Date().getFullYear() - 2020;
 
   return (
@@ -41,7 +42,22 @@ function Page() {
               items={[
                 {
                   label: t.connect.languages,
-                  value: t.connect.languagesList
+                  value: (
+                    <Flex gap="2" align="center" inline>
+                      <Button
+                        variant={locale === "en" ? "accent" : "default"}
+                        onClick={() => setLocale("en")}
+                      >
+                        {t.connect.englishFluent}
+                      </Button>
+                      <Button
+                        variant={locale === "de" ? "accent" : "default"}
+                        onClick={() => setLocale("de")}
+                      >
+                        {t.connect.germanNative}
+                      </Button>
+                    </Flex>
+                  )
                 },
                 {
                   label: t.connect.email,
