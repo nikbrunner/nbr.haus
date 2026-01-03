@@ -33,8 +33,6 @@
   border-top: var(--border-size-2) solid var(--color-fg-accent);
 }
 
-/* Custom focus style */
 .ControlPanelStrip:focus-visible {
-  outline: var(--border-size-2) solid var(--color-fg-accent);
-  outline-offset: 3px;
+  outline: none;
 }
