@@ -17,6 +17,7 @@ export interface DynamicSection {
  */
 export function useDynamicSections(): DynamicSection[] {
   const pathname = useRouterState({ select: s => s.location.pathname });
+  const locale = useRouterState({ select: s => s.location.search.lang });
   const [sections, setSections] = useState<DynamicSection[]>([]);
 
   useEffect(() => {
@@ -63,10 +64,10 @@ export function useDynamicSections(): DynamicSection[] {
       });
 
       setSections(extractedSections);
-    }, 100);
+    }, 250);
 
     return () => clearTimeout(timeoutId);
-  }, [pathname]);
+  }, [pathname, locale]);
 
   return sections;
 }
