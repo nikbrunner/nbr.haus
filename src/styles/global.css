@@ -159,7 +159,7 @@ body {
   color: var(--color-fg-main);
 
   /* ControlPanel */
-  --control-panel-top-offset: 65%;
+  --control-panel-top-offset: 60%;
   --control-panel-right-offset: clamp(8px, 2vw, 12px);
 
   --control-panel-cell: clamp(36px, 8vw, 44px);
