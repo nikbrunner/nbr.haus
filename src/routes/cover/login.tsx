@@ -3,6 +3,7 @@ import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
 
+import Button from "@/components/Button";
 import { verifyCoverPassword } from "@/lib/coverletters";
 
 import "@/routes/cover/login.css";
@@ -60,13 +61,9 @@ function CoverLoginPage() {
           disabled={isLoading}
         />
 
-        <button
-          className="CoverLogin__button"
-          type="submit"
-          disabled={isLoading || !password}
-        >
+        <Button type="submit" variant="accent" disabled={isLoading || !password}>
           {isLoading ? "Verifying..." : "Enter"}
-        </button>
+        </Button>
 
         {error && <p className="CoverLogin__error">Invalid password. Try again.</p>}
       </form>
