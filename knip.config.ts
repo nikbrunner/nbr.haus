@@ -27,7 +27,8 @@ const config: KnipConfig = {
     "@testing-library/react",
     "@vitest/coverage-v8",
     "web-vitals",
-    "shiki" // Used in Phase 3 for syntax highlighting
+    "shiki", // Used in Phase 3 for syntax highlighting
+    "vinxi" // Transitive dep of @tanstack/react-start, used for cookies
   ],
   storybook: {
     entry: ["src/**/*.stories.tsx"]
