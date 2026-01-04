@@ -23,14 +23,18 @@ export function CoverLetterHeader(props: Props) {
             <MapPin size={14} />
             {props.senderContact.location}
           </span>
-          <span>
+          <a href={`mailto:${props.senderContact.email}`}>
             <Mail size={14} />
             {props.senderContact.email}
-          </span>
-          <span>
+          </a>
+          <a
+            href={props.senderContact.website}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Globe size={14} />
             {props.senderContact.website}
-          </span>
+          </a>
         </div>
       </div>
 
