@@ -19,10 +19,14 @@ export function CoverLetterHeader(props: Props) {
       <div className="CoverLetterHeader__sender">
         <h1 className="CoverLetterHeader__name">{props.senderName}</h1>
         <div className="CoverLetterHeader__contact">
-          <span>
+          <a
+            href={`https://www.google.com/maps/search/${encodeURIComponent(props.senderContact.location)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <MapPin size={14} />
             {props.senderContact.location}
-          </span>
+          </a>
           <a href={`mailto:${props.senderContact.email}`}>
             <Mail size={14} />
             {props.senderContact.email}
