@@ -4,3 +4,9 @@
   line-height: var(--font-lineheight-1);
   margin: 0 0 var(--size-2);
 }
+
+.Typo-H3.Typo--variant-print {
+  font-size: var(--print-font-size-4);
+  line-height: var(--print-font-lineheight-1);
+  margin: 0 0 var(--print-size-3);
+}

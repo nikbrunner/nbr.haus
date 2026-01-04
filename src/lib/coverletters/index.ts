@@ -1,0 +1,1 @@
+export { getCoverLetterBySlug } from "./coverletters";

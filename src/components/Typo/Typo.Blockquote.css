@@ -4,3 +4,10 @@
   margin: var(--size-4) 0;
   font-style: italic;
 }
+
+.Typo-Blockquote.Typo--variant-print {
+  font-size: var(--print-font-size-2);
+  line-height: var(--print-font-lineheight-3);
+  padding-left: var(--print-size-4);
+  margin: var(--print-size-4) 0;
+}

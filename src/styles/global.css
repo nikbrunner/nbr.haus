@@ -63,6 +63,9 @@
 @import "../components/study/StudyPostCard.css";
 @import "../components/study/StudyPostMeta.css";
 
+/* Cover Letter */
+@import "../components/coverletter/CoverLetterHeader.css";
+
 html {
   color-scheme: light dark;
 }

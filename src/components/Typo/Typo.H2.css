@@ -10,3 +10,9 @@
   border-bottom: var(--border-size-2) dashed var(--color-fg-accent);
   padding-bottom: var(--size-1);
 }
+
+.Typo-H2.Typo--variant-print {
+  font-size: var(--print-font-size-5);
+  line-height: var(--print-font-lineheight-1);
+  margin: 0 0 var(--print-size-4);
+}

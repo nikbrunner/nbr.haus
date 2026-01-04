@@ -162,5 +162,13 @@ export default defineConfig([
     rules: {
       "css/no-important": "off"
     }
+  },
+  {
+    name: "project/cover-letter-css-important-exception",
+    // Cover letter route uses !important for print styles to override browser defaults
+    files: ["src/routes/cover/$company.css"],
+    rules: {
+      "css/no-important": "off"
+    }
   }
 ]);

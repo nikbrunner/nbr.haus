@@ -3,3 +3,9 @@
   font-weight: var(--font-weight-3);
   margin: 0 0 var(--size-4);
 }
+
+.Typo-P.Typo--variant-print {
+  font-size: var(--print-font-size-2);
+  line-height: var(--print-font-lineheight-3);
+  margin: 0 0 var(--print-size-6);
+}

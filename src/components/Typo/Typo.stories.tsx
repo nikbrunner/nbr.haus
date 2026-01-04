@@ -400,3 +400,102 @@ export const FullArticleWithNewComponents: StoryObj = {
     </article>
   )
 };
+
+export const PrintVariant: StoryObj = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "The print variant uses absolute units (pt, mm) optimized for A4 paper output. Used for CVs, cover letters, and other print-friendly documents."
+      }
+    }
+  },
+  decorators: [
+    Story => (
+      <div style={{ maxWidth: "21cm", padding: "1.5cm", background: "white" }}>
+        <Story />
+      </div>
+    )
+  ],
+  render: () => (
+    <article>
+      <Typo.H1 variant="print">Cover Letter</Typo.H1>
+      <Typo.Lead variant="print">
+        Application for Senior Frontend Engineer position
+      </Typo.Lead>
+
+      <Typo.H2 variant="print" decorated={false}>
+        Introduction
+      </Typo.H2>
+      <Typo.P variant="print">
+        I am writing to express my strong interest in the Senior Frontend Engineer
+        position. With over four years of professional experience building complex
+        web applications using React, TypeScript, and modern frontend tooling, I am
+        confident in my ability to contribute meaningfully to your team.
+      </Typo.P>
+
+      <Typo.H3 variant="print">Key Qualifications</Typo.H3>
+      <Typo.UnorderedList variant="print">
+        <li>Building and maintaining large-scale React applications</li>
+        <li>Implementing custom design systems and component libraries</li>
+        <li>Migrating legacy codebases to modern frameworks</li>
+        <li>Working effectively in cross-functional teams</li>
+      </Typo.UnorderedList>
+
+      <Typo.H3 variant="print">Experience Highlights</Typo.H3>
+      <Typo.OrderedList variant="print">
+        <li>Led frontend development for enterprise applications</li>
+        <li>Designed and implemented component architecture</li>
+        <li>Mentored junior developers on best practices</li>
+      </Typo.OrderedList>
+
+      <Typo.Blockquote variant="print">
+        I believe in writing clean, maintainable code that prioritizes user
+        experience and developer ergonomics.
+      </Typo.Blockquote>
+
+      <Typo.H4 variant="print">Technical Details</Typo.H4>
+      <Typo.P variant="print">
+        My experience includes working with modern tooling like TanStack Router,
+        Vite, and various testing frameworks. I have a strong focus on type safety
+        and performance optimization.
+      </Typo.P>
+
+      <Typo.Small variant="print">
+        Available for immediate start · References available upon request
+      </Typo.Small>
+    </article>
+  )
+};
+
+export const PrintVsDefault: StoryObj = {
+  name: "Print vs Default Comparison",
+  render: () => (
+    <Flex gap="8">
+      <div style={{ flex: 1 }}>
+        <Typo.H3>Default Variant</Typo.H3>
+        <Typo.P>
+          This paragraph uses the default responsive sizing with fluid typography
+          that scales based on viewport width.
+        </Typo.P>
+        <Typo.UnorderedList>
+          <li>Fluid font sizes</li>
+          <li>Responsive spacing</li>
+          <li>Screen-optimized</li>
+        </Typo.UnorderedList>
+      </div>
+      <div style={{ flex: 1, background: "#f5f5f5", padding: "var(--size-4)" }}>
+        <Typo.H3 variant="print">Print Variant</Typo.H3>
+        <Typo.P variant="print">
+          This paragraph uses fixed point sizes optimized for A4 paper printing with
+          consistent spacing.
+        </Typo.P>
+        <Typo.UnorderedList variant="print">
+          <li>Fixed point sizes</li>
+          <li>Millimeter spacing</li>
+          <li>Print-optimized</li>
+        </Typo.UnorderedList>
+      </div>
+    </Flex>
+  )
+};
