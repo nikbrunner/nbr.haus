@@ -8,7 +8,7 @@ position: "Senior Frontend Engineer"
 Landshut, Germany  
 nik@nbr.haus | nbr.haus
 
-**Application: (Senior) Frontend Engineer**
+**Application: Senior Frontend Engineer**
 
 Hi,
 
@@ -21,6 +21,3 @@ What I enjoy most is taking full ownership of features and translating designs i
 I'm available from February 2026 and open to relocating to Berlin.
 
 Looking forward to hearing from you.
-
-Best,  
-Nikolaus Brunner
