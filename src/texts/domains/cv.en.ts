@@ -10,7 +10,7 @@ export const texts = {
 
   contact: {
     location: "Landshut, Germany",
-    website: "nbr.haus",
+    website: "https://nbr.haus",
     email: "nik@nbr.haus",
     github: "github.com/nikbrunner",
     linkedin: "linkedin.com/in/nbru"
