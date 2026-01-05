@@ -9,7 +9,13 @@
 
   container-type: inline-size;
   container-name: control-panel;
-  width: clamp(280px, 30vw, 360px);
+
+  /*
+   * Mobile width: fill available space, capped at 280px
+   * Available = 100vw - strip - gap - right-offset - left-margin
+   */
+  width: calc(100vw - (var(--control-panel-strip-width) * 2));
+  max-width: 375px;
 
   display: flex;
   flex-direction: column;
@@ -31,11 +37,11 @@
   border-top: var(--border-size-2) dashed var(--color-fg-accent);
 }
 
-/* Navigation container - two-column layout for routes and sections */
+/* Navigation container - mobile: single column */
 .ControlPanelExpanded__navigation {
-  display: grid;
-  grid-template-columns: 30cqw minmax(0, 1fr);
-  gap: calc(var(--control-panel-gap) / 2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--control-panel-gap);
 }
 
 /* Override ControlPanelRow to stack label on top with vertical options */
@@ -50,7 +56,7 @@
 
 .ControlPanelExpanded__navigation .ControlPanelRow__options {
   flex-direction: column;
-  max-height: 40vh;
+  max-height: 35vh;
   overflow-y: auto;
 
   /* Hide scrollbar but keep functionality */
@@ -63,43 +69,60 @@
   display: none; /* Chrome/Safari/Opera */
 }
 
-/* Mobile: stack routes horizontally, sections vertically */
-@media (max-width: 767px) {
+/* Routes: horizontal row on mobile */
+.ControlPanelExpanded__routes .ControlPanelRow {
+  flex-direction: row;
+}
+
+.ControlPanelExpanded__routes .ControlPanelRow__label {
+  width: var(--control-panel-label-width);
+}
+
+.ControlPanelExpanded__routes .ControlPanelRow__options {
+  flex-direction: row;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  flex-wrap: nowrap;
+
+  /* Hide scrollbar but keep functionality */
+  /* eslint-disable-next-line css/use-baseline */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.ControlPanelExpanded__routes .ControlPanelRow__options::-webkit-scrollbar {
+  display: none;
+}
+
+/* Sections: vertical scrollable list */
+.ControlPanelExpanded__sections .ControlPanelRow__options {
+  align-items: stretch;
+}
+
+@media (min-width: 1200px) {
+  /* Navigation: two-column grid layout */
   .ControlPanelExpanded__navigation {
-    display: flex;
-    flex-direction: column;
-    gap: var(--control-panel-gap);
+    display: grid;
+    grid-template-columns: 30cqw minmax(0, 1fr);
+    gap: calc(var(--control-panel-gap) / 2);
   }
 
-  /* Routes: horizontal scrollable */
+  .ControlPanelExpanded__navigation .ControlPanelRow__options {
+    max-height: 40vh;
+  }
+
+  /* Routes: inherit column layout from navigation */
   .ControlPanelExpanded__routes .ControlPanelRow {
-    flex-direction: row;
+    flex-direction: column;
   }
 
   .ControlPanelExpanded__routes .ControlPanelRow__label {
-    width: var(--control-panel-label-width);
+    width: auto;
   }
 
   .ControlPanelExpanded__routes .ControlPanelRow__options {
-    flex-direction: row;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    flex-direction: column;
+    overflow-x: visible;
     flex-wrap: nowrap;
-
-    /* Hide scrollbar but keep functionality */
-    /* eslint-disable-next-line css/use-baseline */
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-
-  .ControlPanelExpanded__routes .ControlPanelRow__options::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Sections: vertical scrollable list */
-  .ControlPanelExpanded__sections .ControlPanelRow__options {
-    align-items: stretch;
-    max-height: 35vh;
-    overflow-y: auto;
   }
 }
