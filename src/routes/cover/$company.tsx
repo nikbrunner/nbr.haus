@@ -54,6 +54,7 @@ function CoverLetterPage() {
         recipient={coverLetter.frontmatter.recipient}
         recipientTitle={coverLetter.frontmatter.recipientTitle}
         company={coverLetter.frontmatter.company}
+        title={coverLetter.frontmatter.title}
       />
 
       <MarkdownContent

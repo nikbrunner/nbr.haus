@@ -7,6 +7,7 @@ interface CoverLetterFrontmatter {
   recipientTitle?: string;
   date: string; // YYYY-MM-DD
   position: string;
+  title: string;
   draft?: boolean;
 }
 

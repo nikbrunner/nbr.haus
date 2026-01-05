@@ -66,8 +66,10 @@
   flex-direction: column;
   gap: var(--print-size-1);
   font-style: normal;
-  font-size: var(--print-font-size-2);
+  font-size: var(--print-font-size-8);
   line-height: var(--print-font-lineheight-2);
+  letter-spacing: 0.15em;
+  color: var(--color-fg-accent-alt);
 }
 
 .CoverLetterHeader__recipient-name {
@@ -80,4 +82,11 @@
 
 .CoverLetterHeader__recipient-company {
   color: var(--color-fg-default);
+}
+
+.CoverLetterHeader__title {
+  font-size: var(--print-font-size-4);
+  font-weight: var(--font-weight-9);
+  line-height: var(--print-font-lineheight-0);
+  color: var(--color-fg-accent);
 }

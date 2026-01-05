@@ -11,6 +11,7 @@ interface Props {
   recipient: string;
   recipientTitle?: string;
   company: string;
+  title: string;
 }
 
 export function CoverLetterHeader(props: Props) {
@@ -55,6 +56,10 @@ export function CoverLetterHeader(props: Props) {
         )}
         <span className="CoverLetterHeader__recipient-company">{props.company}</span>
       </address>
+
+      <p className="CoverLetterHeader__title">
+        <strong>{props.title}</strong>
+      </p>
     </header>
   );
 }
