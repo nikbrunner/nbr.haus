@@ -65,10 +65,6 @@
 
 /* Mobile: stack routes horizontally, sections vertically */
 @media (max-width: 767px) {
-  .ControlPanelExpanded {
-    width: clamp(200px, 60vw, 300px);
-  }
-
   .ControlPanelExpanded__navigation {
     display: flex;
     flex-direction: column;

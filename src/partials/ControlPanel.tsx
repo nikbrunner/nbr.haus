@@ -94,10 +94,7 @@ export default function ControlPanel() {
   const navRoutes: {
     to: FileRouteTypes["to"];
     hint: keyof typeof t.controlPanel.titles.routes;
-  }[] = [
-    { to: "/", hint: "home" },
-    { to: "/cv", hint: "cv" }
-  ];
+  }[] = [{ to: "/", hint: "home" }];
 
   return (
     <>
