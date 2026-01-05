@@ -4,10 +4,6 @@ date: "2026-01-04"
 position: "Senior Frontend Engineer"
 ---
 
-**Nikolaus Brunner**  
-Landshut, Germany  
-nik@nbr.haus | nbr.haus
-
 **Application: Senior Frontend Engineer**
 
 Hi,

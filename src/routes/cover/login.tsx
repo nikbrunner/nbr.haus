@@ -36,7 +36,7 @@ function CoverLoginPage() {
 
       if (result.success) {
         // Use router.history.push for full URL redirect
-        window.location.href = redirectTo ?? "/cover/example-corp";
+        window.location.href = redirectTo ?? "/cover";
       } else {
         setError(true);
       }

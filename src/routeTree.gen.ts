@@ -14,6 +14,7 @@ import { Route as SplatRouteImport } from './routes/$'
 import { Route as StudyRouteRouteImport } from './routes/study/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as StudyIndexRouteImport } from './routes/study/index'
+import { Route as CoverIndexRouteImport } from './routes/cover/index'
 import { Route as StudySlugRouteImport } from './routes/study/$slug'
 import { Route as CoverLoginRouteImport } from './routes/cover/login'
 import { Route as CoverCompanyRouteImport } from './routes/cover/$company'
@@ -43,6 +44,11 @@ const StudyIndexRoute = StudyIndexRouteImport.update({
   path: '/',
   getParentRoute: () => StudyRouteRoute,
 } as any)
+const CoverIndexRoute = CoverIndexRouteImport.update({
+  id: '/cover/',
+  path: '/cover/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StudySlugRoute = StudySlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -67,6 +73,7 @@ export interface FileRoutesByFullPath {
   '/cover/$company': typeof CoverCompanyRoute
   '/cover/login': typeof CoverLoginRoute
   '/study/$slug': typeof StudySlugRoute
+  '/cover': typeof CoverIndexRoute
   '/study/': typeof StudyIndexRoute
 }
 export interface FileRoutesByTo {
@@ -76,6 +83,7 @@ export interface FileRoutesByTo {
   '/cover/$company': typeof CoverCompanyRoute
   '/cover/login': typeof CoverLoginRoute
   '/study/$slug': typeof StudySlugRoute
+  '/cover': typeof CoverIndexRoute
   '/study': typeof StudyIndexRoute
 }
 export interface FileRoutesById {
@@ -87,6 +95,7 @@ export interface FileRoutesById {
   '/cover/$company': typeof CoverCompanyRoute
   '/cover/login': typeof CoverLoginRoute
   '/study/$slug': typeof StudySlugRoute
+  '/cover/': typeof CoverIndexRoute
   '/study/': typeof StudyIndexRoute
 }
 export interface FileRouteTypes {
@@ -99,6 +108,7 @@ export interface FileRouteTypes {
     | '/cover/$company'
     | '/cover/login'
     | '/study/$slug'
+    | '/cover'
     | '/study/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -108,6 +118,7 @@ export interface FileRouteTypes {
     | '/cover/$company'
     | '/cover/login'
     | '/study/$slug'
+    | '/cover'
     | '/study'
   id:
     | '__root__'
@@ -118,6 +129,7 @@ export interface FileRouteTypes {
     | '/cover/$company'
     | '/cover/login'
     | '/study/$slug'
+    | '/cover/'
     | '/study/'
   fileRoutesById: FileRoutesById
 }
@@ -128,6 +140,7 @@ export interface RootRouteChildren {
   CvRoute: typeof CvRoute
   CoverCompanyRoute: typeof CoverCompanyRoute
   CoverLoginRoute: typeof CoverLoginRoute
+  CoverIndexRoute: typeof CoverIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -166,6 +179,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/study/'
       preLoaderRoute: typeof StudyIndexRouteImport
       parentRoute: typeof StudyRouteRoute
+    }
+    '/cover/': {
+      id: '/cover/'
+      path: '/cover'
+      fullPath: '/cover'
+      preLoaderRoute: typeof CoverIndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/study/$slug': {
       id: '/study/$slug'
@@ -212,6 +232,7 @@ const rootRouteChildren: RootRouteChildren = {
   CvRoute: CvRoute,
   CoverCompanyRoute: CoverCompanyRoute,
   CoverLoginRoute: CoverLoginRoute,
+  CoverIndexRoute: CoverIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
