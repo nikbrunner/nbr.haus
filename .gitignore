@@ -20,4 +20,5 @@ storybook-static
 .bv/
 
 # Cover letters (local only, not deployed)
-src/content/coverletters/
+src/content/coverletters/*.md
+src/content/coverletters/*.pdf
