@@ -6,7 +6,7 @@
   height: var(--control-panel-cell);
 
   background: var(--color-bg-main);
-  border: var(--border-size-2) dashed var(--color-fg-accent);
+  border: var(--border-size-2) dashed var(--color-fg-minor);
 
   font-family: var(--font-family);
   font-size: var(--control-panel-font-size);
