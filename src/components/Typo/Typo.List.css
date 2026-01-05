@@ -15,13 +15,13 @@
   list-style-type: decimal;
 }
 
-.Typo-List.Typo--variant-print {
+.Typo-List.Typo--medium-print {
   font-size: var(--print-font-size-2);
   line-height: var(--print-font-lineheight-3);
   padding-left: var(--print-size-8);
   margin: 0 0 var(--print-size-6);
 }
 
-.Typo-List.Typo--variant-print li {
+.Typo-List.Typo--medium-print li {
   margin-bottom: var(--print-size-2);
 }

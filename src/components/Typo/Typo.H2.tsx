@@ -1,12 +1,12 @@
 import { cva, cx, type VariantProps } from "class-variance-authority";
 
 import { colorVariants } from "@/components/Typo/Typo.colors";
-import { variantVariants } from "@/components/Typo/Typo.variants";
+import { mediumVariants } from "@/components/Typo/Typo.variants";
 
 export const h2Variants = cva("Typo-H2", {
   variants: {
     color: colorVariants,
-    variant: variantVariants,
+    medium: mediumVariants,
     decorated: {
       true: "Typo-H2--decorated",
       false: ""
@@ -14,7 +14,7 @@ export const h2Variants = cva("Typo-H2", {
   },
   defaultVariants: {
     color: "accent",
-    variant: "web",
+    medium: "web",
     decorated: true
   }
 });
@@ -26,13 +26,13 @@ export function H2({
   children,
   className,
   color,
-  variant,
+  medium,
   decorated,
   ...props
 }: Props) {
   return (
     <h2
-      className={cx(h2Variants({ color, variant, decorated }), className)}
+      className={cx(h2Variants({ color, medium, decorated }), className)}
       {...props}
     >
       {children}

@@ -2,27 +2,27 @@ import Markdown, { type Components } from "react-markdown";
 import rehypeSlug from "rehype-slug";
 
 import { Typo } from "@/components/Typo";
-import type { TypoVariant } from "@/components/Typo/Typo.types";
+import type { TypoMedium } from "@/components/Typo/Typo.types";
 
-function createMarkdownComponents(variant: TypoVariant): Components {
+function createMarkdownComponents(medium: TypoMedium): Components {
   return {
-    h1: ({ children }) => <Typo.H1 variant={variant}>{children}</Typo.H1>,
+    h1: ({ children }) => <Typo.H1 medium={medium}>{children}</Typo.H1>,
     h2: ({ children }) => (
-      <Typo.H2 variant={variant} decorated={false}>
+      <Typo.H2 medium={medium} decorated={false}>
         {children}
       </Typo.H2>
     ),
-    h3: ({ children }) => <Typo.H3 variant={variant}>{children}</Typo.H3>,
-    h4: ({ children }) => <Typo.H4 variant={variant}>{children}</Typo.H4>,
-    p: ({ children }) => <Typo.P variant={variant}>{children}</Typo.P>,
+    h3: ({ children }) => <Typo.H3 medium={medium}>{children}</Typo.H3>,
+    h4: ({ children }) => <Typo.H4 medium={medium}>{children}</Typo.H4>,
+    p: ({ children }) => <Typo.P medium={medium}>{children}</Typo.P>,
     blockquote: ({ children }) => (
-      <Typo.Blockquote variant={variant}>{children}</Typo.Blockquote>
+      <Typo.Blockquote medium={medium}>{children}</Typo.Blockquote>
     ),
     ul: ({ children }) => (
-      <Typo.UnorderedList variant={variant}>{children}</Typo.UnorderedList>
+      <Typo.UnorderedList medium={medium}>{children}</Typo.UnorderedList>
     ),
     ol: ({ children }) => (
-      <Typo.OrderedList variant={variant}>{children}</Typo.OrderedList>
+      <Typo.OrderedList medium={medium}>{children}</Typo.OrderedList>
     ),
     code: ({ className, children }) => {
       // Check if it's a code block (has language class) or inline code
@@ -39,15 +39,15 @@ function createMarkdownComponents(variant: TypoVariant): Components {
 interface Props {
   content: string;
   className?: string;
-  variant?: TypoVariant;
+  medium?: TypoMedium;
 }
 
-export function MarkdownContent({ content, className, variant = "web" }: Props) {
+export function MarkdownContent({ content, className, medium = "web" }: Props) {
   return (
     <div className={className}>
       <Markdown
         rehypePlugins={[rehypeSlug]}
-        components={createMarkdownComponents(variant)}
+        components={createMarkdownComponents(medium)}
       >
         {content}
       </Markdown>

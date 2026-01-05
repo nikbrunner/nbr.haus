@@ -1,3 +1,3 @@
 export type TypoColor = "main" | "support" | "minor" | "accent" | "accentAlt";
 
-export type TypoVariant = "web" | "print";
+export type TypoMedium = "web" | "print";

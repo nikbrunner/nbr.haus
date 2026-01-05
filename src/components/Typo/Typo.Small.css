@@ -3,6 +3,6 @@
   font-weight: var(--font-weight-3);
 }
 
-.Typo-Small.Typo--variant-print {
+.Typo-Small.Typo--medium-print {
   font-size: var(--print-font-size-1);
 }

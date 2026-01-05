@@ -1,16 +1,16 @@
 import { cva, cx, type VariantProps } from "class-variance-authority";
 
 import { colorVariants } from "@/components/Typo/Typo.colors";
-import { variantVariants } from "@/components/Typo/Typo.variants";
+import { mediumVariants } from "@/components/Typo/Typo.variants";
 
 export const listVariants = cva("Typo-List", {
   variants: {
     color: colorVariants,
-    variant: variantVariants
+    medium: mediumVariants
   },
   defaultVariants: {
     color: "main",
-    variant: "web"
+    medium: "web"
   }
 });
 
@@ -24,13 +24,13 @@ export function UnorderedList({
   children,
   className,
   color,
-  variant,
+  medium,
   ...props
 }: UlProps) {
   return (
     <ul
       className={cx(
-        listVariants({ color, variant }),
+        listVariants({ color, medium }),
         "Typo-List--unordered",
         className
       )}
@@ -45,13 +45,13 @@ export function OrderedList({
   children,
   className,
   color,
-  variant,
+  medium,
   ...props
 }: OlProps) {
   return (
     <ol
       className={cx(
-        listVariants({ color, variant }),
+        listVariants({ color, medium }),
         "Typo-List--ordered",
         className
       )}

@@ -59,7 +59,7 @@ function CoverLetterPage() {
       <MarkdownContent
         content={coverLetter.content}
         className="CoverLetterPage__content"
-        variant="print"
+        medium="print"
       />
 
       <footer className="CoverLetterPage__signature">

@@ -76,7 +76,7 @@ export const HeadingScale: StoryObj = {
         visual distinction with an underline and uppercase treatment.
       </Typo.P>
 
-      <Typo.H2 variant="web" color="main">
+      <Typo.H2 medium="web" color="main">
         Plain Section Header
       </Typo.H2>
       <Typo.P color="support">
@@ -419,49 +419,49 @@ export const PrintVariant: StoryObj = {
   ],
   render: () => (
     <article>
-      <Typo.H1 variant="print">Cover Letter</Typo.H1>
-      <Typo.Lead variant="print">
+      <Typo.H1 medium="print">Cover Letter</Typo.H1>
+      <Typo.Lead medium="print">
         Application for Senior Frontend Engineer position
       </Typo.Lead>
 
-      <Typo.H2 variant="print" decorated={false}>
+      <Typo.H2 medium="print" decorated={false}>
         Introduction
       </Typo.H2>
-      <Typo.P variant="print">
+      <Typo.P medium="print">
         I am writing to express my strong interest in the Senior Frontend Engineer
         position. With over four years of professional experience building complex
         web applications using React, TypeScript, and modern frontend tooling, I am
         confident in my ability to contribute meaningfully to your team.
       </Typo.P>
 
-      <Typo.H3 variant="print">Key Qualifications</Typo.H3>
-      <Typo.UnorderedList variant="print">
+      <Typo.H3 medium="print">Key Qualifications</Typo.H3>
+      <Typo.UnorderedList medium="print">
         <li>Building and maintaining large-scale React applications</li>
         <li>Implementing custom design systems and component libraries</li>
         <li>Migrating legacy codebases to modern frameworks</li>
         <li>Working effectively in cross-functional teams</li>
       </Typo.UnorderedList>
 
-      <Typo.H3 variant="print">Experience Highlights</Typo.H3>
-      <Typo.OrderedList variant="print">
+      <Typo.H3 medium="print">Experience Highlights</Typo.H3>
+      <Typo.OrderedList medium="print">
         <li>Led frontend development for enterprise applications</li>
         <li>Designed and implemented component architecture</li>
         <li>Mentored junior developers on best practices</li>
       </Typo.OrderedList>
 
-      <Typo.Blockquote variant="print">
+      <Typo.Blockquote medium="print">
         I believe in writing clean, maintainable code that prioritizes user
         experience and developer ergonomics.
       </Typo.Blockquote>
 
-      <Typo.H4 variant="print">Technical Details</Typo.H4>
-      <Typo.P variant="print">
+      <Typo.H4 medium="print">Technical Details</Typo.H4>
+      <Typo.P medium="print">
         My experience includes working with modern tooling like TanStack Router,
         Vite, and various testing frameworks. I have a strong focus on type safety
         and performance optimization.
       </Typo.P>
 
-      <Typo.Small variant="print">
+      <Typo.Small medium="print">
         Available for immediate start · References available upon request
       </Typo.Small>
     </article>
@@ -485,12 +485,12 @@ export const PrintVsDefault: StoryObj = {
         </Typo.UnorderedList>
       </div>
       <div style={{ flex: 1, background: "#f5f5f5", padding: "var(--size-4)" }}>
-        <Typo.H3 variant="print">Print Variant</Typo.H3>
-        <Typo.P variant="print">
+        <Typo.H3 medium="print">Print Variant</Typo.H3>
+        <Typo.P medium="print">
           This paragraph uses fixed point sizes optimized for A4 paper printing with
           consistent spacing.
         </Typo.P>
-        <Typo.UnorderedList variant="print">
+        <Typo.UnorderedList medium="print">
           <li>Fixed point sizes</li>
           <li>Millimeter spacing</li>
           <li>Print-optimized</li>

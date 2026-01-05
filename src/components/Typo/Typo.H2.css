@@ -11,7 +11,7 @@
   padding-bottom: var(--size-1);
 }
 
-.Typo-H2.Typo--variant-print {
+.Typo-H2.Typo--medium-print {
   font-size: var(--print-font-size-5);
   line-height: var(--print-font-lineheight-1);
   margin: 0 0 var(--print-size-4);

@@ -5,7 +5,7 @@
   font-style: italic;
 }
 
-.Typo-Blockquote.Typo--variant-print {
+.Typo-Blockquote.Typo--medium-print {
   font-size: var(--print-font-size-2);
   line-height: var(--print-font-lineheight-3);
   padding-left: var(--print-size-4);

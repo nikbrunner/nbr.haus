@@ -1,6 +1,6 @@
-import type { TypoVariant } from "@/components/Typo/Typo.types";
+import type { TypoMedium } from "@/components/Typo/Typo.types";
 
-export const variantVariants: Record<TypoVariant, string> = {
+export const mediumVariants: Record<TypoMedium, string> = {
   web: "",
-  print: "Typo--variant-print"
+  print: "Typo--medium-print"
 };
