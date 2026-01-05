@@ -1,23 +1,13 @@
-import { createFileRoute, notFound, redirect } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@tanstack/react-router";
 
 import { CoverLetterHeader } from "@/components/coverletter";
 import { useTexts } from "@/i18n/useTexts";
-import { checkCoverAuth, getCoverLetterBySlug } from "@/lib/coverletters";
+import { getCoverLetterBySlug } from "@/lib/coverletters";
 import { MarkdownContent } from "@/partials/MarkdownContent";
 
 import "@/routes/cover/$company.css";
 
 export const Route = createFileRoute("/cover/$company")({
-  beforeLoad: async ({ location }) => {
-    const isAuthenticated = await checkCoverAuth();
-
-    if (!isAuthenticated) {
-      throw redirect({
-        to: "/cover/login",
-        search: { redirect: location.href }
-      });
-    }
-  },
   loader: async ({ params }) => {
     const coverLetter = await getCoverLetterBySlug({ data: params.company });
 

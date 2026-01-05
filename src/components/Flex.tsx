@@ -3,8 +3,6 @@ import { cva, cx, type VariantProps } from "class-variance-authority";
 import type { ComponentProps } from "@/types/component";
 import { resolveGap, type GapValue } from "@/types/spacing";
 
-import "src/components/Flex.css";
-
 const flexVariants = cva("Flex", {
   variants: {
     inline: {

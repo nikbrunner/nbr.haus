@@ -11,7 +11,7 @@
 @import "../routes/cv.css";
 @import "../routes/study/route.css";
 @import "../routes/cover/$company.css";
-@import "../routes/cover/login.css";
+@import "../routes/cover/index.css";
 
 /* Components */
 @import "../components/Flex.css";

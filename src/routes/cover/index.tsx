@@ -1,20 +1,10 @@
-import { createFileRoute, Link, redirect } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 
-import { checkCoverAuth, getAllCoverLetters } from "@/lib/coverletters";
+import { getAllCoverLetters } from "@/lib/coverletters";
 
 import "@/routes/cover/index.css";
 
 export const Route = createFileRoute("/cover/")({
-  beforeLoad: async ({ location }) => {
-    const isAuthenticated = await checkCoverAuth();
-
-    if (!isAuthenticated) {
-      throw redirect({
-        to: "/cover/login",
-        search: { redirect: location.href }
-      });
-    }
-  },
   loader: async () => {
     const letters = await getAllCoverLetters();
     return { letters };

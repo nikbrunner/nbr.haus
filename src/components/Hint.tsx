@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef, useState } from "react";
 
+import { useHydrated } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "motion/react";
 import { createPortal } from "react-dom";
 
@@ -12,6 +13,7 @@ interface Props {
 }
 
 export default function Hint({ title, position = "top", children }: Props) {
+  const hydrated = useHydrated();
   const [isHovered, setIsHovered] = useState(false);
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const triggerRef = useRef<HTMLSpanElement>(null);
@@ -47,23 +49,24 @@ export default function Hint({ title, position = "top", children }: Props) {
       onMouseLeave={() => setIsHovered(false)}
     >
       {children}
-      {createPortal(
-        <AnimatePresence>
-          {isHovered && (
-            <motion.span
-              className="Hint__tooltip"
-              style={tooltipStyle}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 500, damping: 25 }}
-            >
-              {title}
-            </motion.span>
-          )}
-        </AnimatePresence>,
-        document.body
-      )}
+      {hydrated &&
+        createPortal(
+          <AnimatePresence>
+            {isHovered && (
+              <motion.span
+                className="Hint__tooltip"
+                style={tooltipStyle}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 500, damping: 25 }}
+              >
+                {title}
+              </motion.span>
+            )}
+          </AnimatePresence>,
+          document.body
+        )}
     </span>
   );
 }
