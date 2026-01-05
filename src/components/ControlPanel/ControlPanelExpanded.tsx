@@ -3,8 +3,6 @@ import type { ReactNode } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { createPortal } from "react-dom";
 
-import "src/components/ControlPanel/ControlPanelExpanded.css";
-
 interface Props {
   isExpanded: boolean;
   children: ReactNode;

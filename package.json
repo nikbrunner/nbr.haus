@@ -22,6 +22,7 @@
     "storybook": "storybook dev -p 6006 -c src/storybook",
     "build:storybook": "storybook build -c src/storybook",
     "generate:cv": "npx tsx scripts/generate-cv-pdf.ts",
+    "generate:coverletters": "npx tsx scripts/generate-coverletters-pdf.ts",
     "docs:ai:ts-router": "rm -f docs/ai/tanstack-router.md && vibe-rules install claude-code @tanstack/react-router --target docs/ai/tanstack-router.md"
   },
   "dependencies": {

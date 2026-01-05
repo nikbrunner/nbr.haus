@@ -10,6 +10,8 @@
 @import "../routes/index.css";
 @import "../routes/cv.css";
 @import "../routes/study/route.css";
+@import "../routes/cover/$company.css";
+@import "../routes/cover/index.css";
 
 /* Components */
 @import "../components/Flex.css";
@@ -62,6 +64,9 @@
 /* Study */
 @import "../components/study/StudyPostCard.css";
 @import "../components/study/StudyPostMeta.css";
+
+/* Cover Letter */
+@import "../components/coverletter/CoverLetterHeader.css";
 
 html {
   color-scheme: light dark;
@@ -159,7 +164,7 @@ body {
   color: var(--color-fg-main);
 
   /* ControlPanel */
-  --control-panel-top-offset: 65%;
+  --control-panel-top-offset: 60%;
   --control-panel-right-offset: clamp(8px, 2vw, 12px);
 
   --control-panel-cell: clamp(36px, 8vw, 44px);

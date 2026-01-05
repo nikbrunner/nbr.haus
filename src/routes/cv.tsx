@@ -19,7 +19,7 @@ function Page() {
   const experienceInYears = new Date().getFullYear() - 2020;
 
   return (
-    <div className="CvPage">
+    <div className="PrintPage CvPage">
       <CvHeader
         name={t.shared.name}
         tagline={t.cv.tagline.replace("{years}", String(experienceInYears))}

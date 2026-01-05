@@ -5,3 +5,9 @@
   text-transform: uppercase;
   margin: 0 0 var(--size-4);
 }
+
+.Typo-H1.Typo--medium-print {
+  font-size: var(--print-font-size-7);
+  line-height: var(--print-font-lineheight-0);
+  margin: 0 0 var(--print-size-6);
+}

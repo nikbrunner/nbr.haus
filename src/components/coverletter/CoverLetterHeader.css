@@ -1,0 +1,83 @@
+.CoverLetterHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--print-size-8);
+  margin-bottom: var(--print-size-10);
+}
+
+.CoverLetterHeader__sender {
+  display: flex;
+  flex-direction: column;
+  gap: var(--print-size-4);
+}
+
+.CoverLetterHeader__name {
+  margin: 0;
+  font-size: var(--print-font-size-6);
+  font-weight: var(--font-weight-9);
+  text-transform: uppercase;
+  line-height: var(--print-font-lineheight-0);
+  color: var(--color-fg-accent);
+}
+
+.CoverLetterHeader__contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--print-size-2) var(--print-size-6);
+  font-size: var(--print-font-size-1);
+  color: var(--color-fg-support);
+}
+
+.CoverLetterHeader__contact span,
+.CoverLetterHeader__contact a {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  gap: var(--print-size-2);
+}
+
+.CoverLetterHeader__contact a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.CoverLetterHeader__contact a:hover {
+  text-decoration: underline;
+}
+
+.CoverLetterHeader__contact span svg,
+.CoverLetterHeader__contact a svg {
+  flex-shrink: 0;
+  height: var(--print-font-size-1);
+}
+
+.CoverLetterHeader__meta {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.CoverLetterHeader__date {
+  font-size: var(--print-font-size-2);
+  color: var(--color-fg-support);
+}
+
+.CoverLetterHeader__recipient {
+  display: flex;
+  flex-direction: column;
+  gap: var(--print-size-1);
+  font-style: normal;
+  font-size: var(--print-font-size-2);
+  line-height: var(--print-font-lineheight-2);
+}
+
+.CoverLetterHeader__recipient-name {
+  font-weight: var(--font-weight-7);
+}
+
+.CoverLetterHeader__recipient-title {
+  color: var(--color-fg-support);
+}
+
+.CoverLetterHeader__recipient-company {
+  color: var(--color-fg-default);
+}

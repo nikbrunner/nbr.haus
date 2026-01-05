@@ -4,3 +4,9 @@
   line-height: var(--font-lineheight-2);
   margin: 0 0 var(--size-5);
 }
+
+.Typo-Lead.Typo--medium-print {
+  font-size: var(--print-font-size-3);
+  line-height: var(--print-font-lineheight-2);
+  margin: 0 0 var(--print-size-4);
+}

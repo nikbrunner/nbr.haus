@@ -2,8 +2,6 @@ import { cva, cx, type VariantProps } from "class-variance-authority";
 
 import { colorVariants } from "@/components/Typo/Typo.colors";
 
-import "@/components/Typo/Typo.Highlight.css";
-
 export const highlightVariants = cva("Typo-Highlight", {
   variants: {
     color: colorVariants
