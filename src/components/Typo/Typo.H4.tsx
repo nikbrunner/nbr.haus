@@ -10,7 +10,7 @@ export const h4Variants = cva("Typo-H4", {
   },
   defaultVariants: {
     color: "main",
-    variant: "default"
+    variant: "web"
   }
 });
 

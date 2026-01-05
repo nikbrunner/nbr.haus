@@ -42,7 +42,7 @@ function CoverLetterPage() {
   const t = useTexts();
 
   return (
-    <article className="CoverLetterPage">
+    <article className="PrintPage CoverLetterPage">
       <CoverLetterHeader
         senderName={t.shared.name}
         senderContact={{

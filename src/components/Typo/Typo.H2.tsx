@@ -14,7 +14,7 @@ export const h2Variants = cva("Typo-H2", {
   },
   defaultVariants: {
     color: "accent",
-    variant: "default",
+    variant: "web",
     decorated: true
   }
 });

@@ -1,4 +1,40 @@
+/* Print Page Container - shared base styles for CV and Cover Letter */
+.PrintPage {
+  max-width: 21cm;
+  margin: 0 auto;
+  padding: var(--size-6);
+}
+
+/* Desktop: A4-optimized padding */
+@media (min-width: 640px) {
+  .PrintPage {
+    padding: 1.5cm;
+  }
+}
+
 @media print {
+  /* stylelint-disable-next-line */
+  /* eslint-disable css/use-baseline, css/no-invalid-at-rules */
+  @page {
+    size: A4;
+    margin: 1.5cm;
+  }
+
+  .PrintPage {
+    max-width: none;
+    padding: 0;
+  }
+
+  /* Hide UI elements in print */
+  /* eslint-disable css/no-important */
+  .ControlPanelStrip,
+  .ControlPanelExpanded,
+  [data-testid="tanstack_devtools"] {
+    display: none !important;
+    visibility: hidden !important;
+  }
+  /* eslint-enable css/no-important */
+
   /* break-before */
   .print-break-before-auto {
     break-before: auto;

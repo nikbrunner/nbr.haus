@@ -76,7 +76,7 @@ export const HeadingScale: StoryObj = {
         visual distinction with an underline and uppercase treatment.
       </Typo.P>
 
-      <Typo.H2 variant="default" color="main">
+      <Typo.H2 variant="web" color="main">
         Plain Section Header
       </Typo.H2>
       <Typo.P color="support">

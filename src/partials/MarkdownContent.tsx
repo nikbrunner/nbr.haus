@@ -2,13 +2,11 @@ import Markdown, { type Components } from "react-markdown";
 import rehypeSlug from "rehype-slug";
 
 import { Typo } from "@/components/Typo";
+import type { TypoVariant } from "@/components/Typo/Typo.types";
 
-type Variant = "default" | "print";
-
-function createMarkdownComponents(variant: Variant): Components {
+function createMarkdownComponents(variant: TypoVariant): Components {
   return {
-    // Skip H1 - title is already rendered from frontmatter in the page header
-    h1: () => null,
+    h1: ({ children }) => <Typo.H1 variant={variant}>{children}</Typo.H1>,
     h2: ({ children }) => (
       <Typo.H2 variant={variant} decorated={false}>
         {children}
@@ -41,10 +39,10 @@ function createMarkdownComponents(variant: Variant): Components {
 interface Props {
   content: string;
   className?: string;
-  variant?: Variant;
+  variant?: TypoVariant;
 }
 
-export function MarkdownContent({ content, className, variant = "default" }: Props) {
+export function MarkdownContent({ content, className, variant = "web" }: Props) {
   return (
     <div className={className}>
       <Markdown

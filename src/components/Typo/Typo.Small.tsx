@@ -10,7 +10,7 @@ export const smallVariants = cva("Typo-Small", {
   },
   defaultVariants: {
     color: "minor",
-    variant: "default"
+    variant: "web"
   }
 });
 

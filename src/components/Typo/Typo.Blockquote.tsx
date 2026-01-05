@@ -10,7 +10,7 @@ export const blockquoteVariants = cva("Typo-Blockquote", {
   },
   defaultVariants: {
     color: "minor",
-    variant: "default"
+    variant: "web"
   }
 });
 

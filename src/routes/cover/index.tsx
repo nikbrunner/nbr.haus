@@ -39,7 +39,10 @@ function Page() {
       </ul>
 
       {letters.length === 0 && (
-        <p className="CoverIndex__empty">No cover letters available.</p>
+        <p className="CoverIndex__empty">
+          No cover letters found. Add markdown files to{" "}
+          <code>src/content/coverletters/</code>
+        </p>
       )}
     </div>
   );

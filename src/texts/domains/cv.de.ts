@@ -12,7 +12,7 @@ export const texts: Widen<typeof en> = {
 
   contact: {
     location: "Landshut, Deutschland",
-    website: "nbr.haus",
+    website: "https://nbr.haus",
     email: "nik@nbr.haus",
     github: "github.com/nikbrunner",
     linkedin: "linkedin.com/in/nbru"

@@ -10,7 +10,7 @@ export const listVariants = cva("Typo-List", {
   },
   defaultVariants: {
     color: "main",
-    variant: "default"
+    variant: "web"
   }
 });
 

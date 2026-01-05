@@ -10,7 +10,7 @@ export const pVariants = cva("Typo-P", {
   },
   defaultVariants: {
     color: "main",
-    variant: "default"
+    variant: "web"
   }
 });
 

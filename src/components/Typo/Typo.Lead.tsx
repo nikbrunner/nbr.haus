@@ -10,7 +10,7 @@ export const leadVariants = cva("Typo-Lead", {
   },
   defaultVariants: {
     color: "support",
-    variant: "default"
+    variant: "web"
   }
 });
 

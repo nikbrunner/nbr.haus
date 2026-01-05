@@ -1,7 +1,27 @@
 import { createServerFn } from "@tanstack/react-start";
 import matter from "gray-matter";
 
-import type { CoverLetter, CoverLetterFrontmatter } from "@/lib/coverletters/types";
+interface CoverLetterFrontmatter {
+  company: string;
+  recipient: string;
+  recipientTitle?: string;
+  date: string; // YYYY-MM-DD
+  position: string;
+  draft?: boolean;
+}
+
+interface CoverLetter {
+  slug: string;
+  frontmatter: CoverLetterFrontmatter;
+  content: string;
+}
+
+type CoverLetterSummary = {
+  slug: string;
+  company: string;
+  position: string;
+  draft?: boolean;
+};
 
 // Bundle content at build time using Vite glob imports
 // This works in both dev and production (including Vercel serverless)
@@ -39,13 +59,6 @@ export const getCoverLetterBySlug = createServerFn({ method: "GET" })
   .handler(async ({ data: slug }) => {
     return fetchCoverLetterBySlug(slug);
   });
-
-type CoverLetterSummary = {
-  slug: string;
-  company: string;
-  position: string;
-  draft?: boolean;
-};
 
 function fetchAllCoverLetters(): CoverLetterSummary[] {
   const letters: CoverLetterSummary[] = [];

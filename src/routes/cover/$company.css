@@ -1,16 +1,5 @@
-.CoverLetterPage {
-  max-width: 21cm;
-  margin: 0 auto;
-  padding: var(--size-6);
-}
-
-/* Desktop: A4-optimized padding */
-@media (min-width: 640px) {
-  .CoverLetterPage {
-    /* Keep in Sync with CV route */
-    padding: 1.5cm;
-  }
-}
+/* Cover letter specific styles - base print styles are in src/styles/print-utils.css */
+/* Use .PrintPage class on the component for shared print page behavior */
 
 .CoverLetterPage__content {
   margin-bottom: var(--print-size-10);
@@ -30,28 +19,4 @@
 
 .CoverLetterPage__signature-name {
   font-weight: var(--font-weight-7);
-}
-
-/* Print Styles */
-@media print {
-  /* stylelint-disable-next-line */
-  /* eslint-disable css/use-baseline, css/no-invalid-at-rules */
-  @page {
-    size: A4;
-    /* Keep in Sync with CV route */
-    margin: 1.5cm;
-  }
-
-  .CoverLetterPage {
-    max-width: none;
-    padding: 0;
-  }
-
-  /* Hide UI elements */
-  .ControlPanelStrip,
-  .ControlPanelExpanded,
-  [data-testid="tanstack_devtools"] {
-    display: none !important;
-    visibility: hidden !important;
-  }
 }
