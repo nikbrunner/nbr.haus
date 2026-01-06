@@ -9,8 +9,11 @@ import {
   ControlPanelExpandedSection
 } from "@/components/ControlPanel/ControlPanelExpanded";
 import { ControlPanelIndicator } from "@/components/ControlPanel/ControlPanelIndicator";
+import { ControlPanelLabel } from "@/components/ControlPanel/ControlPanelLabel";
+import { ControlPanelNav } from "@/components/ControlPanel/ControlPanelNav";
 import { ControlPanelOption } from "@/components/ControlPanel/ControlPanelOption";
 import { ControlPanelRow } from "@/components/ControlPanel/ControlPanelRow";
+import { ControlPanelStack } from "@/components/ControlPanel/ControlPanelStack";
 import {
   ControlPanelStrip,
   ControlPanelStripSection
@@ -138,84 +141,89 @@ export default function ControlPanel() {
 
       {/* Expanded panel - Slides in from right */}
       <ControlPanelExpanded isExpanded={isExpanded}>
-        {/* Navigation options - two-column on desktop, stacked on mobile */}
+        {/* Navigation options - always two-column grid */}
         <ControlPanelExpandedSection>
-          <div className="ControlPanelExpanded__navigation">
-            {/* Routes column */}
-            <div className="ControlPanelExpanded__routes">
-              <ControlPanelRow label={t.controlPanel.rows.nav}>
-                {navRoutes.map(({ to, hint }) => (
-                  <Hint key={to} title={t.controlPanel.titles.routes[hint]}>
+          <ControlPanelNav
+            routes={
+              <>
+                <ControlPanelLabel>{t.controlPanel.rows.nav}</ControlPanelLabel>
+                <ControlPanelStack scroll maxHeight="35vh">
+                  {navRoutes.map(({ to, hint }) => (
+                    <Hint key={to} title={t.controlPanel.titles.routes[hint]}>
+                      <ControlPanelOption
+                        width="full"
+                        align="left"
+                        isActive={pathname === to}
+                        onClick={() => {
+                          navigate({ to });
+                          setIsExpanded(false);
+                        }}
+                        ariaLabel={`${t.controlPanel.aria.navigateTo} ${to}`}
+                      >
+                        {to}
+                      </ControlPanelOption>
+                    </Hint>
+                  ))}
+                </ControlPanelStack>
+              </>
+            }
+            sections={
+              sections.length > 0 ? (
+                <>
+                  <ControlPanelLabel>
+                    {t.controlPanel.rows.sections}
+                  </ControlPanelLabel>
+                  <ControlPanelStack scroll maxHeight="35vh">
                     <ControlPanelOption
                       width="full"
                       align="left"
-                      isActive={pathname === to}
                       onClick={() => {
-                        navigate({ to });
-                        setIsExpanded(false);
-                      }}
-                      ariaLabel={`${t.controlPanel.aria.navigateTo} ${to}`}
-                    >
-                      {to}
-                    </ControlPanelOption>
-                  </Hint>
-                ))}
-              </ControlPanelRow>
-            </div>
-
-            {/* Sections column */}
-            {sections.length > 0 && (
-              <div className="ControlPanelExpanded__sections">
-                <ControlPanelRow label={t.controlPanel.rows.sections}>
-                  <ControlPanelOption
-                    width="full"
-                    align="left"
-                    onClick={() => {
-                      if (isMobile) {
-                        closePanel();
-                        // Wait for panel exit animation before scrolling (iOS Safari fix)
-                        setTimeout(() => {
+                        if (isMobile) {
+                          closePanel();
+                          // Wait for panel exit animation before scrolling (iOS Safari fix)
+                          setTimeout(() => {
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          }, 250);
+                        } else {
                           window.scrollTo({ top: 0, behavior: "smooth" });
-                        }, 250);
-                      } else {
-                        window.scrollTo({ top: 0, behavior: "smooth" });
-                      }
-                    }}
-                    ariaLabel={`${t.controlPanel.aria.scrollTo} ${t.shared.sections.top}`}
-                  >
-                    <ArrowUpToLine
-                      size={14}
-                      strokeWidth={3}
-                      color="var(--color-fg-minor)"
-                      style={{ marginRight: "var(--size-1)" }}
-                    />
-                    <span className="ControlPanelOption__label">
-                      {t.shared.sections.top}
-                    </span>
-                  </ControlPanelOption>
-                  {sections.map(section => (
-                    <ControlPanelOption
-                      key={section.id}
-                      width="full"
-                      align="left"
-                      onClick={() => handleSectionClick(section.id)}
-                      ariaLabel={`${t.controlPanel.aria.scrollTo} ${section.label}`}
+                        }
+                      }}
+                      ariaLabel={`${t.controlPanel.aria.scrollTo} ${t.shared.sections.top}`}
                     >
-                      <PilcrowRight
+                      <ArrowUpToLine
                         size={14}
                         strokeWidth={3}
                         color="var(--color-fg-minor)"
-                        style={{ marginRight: "var(--size-2)" }}
+                        style={{ marginRight: "var(--size-1)" }}
                       />
                       <span className="ControlPanelOption__label">
-                        {section.label}
+                        {t.shared.sections.top}
                       </span>
                     </ControlPanelOption>
-                  ))}
-                </ControlPanelRow>
-              </div>
-            )}
-          </div>
+                    {sections.map(section => (
+                      <ControlPanelOption
+                        key={section.id}
+                        width="full"
+                        align="left"
+                        onClick={() => handleSectionClick(section.id)}
+                        ariaLabel={`${t.controlPanel.aria.scrollTo} ${section.label}`}
+                      >
+                        <PilcrowRight
+                          size={14}
+                          strokeWidth={3}
+                          color="var(--color-fg-minor)"
+                          style={{ marginRight: "var(--size-2)" }}
+                        />
+                        <span className="ControlPanelOption__label">
+                          {section.label}
+                        </span>
+                      </ControlPanelOption>
+                    ))}
+                  </ControlPanelStack>
+                </>
+              ) : undefined
+            }
+          />
         </ControlPanelExpandedSection>
 
         {/* Locale options */}

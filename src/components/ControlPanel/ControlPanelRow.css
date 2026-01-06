@@ -8,27 +8,10 @@
   margin-top: calc(var(--control-panel-gap) / 2);
 }
 
-/* Row label */
-.ControlPanelRow__label {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--control-panel-label-width);
-  height: var(--control-panel-cell);
-  padding-inline: var(--control-panel-gap);
-
-  background: var(--color-bg-accent);
-  color: var(--color-fg-on-accent);
-  font-size: var(--control-panel-font-size);
-  font-weight: var(--font-weight-9);
-
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-/* Options container within a row */
 .ControlPanelRow__options {
   display: flex;
   gap: calc(var(--control-panel-gap) / 2);
 }
+
+/* Label styles are in ControlPanelLabel.css */
+/* Grid layout is in ControlPanelGrid.css */

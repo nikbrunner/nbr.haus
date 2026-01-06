@@ -42,7 +42,11 @@
 /* ControlPanel */
 @import "../components/ControlPanel/ControlPanelStrip.css";
 @import "../components/ControlPanel/ControlPanelExpanded.css";
+@import "../components/ControlPanel/ControlPanelLabel.css";
+@import "../components/ControlPanel/ControlPanelStack.css";
+@import "../components/ControlPanel/ControlPanelGrid.css";
 @import "../components/ControlPanel/ControlPanelRow.css";
+@import "../components/ControlPanel/ControlPanelNav.css";
 @import "../components/ControlPanel/ControlPanelOption.css";
 @import "../components/ControlPanel/ControlPanelIndicator.css";
 @import "../components/ControlPanel/ControlPanelColorDot.css";

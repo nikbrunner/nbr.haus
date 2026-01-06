@@ -1,0 +1,18 @@
+.ControlPanelStack {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--control-panel-gap) / 2);
+}
+
+.ControlPanelStack--scroll {
+  overflow-y: auto;
+
+  /* Hide scrollbar but keep functionality */
+  /* eslint-disable-next-line css/use-baseline */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.ControlPanelStack--scroll::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Opera */
+}

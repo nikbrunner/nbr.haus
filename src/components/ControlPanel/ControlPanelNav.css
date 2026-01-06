@@ -1,0 +1,15 @@
+/* Two-column grid layout - always */
+.ControlPanelNav {
+  display: grid;
+  grid-template-columns: 30cqw minmax(0, 1fr);
+  gap: calc(var(--control-panel-gap) / 2);
+}
+
+.ControlPanelNav__column {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--control-panel-gap) / 2);
+}
+
+/* NO REFERENCES TO OTHER COMPONENTS */
+/* NO MEDIA QUERIES - always two-column */
