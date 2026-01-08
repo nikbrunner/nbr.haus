@@ -4,6 +4,7 @@ import { texts as projectsTexts } from "@/texts/domains/projects.de";
 import type { Widen } from "@/types/i18n";
 
 export const texts: Widen<typeof en> = {
+  note: "<strong>Dies ist mein druckbares CV.</strong><linebreak />Sie können es mit deinem Browser drucken (Strg/Cmd + P) oder <link>hier herunterladen.</link>",
   tagline:
     "Software-Ingenieur mit Spezialisierung auf Frontend-Entwicklung und {years} Jahren Erfahrung in der Entwicklung moderner Web- und Desktop-Anwendungen",
 

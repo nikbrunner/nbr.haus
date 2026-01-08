@@ -8,7 +8,8 @@ type ComponentRenderer = (children: ReactNode) => ReactNode;
 const defaultComponents: Record<string, ComponentRenderer> = {
   strong: children => <strong>{children}</strong>,
   em: children => <em>{children}</em>,
-  highlight: children => <Typo.Highlight>{children}</Typo.Highlight>
+  highlight: children => <Typo.Highlight>{children}</Typo.Highlight>,
+  linebreak: () => <br />
 };
 
 interface TransProps {
@@ -33,8 +34,8 @@ interface TransProps {
 export function Trans({ children: text, components = {} }: TransProps) {
   const mergedComponents = { ...defaultComponents, ...components };
 
-  // Regex to match <tagName>content</tagName>
-  const tagPattern = /<(\w+)>(.*?)<\/\1>/g;
+  // Regex to match <tagName /> (self-closing) or <tagName>content</tagName>
+  const tagPattern = /<(\w+)\s*\/>|<(\w+)>(.*?)<\/\2>/g;
 
   const parts: ReactNode[] = [];
   let lastIndex = 0;
@@ -47,22 +48,34 @@ export function Trans({ children: text, components = {} }: TransProps) {
       parts.push(text.slice(lastIndex, match.index));
     }
 
-    const [, tagName, content] = match;
-    const renderer = mergedComponents[tagName];
+    if (match[1]) {
+      // Self-closing tag
+      const tagName = match[1];
+      const renderer = mergedComponents[tagName];
 
-    if (renderer) {
-      // Recursively process nested tags in content
-      const hasNestedTags = /<\w+>.*?<\/\w+>/.test(content);
-      const renderedContent = hasNestedTags ? (
-        <Trans components={mergedComponents}>{content}</Trans>
-      ) : (
-        content
-      );
-
-      parts.push(<span key={keyIndex++}>{renderer(renderedContent)}</span>);
+      if (renderer) {
+        parts.push(<span key={keyIndex++}>{renderer(undefined)}</span>);
+      }
     } else {
-      // Unknown tag, render as plain text
-      parts.push(content);
+      // Opening and closing tag
+      const tagName = match[2];
+      const content = match[3];
+      const renderer = mergedComponents[tagName];
+
+      if (renderer) {
+        // Recursively process nested tags in content
+        const hasNestedTags = /<\w+>.*?<\/\w+>|<\w+\s*\/>/.test(content);
+        const renderedContent = hasNestedTags ? (
+          <Trans components={mergedComponents}>{content}</Trans>
+        ) : (
+          content
+        );
+
+        parts.push(<span key={keyIndex++}>{renderer(renderedContent)}</span>);
+      } else {
+        // Unknown tag, render as plain text
+        parts.push(content);
+      }
     }
 
     lastIndex = match.index + match[0].length;

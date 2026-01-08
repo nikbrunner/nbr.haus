@@ -27,6 +27,7 @@
 
   /* Hide UI elements in print */
   /* eslint-disable css/no-important */
+  .Note,
   .ControlPanelStrip,
   .ControlPanelExpanded,
   [data-testid="tanstack_devtools"] {

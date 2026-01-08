@@ -2,6 +2,7 @@ import { texts as jobsTexts } from "@/texts/domains/jobs.en";
 import { texts as projectsTexts } from "@/texts/domains/projects.en";
 
 export const texts = {
+  note: "<strong>This is my printable CV.</strong><linebreak />Use the browser's print function (Ctrl/Cmd + P) or <link>download it here</link>.",
   tagline:
     "Software Engineer specializing in Frontend Development with {years} years of experience building modern web and desktop applications",
 

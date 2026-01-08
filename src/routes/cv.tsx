@@ -8,6 +8,9 @@ import { CvPriorExperience } from "@/components/cv/CvPriorExperience";
 import { CvProject } from "@/components/cv/CvProject";
 import { CvSection } from "@/components/cv/CvSection";
 import Flex from "@/components/Flex";
+import Note from "@/components/Note";
+import { Trans } from "@/i18n/Trans";
+import { useLocale } from "@/i18n/useLocale";
 import { useTexts } from "@/i18n/useTexts";
 
 export const Route = createFileRoute("/cv")({
@@ -16,10 +19,25 @@ export const Route = createFileRoute("/cv")({
 
 function Page() {
   const t = useTexts();
+  const { locale } = useLocale();
   const experienceInYears = new Date().getFullYear() - 2020;
 
   return (
     <div className="PrintPage CvPage">
+      <Note className="mb-8">
+        <Trans
+          components={{
+            link: children => (
+              <a href={`/Nikolaus_Brunner_CV_${locale}.pdf`} download>
+                {children}
+              </a>
+            )
+          }}
+        >
+          {t.cv.note}
+        </Trans>
+      </Note>
+
       <CvHeader
         name={t.shared.name}
         tagline={t.cv.tagline.replace("{years}", String(experienceInYears))}
