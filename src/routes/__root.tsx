@@ -195,7 +195,6 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <body suppressHydrationWarning>
         {/* Blocking script to prevent flash of incorrect theme - see src/scripts/theme-blocking.js */}
         <script dangerouslySetInnerHTML={{ __html: themeBlockingScript }} />
-        <Background />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

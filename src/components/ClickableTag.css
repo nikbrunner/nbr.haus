@@ -6,7 +6,7 @@
   display: inline-flex;
   padding: var(--size-1) var(--size-2);
   border: var(--border-size-2) solid var(--tag-color);
-  backdrop-filter: blur(1px);
+  background-color: color-mix(in oklch, var(--color-bg-main) 50%, transparent);
   cursor: pointer;
   color: var(--color-fg-main);
   font-weight: var(--font-weight-7);
