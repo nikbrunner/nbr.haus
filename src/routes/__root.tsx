@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
+import { Background } from "@/components/Background";
 import NotFound from "@/components/NotFound";
 import ControlPanel from "@/partials/ControlPanel";
 import themeBlockingScript from "@/scripts/theme-blocking.js?raw";
@@ -194,6 +195,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <body suppressHydrationWarning>
         {/* Blocking script to prevent flash of incorrect theme - see src/scripts/theme-blocking.js */}
         <script dangerouslySetInnerHTML={{ __html: themeBlockingScript }} />
+        <Background />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

@@ -38,6 +38,7 @@
 @import "../components/CopyButton.css";
 @import "../components/Hint.css";
 @import "../components/Note.css";
+@import "../components/Background.css";
 
 /* ControlPanel */
 @import "../components/ControlPanel/ControlPanelStrip.css";
@@ -170,9 +171,6 @@ body {
   font-family: var(--font-family);
   line-height: var(--font-lineheight-3);
   font-size: 100%;
-  background-color: var(--color-bg-main);
-  background-image: var(--bg-grid);
-  background-size: var(--grid-size) var(--grid-size);
   color: var(--color-fg-main);
 
   /* ControlPanel */
