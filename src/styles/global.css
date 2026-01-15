@@ -157,10 +157,22 @@ body {
     radial-gradient(var(--color-fg-accent) 0.5px, transparent 1px) 0 0 / 3px 3px,
     var(--color-bg-main);
 
+  /* Grid background pattern */
+  --grid-line-color: light-dark(
+    oklch(0.88 calc(0.005 * var(--chroma)) var(--hue-accent-compl)),
+    oklch(0.3 calc(0.005 * var(--chroma)) var(--hue-accent-compl))
+  );
+  --grid-size: 80px;
+  --bg-grid:
+    linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
+
   font-family: var(--font-family);
   line-height: var(--font-lineheight-3);
   font-size: 100%;
   background-color: var(--color-bg-main);
+  background-image: var(--bg-grid);
+  background-size: var(--grid-size) var(--grid-size);
   color: var(--color-fg-main);
 
   /* ControlPanel */
@@ -205,16 +217,16 @@ html[data-color-mode="dark"] {
   color-scheme: dark;
 }
 
-strong {
+:where(strong) {
   font-weight: var(--font-weight-7);
 }
 
-button {
+:where(button) {
   font-family: var(--font-family);
   border: none;
 }
 
-a {
+:where(a) {
   color: var(--color-fg-main);
   font-weight: var(--font-weight-7);
   text-decoration-thickness: 3px;
