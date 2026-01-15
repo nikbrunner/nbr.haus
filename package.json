@@ -9,7 +9,7 @@
     "dev": "vite dev --port 3000",
     "build": "vite build",
     "serve": "vite preview",
-    "serve:host": "vite preview --host --port 3000",
+    "serve:host": "npm run build && vite preview --host --port 3000",
     "test": "vitest run",
     "check:format": "prettier --check .",
     "format": "prettier --write .",
