@@ -1,47 +1,86 @@
 import { useEffect, useRef } from "react";
 
-const GRID_SIZE = 40;
-const MIN_DASH_LENGTH = 2;
-const MAX_DASH_LENGTH = 12;
-const MIN_GAP = 4;
-const MAX_GAP = 10;
-const LINE_WIDTH = 1;
-const SPEED = 0.2;
+const GRID_SIZE = 25;
+const LINE_WIDTH = 0.5;
+const BASE_SPEED = 0.15;
+const PATTERN_LENGTH = 10000;
+
+// Speed multipliers for variation
+const MIN_SPEED_MULT = 0.035;
+const MAX_SPEED_MULT = 15;
+
+// Dash length/gap ranges for density variation
+const MIN_DASH_LENGTH = 1;
+const MAX_DASH_LENGTH = 25;
+const MIN_GAP = 2;
+const MAX_GAP = 50;
+
+// Grid jitter range
+const MAX_JITTER = 15;
 
 interface Dash {
   start: number;
   length: number;
-  gap: number;
 }
 
-// Generate a long sequence of dashes for a line
-function generateDashes(seed: number, totalLength: number): Dash[] {
-  const dashes: Dash[] = [];
-  let position = 0;
-  let rng = seed;
+interface LineConfig {
+  dashes: Dash[];
+  speed: number;
+  direction: 1 | -1;
+  jitter: number;
+}
 
-  const random = () => {
+// Seeded random number generator
+function createRng(seed: number) {
+  let rng = seed;
+  return () => {
     rng = (rng * 1103515245 + 12345) & 0x7fffffff;
     return rng / 0x7fffffff;
   };
+}
 
-  while (position < totalLength) {
-    const length = MIN_DASH_LENGTH + random() * (MAX_DASH_LENGTH - MIN_DASH_LENGTH);
-    const gap = MIN_GAP + random() * (MAX_GAP - MIN_GAP);
-    dashes.push({ start: position, length, gap });
+// Generate line configuration with random properties
+function generateLineConfig(seed: number): LineConfig {
+  const random = createRng(seed);
+
+  // Random speed multiplier
+  const speed =
+    BASE_SPEED * (MIN_SPEED_MULT + random() * (MAX_SPEED_MULT - MIN_SPEED_MULT));
+
+  // Random direction (45% chance of reverse)
+  const direction = random() < 0.45 ? -1 : 1;
+
+  // Random jitter offset
+  const jitter = (random() - 0.5) * 2 * MAX_JITTER;
+
+  // Random density for this line (affects dash/gap sizes)
+  const densityFactor = 0.3 + random() * 1.4; // 0.3 to 1.7
+
+  const minDash = MIN_DASH_LENGTH * densityFactor;
+  const maxDash = MAX_DASH_LENGTH * densityFactor;
+  const minGap = MIN_GAP * densityFactor;
+  const maxGap = MAX_GAP * densityFactor;
+
+  // Generate dashes
+  const dashes: Dash[] = [];
+  let position = 0;
+
+  while (position < PATTERN_LENGTH) {
+    const length = minDash + random() * (maxDash - minDash);
+    const gap = minGap + random() * (maxGap - minGap);
+    dashes.push({ start: position, length });
     position += length + gap;
   }
 
-  return dashes;
+  return { dashes, speed, direction, jitter };
 }
 
 export function Background() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const colorProbeRef = useRef<HTMLDivElement>(null);
-  const offsetRef = useRef(0);
-  const horizontalDashesRef = useRef<Map<number, Dash[]>>(new Map());
-  const verticalDashesRef = useRef<Map<number, Dash[]>>(new Map());
-  const patternLengthRef = useRef(10000);
+  const horizontalLinesRef = useRef<Map<number, LineConfig>>(new Map());
+  const verticalLinesRef = useRef<Map<number, LineConfig>>(new Map());
+  const lineOffsetsRef = useRef<Map<number, number>>(new Map());
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -63,19 +102,32 @@ export function Background() {
       canvas.style.height = `${window.innerHeight}px`;
       ctx.scale(dpr, dpr);
 
-      // Regenerate dashes on resize
-      horizontalDashesRef.current.clear();
-      verticalDashesRef.current.clear();
+      // Regenerate lines on resize
+      horizontalLinesRef.current.clear();
+      verticalLinesRef.current.clear();
+      lineOffsetsRef.current.clear();
     };
 
-    const getDashes = (
-      cache: Map<number, Dash[]>,
+    const getLineConfig = (
+      cache: Map<number, LineConfig>,
       lineIndex: number
-    ): Dash[] => {
+    ): LineConfig => {
       if (!cache.has(lineIndex)) {
-        cache.set(lineIndex, generateDashes(lineIndex * 31337, patternLengthRef.current));
+        cache.set(lineIndex, generateLineConfig(lineIndex * 31337));
       }
       return cache.get(lineIndex)!;
+    };
+
+    const getLineOffset = (lineId: number): number => {
+      if (!lineOffsetsRef.current.has(lineId)) {
+        lineOffsetsRef.current.set(lineId, 0);
+      }
+      return lineOffsetsRef.current.get(lineId)!;
+    };
+
+    const updateLineOffset = (lineId: number, speed: number, direction: number) => {
+      const current = getLineOffset(lineId);
+      lineOffsetsRef.current.set(lineId, current + speed * direction);
     };
 
     const draw = () => {
@@ -87,20 +139,20 @@ export function Background() {
       ctx.lineWidth = LINE_WIDTH;
       ctx.lineCap = "round";
 
-      const offset = offsetRef.current;
-      const patternLength = patternLengthRef.current;
-
-      // Horizontal lines (dashes moving right)
+      // Horizontal lines
       let lineIndex = 0;
-      for (let y = 0; y <= height; y += GRID_SIZE) {
-        const dashes = getDashes(horizontalDashesRef.current, lineIndex);
-        const lineOffset = offset % patternLength;
+      for (let baseY = 0; baseY <= height; baseY += GRID_SIZE) {
+        const lineId = lineIndex;
+        const config = getLineConfig(horizontalLinesRef.current, lineIndex);
+        const offset = getLineOffset(lineId);
+        const y = baseY + config.jitter;
 
-        for (const dash of dashes) {
+        for (const dash of config.dashes) {
+          const lineOffset =
+            ((offset % PATTERN_LENGTH) + PATTERN_LENGTH) % PATTERN_LENGTH;
           const startX = dash.start - lineOffset;
           const endX = startX + dash.length;
 
-          // Also draw wrapped version for seamless loop
           const drawDash = (sx: number, ex: number) => {
             if (ex >= 0 && sx <= width) {
               ctx.beginPath();
@@ -111,18 +163,24 @@ export function Background() {
           };
 
           drawDash(startX, endX);
-          drawDash(startX + patternLength, endX + patternLength);
+          drawDash(startX + PATTERN_LENGTH, endX + PATTERN_LENGTH);
         }
+
+        updateLineOffset(lineId, config.speed, config.direction);
         lineIndex++;
       }
 
-      // Vertical lines (dashes moving down)
+      // Vertical lines
       lineIndex = 0;
-      for (let x = 0; x <= width; x += GRID_SIZE) {
-        const dashes = getDashes(verticalDashesRef.current, lineIndex + 10000);
-        const lineOffset = offset % patternLength;
+      for (let baseX = 0; baseX <= width; baseX += GRID_SIZE) {
+        const lineId = lineIndex + 10000; // Separate ID space
+        const config = getLineConfig(verticalLinesRef.current, lineIndex + 10000);
+        const offset = getLineOffset(lineId);
+        const x = baseX + config.jitter;
 
-        for (const dash of dashes) {
+        for (const dash of config.dashes) {
+          const lineOffset =
+            ((offset % PATTERN_LENGTH) + PATTERN_LENGTH) % PATTERN_LENGTH;
           const startY = dash.start - lineOffset;
           const endY = startY + dash.length;
 
@@ -136,12 +194,12 @@ export function Background() {
           };
 
           drawDash(startY, endY);
-          drawDash(startY + patternLength, endY + patternLength);
+          drawDash(startY + PATTERN_LENGTH, endY + PATTERN_LENGTH);
         }
+
+        updateLineOffset(lineId, config.speed, config.direction);
         lineIndex++;
       }
-
-      offsetRef.current += SPEED;
     };
 
     let animationId: number;
