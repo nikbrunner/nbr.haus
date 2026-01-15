@@ -75,18 +75,18 @@ export const texts = {
   projects: {
     blackAtom: {
       title: projectsTexts.blackAtom.title,
-      subtitle: projectsTexts.blackAtom.subtitle,
-      bullets: projectsTexts.blackAtom.bullets
+      subtitle: projectsTexts.blackAtom.cv.subtitle,
+      bullets: projectsTexts.blackAtom.cv.bullets
     },
     awdcs: {
       title: projectsTexts.awdcs.title,
-      subtitle: projectsTexts.awdcs.subtitle,
-      bullets: projectsTexts.awdcs.bullets
+      subtitle: projectsTexts.awdcs.cv.subtitle,
+      bullets: projectsTexts.awdcs.cv.bullets
     },
     koyo: {
       title: projectsTexts.koyo.title,
-      subtitle: projectsTexts.koyo.subtitle,
-      bullets: projectsTexts.koyo.bullets
+      subtitle: projectsTexts.koyo.cv.subtitle,
+      bullets: projectsTexts.koyo.cv.bullets
     }
   },
 

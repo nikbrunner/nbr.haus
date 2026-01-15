@@ -151,109 +151,107 @@ function Page() {
             </div>
 
             <div>
-              <Float>
-                <SpecCard title={t.about.devStack.devTools}>
-                  <SpecList
-                    items={[
-                      {
-                        label: t.about.devStack.editor,
-                        value: (
+              <SpecCard title={t.about.devStack.devTools}>
+                <SpecList
+                  items={[
+                    {
+                      label: t.about.devStack.editor,
+                      value: (
+                        <a
+                          href="https://github.com/nikbrunner/dots/tree/main/common/.config/nvim"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Neovim
+                        </a>
+                      )
+                    },
+                    {
+                      label: t.about.devStack.terminal,
+                      value: (
+                        <>
                           <a
-                            href="https://github.com/nikbrunner/dots/tree/main/common/.config/nvim"
+                            href="https://ghostty.dev"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            Neovim
-                          </a>
-                        )
-                      },
-                      {
-                        label: t.about.devStack.terminal,
-                        value: (
-                          <>
-                            <a
-                              href="https://ghostty.dev"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              Ghostty
-                            </a>{" "}
-                            &amp;{" "}
-                            <a
-                              href="https://github.com/tmux/tmux/wiki"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              Tmux
-                            </a>
-                          </>
-                        )
-                      },
-                      {
-                        label: t.about.devStack.git,
-                        value: (
+                            Ghostty
+                          </a>{" "}
+                          &amp;{" "}
                           <a
-                            href="https://github.com/jesseduffield/lazygit"
+                            href="https://github.com/tmux/tmux/wiki"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            LazyGit
+                            Tmux
                           </a>
-                        )
-                      },
-                      {
-                        label: t.about.devStack.secrets,
-                        value: (
-                          <a
-                            href="https://1password.com"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            1Password
-                          </a>
-                        )
-                      },
-                      {
-                        label: t.about.devStack.aiAssistant,
-                        value: (
-                          <a
-                            href="https://claude.com/product/claude-code"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            Claude Code
-                          </a>
-                        )
-                      }
-                    ]}
-                    padding="small"
-                    gridTemplateColumns="0.75fr 1fr"
-                  />
-                  <Typo.P
-                    style={{
-                      padding: "var(--size-2)",
-                      backgroundColor: "var(--color-bg-main)",
-                      margin: 0
+                        </>
+                      )
+                    },
+                    {
+                      label: t.about.devStack.git,
+                      value: (
+                        <a
+                          href="https://github.com/jesseduffield/lazygit"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          LazyGit
+                        </a>
+                      )
+                    },
+                    {
+                      label: t.about.devStack.secrets,
+                      value: (
+                        <a
+                          href="https://1password.com"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          1Password
+                        </a>
+                      )
+                    },
+                    {
+                      label: t.about.devStack.aiAssistant,
+                      value: (
+                        <a
+                          href="https://claude.com/product/claude-code"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Claude Code
+                        </a>
+                      )
+                    }
+                  ]}
+                  padding="small"
+                  gridTemplateColumns="0.75fr 1fr"
+                />
+                <Typo.P
+                  style={{
+                    padding: "var(--size-2)",
+                    backgroundColor: "var(--color-bg-main)",
+                    margin: 0
+                  }}
+                >
+                  <Trans
+                    components={{
+                      link: children => (
+                        <a
+                          href="https://github.com/nikbrunner/dots"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {children}
+                        </a>
+                      )
                     }}
                   >
-                    <Trans
-                      components={{
-                        link: children => (
-                          <a
-                            href="https://github.com/nikbrunner/dots"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {children}
-                          </a>
-                        )
-                      }}
-                    >
-                      {t.about.devStack.workflowInfo}
-                    </Trans>
-                  </Typo.P>
-                </SpecCard>
-              </Float>
+                    {t.about.devStack.workflowInfo}
+                  </Trans>
+                </Typo.P>
+              </SpecCard>
             </div>
 
             <div>
@@ -435,7 +433,15 @@ function Page() {
                 "Template Systems"
               ]}
               status="Active"
-              platforms={["Neovim", "Ghostty", "Zed", "tmux", "WezTerm", "Niri", "Waybar"]}
+              platforms={[
+                "Neovim",
+                "Ghostty",
+                "Zed",
+                "tmux",
+                "WezTerm",
+                "Niri",
+                "Waybar"
+              ]}
               metrics={[{ label: "Themes", value: "30+" }]}
               primaryLink={{
                 url: "https://black-atom.industries",
@@ -448,7 +454,7 @@ function Page() {
                 }
               ]}
             >
-              {t.projects.blackAtom.paragraphs.map((p, i) => (
+              {t.projects.blackAtom.web.paragraphs.map((p, i) => (
                 <Typo.P key={i}>{p}</Typo.P>
               ))}
             </Project>
@@ -463,7 +469,7 @@ function Page() {
                 type: "GitHub"
               }}
             >
-              {t.projects.awdcs.paragraphs.map((p, i) => (
+              {t.projects.awdcs.web.paragraphs.map((p, i) => (
                 <Typo.P key={i}>{p}</Typo.P>
               ))}
             </Project>
@@ -484,7 +490,7 @@ function Page() {
                 type: "GitHub"
               }}
             >
-              {t.projects.koyo.paragraphs.map((p, i) => (
+              {t.projects.koyo.web.paragraphs.map((p, i) => (
                 <Typo.P key={i}>{p}</Typo.P>
               ))}
             </Project>
@@ -505,7 +511,7 @@ function Page() {
                 type: "GitHub"
               }}
             >
-              {t.projects.nbrNvim.paragraphs.map((p, i) => (
+              {t.projects.nbrNvim.web.paragraphs.map((p, i) => (
                 <Typo.P key={i}>{p}</Typo.P>
               ))}
             </Project>
@@ -531,7 +537,7 @@ function Page() {
                 }
               ]}
             >
-              {t.projects.nbrHaus.paragraphs.map((p, i) => (
+              {t.projects.nbrHaus.web.paragraphs.map((p, i) => (
                 <Typo.P key={i}>{p}</Typo.P>
               ))}
             </Project>
