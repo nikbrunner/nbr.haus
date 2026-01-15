@@ -1,5 +1,6 @@
 import Button from "@/components/Button";
 import ClickableTag from "@/components/ClickableTag";
+import { Float } from "@/components/Float";
 import SpecCard from "@/components/SpecCard";
 import SpecList from "@/components/SpecList";
 import Tag from "@/components/Tag";
@@ -79,24 +80,26 @@ export default function Project({
   ];
 
   return (
-    <SpecCard title={title}>
-      <SpecList items={specItems} padding="small" />
+    <Float>
+      <SpecCard title={title}>
+        <SpecList items={specItems} padding="small" />
 
-      <div className="Project__description">{children}</div>
+        <div className="Project__description">{children}</div>
 
-      <div className="Project__links">
-        {allLinks.map((link, index) => (
-          <Button
-            asChild
-            key={link.url}
-            variant={index === 0 ? "accent" : undefined}
-          >
-            <a href={link.url} target="_blank" rel="noopener noreferrer">
-              {link.type}
-            </a>
-          </Button>
-        ))}
-      </div>
-    </SpecCard>
+        <div className="Project__links">
+          {allLinks.map((link, index) => (
+            <Button
+              asChild
+              key={link.url}
+              variant={index === 0 ? "accent" : undefined}
+            >
+              <a href={link.url} target="_blank" rel="noopener noreferrer">
+                {link.type}
+              </a>
+            </Button>
+          ))}
+        </div>
+      </SpecCard>
+    </Float>
   );
 }

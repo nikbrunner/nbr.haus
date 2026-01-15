@@ -39,6 +39,7 @@
 @import "../components/Hint.css";
 @import "../components/Note.css";
 @import "../components/Background.css";
+@import "../components/Float.css";
 
 /* ControlPanel */
 @import "../components/ControlPanel/ControlPanelStrip.css";

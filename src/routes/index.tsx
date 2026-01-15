@@ -3,6 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import Button from "@/components/Button";
 import CopyButton from "@/components/CopyButton";
 import Flex from "@/components/Flex";
+import { Float } from "@/components/Float";
 import Hint from "@/components/Hint";
 import Job from "@/components/Job";
 import LookingForJob from "@/components/LookingForJob";
@@ -150,107 +151,109 @@ function Page() {
             </div>
 
             <div>
-              <SpecCard title={t.about.devStack.devTools}>
-                <SpecList
-                  items={[
-                    {
-                      label: t.about.devStack.editor,
-                      value: (
-                        <a
-                          href="https://github.com/nikbrunner/dots/tree/main/common/.config/nvim"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Neovim
-                        </a>
-                      )
-                    },
-                    {
-                      label: t.about.devStack.terminal,
-                      value: (
-                        <>
+              <Float>
+                <SpecCard title={t.about.devStack.devTools}>
+                  <SpecList
+                    items={[
+                      {
+                        label: t.about.devStack.editor,
+                        value: (
                           <a
-                            href="https://ghostty.dev"
+                            href="https://github.com/nikbrunner/dots/tree/main/common/.config/nvim"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            Ghostty
-                          </a>{" "}
-                          &amp;{" "}
-                          <a
-                            href="https://github.com/tmux/tmux/wiki"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            Tmux
+                            Neovim
                           </a>
-                        </>
-                      )
-                    },
-                    {
-                      label: t.about.devStack.git,
-                      value: (
-                        <a
-                          href="https://github.com/jesseduffield/lazygit"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          LazyGit
-                        </a>
-                      )
-                    },
-                    {
-                      label: t.about.devStack.secrets,
-                      value: (
-                        <a
-                          href="https://1password.com"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          1Password
-                        </a>
-                      )
-                    },
-                    {
-                      label: t.about.devStack.aiAssistant,
-                      value: (
-                        <a
-                          href="https://claude.com/product/claude-code"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Claude Code
-                        </a>
-                      )
-                    }
-                  ]}
-                  padding="small"
-                  gridTemplateColumns="0.75fr 1fr"
-                />
-                <Typo.P
-                  style={{
-                    padding: "var(--size-2)",
-                    backgroundColor: "var(--color-bg-main)",
-                    margin: 0
-                  }}
-                >
-                  <Trans
-                    components={{
-                      link: children => (
-                        <a
-                          href="https://github.com/nikbrunner/dots"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {children}
-                        </a>
-                      )
+                        )
+                      },
+                      {
+                        label: t.about.devStack.terminal,
+                        value: (
+                          <>
+                            <a
+                              href="https://ghostty.dev"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              Ghostty
+                            </a>{" "}
+                            &amp;{" "}
+                            <a
+                              href="https://github.com/tmux/tmux/wiki"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              Tmux
+                            </a>
+                          </>
+                        )
+                      },
+                      {
+                        label: t.about.devStack.git,
+                        value: (
+                          <a
+                            href="https://github.com/jesseduffield/lazygit"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            LazyGit
+                          </a>
+                        )
+                      },
+                      {
+                        label: t.about.devStack.secrets,
+                        value: (
+                          <a
+                            href="https://1password.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            1Password
+                          </a>
+                        )
+                      },
+                      {
+                        label: t.about.devStack.aiAssistant,
+                        value: (
+                          <a
+                            href="https://claude.com/product/claude-code"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Claude Code
+                          </a>
+                        )
+                      }
+                    ]}
+                    padding="small"
+                    gridTemplateColumns="0.75fr 1fr"
+                  />
+                  <Typo.P
+                    style={{
+                      padding: "var(--size-2)",
+                      backgroundColor: "var(--color-bg-main)",
+                      margin: 0
                     }}
                   >
-                    {t.about.devStack.workflowInfo}
-                  </Trans>
-                </Typo.P>
-              </SpecCard>
+                    <Trans
+                      components={{
+                        link: children => (
+                          <a
+                            href="https://github.com/nikbrunner/dots"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {children}
+                          </a>
+                        )
+                      }}
+                    >
+                      {t.about.devStack.workflowInfo}
+                    </Trans>
+                  </Typo.P>
+                </SpecCard>
+              </Float>
             </div>
 
             <div>
@@ -280,70 +283,72 @@ function Page() {
                 </Trans>
               </Typo.P>
 
-              <SpecCard
-                title={t.about.devStack.aiTools}
-                description={
-                  <>
-                    <Typo.P>{t.about.devStack.aiToolsIntro}</Typo.P>
-                    <Typo.P>{t.about.devStack.aiToolsUsed}</Typo.P>
-                  </>
-                }
-              >
-                <SpecList
-                  padding="small"
-                  gridTemplateColumns="0.75fr 1fr"
-                  items={[
-                    {
-                      label: t.about.devStack.docLookup,
-                      value: (
-                        <a
-                          href="https://ref.tools/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          ref.tools
-                        </a>
-                      )
-                    },
-                    {
-                      label: t.about.devStack.webSearch,
-                      value: (
-                        <a
-                          href="https://exa.ai"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Exa
-                        </a>
-                      )
-                    },
-                    {
-                      label: t.about.devStack.browser,
-                      value: (
-                        <a
-                          href="https://github.com/nicholasoxford/chrome-devtools-mcp/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Chrome DevTools
-                        </a>
-                      )
-                    },
-                    {
-                      label: t.about.devStack.issueTracking,
-                      value: (
-                        <a
-                          href="https://github.com/steveyegge/beads"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Beads
-                        </a>
-                      )
-                    }
-                  ]}
-                />
-              </SpecCard>
+              <Float>
+                <SpecCard
+                  title={t.about.devStack.aiTools}
+                  description={
+                    <>
+                      <Typo.P>{t.about.devStack.aiToolsIntro}</Typo.P>
+                      <Typo.P>{t.about.devStack.aiToolsUsed}</Typo.P>
+                    </>
+                  }
+                >
+                  <SpecList
+                    padding="small"
+                    gridTemplateColumns="0.75fr 1fr"
+                    items={[
+                      {
+                        label: t.about.devStack.docLookup,
+                        value: (
+                          <a
+                            href="https://ref.tools/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            ref.tools
+                          </a>
+                        )
+                      },
+                      {
+                        label: t.about.devStack.webSearch,
+                        value: (
+                          <a
+                            href="https://exa.ai"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Exa
+                          </a>
+                        )
+                      },
+                      {
+                        label: t.about.devStack.browser,
+                        value: (
+                          <a
+                            href="https://github.com/nicholasoxford/chrome-devtools-mcp/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Chrome DevTools
+                          </a>
+                        )
+                      },
+                      {
+                        label: t.about.devStack.issueTracking,
+                        value: (
+                          <a
+                            href="https://github.com/steveyegge/beads"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Beads
+                          </a>
+                        )
+                      }
+                    ]}
+                  />
+                </SpecCard>
+              </Float>
             </div>
           </Flex>
         </Section>
