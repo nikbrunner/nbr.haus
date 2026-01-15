@@ -6,14 +6,14 @@ export const texts: Widen<typeof en> = {
   blackAtom: {
     title: "Black Atom Industries",
     paragraphs: [
-      "Open-Source Theming-System, das 27+ konsistente Themes plattformübergreifend aus einer einzigen Quelle generiert.",
+      "Open-Source Theming-System, das 30+ konsistente Themes plattformübergreifend aus einer einzigen Quelle generiert.",
       "Gebaut mit Adapter-Pattern für konsistente Theme-Generierung aus einer zentralen Quelle im OKLCH-Farbraum.",
       "Gepflegt mit Fokus auf Developer Experience und plattformübergreifende Konsistenz."
     ],
     subtitle: "Open Source Theming System • Ersteller & Maintainer",
     bullets: [
-      "Erstellte Theming-System mit Unterstützung für 27+ Themes über 6 Plattformen (Zed, WezTerm, Alacritty, Ghostty, Neovim)",
-      "Gebaut mit TypeScript, mit automatisierter Theme-Generierung und Distribution"
+      "Erstellte Theming-System mit Unterstützung für 30+ Themes über 7 Plattformen (Neovim, Ghostty, Zed, tmux, WezTerm, Niri, Waybar)",
+      "Gebaut mit TypeScript/Deno, mit automatisierter Theme-Generierung und Distribution"
     ]
   },
   awdcs: {

@@ -4,15 +4,15 @@ export const texts = {
     title: "Black Atom Industries",
     // Paragraphs for index page
     paragraphs: [
-      "Open-source cross-platform theming system generating 27+ cohesive themes from a single source.",
+      "Open-source cross-platform theming system generating 30+ cohesive themes from a single source.",
       "Built with an adapter pattern for consistent theme generation from a central source using OKLCH color space.",
       "Maintained with focus on developer experience and cross-platform consistency."
     ],
     // CV format
     subtitle: "Open Source Theming System • Creator & Maintainer",
     bullets: [
-      "Created theming system supporting 27+ themes across 6 platforms (Zed, WezTerm, Alacritty, Ghostty, Neovim)",
-      "Built with TypeScript, featuring automated theme generation and distribution"
+      "Created theming system supporting 30+ themes across 7 platforms (Neovim, Ghostty, Zed, tmux, WezTerm, Niri, Waybar)",
+      "Built with TypeScript/Deno, featuring automated theme generation and distribution"
     ]
   },
   awdcs: {
