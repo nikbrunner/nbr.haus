@@ -5,10 +5,15 @@ const variants = cva("SpecList", {
     padding: {
       none: "",
       small: "SpecList-padding--small"
+    },
+    background: {
+      default: "SpecList--bg-default",
+      transparent: "SpecList--bg-transparent"
     }
   },
   defaultVariants: {
-    padding: "none"
+    padding: "none",
+    background: "default"
   }
 });
 
@@ -25,12 +30,13 @@ export default function SpecList({
   items,
   className,
   padding,
+  background,
   gridTemplateColumns = "25cqw 1fr"
 }: Props) {
   if (items.length === 0) return null;
 
   return (
-    <div className={variants({ padding, className })}>
+    <div className={variants({ padding, background, className })}>
       {items.map((item, index) => (
         <div key={index} className="SpecList__item" style={{ gridTemplateColumns }}>
           <span className="SpecList__label">{item.label}</span>

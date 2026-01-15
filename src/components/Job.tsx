@@ -37,7 +37,7 @@ export default function Job({ company, position, period, tech, children }: Props
   return (
     <div className="Job">
       <Typo.H3 className="Job__company">{company}</Typo.H3>
-      <SpecList items={specs} />
+      <SpecList background="transparent" items={specs} />
       {children}
     </div>
   );
