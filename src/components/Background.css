@@ -3,8 +3,18 @@
   inset: 0;
   z-index: -1;
   pointer-events: none;
-
   background-color: var(--color-bg-main);
-  background-image: var(--bg-grid);
-  background-size: var(--grid-size) var(--grid-size);
+}
+
+.background__canvas {
+  display: block;
+  opacity: 0.3;
+}
+
+.background__color-probe {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
 }
