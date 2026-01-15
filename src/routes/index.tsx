@@ -435,8 +435,8 @@ function Page() {
                 "Template Systems"
               ]}
               status="Active"
-              platforms={["Neovim", "Zed", "Ghostty", "WezTerm", "Tmux"]}
-              metrics={[{ label: "Themes", value: "27+" }]}
+              platforms={["Neovim", "Ghostty", "Zed", "tmux", "WezTerm", "Niri", "Waybar"]}
+              metrics={[{ label: "Themes", value: "30+" }]}
               primaryLink={{
                 url: "https://black-atom.industries",
                 type: "Live Site"
