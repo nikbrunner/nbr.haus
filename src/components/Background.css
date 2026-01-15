@@ -1,6 +1,9 @@
 .background {
-  position: fixed;
-  inset: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
   z-index: -1;
   pointer-events: none;
   background-color: var(--color-bg-main);
@@ -8,7 +11,7 @@
 
 .background__canvas {
   display: block;
-  opacity: 0.35;
+  opacity: 0.2;
 }
 
 .background__color-probe {

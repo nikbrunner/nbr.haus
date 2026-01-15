@@ -96,10 +96,13 @@ export function Background() {
 
     const resize = () => {
       const dpr = window.devicePixelRatio || 1;
-      canvas.width = window.innerWidth * dpr;
-      canvas.height = window.innerHeight * dpr;
-      canvas.style.width = `${window.innerWidth}px`;
-      canvas.style.height = `${window.innerHeight}px`;
+      const width = document.documentElement.scrollWidth;
+      const height = document.documentElement.scrollHeight;
+
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
       ctx.scale(dpr, dpr);
 
       // Regenerate lines on resize
@@ -131,8 +134,8 @@ export function Background() {
     };
 
     const draw = () => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
+      const width = document.documentElement.scrollWidth;
+      const height = document.documentElement.scrollHeight;
 
       ctx.clearRect(0, 0, width, height);
       ctx.strokeStyle = getColor();
