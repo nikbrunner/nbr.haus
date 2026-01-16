@@ -138,12 +138,12 @@ body {
 
   /* Foreground colors */
   --color-fg-main: light-dark(
-    oklch(0.25 calc(0.01 * var(--chroma)) var(--hue-accent)),
-    oklch(0.85 calc(0.01 * var(--chroma)) var(--hue-accent))
+    oklch(0.15 calc(0.01 * var(--chroma)) var(--hue-accent)),
+    oklch(0.95 calc(0.01 * var(--chroma)) var(--hue-accent))
   );
   --color-fg-support: light-dark(
-    oklch(0.3 calc(0.01 * var(--chroma)) var(--hue-accent)),
-    oklch(0.75 calc(0.01 * var(--chroma)) var(--hue-accent))
+    oklch(0.2 calc(0.01 * var(--chroma)) var(--hue-accent)),
+    oklch(0.85 calc(0.01 * var(--chroma)) var(--hue-accent))
   );
   --color-fg-minor: light-dark(
     oklch(0.6 calc(0.01 * var(--chroma)) var(--hue-accent)),
