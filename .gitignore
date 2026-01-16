@@ -16,9 +16,6 @@ todos.json
 *storybook.log
 storybook-static
 
-# bv (beads viewer) local config and caches
-.bv/
-
 # Cover letters (local only, not deployed)
 src/content/coverletters/*.md
 src/content/coverletters/*.pdf
