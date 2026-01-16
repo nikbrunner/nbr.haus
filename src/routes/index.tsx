@@ -3,7 +3,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import Button from "@/components/Button";
 import CopyButton from "@/components/CopyButton";
 import Flex from "@/components/Flex";
-import { Float } from "@/components/Float";
 import Hint from "@/components/Hint";
 import Job from "@/components/Job";
 import LookingForJob from "@/components/LookingForJob";
@@ -281,72 +280,70 @@ function Page() {
                 </Trans>
               </Typo.P>
 
-              <Float>
-                <SpecCard
-                  title={t.about.devStack.aiTools}
-                  description={
-                    <>
-                      <Typo.P>{t.about.devStack.aiToolsIntro}</Typo.P>
-                      <Typo.P>{t.about.devStack.aiToolsUsed}</Typo.P>
-                    </>
-                  }
-                >
-                  <SpecList
-                    padding="small"
-                    gridTemplateColumns="0.75fr 1fr"
-                    items={[
-                      {
-                        label: t.about.devStack.docLookup,
-                        value: (
-                          <a
-                            href="https://ref.tools/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            ref.tools
-                          </a>
-                        )
-                      },
-                      {
-                        label: t.about.devStack.webSearch,
-                        value: (
-                          <a
-                            href="https://exa.ai"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            Exa
-                          </a>
-                        )
-                      },
-                      {
-                        label: t.about.devStack.browser,
-                        value: (
-                          <a
-                            href="https://github.com/nicholasoxford/chrome-devtools-mcp/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            Chrome DevTools
-                          </a>
-                        )
-                      },
-                      {
-                        label: t.about.devStack.issueTracking,
-                        value: (
-                          <a
-                            href="https://github.com/steveyegge/beads"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            Beads
-                          </a>
-                        )
-                      }
-                    ]}
-                  />
-                </SpecCard>
-              </Float>
+              <SpecCard
+                title={t.about.devStack.aiTools}
+                description={
+                  <>
+                    <Typo.P>{t.about.devStack.aiToolsIntro}</Typo.P>
+                    <Typo.P>{t.about.devStack.aiToolsUsed}</Typo.P>
+                  </>
+                }
+              >
+                <SpecList
+                  padding="small"
+                  gridTemplateColumns="0.75fr 1fr"
+                  items={[
+                    {
+                      label: t.about.devStack.docLookup,
+                      value: (
+                        <a
+                          href="https://ref.tools/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          ref.tools
+                        </a>
+                      )
+                    },
+                    {
+                      label: t.about.devStack.webSearch,
+                      value: (
+                        <a
+                          href="https://exa.ai"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Exa
+                        </a>
+                      )
+                    },
+                    {
+                      label: t.about.devStack.browser,
+                      value: (
+                        <a
+                          href="https://github.com/nicholasoxford/chrome-devtools-mcp/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Chrome DevTools
+                        </a>
+                      )
+                    },
+                    {
+                      label: t.about.devStack.issueTracking,
+                      value: (
+                        <a
+                          href="https://github.com/steveyegge/beads"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Beads
+                        </a>
+                      )
+                    }
+                  ]}
+                />
+              </SpecCard>
             </div>
           </Flex>
         </Section>
