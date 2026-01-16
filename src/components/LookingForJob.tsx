@@ -33,12 +33,16 @@ export default function LookingForJob({
         </GlitchEffect>
       </Float>
       <div className="LookingForJob__actions">
-        <Button variant="accent" size="large" asChild>
-          <a href={`mailto:${email}`}>{cta}</a>
-        </Button>
-        <Hint title={copyEmailTooltip}>
-          <CopyButton value={email} ariaLabel={copyEmailTooltip} />
-        </Hint>
+        <Float>
+          <Button variant="accent" size="large" asChild>
+            <a href={`mailto:${email}`}>{cta}</a>
+          </Button>
+        </Float>
+        <Float>
+          <Hint title={copyEmailTooltip}>
+            <CopyButton value={email} ariaLabel={copyEmailTooltip} />
+          </Hint>
+        </Float>
       </div>
     </div>
   );
