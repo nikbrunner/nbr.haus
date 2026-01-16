@@ -24,22 +24,22 @@ export default function LookingForJob({
   className
 }: Props) {
   return (
-    <Float>
-      <div className={cx("LookingForJob", className)}>
+    <div className={cx("LookingForJob", className)}>
+      <Float>
         <GlitchEffect scanlines>
           <Typo.H1>
             <Trans>{title}</Trans>
           </Typo.H1>
         </GlitchEffect>
-        <div className="LookingForJob__actions">
-          <Button variant="accent" size="large" asChild>
-            <a href={`mailto:${email}`}>{cta}</a>
-          </Button>
-          <Hint title={copyEmailTooltip}>
-            <CopyButton value={email} ariaLabel={copyEmailTooltip} />
-          </Hint>
-        </div>
+      </Float>
+      <div className="LookingForJob__actions">
+        <Button variant="accent" size="large" asChild>
+          <a href={`mailto:${email}`}>{cta}</a>
+        </Button>
+        <Hint title={copyEmailTooltip}>
+          <CopyButton value={email} ariaLabel={copyEmailTooltip} />
+        </Hint>
       </div>
-    </Float>
+    </div>
   );
 }
