@@ -39,6 +39,7 @@
 @import "../components/Hint.css";
 @import "../components/Note.css";
 @import "../components/Float.css";
+@import "../components/Shadow.css";
 
 /* ControlPanel */
 @import "../components/ControlPanel/ControlPanelStrip.css";
@@ -167,9 +168,6 @@ body {
   --font-size-fluid-3: clamp(2rem, 5cqw, 3.5rem);
 
   --base-layout-top-padding: var(--size-8);
-
-  --shadow-hard-5: 5px 5px 0px var(--color-fg-accent);
-  --shadow-hard-15: 15px 15px 0px var(--color-fg-accent);
 
   --accent-picker-size: var(--size-8);
 

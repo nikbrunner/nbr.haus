@@ -1,6 +1,9 @@
+import { cx } from "class-variance-authority";
 import { Github, Globe, Languages, Linkedin, Mail, MapPin } from "lucide-react";
 
-interface Props {
+import { shadowVariants, type ShadowVariants } from "@/components/Shadow";
+
+type Props = {
   name: string;
   tagline: string;
   summary: string;
@@ -13,9 +16,9 @@ interface Props {
     github: string;
     linkedin: string;
   };
-}
+} & ShadowVariants;
 
-export function CvHeader(props: Props) {
+export function CvHeader({ shadow = "hard-sm", ...props }: Props) {
   return (
     <header className="CvHeader">
       <div className="CvHeader__texts">
@@ -52,7 +55,9 @@ export function CvHeader(props: Props) {
       </div>
 
       <div className="CvHeader__aside">
-        <img className="CvHeader__photo" src={props.img} alt="Nikolaus Brunner" />
+        <div className={cx("CvHeader__photo-wrapper", shadowVariants({ shadow }))}>
+          <img className="CvHeader__photo" src={props.img} alt="Nikolaus Brunner" />
+        </div>
       </div>
     </header>
   );

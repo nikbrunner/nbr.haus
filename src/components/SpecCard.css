@@ -5,7 +5,6 @@
   flex-direction: column;
   gap: var(--size-3);
   padding: var(--size-3);
-  box-shadow: var(--shadow-hard-5);
   background: var(--bg-dots);
 }
 

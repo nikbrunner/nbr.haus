@@ -1,24 +1,31 @@
 import type { ReactNode } from "react";
 
+import { cx } from "class-variance-authority";
 import { AnimatePresence, motion } from "motion/react";
 import { createPortal } from "react-dom";
 
-interface Props {
+import { shadowVariants, type ShadowVariants } from "@/components/Shadow";
+
+type Props = {
   isExpanded: boolean;
   children: ReactNode;
-}
+} & ShadowVariants;
 
 /**
  * ControlPanelExpanded - The expandable options panel.
  * Rendered via portal, slides in from right, positioned under the strip.
  * Uses AnimatePresence for smooth enter/exit animations.
  */
-export function ControlPanelExpanded({ isExpanded, children }: Props) {
+export function ControlPanelExpanded({
+  isExpanded,
+  children,
+  shadow = "hard-sm"
+}: Props) {
   return createPortal(
     <AnimatePresence>
       {isExpanded && (
         <motion.div
-          className="ControlPanelExpanded"
+          className={cx("ControlPanelExpanded", shadowVariants({ shadow }))}
           initial="hidden"
           animate="visible"
           exit="hidden"

@@ -1,8 +1,13 @@
-import profilePictureImg from "@/assets/images/profile_picture.jpg";
+import { cx } from "class-variance-authority";
 
-export default function ProfilePicture() {
+import profilePictureImg from "@/assets/images/profile_picture.jpg";
+import { shadowVariants, type ShadowVariants } from "@/components/Shadow";
+
+type Props = ShadowVariants;
+
+export default function ProfilePicture({ shadow = "hatched-sm" }: Props) {
   return (
-    <div className="ProfilePicture">
+    <div className={cx("ProfilePicture", shadowVariants({ shadow }))}>
       <img
         className="ProfilePicture__image"
         src={profilePictureImg}

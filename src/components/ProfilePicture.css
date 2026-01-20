@@ -1,5 +1,6 @@
 .ProfilePicture {
   position: relative;
+  border: var(--border-size-2) solid var(--color-fg-accent);
 }
 
 .ProfilePicture__image {
@@ -7,8 +8,6 @@
   width: 100%;
   object-fit: cover;
   display: block;
-  box-shadow: var(--shadow-hard-5);
-  border: var(--border-size-2) solid var(--color-fg-accent);
 }
 
 .ProfilePicture__overlay {

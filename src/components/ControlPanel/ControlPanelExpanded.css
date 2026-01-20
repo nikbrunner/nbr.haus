@@ -22,7 +22,6 @@
 
   background: var(--color-bg-main);
   border: var(--border-size-2) solid var(--color-fg-accent);
-  box-shadow: var(--shadow-hard-5);
 }
 
 /* Section wrapper for grouped rows */

@@ -1,0 +1,53 @@
+.Shadow--hard-sm {
+  box-shadow: 5px 5px 0px var(--color-fg-accent);
+}
+
+.Shadow--hard-lg {
+  box-shadow: 15px 15px 0px var(--color-fg-accent);
+}
+
+.Shadow--hatched-sm {
+  --shadow-offset: 8px;
+  --shadow-stripe-width: 1px;
+  --shadow-stripe-gap: 4px;
+
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    translate: var(--shadow-offset) var(--shadow-offset);
+    background-image: repeating-linear-gradient(
+      45deg,
+      var(--color-fg-accent) 0,
+      var(--color-fg-accent) var(--shadow-stripe-width),
+      transparent var(--shadow-stripe-width),
+      transparent var(--shadow-stripe-gap)
+    );
+  }
+}
+
+.Shadow--hatched-lg {
+  --shadow-offset: 16px;
+  --shadow-stripe-width: 2px;
+  --shadow-stripe-gap: 7px;
+
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    translate: var(--shadow-offset) var(--shadow-offset);
+    background-image: repeating-linear-gradient(
+      45deg,
+      var(--color-fg-accent) 0,
+      var(--color-fg-accent) var(--shadow-stripe-width),
+      transparent var(--shadow-stripe-width),
+      transparent var(--shadow-stripe-gap)
+    );
+  }
+}
