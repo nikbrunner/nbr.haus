@@ -17,7 +17,7 @@ export default function Section({ id, title, children, className }: Props) {
   return (
     <section id={sectionId} className={cx("Section", className)}>
       {title && <Typo.H2>{title}</Typo.H2>}
-      {children}
+      <div className="Section__content">{children}</div>
     </section>
   );
 }

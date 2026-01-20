@@ -3,12 +3,12 @@
   font-weight: var(--font-weight-9);
   line-height: var(--font-lineheight-0);
   text-transform: uppercase;
-  margin: 0 0 var(--size-3);
+  margin: 0 0 var(--size-4);
 }
 
 .Typo-H2--decorated {
   border-bottom: var(--border-size-2) dashed var(--color-fg-accent);
-  padding-bottom: var(--size-1);
+  padding-bottom: var(--size-4);
 }
 
 .Typo-H2.Typo--medium-print {
