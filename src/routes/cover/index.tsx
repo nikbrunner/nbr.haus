@@ -40,8 +40,8 @@ function Page() {
 
       {letters.length === 0 && (
         <p className="CoverIndex__empty">
-          No cover letters found. Add markdown files to{" "}
-          <code>src/content/coverletters/</code>
+          No cover letters found. Add markdown files with the required
+          frontmatter to the notes Coverletters folder.
         </p>
       )}
     </div>

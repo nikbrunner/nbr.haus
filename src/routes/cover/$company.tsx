@@ -62,11 +62,6 @@ function CoverLetterPage() {
         className="CoverLetterPage__content"
         medium="print"
       />
-
-      <footer className="CoverLetterPage__signature">
-        <p>Best regards,</p>
-        <p className="CoverLetterPage__signature-name">{t.shared.name}</p>
-      </footer>
     </article>
   );
 }

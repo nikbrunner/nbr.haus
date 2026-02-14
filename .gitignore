@@ -15,7 +15,3 @@ todos.json
 
 *storybook.log
 storybook-static
-
-# Cover letters (local only, not deployed)
-src/content/coverletters/*.md
-src/content/coverletters/*.pdf

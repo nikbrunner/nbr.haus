@@ -1,3 +1,7 @@
+import fs from "fs";
+import os from "os";
+import path from "path";
+
 import { createServerFn } from "@tanstack/react-start";
 import matter from "gray-matter";
 
@@ -24,27 +28,24 @@ type CoverLetterSummary = {
   draft?: boolean;
 };
 
-// Bundle content at build time using Vite glob imports
-// This works in both dev and production (including Vercel serverless)
-const contentModules = import.meta.glob<string>("/src/content/coverletters/*.md", {
-  eager: true,
-  query: "?raw",
-  import: "default"
-});
+const COVERLETTERS_DIR = path.join(
+  os.homedir(),
+  "repos/nikbrunner/notes/01 - Projects/New Job Nik/Coverletters"
+);
 
 function fetchCoverLetterBySlug(slug: string): CoverLetter | null {
-  const key = `/src/content/coverletters/${slug}.md`;
-  const fileContent = contentModules[key];
+  const filePath = path.join(COVERLETTERS_DIR, `${slug}.md`);
 
-  if (!fileContent) {
+  if (!fs.existsSync(filePath)) {
     return null;
   }
 
+  const fileContent = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(fileContent);
   const frontmatter = data as CoverLetterFrontmatter;
 
   // Skip drafts in production
-  if (frontmatter.draft && import.meta.env.PROD) {
+  if (frontmatter.draft && process.env.NODE_ENV === "production") {
     return null;
   }
 
@@ -62,19 +63,28 @@ export const getCoverLetterBySlug = createServerFn({ method: "GET" })
   });
 
 function fetchAllCoverLetters(): CoverLetterSummary[] {
+  if (!fs.existsSync(COVERLETTERS_DIR)) {
+    return [];
+  }
+
+  const files = fs.readdirSync(COVERLETTERS_DIR);
+  const mdFiles = files.filter(f => f.endsWith(".md"));
   const letters: CoverLetterSummary[] = [];
 
-  for (const key of Object.keys(contentModules)) {
-    const slug = key.replace("/src/content/coverletters/", "").replace(".md", "");
-    const fileContent = contentModules[key];
-
-    if (!fileContent) continue;
-
+  for (const filename of mdFiles) {
+    const slug = filename.replace(".md", "");
+    const filePath = path.join(COVERLETTERS_DIR, filename);
+    const fileContent = fs.readFileSync(filePath, "utf-8");
     const { data } = matter(fileContent);
     const frontmatter = data as CoverLetterFrontmatter;
 
+    // Skip files without required frontmatter
+    if (!frontmatter.company || !frontmatter.position) {
+      continue;
+    }
+
     // Skip drafts in production
-    if (frontmatter.draft && import.meta.env.PROD) {
+    if (frontmatter.draft && process.env.NODE_ENV === "production") {
       continue;
     }
 

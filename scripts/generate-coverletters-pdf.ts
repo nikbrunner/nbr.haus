@@ -1,12 +1,16 @@
 import { spawn, type ChildProcess } from "child_process";
 import fs from "fs";
+import os from "os";
 import path from "path";
 import { fileURLToPath } from "url";
 
 import { chromium } from "playwright";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const COVER_LETTERS_DIR = path.resolve(__dirname, "../src/content/coverletters");
+const COVER_LETTERS_DIR = path.join(
+  os.homedir(),
+  "repos/nikbrunner/notes/01 - Projects/New Job Nik/Coverletters"
+);
 const DEV_SERVER_URL = "http://localhost:3000";
 
 interface CoverLetterConfig {
