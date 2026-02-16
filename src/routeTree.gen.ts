@@ -66,7 +66,7 @@ export interface FileRoutesByFullPath {
   '/cv': typeof CvRoute
   '/cover/$company': typeof CoverCompanyRoute
   '/study/$slug': typeof StudySlugRoute
-  '/cover': typeof CoverIndexRoute
+  '/cover/': typeof CoverIndexRoute
   '/study/': typeof StudyIndexRoute
 }
 export interface FileRoutesByTo {
@@ -98,7 +98,7 @@ export interface FileRouteTypes {
     | '/cv'
     | '/cover/$company'
     | '/study/$slug'
-    | '/cover'
+    | '/cover/'
     | '/study/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -170,7 +170,7 @@ declare module '@tanstack/react-router' {
     '/cover/': {
       id: '/cover/'
       path: '/cover'
-      fullPath: '/cover'
+      fullPath: '/cover/'
       preLoaderRoute: typeof CoverIndexRouteImport
       parentRoute: typeof rootRouteImport
     }

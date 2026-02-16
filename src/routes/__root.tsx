@@ -9,7 +9,6 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
-import { Background } from "@/components/Background";
 import NotFound from "@/components/NotFound";
 import ControlPanel from "@/partials/ControlPanel";
 import themeBlockingScript from "@/scripts/theme-blocking.js?raw";

@@ -84,9 +84,9 @@ export default defineConfig([
   },
   {
     name: "project/glitch-effect-purity-exception",
-    // GlitchEffect intentionally uses Math.random() for visual variety - each instance
-    // should have different animation delays for a desynchronized glitch effect
-    files: ["src/components/GlitchEffect.tsx"],
+    // GlitchEffect and Float intentionally use Math.random() for visual variety - each instance
+    // should have different animation delays for a desynchronized effect
+    files: ["src/components/GlitchEffect.tsx", "src/components/Float.tsx"],
     rules: {
       "react-hooks/purity": "off"
     }
@@ -140,7 +140,7 @@ export default defineConfig([
             "break-inside"
           ],
           allowSelectors: ["nesting", "has", "selection"],
-          allowFunctions: ["oklch", "light-dark"]
+          allowFunctions: ["oklch", "light-dark", "color-mix"]
         }
       ]
     }
@@ -151,6 +151,15 @@ export default defineConfig([
     // ESLint resolves var(--hue) to bare numbers (e.g., "0", "180") and incorrectly
     // flags them as invalid colors, even though they're valid hue values in context
     files: ["src/styles/global.css"],
+    rules: {
+      "css/no-invalid-properties": "off"
+    }
+  },
+  {
+    name: "project/shadow-css-gradient-stop-exception",
+    // Shadow.css uses `var(--color-fg-accent) 0` as gradient color-stops in repeating-linear-gradient.
+    // The CSS linter resolves `0` as a bare number and incorrectly flags it as invalid for background-image.
+    files: ["src/components/Shadow.css"],
     rules: {
       "css/no-invalid-properties": "off"
     }

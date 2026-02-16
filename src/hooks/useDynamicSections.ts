@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { useRouterState } from "@tanstack/react-router";
 
-export interface DynamicSection {
+interface DynamicSection {
   id: string;
   label: string;
 }

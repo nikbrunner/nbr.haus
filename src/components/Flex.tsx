@@ -47,7 +47,8 @@ const flexVariants = cva("Flex", {
 });
 
 interface Props
-  extends ComponentProps,
+  extends
+    ComponentProps,
     Omit<VariantProps<typeof flexVariants>, "inline" | "resetChildMargins"> {
   children: React.ReactNode;
 

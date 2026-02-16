@@ -44,7 +44,7 @@
       transparent 100%
     ),
     /* Static scanlines pattern */
-      repeating-linear-gradient(
+    repeating-linear-gradient(
         0deg,
         transparent,
         transparent 2px,

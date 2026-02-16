@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useRef } from "react";
 
 interface Props {
   children: React.ReactNode;
@@ -6,17 +6,12 @@ interface Props {
 }
 
 export function Float({ children, className }: Props) {
-  const style = useMemo(() => {
+  const style = useRef({
     // Random delay so each instance starts at different point in animation
-    const delay = Math.random() * -6;
+    animationDelay: `${Math.random() * -6}s`,
     // Slight duration variation (5-7s) for more organic feel
-    const duration = 5 + Math.random() * 2;
-
-    return {
-      animationDelay: `${delay}s`,
-      animationDuration: `${duration}s`
-    };
-  }, []);
+    animationDuration: `${5 + Math.random() * 2}s`
+  }).current;
 
   return (
     <div
