@@ -30,7 +30,7 @@ type CoverLetterSummary = {
 
 const COVERLETTERS_DIR = path.join(
   os.homedir(),
-  "repos/nikbrunner/notes/01 - Projects/New Job Nik/Coverletters"
+  "repos/nikbrunner/notes/01 - Projects/New Job 2026/Coverletters"
 );
 
 function fetchCoverLetterBySlug(slug: string): CoverLetter | null {

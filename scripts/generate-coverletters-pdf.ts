@@ -9,7 +9,7 @@ import { chromium } from "playwright";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const COVER_LETTERS_DIR = path.join(
   os.homedir(),
-  "repos/nikbrunner/notes/01 - Projects/New Job Nik/Coverletters"
+  "repos/nikbrunner/notes/01 - Projects/New Job 2026/Coverletters"
 );
 const DEV_SERVER_URL = "http://localhost:3000";
 
