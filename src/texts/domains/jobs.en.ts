@@ -7,7 +7,7 @@ export const texts = {
   },
   dealerCenter: {
     company: "DealerCenter Digital",
-    url: "https://bike.center",
+    url: "https://www.bike.center",
     position: "Software Engineer / Frontend Lead",
     period: "Sep 2020 – Jan 2026",
     location: "Landshut, Germany",
