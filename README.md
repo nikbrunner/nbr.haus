@@ -2,7 +2,7 @@
 
 Personal portfolio website built with TanStack Start, React 19, and TypeScript.
 
-**Live:** [nbr.haus](https://nbr.haus)
+**Live:** [nbr.haus](https://nbr.haus) | **Deployments:** [Vercel](https://vercel.com/nikbrunner/nbr-haus)
 
 ## Quick Start
 
