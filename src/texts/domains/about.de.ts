@@ -16,21 +16,21 @@ export const texts: Widen<typeof en> = {
     'Ich weiß, dass jeder Satz gerade (und dieser hier) mit "Ich" angefangen hat, aber es fühlte sich einfach total komisch an, über mich selbst zu sprechen, ohne "Ich" zu benutzen. :)',
   devStack: {
     devTools: "Dev Tools",
-    ai: "KI",
+    ai: "LLMs",
     workflowInfo:
       "Ich bin ein großer Workflow-Nerd. Meine <link>Dotfiles findest du hier</link>.",
     aiIntro:
-      "Ich bin in die Branche eingestiegen, <strong>bevor KI</strong> ein Thema war. Ich habe den Berg ohne ChatGPT oder Tab-Completion erklommen.",
+      "Ich bin in die Branche eingestiegen, <strong>bevor LLMs</strong> ein Thema waren. Ich habe den Berg ohne ChatGPT oder Tab-Completion erklommen.",
     aiLearning:
-      "Das war Gold wert, und ist es immer noch. Für Junioren finde ich es als Lehrer und Lesepartner super, aber nicht als Schreibpartner in der anfänglichen Lernphase. Ich denke es ist sehr wichtig zum Lernen die Probleme selbst zu lösen und die Lösungen auch selbst niederzuschreiben... oder die Versuche.",
+      "Das war Gold wert, und ist es immer noch. Für Junioren finde ich LLMs als Lehrer und Lesepartner super, aber nicht als Schreibpartner in der anfänglichen Lernphase. Ich denke es ist sehr wichtig zum Lernen die Probleme selbst zu lösen und die Lösungen auch selbst niederzuschreiben... oder die Versuche.",
     aiLimitsInfo:
       "Die Technologie ist faszinierend, hat aber echte Grenzen. Wer sich zu sehr darauf verlässt, verlernt aktiv Skills und Wissen, <highlight>und verliert vielleicht das Wichtigste: den Spaß</highlight>.",
     aiUsage:
-      "Deshalb setze ich KI bewusst ein. <link>Claude Code</link> ist mein primärer KI-Assistent. Wenn eine Aufgabe durch KI-Codegenerierung machbar ist, arbeite ich einen detaillierten Plan aus, lasse <link>Claude Code</link> implementieren und reviewe den Code Schritt für Schritt.",
-    aiTools: "KI-Tools",
+      "Deshalb setze ich LLMs bewusst ein. <link>Claude Code</link> ist mein primärer LLM-Assistent. Wenn eine Aufgabe durch LLM-Codegenerierung machbar ist, arbeite ich einen detaillierten Plan aus, lasse <link>Claude Code</link> implementieren und reviewe den Code Schritt für Schritt.",
+    aiTools: "LLM-Tools",
     aiToolsIntro:
-      "Außerdem nutze ich persönliche Slash-Commands und verschiedene KI-Tools wo sinnvoll.",
-    aiToolsUsed: "Das sind meine meistgenutzten Tools für KI-gestützte Entwicklung.",
+      "Außerdem nutze ich persönliche Slash-Commands und verschiedene LLM-Tools wo sinnvoll.",
+    aiToolsUsed: "Das sind meine meistgenutzten Tools für LLM-gestützte Entwicklung.",
     docLookup: "Dokumentations-Suche",
     webSearch: "Bessere Web-Suche",
     browser: "Browser",
@@ -38,7 +38,7 @@ export const texts: Widen<typeof en> = {
     editor: "Editor:",
     terminal: "Terminal:",
     git: "Git:",
-    aiAssistant: "KI-Assistent:",
+    aiAssistant: "LLM-Assistent:",
     secrets: "Secrets:"
   }
 };

@@ -13,21 +13,21 @@ export const texts = {
     'I know that every sentence above (and this one) started with "I", but it felt absolutely awkward trying to speak about myself without using "I". :)',
   devStack: {
     devTools: "Dev Tools",
-    ai: "AI",
+    ai: "LLMs",
     workflowInfo:
       "I am very passionate about workflow. You can check my <link>dotfiles here</link>.",
     aiIntro:
-      "I entered the industry <strong>before AI</strong> became a thing. I climbed that hill without ChatGPT or tab completion.",
+      "I entered the industry <strong>before LLMs</strong> became a thing. I climbed that hill without ChatGPT or tab completion.",
     aiLearning:
-      "That foundation was invaluable, and still is. For juniors I think AI shines as a teacher and reading partner, but not as a writing partner during the early phases. I think it's important to learn to solve problems yourself and to also write down the solutions... or the attempts.",
+      "That foundation was invaluable, and still is. For juniors I think LLMs shine as a teacher and reading partner, but not as a writing partner during the early phases. I think it's important to learn to solve problems yourself and to also write down the solutions... or the attempts.",
     aiLimitsInfo:
       "The technology is fascinating, but it has real limits. Relying too heavily on it means actively unlearning skills and knowledge, <highlight>and maybe most importantly, losing the fun</highlight>.",
     aiUsage:
-      "That's why I'm deliberate about how I use it. I use <link>Claude Code</link> as my primary AI assistant. I don't jump from model to model each week, but rather try to learn to get the most out of what I'm given. I think that for the last 1,5 years, Anthropic has built out the best integrations and DX for AI assistance.",
-    aiTools: "AI Tools",
+      "That's why I'm deliberate about how I use it. I use <link>Claude Code</link> as my primary LLM assistant. I don't jump from model to model each week, but rather try to learn to get the most out of what I'm given. I think that for the last 1,5 years, Anthropic has built out the best integrations and DX for LLM assistance.",
+    aiTools: "LLM Tools",
     aiToolsIntro:
-      "I also use personal slash commands and various AI tools where applicable.",
-    aiToolsUsed: "These are my most used tools for AI-assisted development.",
+      "I also use personal slash commands and various LLM tools where applicable.",
+    aiToolsUsed: "These are my most used tools for LLM-assisted development.",
     docLookup: "Documentation Lookup",
     webSearch: "Better Web Search",
     browser: "Browser",
@@ -35,7 +35,7 @@ export const texts = {
     editor: "Editor:",
     terminal: "Terminal:",
     git: "Git:",
-    aiAssistant: "AI assistant:",
+    aiAssistant: "LLM assistant:",
     secrets: "Secrets:"
   }
 } as const;
