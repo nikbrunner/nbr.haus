@@ -10,6 +10,7 @@ export const texts: Widen<typeof en> = {
   },
   dealerCenter: {
     company: "DealerCenter Digital",
+    url: "https://bike.center",
     position: "Software-Ingenieur / Frontend-Lead",
     period: "Sep. 2020 – Jan. 2026",
     location: "Landshut, Germany",
@@ -33,6 +34,7 @@ export const texts: Widen<typeof en> = {
   },
   divaE: {
     company: "diva-e",
+    url: "https://www.diva-e.com/de/",
     position: "Junior Frontend-Entwickler",
     period: "März 2020 – Sep. 2020",
     location: "Munich, Germany",
@@ -41,6 +43,7 @@ export const texts: Widen<typeof en> = {
   },
   campudus: {
     company: "Campudus",
+    url: "https://www.campudus.com/",
     position: "Praktikant",
     period: "Dez. 2019 – Feb. 2020",
     location: "Landshut, Germany",

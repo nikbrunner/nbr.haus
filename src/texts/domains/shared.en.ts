@@ -17,6 +17,7 @@ export const texts = {
     meta: {
       position: "Position",
       period: "Period",
+      website: "Website",
       tech: "Tech"
     }
   }

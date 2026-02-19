@@ -7,6 +7,7 @@ export const texts = {
   },
   dealerCenter: {
     company: "DealerCenter Digital",
+    url: "https://bike.center",
     position: "Software Engineer / Frontend Lead",
     period: "Sep 2020 – Jan 2026",
     location: "Landshut, Germany",
@@ -32,6 +33,7 @@ export const texts = {
   },
   divaE: {
     company: "diva-e",
+    url: "https://www.diva-e.com/de/",
     position: "Junior Frontend Developer",
     period: "Mar 2020 – Sep 2020",
     location: "Munich, Germany",
@@ -40,6 +42,7 @@ export const texts = {
   },
   campudus: {
     company: "Campudus",
+    url: "https://www.campudus.com/",
     position: "Intern",
     period: "Dec 2019 – Feb 2020",
     location: "Landshut, Germany",

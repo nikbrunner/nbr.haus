@@ -57,6 +57,7 @@ function Page() {
         <Flex direction="column" gap="8">
           <CvJob
             company={t.cv.jobs.dealerCenter.company}
+            url={t.cv.jobs.dealerCenter.url}
             position={t.cv.jobs.dealerCenter.position}
             period={t.cv.jobs.dealerCenter.period}
             location={t.cv.jobs.dealerCenter.location}
@@ -68,6 +69,7 @@ function Page() {
           <CvJob
             className="print-break-before-page"
             company={t.cv.jobs.divaE.company}
+            url={t.cv.jobs.divaE.url}
             position={t.cv.jobs.divaE.position}
             period={t.cv.jobs.divaE.period}
             location={t.cv.jobs.divaE.location}
@@ -77,6 +79,7 @@ function Page() {
 
           <CvJob
             company={t.cv.jobs.campudus.company}
+            url={t.cv.jobs.campudus.url}
             position={t.cv.jobs.campudus.position}
             period={t.cv.jobs.campudus.period}
             location={t.cv.jobs.campudus.location}

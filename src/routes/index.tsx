@@ -365,6 +365,7 @@ function Page() {
 
           <Job
             company={t.jobs.dealerCenter.company}
+            url={t.jobs.dealerCenter.url}
             position={t.jobs.dealerCenter.position}
             period={t.jobs.dealerCenter.period}
             tech={[
@@ -390,6 +391,7 @@ function Page() {
 
           <Job
             company={t.jobs.divaE.company}
+            url={t.jobs.divaE.url}
             position={t.jobs.divaE.position}
             period={t.jobs.divaE.period}
             tech={[tech.react, tech.typescript, tech.scss, tech.nodejs]}
@@ -399,6 +401,7 @@ function Page() {
 
           <Job
             company={t.jobs.campudus.company}
+            url={t.jobs.campudus.url}
             position={t.jobs.campudus.position}
             period={t.jobs.campudus.period}
             tech={[tech.react, tech.nodejs]}

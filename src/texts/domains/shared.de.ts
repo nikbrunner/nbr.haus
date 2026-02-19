@@ -20,6 +20,7 @@ export const texts: Widen<typeof en> = {
     meta: {
       position: "Position",
       period: "Zeitraum",
+      website: "Website",
       tech: "Tech"
     }
   }

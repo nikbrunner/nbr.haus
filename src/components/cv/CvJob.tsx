@@ -5,6 +5,7 @@ import Tag from "@/components/Tag";
 interface Props {
   className?: string;
   company: string;
+  url?: string;
   position: string;
   period: string;
   location: string;
@@ -17,7 +18,15 @@ export function CvJob(props: Props) {
   return (
     <article className={cx("CvJob", props.className)}>
       <div className="CvJob__header">
-        <h3 className="CvJob__company">{props.company}</h3>
+        <h3 className="CvJob__company">
+          {props.url ? (
+            <a href={props.url} target="_blank" rel="noopener noreferrer" className="CvJob__company-link">
+              {props.company}
+            </a>
+          ) : (
+            props.company
+          )}
+        </h3>
         <p className="CvJob__location">{props.location}</p>
         <p className="CvJob__position"> {props.position}</p>
         <p className="CvJob__period">{props.period}</p>

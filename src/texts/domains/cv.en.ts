@@ -23,6 +23,7 @@ export const texts = {
   jobs: {
     dealerCenter: {
       company: jobsTexts.dealerCenter.company,
+      url: jobsTexts.dealerCenter.url,
       position: jobsTexts.dealerCenter.position,
       period: jobsTexts.dealerCenter.period,
       location: jobsTexts.dealerCenter.location,
@@ -53,6 +54,7 @@ export const texts = {
     },
     divaE: {
       company: jobsTexts.divaE.company,
+      url: jobsTexts.divaE.url,
       position: jobsTexts.divaE.position,
       period: jobsTexts.divaE.period,
       location: jobsTexts.divaE.location,
@@ -62,6 +64,7 @@ export const texts = {
     },
     campudus: {
       company: jobsTexts.campudus.company,
+      url: jobsTexts.campudus.url,
       position: jobsTexts.campudus.position,
       period: jobsTexts.campudus.period,
       location: jobsTexts.campudus.location,

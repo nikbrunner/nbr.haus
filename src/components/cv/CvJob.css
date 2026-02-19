@@ -29,6 +29,15 @@
   align-self: end;
 }
 
+.CvJob__company-link {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .CvJob__position {
   grid-area: position;
   font-size: var(--print-font-size-3);

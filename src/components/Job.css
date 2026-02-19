@@ -9,6 +9,24 @@
   border-bottom: none;
 }
 
+.Job__website-link {
+  color: var(--color-fg-accent);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.Job__company-link {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .Job__tags {
   display: flex;
   flex-wrap: wrap;
