@@ -13,7 +13,14 @@ interface Props {
   children: React.ReactNode;
 }
 
-export default function Job({ company, url, position, period, tech, children }: Props) {
+export default function Job({
+  company,
+  url,
+  position,
+  period,
+  tech,
+  children
+}: Props) {
   const { shared } = useTexts();
 
   const specs = [
@@ -24,7 +31,12 @@ export default function Job({ company, url, position, period, tech, children }: 
           {
             label: shared.jobs.meta.website,
             value: (
-              <a href={url} target="_blank" rel="noopener noreferrer" className="Job__website-link">
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="Job__website-link"
+              >
                 {new URL(url).hostname}
               </a>
             )
@@ -51,7 +63,12 @@ export default function Job({ company, url, position, period, tech, children }: 
     <div className="Job">
       <Typo.H3 className="Job__company">
         {url ? (
-          <a href={url} target="_blank" rel="noopener noreferrer" className="Job__company-link">
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="Job__company-link"
+          >
             {company}
           </a>
         ) : (

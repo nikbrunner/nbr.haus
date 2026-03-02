@@ -20,7 +20,12 @@ export function CvJob(props: Props) {
       <div className="CvJob__header">
         <h3 className="CvJob__company">
           {props.url ? (
-            <a href={props.url} target="_blank" rel="noopener noreferrer" className="CvJob__company-link">
+            <a
+              href={props.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="CvJob__company-link"
+            >
               {props.company}
             </a>
           ) : (

@@ -30,7 +30,8 @@ export const texts: Widen<typeof en> = {
     aiTools: "LLM-Tools",
     aiToolsIntro:
       "Außerdem nutze ich persönliche Slash-Commands und verschiedene LLM-Tools wo sinnvoll.",
-    aiToolsUsed: "Das sind meine meistgenutzten Tools für LLM-gestützte Entwicklung.",
+    aiToolsUsed:
+      "Das sind meine meistgenutzten Tools für LLM-gestützte Entwicklung.",
     docLookup: "Dokumentations-Suche",
     webSearch: "Bessere Web-Suche",
     browser: "Browser",
