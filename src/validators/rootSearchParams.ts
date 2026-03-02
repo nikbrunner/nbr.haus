@@ -1,6 +1,5 @@
 import { z } from "zod";
 
-import { localeSchema } from "@/types/i18n";
 import {
   accentSchema,
   colorModeSchema,
@@ -13,8 +12,7 @@ import {
 export const rootSearchParamsSchema = z.object({
   accent: accentSchema.optional().catch(undefined),
   colorMode: colorModeSchema.optional().catch(undefined),
-  contrast: contrastSchema.optional().catch(undefined),
-  lang: localeSchema.optional().catch(undefined)
+  contrast: contrastSchema.optional().catch(undefined)
 });
 
 export type RootSearchParams = z.infer<typeof rootSearchParamsSchema>;
@@ -22,6 +20,5 @@ export type RootSearchParams = z.infer<typeof rootSearchParamsSchema>;
 export const defaultRootSearchParams: RootSearchParams = {
   accent: defaultAccent,
   colorMode: defaultColorMode,
-  contrast: defaultContrast,
-  lang: undefined
+  contrast: defaultContrast
 } as const;

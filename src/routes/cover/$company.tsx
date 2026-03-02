@@ -1,7 +1,6 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 
 import { CoverLetterHeader } from "@/components/coverletter";
-import { useTexts } from "@/i18n/useTexts";
 import { getCoverLetterBySlug } from "@/lib/coverletters";
 import { MarkdownContent } from "@/partials/MarkdownContent";
 
@@ -39,16 +38,15 @@ function formatDate(dateString: string): string {
 
 function CoverLetterPage() {
   const { coverLetter } = Route.useLoaderData();
-  const t = useTexts();
 
   return (
     <article className="PrintPage CoverLetterPage">
       <CoverLetterHeader
-        senderName={t.shared.name}
+        senderName="Nikolaus Brunner"
         senderContact={{
-          location: t.cv.contact.location,
-          email: t.cv.contact.email,
-          website: t.cv.contact.website
+          location: "Landshut, Germany",
+          email: "nik@nbr.haus",
+          website: "https://nbr.haus"
         }}
         date={formatDate(coverLetter.frontmatter.date)}
         recipient={coverLetter.frontmatter.recipient}

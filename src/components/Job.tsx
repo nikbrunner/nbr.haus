@@ -2,7 +2,6 @@ import ClickableTag from "@/components/ClickableTag";
 import SpecList from "@/components/SpecList";
 import { Typo } from "@/components/Typo";
 import type { Tech } from "@/config";
-import { useTexts } from "@/i18n/useTexts";
 
 interface Props {
   company: string;
@@ -21,15 +20,13 @@ export default function Job({
   tech,
   children
 }: Props) {
-  const { shared } = useTexts();
-
   const specs = [
-    { label: shared.jobs.meta.position, value: position },
-    { label: shared.jobs.meta.period, value: period },
+    { label: "Position", value: position },
+    { label: "Period", value: period },
     ...(url
       ? [
           {
-            label: shared.jobs.meta.website,
+            label: "Website",
             value: (
               <a
                 href={url}
@@ -46,7 +43,7 @@ export default function Job({
     ...(tech.length > 0
       ? [
           {
-            label: shared.jobs.meta.tech,
+            label: "Tech",
             value: (
               <span className="Job__tags">
                 {tech.map(item => (

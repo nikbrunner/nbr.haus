@@ -6,10 +6,9 @@ import { Float } from "@/components/Float";
 import GlitchEffect from "@/components/GlitchEffect";
 import Hint from "@/components/Hint";
 import { Typo } from "@/components/Typo";
-import { Trans } from "@/i18n/Trans";
 
 interface Props {
-  title: string;
+  title: React.ReactNode;
   cta: string;
   email: string;
   copyEmailTooltip: string;
@@ -27,9 +26,7 @@ export default function LookingForJob({
     <div className={cx("LookingForJob", className)}>
       <Float>
         <GlitchEffect scanlines>
-          <Typo.H1>
-            <Trans>{title}</Trans>
-          </Typo.H1>
+          <Typo.H1>{title}</Typo.H1>
         </GlitchEffect>
       </Float>
       <div className="LookingForJob__actions">

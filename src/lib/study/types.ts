@@ -19,7 +19,6 @@ export interface StudyFrontmatter {
 
 export interface StudyPost {
   slug: string;
-  locale: "en" | "de";
   frontmatter: StudyFrontmatter;
   content: string;
   readingTime: number; // minutes
@@ -27,7 +26,6 @@ export interface StudyPost {
 
 export interface StudyPostMeta {
   slug: string;
-  locale: "en" | "de";
   frontmatter: StudyFrontmatter;
   readingTime: number;
 }
