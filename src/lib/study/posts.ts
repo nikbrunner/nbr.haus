@@ -12,17 +12,15 @@ const contentModules = import.meta.glob<string>("/src/content/study/*.md", {
   import: "default"
 });
 
-type Locale = "en" | "de";
+const SUFFIX = ".en.md";
 
-function getPostEntries(locale: Locale): Array<{ slug: string; content: string }> {
-  const suffix = `.${locale}.md`;
+function getPostEntries(): Array<{ slug: string; content: string }> {
   const entries: Array<{ slug: string; content: string }> = [];
 
   for (const [path, content] of Object.entries(contentModules)) {
-    if (path.endsWith(suffix)) {
-      // Extract slug from path: /src/content/study/my-post.en.md -> my-post
+    if (path.endsWith(SUFFIX)) {
       const filename = path.split("/").pop() ?? "";
-      const slug = filename.replace(suffix, "");
+      const slug = filename.replace(SUFFIX, "");
       entries.push({ slug, content });
     }
   }
@@ -30,8 +28,8 @@ function getPostEntries(locale: Locale): Array<{ slug: string; content: string }
   return entries;
 }
 
-function fetchAllPosts(locale: Locale): StudyPostMeta[] {
-  const entries = getPostEntries(locale);
+function fetchAllPosts(): StudyPostMeta[] {
+  const entries = getPostEntries();
 
   const posts = entries
     .map(({ slug, content: fileContent }) => {
@@ -42,7 +40,6 @@ function fetchAllPosts(locale: Locale): StudyPostMeta[] {
 
       return {
         slug,
-        locale,
         frontmatter,
         readingTime: calculateReadingTime(content)
       };
@@ -57,8 +54,8 @@ function fetchAllPosts(locale: Locale): StudyPostMeta[] {
   return posts;
 }
 
-function fetchPostBySlug(slug: string, locale: Locale): StudyPost | null {
-  const key = `/src/content/study/${slug}.${locale}.md`;
+function fetchPostBySlug(slug: string): StudyPost | null {
+  const key = `/src/content/study/${slug}.en.md`;
   const fileContent = contentModules[key];
 
   if (!fileContent) {
@@ -70,7 +67,6 @@ function fetchPostBySlug(slug: string, locale: Locale): StudyPost | null {
 
   return {
     slug,
-    locale,
     frontmatter,
     content,
     readingTime: calculateReadingTime(content)
@@ -78,10 +74,9 @@ function fetchPostBySlug(slug: string, locale: Locale): StudyPost | null {
 }
 
 function fetchAdjacentPosts(
-  currentSlug: string,
-  locale: Locale
+  currentSlug: string
 ): { prev: StudyPostMeta | null; next: StudyPostMeta | null } {
-  const posts = fetchAllPosts(locale);
+  const posts = fetchAllPosts();
   const currentIndex = posts.findIndex(p => p.slug === currentSlug);
 
   if (currentIndex === -1) {
@@ -95,20 +90,18 @@ function fetchAdjacentPosts(
 }
 
 // Server functions that can be called from loaders
-export const getAllPosts = createServerFn({ method: "GET" })
-  .inputValidator((d: Locale) => d)
-  .handler(async ({ data: locale }) => {
-    return fetchAllPosts(locale);
-  });
+export const getAllPosts = createServerFn({ method: "GET" }).handler(async () => {
+  return fetchAllPosts();
+});
 
 export const getPostBySlug = createServerFn({ method: "GET" })
-  .inputValidator((d: { slug: string; locale: Locale }) => d)
+  .inputValidator((d: { slug: string }) => d)
   .handler(async ({ data }) => {
-    return fetchPostBySlug(data.slug, data.locale);
+    return fetchPostBySlug(data.slug);
   });
 
 export const getAdjacentPosts = createServerFn({ method: "GET" })
-  .inputValidator((d: { slug: string; locale: Locale }) => d)
+  .inputValidator((d: { slug: string }) => d)
   .handler(async ({ data }) => {
-    return fetchAdjacentPosts(data.slug, data.locale);
+    return fetchAdjacentPosts(data.slug);
   });

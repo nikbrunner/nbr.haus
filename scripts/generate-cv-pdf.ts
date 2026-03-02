@@ -4,21 +4,9 @@ import { fileURLToPath } from "url";
 
 import { chromium } from "playwright";
 
-import { localeSchema, type Locale } from "@/types/i18n";
-
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC_DIR = path.resolve(__dirname, "../public");
 const DEV_SERVER_URL = "http://localhost:3000";
-
-interface CVConfig {
-  lang: Locale;
-  filename: `Nikolaus_Brunner_CV_${Locale}.pdf`;
-}
-
-const configs: CVConfig[] = localeSchema.options.map(lang => ({
-  lang,
-  filename: `Nikolaus_Brunner_CV_${lang}.pdf`
-}));
 
 async function waitForServer(url: string, maxAttempts = 30): Promise<void> {
   for (let i = 0; i < maxAttempts; i++) {
@@ -54,12 +42,13 @@ async function startDevServer(): Promise<ChildProcess> {
   return server;
 }
 
-async function generatePDF(config: CVConfig): Promise<void> {
+async function generatePDF(): Promise<void> {
   const browser = await chromium.launch();
   const page = await browser.newPage();
 
-  const url = `${DEV_SERVER_URL}/cv?lang=${config.lang}`;
-  console.log(`Generating ${config.filename} from ${url}`);
+  const filename = "Nikolaus_Brunner_CV_en.pdf";
+  const url = `${DEV_SERVER_URL}/cv`;
+  console.log(`Generating ${filename} from ${url}`);
 
   await page.goto(url, { waitUntil: "networkidle" });
 
@@ -67,7 +56,7 @@ async function generatePDF(config: CVConfig): Promise<void> {
   await page.waitForLoadState("load");
   await page.waitForTimeout(1000); // Extra time for web fonts
 
-  const pdfPath = path.join(PUBLIC_DIR, config.filename);
+  const pdfPath = path.join(PUBLIC_DIR, filename);
 
   await page.pdf({
     path: pdfPath,
@@ -101,12 +90,9 @@ async function main(): Promise<void> {
       server = await startDevServer();
     }
 
-    // Generate PDFs sequentially to avoid resource contention
-    for (const config of configs) {
-      await generatePDF(config);
-    }
+    await generatePDF();
 
-    console.log("\nAll PDFs generated successfully!");
+    console.log("\nPDF generated successfully!");
   } finally {
     if (server) {
       console.log("Stopping dev server...");

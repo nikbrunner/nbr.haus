@@ -22,18 +22,25 @@ import { useContrast } from "@/hooks/useContrast";
 import { useDynamicSections } from "@/hooks/useDynamicSections";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
-import { useLocale } from "@/i18n/useLocale";
-import { useTexts } from "@/i18n/useTexts";
 import type { FileRouteTypes } from "@/routeTree.gen";
 
+const CONTRAST_LABELS = { low: "LC", base: "BC", high: "HC" } as const;
+const COLOR_MODE_LABELS = { light: "LT", system: "SYS", dark: "DK" } as const;
+const CONTRAST_TITLES = { low: "Low Contrast", base: "Base Contrast", high: "High Contrast" } as const;
+const COLOR_MODE_TITLES = { light: "Light Mode", system: "System Mode", dark: "Dark Mode" } as const;
+
+const ROUTE_HINTS: Record<string, string> = {
+  "/": "Portfolio & About",
+  "/cv": "Print-friendly CV for PDF export"
+};
+
 /**
- * ControlPanel - Smart container for navigation, locale, and style settings.
+ * ControlPanel - Smart container for navigation and style settings.
  * Composed of Strip (always visible) and Expanded panel (slides in/out).
  */
 export default function ControlPanel() {
   const navigate = useNavigate();
   const pathname = useRouterState({ select: s => s.location.pathname });
-  const t = useTexts();
   const isMobile = useIsMobile();
 
   const [isExpanded, setIsExpanded] = useState(false);
@@ -41,7 +48,6 @@ export default function ControlPanel() {
   const { accent, accents, setAccent } = useAccent();
   const { contrast, contrasts, setContrast } = useContrast();
   const { colorMode, colorModes, setColorMode } = useColorMode();
-  const { locale, locales, setLocale } = useLocale();
 
   const closePanel = useCallback(() => setIsExpanded(false), []);
   const togglePanel = useCallback(() => setIsExpanded(prev => !prev), []);
@@ -91,12 +97,9 @@ export default function ControlPanel() {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isExpanded]);
 
-  const navRoutes: {
-    to: FileRouteTypes["to"];
-    hint: keyof typeof t.controlPanel.titles.routes;
-  }[] = [
-    { to: "/", hint: "home" },
-    { to: "/cv", hint: "cv" }
+  const navRoutes: { to: FileRouteTypes["to"]; hint: string }[] = [
+    { to: "/", hint: ROUTE_HINTS["/"] },
+    { to: "/cv", hint: ROUTE_HINTS["/cv"] }
   ];
 
   return (
@@ -105,20 +108,11 @@ export default function ControlPanel() {
       <ControlPanelStrip
         isExpanded={isExpanded}
         onToggle={togglePanel}
-        ariaLabel={t.controlPanel.aria.togglePanel}
+        ariaLabel="Toggle control panel"
       >
         {/* Navigation indicator */}
         <ControlPanelStripSection>
           <ControlPanelIndicator rotated>{pathname}</ControlPanelIndicator>
-        </ControlPanelStripSection>
-
-        {/* Locale indicator */}
-        <ControlPanelStripSection>
-          <Hint title={t.controlPanel.titles.locale[locale]} position="left">
-            <ControlPanelIndicator>
-              {t.controlPanel.labels.locale[locale]}
-            </ControlPanelIndicator>
-          </Hint>
         </ControlPanelStripSection>
 
         {/* Style indicators */}
@@ -126,14 +120,14 @@ export default function ControlPanel() {
           <ControlPanelIndicator>
             <ControlPanelColorDot hue={accent} />
           </ControlPanelIndicator>
-          <Hint title={t.controlPanel.titles.contrast[contrast]} position="left">
+          <Hint title={CONTRAST_TITLES[contrast]} position="left">
             <ControlPanelIndicator>
-              {t.controlPanel.labels.contrast[contrast]}
+              {CONTRAST_LABELS[contrast]}
             </ControlPanelIndicator>
           </Hint>
-          <Hint title={t.controlPanel.titles.colorMode[colorMode]} position="left">
+          <Hint title={COLOR_MODE_TITLES[colorMode]} position="left">
             <ControlPanelIndicator>
-              {t.controlPanel.labels.colorMode[colorMode]}
+              {COLOR_MODE_LABELS[colorMode]}
             </ControlPanelIndicator>
           </Hint>
         </ControlPanelStripSection>
@@ -146,9 +140,9 @@ export default function ControlPanel() {
           <div className="ControlPanelExpanded__navigation">
             {/* Routes column */}
             <div className="ControlPanelExpanded__routes">
-              <ControlPanelRow label={t.controlPanel.rows.nav}>
+              <ControlPanelRow label="Page">
                 {navRoutes.map(({ to, hint }) => (
-                  <Hint key={to} title={t.controlPanel.titles.routes[hint]}>
+                  <Hint key={to} title={hint}>
                     <ControlPanelOption
                       width="full"
                       align="left"
@@ -157,7 +151,7 @@ export default function ControlPanel() {
                         navigate({ to });
                         setIsExpanded(false);
                       }}
-                      ariaLabel={`${t.controlPanel.aria.navigateTo} ${to}`}
+                      ariaLabel={`Navigate to ${to}`}
                     >
                       {to}
                     </ControlPanelOption>
@@ -169,7 +163,7 @@ export default function ControlPanel() {
             {/* Sections column */}
             {sections.length > 0 && (
               <div className="ControlPanelExpanded__sections">
-                <ControlPanelRow label={t.controlPanel.rows.sections}>
+                <ControlPanelRow label="Sections">
                   <ControlPanelOption
                     width="full"
                     align="left"
@@ -184,7 +178,7 @@ export default function ControlPanel() {
                         window.scrollTo({ top: 0, behavior: "smooth" });
                       }
                     }}
-                    ariaLabel={`${t.controlPanel.aria.scrollTo} ${t.shared.sections.top}`}
+                    ariaLabel="Scroll to Top"
                   >
                     <ArrowUpToLine
                       size={14}
@@ -192,9 +186,7 @@ export default function ControlPanel() {
                       color="var(--color-fg-minor)"
                       style={{ marginRight: "var(--size-1)" }}
                     />
-                    <span className="ControlPanelOption__label">
-                      {t.shared.sections.top}
-                    </span>
+                    <span className="ControlPanelOption__label">Top</span>
                   </ControlPanelOption>
                   {sections.map(section => (
                     <ControlPanelOption
@@ -202,7 +194,7 @@ export default function ControlPanel() {
                       width="full"
                       align="left"
                       onClick={() => handleSectionClick(section.id)}
-                      ariaLabel={`${t.controlPanel.aria.scrollTo} ${section.label}`}
+                      ariaLabel={`Scroll to ${section.label}`}
                     >
                       <PilcrowRight
                         size={14}
@@ -221,70 +213,44 @@ export default function ControlPanel() {
           </div>
         </ControlPanelExpandedSection>
 
-        {/* Locale options */}
-        <ControlPanelExpandedSection>
-          <ControlPanelRow label={t.controlPanel.rows.lang}>
-            {locales.map(loc => (
-              <Hint key={loc} title={t.controlPanel.titles.locale[loc]}>
-                <ControlPanelOption
-                  isActive={locale === loc}
-                  onClick={() => {
-                    if (loc === locale) return;
-
-                    setLocale(loc);
-                    setIsExpanded(false);
-                  }}
-                  ariaLabel={
-                    loc === "en"
-                      ? t.controlPanel.aria.selectEnglish
-                      : t.controlPanel.aria.selectGerman
-                  }
-                >
-                  {t.controlPanel.labels.locale[loc]}
-                </ControlPanelOption>
-              </Hint>
-            ))}
-          </ControlPanelRow>
-        </ControlPanelExpandedSection>
-
         {/* Style options */}
         <ControlPanelExpandedSection>
-          <ControlPanelRow label={t.controlPanel.rows.accent}>
+          <ControlPanelRow label="Accent">
             {Object.values(accents).map(accentPreset => (
               <ControlPanelOption
                 key={accentPreset}
                 isActive={accentPreset === accent}
                 onClick={() => setAccent(accentPreset)}
-                ariaLabel={`${t.controlPanel.aria.selectAccentHue} ${accentPreset}`}
+                ariaLabel={`Select accent hue ${accentPreset}`}
               >
                 <ControlPanelColorDot hue={accentPreset} />
               </ControlPanelOption>
             ))}
           </ControlPanelRow>
 
-          <ControlPanelRow label={t.controlPanel.rows.contrast}>
+          <ControlPanelRow label="Contrast">
             {contrasts.map(value => (
-              <Hint key={value} title={t.controlPanel.titles.contrast[value]}>
+              <Hint key={value} title={CONTRAST_TITLES[value]}>
                 <ControlPanelOption
                   isActive={contrast === value}
                   onClick={() => setContrast(value)}
-                  ariaLabel={t.controlPanel.aria.selectContrast[value]}
+                  ariaLabel={`Select ${CONTRAST_TITLES[value].toLowerCase()}`}
                 >
-                  {t.controlPanel.labels.contrast[value]}
+                  {CONTRAST_LABELS[value]}
                 </ControlPanelOption>
               </Hint>
             ))}
           </ControlPanelRow>
 
-          <ControlPanelRow label={t.controlPanel.rows.mode}>
+          <ControlPanelRow label="Mode">
             {colorModes.map(value => (
-              <Hint key={value} title={t.controlPanel.titles.colorMode[value]}>
+              <Hint key={value} title={COLOR_MODE_TITLES[value]}>
                 <ControlPanelOption
                   isActive={colorMode === value}
                   onClick={() => setColorMode(value)}
-                  ariaLabel={t.controlPanel.aria.selectColorMode[value]}
+                  ariaLabel={`Select ${COLOR_MODE_TITLES[value].toLowerCase()}`}
                 >
-                  {t.controlPanel.labels.colorMode[value]}
+                  {COLOR_MODE_LABELS[value]}
                 </ControlPanelOption>
               </Hint>
             ))}

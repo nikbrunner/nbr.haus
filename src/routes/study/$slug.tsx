@@ -2,39 +2,24 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 
 import { StudyPostContent, StudyPostMeta } from "@/components/study";
 import { Typo } from "@/components/Typo";
-import { useLocale } from "@/i18n/useLocale";
-import { useTexts } from "@/i18n/useTexts";
-import { getAdjacentPosts, getPostBySlug, type StudyPost } from "@/lib/study";
+import { getAdjacentPosts, getPostBySlug } from "@/lib/study";
 
 export const Route = createFileRoute("/study/$slug")({
   loader: async ({ params }) => {
     const { slug } = params;
 
-    // Load both locales
-    const [enPost, dePost] = await Promise.all([
-      getPostBySlug({ data: { slug, locale: "en" } }),
-      getPostBySlug({ data: { slug, locale: "de" } })
-    ]);
+    const post = await getPostBySlug({ data: { slug } });
 
-    // At least one locale must exist
-    if (!enPost && !dePost) {
+    if (!post) {
       throw notFound();
     }
 
-    const [enAdjacent, deAdjacent] = await Promise.all([
-      getAdjacentPosts({ data: { slug, locale: "en" } }),
-      getAdjacentPosts({ data: { slug, locale: "de" } })
-    ]);
+    const adjacent = await getAdjacentPosts({ data: { slug } });
 
-    return {
-      enPost,
-      dePost,
-      enAdjacent,
-      deAdjacent
-    };
+    return { post, adjacent };
   },
   head: ({ loaderData }) => {
-    const post = loaderData?.enPost ?? loaderData?.dePost;
+    const post = loaderData?.post;
     const title = post?.frontmatter.title ?? "Post Not Found";
     const description = post?.frontmatter.excerpt ?? "";
 
@@ -56,47 +41,30 @@ export const Route = createFileRoute("/study/$slug")({
 });
 
 function StudyPostPage() {
-  const { enPost, dePost, enAdjacent, deAdjacent } = Route.useLoaderData();
-  const { locale } = useLocale();
-  const t = useTexts();
-
-  const post: StudyPost | null = locale === "de" ? dePost : enPost;
-  const adjacent = locale === "de" ? deAdjacent : enAdjacent;
-
-  // Fallback to other locale if current locale post doesn't exist
-  const displayPost = post ?? (locale === "de" ? enPost : dePost);
-
-  if (!displayPost) {
-    return (
-      <div className="StudyPost">
-        <Typo.H1>{t.study.notFound}</Typo.H1>
-        <Link to="/study">{t.study.backToStudy}</Link>
-      </div>
-    );
-  }
+  const { post, adjacent } = Route.useLoaderData();
 
   return (
     <article className="StudyPost">
       <header className="StudyPost__header">
         <Link to="/study" className="StudyPost__back">
-          ← {t.study.backToStudy}
+          ← Back to Study
         </Link>
         <div className="StudyPost__title-group">
-          <Typo.H1 color="accent">{displayPost.frontmatter.title}</Typo.H1>
-          {displayPost.frontmatter.subtitle && (
-            <Typo.Lead color="support">{displayPost.frontmatter.subtitle}</Typo.Lead>
+          <Typo.H1 color="accent">{post.frontmatter.title}</Typo.H1>
+          {post.frontmatter.subtitle && (
+            <Typo.Lead color="support">{post.frontmatter.subtitle}</Typo.Lead>
           )}
         </div>
         <StudyPostMeta
-          publishedAt={displayPost.frontmatter.publishedAt}
-          readingTime={displayPost.readingTime}
-          minReadText={t.study.minRead}
-          tags={displayPost.frontmatter.tags}
+          publishedAt={post.frontmatter.publishedAt}
+          readingTime={post.readingTime}
+          minReadText="min read"
+          tags={post.frontmatter.tags}
         />
       </header>
 
       <StudyPostContent
-        content={displayPost.content}
+        content={post.content}
         className="StudyPost__content"
       />
 

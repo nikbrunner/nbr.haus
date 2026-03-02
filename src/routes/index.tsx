@@ -14,17 +14,12 @@ import SpecCard from "@/components/SpecCard";
 import SpecList from "@/components/SpecList";
 import { Typo } from "@/components/Typo";
 import { tech } from "@/config";
-import { Trans } from "@/i18n/Trans";
-import { useLocale } from "@/i18n/useLocale";
-import { useTexts } from "@/i18n/useTexts";
 
 export const Route = createFileRoute("/")({
   component: Page
 });
 
 function Page() {
-  const t = useTexts();
-  const { locale, setLocale } = useLocale();
   const experienceInYears = new Date().getFullYear() - 2020;
 
   return (
@@ -36,53 +31,43 @@ function Page() {
         </Section>
 
         <Section id="connect" className="IndexPage__section--connect">
-          <SpecCard title={t.connect.title}>
+          <SpecCard title="Connect">
             <SpecList
               padding="small"
               items={[
                 {
-                  label: t.connect.languages,
+                  label: "Languages:",
                   value: (
                     <Flex gap="2" align="center" inline>
-                      <Button
-                        variant={locale === "en" ? "accent" : "default"}
-                        onClick={() => setLocale("en")}
-                      >
-                        {t.connect.englishFluent}
-                      </Button>
-                      <Button
-                        variant={locale === "de" ? "accent" : "default"}
-                        onClick={() => setLocale("de")}
-                      >
-                        {t.connect.germanNative}
-                      </Button>
+                      <Button variant="accent">English (Fluent)</Button>
+                      <Button variant="default">German (Native)</Button>
                     </Flex>
                   )
                 },
                 {
-                  label: t.connect.email,
+                  label: "Email:",
                   value: (
                     <Flex gap="2" align="center" inline>
                       <a href="mailto:nik@nbr.haus">nik@nbr.haus</a>
-                      <Hint title={t.connect.copyEmailTooltip}>
+                      <Hint title="Copy email">
                         <CopyButton
                           value="nik@nbr.haus"
-                          ariaLabel={t.connect.copyEmailTooltip}
+                          ariaLabel="Copy email"
                         />
                       </Hint>
                     </Flex>
                   )
                 },
                 {
-                  label: t.connect.cv,
+                  label: "CV:",
                   value: (
-                    <a href={`/Nikolaus_Brunner_CV_${locale}.pdf`} download>
-                      {t.connect.downloadCv}
+                    <a href="/Nikolaus_Brunner_CV_en.pdf" download>
+                      Download
                     </a>
                   )
                 },
                 {
-                  label: t.connect.github,
+                  label: "GitHub:",
                   value: (
                     <a
                       href="https://www.github.com/nikbrunner"
@@ -94,7 +79,7 @@ function Page() {
                   )
                 },
                 {
-                  label: t.connect.linkedin,
+                  label: "LinkedIn:",
                   value: (
                     <a
                       href="https://www.linkedin.com/in/nbru/"
@@ -106,7 +91,7 @@ function Page() {
                   )
                 },
                 {
-                  label: t.connect.instagram,
+                  label: "Instagram:",
                   value: (
                     <a
                       href="https://www.instagram.com/nikolaus.brunner"
@@ -123,38 +108,36 @@ function Page() {
         </Section>
 
         <Section
-          title={t.shared.sections.about}
+          title="About"
           className="IndexPage__section--about"
         >
           <Flex direction="column" gap="fluid-4">
             <div>
               <Typo.Lead>
-                {t.about.greeting}
+                Hi there!
                 <br />
                 <br />
-                <Trans>
-                  {t.about.intro.replace("{years}", String(experienceInYears))}
-                </Trans>
+                I'm <Typo.Highlight>Nikolaus Brunner</Typo.Highlight> (Nik for short), a Software Engineer based in Landshut, Germany, specializing in frontend architectures and design systems for {experienceInYears} years now.
               </Typo.Lead>
               <Typo.P>
-                <Trans>{t.about.ux}</Trans>
+                I have a strong sense for <strong>UX</strong> (user experience) and <strong>DX</strong> (developer experience). I love collaborating with designers or making design decisions independently.
               </Typo.P>
-              <Typo.P>{t.about.independence}</Typo.P>
+              <Typo.P>I naturally identify priorities and manage my own work, but I also know when to reach out for input. Being part of a good team working towards a shared goal is what I enjoy most.</Typo.P>
               <Typo.P>
-                <Trans>{t.about.passion}</Trans>
+                I <strong>genuinely love</strong> building and using products. I'm probably the guy who contacts support about features or bugs, and regularly checks changelogs and GitHub releases.
               </Typo.P>
               <Typo.P>
-                <Trans>{t.about.personal}</Trans>
+                I was born in 1984, and outside of code I enjoy hiking, running, bouldering, cooking, reading, and photography. I also have a strong interest in design in all its forms, like architecture, art and typography... Plus I have a slight <strong>keyboard obsession</strong>.
               </Typo.P>
-              <Note>{t.about.iAnecdote}</Note>
+              <Note>I know that every sentence above (and this one) started with "I", but it felt absolutely awkward trying to speak about myself without using "I". :)</Note>
             </div>
 
             <div>
-              <SpecCard title={t.about.devStack.devTools}>
+              <SpecCard title="Dev Tools">
                 <SpecList
                   items={[
                     {
-                      label: t.about.devStack.editor,
+                      label: "Editor:",
                       value: (
                         <a
                           href="https://github.com/nikbrunner/dots/tree/main/common/.config/nvim"
@@ -166,7 +149,7 @@ function Page() {
                       )
                     },
                     {
-                      label: t.about.devStack.terminal,
+                      label: "Terminal:",
                       value: (
                         <>
                           <a
@@ -188,7 +171,7 @@ function Page() {
                       )
                     },
                     {
-                      label: t.about.devStack.git,
+                      label: "Git:",
                       value: (
                         <a
                           href="https://github.com/jesseduffield/lazygit"
@@ -200,7 +183,7 @@ function Page() {
                       )
                     },
                     {
-                      label: t.about.devStack.secrets,
+                      label: "Secrets:",
                       value: (
                         <a
                           href="https://1password.com"
@@ -212,7 +195,7 @@ function Page() {
                       )
                     },
                     {
-                      label: t.about.devStack.aiAssistant,
+                      label: "LLM assistant:",
                       value: (
                         <a
                           href="https://claude.com/product/claude-code"
@@ -234,58 +217,46 @@ function Page() {
                     margin: 0
                   }}
                 >
-                  <Trans
-                    components={{
-                      link: children => (
-                        <a
-                          href="https://github.com/nikbrunner/dots"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {children}
-                        </a>
-                      )
-                    }}
+                  I am very passionate about workflow. You can check my{" "}
+                  <a
+                    href="https://github.com/nikbrunner/dots"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    {t.about.devStack.workflowInfo}
-                  </Trans>
+                    dotfiles here
+                  </a>
+                  .
                 </Typo.P>
               </SpecCard>
             </div>
 
             <div>
-              <Typo.H3>{t.about.devStack.ai}</Typo.H3>
+              <Typo.H3>LLMs</Typo.H3>
               <Typo.P>
-                <Trans>{t.about.devStack.aiIntro}</Trans>
+                I entered the industry <strong>before LLMs</strong> became a thing. I climbed that hill without ChatGPT or tab completion.
               </Typo.P>
-              <Typo.P>{t.about.devStack.aiLearning}</Typo.P>
+              <Typo.P>That foundation was invaluable, and still is. For juniors I think LLMs shine as a teacher and reading partner, but not as a writing partner during the early phases. I think it's important to learn to solve problems yourself and to also write down the solutions... or the attempts.</Typo.P>
               <Typo.P>
-                <Trans>{t.about.devStack.aiLimitsInfo}</Trans>
+                The technology is fascinating, but it has real limits. Relying too heavily on it means actively unlearning skills and knowledge, <Typo.Highlight>and maybe most importantly, losing the fun</Typo.Highlight>.
               </Typo.P>
               <Typo.P className="mb-6">
-                <Trans
-                  components={{
-                    link: children => (
-                      <a
-                        href="https://claude.com/product/claude-code"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {children}
-                      </a>
-                    )
-                  }}
+                That's why I'm deliberate about how I use it. I use{" "}
+                <a
+                  href="https://claude.com/product/claude-code"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  {t.about.devStack.aiUsage}
-                </Trans>
+                  Claude Code
+                </a>{" "}
+                as my primary LLM assistant. I don't jump from model to model each week, but rather try to learn to get the most out of what I'm given. I think that for the last 1,5 years, Anthropic has built out the best integrations and DX for LLM assistance.
               </Typo.P>
 
               <SpecCard
-                title={t.about.devStack.aiTools}
+                title="LLM Tools"
                 description={
                   <>
-                    <Typo.P>{t.about.devStack.aiToolsIntro}</Typo.P>
-                    <Typo.P>{t.about.devStack.aiToolsUsed}</Typo.P>
+                    <Typo.P>I also use personal slash commands and various LLM tools where applicable.</Typo.P>
+                    <Typo.P>These are my most used tools for LLM-assisted development.</Typo.P>
                   </>
                 }
               >
@@ -294,7 +265,7 @@ function Page() {
                   gridTemplateColumns="0.75fr 1fr"
                   items={[
                     {
-                      label: t.about.devStack.docLookup,
+                      label: "Documentation Lookup",
                       value: (
                         <a
                           href="https://ref.tools/"
@@ -306,7 +277,7 @@ function Page() {
                       )
                     },
                     {
-                      label: t.about.devStack.webSearch,
+                      label: "Better Web Search",
                       value: (
                         <a
                           href="https://exa.ai"
@@ -318,7 +289,7 @@ function Page() {
                       )
                     },
                     {
-                      label: t.about.devStack.browser,
+                      label: "Browser",
                       value: (
                         <a
                           href="https://github.com/nicholasoxford/chrome-devtools-mcp/"
@@ -330,7 +301,7 @@ function Page() {
                       )
                     },
                     {
-                      label: t.about.devStack.issueTracking,
+                      label: "Issue Tracking",
                       value: (
                         <a
                           href="https://github.com/steveyegge/beads"
@@ -352,22 +323,26 @@ function Page() {
       {/* Column 2: Employment */}
       <div className="IndexPage__column IndexPage__column--employment">
         <Section
-          title={t.shared.sections.employment}
+          title="Employment"
           className="IndexPage__section--employment"
         >
           <LookingForJob
             className="mb-6"
-            title={t.jobs.lookingForJob.title}
-            cta={t.jobs.lookingForJob.cta}
+            title={
+              <>
+                Looking for a <Typo.Highlight>Senior Frontend role</Typo.Highlight> starting <Typo.Highlight>February 2026.</Typo.Highlight>
+              </>
+            }
+            cta="Write me!"
             email="nik@nbr.haus"
-            copyEmailTooltip={t.jobs.lookingForJob.copyEmailTooltip}
+            copyEmailTooltip="Copy email"
           />
 
           <Job
-            company={t.jobs.dealerCenter.company}
-            url={t.jobs.dealerCenter.url}
-            position={t.jobs.dealerCenter.position}
-            period={t.jobs.dealerCenter.period}
+            company="DealerCenter Digital"
+            url="https://www.bike.center"
+            position="Software Engineer / Frontend Lead"
+            period="Sep 2020 – Jan 2026"
             tech={[
               tech.react,
               tech.typescript,
@@ -384,29 +359,31 @@ function Page() {
               tech.nodejs
             ]}
           >
-            {t.jobs.dealerCenter.paragraphs.map((p, i) => (
-              <Typo.P key={i}>{p}</Typo.P>
-            ))}
+            <Typo.P>I worked across the full spectrum of frontend development—from feature implementation and bug fixes to code reviews, mentoring, and cross-team coordination for a mature Electron application serving hundreds of bike retailers.</Typo.P>
+            <Typo.P>A major focus was architectural migrations: I championed TanStack Query adoption and migrated the codebase from legacy Redux to Redux Toolkit. This included authoring comprehensive code guidelines and best practices documentation. I also completely rebuilt a Vendure storefront from Remix to TanStack Start/Router with TanStack Query, Form, GraphQL, ShadCN and Tailwind CSS.</Typo.P>
+            <Typo.P>On the design system side, I created a comprehensive 10-variant color system with Figma integration, affecting 1.6k files across the codebase. BikeCenter's entire component library was built from scratch using React, TypeScript, and SCSS—no third-party UI frameworks.</Typo.P>
+            <Typo.P>Improving internal APIs and establishing developer experience patterns across the team were another focus. As a trusted decision-maker for UX and technical feasibility, I bridged design and engineering, collaborating with designers as both implementer and advisor.</Typo.P>
+            <Typo.P>Mentoring junior developers through pair programming and code reviews was another key part of the role. I established technical standards and conventions across the team, including translation guidelines, BEM naming, and TypeScript best practices, and served as a technical hub between management, backend, and frontend teams.</Typo.P>
           </Job>
 
           <Job
-            company={t.jobs.divaE.company}
-            url={t.jobs.divaE.url}
-            position={t.jobs.divaE.position}
-            period={t.jobs.divaE.period}
+            company="diva-e"
+            url="https://www.diva-e.com/de/"
+            position="Junior Frontend Developer"
+            period="Mar 2020 – Sep 2020"
             tech={[tech.react, tech.typescript, tech.scss, tech.nodejs]}
           >
-            <Typo.P>{t.jobs.divaE.description}</Typo.P>
+            <Typo.P>Contributed to a major e-commerce platform and built an internal social platform using React, GraphQL (Apollo), and SCSS. When DealerCenter Digital offered a frontend position, I made the move — an opportunity better aligned with my goals.</Typo.P>
           </Job>
 
           <Job
-            company={t.jobs.campudus.company}
-            url={t.jobs.campudus.url}
-            position={t.jobs.campudus.position}
-            period={t.jobs.campudus.period}
+            company="Campudus"
+            url="https://www.campudus.com/"
+            position="Intern"
+            period="Dec 2019 – Feb 2020"
             tech={[tech.react, tech.nodejs]}
           >
-            <Typo.P>{t.jobs.campudus.description}</Typo.P>
+            <Typo.P>I built a fullstack accessories ordering application from scratch—design, architecture, backend, and frontend—during a 3-month internship at DealerCenter Digital's sister company.</Typo.P>
           </Job>
         </Section>
       </div>
@@ -414,16 +391,16 @@ function Page() {
       {/* Column 3: Projects */}
       <div className="IndexPage__column IndexPage__column--projects">
         <Section
-          title={t.shared.sections.projects}
+          title="Projects"
           className="IndexPage__section--projects"
         >
           <Typo.P style={{ color: "var(--color-fg-support)" }}>
-            {t.projects.intro}
+            Personal projects I actively maintain and evolve.
           </Typo.P>
 
           <Flex direction="column" gap="10">
             <Project
-              title={t.projects.blackAtom.title}
+              title="Black Atom Industries"
               stack={[tech.typescript, tech.deno, tech.oklch]}
               topics={[
                 "Theming Systems",
@@ -454,13 +431,13 @@ function Page() {
                 }
               ]}
             >
-              {t.projects.blackAtom.web.paragraphs.map((p, i) => (
-                <Typo.P key={i}>{p}</Typo.P>
-              ))}
+              <Typo.P>Open-source cross-platform theming system generating 30+ cohesive themes from a single source.</Typo.P>
+              <Typo.P>Built with an adapter pattern for consistent theme generation from a central source using OKLCH color space.</Typo.P>
+              <Typo.P>Maintained with focus on developer experience and cross-platform consistency.</Typo.P>
             </Project>
 
             <Project
-              title={t.projects.awdcs.title}
+              title="AWDCS"
               stack={[tech.markdown]}
               topics={["Modal Editing", "Workflow Design", "Developer Experience"]}
               status="Active"
@@ -469,13 +446,12 @@ function Page() {
                 type: "GitHub"
               }}
             >
-              {t.projects.awdcs.web.paragraphs.map((p, i) => (
-                <Typo.P key={i}>{p}</Typo.P>
-              ))}
+              <Typo.P>AWDCS (App, Workspace, Document, Change, Symbol): A scope-based keymap architecture for modal editors organizing bindings by operational context rather than tool-specific functions.</Typo.P>
+              <Typo.P>Features systematic prefix patterns and semantic naming for consistent, memorable keybindings across workflows.</Typo.P>
             </Project>
 
             <Project
-              title={t.projects.koyo.title}
+              title="kōyō"
               stack={[tech.qmk, tech.c, tech.bash]}
               topics={[
                 "Keyboard Layouts",
@@ -490,13 +466,11 @@ function Page() {
                 type: "GitHub"
               }}
             >
-              {t.projects.koyo.web.paragraphs.map((p, i) => (
-                <Typo.P key={i}>{p}</Typo.P>
-              ))}
+              <Typo.P>Custom QMK keyboard layout for 36-key split keyboards featuring vim-inspired navigation, smart layer design, and comprehensive CLI tooling for Moonlander and Corne keyboards.</Typo.P>
             </Project>
 
             <Project
-              title={t.projects.nbrNvim.title}
+              title="nbr.nvim"
               stack={[tech.lua, tech.neovim]}
               topics={[
                 "Neovim Configuration",
@@ -511,20 +485,18 @@ function Page() {
                 type: "GitHub"
               }}
             >
-              {t.projects.nbrNvim.web.paragraphs.map((p, i) => (
-                <Typo.P key={i}>{p}</Typo.P>
-              ))}
+              <Typo.P>Highly customized Neovim setup for frontend development featuring AWDCS-based keymaps, Lazy.nvim plugin management, and workflows tailored for React and TypeScript.</Typo.P>
             </Project>
 
             <Project
-              title={t.projects.nbrHaus.title}
+              title="nbr.haus"
               stack={[
                 tech.typescript,
                 tech.react,
                 tech.tanstackStart,
                 tech.storybook
               ]}
-              topics={["SSR", "File-based Routing", "Theming", "i18n", "BEM"]}
+              topics={["SSR", "File-based Routing", "Theming", "BEM"]}
               status="Active"
               primaryLink={{
                 url: "https://nbr.haus",
@@ -537,9 +509,7 @@ function Page() {
                 }
               ]}
             >
-              {t.projects.nbrHaus.web.paragraphs.map((p, i) => (
-                <Typo.P key={i}>{p}</Typo.P>
-              ))}
+              <Typo.P>Personal portfolio built with TanStack Start featuring SSR, file-based routing, and a custom theming system with hue selection and color modes.</Typo.P>
             </Project>
           </Flex>
         </Section>
