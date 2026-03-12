@@ -63,10 +63,7 @@ function StudyPostPage() {
         />
       </header>
 
-      <StudyPostContent
-        content={post.content}
-        className="StudyPost__content"
-      />
+      <StudyPostContent content={post.content} className="StudyPost__content" />
 
       <nav className="StudyPost__nav">
         {adjacent.prev && (

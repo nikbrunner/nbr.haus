@@ -26,8 +26,16 @@ import type { FileRouteTypes } from "@/routeTree.gen";
 
 const CONTRAST_LABELS = { low: "LC", base: "BC", high: "HC" } as const;
 const COLOR_MODE_LABELS = { light: "LT", system: "SYS", dark: "DK" } as const;
-const CONTRAST_TITLES = { low: "Low Contrast", base: "Base Contrast", high: "High Contrast" } as const;
-const COLOR_MODE_TITLES = { light: "Light Mode", system: "System Mode", dark: "Dark Mode" } as const;
+const CONTRAST_TITLES = {
+  low: "Low Contrast",
+  base: "Base Contrast",
+  high: "High Contrast"
+} as const;
+const COLOR_MODE_TITLES = {
+  light: "Light Mode",
+  system: "System Mode",
+  dark: "Dark Mode"
+} as const;
 
 const ROUTE_HINTS: Record<string, string> = {
   "/": "Portfolio & About",

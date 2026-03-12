@@ -73,9 +73,10 @@ function fetchPostBySlug(slug: string): StudyPost | null {
   };
 }
 
-function fetchAdjacentPosts(
-  currentSlug: string
-): { prev: StudyPostMeta | null; next: StudyPostMeta | null } {
+function fetchAdjacentPosts(currentSlug: string): {
+  prev: StudyPostMeta | null;
+  next: StudyPostMeta | null;
+} {
   const posts = fetchAllPosts();
   const currentIndex = posts.findIndex(p => p.slug === currentSlug);
 
