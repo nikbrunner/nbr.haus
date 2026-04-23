@@ -59,6 +59,11 @@ export const tech = {
   },
 
   // TanStack
+  tanstackSuite: {
+    name: "TanStack Suite",
+    url: "https://tanstack.com",
+    color: "#ff4154"
+  },
   tanstackStart: {
     name: "TanStack Start",
     url: "https://tanstack.com/start",
@@ -80,7 +85,19 @@ export const tech = {
     color: "#ff4154"
   },
 
+  // Libraries
+  baseUI: {
+    name: "BaseUI",
+    url: "https://base-ui.dev",
+    color: "#000"
+  },
+
   // Styling
+  css: {
+    name: "CSS",
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS",
+    color: "#264de4"
+  },
   scss: {
     name: "SCSS",
     url: "https://sass-lang.com",
@@ -105,6 +122,11 @@ export const tech = {
   },
 
   // Tools
+  figma: {
+    name: "Figma",
+    url: "https://www.figma.com",
+    color: "#864FFF"
+  },
   storybook: {
     name: "Storybook",
     url: "https://storybook.js.org",

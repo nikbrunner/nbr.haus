@@ -5,7 +5,6 @@ import CopyButton from "@/components/CopyButton";
 import Flex from "@/components/Flex";
 import Hint from "@/components/Hint";
 import Job from "@/components/Job";
-import LookingForJob from "@/components/LookingForJob";
 import Note from "@/components/Note";
 import ProfilePicture from "@/components/ProfilePicture";
 import Project from "@/components/Project";
@@ -375,18 +374,24 @@ function Page() {
       {/* Column 2: Employment */}
       <div className="IndexPage__column IndexPage__column--employment">
         <Section title="Employment" className="IndexPage__section--employment">
-          <LookingForJob
-            className="mb-6"
-            title={
-              <>
-                Looking for a <br />
-                <Typo.Highlight>Senior Frontend role</Typo.Highlight>
-              </>
-            }
-            cta="Write me!"
-            email="nik@nbr.haus"
-            copyEmailTooltip="Copy email"
-          />
+          <Job
+            company="ImFusion"
+            url="https://www.imfusion.com"
+            position="Senior Frontend Developer"
+            period="Apr 2026 – Present"
+            tech={[
+              tech.react,
+              tech.css,
+              tech.tanstackSuite,
+              tech.baseUI,
+              tech.figma
+            ]}
+          >
+            <Typo.P>
+              Improving the usability, user experience, and design of existing
+              applications while also creating new ones.
+            </Typo.P>
+          </Job>
 
           <Job
             company="DealerCenter Digital"

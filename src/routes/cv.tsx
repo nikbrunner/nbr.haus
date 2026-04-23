@@ -47,6 +47,16 @@ function Page() {
       <CvSection id="work-experience" title="Work Experience">
         <Flex direction="column" gap="8">
           <CvJob
+            company="ImFusion"
+            url="https://www.imfusion.com"
+            position="Senior Frontend Developer"
+            period="Apr 2026 – Present"
+            location="Munich, Germany"
+            intro="Improving the usability, user experience, and design of existing applications while also creating new ones."
+            technologies={["React", "CSS", "Tanstack Suite", "BaseUI", "Figma"]}
+          />
+
+          <CvJob
             company="DealerCenter Digital"
             url="https://www.bike.center"
             position="Software Engineer / Frontend Lead"
