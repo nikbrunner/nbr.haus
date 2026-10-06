@@ -1,18 +1,14 @@
 import type { KnipConfig } from "knip";
 
 const config: KnipConfig = {
-  entry: ["src/router.tsx", "src/routes/**/*.tsx", "server/**/*.ts"],
+  entry: ["src/routes/**/*.tsx", "server/**/*.ts"],
   project: ["src/**/*.{ts,tsx}", "server/**/*.ts"],
-  ignore: [
-    "src/routeTree.gen.ts",
-    "src/storybook/**/*.ts",
-    "src/storybook/**/*.tsx"
-  ],
+  ignore: ["src/storybook/**/*.ts", "src/storybook/**/*.tsx"],
   ignoreIssues: {
     "src/components/Typo/index.ts": ["exports", "types"],
     "src/validators/rootSearchParams.ts": ["types"],
     "src/lib/study/index.ts": ["exports", "types"], // Used in Phase 3+
-    "src/lib/study/types.ts": ["exports"]
+    "src/lib/study/types.ts": ["exports", "types"]
   },
   ignoreDependencies: [
     "open-props",
@@ -23,7 +19,6 @@ const config: KnipConfig = {
     "@storybook/addon-onboarding",
     "@testing-library/dom",
     "@testing-library/react",
-    "@vitest/coverage-v8",
     "web-vitals",
     "shiki" // Used in Phase 3 for syntax highlighting
   ],
