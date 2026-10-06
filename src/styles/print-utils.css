@@ -14,7 +14,7 @@
 
 @media print {
   /* stylelint-disable-next-line */
-  /* eslint-disable css/use-baseline, css/no-invalid-at-rules */
+  /* eslint-disable css/use-baseline */
   @page {
     size: A4;
     margin: 1.5cm;

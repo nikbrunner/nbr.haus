@@ -97,6 +97,7 @@ body {
     0 var(--bg-checker-half),
     var(--bg-checker-half) calc(var(--bg-checker-half) * -1),
     calc(var(--bg-checker-half) * -1) 0;
+  /* eslint-disable-next-line css/use-baseline */
   background-attachment: fixed;
 
   /* Z-index stack (ordered lowest to highest) */
