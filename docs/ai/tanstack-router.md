@@ -2030,11 +2030,11 @@ The `ViewTransitionOptions` type accepts an object with a single property:
 ### `types` property
 
 - Type: `Array<string> | ((locationChangeInfo: {
-  fromLocation?: ParsedLocation
-  toLocation: ParsedLocation
-  pathChanged: boolean
-  hrefChanged: boolean
-  hashChanged: boolean
+fromLocation?: ParsedLocation
+toLocation: ParsedLocation
+pathChanged: boolean
+hrefChanged: boolean
+hashChanged: boolean
 }) => (Array<string> | false))`
 - Required
 - Either one of:
@@ -7395,12 +7395,10 @@ export type LinkProps<
 > = LinkOptions<RegisteredRouter["routeTree"], TFrom, TTo> & {
   // A function that returns additional props for the `active` state of this link. These props override other props passed to the link (`style`'s are merged, `className`'s are concatenated)
   activeProps?:
-    | FrameworkHTMLAnchorTagAttributes
-    | (() => FrameworkHTMLAnchorAttributes);
+    FrameworkHTMLAnchorTagAttributes | (() => FrameworkHTMLAnchorAttributes);
   // A function that returns additional props for the `inactive` state of this link. These props override other props passed to the link (`style`'s are merged, `className`'s are concatenated)
   inactiveProps?:
-    | FrameworkHTMLAnchorAttributes
-    | (() => FrameworkHTMLAnchorAttributes);
+    FrameworkHTMLAnchorAttributes | (() => FrameworkHTMLAnchorAttributes);
 };
 ```
 
@@ -11694,7 +11692,7 @@ const routeTree = rootRoute.addChildren([
   filesRoute.addChildren([
     fileRoute,
   ]),
-])
+]);
 /* prettier-ignore-end */
 ```
 
