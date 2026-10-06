@@ -13,14 +13,17 @@ updates:
       # Only track major bumps — minor/patch handled via npm update
       - dependency-name: "*"
         update-types: ["version-update:semver-minor", "version-update:semver-patch"]
-      # ESLint 10 blocked — typescript-eslint, eslint-plugin-react, eslint-plugin-react-hooks
-      # don't support it yet (peer deps cap at ^9). Re-enable when ecosystem catches up.
+      # ESLint 10 blocked: eslint-plugin-react peer caps at ^9.7.
       - dependency-name: "eslint"
         versions: [">=10"]
       - dependency-name: "@eslint/js"
         versions: [">=10"]
-      - dependency-name: "@eslint/json"
-        versions: [">=1"]
+      # TypeScript 7 blocked: typescript-eslint peer caps at <6.1.
+      - dependency-name: "typescript"
+        versions: [">=7"]
+      # Types follow the Node version in package.json engines.
+      - dependency-name: "@types/node"
+        versions: [">=23"]
     groups:
       tanstack:
         patterns:
