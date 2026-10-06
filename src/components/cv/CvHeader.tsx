@@ -1,6 +1,7 @@
 import { cx } from "class-variance-authority";
-import { Github, Globe, Languages, Linkedin, Mail, MapPin } from "lucide-react";
+import { Globe, Languages, Mail, MapPin } from "lucide-react";
 
+import { Github, Linkedin } from "@/components/cv/BrandIcons";
 import { shadowVariants, type ShadowVariants } from "@/components/Shadow";
 
 type Props = {
