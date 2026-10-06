@@ -6,7 +6,7 @@ Testing tools and patterns used in this project.
 
 | Tool                | Purpose                                        |
 | ------------------- | ---------------------------------------------- |
-| **Vitest**          | Unit/integration tests                         |
+| **Vitest**          | Runs every story as a browser test (Chromium)  |
 | **Testing Library** | React component testing                        |
 | **Playwright**      | E2E tests (available but not extensively used) |
 | **Storybook**       | Component documentation and visual testing     |
@@ -14,7 +14,7 @@ Testing tools and patterns used in this project.
 ## Commands
 
 ```bash
-npm run test        # Run all tests once
+npm run test        # Run all stories as tests once (vitest.config.ts)
 npm run storybook   # Start Storybook dev server (port 6006)
 ```
 
