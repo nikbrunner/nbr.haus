@@ -1,6 +1,6 @@
 import { cx } from "class-variance-authority";
 
-import profilePictureImg from "@/assets/images/profile_picture.jpg";
+import profilePictureImg from "@/assets/images/profile_picture.webp";
 import { shadowVariants, type ShadowVariants } from "@/components/Shadow";
 
 type Props = ShadowVariants;

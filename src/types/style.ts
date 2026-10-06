@@ -15,7 +15,7 @@ export type Accent = (typeof accents)[keyof typeof accents];
 export const accentSchema = z.coerce
   .number()
   .refine((v): v is Accent => Object.values(accents).includes(v as Accent));
-export const defaultAccent: Accent = accents.blue;
+export const defaultAccent: Accent = accents.green;
 
 // Contrast (chroma multiplier)
 export const contrastSchema = z.enum(["low", "base", "high"]);
