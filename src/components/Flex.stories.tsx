@@ -11,7 +11,7 @@ export default meta;
 type Story = StoryObj<typeof Flex>;
 
 const Box = ({ children }: { children: React.ReactNode }) => (
-  <div
+  <span
     style={{
       padding: "var(--size-3)",
       background: "var(--bg-alt)",
@@ -19,7 +19,7 @@ const Box = ({ children }: { children: React.ReactNode }) => (
     }}
   >
     {children}
-  </div>
+  </span>
 );
 
 export const Default: Story = {
@@ -172,6 +172,7 @@ export const Wrap: Story = {
 
 export const InlineFlex: Story = {
   args: {
+    as: "span",
     inline: true,
     gap: "2",
     children: (
