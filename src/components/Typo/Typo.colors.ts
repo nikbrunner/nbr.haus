@@ -1,4 +1,4 @@
-import type { TypoColor } from "src/components/Typo/Typo.types";
+import type { TypoColor } from "@/components/Typo/Typo.types";
 
 export const colorVariants: Record<TypoColor, string> = {
   main: "Typo--color-main",
