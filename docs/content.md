@@ -2,95 +2,13 @@
 
 How to add and update content in the project.
 
-## Adding Translations
+## Text
 
-Texts are organized by domain in `src/texts/domains/`. Each domain has an English (`.en.ts`) and German (`.de.ts`) file.
+All copy is English and written inline in the routes (`src/routes/*.tsx`). Components receive text via props.
 
-### Structure
+## Study Posts
 
-```txt
-src/texts/
-├── domains/
-│   ├── shared.en.ts     # Common UI labels
-│   ├── shared.de.ts
-│   ├── jobs.en.ts       # Employment section
-│   ├── jobs.de.ts
-│   ├── projects.en.ts   # Projects section
-│   ├── projects.de.ts
-│   ├── about.en.ts      # About section
-│   ├── about.de.ts
-│   ├── connect.en.ts    # Connect section
-│   ├── connect.de.ts
-│   ├── cv.en.ts         # CV page
-│   ├── cv.de.ts
-│   ├── controlPanel.en.ts
-│   └── controlPanel.de.ts
-├── en.ts                # Merges all English domains
-└── de.ts                # Merges all German domains
-```
-
-### Adding Text to an Existing Domain
-
-1. Add the text to the English file:
-
-```ts
-// src/texts/domains/shared.en.ts
-export const texts = {
-  // existing...
-  newLabel: "New Label"
-} as const;
-```
-
-2. Add the same key to the German file:
-
-```ts
-// src/texts/domains/shared.de.ts
-export const texts = {
-  // existing...
-  newLabel: "Neues Label"
-} as const;
-```
-
-TypeScript will error if keys don't match between locales.
-
-### Creating a New Domain
-
-1. Create both language files in `src/texts/domains/`:
-
-```ts
-// src/texts/domains/newDomain.en.ts
-export const texts = {
-  title: "My Title"
-} as const;
-
-// src/texts/domains/newDomain.de.ts
-export const texts = {
-  title: "Mein Titel"
-} as const;
-```
-
-2. Add to the aggregator files:
-
-```ts
-// src/texts/en.ts
-import { texts as newDomain } from "@/texts/domains/newDomain.en";
-
-export const en = {
-  // existing...
-  newDomain
-} as const;
-
-// src/texts/de.ts (same pattern)
-```
-
-### Using Translations
-
-In routes (smart containers):
-
-```tsx
-const t = useTexts();
-return <Component label={t.shared.newLabel} />;
-```
+Study posts are Markdown files with frontmatter in `src/content/study/<slug>.en.md`. They are loaded by the server functions in `src/lib/study/posts.ts` and served at `/study/<slug>`.
 
 ## Adding a New Route
 
@@ -105,8 +23,7 @@ export const Route = createFileRoute("/about")({
 });
 
 function AboutRoute() {
-  const t = useTexts();
-  return <div>{t.about.title}</div>;
+  return <div>About</div>;
 }
 ```
 
@@ -126,7 +43,7 @@ function AboutRoute() {
 
 ## Updating CV Content
 
-CV content lives in `src/texts/domains/cv.en.ts` and `cv.de.ts`.
+CV content lives inline in `src/routes/cv.tsx`. `npm run generate:cv` regenerates `public/Nikolaus_Brunner_CV_en.pdf` from it.
 
 The CV route (`/cv`) is designed for PDF export via browser print.
 
@@ -153,18 +70,6 @@ import { tech } from "@/config";
 <Tag name={tech.react.name} url={tech.react.url} />;
 ```
 
-## Updating ControlPanel Sections
+## ControlPanel Sections
 
-Section navigation is configured in `src/components/ControlPanel/config.ts`:
-
-```ts
-export const routeSectionsConfig: Record<string, SectionConfig[]> = {
-  "/": [
-    { id: "connect", labelKey: "connect" },
-    { id: "about", labelKey: "about" }
-    // Add sections here...
-  ]
-};
-```
-
-Section IDs must match the `id` attribute on `<Section>` components in the route.
+The ControlPanel's section navigation is built at runtime by `useDynamicSections`, which scans `<main>` for `[data-section]`, `section[id]`, `h2[id]` and `h3[id]`. Give a section an `id` and it shows up; the label comes from `data-section-label`, `aria-label` or the text content.

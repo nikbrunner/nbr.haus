@@ -16,18 +16,16 @@ src/components/    → Dumb components (props only, all styling)
 
 Routes are the only layer that:
 
-- Calls hooks (`useTexts()`, `useLocale()`, etc.)
+- Calls hooks and loaders
 - Prepares and transforms data
 - Passes props down to partials and components
 
 ```tsx
 // src/routes/index.tsx
-export default function IndexRoute() {
-  const t = useTexts();
-
+function Page() {
   return (
-    <Section title={t.jobs.title}>
-      <Job title={t.jobs.dealerCenter.title} ... />
+    <Section title="Employment">
+      <Job company="ImFusion" position="Senior Frontend Developer" ... />
     </Section>
   );
 }
@@ -48,7 +46,6 @@ Example: `ControlPanel` composes `ControlPanelStrip`, `ControlPanelExpanded`, `C
 // src/partials/ControlPanel.tsx
 export default function ControlPanel() {
   const [isExpanded, setIsExpanded] = useState(false);
-  const t = useTexts();
 
   return (
     <>

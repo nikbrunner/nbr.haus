@@ -13,7 +13,7 @@ npm run dev
 
 ## Documentation
 
-- [Architecture](./docs/architecture.md) - System overview, routing, i18n, theming
+- [Architecture](./docs/architecture.md) - System overview, routing, theming
 - [Components](./docs/components.md) - Component patterns and structure
 - [Styling](./docs/styling.md) - CSS conventions and theming
 - [Content](./docs/content.md) - Adding routes, translations, content

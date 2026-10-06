@@ -16,21 +16,26 @@ File-based routing in `src/routes/`. The route tree is auto-generated at `src/ro
 
 ### Routes
 
-| Route | Purpose                        |
-| ----- | ------------------------------ |
-| `/`   | Main portfolio page            |
-| `/cv` | Print-friendly CV (PDF export) |
+| Route             | Purpose                                 |
+| ----------------- | --------------------------------------- |
+| `/`               | Main portfolio page                     |
+| `/cv`             | Print-friendly CV (PDF export)          |
+| `/study`          | Study posts list                        |
+| `/study/$slug`    | Study post (Markdown in `src/content/`) |
+| `/cover`          | Cover letters                           |
+| `/cover/$company` | Cover letter for one company            |
+
+Unknown paths render the root `notFoundComponent` with HTTP 404.
 
 ### Search Params
 
 URL search params are the source of truth for UI state. Defined in `src/validators/rootSearchParams.ts`:
 
-- `hue` - Accent color preset
+- `accent` - Accent hue preset
 - `colorMode` - light/dark/system
-- `contrast` - Low/medium/high contrast
-- `lang` - Locale (en/de)
+- `contrast` - low/base/high
 
-These params are **retained across navigation** via TanStack Router's `retainSearchParams` middleware in `__root.tsx`.
+`accent` and `colorMode` are **retained across navigation** via TanStack Router's `retainSearchParams` middleware in `__root.tsx`. Params equal to their default are stripped from the URL.
 
 ### Server Functions
 
@@ -39,27 +44,26 @@ For server-only code (filesystem access, database queries, etc.), use TanStack S
 ```tsx
 import { createServerFn } from "@tanstack/react-start";
 
-// Define the server function
-export const getAllPosts = createServerFn({ method: "GET" })
-  .validator((data: { locale: "en" | "de" }) => data)
+// src/lib/study/posts.ts
+export const getPostBySlug = createServerFn({ method: "GET" })
+  .validator((d: { slug: string }) => d)
   .handler(async ({ data }) => {
-    // Node.js APIs are safe here - this only runs on server
-    const posts = await readPostsFromFilesystem(data.locale);
-    return posts;
+    // Only runs on the server
+    return fetchPostBySlug(data.slug);
   });
 
-// Call from route loader
-export const Route = createFileRoute("/blog/")({
-  loader: async () => {
-    const posts = await getAllPosts({ data: { locale: "en" } });
-    return { posts };
+// src/routes/study/$slug.tsx
+export const Route = createFileRoute("/study/$slug")({
+  loader: async ({ params: { slug } }) => {
+    const post = await getPostBySlug({ data: { slug } });
+    // ...
   }
 });
 ```
 
 **Key points:**
 
-- Use `.validator()` for type-safe input (note: some docs show `.validator()` but v1.145.0 uses `.inputValidator()`)
+- Use `.validator()` for type-safe input
 - Node.js imports (`node:fs`, `node:path`) are safe inside the handler
 - Call server functions from route loaders, not at module level
 - Server functions can be called from the client - they become RPC calls
@@ -74,88 +78,42 @@ export const Route = createFileRoute("/blog/")({
 - ControlPanel (client-only)
 - Color mode initialization script (prevents flash)
 
-## i18n System
-
-Lightweight localization without external libraries.
-
-### How It Works
-
-```txt
-URL ?lang=de  →  useLocale() reads param  →  useTexts() returns texts[locale]
-     ↓
-localStorage persists preference across sessions
-```
-
-### Text Structure
-
-Texts are organized by domain in `src/texts/domains/`:
-
-```txt
-texts/
-├── domains/
-│   ├── shared.en.ts    # Common UI labels
-│   ├── shared.de.ts
-│   ├── jobs.en.ts      # Employment section
-│   ├── jobs.de.ts
-│   ├── projects.en.ts  # Projects section
-│   └── ...
-├── en.ts               # Merges all English domains
-└── de.ts               # Merges all German domains
-```
-
-### Usage
-
-```tsx
-// In a route (smart container):
-const t = useTexts();
-return <Job title={t.jobs.dealerCenter.title} />;
-
-// Get/set locale:
-const { locale, setLocale } = useLocale();
-```
-
-### Adding Translations
-
-1. Add text to both `*.en.ts` and `*.de.ts` in the appropriate domain
-2. TypeScript will enforce that both locales have the same keys
-
 ## Theming System
 
 The ControlPanel manages visual customization via CSS custom properties.
 
 ### CSS Variables
 
-Set on `:root` and updated dynamically:
+Defined in `src/styles/global.css`, two inputs are set on `<body>` at runtime:
 
-- `--hue` - Base hue value (0-360)
-- `--hue-accent` - Accent color hue
-- `--hue-accent-alt` - Alternative accent hue
-- `--contrast-l` - Lightness multiplier
-- `--contrast-c` - Chroma multiplier
+- `--hue-accent` - Accent hue (OKLCH), from the `accent` param
+- `--chroma` - Chroma multiplier, from the `contrast` param
+
+All colors (`--color-accent`, `--color-bg-*`, `--color-fg-*`) derive from these two.
 
 ### State Flow
 
 ```txt
 User clicks ControlPanel option
     ↓
-Hook updates (useHue, useColorMode, etc.)
+Hook updates (useAccent, useContrast, useColorMode)
     ↓
 URL search param updated + localStorage persisted
     ↓
-CSS variables updated on :root
+CSS variables / data-color-mode updated
     ↓
 UI reacts via CSS
 ```
 
 ### Color Mode
 
-Color mode uses `data-color-mode` attribute on `<html>`. A blocking script in `__root.tsx` reads the preference before React hydrates to prevent flash of wrong theme.
+Color mode uses `data-color-mode` attribute on `<html>`. `src/scripts/theme-blocking.js` is inlined in `__root.tsx` and applies color mode and accent before React hydrates, preventing a flash of the wrong theme. Keep its accent values in sync with `src/types/style.ts`.
 
 ## Data Flow Summary
 
 ```txt
 Routes (smart)
-    ├── Call hooks (useTexts, useLocale, etc.)
+    ├── Call hooks
     ├── Fetch/prepare data
     └── Pass props down
          ↓
