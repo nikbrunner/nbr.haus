@@ -41,7 +41,7 @@ import { createServerFn } from "@tanstack/react-start";
 
 // Define the server function
 export const getAllPosts = createServerFn({ method: "GET" })
-  .inputValidator((data: { locale: "en" | "de" }) => data)
+  .validator((data: { locale: "en" | "de" }) => data)
   .handler(async ({ data }) => {
     // Node.js APIs are safe here - this only runs on server
     const posts = await readPostsFromFilesystem(data.locale);
@@ -59,7 +59,7 @@ export const Route = createFileRoute("/blog/")({
 
 **Key points:**
 
-- Use `.inputValidator()` for type-safe input (note: some docs show `.validator()` but v1.145.0 uses `.inputValidator()`)
+- Use `.validator()` for type-safe input (note: some docs show `.validator()` but v1.145.0 uses `.inputValidator()`)
 - Node.js imports (`node:fs`, `node:path`) are safe inside the handler
 - Call server functions from route loaders, not at module level
 - Server functions can be called from the client - they become RPC calls

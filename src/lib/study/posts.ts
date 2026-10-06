@@ -96,13 +96,13 @@ export const getAllPosts = createServerFn({ method: "GET" }).handler(async () =>
 });
 
 export const getPostBySlug = createServerFn({ method: "GET" })
-  .inputValidator((d: { slug: string }) => d)
+  .validator((d: { slug: string }) => d)
   .handler(async ({ data }) => {
     return fetchPostBySlug(data.slug);
   });
 
 export const getAdjacentPosts = createServerFn({ method: "GET" })
-  .inputValidator((d: { slug: string }) => d)
+  .validator((d: { slug: string }) => d)
   .handler(async ({ data }) => {
     return fetchAdjacentPosts(data.slug);
   });

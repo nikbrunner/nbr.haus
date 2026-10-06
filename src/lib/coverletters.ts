@@ -57,7 +57,7 @@ function fetchCoverLetterBySlug(slug: string): CoverLetter | null {
 }
 
 export const getCoverLetterBySlug = createServerFn({ method: "GET" })
-  .inputValidator((d: string) => d)
+  .validator((d: string) => d)
   .handler(async ({ data: slug }) => {
     return fetchCoverLetterBySlug(slug);
   });
