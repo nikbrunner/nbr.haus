@@ -11,6 +11,10 @@ npm install
 npm run dev
 ```
 
+`npm install` also installs the Git hooks from `lefthook.yml`. If npm skips lefthook's install script, run `npx lefthook install`.
+
+The commit log reads `GITHUB_TOKEN` (fine-grained, read-only, public repositories) when set. Without it, it falls back to unauthenticated GitHub requests.
+
 ## Documentation
 
 - [Architecture](./docs/architecture.md) - System overview, routing, theming

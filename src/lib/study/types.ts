@@ -15,6 +15,8 @@ export interface StudyFrontmatter {
   excerpt: string;
   tags: StudyTag[];
   draft?: boolean;
+  /** Hash of the text `public/audio/<slug>.mp3` was generated from, written by `npm run generate:audio` */
+  audio?: string;
 }
 
 export interface StudyPost {
