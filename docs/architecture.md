@@ -31,7 +31,7 @@ Unknown paths render the root `notFoundComponent` with HTTP 404.
 
 URL search params are the source of truth for UI state. Defined in `src/validators/rootSearchParams.ts`:
 
-- `accent` - Accent hue preset
+- `theme` - Color theme
 - `colorMode` - light/dark/system
 
 Both are **retained across navigation** via TanStack Router's `retainSearchParams` middleware in `__root.tsx`. Params equal to their default are stripped from the URL. Invalid values fall back to the default.
@@ -77,12 +77,12 @@ Zod parses the response, commits are merged and sorted (src/lib/github/commitLog
 
 ## Theming System
 
-Each route renders the `SiteHeader` partial and its own `Colophon`. The header holds the `SiteControls` container, a bar of bracketed accent and mode options, and the `SiteIndex` navigation tree. The controls set two inputs:
+Each route renders the `SiteHeader` partial and its own `Colophon`. The header holds the `SiteControls` container, a bar of bracketed theme and mode options, and the `SiteIndex` navigation tree. The controls set two inputs:
 
-- `--hue-accent` on `<body>` - from the `accent` param
+- `data-theme` on `<body>` - from the `theme` param
 - `data-color-mode` on `<html>` - from the `colorMode` param
 
-All colors are defined in `src/styles/global.css` with `light-dark()`. The desk behind the sheet takes the accent hue; the sheet is tinted paper, in dark mode with a hint of the accent hue. `--paper-light` and `--ink-light` name the light theme's paper and ink, also used for the portrait's light print in dark mode.
+All colors are defined with `light-dark()`: the Atom theme in `src/styles/global.css`, the others as token overrides in `src/styles/themes.css`. Polymer is the default theme. In Atom the desk behind the sheet takes the accent hue, and the sheet is tinted paper, in dark mode with a hint of the accent hue. `--paper-light` and `--ink-light` name the light theme's paper and ink, also used for the portrait's light print in dark mode.
 
 ### Grain
 
@@ -93,26 +93,26 @@ All colors are defined in `src/styles/global.css` with `light-dark()`. The desk 
 ```txt
 User clicks a bracketed option in the control bar
     ↓
-useAccent / useColorMode
+useTheme / useColorMode
     ↓
 URL search param updated + localStorage persisted
     ↓
---hue-accent / data-color-mode updated
+data-theme / data-color-mode updated
     ↓
 UI reacts via CSS
 ```
 
-`src/scripts/theme-blocking.js` is inlined in `__root.tsx` and applies color mode and accent before React hydrates. Keep its accent values in sync with `src/types/style.ts`.
+`src/scripts/theme-blocking.js` is inlined in `__root.tsx` and applies color mode and theme before React hydrates. Keep its theme values in sync with `src/types/style.ts`.
 
 ## Keyboard
 
-`useSiteHotkeys` (`src/hooks/useSiteHotkeys.ts`, used by `SiteControls`) binds Vim-style keys with TanStack Hotkeys. `?` shows every binding in the `KeyHints` panel; a prefix (`g`, `t`, `m`, `z`) shows its next keys.
+`useSiteHotkeys` (`src/hooks/useSiteHotkeys.ts`, used by `SiteControls`) binds Vim-style keys with TanStack Hotkeys. `?` shows every binding in the `KeyHints` panel; a prefix (`g`, `c`, `m`, `z`) shows its next keys.
 
 - `j` `k` select the next or previous block, `h` `l` the links and buttons inside it, `Enter` opens. Arrow keys do the same once a block is selected; before that they scroll. `Esc` or a click clears the selection.
 - `J` `K` jump between section headings and scroll them to the top.
 - `d` `u` scroll half a page and carry the selection along. `gg` `G` select the first or last block, `zt` `zz` scroll the selection to the top or middle.
 - `gh` `gs` go home or to the study list, which opens with its first entry selected.
-- `t` + `r` `o` `g` `b` sets the accent, `m` + `l` `d` `s` the color mode.
+- `c` + `a` `f` `k` `p` `v` sets the colors, `m` + `l` `d` `s` the color mode.
 
 The cursor lives in `src/lib/navCursor.ts`, outside React, so it survives route changes. Blocks are found by `BLOCK_SELECTOR` in visual reading order; add `data-nav-block` to make another element one. The selection is real focus; `NavCursor` draws the brackets.
 

@@ -13,12 +13,13 @@ export const Prefix: Story = {
   args: {
     groups: [
       {
-        title: "Theme",
+        title: "Colors",
         hints: [
-          { keys: ["t r"], label: "Red" },
-          { keys: ["t o"], label: "Orange" },
-          { keys: ["t g"], label: "Green" },
-          { keys: ["t b"], label: "Blue" }
+          { keys: ["c a"], label: "Atom" },
+          { keys: ["c f"], label: "Facility" },
+          { keys: ["c k"], label: "Koyo" },
+          { keys: ["c p"], label: "Polymer" },
+          { keys: ["c v"], label: "Viridian" }
         ]
       }
     ]

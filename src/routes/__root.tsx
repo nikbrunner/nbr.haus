@@ -29,7 +29,7 @@ export const Route = createRootRoute({
   search: {
     middlewares: [
       stripSearchParams(defaultRootSearchParams),
-      retainSearchParams(["accent", "colorMode"])
+      retainSearchParams(["theme", "colorMode"])
     ]
   },
   loader: async () => ({ posts: await getAllPosts() }),

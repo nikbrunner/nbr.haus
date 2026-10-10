@@ -1,4 +1,5 @@
 @import "./fonts.css";
+@import "./themes.css";
 
 /* Components */
 @import "../components/Sheet.css";
@@ -50,7 +51,7 @@ body {
 /*
  * A typewriter document: one size and one line unit carry nearly everything.
  * The sheet is tinted paper on a cutting-mat desk that takes the accent hue.
- * Accent hues follow Black Atom's default theme.
+ * These are the Atom theme, after Black Atom's default; themes.css holds the others.
  */
 body {
   --hue-accent: 155;
@@ -80,10 +81,8 @@ body {
   --color-fg-main: light-dark(var(--ink-light), oklch(0.83 0.018 85));
   --color-fg-minor: light-dark(oklch(0.47 0.025 250), oklch(0.7 0.018 80));
   --color-line: light-dark(oklch(0.84 0.022 85), oklch(0.36 0.012 75));
-  /* Blue reads darker than the other hues at equal lightness; this lifts it, and only it */
-  --accent-lift: max(0, cos(calc((var(--hue-accent) - 265) * 1deg)));
   --color-accent: light-dark(
-    oklch(calc(0.5 + 0.07 * var(--accent-lift)) 0.15 var(--hue-accent)),
+    oklch(0.5 0.15 var(--hue-accent)),
     oklch(0.75 0.15 var(--hue-accent))
   );
   --color-fg-on-accent: var(--color-bg-main);
@@ -192,7 +191,8 @@ body {
     color-scheme: light;
   }
 
-  body {
+  body,
+  body[data-theme] {
     --color-bg-main: #fff;
     --color-fg-main: #111;
     --color-fg-minor: #555;

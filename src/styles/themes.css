@@ -1,0 +1,65 @@
+/*
+ * Palettes after Black Atom themes, on the paper-and-ink lightness of the default in global.css.
+ * Polymer keeps Black Atom's own orange, below 4.5:1 on light paper.
+ * --hue-accent stays set for print, which draws its accent from it.
+ */
+
+body[data-theme="facility"] {
+  --hue-accent: 117;
+
+  --paper-light: oklch(0.955 0.006 196);
+  --ink-light: oklch(0.25 0.015 262);
+  --color-desk: light-dark(oklch(0.5 0.05 164), oklch(0.17 0.008 196));
+  --color-desk-line: light-dark(oklch(0.62 0.06 164), oklch(0.24 0.012 196));
+  --color-desk-fine: light-dark(oklch(0.55 0.055 164), oklch(0.2 0.01 196));
+  --color-bg-main: light-dark(var(--paper-light), oklch(0.22 0.008 196));
+  --color-fg-main: light-dark(var(--ink-light), oklch(0.87 0.06 164));
+  --color-fg-minor: light-dark(oklch(0.47 0.045 162), oklch(0.68 0.05 162));
+  --color-line: light-dark(oklch(0.86 0.01 196), oklch(0.32 0.01 196));
+  --color-accent: light-dark(oklch(0.5 0.12 125), oklch(0.9 0.15 117));
+}
+
+body[data-theme="koyo"] {
+  --hue-accent: 50;
+
+  --paper-light: oklch(0.955 0.03 75);
+  --ink-light: oklch(0.26 0.04 325);
+  --color-desk: light-dark(oklch(0.45 0.07 325), oklch(0.19 0.03 316));
+  --color-desk-line: light-dark(oklch(0.56 0.08 325), oklch(0.26 0.035 316));
+  --color-desk-fine: light-dark(oklch(0.5 0.075 325), oklch(0.22 0.032 316));
+  --color-bg-main: light-dark(var(--paper-light), oklch(0.25 0.035 316));
+  --color-fg-main: light-dark(var(--ink-light), oklch(0.85 0.05 75));
+  --color-fg-minor: light-dark(oklch(0.47 0.05 325), oklch(0.7 0.04 75));
+  --color-line: light-dark(oklch(0.86 0.035 75), oklch(0.34 0.035 316));
+  --color-accent: light-dark(oklch(0.52 0.14 50), oklch(0.75 0.15 75));
+}
+
+body[data-theme="polymer"] {
+  --hue-accent: 41;
+
+  --paper-light: oklch(0.95 0.002 286);
+  --ink-light: oklch(0.21 0.004 286);
+  --color-desk: light-dark(oklch(0.42 0.01 252), oklch(0.19 0.003 229));
+  --color-desk-line: light-dark(oklch(0.52 0.012 252), oklch(0.26 0.004 229));
+  --color-desk-fine: light-dark(oklch(0.47 0.011 252), oklch(0.22 0.003 229));
+  --color-bg-main: light-dark(var(--paper-light), oklch(0.25 0.003 229));
+  --color-fg-main: light-dark(var(--ink-light), oklch(0.84 0.004 68));
+  --color-fg-minor: light-dark(oklch(0.47 0.013 252), oklch(0.68 0.01 252));
+  --color-line: light-dark(oklch(0.85 0.003 286), oklch(0.35 0.003 229));
+  --color-accent: light-dark(oklch(0.67 0.2 41), oklch(0.75 0.17 41));
+}
+
+body[data-theme="viridian"] {
+  --hue-accent: 45;
+
+  --paper-light: oklch(0.955 0.02 170);
+  --ink-light: oklch(0.27 0.045 170);
+  --color-desk: light-dark(oklch(0.48 0.07 170), oklch(0.2 0.04 170));
+  --color-desk-line: light-dark(oklch(0.6 0.08 170), oklch(0.27 0.045 170));
+  --color-desk-fine: light-dark(oklch(0.53 0.075 170), oklch(0.23 0.042 170));
+  --color-bg-main: light-dark(var(--paper-light), oklch(0.27 0.045 170));
+  --color-fg-main: light-dark(var(--ink-light), oklch(0.88 0.035 170));
+  --color-fg-minor: light-dark(oklch(0.47 0.055 170), oklch(0.72 0.045 170));
+  --color-line: light-dark(oklch(0.86 0.03 170), oklch(0.37 0.05 170));
+  --color-accent: light-dark(oklch(0.53 0.16 45), oklch(0.78 0.125 50));
+}

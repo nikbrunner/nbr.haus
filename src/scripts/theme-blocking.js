@@ -4,7 +4,7 @@
  *
  * IMPORTANT: Keep in sync with:
  * - src/types/style.ts (values and defaults)
- * - src/hooks/useAccent.ts
+ * - src/hooks/useTheme.ts
  * - src/hooks/useColorMode.ts
  */
 
@@ -22,18 +22,17 @@ function initTheme() {
       document.documentElement.setAttribute("data-color-mode", colorMode);
     }
 
-    // Accent hue (set on body)
-    // Valid values from src/types/style.ts: red=5, orange=65, green=155, blue=265
-    var validAccents = [27, 65, 155, 265];
-    var defaultAccent = 155; // green
-    var accent = parseInt(params.get("accent") || "", 10);
-    if (!validAccents.includes(accent)) {
-      accent = parseInt(localStorage.getItem("accent") || "", 10);
+    // Theme (set on body)
+    // Valid values from src/types/style.ts
+    var validThemes = ["atom", "facility", "koyo", "polymer", "viridian"];
+    var theme = params.get("theme");
+    if (!validThemes.includes(theme)) {
+      theme = localStorage.getItem("theme");
     }
-    if (!validAccents.includes(accent)) {
-      accent = defaultAccent;
+    if (!validThemes.includes(theme)) {
+      theme = "polymer";
     }
-    document.body.style.setProperty("--hue-accent", accent.toString());
+    document.body.dataset.theme = theme;
   } catch {
     // Silently fail - React will handle it after hydration
   }

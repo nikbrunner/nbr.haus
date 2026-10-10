@@ -1,7 +1,6 @@
 .ControlBar {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0 calc(var(--tab) * 2);
+  flex-direction: column;
 }
 
 @media print {

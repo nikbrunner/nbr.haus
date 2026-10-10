@@ -1,21 +1,14 @@
 import { z } from "zod";
 
 /**
- * IMPORTANT: Keep accent values in sync with src/scripts/theme-blocking.js
+ * IMPORTANT: Keep theme values in sync with src/scripts/theme-blocking.js
  */
 
-// Accent (user-selected hue for accent color)
-export const accents = {
-  red: 27,
-  orange: 65,
-  green: 155,
-  blue: 265
-} as const;
-export type Accent = (typeof accents)[keyof typeof accents];
-export const accentSchema = z.coerce
-  .number()
-  .refine((v): v is Accent => Object.values(accents).includes(v as Accent));
-export const defaultAccent: Accent = accents.green;
+// Theme (user-selected palette, after Black Atom themes)
+export const themes = ["atom", "facility", "koyo", "polymer", "viridian"] as const;
+export const themeSchema = z.enum(themes);
+export type Theme = z.infer<typeof themeSchema>;
+export const defaultTheme: Theme = "polymer";
 
 // Color Mode
 export const colorModeSchema = z.enum(["light", "system", "dark"]);

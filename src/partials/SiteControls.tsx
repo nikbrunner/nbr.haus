@@ -4,9 +4,9 @@ import ControlGroup from "@/components/ControlGroup";
 import KeyHints from "@/components/KeyHints";
 import MiniPlayer from "@/components/MiniPlayer";
 import NavCursor from "@/components/NavCursor";
-import { useAccent } from "@/hooks/useAccent";
 import { useColorMode } from "@/hooks/useColorMode";
 import { useSiteHotkeys } from "@/hooks/useSiteHotkeys";
+import { useTheme } from "@/hooks/useTheme";
 import type { ColorMode } from "@/types/style";
 
 const COLOR_MODES: { value: ColorMode; label: string }[] = [
@@ -16,22 +16,31 @@ const COLOR_MODES: { value: ColorMode; label: string }[] = [
 ];
 
 export function SiteControls() {
-  const { accent, accents, setAccent } = useAccent();
+  const { theme, themes, setTheme } = useTheme();
   const { colorMode, setColorMode } = useColorMode();
   const { groups, toggleOverview } = useSiteHotkeys();
 
   return (
     <ControlBar>
-      <ControlGroup label="Accent">
-        {Object.entries(accents).map(([name, hue]) => (
+      <ControlGroup label="Keys">
+        <ControlButton
+          aria-label="Keyboard shortcuts"
+          pressed={groups !== null}
+          onClick={toggleOverview}
+        >
+          ?
+        </ControlButton>
+      </ControlGroup>
+      <ControlGroup label="Colors">
+        {themes.map(name => (
           <ControlButton
             key={name}
             title={name}
-            aria-label={`Accent ${name}`}
-            pressed={hue === accent}
-            onClick={() => setAccent(hue)}
+            aria-label={`Colors ${name}`}
+            pressed={name === theme}
+            onClick={() => setTheme(name)}
           >
-            {name.charAt(0)}
+            {name.charAt(0).toUpperCase()}
           </ControlButton>
         ))}
       </ControlGroup>
@@ -45,15 +54,6 @@ export function SiteControls() {
             {mode.label}
           </ControlButton>
         ))}
-      </ControlGroup>
-      <ControlGroup label="Keys">
-        <ControlButton
-          aria-label="Keyboard shortcuts"
-          pressed={groups !== null}
-          onClick={toggleOverview}
-        >
-          ?
-        </ControlButton>
       </ControlGroup>
       {groups && <KeyHints groups={groups} />}
       <NavCursor />

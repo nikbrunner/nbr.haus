@@ -4,8 +4,8 @@ import { useHotkeys } from "@tanstack/react-hotkeys";
 import { useNavigate } from "@tanstack/react-router";
 
 import type { KeyHintGroup } from "@/components/KeyHints";
-import { useAccent } from "@/hooks/useAccent";
 import { useColorMode } from "@/hooks/useColorMode";
+import { useTheme } from "@/hooks/useTheme";
 import {
   activateBlock,
   centerSelected,
@@ -23,8 +23,20 @@ import {
 
 const MODIFIER_KEYS = ["Shift", "Control", "Alt", "Meta", "CapsLock"];
 
-type Prefix = "T" | "M" | "G" | "Z";
-type SecondKey = "R" | "O" | "G" | "B" | "L" | "D" | "S" | "H" | "Z" | "T";
+type Prefix = "C" | "M" | "G" | "Z";
+type SecondKey =
+  | "A"
+  | "D"
+  | "F"
+  | "K"
+  | "P"
+  | "V"
+  | "G"
+  | "L"
+  | "S"
+  | "H"
+  | "Z"
+  | "T";
 
 interface PrefixMap {
   title: string;
@@ -33,13 +45,13 @@ interface PrefixMap {
 
 /**
  * Vim-style keys: `j` `k` select blocks, `J` `K` section headings, `h` `l` the links inside them (arrow keys too, once
- * a block is selected), `d` `u` `gg` `G` scroll, `t` + r/o/g/b sets the accent,
+ * a block is selected), `d` `u` `gg` `G` scroll, `c` + a/f/k/p/v sets the colors,
  * `m` + l/d/s sets the color mode, `g` + g/h/s goes places,
  * `zt` / `zz` scroll the selection to the top / middle, `?` lists everything.
  * Returns the which-key groups to show: the next keys after a prefix, or the full list.
  */
 export function useSiteHotkeys() {
-  const { accents, setAccent } = useAccent();
+  const { setTheme } = useTheme();
   const { setColorMode } = useColorMode();
   const [open, setOpen] = useState<Prefix | "all" | null>(null);
   const navigate = useNavigate();
@@ -56,13 +68,14 @@ export function useSiteHotkeys() {
   }
 
   const prefixes: Record<Prefix, PrefixMap> = {
-    T: {
-      title: "Theme",
+    C: {
+      title: "Colors",
       next: [
-        { key: "R", label: "Red", run: () => setAccent(accents.red) },
-        { key: "O", label: "Orange", run: () => setAccent(accents.orange) },
-        { key: "G", label: "Green", run: () => setAccent(accents.green) },
-        { key: "B", label: "Blue", run: () => setAccent(accents.blue) }
+        { key: "A", label: "Atom", run: () => setTheme("atom") },
+        { key: "F", label: "Facility", run: () => setTheme("facility") },
+        { key: "K", label: "Koyo", run: () => setTheme("koyo") },
+        { key: "P", label: "Polymer", run: () => setTheme("polymer") },
+        { key: "V", label: "Viridian", run: () => setTheme("viridian") }
       ]
     },
     M: {
@@ -127,7 +140,7 @@ export function useSiteHotkeys() {
       { hotkey: "D", callback: () => scrollHalfPage(1) },
       { hotkey: "U", callback: () => scrollHalfPage(-1) },
       { hotkey: "Shift+G", callback: () => selectEdge("last") },
-      { hotkey: "T", callback: () => setOpen("T") },
+      { hotkey: "C", callback: () => setOpen("C") },
       { hotkey: "M", callback: () => setOpen("M") },
       { hotkey: "G", callback: () => setOpen("G") },
       { hotkey: "Z", callback: () => setOpen("Z") },
@@ -196,7 +209,7 @@ export function useSiteHotkeys() {
     },
     prefixGroup("G"),
     prefixGroup("Z"),
-    prefixGroup("T"),
+    prefixGroup("C"),
     prefixGroup("M"),
     {
       title: "Other",

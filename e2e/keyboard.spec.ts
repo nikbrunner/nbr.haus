@@ -76,15 +76,15 @@ test("h and l move between the links of a block", async ({ page }) => {
   await expect(page.locator(":focus")).toContainText("Elsewhere");
 });
 
-test("t and m prefixes set the accent and color mode, with a which-key hint", async ({
+test("c and m prefixes set the colors and color mode, with a which-key hint", async ({
   page
 }) => {
   await open(page, "/");
 
-  await page.keyboard.press("t");
-  await expect(page.locator(".KeyHints")).toContainText("Theme");
-  await page.keyboard.press("b");
-  await expect(page).toHaveURL(/accent=265/);
+  await page.keyboard.press("c");
+  await expect(page.locator(".KeyHints")).toContainText("Colors");
+  await page.keyboard.press("k");
+  await expect(page).toHaveURL(/theme=koyo/);
   await expect(page.locator(".KeyHints")).toHaveCount(0);
 
   await page.keyboard.press("m");
@@ -143,42 +143,38 @@ test.describe("prefixes", () => {
     expect(await page.evaluate(() => window.scrollY)).toBe(0);
   });
 
-  test("t g sets green without opening the Go hint", async ({ page }) => {
-    await open(page, "/?accent=27");
+  test("c k sets Koyo without also moving the cursor", async ({ page }) => {
+    await open(page, "/");
 
-    await page.keyboard.press("t");
-    await page.keyboard.press("g");
+    await page.keyboard.press("c");
+    await page.keyboard.press("k");
 
-    // Green is the default accent, so the router drops it from the URL
-    await expect
-      .poll(() =>
-        page.evaluate(() => document.body.style.getPropertyValue("--hue-accent"))
-      )
-      .toBe("155");
+    await expect(page.locator("body")).toHaveAttribute("data-theme", "koyo");
+    await expect(selected(page)).toHaveCount(0);
     await expect(page.locator(".KeyHints")).toHaveCount(0);
   });
 
   test("a prefix waits for its second key", async ({ page }) => {
-    await open(page, "/?accent=27");
+    await open(page, "/?theme=koyo");
 
-    await page.keyboard.press("t");
+    await page.keyboard.press("c");
     await page.waitForTimeout(1500);
-    await expect(page.locator(".KeyHints")).toContainText("Theme");
-    await page.keyboard.press("b");
+    await expect(page.locator(".KeyHints")).toContainText("Colors");
+    await page.keyboard.press("v");
 
-    await expect(page).toHaveURL(/accent=265/);
+    await expect(page).toHaveURL(/theme=viridian/);
     await expect(page.locator(".KeyHints")).toHaveCount(0);
   });
 
   test("Escape closes a prefix without running anything", async ({ page }) => {
-    await open(page, "/?accent=27");
+    await open(page, "/?theme=koyo");
 
-    await page.keyboard.press("t");
+    await page.keyboard.press("c");
     await page.keyboard.press("Escape");
     await expect(page.locator(".KeyHints")).toHaveCount(0);
-    await page.keyboard.press("b");
+    await page.keyboard.press("p");
 
-    await expect(page).toHaveURL(/accent=27/);
+    await expect(page).toHaveURL(/theme=koyo/);
   });
 
   test("an unknown second key cancels the prefix and is swallowed", async ({
@@ -186,7 +182,7 @@ test.describe("prefixes", () => {
   }) => {
     await open(page, "/");
 
-    await page.keyboard.press("t");
+    await page.keyboard.press("c");
     await page.keyboard.press("j");
 
     await expect(page.locator(".KeyHints")).toHaveCount(0);
