@@ -5,6 +5,11 @@ pre-commit:
         - "src/content/study/*.md"
         - "src/content/pages/*.md"
       run: node scripts/check-study-audio.ts {staged_files}
+    - name: home prose
+      glob:
+        - "src/routes/index.tsx"
+        - "src/config.ts"
+      run: node scripts/check-home-prose.ts
 
 pre-push:
   jobs:

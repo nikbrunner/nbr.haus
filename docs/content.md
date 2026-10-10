@@ -24,7 +24,9 @@ Study posts are Markdown files with frontmatter in `src/content/study/<slug>.en.
 
 A post with an `audio` field shows the `MiniPlayer` in `00 Record` and joins the media player's playlist; playback is described under [Audio](./architecture.md#audio).
 
-The `study audio` pre-commit hook warns, without blocking the commit, when a staged post's audio is missing or out of date. It reads the working tree, so a partially staged post is checked as it is on disk.
+The `study audio` pre-commit hook warns, without blocking the commit, when a staged post's or page's audio is missing or out of date. It reads the working tree, so a partially staged post is checked as it is on disk.
+
+`src/content/pages/home.en.md` is the home page as Nik would say it: Ident, About, Work, Projects and How I work as prose, without the commit log and the study list. It uses the same frontmatter and spoken-text rules as a post; once it has audio, the home page shows the `MiniPlayer` in `01 Ident` and the media player lists it first. The `home prose` pre-commit hook warns, without blocking the commit, when `src/routes/index.tsx` or `src/config.ts` is staged and the spoken version is not.
 
 ## CV
 

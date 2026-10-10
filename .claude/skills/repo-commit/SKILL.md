@@ -38,7 +38,9 @@ Stage named paths or single hunks; leave held-back work in the working tree.
 `jobs`, `pins`, and `moreProjects` from `src/config.ts` and holds its own copy of the text it shows. The card is a
 selection: sections it leaves out (About, How I work, Log, Study) are fine. When the staged changes touch
 `src/routes/index.tsx` or `src/config.ts`, compare every item the card does show with the page: its text, links, and order
-must match. A difference is a finding; fix the card in the same commit. Check the result with:
+must match. A difference is a finding; fix the card in the same commit. The same staged files also call for a look at
+the spoken version, `src/content/pages/home.en.md`: a change a visitor reads belongs in it too (`AGENTS.md`). Check the
+card with:
 
 ```sh
 curl -s -H "User-Agent: curl/8" http://localhost:3000/
