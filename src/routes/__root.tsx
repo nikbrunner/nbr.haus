@@ -10,7 +10,7 @@ import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
 import Grain from "@/components/Grain";
 import Sheet from "@/components/Sheet";
-import { absoluteUrl, SITE_URL } from "@/lib/site";
+import { absoluteUrl, assetUrl, SITE_URL } from "@/lib/site";
 import { getAllPosts } from "@/lib/study";
 import { STUDY_TITLE } from "@/lib/study/meta";
 import { NotFound } from "@/partials/NotFound";
@@ -73,7 +73,7 @@ export const Route = createRootRoute({
       },
       {
         property: "og:image",
-        content: absoluteUrl("/og-image.jpg")
+        content: assetUrl("/og-image.jpg")
       },
       {
         name: "twitter:card",

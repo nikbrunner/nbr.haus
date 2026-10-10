@@ -7,6 +7,7 @@ import { routeTree } from "@/routeTree.gen";
 
 declare global {
   const __BUILD_DATE__: string;
+  const __ASSET_ORIGIN__: string;
 }
 
 export function getRouter() {
