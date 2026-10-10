@@ -97,7 +97,7 @@ function renderSheet(): string {
     ),
     ...item(
       "",
-      "Building @imfusion/web-ui, a React component library on top of Base UI that agents set up and use through a router skill."
+      "I'm building @imfusion/web-ui, ImFusion's React component library on top of Base UI, with its design tokens, icons and tooling."
     ),
     ...jobs.flatMap(job => [
       "",
