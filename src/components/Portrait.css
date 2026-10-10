@@ -3,6 +3,21 @@
   display: grid;
   border: 4px double var(--ink-light);
   background-color: var(--paper-light);
+  position: relative;
+  isolation: isolate;
+}
+
+/* Tints paper and ink toward the theme's accent, harder on dark paper where a plain print glares */
+.Portrait::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: light-dark(
+    color-mix(in oklch, var(--color-accent) 15%, transparent),
+    color-mix(in oklch, var(--color-accent) 40%, transparent)
+  );
+  mix-blend-mode: multiply;
+  pointer-events: none;
 }
 
 .Portrait__drawing {
