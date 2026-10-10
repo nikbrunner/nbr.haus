@@ -1,9 +1,9 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 
-import AudioPlayer from "@/components/AudioPlayer";
 import Colophon from "@/components/Colophon";
 import Entry from "@/components/Entry";
 import InlineList from "@/components/InlineList";
+import MiniPlayer from "@/components/MiniPlayer";
 import { SpecItem, SpecList } from "@/components/SpecList";
 import SpecSection from "@/components/SpecSection";
 import { absoluteUrl, SITE_URL, socialMeta } from "@/lib/site";
@@ -14,7 +14,7 @@ import {
   getPostBySlug,
   splitSources
 } from "@/lib/study";
-import { STUDY_VOICES, studyAudioPath } from "@/lib/study/voices";
+import { STUDY_VOICES, studyAudioPath, studyAudioTrack } from "@/lib/study/voices";
 import { InlineMarkdown, MarkdownContent } from "@/partials/MarkdownContent";
 import { NotFound } from "@/partials/NotFound";
 import { SiteHeader } from "@/partials/SiteHeader";
@@ -100,7 +100,8 @@ export const Route = createFileRoute("/study/$slug")({
 
 function StudyPostPage() {
   const { post, adjacent, number, body, sources } = Route.useLoaderData();
-  const { title, subtitle, publishedAt, tags, audio } = post.frontmatter;
+  const { title, subtitle, publishedAt, tags } = post.frontmatter;
+  const track = studyAudioTrack(post);
   const length = `${post.readingTime} min${sources.length > 0 ? `, ${sources.length} sources` : ""}`;
 
   return (
@@ -116,19 +117,9 @@ function StudyPostPage() {
             <SpecItem label="Published">{publishedAt}</SpecItem>
             <SpecItem label="Tags">{tags.join(", ")}</SpecItem>
             <SpecItem label="Length">{length}</SpecItem>
-            {audio && (
+            {track && (
               <SpecItem label="Listen" hideInPrint>
-                <AudioPlayer
-                  track={{
-                    slug: post.slug,
-                    title,
-                    voices: STUDY_VOICES.map(voice => ({
-                      id: voice.id,
-                      label: voice.label,
-                      src: `${studyAudioPath(post.slug, voice.id)}?v=${audio}`
-                    }))
-                  }}
-                />
+                <MiniPlayer track={track} />
               </SpecItem>
             )}
           </SpecList>

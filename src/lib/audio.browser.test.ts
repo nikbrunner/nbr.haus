@@ -46,7 +46,7 @@ let other: AudioTrack;
 beforeEach(() => {
   localStorage.clear();
   study = {
-    slug: "study",
+    id: "study",
     title: "Study",
     voices: [
       { id: "nik", label: "Nik", src: silence(LENGTH) },
@@ -54,7 +54,7 @@ beforeEach(() => {
     ]
   };
   other = {
-    slug: "other",
+    id: "other",
     title: "Other",
     voices: [{ id: "nik", label: "Nik", src: silence(LENGTH) }]
   };
@@ -78,7 +78,7 @@ describe("loadTrack", () => {
     await loaded();
 
     expect(getAudioState()).toMatchObject({
-      track: { slug: "study" },
+      track: { id: "study" },
       voiceId: "nik",
       playing: false,
       time: 0
@@ -102,13 +102,13 @@ describe("loadTrack", () => {
     expect(getAudioState().time).toBeCloseTo(12, 0);
   });
 
-  it("leaves a playing track alone", async () => {
+  it("leaves a loaded track alone", async () => {
     toggleTrack(study);
     await playing();
 
     loadTrack(other);
 
-    expect(getAudioState().track?.slug).toBe("study");
+    expect(getAudioState().track?.id).toBe("study");
   });
 });
 
@@ -127,7 +127,7 @@ describe("playing", () => {
 
     toggleTrack(other);
 
-    await expect.poll(() => getAudioState().track?.slug).toBe("other");
+    await expect.poll(() => getAudioState().track?.id).toBe("other");
     await playing();
   });
 
@@ -139,8 +139,8 @@ describe("playing", () => {
 
     toggleTrack(other);
 
-    await expect.poll(() => getAudioState().track?.slug).toBe("other");
-    expect(getAudioState().voiceId).toBe("sadie");
+    await expect.poll(() => getAudioState().track?.id).toBe("other");
+    expect(getAudioState().voiceId).toBe("second");
   });
 
   it("remembers the position while playing", async () => {

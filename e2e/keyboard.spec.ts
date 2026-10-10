@@ -1,4 +1,4 @@
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test, type Locator, type Page } from "@playwright/test";
 
 function selected(page: Page) {
   return page.locator("[data-nav-selected]");
@@ -70,7 +70,10 @@ test.describe("g jumps start at the top of the page", () => {
     test(`${keys} from ${from}`, async ({ page }) => {
       await open(page, from);
       await page.evaluate(() =>
-        window.scrollTo({ top: document.body.scrollHeight, behavior: "instant" })
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: "instant"
+        })
       );
       await expect
         .poll(() => page.evaluate(() => window.scrollY))
@@ -140,37 +143,6 @@ test("? lists every binding", async ({ page }) => {
   await expect(page.locator(".KeyHints")).toContainText("Next / previous block");
   await page.keyboard.press("Escape");
   await expect(page.locator(".KeyHints")).toHaveCount(0);
-});
-
-test("audio keeps playing on another page in the mini player", async ({ page }) => {
-  await open(page, "/study");
-  await page.locator(".Entry a").first().click();
-  await expect(page).toHaveURL(/\/study\/[^/]+$/);
-  await expect(page.locator("h1")).not.toContainText("Study");
-  const player = page.locator(".AudioPlayer");
-  const hasAudio = await player
-    .waitFor({ timeout: 5000 })
-    .then(() => true)
-    .catch(() => false);
-  test.skip(!hasAudio, "the newest study has no audio yet");
-
-  await player.locator(".ControlButton").first().click();
-  await expect(player.locator(".ControlButton").first()).toHaveText(/Pause/i);
-
-  await page.locator("a", { hasText: "Spec sheet" }).first().click();
-  const mini = page.locator(".MiniPlayer");
-  await expect(mini).toBeVisible();
-  await expect(mini.locator(".ControlButton").first()).toHaveText(/Pause/i);
-  // Playback advancing on the new page: the time moves past where it was at the switch
-  const startedAt = await mini.locator(".MiniPlayer__time").innerText();
-  await expect(mini.locator(".MiniPlayer__time")).not.toHaveText(startedAt);
-
-  await page.keyboard.press("Space");
-  await expect(mini.locator(".ControlButton").first()).toHaveText(/Play/i);
-
-  await mini.locator(".MiniPlayer__title").click();
-  await expect(mini).toHaveCount(0);
-  await expect(player).toBeVisible();
 });
 
 test.describe("prefixes", () => {
@@ -329,115 +301,206 @@ test.describe("a row of mixed items", () => {
 });
 
 test("Space scrolls a page without audio", async ({ page }) => {
-  await open(page, "/");
+  await open(page, "/study");
 
   await page.keyboard.press("Space");
 
   await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(0);
 });
 
-test.describe("audio player", () => {
+test.describe("audio", () => {
+  /** Opens the newest study; skips the test when it has no narration yet */
   async function openStudy(page: Page) {
     await open(page, "/study");
     await page.locator(".Entry a").first().click();
     await expect(page).toHaveURL(/\/study\/[^/]+$/);
-    const player = page.locator(".AudioPlayer");
-    const hasAudio = await player
+    const mini = page.locator(".MiniPlayer");
+    const hasAudio = await mini
       .waitFor({ timeout: 5000 })
       .then(() => true)
       .catch(() => false);
     test.skip(!hasAudio, "the newest study has no audio yet");
-    await expect(player.locator(".AudioPlayer__time")).not.toHaveText(/\/ 00:00$/);
-    return player;
+    return mini;
+  }
+
+  /** Opens the media player's panel on the newest study and starts it */
+  async function playInPanel(page: Page) {
+    const mini = await openStudy(page);
+    await mini.getByRole("button", { name: "Open player" }).click();
+    const panel = page.locator(".MediaPlayer--expanded");
+    await expect(panel.locator(".MediaPlayer__times")).not.toHaveText(/00:00$/);
+    await play(panel).click();
+    await expect(play(panel)).toHaveText(/Pause/i);
+    return panel;
+  }
+
+  function play(panel: Locator) {
+    return panel
+      .getByRole("group", { name: "Playback" })
+      .locator(".ControlButton")
+      .nth(1);
   }
 
   function seconds(text: string) {
-    const [minutes, rest] = text.split("/")[0].trim().split(":").map(Number);
+    const [minutes, rest] = text.trim().split(":").map(Number);
     return minutes * 60 + rest;
   }
 
-  async function time(player: ReturnType<Page["locator"]>) {
-    return seconds(await player.locator(".AudioPlayer__time").innerText());
+  async function time(panel: Locator) {
+    return seconds(
+      await panel.locator(".MediaPlayer__times span").first().innerText()
+    );
   }
 
-  test("plays, seeks on the track and pauses", async ({ page }) => {
-    const player = await openStudy(page);
-    const button = player.locator(".ControlButton").first();
-
-    await button.click();
-    await expect(button).toHaveText(/Pause/i);
-
-    const track = await player.locator(".AudioPlayer__progress").boundingBox();
+  async function seekTo(page: Page, panel: Locator, fraction: number) {
+    const track = await panel.locator(".ProgressTrack__input").boundingBox();
     await page.mouse.click(
-      track!.x + track!.width / 2,
+      track!.x + track!.width * fraction,
       track!.y + track!.height / 2
     );
-    const total = seconds(
-      (await player.locator(".AudioPlayer__time").innerText()).split("/")[1]
-    );
-    await expect.poll(() => time(player)).toBeGreaterThan(total / 2 - 10);
+  }
 
-    await button.click();
-    await expect(button).toHaveText(/Play/i);
+  test("the inline player starts the track, which keeps playing on other pages", async ({
+    page
+  }) => {
+    const mini = await openStudy(page);
+    await mini.locator(".ControlButton").first().click();
+    await expect(mini.locator(".ControlButton").first()).toHaveText(/Pause/i);
+    const bar = page.locator(".MediaPlayer__bar");
+    await expect(bar.locator(".ControlButton").first()).toHaveText(/Pause/i);
+
+    await page.locator("a", { hasText: "Spec sheet" }).first().click();
+    await expect(bar).toBeVisible();
+    // Playback advancing on the new page: the time moves past where it was at the switch
+    const startedAt = await bar.locator(".MediaPlayer__time").innerText();
+    await expect(bar.locator(".MediaPlayer__time")).not.toHaveText(startedAt);
+
+    await page.keyboard.press("Space");
+    await expect(bar.locator(".ControlButton").first()).toHaveText(/Play/i);
+
+    await bar.locator(".MediaPlayer__title").click();
+    await expect(page).toHaveURL(/\/study\/[^/]+#listen$/);
   });
 
-  test("a voice switch keeps playing, five seconds earlier", async ({ page }) => {
-    const player = await openStudy(page);
-    await player.locator(".ControlButton").first().click();
-    const track = await player.locator(".AudioPlayer__progress").boundingBox();
-    await page.mouse.click(
-      track!.x + track!.width / 3,
-      track!.y + track!.height / 2
+  test("Space on a study page plays its track", async ({ page }) => {
+    const mini = await openStudy(page);
+    await page.keyboard.press("Space");
+    await expect(mini.locator(".ControlButton").first()).toHaveText(/Pause/i);
+  });
+
+  test("the Listen tab and p open the panel, Escape and p close it", async ({
+    page
+  }) => {
+    await open(page, "/");
+    const tab = page.locator(".MediaPlayer .ControlButton", { hasText: "Listen" });
+    test.skip((await tab.count()) === 0, "no study has audio yet");
+    const panel = page.locator(".MediaPlayer--expanded");
+
+    await tab.click();
+    await expect(panel).toBeVisible();
+    await page.keyboard.press("Escape");
+    await expect(panel).toHaveCount(0);
+
+    await page.keyboard.press("p");
+    await expect(panel).toBeVisible();
+    await page.keyboard.press("p");
+    await expect(panel).toHaveCount(0);
+  });
+
+  test("a tap on the bar opens the panel", async ({ page }) => {
+    const mini = await openStudy(page);
+    await mini.locator(".ControlButton").first().click();
+
+    await page.locator(".MediaPlayer__time").click();
+    await expect(page.locator(".MediaPlayer--expanded")).toBeVisible();
+  });
+
+  test("a row's button plays and pauses its track, its title opens the page", async ({
+    page
+  }) => {
+    await open(page, "/");
+    await page.keyboard.press("p");
+    const panel = page.locator(".MediaPlayer--expanded");
+    const hasAudio = await panel
+      .waitFor({ timeout: 5000 })
+      .then(() => true)
+      .catch(() => false);
+    test.skip(!hasAudio, "no study has audio yet");
+    const row = panel.locator(".MediaPlayer__item").last();
+
+    await row.locator(".ControlButton").click();
+    await expect(row.locator(".ControlButton")).toHaveText(/Pause/i);
+    await expect(play(panel)).toHaveText(/Pause/i);
+    await row.locator(".ControlButton").click();
+    await expect(row.locator(".ControlButton")).toHaveText(/Play/i);
+
+    await row.locator(".MediaPlayer__entry").click();
+    await expect(page).toHaveURL(/#listen$/);
+  });
+
+  test("the panel title opens its page at the inline player", async ({ page }) => {
+    await open(page, "/study");
+    await page.keyboard.press("p");
+    const panel = page.locator(".MediaPlayer--expanded");
+    const hasAudio = await panel
+      .waitFor({ timeout: 5000 })
+      .then(() => true)
+      .catch(() => false);
+    test.skip(!hasAudio, "no study has audio yet");
+
+    await panel.locator(".MediaPlayer__title").click();
+    await expect(page).toHaveURL(/#listen$/);
+    await expect(page.locator(".MiniPlayer")).toBeVisible();
+  });
+
+  test("seeks on the track, and skips ten seconds with buttons and , .", async ({
+    page
+  }) => {
+    const panel = await playInPanel(page);
+    await seekTo(page, panel, 0.5);
+    const total = seconds(
+      await panel.locator(".MediaPlayer__times span").last().innerText()
     );
-    await expect.poll(() => time(player)).toBeGreaterThan(20);
-    const before = await time(player);
+    await expect.poll(() => time(panel)).toBeGreaterThan(total / 2 - 10);
 
-    await player.locator(".ControlButton", { hasText: "Sadie" }).click();
+    await play(panel).click();
+    await expect(play(panel)).toHaveText(/Play/i);
+    const at = await time(panel);
 
-    await expect(
-      player.locator(".ControlButton", { hasText: "Sadie" })
-    ).toHaveAttribute("aria-pressed", "true");
-    await expect(player.locator(".ControlButton").first()).toHaveText(/Pause/i);
-    const after = await time(player);
-    expect(after).toBeLessThan(before);
-    expect(after).toBeGreaterThanOrEqual(before - 7);
+    await page.keyboard.press(".");
+    await expect.poll(() => time(panel)).toBe(at + 10);
+    await page.keyboard.press(",");
+    await expect.poll(() => time(panel)).toBe(at);
+    await panel.getByRole("button", { name: "Forward 10 seconds" }).click();
+    await expect.poll(() => time(panel)).toBe(at + 10);
+    await panel.getByRole("button", { name: "Back 10 seconds" }).click();
+    await expect.poll(() => time(panel)).toBe(at);
   });
 
   test("the position survives a reload", async ({ page }) => {
-    const player = await openStudy(page);
-    await player.locator(".ControlButton").first().click();
-    const track = await player.locator(".AudioPlayer__progress").boundingBox();
-    await page.mouse.click(
-      track!.x + track!.width / 4,
-      track!.y + track!.height / 2
-    );
-    await expect.poll(() => time(player)).toBeGreaterThan(10);
-    await player.locator(".ControlButton").first().click();
-    const before = await time(player);
+    const panel = await playInPanel(page);
+    await seekTo(page, panel, 1 / 4);
+    await expect.poll(() => time(panel)).toBeGreaterThan(10);
+    await play(panel).click();
+    const before = await time(panel);
 
     await page.reload();
+    await page.waitForLoadState("networkidle");
+    await page.getByRole("button", { name: "Open player" }).click();
 
     await expect
-      .poll(() => time(page.locator(".AudioPlayer")))
+      .poll(() => time(page.locator(".MediaPlayer--expanded")))
       .toBeGreaterThanOrEqual(before - 1);
   });
 
-  test("the close button stops playback and hides the mini player", async ({
-    page
-  }) => {
-    const player = await openStudy(page);
-    await player.locator(".ControlButton").first().click();
-    await expect(player.locator(".ControlButton").first()).toHaveText(/Pause/i);
+  test("the bar's + expands the player", async ({ page }) => {
+    const mini = await openStudy(page);
+    await mini.locator(".ControlButton").first().click();
+    const bar = page.locator(".MediaPlayer__bar");
 
-    await page.locator("a", { hasText: "Spec sheet" }).first().click();
-    const mini = page.locator(".MiniPlayer");
-    await expect(mini).toBeVisible();
-    await mini.getByRole("button", { name: "Stop and close" }).click();
+    await bar.getByRole("button", { name: "Expand player" }).click();
 
-    await expect(mini).toHaveCount(0);
-    await page.goBack();
-    await expect(page.locator(".AudioPlayer .ControlButton").first()).toHaveText(
-      /Play/i
-    );
+    await expect(page.locator(".MediaPlayer--expanded")).toBeVisible();
+    await expect(bar).toHaveCount(0);
   });
 });

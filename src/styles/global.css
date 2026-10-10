@@ -7,8 +7,9 @@
 @import "../components/DocumentHeader.css";
 @import "../components/ControlBar.css";
 @import "../components/ControlButton.css";
-@import "../components/AudioPlayer.css";
+@import "../components/MediaPlayer.css";
 @import "../components/MiniPlayer.css";
+@import "../components/ProgressTrack.css";
 @import "../components/KeyHints.css";
 @import "../components/NavCursor.css";
 @import "../components/Portrait.css";

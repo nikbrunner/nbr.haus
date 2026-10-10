@@ -1,3 +1,6 @@
+import type { AudioTrack } from "@/lib/audio";
+import type { StudyFrontmatter } from "@/lib/study/types";
+
 /** ElevenLabs voice IDs, by the voice's name in the ElevenLabs account */
 const ElevenLabsVoice = {
   /** Nik's own instant clone ("Nik v2" in ElevenLabs) */
@@ -29,4 +32,22 @@ export const STUDY_VOICES: StudyVoice[] = [
 
 export function studyAudioPath(slug: string, voiceId: string): string {
   return `/audio/${slug}.${voiceId}.mp3`;
+}
+
+/** The player's track for a post or a page's spoken version, or null when it has no narration yet */
+export function studyAudioTrack(post: {
+  slug: string;
+  frontmatter: Pick<StudyFrontmatter, "title" | "audio">;
+}): AudioTrack | null {
+  const { title, audio } = post.frontmatter;
+  if (!audio) return null;
+  return {
+    id: post.slug,
+    title,
+    voices: STUDY_VOICES.map(voice => ({
+      id: voice.id,
+      label: voice.label,
+      src: `${studyAudioPath(post.slug, voice.id)}?v=${audio}`
+    }))
+  };
 }

@@ -1,0 +1,120 @@
+/* Bottom right; the which-key panel opens over it */
+.MediaPlayer {
+  position: fixed;
+  bottom: var(--line);
+  right: var(--tab);
+  z-index: 9;
+  display: flex;
+  flex-direction: column;
+  max-width: calc(100vw - 2 * var(--tab));
+  padding: var(--line-half) var(--tab);
+  border: 4px double var(--color-fg-main);
+  background-color: var(--color-bg-main);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0
+    color-mix(in oklch, var(--color-edge) 25%, transparent);
+}
+
+.MediaPlayer--expanded {
+  gap: var(--line-half);
+  width: 52ch;
+}
+
+.MediaPlayer__bar {
+  display: flex;
+  gap: var(--tab);
+  align-items: baseline;
+  cursor: pointer;
+}
+
+/* How far the track has played, along the bottom edge of the bar */
+.MediaPlayer__rule {
+  height: 2px;
+  margin-top: var(--line-quarter);
+  background-color: var(--color-accent);
+}
+
+.MediaPlayer__head {
+  display: flex;
+  gap: var(--tab);
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.MediaPlayer__title,
+.MediaPlayer__entry {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.MediaPlayer__title {
+  font-weight: var(--font-weight-bold);
+}
+
+.MediaPlayer__meta,
+.MediaPlayer__time,
+.MediaPlayer__times,
+.MediaPlayer__aside {
+  color: var(--color-fg-minor);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.MediaPlayer__meta {
+  margin-top: calc(-1 * var(--line-half));
+}
+
+.MediaPlayer__times {
+  display: flex;
+  justify-content: space-between;
+}
+
+.MediaPlayer__transport {
+  display: flex;
+  gap: var(--tab);
+  justify-content: center;
+}
+
+.MediaPlayer__list {
+  display: grid;
+  max-height: calc(var(--line) * 8);
+  margin: 0;
+  padding: var(--line-half) 0 0;
+  border-top: 1px solid var(--color-fg-minor);
+  overflow-y: auto;
+  list-style: none;
+}
+
+.MediaPlayer__item {
+  display: flex;
+  gap: var(--tab);
+  align-items: baseline;
+  min-width: 0;
+}
+
+.MediaPlayer__aside {
+  margin-inline-start: auto;
+}
+
+/* On a phone the open player is a sheet along the bottom edge */
+@media screen and (max-width: 720px) {
+  .MediaPlayer--expanded {
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    max-width: none;
+    padding-bottom: calc(var(--line-half) + env(safe-area-inset-bottom));
+    border-width: 4px 0 0;
+  }
+
+  .MediaPlayer--expanded .MediaPlayer__list {
+    max-height: calc(var(--line) * 4);
+  }
+}
+
+@media print {
+  .MediaPlayer {
+    display: none;
+  }
+}

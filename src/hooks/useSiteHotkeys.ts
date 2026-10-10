@@ -223,6 +223,8 @@ export function useSiteHotkeys() {
       title: "Other",
       hints: [
         { keys: ["Space"], label: "Play / pause audio" },
+        { keys: ["p"], label: "Open / close the player" },
+        { keys: [",", "."], label: "Audio back / forward 10s" },
         { keys: ["?"], label: "Show / hide keys" }
       ]
     }

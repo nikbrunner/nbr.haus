@@ -94,6 +94,14 @@ export default defineConfig([
     extends: ["markdown/recommended"]
   },
   {
+    // Narrated texts carry ElevenLabs audio tags such as [sarcastic], which read as link labels
+    name: "project/markdown-audio-tags",
+    files: ["src/content/**/*.md"],
+    rules: {
+      "markdown/no-missing-label-refs": "off"
+    }
+  },
+  {
     name: "project/css-modules-with-custom-properties",
     files: ["**/*.css"],
     plugins: { css },

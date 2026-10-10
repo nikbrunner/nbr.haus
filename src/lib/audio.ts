@@ -10,7 +10,7 @@ export interface AudioVoice {
 }
 
 export interface AudioTrack {
-  slug: string;
+  id: string;
   title: string;
   /** The first voice is the default */
   voices: AudioVoice[];
@@ -22,6 +22,8 @@ export interface AudioState {
   playing: boolean;
   time: number;
   duration: number;
+  /** Whether the media player shows its full panel */
+  expanded: boolean;
 }
 
 const VOICE_KEY = "audio-voice";
@@ -33,7 +35,8 @@ const IDLE: AudioState = {
   voiceId: null,
   playing: false,
   time: 0,
-  duration: 0
+  duration: 0,
+  expanded: false
 };
 
 let state = IDLE;
@@ -57,15 +60,15 @@ export function getIdleAudioState(): AudioState {
   return IDLE;
 }
 
-/** Makes a track the current one without playing it; leaves a playing track alone */
+/** Makes a track the current one without playing it, when the player has none yet */
 export function loadTrack(track: AudioTrack) {
-  if (state.track?.slug === track.slug || state.playing) return;
+  if (state.track) return;
   const voice = rememberedVoice(track);
   setSource(track, voice, { time: savedPosition(voice.src), play: false });
 }
 
 export function toggleTrack(track: AudioTrack) {
-  if (state.track?.slug !== track.slug) {
+  if (state.track?.id !== track.id) {
     const voice = rememberedVoice(track);
     setSource(track, voice, { time: savedPosition(voice.src), play: true });
     return;
@@ -87,11 +90,21 @@ export function seek(seconds: number) {
   savePosition(audio);
 }
 
+/** Moves by a number of seconds from the current position, within the track */
+export function skip(seconds: number) {
+  if (!state.track) return;
+  seek(Math.min(state.duration, Math.max(0, state.time + seconds)));
+}
+
 /** Switches voice and resumes a few seconds before the current position */
 export function selectVoice(id: string) {
   writeStorage(VOICE_KEY, id);
   const track = state.track;
-  if (!track || id === state.voiceId) return;
+  if (!track) {
+    update({ voiceId: id });
+    return;
+  }
+  if (id === state.voiceId) return;
   const voice = track.voices.find(option => option.id === id);
   if (!voice) return;
 
@@ -99,17 +112,26 @@ export function selectVoice(id: string) {
   setSource(track, voice, { time, play: state.playing });
 }
 
+export function setExpanded(expanded: boolean) {
+  update({ expanded });
+}
+
 export function stop() {
   element?.pause();
   element?.removeAttribute("src");
   element?.load();
   pendingStart = null;
-  state = IDLE;
+  state = { ...IDLE, expanded: state.expanded };
   emit();
 }
 
+/** The voice picked last, on any track */
+export function rememberedVoiceId(): string | null {
+  return readStorage(VOICE_KEY);
+}
+
 function rememberedVoice(track: AudioTrack): AudioVoice {
-  const remembered = readStorage(VOICE_KEY);
+  const remembered = rememberedVoiceId();
   return track.voices.find(({ id }) => id === remembered) ?? track.voices[0];
 }
 
@@ -128,7 +150,8 @@ function setSource(
     voiceId: voice.id,
     playing: false,
     time: start.time,
-    duration: 0
+    duration: 0,
+    expanded: state.expanded
   };
   emit();
 }

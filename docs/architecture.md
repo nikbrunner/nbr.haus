@@ -122,7 +122,7 @@ The cursor lives in `src/lib/navCursor.ts`, outside React, so it survives route 
 
 ## Audio
 
-`src/lib/audio.ts` holds one audio element for the whole site, outside React, so playback continues across pages. `AudioPlayer` on a study page and `MiniPlayer` read and steer it through `useAudio`. Switching voices resumes five seconds before the current position. The chosen voice and each file's position are kept in localStorage. Generating the files is covered in [Content](./content.md#audio).
+`src/lib/audio.ts` holds one audio element for the whole site, outside React, so playback continues across pages. `MediaPlayer`, mounted once in the root through `SiteMediaPlayer`, is the player: a Listen tab while nothing has started, a one-line bar while a track plays, and a panel with the progress track, skip buttons, voices and the playlist: the home page's spoken version first, then every narrated study. It owns Space, `,` `.` and `p`. `MiniPlayer` is the inline player on the home page and on a study page: it starts the page's track in the media player, opens the panel, and plays its track on Space until something has started. Both read and steer the store through `useAudio`. A page never loads its track on its own, so a paused track stays in the bar until another one is played. Switching voices resumes five seconds before the current position. The chosen voice and each file's position are kept in localStorage. Generating the files is covered in [Content](./content.md#audio).
 
 ## Data Flow Summary
 

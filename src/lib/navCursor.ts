@@ -216,11 +216,16 @@ function visibleSelection(): HTMLElement | null {
 
 /** Blocks in visual reading order: top to bottom, then left to right (the header has columns) */
 function blocks(): HTMLElement[] {
-  return [...document.querySelectorAll<HTMLElement>(BLOCK_SELECTOR)]
-    .filter(isRendered)
-    .map(block => ({ block, rect: block.getBoundingClientRect() }))
-    .sort((a, b) => Math.round(a.rect.top - b.rect.top) || a.rect.left - b.rect.left)
-    .map(({ block }) => block);
+  return (
+    [...document.querySelectorAll<HTMLElement>(BLOCK_SELECTOR)]
+      // The floating media player is not part of the page's reading order
+      .filter(block => isRendered(block) && !block.closest(".MediaPlayer"))
+      .map(block => ({ block, rect: block.getBoundingClientRect() }))
+      .sort(
+        (a, b) => Math.round(a.rect.top - b.rect.top) || a.rect.left - b.rect.left
+      )
+      .map(({ block }) => block)
+  );
 }
 
 function items(block: HTMLElement): HTMLElement[] {

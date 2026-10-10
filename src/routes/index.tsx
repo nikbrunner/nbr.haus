@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { useQuery } from "@tanstack/react-query";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, getRouteApi, Link } from "@tanstack/react-router";
 
 import portraitMask from "@/assets/images/portrait-mask.webp";
 import AgentSkillFlow from "@/components/AgentSkillFlow";
@@ -10,6 +10,7 @@ import ControlButton from "@/components/ControlButton";
 import Entry from "@/components/Entry";
 import ExternalLink from "@/components/ExternalLink";
 import InlineList from "@/components/InlineList";
+import MiniPlayer from "@/components/MiniPlayer";
 import Portrait from "@/components/Portrait";
 import Prose from "@/components/Prose";
 import Rule from "@/components/Rule";
@@ -23,6 +24,7 @@ import { formatCommitTime } from "@/lib/github/commitLog";
 import { getCommitLog } from "@/lib/github/queries";
 import { absoluteUrl, socialMeta } from "@/lib/site";
 import { getAllPosts } from "@/lib/study";
+import { studyAudioTrack } from "@/lib/study/voices";
 import { SiteHeader } from "@/partials/SiteHeader";
 
 export const Route = createFileRoute("/")({
@@ -34,11 +36,15 @@ export const Route = createFileRoute("/")({
   component: HomePage
 });
 
+const rootRoute = getRouteApi("__root__");
+
 /** Commits shown at first, and added per "Show more" */
 const COMMIT_PAGE_SIZE = 10;
 
 function HomePage() {
   const { posts } = Route.useLoaderData();
+  const { home } = rootRoute.useLoaderData();
+  const homeTrack = home && studyAudioTrack(home);
   const commitLog = useQuery(getCommitLog());
   const log = commitLog.data?.status === "ok" ? commitLog.data.log : null;
   const isLogUnavailable = commitLog.isError || commitLog.data?.status === "error";
@@ -92,6 +98,11 @@ function HomePage() {
                 </ControlButton>
               </InlineList>
             </SpecItem>
+            {homeTrack && (
+              <SpecItem label="Listen" hideInPrint>
+                <MiniPlayer track={homeTrack} />
+              </SpecItem>
+            )}
           </SpecList>
         </WithFigure>
       </SpecSection>

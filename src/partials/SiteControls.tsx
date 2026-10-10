@@ -2,7 +2,6 @@ import ControlBar from "@/components/ControlBar";
 import ControlButton from "@/components/ControlButton";
 import ControlGroup from "@/components/ControlGroup";
 import KeyHints from "@/components/KeyHints";
-import MiniPlayer from "@/components/MiniPlayer";
 import NavCursor from "@/components/NavCursor";
 import { useColorMode } from "@/hooks/useColorMode";
 import { useSiteHotkeys } from "@/hooks/useSiteHotkeys";
@@ -57,7 +56,6 @@ export function SiteControls() {
       </ControlGroup>
       {groups && <KeyHints groups={groups} />}
       <NavCursor />
-      <MiniPlayer />
     </ControlBar>
   );
 }

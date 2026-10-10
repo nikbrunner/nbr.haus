@@ -1,48 +1,50 @@
 import { useHotkey } from "@tanstack/react-hotkeys";
-import { Link, useLocation } from "@tanstack/react-router";
-import { createPortal } from "react-dom";
 
 import ControlButton from "@/components/ControlButton";
 import { useAudio } from "@/hooks/useAudio";
-import { stop, toggle } from "@/lib/audio";
+import { type AudioTrack, loadTrack, setExpanded, toggleTrack } from "@/lib/audio";
 import { formatTime } from "@/lib/formatTime";
 
-/**
- * A floating bar for the audio that keeps playing on other pages. On the track's own study page
- * the full player takes over. Also owns Space, so it is registered once for the whole site.
- */
-export default function MiniPlayer() {
+/** Links to the inline player scroll here */
+export const AUDIO_PLAYER_ID = "listen";
+
+interface Props {
+  track: AudioTrack;
+}
+
+/** The inline player on a page with narration: it starts the page's track in the media player and opens it */
+export default function MiniPlayer({ track }: Props) {
   const audio = useAudio();
-  const pathname = useLocation({ select: location => location.pathname });
-  const track = audio.track;
-  const onTrackPage = track !== null && pathname === `/study/${track.slug}`;
-  const started = track !== null && (audio.playing || audio.time > 0);
-  const visible = started && !onTrackPage;
+  const active = audio.track?.id === track.id;
+  const playing = active && audio.playing;
+  const started = audio.track !== null && (audio.playing || audio.time > 0);
 
-  useHotkey("Space", toggle, { enabled: onTrackPage || visible });
+  // Until something has started, Space on this page plays the page's track
+  useHotkey("Space", () => toggleTrack(track), {
+    enabled: !started && !audio.expanded,
+    // The media player owns Space once something has started; the two are never enabled together
+    conflictBehavior: "allow"
+  });
 
-  if (!visible || !track) return null;
-
-  // Rendered into the body: fixed inside the sheet, its mask would clip the bar
-  return createPortal(
-    <aside className="MiniPlayer" aria-label="Audio player">
-      <ControlButton onClick={toggle}>
-        {audio.playing ? "Pause" : "Play "}
+  return (
+    <span className="MiniPlayer" id={AUDIO_PLAYER_ID}>
+      {/* Both labels are five monospace cells wide, so toggling never moves the row */}
+      <ControlButton onClick={() => toggleTrack(track)}>
+        {playing ? "Pause" : "Play "}
       </ControlButton>
-      <Link
-        className="MiniPlayer__title"
-        to="/study/$slug"
-        params={{ slug: track.slug }}
+      {active && audio.duration > 0 && (
+        <span className="MiniPlayer__time">
+          {formatTime(audio.time)} / {formatTime(audio.duration)}
+        </span>
+      )}
+      <ControlButton
+        onClick={() => {
+          loadTrack(track);
+          setExpanded(true);
+        }}
       >
-        {track.title}
-      </Link>
-      <span className="MiniPlayer__time">
-        {formatTime(audio.time)} / {formatTime(audio.duration)}
-      </span>
-      <ControlButton aria-label="Stop and close" onClick={stop}>
-        ×
+        Open player
       </ControlButton>
-    </aside>,
-    document.body
+    </span>
   );
 }

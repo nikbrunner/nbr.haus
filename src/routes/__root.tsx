@@ -2,6 +2,7 @@ import { TanStackDevtools } from "@tanstack/react-devtools";
 import {
   createRootRoute,
   HeadContent,
+  Outlet,
   retainSearchParams,
   Scripts,
   stripSearchParams
@@ -10,10 +11,12 @@ import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
 import Grain from "@/components/Grain";
 import Sheet from "@/components/Sheet";
+import { getSpokenHome } from "@/lib/pages";
 import { absoluteUrl, assetUrl, SITE_URL, socialMeta } from "@/lib/site";
 import { getAllPosts } from "@/lib/study";
 import { STUDY_TITLE } from "@/lib/study/meta";
 import { NotFound } from "@/partials/NotFound";
+import { SiteMediaPlayer } from "@/partials/SiteMediaPlayer";
 import curlHintScript from "@/scripts/curl-hint.js?raw";
 import themeBlockingScript from "@/scripts/theme-blocking.js?raw";
 import {
@@ -35,9 +38,13 @@ export const Route = createRootRoute({
       retainSearchParams(["theme", "colorMode"])
     ]
   },
-  loader: async () => ({ posts: await getAllPosts() }),
+  loader: async () => ({
+    posts: await getAllPosts(),
+    home: await getSpokenHome()
+  }),
   notFoundComponent: () => <NotFound />,
   shellComponent: RootDocument,
+  component: RootComponent,
   head: () => ({
     meta: [
       {
@@ -103,6 +110,16 @@ export const Route = createRootRoute({
     scripts: [{ children: curlHintScript }]
   })
 });
+
+/** The shell renders without loader data on the server, so what needs it renders here */
+function RootComponent() {
+  return (
+    <>
+      <Outlet />
+      <SiteMediaPlayer />
+    </>
+  );
+}
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   const structuredData = {
