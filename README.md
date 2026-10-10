@@ -24,7 +24,6 @@ On Vercel, `GITHUB_PAT` is set as an environment variable for Production, Previe
 ## Documentation
 
 - [Architecture](./docs/architecture.md) - System overview, routing, theming
-- [Components](./docs/components.md) - Component patterns and structure
 - [Styling](./docs/styling.md) - CSS conventions and theming
 - [Content](./docs/content.md) - Adding routes, projects, posts
 - [Testing](./docs/testing.md) - Testing tools and Storybook

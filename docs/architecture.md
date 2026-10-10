@@ -135,5 +135,3 @@ Components (dumb)
     ├── Own all their styling
     └── Know nothing about context
 ```
-
-See [components.md](./components.md) for details on this pattern.
