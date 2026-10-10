@@ -5,6 +5,7 @@ import Colophon from "@/components/Colophon";
 import ControlButton from "@/components/ControlButton";
 import DataTable, { type DataTableColumn } from "@/components/DataTable";
 import Entry from "@/components/Entry";
+import ExternalLink from "@/components/ExternalLink";
 import InlineList from "@/components/InlineList";
 import Prose from "@/components/Prose";
 import Rule from "@/components/Rule";
@@ -127,9 +128,9 @@ function HomePage() {
           <Prose>
             <p>
               I&apos;m building{" "}
-              <a href="https://www.npmjs.com/package/@imfusion/web-ui">
+              <ExternalLink href="https://www.npmjs.com/package/@imfusion/web-ui">
                 @imfusion/web-ui
-              </a>
+              </ExternalLink>
               , ImFusion&apos;s React component library on top of Base UI, with its
               design tokens, icons and tooling.
             </p>
@@ -171,7 +172,7 @@ function HomePage() {
               }
             >
               <Text caps bold>
-                <a href={job.href}>{job.company}</a>
+                <ExternalLink href={job.href}>{job.company}</ExternalLink>
               </Text>
               <Text muted>{job.role}</Text>
               <Text spaced>{job.notes}</Text>
@@ -187,7 +188,7 @@ function HomePage() {
               key={pin.repo}
               aside={
                 <Text caps bold>
-                  <a href={pin.href}>{pin.name}</a>
+                  <ExternalLink href={pin.href}>{pin.name}</ExternalLink>
                 </Text>
               }
             >
@@ -203,9 +204,9 @@ function HomePage() {
             <SpecItem label="Also">
               <InlineList>
                 {moreProjects.map(project => (
-                  <a key={project.name} href={project.href}>
+                  <ExternalLink key={project.name} href={project.href}>
                     {project.name}
-                  </a>
+                  </ExternalLink>
                 ))}
               </InlineList>
             </SpecItem>
@@ -226,7 +227,9 @@ function HomePage() {
               isLogUnavailable ? (
                 <>
                   Log unavailable, see{" "}
-                  <a href="https://github.com/nikbrunner">GitHub</a>
+                  <ExternalLink href="https://github.com/nikbrunner">
+                    GitHub
+                  </ExternalLink>
                 </>
               ) : (
                 "Loading commits"
@@ -267,42 +270,60 @@ function HomePage() {
         <SpecSubsection number="05.2" title="Tooling">
           <SpecList>
             <SpecItem label="Terminal">
-              <a href="https://ghostty.org">Ghostty</a>
+              <ExternalLink href="https://ghostty.org">Ghostty</ExternalLink>
             </SpecItem>
             <SpecItem label="Workspace">
-              <a href="https://herdr.dev">herdr</a>, with agents, shells and tools
-              side by side. I move between workspaces with{" "}
-              <a href="https://github.com/black-atom-industries/helm.herdr">Helm</a>,
-              my navigator for it.
+              <ExternalLink href="https://herdr.dev">herdr</ExternalLink>, with
+              agents, shells and tools side by side. I move between workspaces with{" "}
+              <ExternalLink href="https://github.com/black-atom-industries/helm.herdr">
+                Helm
+              </ExternalLink>
+              , my navigator for it.
             </SpecItem>
             <SpecItem label="Editor">
-              <a href="https://neovim.io">Neovim</a>
+              <ExternalLink href="https://neovim.io">Neovim</ExternalLink>
             </SpecItem>
             <SpecItem label="Agents">
               <InlineList>
-                <a href="https://claude.com/product/claude-code">Claude Code</a>
-                <a href="https://github.com/mariozechner/pi-coding-agent">Pi</a>
+                <ExternalLink href="https://claude.com/product/claude-code">
+                  Claude Code
+                </ExternalLink>
+                <ExternalLink href="https://github.com/mariozechner/pi-coding-agent">
+                  Pi
+                </ExternalLink>
               </InlineList>
             </SpecItem>
             <SpecItem label="Review">
-              <a href="https://tuicr.dev">tuicr</a>, for reading diffs in the
-              terminal
+              <ExternalLink href="https://tuicr.dev">tuicr</ExternalLink>, for
+              reading diffs in the terminal
             </SpecItem>
             <SpecItem label="Git">
-              <a href="https://github.com/jesseduffield/lazygit">LazyGit</a>
+              <ExternalLink href="https://github.com/jesseduffield/lazygit">
+                LazyGit
+              </ExternalLink>
             </SpecItem>
             <SpecItem label="Popups">
               <InlineList>
-                <a href="https://github.com/jesseduffield/lazydocker">lazydocker</a>
-                <a href="https://github.com/nikbrunner/lazyjira">lazyjira</a>
-                <a href="https://github.com/nikbrunner/bm">bm</a>
-                <a href="https://black-atom.industries/">Livery</a>
+                <ExternalLink href="https://github.com/jesseduffield/lazydocker">
+                  lazydocker
+                </ExternalLink>
+                <ExternalLink href="https://github.com/nikbrunner/lazyjira">
+                  lazyjira
+                </ExternalLink>
+                <ExternalLink href="https://github.com/nikbrunner/bm">
+                  bm
+                </ExternalLink>
+                <ExternalLink href="https://black-atom.industries/">
+                  Livery
+                </ExternalLink>
               </InlineList>
             </SpecItem>
             <SpecItem label="Config">
               All of it lives in{" "}
-              <a href="https://github.com/nikbrunner/dots">dots</a>, my agent skills
-              included.
+              <ExternalLink href="https://github.com/nikbrunner/dots">
+                dots
+              </ExternalLink>
+              , my agent skills included.
             </SpecItem>
           </SpecList>
         </SpecSubsection>
