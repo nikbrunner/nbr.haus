@@ -4,35 +4,22 @@ CSS approach and conventions used in this project.
 
 ## Overview
 
-- **Regular CSS** with BEM naming convention
-- **Open Props** for design tokens (spacing, typography, borders)
-- **CSS custom properties** for theming
+- **Regular CSS** with BEM naming
+- **CSS custom properties** for tokens and theming, defined on `body` in `src/styles/global.css`
+- **TX-02** Condensed for everything, self-hosted as Latin-subset WOFF2 in `public/fonts/TX-02/woff2/`
 - **No CSS-in-JS** - styles are in co-located `.css` files
 
 ## File Structure
 
-All CSS is imported through `src/styles/global.css`:
-
 ```txt
 src/styles/
-├── global.css      # Main entry, imports everything
-├── fonts.css       # @font-face declarations
-├── spacings.css    # Spacing utilities
-├── print.css       # Print styles
-└── print-utils.css # Print utility classes
+├── global.css   # Entry: tokens, base elements, component imports, print tokens last
+└── fonts.css    # @font-face declarations
 ```
 
-Component CSS is co-located with components and imported in `global.css`:
-
-```css
-/* global.css */
-@import "../components/Button.css";
-@import "../components/Job.css";
-```
+Component CSS is co-located with the component and imported in `global.css`.
 
 ## BEM Naming
-
-Use Block-Element-Modifier pattern:
 
 ```css
 .Block {
@@ -43,143 +30,53 @@ Use Block-Element-Modifier pattern:
 }
 ```
 
-Example:
+Native nesting is fine inside a block (`&:hover`, `& p`).
+
+## Tokens
+
+### Type
+
+A typewriter document: one size and one line unit carry nearly everything. Hierarchy comes from case, weight, tracking, rules and boxes, not from size.
+
+- `--font-size-base` 16px (15px on phones, 10pt in print), `--line` 24px (15pt in print)
+- `--line-half`, `--line-quarter`, `--line-double` for vertical distances; every distance is a whole line or adds up to one
+- `--tab` (2ch) and `--label-width` (14ch, 12ch on phones) for horizontal tab stops; `--measure` 80ch for prose
+- Weights `--font-weight-regular` 400, `--font-weight-semibold` 600, `--font-weight-bold` 700, plus 400 italic
+- `--tracking-body` 0.02em on everything, `--tracking-caps` 0.06em on uppercase heads and labels
+- Figures are tabular, and `ss01` gives TX-02's slashed zero
+
+Section heads are bold caps on a 4px double rule; sub-heads are semibold caps on a 1px rule. Their padding and margin are quarter-line values that add up to one line below the head.
+
+### Color
+
+Neutrals and accents follow Black Atom's default theme. The sheet is tinted paper with blue-black ink in light mode and warm charcoal with chalk ink in dark mode. The desk behind it is a cutting mat (16px fine grid, 80px major grid) in the accent hue. Accent presets: red 5, orange 65, green 155, blue 265.
 
 ```css
-.Button {
-}
-.Button--accent {
-}
-.Button--large {
-}
-
-.Job {
-}
-.Job__title {
-}
-.Job__company {
-}
+--color-desk, --color-desk-line, --color-desk-fine  /* The mat */
+--color-edge                                        /* Sheet edge and hard shadow */
+--color-bg-main                                     /* Paper */
+--color-fg-main                                     /* Ink, rules, boxes */
+--color-fg-minor                                    /* Muted text */
+--color-line                                        /* Light fills such as inline code */
+--color-accent                                      /* Links and section numbers */
+--color-fg-on-accent
 ```
 
-## CSS Variables
+The light accent sits at L 0.50 so links keep 4.5:1 or more on the tinted paper for every preset.
 
-### Color System
-
-Colors use OKLCH with CSS `light-dark()` for automatic theme switching:
-
-```css
-/* Semantic color tokens (all prefixed with --color-) */
---color-bg-main        /* Main background */
---color-bg-support     /* Secondary background */
---color-bg-accent      /* Accent background */
-
---color-fg-main        /* Main text */
---color-fg-support     /* Secondary text */
---color-fg-minor       /* Tertiary/muted text */
---color-fg-accent      /* Accent text */
---color-fg-on-accent   /* Text on accent background */
-
---color-accent         /* Primary accent color */
---color-accent-alt     /* Complementary accent color */
-```
-
-### Hue System
-
-The accent hue is set by `useAccent` hook, complementary is calculated in CSS:
-
-```css
-/* Set dynamically via JS */
---hue-accent              /* User-selected accent hue (0-360) */
-
-/* Defined in CSS */
---hue-accent-compl-degree /* Offset for complementary (default: 90) */
---hue-accent-compl        /* calc(--hue-accent + --hue-accent-compl-degree) */
-
-/* Chroma multiplier for contrast levels */
---chroma                  /* low=0.6, base=1, high=1.4 */
-```
-
-Note: oklch wraps hue values automatically, so `--hue-accent-compl` doesn't need clamping.
-
-### Using Theme Colors
-
-Always use semantic tokens, not raw OKLCH values:
-
-```css
-/* Good */
-.Component {
-  color: var(--color-fg-main);
-  background-color: var(--color-bg-support);
-  border-color: var(--color-fg-accent);
-}
-
-/* Avoid */
-.Component {
-  color: oklch(0.25 0.01 var(--hue-accent));
-}
-```
-
-## Open Props
-
-Design tokens from Open Props are available globally:
-
-```css
-/* Spacing */
-var(--size-1)    /* 0.25rem */
-var(--size-2)    /* 0.5rem */
-var(--size-3)    /* 1rem */
-...
-
-/* Typography */
-var(--font-size-0)
-var(--font-weight-7)
-var(--font-lineheight-3)
-
-/* Borders */
-var(--border-size-1)
-var(--border-size-2)
-var(--radius-2)
-```
+Use the tokens, not raw values.
 
 ## Component Isolation
 
-**Critical rule:** A component's CSS must never reference another component's classes.
-
-```css
-/* Bad - Job shouldn't know about Tag */
-.Job .Tag {
-  margin-left: var(--size-2);
-}
-
-/* Good - Use a Job-specific element */
-.Job__tag {
-  margin-left: var(--size-2);
-}
-```
-
-This keeps components independent and reusable.
-
-## Where Styling Lives
-
-| Layer      | Styling                            |
-| ---------- | ---------------------------------- |
-| Components | All styling (co-located CSS files) |
-| Partials   | Minimal to none                    |
-| Routes     | Layout only (grid, positioning)    |
-
-Routes and partials should not define visual styles - those belong in components.
+A component's CSS never references another component's classes. Print and responsive adjustments live in the component's own file.
 
 ## Color Mode
 
-Color mode is handled via `data-color-mode` attribute on `<html>`:
-
 ```css
-/* System default (uses prefers-color-scheme) */
 html {
   color-scheme: light dark;
 }
 
-/* Manual overrides */
 html[data-color-mode="light"] {
   color-scheme: light;
 }
@@ -189,34 +86,8 @@ html[data-color-mode="dark"] {
 }
 ```
 
-The `light-dark()` function automatically picks the right color:
+`light-dark()` picks the value from the active color scheme.
 
-```css
---color-bg-main: light-dark(
-  oklch(0.95 0.005 var(--hue-accent-compl)),
-  /* light mode */ oklch(0.25 0.005 var(--hue-accent-compl)) /* dark mode */
-);
-```
+## Print
 
-## Print Styles
-
-Print-specific styles are in `src/styles/print.css`. The `/cv` route is designed for PDF export.
-
-```css
-@media print {
-  .no-print {
-    display: none !important;
-  }
-}
-```
-
-## Fluid Typography
-
-Use fluid font sizes for responsive text:
-
-```css
---font-size-fluid-0: clamp(0.75rem, 5cqw, 1rem);
---font-size-fluid-1: clamp(1rem, 5cqw, 1.5rem);
---font-size-fluid-2: clamp(1.5rem, 5cqw, 2.5rem);
---font-size-fluid-3: clamp(2rem, 5cqw, 3.5rem);
-```
+The `@media print` block at the end of `src/styles/global.css` sets A4 with 14mm margins, forces the light scheme, and swaps in ink-on-white print tokens. Print drops the desk, grain, shadow and binder rings. It stays last in the file so it wins over the screen rules. Components hide their interactive parts in `@media print` (the control bar, the CV row via `SpecItem hideInPrint`). `.no-print` is available for one-off route content.
