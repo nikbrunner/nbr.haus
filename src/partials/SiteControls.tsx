@@ -1,8 +1,12 @@
 import ControlBar from "@/components/ControlBar";
 import ControlButton from "@/components/ControlButton";
 import ControlGroup from "@/components/ControlGroup";
+import KeyHints from "@/components/KeyHints";
+import MiniPlayer from "@/components/MiniPlayer";
+import NavCursor from "@/components/NavCursor";
 import { useAccent } from "@/hooks/useAccent";
 import { useColorMode } from "@/hooks/useColorMode";
+import { useSiteHotkeys } from "@/hooks/useSiteHotkeys";
 import type { ColorMode } from "@/types/style";
 
 const COLOR_MODES: { value: ColorMode; label: string }[] = [
@@ -14,6 +18,7 @@ const COLOR_MODES: { value: ColorMode; label: string }[] = [
 export function SiteControls() {
   const { accent, accents, setAccent } = useAccent();
   const { colorMode, setColorMode } = useColorMode();
+  const { groups, toggleOverview } = useSiteHotkeys();
 
   return (
     <ControlBar>
@@ -41,6 +46,18 @@ export function SiteControls() {
           </ControlButton>
         ))}
       </ControlGroup>
+      <ControlGroup label="Keys">
+        <ControlButton
+          aria-label="Keyboard shortcuts"
+          pressed={groups !== null}
+          onClick={toggleOverview}
+        >
+          ?
+        </ControlButton>
+      </ControlGroup>
+      {groups && <KeyHints groups={groups} />}
+      <NavCursor />
+      <MiniPlayer />
     </ControlBar>
   );
 }

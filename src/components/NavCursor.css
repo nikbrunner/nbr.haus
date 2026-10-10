@@ -1,0 +1,53 @@
+/* Viewfinder brackets just outside the selected block; an overlay, so the page never shifts */
+.NavCursor {
+  /* Horizontal room is free; vertically, rows sit flush, so the corners stay within the leading */
+  --nav-cursor-gap-x: 0.75ch;
+  --nav-cursor-gap-y: 2px;
+  --nav-cursor-arm: 1ch;
+  --nav-cursor-stroke: 2px;
+
+  position: absolute;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.NavCursor__corner {
+  position: absolute;
+  width: var(--nav-cursor-arm);
+  height: var(--nav-cursor-arm);
+  border: 0 solid var(--color-accent);
+}
+
+.NavCursor__corner--top-start {
+  top: calc(-1 * var(--nav-cursor-gap-y));
+  left: calc(-1 * var(--nav-cursor-gap-x));
+  border-top-width: var(--nav-cursor-stroke);
+  border-left-width: var(--nav-cursor-stroke);
+}
+
+.NavCursor__corner--top-end {
+  top: calc(-1 * var(--nav-cursor-gap-y));
+  right: calc(-1 * var(--nav-cursor-gap-x));
+  border-top-width: var(--nav-cursor-stroke);
+  border-right-width: var(--nav-cursor-stroke);
+}
+
+.NavCursor__corner--bottom-start {
+  bottom: calc(-1 * var(--nav-cursor-gap-y));
+  left: calc(-1 * var(--nav-cursor-gap-x));
+  border-bottom-width: var(--nav-cursor-stroke);
+  border-left-width: var(--nav-cursor-stroke);
+}
+
+.NavCursor__corner--bottom-end {
+  right: calc(-1 * var(--nav-cursor-gap-x));
+  bottom: calc(-1 * var(--nav-cursor-gap-y));
+  border-right-width: var(--nav-cursor-stroke);
+  border-bottom-width: var(--nav-cursor-stroke);
+}
+
+@media print {
+  .NavCursor {
+    display: none;
+  }
+}

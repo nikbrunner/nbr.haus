@@ -53,9 +53,9 @@
   color: var(--color-accent);
 }
 
-.Contents__current {
-  margin-inline-start: 2ch;
-  color: var(--color-fg-minor);
+/* Only the item's own row: a current page does not make its children bold */
+.Contents__item--current > .Contents__row .Contents__label {
+  font-weight: var(--font-weight-bold);
 }
 
 @media print {

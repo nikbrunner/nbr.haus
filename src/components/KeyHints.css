@@ -1,0 +1,63 @@
+.KeyHints {
+  position: fixed;
+  right: var(--tab);
+  bottom: var(--line);
+  z-index: 10;
+  display: grid;
+  gap: var(--line-half);
+  padding: var(--line-half) var(--tab);
+  border: 1px solid var(--color-fg-main);
+  background-color: var(--color-bg-main);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0
+    color-mix(in oklch, var(--color-edge) 25%, transparent);
+}
+
+.KeyHints__title {
+  margin: 0;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
+
+.KeyHints__list {
+  margin: 0;
+}
+
+.KeyHints__hint {
+  display: grid;
+  grid-template-columns: 14ch auto;
+  column-gap: var(--tab);
+}
+
+.KeyHints__keys {
+  display: flex;
+  gap: 1ch;
+  align-items: baseline;
+}
+
+/* One bracketed binding each: a sequence shares the brackets, alternatives get their own */
+.KeyHints__key {
+  color: var(--color-accent);
+  font-family: inherit;
+  white-space: pre;
+
+  &::before {
+    color: var(--color-fg-minor);
+    content: "[" / "";
+  }
+
+  &::after {
+    color: var(--color-fg-minor);
+    content: "]" / "";
+  }
+}
+
+.KeyHints__label {
+  margin: 0;
+}
+
+@media print {
+  .KeyHints {
+    display: none;
+  }
+}

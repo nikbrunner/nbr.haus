@@ -145,6 +145,11 @@ body {
   color: var(--color-fg-on-accent);
 }
 
+/* A block selected by the keyboard cursor shows brackets (NavCursor), not a focus ring */
+[data-nav-selected]:focus {
+  outline: none;
+}
+
 :where(button) {
   font-family: var(--font-family);
 }

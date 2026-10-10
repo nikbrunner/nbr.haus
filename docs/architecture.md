@@ -102,6 +102,22 @@ UI reacts via CSS
 
 `src/scripts/theme-blocking.js` is inlined in `__root.tsx` and applies color mode and accent before React hydrates. Keep its accent values in sync with `src/types/style.ts`.
 
+## Keyboard
+
+`useSiteHotkeys` (`src/hooks/useSiteHotkeys.ts`, used by `SiteControls`) binds Vim-style keys with TanStack Hotkeys. `?` shows every binding in the `KeyHints` panel; a prefix (`g`, `t`, `m`, `z`) shows its next keys.
+
+- `j` `k` select the next or previous block, `h` `l` the links and buttons inside it, `Enter` opens. Arrow keys do the same once a block is selected; before that they scroll. `Esc` or a click clears the selection.
+- `J` `K` jump between section headings and scroll them to the top.
+- `d` `u` scroll half a page and carry the selection along. `gg` `G` select the first or last block, `zt` `zz` scroll the selection to the top or middle.
+- `gh` `gs` go home or to the study list, which opens with its first entry selected.
+- `t` + `r` `o` `g` `b` sets the accent, `m` + `l` `d` `s` the color mode.
+
+The cursor lives in `src/lib/navCursor.ts`, outside React, so it survives route changes. Blocks are found by `BLOCK_SELECTOR` in visual reading order; add `data-nav-block` to make another element one. The selection is real focus; `NavCursor` draws the brackets.
+
+## Audio
+
+`src/lib/audio.ts` holds one audio element for the whole site, outside React, so playback continues across pages. `AudioPlayer` on a study page and `MiniPlayer` read and steer it through `useAudio`. Switching voices resumes five seconds before the current position. The chosen voice and each file's position are kept in localStorage. Generating the files is covered in [Content](./content.md#audio).
+
 ## Data Flow Summary
 
 ```txt

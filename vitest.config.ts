@@ -35,7 +35,31 @@ export default defineConfig({
             name: "unit",
             dir: path.join(__dirname, "src"),
             include: ["**/*.test.ts"],
+            exclude: ["**/*.browser.test.ts"],
             environment: "node"
+          }
+        })
+      ),
+      mergeConfig(
+        storybookViteConfig,
+        defineConfig({
+          test: {
+            name: "dom",
+            dir: path.join(__dirname, "src"),
+            include: ["**/*.browser.test.ts"],
+            browser: {
+              enabled: true,
+              headless: true,
+              provider: playwright({
+                // Lets the audio tests start playback without a user gesture
+                launchOptions: {
+                  args: ["--autoplay-policy=no-user-gesture-required"]
+                }
+              }),
+              instances: [
+                { browser: "chromium", viewport: { width: 1000, height: 800 } }
+              ]
+            }
           }
         })
       )

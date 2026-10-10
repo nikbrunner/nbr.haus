@@ -1,6 +1,7 @@
 import { getRouteApi, Link, useLocation } from "@tanstack/react-router";
 
 import Contents from "@/components/Contents";
+import { useActiveSection } from "@/hooks/useActiveSection";
 import { formatStudyNumber } from "@/lib/study";
 
 const HOME_SECTIONS = [
@@ -11,12 +12,15 @@ const HOME_SECTIONS = [
   { id: "how-i-work", number: "05", title: "How I work" }
 ];
 
+const HOME_SECTION_IDS = HOME_SECTIONS.map(section => section.id);
+
 const rootRoute = getRouteApi("__root__");
 
 export function SiteIndex() {
   const pathname = useLocation({ select: location => location.pathname });
   const { posts } = rootRoute.useLoaderData();
   const slugs = posts.map(post => post.slug);
+  const activeSection = useActiveSection(HOME_SECTION_IDS, pathname === "/");
 
   return (
     <Contents
@@ -34,7 +38,8 @@ export function SiteIndex() {
               <Link to="/" hash={section.id}>
                 {section.title}
               </Link>
-            )
+            ),
+            current: section.id === activeSection
           }))
         },
         {

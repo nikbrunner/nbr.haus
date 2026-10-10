@@ -10,15 +10,18 @@ function ContentsList({ items }: { items: ContentsItem[] }) {
   return (
     <ul className="Contents__list">
       {items.map(item => (
-        <li key={item.key} className="Contents__item">
+        <li
+          key={item.key}
+          className={
+            item.current
+              ? "Contents__item Contents__item--current"
+              : "Contents__item"
+          }
+          aria-current={item.current ? "location" : undefined}
+        >
           <span className="Contents__row">
             <span className="Contents__marker">{item.marker}</span>
             <span className="Contents__label">{item.label}</span>
-            {item.current && (
-              <span className="Contents__current" aria-hidden="true">
-                ◀ here
-              </span>
-            )}
           </span>
           {item.children && <ContentsList items={item.children} />}
         </li>
