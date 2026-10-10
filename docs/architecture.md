@@ -61,7 +61,7 @@ useQuery(getCommitLog())          src/lib/github/queries.ts
     ↓
 fetchCommitLog (GET server fn)    src/lib/github/fetchCommitLog.ts
     ↓
-GITHUB_TOKEN set?  → GraphQL, one query with an alias per repo
+GITHUB_PAT set?    → GraphQL, one query with an alias per repo
 otherwise / on failure → REST, one request per repo, no token
     ↓
 Zod parses the response, commits are merged and sorted (src/lib/github/commitLog.ts)
@@ -70,8 +70,9 @@ Zod parses the response, commits are merged and sorted (src/lib/github/commitLog
 - The server function returns errors as values: `{ status: "ok", log }` or `{ status: "error", code }`. The UI shows a link to GitHub when the log is unavailable.
 - Every GitHub request times out after 4 seconds.
 - Caching depends on the outcome. A full log is `200` with `s-maxage=300, stale-while-revalidate`, so the CDN serves it and GitHub sees about one request every five minutes. A partial log (some repos failed) is `200` with `s-maxage=60`. When every source fails, the response is `503` with no cache headers; the CDN does not store it and keeps serving the last good log.
-- `GITHUB_TOKEN` is a fine-grained token with read-only access to public repositories, set as a Vercel environment variable. Without it the unauthenticated REST fallback applies.
-- Only commits authored by `GITHUB_USER` count. Pins show each repo's newest commit date from the same response.
+- `GITHUB_PAT` is a fine-grained token with read-only access to public repositories, set as a Vercel environment variable. Without it the unauthenticated REST fallback applies.
+- The server sends the newest 50 commits; the home page shows ten and adds ten per "Show more".
+- Only commits authored by `GITHUB_USER` count.
 
 ## Theming System
 

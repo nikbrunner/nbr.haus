@@ -20,7 +20,7 @@ const REQUEST_TIMEOUT_MS = 4000;
 
 export const fetchCommitLog = createServerFn({ method: "GET" }).handler(
   async (): Promise<CommitLogResult> => {
-    const load = await loadHistories(process.env.GITHUB_TOKEN);
+    const load = await loadHistories(process.env.GITHUB_PAT);
     const policy = getCachePolicy(load);
 
     setResponseStatus(policy.status);
