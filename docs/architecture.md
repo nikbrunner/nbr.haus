@@ -44,11 +44,15 @@ Server-only code uses TanStack Start's `createServerFn`. Study posts read Markdo
 
 `src/routes/__root.tsx` handles:
 
-- SEO meta tags and structured data (JSON-LD)
+- Site-wide meta tags, the Person structured data (JSON-LD) and the link to the study feed
 - Global CSS import
 - Search param validation and retention
 - The paper `Sheet` on the desk and the `Grain` overlay
 - Color mode initialization script (prevents flash)
+
+Each page route sets its own canonical link and `og:url` from `absoluteUrl` in `src/lib/site.ts`, since `links` from parent routes are concatenated rather than replaced. A study post adds `BlogPosting` structured data.
+
+`src/routes/sitemap[.]xml.ts` and `src/routes/study/rss[.]xml.ts` are server routes that build the sitemap and the RSS feed from the posts. The curl middleware lets `.xml` paths through, so feed readers whose user agent contains `fetch` get the feed.
 
 `src/router.tsx` creates the `QueryClient` and connects it with `setupRouterSsrQueryIntegration`.
 

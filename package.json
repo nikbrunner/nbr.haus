@@ -11,6 +11,7 @@
     "build": "vite build",
     "serve": "vite preview",
     "serve:host": "npm run build && vite preview --host --port 3000",
+    "generate:og-image": "node scripts/generate-og-image.ts",
     "generate:audio": "ELEVENLABS_API_KEY=pass://Nik/.env/ELEVENLABS_API_TOKEN pass-cli run -- node scripts/generate-study-audio.ts",
     "test": "vitest run",
     "test:e2e": "playwright test",

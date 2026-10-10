@@ -16,7 +16,7 @@ All copy is English and written inline in the routes (`src/routes/*.tsx`). Compo
 
 ## Study Posts
 
-Study posts are Markdown files with frontmatter in `src/content/study/<slug>.en.md`. `publishedAt` is a `YYYY-MM-DD` date. Posts are loaded by the server functions in `src/lib/study/posts.ts` and served at `/study/<slug>`. A post renders as up to four sections: `00 Record` (published, tags, length, and a Listen player when the post has audio), `01 Text` with each `##` heading numbered 01.1, 01.2 and so on, `02 Sources` when the post has footnotes, and `03 More` linking the neighbouring posts when there are any. Cite with Markdown footnotes (`text.[^key]` plus a `[^key]: Source.` definition): sources are numbered by first reference, and each reference links to its `[n]` entry in `02 Sources`. Cite several sources for one claim in a single footnote, since adjacent references run together. `npm run format` wraps post prose at 80 columns (an `overrides` entry in `.oxfmtrc.json`); a wrapped footnote definition continues on indented lines. Its study number counts posts oldest first.
+Study posts are Markdown files with frontmatter in `src/content/study/<slug>.en.md`. `publishedAt` is a `YYYY-MM-DD` date. Posts are loaded by the server functions in `src/lib/study/posts.ts` and served at `/study/<slug>`. A post renders as up to four sections: `00 Record` (published, tags, length, and a Listen player when the post has audio), `01 Text` with each `##` heading numbered 01.1, 01.2 and so on, `02 Sources` when the post has footnotes, and `03 More` linking the neighbouring posts when there are any. Cite with Markdown footnotes (`text.[^key]` plus a `[^key]: Source.` definition): sources are numbered by first reference, and each reference links to its `[n]` entry in `02 Sources`. Cite several sources for one claim in a single footnote, since adjacent references run together. `npm run format` wraps post prose at 80 columns (an `overrides` entry in `.oxfmtrc.json`); a wrapped footnote definition continues on indented lines. Its study number counts posts oldest first. A published post appears in `/sitemap.xml` and the `/study/rss.xml` feed on its own; a `draft: true` post stays out of both.
 
 ### Audio
 
@@ -29,6 +29,10 @@ The `study audio` pre-commit hook warns, without blocking the commit, when a sta
 ## CV
 
 The home page is the CV. Printing it (or the Print button) produces an A4 layout, ink on white, without controls or navigation. The print tokens sit at the end of `src/styles/global.css`; each component handles its own print adjustments.
+
+## Social Preview
+
+`public/og-image.jpg` is the preview image for every shared link. `npm run generate:og-image` screenshots the top of the home page at 1200×630 in light mode while `npm run dev` runs; rerun it when the header changes.
 
 ## Adding a New Route
 

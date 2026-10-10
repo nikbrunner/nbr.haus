@@ -6,6 +6,7 @@ import Entry from "@/components/Entry";
 import InlineList from "@/components/InlineList";
 import { SpecItem, SpecList } from "@/components/SpecList";
 import SpecSection from "@/components/SpecSection";
+import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
   formatStudyNumber,
   getAdjacentPosts,
@@ -41,20 +42,47 @@ export const Route = createFileRoute("/study/$slug")({
   },
   head: ({ loaderData }) => {
     const post = loaderData?.post;
-    const title = post?.frontmatter.title ?? "Post Not Found";
-    const description = post?.frontmatter.excerpt ?? "";
+
+    if (!post) {
+      return { meta: [{ title: "Post Not Found" }] };
+    }
+
+    const { title, excerpt, publishedAt, tags, audio } = post.frontmatter;
+    const url = absoluteUrl(`/study/${post.slug}`);
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": title,
+      "description": excerpt,
+      "datePublished": publishedAt,
+      "url": url,
+      "mainEntityOfPage": url,
+      "inLanguage": "en",
+      "keywords": tags,
+      "image": absoluteUrl("/og-image.jpg"),
+      "author": { "@type": "Person", "name": "Nik Brunner", "url": SITE_URL },
+      ...(audio && {
+        audio: {
+          "@type": "AudioObject",
+          "contentUrl": absoluteUrl(studyAudioPath(post.slug, STUDY_VOICES[0].id)),
+          "encodingFormat": "audio/mpeg"
+        }
+      })
+    };
 
     return {
       meta: [
         { title: `${title}, Study, Nik Brunner` },
-        { name: "description", content: description },
+        { name: "description", content: excerpt },
         { property: "og:title", content: title },
-        { property: "og:description", content: description },
+        { property: "og:description", content: excerpt },
         { property: "og:type", content: "article" },
-        {
-          property: "article:published_time",
-          content: post?.frontmatter.publishedAt
-        }
+        { property: "og:url", content: url },
+        { property: "article:published_time", content: publishedAt }
+      ],
+      links: [{ rel: "canonical", href: url }],
+      scripts: [
+        { type: "application/ld+json", children: JSON.stringify(structuredData) }
       ]
     };
   },

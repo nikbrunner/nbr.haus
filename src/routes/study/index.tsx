@@ -6,21 +6,25 @@ import Prose from "@/components/Prose";
 import Rule from "@/components/Rule";
 import SpecSection from "@/components/SpecSection";
 import Text from "@/components/Text";
+import { absoluteUrl } from "@/lib/site";
 import { getAllPosts } from "@/lib/study";
+import {
+  STUDY_DESCRIPTION as DESCRIPTION,
+  STUDY_TITLE as TITLE
+} from "@/lib/study/meta";
 import { SiteHeader } from "@/partials/SiteHeader";
-
-const DESCRIPTION =
-  "Notes on what I read and what I keep thinking about afterwards.";
 
 export const Route = createFileRoute("/study/")({
   loader: async () => ({ posts: await getAllPosts() }),
   head: () => ({
     meta: [
-      { title: "Study, Nik Brunner" },
+      { title: TITLE },
       { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: "Study, Nik Brunner" },
-      { property: "og:description", content: DESCRIPTION }
-    ]
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
+      { property: "og:url", content: absoluteUrl("/study") }
+    ],
+    links: [{ rel: "canonical", href: absoluteUrl("/study") }]
   }),
   component: StudyIndexPage
 });

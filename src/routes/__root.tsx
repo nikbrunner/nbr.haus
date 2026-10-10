@@ -10,7 +10,9 @@ import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
 import Grain from "@/components/Grain";
 import Sheet from "@/components/Sheet";
+import { absoluteUrl, SITE_URL } from "@/lib/site";
 import { getAllPosts } from "@/lib/study";
+import { STUDY_TITLE } from "@/lib/study/meta";
 import { NotFound } from "@/partials/NotFound";
 import curlHintScript from "@/scripts/curl-hint.js?raw";
 import themeBlockingScript from "@/scripts/theme-blocking.js?raw";
@@ -21,6 +23,7 @@ import {
 
 import globalCss from "@/styles/global.css?url";
 
+const TITLE = "Nik Brunner, Senior Design Engineer";
 const DESCRIPTION =
   "Nikolaus Brunner, Design Engineer in Landshut. I build frontend architecture and design systems.";
 
@@ -62,7 +65,7 @@ export const Route = createRootRoute({
       },
       {
         property: "og:title",
-        content: "Nik Brunner, Design Engineer"
+        content: TITLE
       },
       {
         property: "og:description",
@@ -70,34 +73,14 @@ export const Route = createRootRoute({
       },
       {
         property: "og:image",
-        content: "https://nbr.haus/og-image.jpg"
-      },
-      {
-        property: "og:url",
-        content: "https://nbr.haus"
+        content: absoluteUrl("/og-image.jpg")
       },
       {
         name: "twitter:card",
         content: "summary_large_image"
       },
       {
-        name: "twitter:title",
-        content: "Nik Brunner, Senior Design Engineer"
-      },
-      {
-        name: "twitter:description",
-        content: DESCRIPTION
-      },
-      {
-        name: "twitter:image",
-        content: "https://nbr.haus/og-image.jpg"
-      },
-      {
-        name: "twitter:url",
-        content: "https://nbr.haus"
-      },
-      {
-        title: "Nik Brunner, Senior Design Engineer"
+        title: TITLE
       }
     ],
     links: [
@@ -109,8 +92,10 @@ export const Route = createRootRoute({
         crossOrigin: "anonymous"
       },
       {
-        rel: "canonical",
-        href: "https://nbr.haus/"
+        rel: "alternate",
+        type: "application/rss+xml",
+        title: STUDY_TITLE,
+        href: "/study/rss.xml"
       },
       {
         rel: "icon",
@@ -131,8 +116,8 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Nik Brunner",
-    "url": "https://www.nbr.haus",
-    "image": "https://www.nbr.haus/og-image.jpg",
+    "url": SITE_URL,
+    "image": absoluteUrl("/og-image.jpg"),
     "jobTitle": "Senior Design Engineer",
     "description": DESCRIPTION,
     "knowsAbout": [

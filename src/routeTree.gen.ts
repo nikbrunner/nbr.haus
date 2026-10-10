@@ -10,13 +10,20 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as StudyRouteRouteImport } from './routes/study/route'
 import { Route as StudyIndexRouteImport } from './routes/study/index'
 import { Route as StudySlugRouteImport } from './routes/study/$slug'
+import { Route as StudyRssDotxmlRouteImport } from './routes/study/rss[.]xml'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StudyRouteRoute = StudyRouteRouteImport.update({
@@ -34,36 +41,61 @@ const StudySlugRoute = StudySlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => StudyRouteRoute,
 } as any)
+const StudyRssDotxmlRoute = StudyRssDotxmlRouteImport.update({
+  id: '/rss.xml',
+  path: '/rss.xml',
+  getParentRoute: () => StudyRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/study': typeof StudyRouteRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/study/$slug': typeof StudySlugRoute
+  '/study/rss.xml': typeof StudyRssDotxmlRoute
   '/study/': typeof StudyIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/study/$slug': typeof StudySlugRoute
+  '/study/rss.xml': typeof StudyRssDotxmlRoute
   '/study': typeof StudyIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/study': typeof StudyRouteRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/study/$slug': typeof StudySlugRoute
+  '/study/rss.xml': typeof StudyRssDotxmlRoute
   '/study/': typeof StudyIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/study' | '/study/$slug' | '/study/'
+  fullPaths:
+    | '/'
+    | '/study'
+    | '/sitemap.xml'
+    | '/study/$slug'
+    | '/study/rss.xml'
+    | '/study/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/study/$slug' | '/study'
-  id: '__root__' | '/' | '/study' | '/study/$slug' | '/study/'
+  to: '/' | '/sitemap.xml' | '/study/$slug' | '/study/rss.xml' | '/study'
+  id:
+    | '__root__'
+    | '/'
+    | '/study'
+    | '/sitemap.xml'
+    | '/study/$slug'
+    | '/study/rss.xml'
+    | '/study/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   StudyRouteRoute: typeof StudyRouteRouteWithChildren
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -73,6 +105,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/study': {
@@ -96,16 +135,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StudySlugRouteImport
       parentRoute: typeof StudyRouteRoute
     }
+    '/study/rss.xml': {
+      id: '/study/rss.xml'
+      path: '/rss.xml'
+      fullPath: '/study/rss.xml'
+      preLoaderRoute: typeof StudyRssDotxmlRouteImport
+      parentRoute: typeof StudyRouteRoute
+    }
   }
 }
 
 interface StudyRouteRouteChildren {
   StudySlugRoute: typeof StudySlugRoute
+  StudyRssDotxmlRoute: typeof StudyRssDotxmlRoute
   StudyIndexRoute: typeof StudyIndexRoute
 }
 
 const StudyRouteRouteChildren: StudyRouteRouteChildren = {
   StudySlugRoute: StudySlugRoute,
+  StudyRssDotxmlRoute: StudyRssDotxmlRoute,
   StudyIndexRoute: StudyIndexRoute,
 }
 
@@ -116,6 +164,7 @@ const StudyRouteRouteWithChildren = StudyRouteRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   StudyRouteRoute: StudyRouteRouteWithChildren,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

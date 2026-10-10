@@ -135,7 +135,7 @@ function renderSheet(): string {
 export default defineEventHandler(event => {
   const userAgent = event.req.headers.get("user-agent");
 
-  if (isCLIRequest(userAgent)) {
+  if (isCLIRequest(userAgent) && !event.url.pathname.endsWith(".xml")) {
     return new Response(renderSheet(), {
       headers: { "Content-Type": "text/plain; charset=utf-8" }
     });
