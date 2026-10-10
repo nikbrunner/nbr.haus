@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import SpecList from "@/components/SpecList";
+import { SpecItem, SpecList } from "@/components/SpecList";
 
 const meta: Meta<typeof SpecList> = {
   component: SpecList
@@ -11,9 +11,14 @@ type Story = StoryObj<typeof SpecList>;
 
 export const Default: Story = {
   args: {
-    items: [
-      { label: "Label 1", value: "Value 1" },
-      { label: "Label 2", value: "Value 2" }
-    ]
+    children: (
+      <>
+        <SpecItem label="Name">Nikolaus Brunner, Nik for short</SpecItem>
+        <SpecItem label="Base">Landshut, Bavaria, DE</SpecItem>
+        <SpecItem label="Mail">
+          <a href="mailto:nik@nbr.haus">nik@nbr.haus</a>
+        </SpecItem>
+      </>
+    )
   }
 };

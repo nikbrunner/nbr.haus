@@ -1,0 +1,54 @@
+.AgentSkillFlow {
+  display: block;
+  width: 100%;
+  max-width: 28rem;
+  height: auto;
+  font-family: var(--font-family);
+  font-size: 13px;
+  overflow: visible;
+}
+
+.AgentSkillFlow text {
+  fill: var(--color-fg-main);
+}
+
+.AgentSkillFlow .AgentSkillFlow__text--minor,
+.AgentSkillFlow__legend text {
+  fill: var(--color-fg-minor);
+}
+
+.AgentSkillFlow__legend text {
+  font-size: 11px;
+}
+
+.AgentSkillFlow__box {
+  fill: var(--color-bg-main);
+  stroke: var(--color-fg-main);
+  stroke-width: 1;
+}
+
+.AgentSkillFlow__node--primary .AgentSkillFlow__box {
+  stroke: var(--color-accent);
+  stroke-width: 1.5;
+}
+
+.AgentSkillFlow__node--knowledge .AgentSkillFlow__box {
+  stroke: var(--color-fg-minor);
+  stroke-dasharray: 3 3;
+}
+
+.AgentSkillFlow__group {
+  fill: color-mix(in oklch, var(--color-fg-minor) 8%, transparent);
+}
+
+.AgentSkillFlow__edge {
+  stroke: var(--color-fg-minor);
+}
+
+.AgentSkillFlow__edge--dashed {
+  stroke-dasharray: 3 3;
+}
+
+.AgentSkillFlow__head {
+  fill: var(--color-fg-minor);
+}

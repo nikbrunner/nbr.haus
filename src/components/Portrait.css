@@ -1,0 +1,42 @@
+/* A print on its own light paper, edged with the sections' double rule */
+.Portrait {
+  display: grid;
+  border: 4px double var(--ink-light);
+  background-color: var(--paper-light);
+  position: relative;
+  isolation: isolate;
+}
+
+/* Tints paper and ink toward the theme's accent, harder on dark paper where a plain print glares */
+.Portrait::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: light-dark(
+    color-mix(in oklch, var(--color-accent) 15%, transparent),
+    color-mix(in oklch, var(--color-accent) 40%, transparent)
+  );
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.Portrait__drawing {
+  min-height: 0;
+  background-color: var(--ink-light);
+  /* Fills the frame like a trimmed print; the crop keeps the face, which sits high in the drawing */
+  mask: var(--portrait-mask) center 30% / cover no-repeat;
+}
+
+/* Without a height from its surroundings, the frame keeps the drawing's proportion */
+@container (width < 64ch) {
+  .Portrait__drawing {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+/* Print drops background colors, so the masked drawing would come out blank */
+@media print {
+  .Portrait {
+    display: none;
+  }
+}

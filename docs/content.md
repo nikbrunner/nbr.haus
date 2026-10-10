@@ -1,75 +1,64 @@
 # Content
 
-How to add and update content in the project.
+How to add and update content.
 
 ## Text
 
 All copy is English and written inline in the routes (`src/routes/*.tsx`). Components receive text via props.
 
+## Projects and Commit Log
+
+`src/config.ts` holds:
+
+- `pins` - the pinned project cards
+- `moreProjects` - the "Also" links
+- `logRepos` - the repos whose commits feed the log, as `owner/name`
+
 ## Study Posts
 
-Study posts are Markdown files with frontmatter in `src/content/study/<slug>.en.md`. They are loaded by the server functions in `src/lib/study/posts.ts` and served at `/study/<slug>`.
+Study posts are Markdown files with frontmatter in `src/content/study/<slug>.en.md`. `publishedAt` is a `YYYY-MM-DD` date. Posts are loaded by the server functions in `src/lib/study/posts.ts` and served at `/study/<slug>`. A post renders as up to four sections: `00 Record` (published, tags, length, and a Listen player when the post has audio), `01 Text` with each `##` heading numbered 01.1, 01.2 and so on, `02 Sources` when the post has footnotes, and `03 More` linking the neighbouring posts when there are any. Cite with Markdown footnotes (`text.[^key]` plus a `[^key]: Source.` definition): sources are numbered by first reference, and each reference links to its `[n]` entry in `02 Sources`. Cite several sources for one claim in a single footnote, since adjacent references run together. `npm run format` wraps post prose at 80 columns (an `overrides` entry in `.oxfmtrc.json`); a wrapped footnote definition continues on indented lines. Its study number counts posts oldest first. A published post appears in `/sitemap.xml` and the `/study/rss.xml` feed on its own; a `draft: true` post stays out of both.
+
+### Audio
+
+`npm run generate:audio -- <slug>` reads a post aloud, or with `home` the home page's spoken version in `src/content/pages/`, with ElevenLabs (`eleven_v4`) once per voice in `src/lib/study/voices.ts` and writes `public/audio/<slug>.<voice>.mp3`. Each voice names its ElevenLabs voice ID through the `ElevenLabsVoice` map and can carry an audio tag and voice settings; the first voice is the default. The script reads the API key from Proton Pass (`ELEVENLABS_API_TOKEN`), generates the spoken text in a single request per voice (Eleven v4 takes up to 10,000 characters, tags included), puts a `[long pause]` tag before each heading, repeats a voice's audio tag at every paragraph, masters the result with ffmpeg, tuned in its `MASTERING` settings (ffmpeg must be installed), and records the text's hash in the post's `audio` frontmatter field. The hash covers the spoken text, the model and every voice with its settings, so frontmatter edits and re-wrapped lines leave it fresh. `npm run generate:audio -- <slug> <voice>` generates one voice only, to try a change before paying for the rest; it leaves the hash alone, so the post stays out of date until a full run. `speakTitle: false` in the frontmatter starts the audio with the body instead of the title. Generate audio only after the text is final: every run is billed, once per voice.
+
+A post with an `audio` field shows the `MiniPlayer` in `00 Record` and joins the media player's playlist; playback is described under [Audio](./architecture.md#audio).
+
+The `study audio` pre-commit hook warns, without blocking the commit, when a staged post's or page's audio is missing or out of date. It reads the working tree, so a partially staged post is checked as it is on disk.
+
+`src/content/pages/home.en.md` is the home page as Nik would say it: Ident, About, Work, Projects and How I work as prose, without the commit log and the study list. It uses the same frontmatter and spoken-text rules as a post; once it has audio, the home page shows the `MiniPlayer` in `01 Ident` and the media player lists it first. The `home prose` pre-commit hook warns, without blocking the commit, when `src/routes/index.tsx` or `src/config.ts` is staged and the spoken version is not.
+
+## CV
+
+The home page is the CV. Printing it (or the Print button) produces an A4 layout, ink on white, without controls or navigation. The print tokens sit at the end of `src/styles/global.css`; each component handles its own print adjustments.
+
+## Social Preview
+
+`public/og-image.jpg` is the preview image for every shared link. `npm run generate:og-image` screenshots the top of the home page at 1200×630 in light mode while `npm run dev` runs; rerun it when the header changes.
 
 ## Adding a New Route
 
-1. Create a route file in `src/routes/`:
+1. Create a route file in `src/routes/`. A page opens with its own header and the site controls, and closes with its footer:
 
 ```tsx
 // src/routes/about.tsx
 import { createFileRoute } from "@tanstack/react-router";
+
+import Colophon from "@/components/Colophon";
+import { SiteHeader } from "@/partials/SiteHeader";
 
 export const Route = createFileRoute("/about")({
   component: AboutRoute
 });
 
 function AboutRoute() {
-  return <div>About</div>;
+  return (
+    <>
+      <SiteHeader meta={["About", "2026-10-06"]} title={["About"]} />
+      <Colophon start="nbr.haus" center="Design via function" end="Page 1 / 1" />
+    </>
+  );
 }
 ```
 
-2. (Optional) Create co-located CSS:
-
-```css
-/* src/routes/about.css */
-```
-
-3. Import CSS in `src/styles/global.css`:
-
-```css
-@import "../routes/about.css";
-```
-
-4. The route tree regenerates automatically on `npm run dev`.
-
-## Updating CV Content
-
-CV content lives inline in `src/routes/cv.tsx`. `npm run generate:cv` regenerates `public/Nikolaus_Brunner_CV_en.pdf` from it.
-
-The CV route (`/cv`) is designed for PDF export via browser print.
-
-## Updating Tech Stack
-
-Tech definitions live in `src/config.ts`:
-
-```ts
-export const tech = {
-  typescript: {
-    name: "TypeScript",
-    url: "https://www.typescriptlang.org",
-    color: "#3178c6"
-  }
-  // Add new tech here...
-} as const;
-```
-
-Use in components:
-
-```tsx
-import { tech } from "@/config";
-
-<Tag name={tech.react.name} url={tech.react.url} />;
-```
-
-## ControlPanel Sections
-
-The ControlPanel's section navigation is built at runtime by `useDynamicSections`, which scans `<main>` for `[data-section]`, `section[id]`, `h2[id]` and `h3[id]`. Give a section an `id` and it shows up; the label comes from `data-section-label`, `aria-label` or the text content.
+2. The route tree regenerates automatically on `npm run dev`.

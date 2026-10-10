@@ -1,0 +1,17 @@
+pre-commit:
+  jobs:
+    - name: study audio
+      glob:
+        - "src/content/study/*.md"
+        - "src/content/pages/*.md"
+      run: node scripts/check-study-audio.ts {staged_files}
+    - name: home prose
+      glob:
+        - "src/routes/index.tsx"
+        - "src/config.ts"
+      run: node scripts/check-home-prose.ts
+
+pre-push:
+  jobs:
+    - name: e2e
+      run: npm run test:e2e

@@ -3,22 +3,26 @@ import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
 import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
-import viteTsConfigPaths from "vite-tsconfig-paths";
 
 const config = defineConfig({
-  build: {
-    // Disable CSS code splitting to prevent FOUC in SSR
-    // All CSS will be bundled together and loaded upfront
-    cssCodeSplit: false
+  define: {
+    __BUILD_DATE__: JSON.stringify(new Date().toISOString().slice(0, 10)),
+    // Origin the social preview image loads from, so previews and localhost show their own
+    __ASSET_ORIGIN__: JSON.stringify(
+      process.env.VERCEL_ENV === "production"
+        ? "https://nbr.haus"
+        : process.env.VERCEL_URL
+          ? `https://${process.env.VERCEL_URL}`
+          : "http://localhost:3000"
+    )
+  },
+  resolve: {
+    tsconfigPaths: true
   },
   plugins: [
     devtools(),
     nitro({
       serverDir: "./server"
-    }),
-    // this is the plugin that enables path aliases
-    viteTsConfigPaths({
-      projects: ["./tsconfig.json"]
     }),
     tanstackStart(),
     viteReact()

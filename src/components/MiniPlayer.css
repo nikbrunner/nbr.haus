@@ -1,0 +1,14 @@
+.MiniPlayer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--tab);
+  align-items: baseline;
+  /* Keeps the Listen label above it in view when a link scrolls here */
+  scroll-margin-top: var(--line-double);
+}
+
+.MiniPlayer__time {
+  color: var(--color-fg-minor);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}

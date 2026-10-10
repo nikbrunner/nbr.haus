@@ -28,7 +28,7 @@ function getPostEntries(): Array<{ slug: string; content: string }> {
   return entries;
 }
 
-function fetchAllPosts(): StudyPostMeta[] {
+export function fetchAllPosts(): StudyPostMeta[] {
   const entries = getPostEntries();
 
   const posts = entries

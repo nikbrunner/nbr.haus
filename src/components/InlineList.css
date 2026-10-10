@@ -1,0 +1,9 @@
+.InlineList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--tab);
+  align-items: baseline;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

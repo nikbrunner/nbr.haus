@@ -1,0 +1,10 @@
+.ControlBar {
+  display: flex;
+  flex-direction: column;
+}
+
+@media print {
+  .ControlBar {
+    display: none;
+  }
+}

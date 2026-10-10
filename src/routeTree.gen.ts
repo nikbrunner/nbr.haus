@@ -9,17 +9,27 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as CvRouteImport } from './routes/cv'
-import { Route as StudyRouteRouteImport } from './routes/study/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CvRouteImport } from './routes/cv'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as StudyRouteRouteImport } from './routes/study/route'
 import { Route as StudyIndexRouteImport } from './routes/study/index'
-import { Route as CoverIndexRouteImport } from './routes/cover/index'
 import { Route as StudySlugRouteImport } from './routes/study/$slug'
-import { Route as CoverCompanyRouteImport } from './routes/cover/$company'
+import { Route as StudyRssDotxmlRouteImport } from './routes/study/rss[.]xml'
 
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CvRoute = CvRouteImport.update({
   id: '/cv',
   path: '/cv',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StudyRouteRoute = StudyRouteRouteImport.update({
@@ -27,47 +37,37 @@ const StudyRouteRoute = StudyRouteRouteImport.update({
   path: '/study',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const StudyIndexRoute = StudyIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => StudyRouteRoute,
-} as any)
-const CoverIndexRoute = CoverIndexRouteImport.update({
-  id: '/cover/',
-  path: '/cover/',
-  getParentRoute: () => rootRouteImport,
 } as any)
 const StudySlugRoute = StudySlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => StudyRouteRoute,
 } as any)
-const CoverCompanyRoute = CoverCompanyRouteImport.update({
-  id: '/cover/$company',
-  path: '/cover/$company',
-  getParentRoute: () => rootRouteImport,
+const StudyRssDotxmlRoute = StudyRssDotxmlRouteImport.update({
+  id: '/rss.xml',
+  path: '/rss.xml',
+  getParentRoute: () => StudyRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/study': typeof StudyRouteRouteWithChildren
   '/cv': typeof CvRoute
-  '/cover/$company': typeof CoverCompanyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/study/$slug': typeof StudySlugRoute
-  '/cover/': typeof CoverIndexRoute
+  '/study/rss.xml': typeof StudyRssDotxmlRoute
   '/study/': typeof StudyIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cv': typeof CvRoute
-  '/cover/$company': typeof CoverCompanyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/study/$slug': typeof StudySlugRoute
-  '/cover': typeof CoverIndexRoute
+  '/study/rss.xml': typeof StudyRssDotxmlRoute
   '/study': typeof StudyIndexRoute
 }
 export interface FileRoutesById {
@@ -75,9 +75,9 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/study': typeof StudyRouteRouteWithChildren
   '/cv': typeof CvRoute
-  '/cover/$company': typeof CoverCompanyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/study/$slug': typeof StudySlugRoute
-  '/cover/': typeof CoverIndexRoute
+  '/study/rss.xml': typeof StudyRssDotxmlRoute
   '/study/': typeof StudyIndexRoute
 }
 export interface FileRouteTypes {
@@ -86,20 +86,21 @@ export interface FileRouteTypes {
     | '/'
     | '/study'
     | '/cv'
-    | '/cover/$company'
+    | '/sitemap.xml'
     | '/study/$slug'
-    | '/cover/'
+    | '/study/rss.xml'
     | '/study/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cv' | '/cover/$company' | '/study/$slug' | '/cover' | '/study'
+  to:
+    '/' | '/cv' | '/sitemap.xml' | '/study/$slug' | '/study/rss.xml' | '/study'
   id:
     | '__root__'
     | '/'
     | '/study'
     | '/cv'
-    | '/cover/$company'
+    | '/sitemap.xml'
     | '/study/$slug'
-    | '/cover/'
+    | '/study/rss.xml'
     | '/study/'
   fileRoutesById: FileRoutesById
 }
@@ -107,17 +108,30 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   StudyRouteRoute: typeof StudyRouteRouteWithChildren
   CvRoute: typeof CvRoute
-  CoverCompanyRoute: typeof CoverCompanyRoute
-  CoverIndexRoute: typeof CoverIndexRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cv': {
       id: '/cv'
       path: '/cv'
       fullPath: '/cv'
       preLoaderRoute: typeof CvRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/study': {
@@ -127,26 +141,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StudyRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/study/': {
       id: '/study/'
       path: '/'
       fullPath: '/study/'
       preLoaderRoute: typeof StudyIndexRouteImport
       parentRoute: typeof StudyRouteRoute
-    }
-    '/cover/': {
-      id: '/cover/'
-      path: '/cover'
-      fullPath: '/cover/'
-      preLoaderRoute: typeof CoverIndexRouteImport
-      parentRoute: typeof rootRouteImport
     }
     '/study/$slug': {
       id: '/study/$slug'
@@ -155,23 +155,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StudySlugRouteImport
       parentRoute: typeof StudyRouteRoute
     }
-    '/cover/$company': {
-      id: '/cover/$company'
-      path: '/cover/$company'
-      fullPath: '/cover/$company'
-      preLoaderRoute: typeof CoverCompanyRouteImport
-      parentRoute: typeof rootRouteImport
+    '/study/rss.xml': {
+      id: '/study/rss.xml'
+      path: '/rss.xml'
+      fullPath: '/study/rss.xml'
+      preLoaderRoute: typeof StudyRssDotxmlRouteImport
+      parentRoute: typeof StudyRouteRoute
     }
   }
 }
 
 interface StudyRouteRouteChildren {
   StudySlugRoute: typeof StudySlugRoute
+  StudyRssDotxmlRoute: typeof StudyRssDotxmlRoute
   StudyIndexRoute: typeof StudyIndexRoute
 }
 
 const StudyRouteRouteChildren: StudyRouteRouteChildren = {
   StudySlugRoute: StudySlugRoute,
+  StudyRssDotxmlRoute: StudyRssDotxmlRoute,
   StudyIndexRoute: StudyIndexRoute,
 }
 
@@ -183,8 +185,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   StudyRouteRoute: StudyRouteRouteWithChildren,
   CvRoute: CvRoute,
-  CoverCompanyRoute: CoverCompanyRoute,
-  CoverIndexRoute: CoverIndexRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

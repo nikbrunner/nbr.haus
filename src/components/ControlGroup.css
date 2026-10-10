@@ -1,0 +1,14 @@
+.ControlGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1ch;
+  align-items: baseline;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
+
+/* One width for every label, so the options of stacked groups start on the same column */
+.ControlGroup__label {
+  min-inline-size: 7ch;
+  color: var(--color-fg-minor);
+}

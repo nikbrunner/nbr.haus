@@ -1,14 +1,17 @@
 # Architecture
 
-Overview of how the system is structured and how the pieces connect.
+How the site is structured and how the pieces connect.
 
 ## Tech Stack
 
 - **TanStack Start** - SSR framework with file-based routing
+- **TanStack Query** - Client-side server state (the commit log)
 - **React 19** - UI library
 - **TypeScript** - Type safety
 - **CSS** - Regular CSS with BEM naming (no CSS-in-JS)
-- **Zod** - Schema validation for search params and types
+- **Zod** - Validation for search params and GitHub responses
+
+Vercel is the deploy target.
 
 ## Routing
 
@@ -16,14 +19,11 @@ File-based routing in `src/routes/`. The route tree is auto-generated at `src/ro
 
 ### Routes
 
-| Route             | Purpose                                 |
-| ----------------- | --------------------------------------- |
-| `/`               | Main portfolio page                     |
-| `/cv`             | Print-friendly CV (PDF export)          |
-| `/study`          | Study posts list                        |
-| `/study/$slug`    | Study post (Markdown in `src/content/`) |
-| `/cover`          | Cover letters                           |
-| `/cover/$company` | Cover letter for one company            |
+| Route          | Purpose                                                         |
+| -------------- | --------------------------------------------------------------- |
+| `/`            | Spec sheet: ident, work, projects, study. Also the printable CV |
+| `/study`       | Study posts list                                                |
+| `/study/$slug` | Study post (Markdown in `src/content/`)                         |
 
 Unknown paths render the root `notFoundComponent` with HTTP 404.
 
@@ -31,101 +31,112 @@ Unknown paths render the root `notFoundComponent` with HTTP 404.
 
 URL search params are the source of truth for UI state. Defined in `src/validators/rootSearchParams.ts`:
 
-- `accent` - Accent hue preset
+- `theme` - Color theme
 - `colorMode` - light/dark/system
-- `contrast` - low/base/high
 
-`accent` and `colorMode` are **retained across navigation** via TanStack Router's `retainSearchParams` middleware in `__root.tsx`. Params equal to their default are stripped from the URL.
+Both are **retained across navigation** via TanStack Router's `retainSearchParams` middleware in `__root.tsx`. Params equal to their default are stripped from the URL. Invalid values fall back to the default.
 
 ### Server Functions
 
-For server-only code (filesystem access, database queries, etc.), use TanStack Start's `createServerFn`. This ensures code runs only on the server and is not bundled into the client.
-
-```tsx
-import { createServerFn } from "@tanstack/react-start";
-
-// src/lib/study/posts.ts
-export const getPostBySlug = createServerFn({ method: "GET" })
-  .validator((d: { slug: string }) => d)
-  .handler(async ({ data }) => {
-    // Only runs on the server
-    return fetchPostBySlug(data.slug);
-  });
-
-// src/routes/study/$slug.tsx
-export const Route = createFileRoute("/study/$slug")({
-  loader: async ({ params: { slug } }) => {
-    const post = await getPostBySlug({ data: { slug } });
-    // ...
-  }
-});
-```
-
-**Key points:**
-
-- Use `.validator()` for type-safe input
-- Node.js imports (`node:fs`, `node:path`) are safe inside the handler
-- Call server functions from route loaders, not at module level
-- Server functions can be called from the client - they become RPC calls
+Server-only code uses TanStack Start's `createServerFn`. Study posts read Markdown from disk in `src/lib/study/posts.ts`; the commit log calls GitHub in `src/lib/github/fetchCommitLog.ts`.
 
 ### Root Layout
 
 `src/routes/__root.tsx` handles:
 
-- SEO meta tags and structured data (JSON-LD)
+- Site-wide meta tags, the Person structured data (JSON-LD) and the link to the study feed
 - Global CSS import
 - Search param validation and retention
-- ControlPanel (client-only)
+- The paper `Sheet` on the desk and the `Grain` overlay
 - Color mode initialization script (prevents flash)
+
+Each page route sets its own canonical link from `absoluteUrl` in `src/lib/site.ts`, since `links` from parent routes are concatenated rather than replaced. Social tags go through `socialMeta`, which writes each `og:` tag with its `twitter:` twin; a child route's tag replaces the root's tag of the same name. The preview image loads from `assetUrl`, the origin of the deployment the build runs on. A study post adds `BlogPosting` structured data.
+
+`src/routes/sitemap[.]xml.ts` and `src/routes/study/rss[.]xml.ts` are server routes that build the sitemap and the RSS feed from the posts. The curl middleware lets `.xml` paths through, so feed readers whose user agent contains `fetch` get the feed.
+
+`src/router.tsx` creates the `QueryClient` and connects it with `setupRouterSsrQueryIntegration`.
+
+## Commit Log
+
+The home page shows the latest public commits across the repos listed in `logRepos` (`src/config.ts`). The page renders without it; the log loads on the client afterwards.
+
+```txt
+useQuery(getCommitLog())          src/lib/github/queries.ts
+    ↓
+fetchCommitLog (GET server fn)    src/lib/github/fetchCommitLog.ts
+    ↓
+GITHUB_PAT set?    → GraphQL, one query with an alias per repo
+otherwise / on failure → REST, one request per repo, no token
+    ↓
+Zod parses the response, commits are merged and sorted (src/lib/github/commitLog.ts)
+```
+
+- The server function returns errors as values: `{ status: "ok", log }` or `{ status: "error", code }`. The UI shows a link to GitHub when the log is unavailable.
+- Every GitHub request times out after 4 seconds.
+- Caching depends on the outcome. A full log is `200` with `s-maxage=300, stale-while-revalidate`, so the CDN serves it and GitHub sees about one request every five minutes. A partial log (some repos failed) is `200` with `s-maxage=60`. When every source fails, the response is `503` with no cache headers; the CDN does not store it and keeps serving the last good log.
+- `GITHUB_PAT` is a fine-grained token with read-only access to public repositories, set as a Vercel environment variable. Without it the unauthenticated REST fallback applies.
+- The server sends the newest 50 commits; the home page shows ten and adds ten per "Show more".
+- Only commits authored by `GITHUB_USER` count.
+- `GITHUB_LOG=off` returns an empty log without contacting GitHub. The e2e server sets it, so test runs spend no rate limit.
 
 ## Theming System
 
-The ControlPanel manages visual customization via CSS custom properties.
+Each route renders the `SiteHeader` partial and its own `Colophon`. The header holds the `SiteControls` container, a bar of bracketed theme and mode options, and the `SiteIndex` navigation tree. The controls set two inputs:
 
-### CSS Variables
+- `data-theme` on `<body>` - from the `theme` param
+- `data-color-mode` on `<html>` - from the `colorMode` param
 
-Defined in `src/styles/global.css`, two inputs are set on `<body>` at runtime:
+All colors are defined with `light-dark()`: the Atom theme in `src/styles/global.css`, the others as token overrides in `src/styles/themes.css`. Polymer is the default theme. In Atom the desk behind the sheet takes the accent hue, and the sheet is tinted paper, in dark mode with a hint of the accent hue. `--paper-light` and `--ink-light` name the light theme's paper and ink, also used for the portrait's light print in dark mode.
 
-- `--hue-accent` - Accent hue (OKLCH), from the `accent` param
-- `--chroma` - Chroma multiplier, from the `contrast` param
+### Grain
 
-All colors (`--color-accent`, `--color-bg-*`, `--color-fg-*`) derive from these two.
+`Grain` draws hashed film grain on a fixed canvas: multiply and darkening-only on light paper, soft-light on dark. It re-rolls at the configured rate, stays static under `prefers-reduced-motion`, pauses while the tab is hidden, and is hidden in print. The defaults live in `GRAIN_SETTINGS` in `src/lib/grain.ts`; the component accepts each as a prop.
 
 ### State Flow
 
 ```txt
-User clicks ControlPanel option
+User clicks a bracketed option in the control bar
     ↓
-Hook updates (useAccent, useContrast, useColorMode)
+useTheme / useColorMode
     ↓
 URL search param updated + localStorage persisted
     ↓
-CSS variables / data-color-mode updated
+data-theme / data-color-mode updated
     ↓
 UI reacts via CSS
 ```
 
-### Color Mode
+`src/scripts/theme-blocking.js` is inlined in `__root.tsx` and applies color mode and theme before React hydrates. Keep its theme values in sync with `src/types/style.ts`.
 
-Color mode uses `data-color-mode` attribute on `<html>`. `src/scripts/theme-blocking.js` is inlined in `__root.tsx` and applies color mode and accent before React hydrates, preventing a flash of the wrong theme. Keep its accent values in sync with `src/types/style.ts`.
+## Keyboard
+
+`useSiteHotkeys` (`src/hooks/useSiteHotkeys.ts`, used by `SiteControls`) binds Vim-style keys with TanStack Hotkeys. `?` shows every binding in the `KeyHints` panel; a prefix (`g`, `c`, `m`, `z`) shows its next keys.
+
+- `j` `k` select the next or previous block, `h` `l` the links and buttons inside it, `Enter` opens. Arrow keys do the same once a block is selected; before that they scroll. `Esc` or a click clears the selection.
+- `J` `K` jump between section headings and scroll them to the top.
+- `d` `u` scroll half a page and carry the selection along. `gg` `G` select the first or last block, `zt` `zz` scroll the selection to the top or middle.
+- `gh` `gs` go home or to the study list, which opens with its first entry selected.
+- `c` + `a` `f` `k` `p` `v` sets the colors, `m` + `l` `d` `s` the color mode, `m t` toggles between light and dark.
+
+The cursor lives in `src/lib/navCursor.ts`, outside React, so it survives route changes. Blocks are found by `BLOCK_SELECTOR` in visual reading order; add `data-nav-block` to make another element one. The selection is real focus; `NavCursor` draws the brackets.
+
+## Audio
+
+`src/lib/audio.ts` holds one audio element for the whole site, outside React, so playback continues across pages. `MediaPlayer`, mounted once in the root through `SiteMediaPlayer`, is the player: a Listen tab while nothing has started, a one-line bar while a track plays, and a panel with the progress track, skip buttons, voices and the playlist: the home page's spoken version first, then every narrated study. It owns Space, `,` `.` and `p`. `MiniPlayer` is the inline player on the home page and on a study page: it starts the page's track in the media player, opens the panel, and plays its track on Space until something has started. Both read and steer the store through `useAudio`. A page never loads its track on its own, so a paused track stays in the bar until another one is played. Switching voices resumes five seconds before the current position. The chosen voice and each file's position are kept in localStorage. Generating the files is covered in [Content](./content.md#audio).
 
 ## Data Flow Summary
 
 ```txt
 Routes (smart)
-    ├── Call hooks
-    ├── Fetch/prepare data
+    ├── Call hooks, loaders and queries
+    ├── Prepare data and copy
     └── Pass props down
          ↓
 Partials (compositions)
-    ├── Compose multiple components
-    ├── May have local state (e.g., isExpanded)
-    └── Minimal styling
+    └── Compose components, no styling
          ↓
 Components (dumb)
     ├── Receive props only
     ├── Own all their styling
     └── Know nothing about context
 ```
-
-See [components.md](./components.md) for details on this pattern.
