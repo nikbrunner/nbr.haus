@@ -112,8 +112,7 @@ function renderSheet(): string {
     ...pins.flatMap((pin, index) => [
       ...(index > 0 ? [""] : []),
       ...item(pin.name, pin.description),
-      ...item("", pin.href, text => link(text, pin.href)),
-      ...item("", `Stack ${pin.stack}`, text => dim(italic(text)))
+      ...item("", pin.href, text => link(text, pin.href))
     ]),
     "",
     ...item("Also", moreProjects.map(project => project.name).join("  "), line =>

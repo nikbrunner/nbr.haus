@@ -30,21 +30,6 @@ describe("buildCommitLog", () => {
       "2026-10-05T10:00:00Z"
     ]);
   });
-
-  it("records each repo's newest commit, also beyond the limit", () => {
-    const log = buildCommitLog(
-      [
-        [commit("a/one", "2026-10-06T10:00:00Z")],
-        [commit("a/two", "2026-09-01T10:00:00Z")]
-      ],
-      1
-    );
-
-    expect(log.lastCommitByRepo).toEqual({
-      "a/one": "2026-10-06T10:00:00Z",
-      "a/two": "2026-09-01T10:00:00Z"
-    });
-  });
 });
 
 describe("parseGraphqlHistories", () => {

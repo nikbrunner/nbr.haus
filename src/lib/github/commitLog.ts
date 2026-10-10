@@ -10,7 +10,6 @@ export interface Commit {
 
 export interface CommitLog {
   commits: Commit[];
-  lastCommitByRepo: Record<string, string>;
 }
 
 export type CommitLogResult =
@@ -137,12 +136,7 @@ export function buildCommitLog(histories: Commit[][], limit: number): CommitLog 
     b.date.localeCompare(a.date)
   );
 
-  const lastCommitByRepo: Record<string, string> = {};
-  for (const commit of newestFirst) {
-    lastCommitByRepo[commit.repo] ??= commit.date;
-  }
-
-  return { commits: newestFirst.slice(0, limit), lastCommitByRepo };
+  return { commits: newestFirst.slice(0, limit) };
 }
 
 /** `2026-10-06T18:35:04Z` becomes `2026-10-06 18:35` (UTC) */

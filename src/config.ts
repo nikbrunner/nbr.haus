@@ -5,7 +5,6 @@ export interface Pin {
   name: string;
   href: string;
   description: string;
-  stack: string;
 }
 
 export const pins: Pin[] = [
@@ -14,22 +13,19 @@ export const pins: Pin[] = [
     name: "black-atom",
     href: "https://black-atom.industries/",
     description:
-      "Themes defined once and generated for every tool I use. Livery switches all of them at once.",
-    stack: "Deno, TypeScript, Tauri"
+      "One set of color themes for every tool I use, from editor to terminal. A small app switches all of them at once, light or dark."
   },
   {
     repo: "nikbrunner/lazyjira",
     name: "lazyjira",
     href: "https://github.com/nikbrunner/lazyjira",
-    description: "Keyboard-driven terminal UI for Jira, in the spirit of lazygit.",
-    stack: "Go"
+    description: "Keyboard-driven terminal UI for Jira, in the spirit of lazygit."
   },
   {
     repo: "nikbrunner/koyo",
     name: "koyo",
     href: "https://github.com/nikbrunner/koyo",
-    description: "Split keyboard layout for QMK, with a small CLI.",
-    stack: "C, Shell"
+    description: "Split keyboard layout for QMK, with a small CLI."
   }
 ];
 

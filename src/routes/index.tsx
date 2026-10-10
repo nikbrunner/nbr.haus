@@ -114,9 +114,11 @@ function HomePage() {
       <SpecSection id="work" number="03" title="Work">
         <Entry aside={<Text caps>Now</Text>}>
           <Text caps bold>
-            <a href="https://www.imfusion.com/">ImFusion</a>, Web &amp; Cloud team
+            <ExternalLink href="https://www.imfusion.com/">ImFusion</ExternalLink>
           </Text>
-          <Text muted>Senior Design Engineer, since 2026-04</Text>
+          <Text muted>
+            Senior Design Engineer, Web &amp; Cloud team, since 2026-04
+          </Text>
         </Entry>
         <Entry aside={null}>
           <Prose>
@@ -187,10 +189,6 @@ function HomePage() {
               }
             >
               <span>{pin.description}</span>
-              <Text muted>
-                <Text caps>Stack</Text> {pin.stack}. <Text caps>Last commit</Text>{" "}
-                {log?.lastCommitByRepo[pin.repo]?.slice(0, 10) ?? "-"}
-              </Text>
             </Entry>
           ))}
           <Rule dashed />
