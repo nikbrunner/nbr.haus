@@ -7,6 +7,11 @@
 @import "../components/ControlBar.css";
 @import "../components/ControlButton.css";
 @import "../components/AudioPlayer.css";
+@import "../components/MiniPlayer.css";
+@import "../components/KeyHints.css";
+@import "../components/NavCursor.css";
+@import "../components/Portrait.css";
+@import "../components/WithFigure.css";
 @import "../components/ControlGroup.css";
 @import "../components/SpecSection.css";
 @import "../components/SpecSubsection.css";

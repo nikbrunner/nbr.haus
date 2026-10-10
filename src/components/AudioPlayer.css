@@ -5,10 +5,20 @@
   align-items: baseline;
 }
 
-/* A text track drawn in characters, with an invisible range input on top for pointer and keyboard */
+/* A hatched field, like the unfilled part of a technical drawing, that the accent writes over.
+   24ch wide, so the time beside it never moves; an invisible range input on top takes pointer
+   and keys */
 .AudioPlayer__track {
   position: relative;
-  white-space: pre;
+  align-self: center;
+  width: 24ch;
+  height: calc(var(--line) - 6px);
+  border: 1px solid var(--color-fg-main);
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--color-fg-minor) 0 1px,
+    transparent 1px 5px
+  );
 
   &:has(:focus-visible) {
     outline: 1px solid var(--color-accent);
@@ -16,14 +26,10 @@
   }
 }
 
-/* Same glyph as the rest, filled in, so every cell keeps the font's character width */
-.AudioPlayer__played {
-  background-color: var(--color-fg-main);
-  color: var(--color-fg-main);
-}
-
-.AudioPlayer__rest {
-  color: var(--color-fg-minor);
+.AudioPlayer__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background-color: var(--color-accent);
 }
 
 .AudioPlayer__progress {

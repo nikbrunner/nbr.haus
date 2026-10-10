@@ -1,0 +1,33 @@
+/* Bottom right; the which-key panel opens over it */
+.MiniPlayer {
+  position: fixed;
+  bottom: var(--line);
+  right: var(--tab);
+  z-index: 9;
+  display: flex;
+  gap: var(--tab);
+  align-items: baseline;
+  max-width: calc(100vw - 2 * var(--tab));
+  padding: var(--line-half) var(--tab);
+  border: 4px double var(--color-fg-main);
+  background-color: var(--color-bg-main);
+}
+
+.MiniPlayer__title {
+  overflow: hidden;
+  font-weight: var(--font-weight-bold);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.MiniPlayer__time {
+  color: var(--color-fg-minor);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+@media print {
+  .MiniPlayer {
+    display: none;
+  }
+}

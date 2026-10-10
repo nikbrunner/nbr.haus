@@ -93,11 +93,15 @@ function StudyPostPage() {
             {audio && (
               <SpecItem label="Listen" hideInPrint>
                 <AudioPlayer
-                  voices={STUDY_VOICES.map(voice => ({
-                    id: voice.id,
-                    label: voice.label,
-                    src: `${studyAudioPath(post.slug, voice.id)}?v=${audio}`
-                  }))}
+                  track={{
+                    slug: post.slug,
+                    title,
+                    voices: STUDY_VOICES.map(voice => ({
+                      id: voice.id,
+                      label: voice.label,
+                      src: `${studyAudioPath(post.slug, voice.id)}?v=${audio}`
+                    }))
+                  }}
                 />
               </SpecItem>
             )}
