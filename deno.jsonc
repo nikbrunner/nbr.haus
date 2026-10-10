@@ -1,8 +1,0 @@
-// Links this repo to the Deno Deploy app, so `deno deploy` needs no flags.
-// Production is served by Vercel; Deno Deploy is a secondary deployment.
-{
-  "deploy": {
-    "org": "nbr",
-    "app": "nbrhaus"
-  }
-}
