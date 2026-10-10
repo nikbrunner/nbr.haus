@@ -3,3 +3,8 @@ pre-commit:
     - name: study audio
       glob: "src/content/study/*.md"
       run: node scripts/check-study-audio.ts {staged_files}
+
+pre-push:
+  jobs:
+    - name: e2e
+      run: npm run test:e2e

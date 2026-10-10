@@ -13,3 +13,8 @@ dist-ssr
 storybook-static
 
 voice-samples
+
+# Playwright
+test-results
+playwright-report
+.vitest
