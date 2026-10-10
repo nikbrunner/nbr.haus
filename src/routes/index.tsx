@@ -145,11 +145,6 @@ function HomePage() {
             Agents run against consumer scenarios to check they pick the right skill
             and follow the conventions.
           </SpecItem>
-          <SpecItem label="Install">
-            A CLI installs the skills into the shared .agents/skills folder, links
-            them for agents that don&apos;t read it yet, wires up the hooks and keeps
-            the project&apos;s AGENTS.md block current.
-          </SpecItem>
           <SpecItem label="Stack">
             React, TypeScript, Base UI, Storybook, Vitest, Playwright
           </SpecItem>
