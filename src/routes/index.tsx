@@ -1,10 +1,11 @@
+import { useState } from "react";
+
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import portraitMask from "@/assets/images/portrait-mask.webp";
 import Colophon from "@/components/Colophon";
 import ControlButton from "@/components/ControlButton";
-import DataTable, { type DataTableColumn } from "@/components/DataTable";
 import Entry from "@/components/Entry";
 import ExternalLink from "@/components/ExternalLink";
 import InlineList from "@/components/InlineList";
@@ -18,7 +19,7 @@ import Text from "@/components/Text";
 import WebUiAgentFlow from "@/components/WebUiAgentFlow";
 import WithFigure from "@/components/WithFigure";
 import { jobs, moreProjects, pins } from "@/config";
-import { formatCommitTime, type Commit } from "@/lib/github/commitLog";
+import { formatCommitTime } from "@/lib/github/commitLog";
 import { getCommitLog } from "@/lib/github/queries";
 import { getAllPosts } from "@/lib/study";
 import { SiteHeader } from "@/partials/SiteHeader";
@@ -28,41 +29,15 @@ export const Route = createFileRoute("/")({
   component: HomePage
 });
 
-const commitColumns: DataTableColumn<Commit>[] = [
-  {
-    key: "when",
-    header: "When",
-    nowrap: true,
-    muted: true,
-    cell: commit => formatCommitTime(commit.date)
-  },
-  {
-    key: "repo",
-    header: "Repo",
-    nowrap: true,
-    cell: commit => commit.repo.split("/")[1]
-  },
-  {
-    key: "sha",
-    header: "Commit",
-    nowrap: true,
-    hideOnNarrow: true,
-    cell: commit => <a href={commit.url}>{commit.sha}</a>
-  },
-  {
-    key: "message",
-    header: "Message",
-    ownLineOnNarrow: true,
-    truncate: true,
-    cell: commit => <span title={commit.message}>{commit.message}</span>
-  }
-];
+/** Commits shown at first, and added per "Show more" */
+const COMMIT_PAGE_SIZE = 10;
 
 function HomePage() {
   const { posts } = Route.useLoaderData();
   const commitLog = useQuery(getCommitLog());
   const log = commitLog.data?.status === "ok" ? commitLog.data.log : null;
   const isLogUnavailable = commitLog.isError || commitLog.data?.status === "error";
+  const [visibleCommits, setVisibleCommits] = useState(COMMIT_PAGE_SIZE);
 
   return (
     <>
@@ -237,13 +212,22 @@ function HomePage() {
           title="Log"
           note="Latest public commits, GitHub"
         >
-          <DataTable
-            caption="Latest public commits"
-            columns={commitColumns}
-            rows={log?.commits ?? []}
-            getRowKey={commit => `${commit.repo}/${commit.sha}`}
-            placeholder={
-              isLogUnavailable ? (
+          {log ? (
+            log.commits.slice(0, visibleCommits).map(commit => (
+              <Entry
+                key={`${commit.repo}/${commit.sha}`}
+                aside={<CommitTime date={commit.date} />}
+              >
+                <span>
+                  <Text bold>{commit.repo}</Text>{" "}
+                  <ExternalLink href={commit.url}>{commit.sha}</ExternalLink>
+                </span>
+                <span>{commit.message}</span>
+              </Entry>
+            ))
+          ) : (
+            <Text muted>
+              {isLogUnavailable ? (
                 <>
                   Log unavailable, see{" "}
                   <ExternalLink href="https://github.com/nikbrunner">
@@ -252,9 +236,18 @@ function HomePage() {
                 </>
               ) : (
                 "Loading commits"
-              )
-            }
-          />
+              )}
+            </Text>
+          )}
+          {log && visibleCommits < log.commits.length && (
+            <p className="no-print" data-nav-block>
+              <ControlButton
+                onClick={() => setVisibleCommits(count => count + COMMIT_PAGE_SIZE)}
+              >
+                {`Show ${Math.min(COMMIT_PAGE_SIZE, log.commits.length - visibleCommits)} more`}
+              </ControlButton>
+            </p>
+          )}
         </SpecSubsection>
       </SpecSection>
 
@@ -370,6 +363,18 @@ function HomePage() {
       </SpecSection>
 
       <Colophon start="nbr.haus" center="Design via function" end="Page 1 / 1" />
+    </>
+  );
+}
+
+/** Date on the first line, time muted below it, like the periods of the work entries */
+function CommitTime({ date }: { date: string }) {
+  const [day, time] = formatCommitTime(date).split(" ");
+  return (
+    <>
+      {day}
+      <br />
+      <Text muted>{time}</Text>
     </>
   );
 }

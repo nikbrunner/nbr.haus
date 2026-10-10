@@ -14,8 +14,11 @@ import {
 } from "@/lib/github/commitLog";
 
 const GITHUB_API = "https://api.github.com";
-const HISTORY_SIZE = 20;
-const LOG_SIZE = 10;
+/** Commits fetched per repo. Equal to LOG_SIZE, so the merged log is complete: any commit
+ *  among the newest LOG_SIZE overall is also among its own repo's newest HISTORY_SIZE */
+const HISTORY_SIZE = 50;
+/** Commits sent to the page, which shows them ten at a time */
+const LOG_SIZE = 50;
 const REQUEST_TIMEOUT_MS = 4000;
 
 export const fetchCommitLog = createServerFn({ method: "GET" }).handler(
