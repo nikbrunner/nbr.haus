@@ -2,53 +2,57 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 
 import { ElevenLabsClient } from "@elevenlabs/elevenlabs-js";
 
-import {
-  audioHash,
-  MODEL_ID,
-  speechText,
-  VOICE_ID,
-  withAudioHash
-} from "./study-audio.ts";
+import { STUDY_VOICES, studyAudioPath } from "../src/lib/study/voices.ts";
+import { audioHash, MODEL_ID, speechText, withAudioHash } from "./study-audio.ts";
 
 /** Text to Dialogue generates reliably up to about 2,000 characters per request */
 const MAX_CHUNK = 2000;
 
 const slug = process.argv[2];
 if (!slug) throw new Error("Usage: npm run generate:audio -- <slug>");
-if (!VOICE_ID) throw new Error("Set VOICE_ID in scripts/study-audio.ts");
 
 const postPath = `src/content/study/${slug}.en.md`;
 const file = await readFile(postPath, "utf8");
 const chunks = toChunks(speechText(file));
-
 const client = new ElevenLabsClient();
-const parts: Uint8Array[] = [];
-const requestIds: string[] = [];
-
-for (const [index, text] of chunks.entries()) {
-  console.log(
-    `Generating chunk ${index + 1}/${chunks.length} (${text.length} characters)`
-  );
-
-  const { data, rawResponse } = await client.textToDialogue
-    .convert({
-      inputs: [{ text, voiceId: VOICE_ID }],
-      modelId: MODEL_ID,
-      previousRequestIds: requestIds.slice(-3)
-    })
-    .withRawResponse();
-
-  parts.push(new Uint8Array(await new Response(data).arrayBuffer()));
-
-  const requestId = rawResponse.headers.get("request-id");
-  if (requestId) requestIds.push(requestId);
-}
 
 await mkdir("public/audio", { recursive: true });
-await writeFile(`public/audio/${slug}.mp3`, Buffer.concat(parts));
-await writeFile(postPath, withAudioHash(file, audioHash(file)));
 
-console.log(`Wrote public/audio/${slug}.mp3`);
+for (const voice of STUDY_VOICES) {
+  const parts: Uint8Array[] = [];
+  const requestIds: string[] = [];
+
+  for (const [index, text] of chunks.entries()) {
+    console.log(
+      `${voice.label}: chunk ${index + 1}/${chunks.length} (${text.length} characters)`
+    );
+
+    const { data, rawResponse } = await client.textToDialogue
+      .convert({
+        inputs: [
+          {
+            text: voice.deliveryTag ? `${voice.deliveryTag} ${text}` : text,
+            voiceId: voice.voiceId
+          }
+        ],
+        modelId: MODEL_ID,
+        settings: voice.settings,
+        previousRequestIds: requestIds.slice(-3)
+      })
+      .withRawResponse();
+
+    parts.push(new Uint8Array(await new Response(data).arrayBuffer()));
+
+    const requestId = rawResponse.headers.get("request-id");
+    if (requestId) requestIds.push(requestId);
+  }
+
+  const outPath = `public${studyAudioPath(slug, voice.id)}`;
+  await writeFile(outPath, Buffer.concat(parts));
+  console.log(`Wrote ${outPath}`);
+}
+
+await writeFile(postPath, withAudioHash(file, audioHash(file)));
 
 /** Packs paragraphs into chunks, splitting a paragraph at sentence ends only when it alone is too long */
 function toChunks(text: string): string[] {

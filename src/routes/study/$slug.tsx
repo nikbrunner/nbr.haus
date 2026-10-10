@@ -1,5 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 
+import AudioPlayer from "@/components/AudioPlayer";
 import Colophon from "@/components/Colophon";
 import Entry from "@/components/Entry";
 import InlineList from "@/components/InlineList";
@@ -12,6 +13,7 @@ import {
   getPostBySlug,
   splitSources
 } from "@/lib/study";
+import { STUDY_VOICES, studyAudioPath } from "@/lib/study/voices";
 import { InlineMarkdown, MarkdownContent } from "@/partials/MarkdownContent";
 import { SiteHeader } from "@/partials/SiteHeader";
 
@@ -77,11 +79,13 @@ function StudyPostPage() {
             <SpecItem label="Tags">{tags.join(", ")}</SpecItem>
             <SpecItem label="Length">{length}</SpecItem>
             {audio && (
-              <SpecItem label="Listen">
-                <audio
-                  controls
-                  preload="none"
-                  src={`/audio/${post.slug}.mp3?v=${audio}`}
+              <SpecItem label="Listen" hideInPrint>
+                <AudioPlayer
+                  voices={STUDY_VOICES.map(voice => ({
+                    id: voice.id,
+                    label: voice.label,
+                    src: `${studyAudioPath(post.slug, voice.id)}?v=${audio}`
+                  }))}
                 />
               </SpecItem>
             )}

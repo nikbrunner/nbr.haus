@@ -22,7 +22,9 @@ Study posts are Markdown files with frontmatter in `src/content/study/<slug>.en.
 
 ### Audio
 
-`npm run generate:audio -- <slug>` reads a post aloud with ElevenLabs (`eleven_v4`, voice set in `scripts/study-audio.ts`) and writes `public/audio/<slug>.mp3`. It reads the API key from Proton Pass (`ELEVENLABS_API_TOKEN`), generates the spoken text in chunks of about 2,000 characters, and records the text's hash in the post's `audio` frontmatter field. A post with an `audio` field shows a player in `00 Record`. The hash covers the spoken text, voice and model, so frontmatter edits leave it fresh. Generate audio only after the text is final: every run is billed.
+`npm run generate:audio -- <slug>` reads a post aloud with ElevenLabs (`eleven_v4`) once per voice in `src/lib/study/voices.ts` and writes `public/audio/<slug>.<voice>.mp3`. Each voice names its ElevenLabs voice ID through the `ElevenLabsVoice` map and can carry an audio tag and voice settings; the first voice is the default. The script reads the API key from Proton Pass (`ELEVENLABS_API_TOKEN`), generates the spoken text in chunks of about 2,000 characters, and records the text's hash in the post's `audio` frontmatter field. The hash covers the spoken text, the model and every voice with its settings, so frontmatter edits and re-wrapped lines leave it fresh. Generate audio only after the text is final: every run is billed, once per voice.
+
+A post with an `audio` field shows the `AudioPlayer` in `00 Record`: play and pause, a character track to seek, and a voice switch. The chosen voice and each file's position are remembered in localStorage.
 
 The `study audio` pre-commit hook warns, without blocking the commit, when a staged post's audio is missing or out of date. It reads the working tree, so a partially staged post is checked as it is on disk.
 

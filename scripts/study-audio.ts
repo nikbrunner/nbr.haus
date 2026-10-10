@@ -3,9 +3,9 @@ import { createHash } from "node:crypto";
 import matter from "gray-matter";
 
 import { splitSources } from "../src/lib/study/sources.ts";
+import { STUDY_VOICES } from "../src/lib/study/voices.ts";
 
 export const MODEL_ID = "eleven_v4";
-export const VOICE_ID = "mR8Q4qbqeyA2XzNH6Es4";
 
 const FRONTMATTER_END = /^---$/m;
 const AUDIO_LINE = /^audio: .*\n/m;
@@ -27,10 +27,10 @@ export function speechText(file: string): string {
   return `${title}\n\n${body}`;
 }
 
-/** Changes whenever the spoken text, the voice or the model changes */
+/** Changes whenever the spoken text, the model or any voice or its settings changes */
 export function audioHash(file: string): string {
   return createHash("sha256")
-    .update(`${MODEL_ID}\n${VOICE_ID}\n${speechText(file)}`)
+    .update(`${MODEL_ID}\n${JSON.stringify(STUDY_VOICES)}\n${speechText(file)}`)
     .digest("hex")
     .slice(0, 12);
 }
