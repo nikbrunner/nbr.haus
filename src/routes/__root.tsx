@@ -33,7 +33,7 @@ export const Route = createRootRoute({
     ]
   },
   loader: async () => ({ posts: await getAllPosts() }),
-  notFoundComponent: NotFound,
+  notFoundComponent: () => <NotFound />,
   shellComponent: RootDocument,
   head: () => ({
     meta: [

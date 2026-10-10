@@ -15,6 +15,7 @@ import {
 } from "@/lib/study";
 import { STUDY_VOICES, studyAudioPath } from "@/lib/study/voices";
 import { InlineMarkdown, MarkdownContent } from "@/partials/MarkdownContent";
+import { NotFound } from "@/partials/NotFound";
 import { SiteHeader } from "@/partials/SiteHeader";
 
 export const Route = createFileRoute("/study/$slug")({
@@ -57,7 +58,18 @@ export const Route = createFileRoute("/study/$slug")({
       ]
     };
   },
-  component: StudyPostPage
+  component: StudyPostPage,
+  notFoundComponent: () => (
+    <NotFound
+      title="Study not found"
+      message={
+        <>
+          There is no study at this address. It may have been renamed;{" "}
+          <Link to="/study">the study list</Link> has all of them.
+        </>
+      }
+    />
+  )
 });
 
 function StudyPostPage() {
