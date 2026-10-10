@@ -1,3 +1,5 @@
+import type { MouseEvent } from "react";
+
 import { getRouteApi, Link, useLocation } from "@tanstack/react-router";
 
 import Contents from "@/components/Contents";
@@ -15,6 +17,13 @@ const HOME_SECTIONS = [
 const HOME_SECTION_IDS = HOME_SECTIONS.map(section => section.id);
 
 const rootRoute = getRouteApi("__root__");
+
+/** The router ignores a link to the URL it is already on, so the section would not scroll back into view */
+function scrollToCurrentHash(event: MouseEvent, id: string) {
+  if (window.location.pathname !== "/" || window.location.hash !== `#${id}`) return;
+  event.preventDefault();
+  document.getElementById(id)?.scrollIntoView();
+}
 
 export function SiteIndex() {
   const pathname = useLocation({ select: location => location.pathname });
@@ -35,7 +44,11 @@ export function SiteIndex() {
             key: section.id,
             marker: section.number,
             label: (
-              <Link to="/" hash={section.id}>
+              <Link
+                to="/"
+                hash={section.id}
+                onClick={event => scrollToCurrentHash(event, section.id)}
+              >
                 {section.title}
               </Link>
             ),

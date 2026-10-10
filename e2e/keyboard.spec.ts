@@ -85,6 +85,21 @@ test.describe("g jumps start at the top of the page", () => {
   }
 });
 
+test("Enter on the index link to the current section scrolls back to it", async ({
+  page
+}) => {
+  await open(page, "/#projects");
+  await page.evaluate(() => window.scrollTo(0, 0));
+
+  await page.keyboard.press("g");
+  await page.keyboard.press("g");
+  for (let i = 0; i < 4; i++) await page.keyboard.press("j");
+  await expect(selected(page)).toContainText("Projects");
+
+  await page.keyboard.press("Enter");
+  await expect.poll(() => page.evaluate(() => scrollY)).toBeGreaterThan(0);
+});
+
 test("h and l move between the links of a block", async ({ page }) => {
   await open(page, "/");
 
