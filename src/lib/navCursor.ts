@@ -106,25 +106,28 @@ export function scrollHalfPage(direction: 1 | -1) {
   window.scrollBy({ top: delta, behavior: "smooth" });
 }
 
-/** `top` scrolls the block to the top of the window, like Vim's `zt`; otherwise it scrolls only as far as needed */
+/** `top` scrolls the block to the top of the window, like Vim's `zt`; `nearest` scrolls only as far as needed; `none` leaves the scroll to the caller */
 function selectBlock(
   block: HTMLElement,
   smooth = true,
-  align: "nearest" | "top" = "nearest"
+  align: "nearest" | "top" | "none" = "nearest"
 ) {
   // Blocks are not focusable by default; -1 keeps them out of the Tab order
   if (block.tabIndex < 0) block.tabIndex = -1;
   block.focus({ preventScroll: true });
   setSelected(block);
   if (align === "top") scrollToTop(block, smooth);
-  else reveal(block, smooth);
+  else if (align === "nearest") reveal(block, smooth);
 }
 
-/** `gg` and `G`: the first or last block on the page */
+/** `gg` and `G`: the first or last block on the page; `gg` also scrolls to the very top */
 export function selectEdge(edge: "first" | "last") {
   const all = blocks();
   const block = edge === "first" ? all[0] : all.at(-1);
-  if (block) selectBlock(block);
+  if (!block) return;
+  if (edge === "last") return selectBlock(block);
+  selectBlock(block, true, "none");
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 /** `zt`: scrolls the selected block to the top of the window */

@@ -59,6 +59,32 @@ test("g s opens the study list on its first entry, Enter opens it", async ({
   await expect(page).toHaveURL(/\/study\/[^/]+$/);
 });
 
+test.describe("g jumps start at the top of the page", () => {
+  for (const [keys, from, to] of [
+    ["gg", "/", /\/$/],
+    ["gh", "/", /\/$/],
+    ["gh", "/study", /\/$/],
+    ["gs", "/", /\/study$/],
+    ["gs", "/study", /\/study$/]
+  ] as const) {
+    test(`${keys} from ${from}`, async ({ page }) => {
+      await open(page, from);
+      await page.evaluate(() =>
+        window.scrollTo({ top: document.body.scrollHeight, behavior: "instant" })
+      );
+      await expect
+        .poll(() => page.evaluate(() => window.scrollY))
+        .toBeGreaterThan(0);
+
+      await page.keyboard.press(keys[0]);
+      await page.keyboard.press(keys[1]);
+
+      await expect(page).toHaveURL(to);
+      await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+    });
+  }
+});
+
 test("h and l move between the links of a block", async ({ page }) => {
   await open(page, "/");
 
