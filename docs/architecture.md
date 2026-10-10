@@ -73,6 +73,7 @@ Zod parses the response, commits are merged and sorted (src/lib/github/commitLog
 - `GITHUB_PAT` is a fine-grained token with read-only access to public repositories, set as a Vercel environment variable. Without it the unauthenticated REST fallback applies.
 - The server sends the newest 50 commits; the home page shows ten and adds ten per "Show more".
 - Only commits authored by `GITHUB_USER` count.
+- `GITHUB_LOG=off` returns an empty log without contacting GitHub. The e2e server sets it, so test runs spend no rate limit.
 
 ## Theming System
 

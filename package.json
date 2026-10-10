@@ -16,6 +16,7 @@
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:headed": "playwright test --headed",
+    "test:e2e:token": "GITHUB_LOG=on GITHUB_PAT=pass://Nik/.env/GITHUB_PAT pass-cli run -- playwright test",
     "check:format": "oxfmt --check",
     "format": "oxfmt",
     "check:lint": "eslint .",

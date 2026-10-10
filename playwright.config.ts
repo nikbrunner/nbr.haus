@@ -1,6 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
-const PORT = 3200;
+/** E2E_PORT lets a second run start its own server while another holds 3200 */
+const PORT = Number(process.env.E2E_PORT ?? 3200);
 
 export default defineConfig({
   testDir: "e2e",
@@ -25,6 +26,9 @@ export default defineConfig({
   webServer: {
     command: `vite dev --port ${PORT} --strictPort`,
     url: `http://localhost:${PORT}`,
+    // The commit log stays off unless a run asks for it (`npm run test:e2e:token`): each page
+    // load would otherwise spend GitHub's 60-per-hour limit
+    env: { GITHUB_LOG: process.env.GITHUB_LOG ?? "off" },
     // Port 3200 is for these tests only; a UI-mode session and a CLI run can share it
     reuseExistingServer: true,
     timeout: 60_000

@@ -17,6 +17,7 @@ npm run test        # Story, unit and DOM tests once
 npm run test:e2e    # End-to-end tests against a dev server on port 3200
 npm run test:e2e:ui      # The same in Playwright's UI: pick tests, watch them, step through
 npm run test:e2e:headed  # The same in a visible browser window
+npm run test:e2e:token  # With the live commit log and the GitHub token
 npm run storybook   # Storybook dev server (port 6006)
 ```
 
@@ -26,7 +27,7 @@ npm run storybook   # Storybook dev server (port 6006)
 - `unit` - every `*.test.ts` under `src/`, run under Node
 - `dom` - every `*.browser.test.ts` under `src/`, run in Chromium for logic that needs real layout, such as `src/lib/navCursor.browser.test.ts`
 
-`playwright.config.ts` runs `e2e/*.spec.ts` against its own dev server on port 3200, one worker at a time, so a running `npm run dev` stays untouched. `e2e/keyboard.spec.ts` covers the key bindings, the cursor and the background audio. The `pre-push` hook in `lefthook.yml` runs them before every push; `git push --no-verify` skips it.
+`playwright.config.ts` runs `e2e/*.spec.ts` against its own dev server on port 3200, one worker at a time, so a running `npm run dev` stays untouched. It sets `GITHUB_LOG=off`, so the commit log stays empty and the tests make no GitHub requests. `npm run test:e2e:token` runs the suite with the log on and the token from Proton Pass, which also runs `e2e/commit-log.spec.ts`; it needs a server started with those settings, so stop a running UI session on port 3200 first, or run it on another port with `E2E_PORT=3400`. `e2e/keyboard.spec.ts` covers the key bindings, the cursor and the background audio. The `pre-push` hook in `lefthook.yml` runs them before every push; `git push --no-verify` skips it.
 
 ## What Gets a Test
 

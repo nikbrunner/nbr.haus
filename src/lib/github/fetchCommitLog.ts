@@ -23,6 +23,11 @@ const REQUEST_TIMEOUT_MS = 4000;
 
 export const fetchCommitLog = createServerFn({ method: "GET" }).handler(
   async (): Promise<CommitLogResult> => {
+    // The e2e server sets this: tests make no GitHub requests and spend no rate limit
+    if (process.env.GITHUB_LOG === "off") {
+      return { status: "ok", log: buildCommitLog([], LOG_SIZE) };
+    }
+
     const load = await loadHistories(process.env.GITHUB_PAT);
     const policy = getCachePolicy(load);
 
