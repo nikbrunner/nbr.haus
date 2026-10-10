@@ -6,7 +6,7 @@ import { z } from "zod";
 
 // Accent (user-selected hue for accent color)
 export const accents = {
-  red: 5,
+  red: 27,
   orange: 65,
   green: 155,
   blue: 265

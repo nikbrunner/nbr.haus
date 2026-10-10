@@ -24,7 +24,7 @@ function initTheme() {
 
     // Accent hue (set on body)
     // Valid values from src/types/style.ts: red=5, orange=65, green=155, blue=265
-    var validAccents = [5, 65, 155, 265];
+    var validAccents = [27, 65, 155, 265];
     var defaultAccent = 155; // green
     var accent = parseInt(params.get("accent") || "", 10);
     if (!validAccents.includes(accent)) {

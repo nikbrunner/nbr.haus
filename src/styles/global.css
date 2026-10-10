@@ -52,25 +52,34 @@ body {
   --hue-accent: 155;
 
   /* Color */
+  /* The light theme's paper and ink, also used where dark mode shows a light print */
+  --paper-light: oklch(0.955 0.016 88);
+  --ink-light: oklch(0.25 0.035 258);
   --color-desk: light-dark(
-    oklch(0.42 0.07 var(--hue-accent)),
-    oklch(0.21 0.04 var(--hue-accent))
+    oklch(0.5 0.07 var(--hue-accent)),
+    oklch(0.22 0.022 var(--hue-accent))
   );
   --color-desk-line: light-dark(
-    oklch(0.57 0.08 var(--hue-accent)),
-    oklch(0.32 0.055 var(--hue-accent))
+    oklch(0.64 0.08 var(--hue-accent)),
+    oklch(0.29 0.028 var(--hue-accent))
   );
   --color-desk-fine: light-dark(
-    oklch(0.47 0.075 var(--hue-accent)),
-    oklch(0.25 0.045 var(--hue-accent))
+    oklch(0.55 0.075 var(--hue-accent)),
+    oklch(0.25 0.024 var(--hue-accent))
   );
   --color-edge: light-dark(oklch(0.16 0.02 250), oklch(0.06 0.01 250));
-  --color-bg-main: light-dark(oklch(0.955 0.016 88), oklch(0.19 0.01 75));
-  --color-fg-main: light-dark(oklch(0.25 0.035 258), oklch(0.89 0.022 85));
-  --color-fg-minor: light-dark(oklch(0.47 0.025 250), oklch(0.67 0.018 80));
-  --color-line: light-dark(oklch(0.84 0.022 85), oklch(0.31 0.012 75));
+  /* Dark paper: warm grey with a hint of the accent hue */
+  --color-bg-main: light-dark(
+    var(--paper-light),
+    color-mix(in oklch, oklch(0.25 0.012 75) 75%, oklch(0.25 0.03 var(--hue-accent)))
+  );
+  --color-fg-main: light-dark(var(--ink-light), oklch(0.83 0.018 85));
+  --color-fg-minor: light-dark(oklch(0.47 0.025 250), oklch(0.7 0.018 80));
+  --color-line: light-dark(oklch(0.84 0.022 85), oklch(0.36 0.012 75));
+  /* Blue reads darker than the other hues at equal lightness; this lifts it, and only it */
+  --accent-lift: max(0, cos(calc((var(--hue-accent) - 265) * 1deg)));
   --color-accent: light-dark(
-    oklch(0.5 0.15 var(--hue-accent)),
+    oklch(calc(0.5 + 0.07 * var(--accent-lift)) 0.15 var(--hue-accent)),
     oklch(0.75 0.15 var(--hue-accent))
   );
   --color-fg-on-accent: var(--color-bg-main);
@@ -156,15 +165,13 @@ body {
 
 :where(a) {
   color: var(--color-accent);
-  text-decoration-line: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.2em;
-  text-decoration-skip-ink: auto;
+  text-decoration-line: none;
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
+    outline: none;
     background-color: var(--color-accent);
     color: var(--color-fg-on-accent);
-    text-decoration-line: none;
   }
 }
 

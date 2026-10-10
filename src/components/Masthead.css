@@ -8,6 +8,7 @@
 
 .Masthead__start {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--line);
   align-content: start;
 }

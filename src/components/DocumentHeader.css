@@ -11,19 +11,28 @@
 }
 
 .DocumentHeader__title {
-  width: max-content;
-  max-width: 100%;
   margin: var(--line) 0 0;
-  padding: calc(var(--line-half) - 1px) calc(var(--tab) * 2);
-  border: 1px solid var(--color-fg-main);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-regular);
   line-height: var(--line);
   letter-spacing: var(--tracking-caps);
-  text-align: center;
   text-transform: uppercase;
 }
 
+/* The title takes the sections' double rule; subtitle lines sit below it, smaller and quieter */
 .DocumentHeader__title-line {
   display: block;
+
+  &:first-child {
+    margin-bottom: var(--line-quarter);
+    padding-bottom: var(--line-quarter);
+    border-bottom: 4px double var(--color-fg-main);
+    color: var(--color-accent);
+    font-weight: var(--font-weight-bold);
+  }
+
+  &:not(:first-child) {
+    color: var(--color-fg-minor);
+    font-size: var(--font-size-small);
+  }
 }

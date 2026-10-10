@@ -1,7 +1,7 @@
 /** Grain defaults, ported from the Black Atom Ghostty grain shader */
 export const GRAIN_SETTINGS = {
-  /** Opacity in dark mode; light mode uses half of it */
-  strength: 0.32,
+  /** Opacity in dark mode; light mode uses four fifths of it */
+  strength: 0.2,
   /** CSS pixels per noise cell */
   cellSize: 1,
   /** Re-rolls per second */

@@ -80,7 +80,7 @@ Each route renders the `SiteHeader` partial and its own `Colophon`. The header h
 - `--hue-accent` on `<body>` - from the `accent` param
 - `data-color-mode` on `<html>` - from the `colorMode` param
 
-All colors are defined in `src/styles/global.css` with `light-dark()`. The desk behind the sheet takes the accent hue; the sheet itself is tinted paper.
+All colors are defined in `src/styles/global.css` with `light-dark()`. The desk behind the sheet takes the accent hue; the sheet is tinted paper, in dark mode with a hint of the accent hue. `--paper-light` and `--ink-light` name the light theme's paper and ink, also used for the portrait's light print in dark mode.
 
 ### Grain
 

@@ -63,7 +63,7 @@ export default function Grain({
           tilesByTheme.set(isDark, bakeTiles(isDark, lightDepth));
         tiles = tilesByTheme.get(isDark) ?? [];
         layer!.style.mixBlendMode = isDark ? "soft-light" : "multiply";
-        layer!.style.opacity = String(isDark ? strength : strength / 2);
+        layer!.style.opacity = String(isDark ? strength : (strength * 4) / 5);
         show();
       }
 

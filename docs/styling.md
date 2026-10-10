@@ -49,7 +49,7 @@ Section heads are bold caps on a 4px double rule; sub-heads are semibold caps on
 
 ### Color
 
-Neutrals and accents follow Black Atom's default theme. The sheet is tinted paper with blue-black ink in light mode and warm charcoal with chalk ink in dark mode. The desk behind it is a cutting mat (16px fine grid, 80px major grid) in the accent hue. Accent presets: red 5, orange 65, green 155, blue 265.
+Neutrals and accents follow Black Atom's default theme. The sheet is tinted paper with blue-black ink in light mode and warm charcoal with chalk ink in dark mode. The desk behind it is a cutting mat (16px fine grid, 80px major grid) in the accent hue. Accent presets: red 27, orange 65, green 155, blue 265.
 
 ```css
 --color-desk, --color-desk-line, --color-desk-fine  /* The mat */
