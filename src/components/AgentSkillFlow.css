@@ -1,4 +1,4 @@
-.WebUiAgentFlow {
+.AgentSkillFlow {
   display: block;
   width: 100%;
   max-width: 28rem;
@@ -8,47 +8,47 @@
   overflow: visible;
 }
 
-.WebUiAgentFlow text {
+.AgentSkillFlow text {
   fill: var(--color-fg-main);
 }
 
-.WebUiAgentFlow .WebUiAgentFlow__text--minor,
-.WebUiAgentFlow__legend text {
+.AgentSkillFlow .AgentSkillFlow__text--minor,
+.AgentSkillFlow__legend text {
   fill: var(--color-fg-minor);
 }
 
-.WebUiAgentFlow__legend text {
+.AgentSkillFlow__legend text {
   font-size: 11px;
 }
 
-.WebUiAgentFlow__box {
+.AgentSkillFlow__box {
   fill: var(--color-bg-main);
   stroke: var(--color-fg-main);
   stroke-width: 1;
 }
 
-.WebUiAgentFlow__node--primary .WebUiAgentFlow__box {
+.AgentSkillFlow__node--primary .AgentSkillFlow__box {
   stroke: var(--color-accent);
   stroke-width: 1.5;
 }
 
-.WebUiAgentFlow__node--knowledge .WebUiAgentFlow__box {
+.AgentSkillFlow__node--knowledge .AgentSkillFlow__box {
   stroke: var(--color-fg-minor);
   stroke-dasharray: 3 3;
 }
 
-.WebUiAgentFlow__group {
+.AgentSkillFlow__group {
   fill: color-mix(in oklch, var(--color-fg-minor) 8%, transparent);
 }
 
-.WebUiAgentFlow__edge {
+.AgentSkillFlow__edge {
   stroke: var(--color-fg-minor);
 }
 
-.WebUiAgentFlow__edge--dashed {
+.AgentSkillFlow__edge--dashed {
   stroke-dasharray: 3 3;
 }
 
-.WebUiAgentFlow__head {
+.AgentSkillFlow__head {
   fill: var(--color-fg-minor);
 }

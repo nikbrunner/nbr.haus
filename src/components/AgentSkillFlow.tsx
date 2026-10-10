@@ -14,9 +14,9 @@ function Box({ x, y, width, height = 30, lines, variant = "action" }: BoxProps) 
   const firstBaseline = y + height / 2 - ((lines.length - 1) * lineHeight) / 2 + 4;
 
   return (
-    <g className={`WebUiAgentFlow__node WebUiAgentFlow__node--${variant}`}>
+    <g className={`AgentSkillFlow__node AgentSkillFlow__node--${variant}`}>
       <rect
-        className="WebUiAgentFlow__box"
+        className="AgentSkillFlow__box"
         x={x}
         y={y}
         width={width}
@@ -25,7 +25,7 @@ function Box({ x, y, width, height = 30, lines, variant = "action" }: BoxProps) 
       {lines.map((line, index) => (
         <text
           key={line}
-          className={index > 0 ? "WebUiAgentFlow__text--minor" : undefined}
+          className={index > 0 ? "AgentSkillFlow__text--minor" : undefined}
           x={x + width / 2}
           y={firstBaseline + index * lineHeight}
           textAnchor="middle"
@@ -51,8 +51,8 @@ function Edge({ x1, y1, x2, y2, marker, dashed = false }: EdgeProps) {
     <line
       className={
         dashed
-          ? "WebUiAgentFlow__edge WebUiAgentFlow__edge--dashed"
-          : "WebUiAgentFlow__edge"
+          ? "AgentSkillFlow__edge AgentSkillFlow__edge--dashed"
+          : "AgentSkillFlow__edge"
       }
       x1={x1}
       y1={y1}
@@ -75,15 +75,15 @@ const knowledge = [
   ["user profile", "every skill"]
 ];
 
-export default function WebUiAgentFlow() {
+export default function AgentSkillFlow() {
   const arrow = useId();
 
   return (
     <svg
-      className="WebUiAgentFlow"
+      className="AgentSkillFlow"
       viewBox="0 0 360 370"
       role="img"
-      aria-label="A UI task triggers a hook that points the agent to the imf-web-ui router, which also answers from the packaged user guides. The router hands the task to a skill you run: components, ux, setup, audit or update. Those skills read knowledge: components reads the generated indexes, ux, setup and audit read the conventions, and every skill reads the user profile."
+      aria-label="A UI task triggers a hook that points the agent to the router skill, which also answers from the packaged user guides. The router hands the task to a skill you run: components, ux, setup, audit or update. Those skills read knowledge: components reads the generated indexes, ux, setup and audit read the conventions, and every skill reads the user profile."
     >
       <defs>
         <marker
@@ -95,18 +95,18 @@ export default function WebUiAgentFlow() {
           markerHeight="8"
           orient="auto"
         >
-          <path className="WebUiAgentFlow__head" d="M0,0 L8,4 L0,8 z" />
+          <path className="AgentSkillFlow__head" d="M0,0 L8,4 L0,8 z" />
         </marker>
       </defs>
 
-      <g className="WebUiAgentFlow__legend">
-        <rect className="WebUiAgentFlow__box" x={4} y={3} width={14} height={10} />
+      <g className="AgentSkillFlow__legend">
+        <rect className="AgentSkillFlow__box" x={4} y={3} width={14} height={10} />
         <text x={24} y={12}>
           you run
         </text>
-        <g className="WebUiAgentFlow__node--knowledge">
+        <g className="AgentSkillFlow__node--knowledge">
           <rect
-            className="WebUiAgentFlow__box"
+            className="AgentSkillFlow__box"
             x={104}
             y={3}
             width={14}
@@ -120,7 +120,7 @@ export default function WebUiAgentFlow() {
 
       <Box x={180} y={28} width={120} lines={["UI task"]} />
       <Edge x1={240} y1={58} x2={240} y2={96} marker={arrow} />
-      <text className="WebUiAgentFlow__text--minor" x={250} y={82}>
+      <text className="AgentSkillFlow__text--minor" x={250} y={82}>
         hook
       </text>
 
@@ -138,19 +138,19 @@ export default function WebUiAgentFlow() {
         y={98}
         width={160}
         height={46}
-        lines={["router", "imf-web-ui"]}
+        lines={["router", "entry skill"]}
         variant="primary"
       />
       <Edge x1={240} y1={144} x2={240} y2={178} marker={arrow} />
 
       <rect
-        className="WebUiAgentFlow__group"
+        className="AgentSkillFlow__group"
         x={2}
         y={180}
         width={356}
         height={104}
       />
-      <text className="WebUiAgentFlow__text--minor" x={12} y={196}>
+      <text className="AgentSkillFlow__text--minor" x={12} y={196}>
         skills
       </text>
       {actions.map((row, rowIndex) =>

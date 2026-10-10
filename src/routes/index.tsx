@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import portraitMask from "@/assets/images/portrait-mask.webp";
+import AgentSkillFlow from "@/components/AgentSkillFlow";
 import Colophon from "@/components/Colophon";
 import ControlButton from "@/components/ControlButton";
 import Entry from "@/components/Entry";
@@ -16,7 +17,6 @@ import { SpecItem, SpecList } from "@/components/SpecList";
 import SpecSection from "@/components/SpecSection";
 import SpecSubsection from "@/components/SpecSubsection";
 import Text from "@/components/Text";
-import WebUiAgentFlow from "@/components/WebUiAgentFlow";
 import WithFigure from "@/components/WithFigure";
 import { jobs, moreProjects, pins } from "@/config";
 import { formatCommitTime } from "@/lib/github/commitLog";
@@ -158,7 +158,7 @@ function HomePage() {
           </Prose>
         </Entry>
         <Entry aside={null}>
-          <WebUiAgentFlow />
+          <AgentSkillFlow />
         </Entry>
 
         <SpecSubsection number="03.1" title="Before">
