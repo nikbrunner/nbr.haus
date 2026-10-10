@@ -76,9 +76,9 @@ function renderSheet(): string {
 
     ...section("01", "Ident"),
     ...item("Name", "Nikolaus Brunner, Nik for short"),
-    ...item("Role", "Design Engineer"),
+    ...item("Role", "Senior Design Engineer"),
     ...item("Base", "Landshut, Bavaria, DE"),
-    ...item("Code", "Self-taught 2019, professional since 2020"),
+    ...item("Career", "Self-taught 2019, professional since 2020"),
     "",
     ...item("Mail", "nik@nbr.haus", text => link(text, "mailto:nik@nbr.haus")),
     ...item("GitHub", "github.com/nikbrunner", text =>
@@ -97,7 +97,7 @@ function renderSheet(): string {
     ),
     ...item(
       "",
-      "I'm building @imfusion/web-ui, ImFusion's React component library on top of Base UI, with its design tokens, icons and tooling."
+      "I'm building @imfusion/web-ui, ImFusion's React component library on top of Base UI, with its design tokens, icons and tooling. It's written in TypeScript and tested with Vitest and Playwright. Storybook is its documentation, including the user guides and the changelog."
     ),
     ...jobs.flatMap(job => [
       "",

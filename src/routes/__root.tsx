@@ -25,7 +25,7 @@ import globalCss from "@/styles/global.css?url";
 
 const TITLE = "Nik Brunner, Senior Design Engineer";
 const DESCRIPTION =
-  "Nikolaus Brunner, Design Engineer in Landshut. I build frontend architecture and design systems.";
+  "Nikolaus Brunner, Senior Design Engineer in Landshut. I build frontend architecture and design systems.";
 
 export const Route = createRootRoute({
   validateSearch: rootSearchParamsSchema,

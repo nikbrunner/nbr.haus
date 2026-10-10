@@ -59,10 +59,10 @@ function HomePage() {
         >
           <SpecList>
             <SpecItem label="Name">Nikolaus Brunner, Nik for short</SpecItem>
-            <SpecItem label="Role">Design Engineer</SpecItem>
+            <SpecItem label="Role">Senior Design Engineer</SpecItem>
             <SpecItem label="Base">Landshut, Bavaria, DE</SpecItem>
             <SpecItem label="Born">1984</SpecItem>
-            <SpecItem label="Code">
+            <SpecItem label="Career">
               Self-taught 2019, professional since 2020
             </SpecItem>
             <SpecItem label="Languages">German (native), English (fluent)</SpecItem>
@@ -99,19 +99,30 @@ function HomePage() {
       <SpecSection id="about" number="02" title="About">
         <Prose>
           <p>
-            I build frontend architecture and design systems, and I care about UX and
-            DX in equal measure. I like working closely with designers, and I&apos;m
-            happy to make the design call myself when nobody else does.
+            Before code I worked in audio, first in post-production and then for five
+            years on event technology in Munich hotels. On the side I shot portraits
+            and weddings. In 2019 I switched to code.
           </p>
           <p>
-            I genuinely love building and using products. I&apos;m the person who
-            writes to support about a bug and reads changelogs and release notes for
-            fun.
+            I started out on plain frontend work. That&apos;s still the core of it,
+            but now I also work on the frontend architecture and the design systems,
+            and a lot of the design itself sits with me.
           </p>
           <p>
-            Away from the desk: hiking, running, bouldering, cooking, reading,
-            photography. Design in every form, from architecture to type. And a
-            slight keyboard obsession.
+            I&apos;m not a designer by trade. I know my way around Figma, but I never
+            had the time or the need to go deep. That part of the job has grown, and
+            right now I use Claude Design for it, which works well so far. I still
+            like working closely with designers, and I care about UX as much as DX.
+          </p>
+          <p>
+            I really like building products, and I like using them too. I&apos;m the
+            one who writes to support when I find a bug, and I read changelogs and
+            release notes because I enjoy it.
+          </p>
+          <p>
+            Away from the desk I go hiking, running and bouldering, and I cook, read
+            and take photos. I&apos;m interested in design in every form, from
+            architecture to typography. And I&apos;m a bit obsessed with keyboards.
           </p>
         </Prose>
       </SpecSection>
@@ -133,27 +144,22 @@ function HomePage() {
                 @imfusion/web-ui
               </ExternalLink>
               , ImFusion&apos;s React component library on top of Base UI, with its
-              design tokens, icons and tooling.
+              design tokens, icons and tooling. It&apos;s written in TypeScript and
+              tested with Vitest and Playwright. Storybook is its documentation,
+              including the user guides and the changelog.
             </p>
             <p>
-              The library is built to be set up and used through a coding agent.
-              Agents don&apos;t read about it, they get routed through it.
+              The library is built to be set up and used through a coding agent. A
+              hook sends UI work to a router skill, which hands it to the skill that
+              fits and loads only the knowledge that skill needs. Evals run agents
+              against consumer scenarios to check they land in the right skill and
+              follow the conventions.
             </p>
           </Prose>
         </Entry>
         <Entry aside={null}>
           <WebUiAgentFlow />
         </Entry>
-        <Rule dashed />
-        <SpecList>
-          <SpecItem label="Evals">
-            Agents run against consumer scenarios to check they pick the right skill
-            and follow the conventions.
-          </SpecItem>
-          <SpecItem label="Stack">
-            React, TypeScript, Base UI, Storybook, Vitest, Playwright
-          </SpecItem>
-        </SpecList>
 
         <SpecSubsection number="03.1" title="Before">
           {jobs.map(job => (
@@ -253,26 +259,29 @@ function HomePage() {
         <Prose>
           <p>
             I set my own priorities and manage my own work, and I know when to reach
-            out for input. A good team working towards a shared goal is what I enjoy
-            most.
+            out for input.
           </p>
           <p>
-            I care a lot about workflow. Almost everything I do runs through the
-            terminal and the keyboard, and I keep tuning that setup the way other
-            people tune a bike.
+            Workflow matters a little to me. My dots repo has over 3,500 commits
+            since June 2025. Almost everything I do runs through the terminal and the
+            keyboard, and I keep tuning that setup the way other people tune a bike.
           </p>
         </Prose>
 
         <SpecSubsection number="05.1" title="Agents">
           <Prose>
             <p>
-              I build my own agent tooling, for my own workflow and for the people
-              using my libraries. I stay the reviewer: agents propose, I read every
-              diff.
+              Claude Code came out in February 2025, in my birthday week. I had the
+              week off and barely left the desk. It was my second wow moment after
+              ChatGPT: I saw where coding was going, and I accepted it.
             </p>
             <p>
-              I learned to code before LLMs, and I think juniors should still learn
-              that way first.
+              I build my own agent tooling, for my workflow and for the people using
+              my libraries. I stay the reviewer: agents propose, I read every diff.
+            </p>
+            <p>
+              I think juniors should still learn to code without LLMs first, the way
+              I did.
             </p>
           </Prose>
         </SpecSubsection>
