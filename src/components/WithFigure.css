@@ -19,7 +19,7 @@
   }
 }
 
-@media screen and (max-width: 720px) {
+@container (width < 64ch) {
   .WithFigure {
     grid-template-columns: minmax(0, 1fr);
   }

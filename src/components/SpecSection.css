@@ -37,7 +37,9 @@
   text-transform: uppercase;
 }
 
+/* Layouts inside a section break on the section's width, not the viewport's */
 .SpecSection__body {
+  container-type: inline-size;
   display: grid;
   gap: var(--line);
 }

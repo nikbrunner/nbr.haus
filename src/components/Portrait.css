@@ -13,7 +13,7 @@
 }
 
 /* Without a height from its surroundings, the frame keeps the drawing's proportion */
-@media screen and (max-width: 720px) {
+@container (width < 64ch) {
   .Portrait__drawing {
     aspect-ratio: 4 / 5;
   }

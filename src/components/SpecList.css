@@ -29,7 +29,11 @@
   }
 }
 
-@media screen and (max-width: 720px) {
+@container (width < 40ch) {
+  .SpecList {
+    row-gap: var(--line-half);
+  }
+
   .SpecList__item {
     grid-template-columns: minmax(0, 1fr);
   }
