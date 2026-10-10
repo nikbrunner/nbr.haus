@@ -20,7 +20,9 @@ export function speechText(file: string): string {
     .body.replace(/\[\d+\]\(#source-\d+\)/g, "")
     .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
     .replace(/^#+\s+(.+)$/gm, "$1.")
-    .replace(/[_*]/g, "");
+    .replace(/[_*]/g, "")
+    .replace(/(?<!\n)\n(?!\n)/g, " ")
+    .trim();
 
   return `${title}\n\n${body}`;
 }

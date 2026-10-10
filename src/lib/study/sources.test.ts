@@ -13,6 +13,16 @@ describe("splitSources", () => {
     });
   });
 
+  it("joins a definition's indented continuation lines", () => {
+    const content =
+      "Text.[^a]\n\n[^a]:\n    Author, Name.\n    [Title](https://example.com) 2024.\n";
+
+    expect(splitSources(content)).toEqual({
+      body: "Text.[1](#source-1)",
+      sources: ["Author, Name. [Title](https://example.com) 2024."]
+    });
+  });
+
   it("leaves references without a definition as written", () => {
     expect(splitSources("Text.[^missing]")).toEqual({
       body: "Text.[^missing]",

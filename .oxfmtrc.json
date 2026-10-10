@@ -25,5 +25,11 @@
     ]
   },
   "sortPackageJson": false,
+  "overrides": [
+    {
+      "files": ["src/content/**/*.md"],
+      "options": { "proseWrap": "always", "printWidth": 80 }
+    }
+  ],
   "ignorePatterns": [".claude/", "docs/ai/", "src/routeTree.gen.ts"]
 }

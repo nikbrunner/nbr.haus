@@ -1,4 +1,5 @@
-const DEFINITION = /^\[\^([^\]]+)\]:[ \t]*(.+)$/gm;
+/** A definition line plus its indented continuation lines, as a formatter wraps them */
+const DEFINITION = /^\[\^([^\]]+)\]:[ \t]*(.*(?:\n(?: {2,}|\t).*)*)$/gm;
 const REFERENCE = /\[\^([^\]]+)\]/g;
 
 interface SplitPost {
@@ -15,7 +16,7 @@ export function splitSources(content: string): SplitPost {
   const withoutDefinitions = content.replace(
     DEFINITION,
     (_, id: string, source: string) => {
-      definitions.set(id, source.trim());
+      definitions.set(id, source.trim().replace(/\s*\n\s*/g, " "));
       return "";
     }
   );
