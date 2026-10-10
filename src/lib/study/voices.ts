@@ -1,9 +1,7 @@
 /** ElevenLabs voice IDs, by the voice's name in the ElevenLabs account */
 const ElevenLabsVoice = {
   /** Nik's own instant clone ("Nik v2" in ElevenLabs) */
-  NikV2: "QrIGhZnCwRcWI8hIDflQ",
-  /** Sadie, from the ElevenLabs voice library */
-  Sadie: "bD9maNcCuQQS75DGuteM"
+  NikV2: "QrIGhZnCwRcWI8hIDflQ"
 } as const;
 
 interface StudyVoice {
@@ -26,11 +24,6 @@ export const STUDY_VOICES: StudyVoice[] = [
     // the recorded sample, lower stability lets the delivery follow it
     deliveryTag: "[strong American accent]",
     settings: { similarity: 0.4, stability: 0.3 }
-  },
-  {
-    id: "sadie",
-    label: "Sadie",
-    voiceId: ElevenLabsVoice.Sadie
   }
 ];
 

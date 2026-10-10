@@ -7,7 +7,7 @@ excerpt:
   to make it worse."
 tags:
   - philosophy
-audio: "be7b81601198"
+audio: "62a7941c8f95"
 ---
 
 I taught myself to code in 2019 the classic way, with tutorials, documentation

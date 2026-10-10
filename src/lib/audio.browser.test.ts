@@ -50,7 +50,7 @@ beforeEach(() => {
     title: "Study",
     voices: [
       { id: "nik", label: "Nik", src: silence(LENGTH) },
-      { id: "sadie", label: "Sadie", src: silence(LENGTH) }
+      { id: "second", label: "Second", src: silence(LENGTH) }
     ]
   };
   other = {
@@ -86,11 +86,11 @@ describe("loadTrack", () => {
   });
 
   it("loads the voice chosen before", async () => {
-    localStorage.setItem("audio-voice", "sadie");
+    localStorage.setItem("audio-voice", "second");
 
     loadTrack(study);
 
-    expect(getAudioState().voiceId).toBe("sadie");
+    expect(getAudioState().voiceId).toBe("second");
   });
 
   it("resumes where the file was left", async () => {
@@ -132,10 +132,10 @@ describe("playing", () => {
   });
 
   it("plays another track in the voice chosen before", async () => {
-    other.voices.push({ id: "sadie", label: "Sadie", src: silence(LENGTH) });
+    other.voices.push({ id: "second", label: "Second", src: silence(LENGTH) });
     toggleTrack(study);
     await playing();
-    selectVoice("sadie");
+    selectVoice("second");
 
     toggleTrack(other);
 
@@ -172,9 +172,9 @@ describe("selectVoice", () => {
     seek(20);
     await expect.poll(() => getAudioState().time).toBeGreaterThanOrEqual(20);
 
-    selectVoice("sadie");
+    selectVoice("second");
 
-    await expect.poll(() => getAudioState().voiceId).toBe("sadie");
+    await expect.poll(() => getAudioState().voiceId).toBe("second");
     await playing();
     const time = getAudioState().time;
     expect(time).toBeGreaterThanOrEqual(15);
@@ -186,10 +186,10 @@ describe("selectVoice", () => {
     await loaded();
     seek(10);
 
-    selectVoice("sadie");
+    selectVoice("second");
     await loaded();
 
-    expect(getAudioState()).toMatchObject({ voiceId: "sadie", playing: false });
+    expect(getAudioState()).toMatchObject({ voiceId: "second", playing: false });
     expect(getAudioState().time).toBeCloseTo(5, 0);
   });
 
@@ -198,7 +198,7 @@ describe("selectVoice", () => {
     await loaded();
     seek(2);
 
-    selectVoice("sadie");
+    selectVoice("second");
     await loaded();
 
     expect(getAudioState().time).toBe(0);
@@ -206,9 +206,9 @@ describe("selectVoice", () => {
 
   it("remembers the choice for the next track", async () => {
     loadTrack(study);
-    selectVoice("sadie");
+    selectVoice("second");
 
-    expect(localStorage.getItem("audio-voice")).toBe("sadie");
+    expect(localStorage.getItem("audio-voice")).toBe("second");
   });
 });
 
