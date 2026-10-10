@@ -11,3 +11,15 @@ export const escapeXml = (text: string) =>
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&apos;");
+
+/** Each Open Graph tag with its `twitter:` twin, which some previews read without falling back */
+export const socialMeta = (tags: {
+  title?: string;
+  description?: string;
+  url?: string;
+  image?: string;
+}) =>
+  Object.entries(tags).flatMap(([key, content]) => [
+    { property: `og:${key}`, content },
+    { name: `twitter:${key}`, content }
+  ]);

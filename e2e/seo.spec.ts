@@ -14,6 +14,20 @@ test("each page names itself as canonical", async ({ page }) => {
   }
 });
 
+test("a post shares its own title on Open Graph and X", async ({ page }) => {
+  await page.goto(POST);
+  for (const selector of [
+    'meta[property="og:title"]',
+    'meta[name="twitter:title"]'
+  ]) {
+    await expect(page.locator(selector)).toHaveAttribute("content", "Out of Sync");
+  }
+  await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute(
+    "content",
+    /\/og-image\.jpg$/
+  );
+});
+
 test("a post carries BlogPosting structured data", async ({ page }) => {
   await page.goto(POST);
   const scripts = await page

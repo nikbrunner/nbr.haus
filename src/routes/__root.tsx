@@ -10,7 +10,7 @@ import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
 import Grain from "@/components/Grain";
 import Sheet from "@/components/Sheet";
-import { absoluteUrl, assetUrl, SITE_URL } from "@/lib/site";
+import { absoluteUrl, assetUrl, SITE_URL, socialMeta } from "@/lib/site";
 import { getAllPosts } from "@/lib/study";
 import { STUDY_TITLE } from "@/lib/study/meta";
 import { NotFound } from "@/partials/NotFound";
@@ -63,18 +63,11 @@ export const Route = createRootRoute({
         property: "og:type",
         content: "website"
       },
-      {
-        property: "og:title",
-        content: TITLE
-      },
-      {
-        property: "og:description",
-        content: DESCRIPTION
-      },
-      {
-        property: "og:image",
-        content: assetUrl("/og-image.jpg")
-      },
+      ...socialMeta({
+        title: TITLE,
+        description: DESCRIPTION,
+        image: assetUrl("/og-image.jpg")
+      }),
       {
         name: "twitter:card",
         content: "summary_large_image"

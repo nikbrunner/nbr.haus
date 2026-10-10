@@ -50,7 +50,7 @@ Server-only code uses TanStack Start's `createServerFn`. Study posts read Markdo
 - The paper `Sheet` on the desk and the `Grain` overlay
 - Color mode initialization script (prevents flash)
 
-Each page route sets its own canonical link and `og:url` from `absoluteUrl` in `src/lib/site.ts`, since `links` from parent routes are concatenated rather than replaced. A study post adds `BlogPosting` structured data.
+Each page route sets its own canonical link from `absoluteUrl` in `src/lib/site.ts`, since `links` from parent routes are concatenated rather than replaced. Social tags go through `socialMeta`, which writes each `og:` tag with its `twitter:` twin; a child route's tag replaces the root's tag of the same name. The preview image loads from `assetUrl`, the origin of the deployment the build runs on. A study post adds `BlogPosting` structured data.
 
 `src/routes/sitemap[.]xml.ts` and `src/routes/study/rss[.]xml.ts` are server routes that build the sitemap and the RSS feed from the posts. The curl middleware lets `.xml` paths through, so feed readers whose user agent contains `fetch` get the feed.
 

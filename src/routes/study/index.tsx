@@ -6,7 +6,7 @@ import Prose from "@/components/Prose";
 import Rule from "@/components/Rule";
 import SpecSection from "@/components/SpecSection";
 import Text from "@/components/Text";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, socialMeta } from "@/lib/site";
 import { getAllPosts } from "@/lib/study";
 import {
   STUDY_DESCRIPTION as DESCRIPTION,
@@ -20,9 +20,11 @@ export const Route = createFileRoute("/study/")({
     meta: [
       { title: TITLE },
       { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
-      { property: "og:url", content: absoluteUrl("/study") }
+      ...socialMeta({
+        title: TITLE,
+        description: DESCRIPTION,
+        url: absoluteUrl("/study")
+      })
     ],
     links: [{ rel: "canonical", href: absoluteUrl("/study") }]
   }),

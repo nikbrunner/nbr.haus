@@ -6,7 +6,7 @@ import Entry from "@/components/Entry";
 import InlineList from "@/components/InlineList";
 import { SpecItem, SpecList } from "@/components/SpecList";
 import SpecSection from "@/components/SpecSection";
-import { absoluteUrl, SITE_URL } from "@/lib/site";
+import { absoluteUrl, SITE_URL, socialMeta } from "@/lib/site";
 import {
   formatStudyNumber,
   getAdjacentPosts,
@@ -74,10 +74,8 @@ export const Route = createFileRoute("/study/$slug")({
       meta: [
         { title: `${title}, Study, Nik Brunner` },
         { name: "description", content: excerpt },
-        { property: "og:title", content: title },
-        { property: "og:description", content: excerpt },
+        ...socialMeta({ title, description: excerpt, url }),
         { property: "og:type", content: "article" },
-        { property: "og:url", content: url },
         { property: "article:published_time", content: publishedAt }
       ],
       links: [{ rel: "canonical", href: url }],

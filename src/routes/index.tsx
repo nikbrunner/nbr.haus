@@ -21,14 +21,14 @@ import WithFigure from "@/components/WithFigure";
 import { jobs, moreProjects, pins } from "@/config";
 import { formatCommitTime } from "@/lib/github/commitLog";
 import { getCommitLog } from "@/lib/github/queries";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, socialMeta } from "@/lib/site";
 import { getAllPosts } from "@/lib/study";
 import { SiteHeader } from "@/partials/SiteHeader";
 
 export const Route = createFileRoute("/")({
   loader: async () => ({ posts: await getAllPosts() }),
   head: () => ({
-    meta: [{ property: "og:url", content: absoluteUrl("/") }],
+    meta: socialMeta({ url: absoluteUrl("/") }),
     links: [{ rel: "canonical", href: absoluteUrl("/") }]
   }),
   component: HomePage
