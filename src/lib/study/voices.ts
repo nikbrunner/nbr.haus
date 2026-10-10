@@ -11,7 +11,7 @@ interface StudyVoice {
   id: string;
   label: string;
   voiceId: (typeof ElevenLabsVoice)[keyof typeof ElevenLabsVoice];
-  /** Audio tag prefixed to every generated chunk */
+  /** Audio tag prefixed to every paragraph */
   deliveryTag?: string;
   settings?: { similarity?: number; stability?: number };
 }

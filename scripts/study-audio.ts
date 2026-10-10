@@ -10,7 +10,7 @@ export const MODEL_ID = "eleven_v4";
 const FRONTMATTER_END = /^---$/m;
 const AUDIO_LINE = /^audio: .*\n/m;
 
-/** The text that gets read aloud: title, subtitle and body, without footnotes or Markdown syntax */
+/** The text that gets read aloud: title, subtitle and body, without footnotes or Markdown syntax; headings get a long pause */
 export function speechText(file: string): string {
   const { data, content } = matter(file);
   const title = data.subtitle
@@ -19,7 +19,7 @@ export function speechText(file: string): string {
   const body = splitSources(content)
     .body.replace(/\[\d+\]\(#source-\d+\)/g, "")
     .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
-    .replace(/^#+\s+(.+)$/gm, "$1.")
+    .replace(/^#+\s+(.+)$/gm, "[long pause] $1.")
     .replace(/[_*]/g, "")
     .replace(/(?<!\n)\n(?!\n)/g, " ")
     .trim();

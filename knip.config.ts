@@ -4,7 +4,7 @@ const config: KnipConfig = {
   entry: ["src/routes/**/*.tsx", "server/**/*.ts", "scripts/*.ts"],
   project: ["src/**/*.{ts,tsx}", "server/**/*.ts", "scripts/*.ts"],
   ignore: ["src/storybook/**/*.ts"],
-  ignoreBinaries: ["pass-cli"],
+  ignoreBinaries: ["pass-cli", "ffmpeg"],
   ignoreDependencies: [
     "@tanstack/router-plugin",
     "@chromatic-com/storybook",
