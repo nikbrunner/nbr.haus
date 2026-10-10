@@ -1,7 +1,9 @@
 pre-commit:
   jobs:
     - name: study audio
-      glob: "src/content/study/*.md"
+      glob:
+        - "src/content/study/*.md"
+        - "src/content/pages/*.md"
       run: node scripts/check-study-audio.ts {staged_files}
 
 pre-push:

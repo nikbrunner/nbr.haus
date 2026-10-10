@@ -10,7 +10,10 @@ export const MODEL_ID = "eleven_v4";
 const FRONTMATTER_END = /^---$/m;
 const AUDIO_LINE = /^audio: .*\n/m;
 
-/** The text that gets read aloud: title, subtitle and body, without footnotes or Markdown syntax; headings get a long pause */
+/**
+ * The text that gets read aloud: title, subtitle and body, without footnotes or Markdown syntax;
+ * headings get a long pause. `speakTitle: false` in the frontmatter starts with the body instead
+ */
 export function speechText(file: string): string {
   const { data, content } = matter(file);
   const title = data.subtitle
@@ -24,7 +27,7 @@ export function speechText(file: string): string {
     .replace(/(?<!\n)\n(?!\n)/g, " ")
     .trim();
 
-  return `${title}\n\n${body}`;
+  return data.speakTitle === false ? body : `${title}\n\n${body}`;
 }
 
 /** Changes whenever the spoken text, the model or any voice or its settings changes */

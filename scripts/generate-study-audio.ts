@@ -1,4 +1,5 @@
 import { spawnSync } from "node:child_process";
+import { existsSync } from "node:fs";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 
 import { ElevenLabsClient } from "@elevenlabs/elevenlabs-js";
@@ -33,7 +34,12 @@ const MASTERING_FILTER = [
 const [slug, onlyVoice] = process.argv.slice(2);
 if (!slug) throw new Error("Usage: npm run generate:audio -- <slug> [voice]");
 
-const postPath = `src/content/study/${slug}.en.md`;
+/** A study post by its slug, or a page's spoken version by its name, such as `home` */
+const postPath = [
+  `src/content/study/${slug}.en.md`,
+  `src/content/pages/${slug}.en.md`
+].find(path => existsSync(path));
+if (!postPath) throw new Error(`No post or page named "${slug}"`);
 const file = await readFile(postPath, "utf8");
 const text = speechText(file);
 const client = new ElevenLabsClient();
