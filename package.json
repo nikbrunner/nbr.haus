@@ -7,6 +7,7 @@
   },
   "scripts": {
     "dev": "vite dev --port 3000",
+    "dev:token": "GITHUB_PAT=pass://Nik/.env/GITHUB_PAT pass-cli run -- vite dev --port 3000",
     "build": "vite build",
     "serve": "vite preview",
     "serve:host": "npm run build && vite preview --host --port 3000",
