@@ -1,0 +1,27 @@
+/* A print on its own light paper, edged with the sections' double rule */
+.Portrait {
+  display: grid;
+  border: 4px double var(--ink-light);
+  background-color: var(--paper-light);
+}
+
+.Portrait__drawing {
+  min-height: 0;
+  background-color: var(--ink-light);
+  /* Fills the frame like a trimmed print; the crop keeps the face, which sits high in the drawing */
+  mask: var(--portrait-mask) center 30% / cover no-repeat;
+}
+
+/* Without a height from its surroundings, the frame keeps the drawing's proportion */
+@media screen and (max-width: 720px) {
+  .Portrait__drawing {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+/* Print drops background colors, so the masked drawing would come out blank */
+@media print {
+  .Portrait {
+    display: none;
+  }
+}

@@ -1,0 +1,41 @@
+.WithFigure {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 28ch;
+  gap: var(--tab);
+}
+
+.WithFigure__body {
+  display: grid;
+  gap: var(--line);
+}
+
+/* The figure takes exactly the height of the content beside it */
+.WithFigure__figure {
+  position: relative;
+
+  & > * {
+    position: absolute;
+    inset: 0;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .WithFigure {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .WithFigure__figure {
+    order: -1;
+    width: min(28ch, 70%);
+
+    & > * {
+      position: static;
+    }
+  }
+}
+
+@media print {
+  .WithFigure {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

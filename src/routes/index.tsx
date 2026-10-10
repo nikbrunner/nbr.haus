@@ -1,12 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute, Link } from "@tanstack/react-router";
 
+import portraitMask from "@/assets/images/portrait-mask.webp";
 import Colophon from "@/components/Colophon";
 import ControlButton from "@/components/ControlButton";
 import DataTable, { type DataTableColumn } from "@/components/DataTable";
 import Entry from "@/components/Entry";
 import ExternalLink from "@/components/ExternalLink";
 import InlineList from "@/components/InlineList";
+import Portrait from "@/components/Portrait";
 import Prose from "@/components/Prose";
 import Rule from "@/components/Rule";
 import { SpecItem, SpecList } from "@/components/SpecList";
@@ -14,6 +16,7 @@ import SpecSection from "@/components/SpecSection";
 import SpecSubsection from "@/components/SpecSubsection";
 import Text from "@/components/Text";
 import WebUiAgentFlow from "@/components/WebUiAgentFlow";
+import WithFigure from "@/components/WithFigure";
 import { jobs, moreProjects, pins } from "@/config";
 import { formatCommitTime, type Commit } from "@/lib/github/commitLog";
 import { getCommitLog } from "@/lib/github/queries";
@@ -69,32 +72,48 @@ function HomePage() {
       />
 
       <SpecSection id="ident" number="01" title="Ident">
-        <SpecList>
-          <SpecItem label="Name">Nikolaus Brunner, Nik for short</SpecItem>
-          <SpecItem label="Role">Design Engineer</SpecItem>
-          <SpecItem label="Base">Landshut, Bavaria, DE</SpecItem>
-          <SpecItem label="Born">1984</SpecItem>
-          <SpecItem label="Code">Self-taught 2019, professional since 2020</SpecItem>
-          <SpecItem label="Languages">German (native), English (fluent)</SpecItem>
-        </SpecList>
-        <SpecList>
-          <SpecItem label="Mail">
-            <a href="mailto:nik@nbr.haus">nik@nbr.haus</a>
-          </SpecItem>
-          <SpecItem label="Elsewhere">
-            <InlineList>
-              <a href="https://github.com/nikbrunner">GitHub</a>
-              <a href="https://www.linkedin.com/in/nbru/">LinkedIn</a>
-              <a href="https://www.instagram.com/nikolaus.brunner">Instagram</a>
-            </InlineList>
-          </SpecItem>
-          <SpecItem label="CV" hideInPrint>
-            <InlineList>
-              <span>This page. It prints as one.</span>
-              <ControlButton onClick={() => globalThis.print()}>Print</ControlButton>
-            </InlineList>
-          </SpecItem>
-        </SpecList>
+        <WithFigure
+          figure={
+            <Portrait mask={portraitMask} label="Pencil sketch of Nik Brunner" />
+          }
+        >
+          <SpecList>
+            <SpecItem label="Name">Nikolaus Brunner, Nik for short</SpecItem>
+            <SpecItem label="Role">Design Engineer</SpecItem>
+            <SpecItem label="Base">Landshut, Bavaria, DE</SpecItem>
+            <SpecItem label="Born">1984</SpecItem>
+            <SpecItem label="Code">
+              Self-taught 2019, professional since 2020
+            </SpecItem>
+            <SpecItem label="Languages">German (native), English (fluent)</SpecItem>
+          </SpecList>
+          <SpecList>
+            <SpecItem label="Mail">
+              <a href="mailto:nik@nbr.haus">nik@nbr.haus</a>
+            </SpecItem>
+            <SpecItem label="Elsewhere">
+              <InlineList>
+                <ExternalLink href="https://github.com/nikbrunner">
+                  GitHub
+                </ExternalLink>
+                <ExternalLink href="https://www.linkedin.com/in/nbru/">
+                  LinkedIn
+                </ExternalLink>
+                <ExternalLink href="https://www.instagram.com/nikolaus.brunner">
+                  Instagram
+                </ExternalLink>
+              </InlineList>
+            </SpecItem>
+            <SpecItem label="CV" hideInPrint>
+              <InlineList>
+                <span>This page. It prints as one.</span>
+                <ControlButton onClick={() => globalThis.print()}>
+                  Print
+                </ControlButton>
+              </InlineList>
+            </SpecItem>
+          </SpecList>
+        </WithFigure>
       </SpecSection>
 
       <SpecSection id="about" number="02" title="About">
