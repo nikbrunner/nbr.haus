@@ -112,7 +112,7 @@ UI reacts via CSS
 - `J` `K` jump between section headings and scroll them to the top.
 - `d` `u` scroll half a page and carry the selection along. `gg` `G` select the first or last block, `zt` `zz` scroll the selection to the top or middle.
 - `gh` `gs` go home or to the study list, which opens with its first entry selected.
-- `c` + `a` `f` `k` `p` `v` sets the colors, `m` + `l` `d` `s` the color mode.
+- `c` + `a` `f` `k` `p` `v` sets the colors, `m` + `l` `d` `s` the color mode, `m t` toggles between light and dark.
 
 The cursor lives in `src/lib/navCursor.ts`, outside React, so it survives route changes. Blocks are found by `BLOCK_SELECTOR` in visual reading order; add `data-nav-block` to make another element one. The selection is real focus; `NavCursor` draws the brackets.
 

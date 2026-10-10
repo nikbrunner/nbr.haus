@@ -46,13 +46,13 @@ interface PrefixMap {
 /**
  * Vim-style keys: `j` `k` select blocks, `J` `K` section headings, `h` `l` the links inside them (arrow keys too, once
  * a block is selected), `d` `u` `gg` `G` scroll, `c` + a/f/k/p/v sets the colors,
- * `m` + l/d/s sets the color mode, `g` + g/h/s goes places,
+ * `m` + l/d/s sets the color mode and `m t` toggles it, `g` + g/h/s goes places,
  * `zt` / `zz` scroll the selection to the top / middle, `?` lists everything.
  * Returns the which-key groups to show: the next keys after a prefix, or the full list.
  */
 export function useSiteHotkeys() {
   const { setTheme } = useTheme();
-  const { setColorMode } = useColorMode();
+  const { colorMode, setColorMode } = useColorMode();
   const [open, setOpen] = useState<Prefix | "all" | null>(null);
   const navigate = useNavigate();
   const hasCursor = useSyncExternalStore(
@@ -60,6 +60,13 @@ export function useSiteHotkeys() {
     () => getSelectedBlock() !== null,
     () => false
   );
+
+  function toggleColorMode() {
+    const dark =
+      colorMode === "dark" ||
+      (colorMode === "system" && matchMedia("(prefers-color-scheme: dark)").matches);
+    setColorMode(dark ? "light" : "dark");
+  }
 
   async function goTo(to: "/" | "/study") {
     await navigate({ to });
@@ -83,7 +90,8 @@ export function useSiteHotkeys() {
       next: [
         { key: "L", label: "Light", run: () => setColorMode("light") },
         { key: "D", label: "Dark", run: () => setColorMode("dark") },
-        { key: "S", label: "System", run: () => setColorMode("system") }
+        { key: "S", label: "System", run: () => setColorMode("system") },
+        { key: "T", label: "Toggle", run: toggleColorMode }
       ]
     },
     G: {

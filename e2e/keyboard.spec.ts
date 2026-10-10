@@ -143,6 +143,21 @@ test.describe("prefixes", () => {
     expect(await page.evaluate(() => window.scrollY)).toBe(0);
   });
 
+  test("m t toggles the color mode, starting from the system one", async ({
+    page
+  }) => {
+    await page.emulateMedia({ colorScheme: "dark" });
+    await open(page, "/");
+
+    await page.keyboard.press("m");
+    await page.keyboard.press("t");
+    await expect(page.locator("html")).toHaveAttribute("data-color-mode", "light");
+
+    await page.keyboard.press("m");
+    await page.keyboard.press("t");
+    await expect(page.locator("html")).toHaveAttribute("data-color-mode", "dark");
+  });
+
   test("c k sets Koyo without also moving the cursor", async ({ page }) => {
     await open(page, "/");
 
