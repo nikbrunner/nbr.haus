@@ -1,6 +1,0 @@
-/* Cover letter specific styles - base print styles are in src/styles/print-utils.css */
-/* Use .PrintPage class on the component for shared print page behavior */
-
-.CoverLetterPage__content {
-  margin-bottom: var(--print-size-10);
-}

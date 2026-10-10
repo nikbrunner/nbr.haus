@@ -21,8 +21,6 @@
     "knip": "knip",
     "storybook": "storybook dev -p 6006 -c src/storybook",
     "build:storybook": "storybook build -c src/storybook",
-    "generate:cv": "npx tsx scripts/generate-cv-pdf.ts",
-    "generate:coverletters": "npx tsx scripts/generate-coverletters-pdf.ts",
     "docs:ai:ts-router": "rm -f docs/ai/tanstack-router.md && vibe-rules install claude-code @tanstack/react-router --target docs/ai/tanstack-router.md",
     "pretest": "playwright install chromium"
   },
@@ -82,7 +80,6 @@
     "oxfmt": "^0.72.0",
     "playwright": "^1.56.1",
     "storybook": "^10.0.8",
-    "tsx": "^4.19.0",
     "typescript": "6.0.3",
     "typescript-eslint": "8.71.0",
     "vibe-rules": "^0.3.91",
