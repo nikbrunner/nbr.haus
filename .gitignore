@@ -3,16 +3,13 @@ node_modules
 dist
 dist-ssr
 *.local
-count.txt
 .env
 .nitro
 .tanstack
-.wrangler
 .output
-.vinxi
-todos.json
 .vercel/output
 
 *storybook.log
 storybook-static
-/PLAN.md
+
+voice-samples
