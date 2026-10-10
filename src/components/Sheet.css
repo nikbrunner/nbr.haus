@@ -1,33 +1,84 @@
-.Sheet {
-  position: relative;
+/* The sheet's outline and shadow: a plain rectangle, so the punched holes show clean desk */
+.Sheet__shadow {
   max-width: var(--sheet-max-width);
   margin: 0 auto;
-  padding: var(--line-double) calc(var(--tab) * 4);
-  border: 1px solid var(--color-edge);
-  background-color: var(--color-bg-main);
   box-shadow: var(--shadow-offset) var(--shadow-offset) 0
     color-mix(in oklch, var(--color-edge) 25%, transparent);
 }
 
+.Sheet {
+  /* The paper's cut edge, and the reinforced rim of each punched hole: the paper's color, brighter.
+     Light paper is near white already, so its rim is pure white */
+  --paper-rim: light-dark(
+    oklch(1 0 0),
+    oklch(from var(--color-bg-main) calc(l + 0.2) calc(c * 0.5) h)
+  );
+
+  position: relative;
+  padding: var(--line-double) calc(var(--tab) * 4);
+  border: 1px solid var(--paper-rim);
+  background-color: var(--color-bg-main);
+}
+
+/* Light from the top left: through each punched hole the paper's rim casts a crescent of shadow
+   onto the desk. Drawn under the sheet, so only the holes show it; the column matches the mask,
+   moved by the sheet's 1px border */
+.Sheet__shadow:has(> .Sheet--punched) {
+  /* The hole's center (12px) moved 3px down-right: the uncovered part of the hole */
+  background-image: radial-gradient(
+    circle at 15px 15px,
+    transparent 8px,
+    color-mix(in oklch, var(--color-edge) 45%, transparent) 8.5px
+  );
+  background-position: calc(2rem + 1px) calc(var(--line) + 1px);
+  background-size: var(--line) calc(var(--line) * 4);
+  background-repeat: repeat-y;
+}
+
 @media screen and (max-width: 720px) {
+  .Sheet__shadow {
+    background: none;
+    box-shadow: none;
+  }
+
   .Sheet {
     padding: var(--line) var(--tab) var(--line-double);
     border: 0;
-    box-shadow: none;
   }
 }
 
 @media print {
-  .Sheet {
+  .Sheet__shadow {
     max-width: none;
+    background: none;
+    box-shadow: none;
+  }
+
+  .Sheet {
     padding: 0;
     border: 0;
-    box-shadow: none;
   }
 }
 
 .Sheet--punched {
+  /* Punched through: the mask cuts each hole out of the paper, inside the ring drawn by ::before.
+     The hole layer measures from the padding box, like ::before, so both share the same values;
+     the solid layer covers the border box */
+  --hole-pitch: calc(var(--line) * 4);
+
   padding-left: 8rem;
+  mask-image:
+    radial-gradient(circle at 12px 12px, #000 8px, transparent 8.5px),
+    linear-gradient(#000 0 0);
+  mask-position:
+    2rem var(--line),
+    0 0;
+  mask-size:
+    var(--line) var(--hole-pitch),
+    100% 100%;
+  mask-repeat: repeat-y, no-repeat;
+  mask-origin: padding-box, border-box;
+  mask-composite: exclude;
 
   &::before {
     position: absolute;
@@ -38,9 +89,9 @@
     background: radial-gradient(
         circle at 12px 12px,
         transparent 8px,
-        var(--color-fg-main) 8.5px,
-        var(--color-fg-main) 9.5px,
-        transparent 10px
+        var(--paper-rim) 8.5px,
+        var(--paper-rim) 11px,
+        transparent 11.5px
       )
       0 0 / var(--line) calc(var(--line) * 4) repeat-y;
     opacity: 0.55;
@@ -63,6 +114,7 @@
 @media screen and (max-width: 720px) {
   .Sheet--punched {
     padding-left: var(--tab);
+    mask-image: none;
 
     &::before,
     &::after {
@@ -74,6 +126,7 @@
 @media print {
   .Sheet--punched {
     padding-left: 0;
+    mask-image: none;
 
     &::before,
     &::after {
