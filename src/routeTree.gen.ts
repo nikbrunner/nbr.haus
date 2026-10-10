@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CvRouteImport } from './routes/cv'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as StudyRouteRouteImport } from './routes/study/route'
 import { Route as StudyIndexRouteImport } from './routes/study/index'
@@ -19,6 +20,11 @@ import { Route as StudyRssDotxmlRouteImport } from './routes/study/rss[.]xml'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CvRoute = CvRouteImport.update({
+  id: '/cv',
+  path: '/cv',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -50,6 +56,7 @@ const StudyRssDotxmlRoute = StudyRssDotxmlRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/study': typeof StudyRouteRouteWithChildren
+  '/cv': typeof CvRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/study/$slug': typeof StudySlugRoute
   '/study/rss.xml': typeof StudyRssDotxmlRoute
@@ -57,6 +64,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cv': typeof CvRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/study/$slug': typeof StudySlugRoute
   '/study/rss.xml': typeof StudyRssDotxmlRoute
@@ -66,6 +74,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/study': typeof StudyRouteRouteWithChildren
+  '/cv': typeof CvRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/study/$slug': typeof StudySlugRoute
   '/study/rss.xml': typeof StudyRssDotxmlRoute
@@ -76,16 +85,19 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/study'
+    | '/cv'
     | '/sitemap.xml'
     | '/study/$slug'
     | '/study/rss.xml'
     | '/study/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/sitemap.xml' | '/study/$slug' | '/study/rss.xml' | '/study'
+  to:
+    '/' | '/cv' | '/sitemap.xml' | '/study/$slug' | '/study/rss.xml' | '/study'
   id:
     | '__root__'
     | '/'
     | '/study'
+    | '/cv'
     | '/sitemap.xml'
     | '/study/$slug'
     | '/study/rss.xml'
@@ -95,6 +107,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   StudyRouteRoute: typeof StudyRouteRouteWithChildren
+  CvRoute: typeof CvRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
@@ -105,6 +118,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cv': {
+      id: '/cv'
+      path: '/cv'
+      fullPath: '/cv'
+      preLoaderRoute: typeof CvRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -164,6 +184,7 @@ const StudyRouteRouteWithChildren = StudyRouteRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   StudyRouteRoute: StudyRouteRouteWithChildren,
+  CvRoute: CvRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport

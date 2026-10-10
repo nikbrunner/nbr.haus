@@ -66,3 +66,9 @@ test("the feed lists the posts, also for feed fetchers", async ({
     page.locator('link[rel="alternate"][type="application/rss+xml"]')
   ).toHaveAttribute("href", "/study/rss.xml");
 });
+
+test("the old /cv address moves to the home page", async ({ request }) => {
+  const response = await request.get("/cv", { maxRedirects: 0 });
+  expect(response.status()).toBe(308);
+  expect(response.headers().location).toBe("/");
+});
