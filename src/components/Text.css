@@ -1,0 +1,22 @@
+.Text--caps {
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
+
+.Text--bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.Text--muted {
+  color: var(--color-fg-minor);
+  font-style: italic;
+
+  & .Text--caps {
+    font-style: normal;
+  }
+}
+
+.Text--spaced {
+  margin: var(--line) 0 0;
+  text-wrap-style: pretty;
+}

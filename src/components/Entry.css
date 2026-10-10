@@ -1,0 +1,23 @@
+/* A tab-stopped column, then the entry */
+.Entry {
+  display: grid;
+  grid-template-columns: var(--label-width) minmax(0, 1fr);
+  column-gap: var(--tab);
+  break-inside: avoid;
+}
+
+.Entry__aside {
+  font-weight: var(--font-weight-semibold);
+}
+
+.Entry__body {
+  display: grid;
+  align-content: start;
+  max-width: var(--measure);
+}
+
+@media screen and (max-width: 720px) {
+  .Entry {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

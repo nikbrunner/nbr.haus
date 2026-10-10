@@ -1,8 +1,19 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 
-import { StudyPostContent, StudyPostMeta } from "@/components/study";
-import { Typo } from "@/components/Typo";
-import { getAdjacentPosts, getPostBySlug } from "@/lib/study";
+import Colophon from "@/components/Colophon";
+import Entry from "@/components/Entry";
+import InlineList from "@/components/InlineList";
+import { SpecItem, SpecList } from "@/components/SpecList";
+import SpecSection from "@/components/SpecSection";
+import {
+  formatStudyNumber,
+  getAdjacentPosts,
+  getAllPosts,
+  getPostBySlug,
+  splitSources
+} from "@/lib/study";
+import { InlineMarkdown, MarkdownContent } from "@/partials/MarkdownContent";
+import { SiteHeader } from "@/partials/SiteHeader";
 
 export const Route = createFileRoute("/study/$slug")({
   loader: async ({ params }) => {
@@ -14,9 +25,16 @@ export const Route = createFileRoute("/study/$slug")({
       throw notFound();
     }
 
-    const adjacent = await getAdjacentPosts({ data: { slug } });
+    const [adjacent, posts] = await Promise.all([
+      getAdjacentPosts({ data: { slug } }),
+      getAllPosts()
+    ]);
+    const number = formatStudyNumber(
+      posts.map(item => item.slug),
+      slug
+    );
 
-    return { post, adjacent };
+    return { post, adjacent, number, ...splitSources(post.content) };
   },
   head: ({ loaderData }) => {
     const post = loaderData?.post;
@@ -25,7 +43,7 @@ export const Route = createFileRoute("/study/$slug")({
 
     return {
       meta: [
-        { title: `${title} - Study - Nik Brunner` },
+        { title: `${title}, Study, Nik Brunner` },
         { name: "description", content: description },
         { property: "og:title", content: title },
         { property: "og:description", content: description },
@@ -41,50 +59,78 @@ export const Route = createFileRoute("/study/$slug")({
 });
 
 function StudyPostPage() {
-  const { post, adjacent } = Route.useLoaderData();
+  const { post, adjacent, number, body, sources } = Route.useLoaderData();
+  const { title, subtitle, publishedAt, tags, audio } = post.frontmatter;
+  const length = `${post.readingTime} min${sources.length > 0 ? `, ${sources.length} sources` : ""}`;
 
   return (
-    <article className="StudyPost">
-      <header className="StudyPost__header">
-        <Link to="/study" className="StudyPost__back">
-          ← Back to Study
-        </Link>
-        <div className="StudyPost__title-group">
-          <Typo.H1 color="accent">{post.frontmatter.title}</Typo.H1>
-          {post.frontmatter.subtitle && (
-            <Typo.Lead color="support">{post.frontmatter.subtitle}</Typo.Lead>
-          )}
-        </div>
-        <StudyPostMeta
-          publishedAt={post.frontmatter.publishedAt}
-          readingTime={post.readingTime}
-          minReadText="min read"
-          tags={post.frontmatter.tags}
-        />
-      </header>
+    <>
+      <SiteHeader
+        meta={[`Study ${number}`, publishedAt]}
+        title={subtitle ? [title, subtitle] : [title]}
+      />
 
-      <StudyPostContent content={post.content} className="StudyPost__content" />
+      <article>
+        <SpecSection number="00" title="Record">
+          <SpecList>
+            <SpecItem label="Published">{publishedAt}</SpecItem>
+            <SpecItem label="Tags">{tags.join(", ")}</SpecItem>
+            <SpecItem label="Length">{length}</SpecItem>
+            {audio && (
+              <SpecItem label="Listen">
+                <audio
+                  controls
+                  preload="none"
+                  src={`/audio/${post.slug}.mp3?v=${audio}`}
+                />
+              </SpecItem>
+            )}
+          </SpecList>
+        </SpecSection>
 
-      <nav className="StudyPost__nav">
-        {adjacent.prev && (
-          <Link
-            to="/study/$slug"
-            params={{ slug: adjacent.prev.slug }}
-            className="StudyPost__nav-link StudyPost__nav-link--prev"
-          >
-            ← {adjacent.prev.frontmatter.title}
-          </Link>
+        <SpecSection number="01" title="Text">
+          <MarkdownContent content={body} numberPrefix="01" />
+        </SpecSection>
+
+        {sources.length > 0 && (
+          <SpecSection number="02" title="Sources">
+            {sources.map((source, index) => (
+              <Entry
+                key={source}
+                id={`source-${index + 1}`}
+                aside={`[${index + 1}]`}
+              >
+                <span>
+                  <InlineMarkdown content={source} />
+                </span>
+              </Entry>
+            ))}
+          </SpecSection>
         )}
-        {adjacent.next && (
-          <Link
-            to="/study/$slug"
-            params={{ slug: adjacent.next.slug }}
-            className="StudyPost__nav-link StudyPost__nav-link--next"
-          >
-            {adjacent.next.frontmatter.title} →
-          </Link>
-        )}
-      </nav>
-    </article>
+      </article>
+
+      {(adjacent.prev || adjacent.next) && (
+        <SpecSection number="03" title="More">
+          <InlineList>
+            {adjacent.prev && (
+              <Link to="/study/$slug" params={{ slug: adjacent.prev.slug }}>
+                ← {adjacent.prev.frontmatter.title}
+              </Link>
+            )}
+            {adjacent.next && (
+              <Link to="/study/$slug" params={{ slug: adjacent.next.slug }}>
+                {adjacent.next.frontmatter.title} →
+              </Link>
+            )}
+          </InlineList>
+        </SpecSection>
+      )}
+
+      <Colophon
+        start={`Study ${number}`}
+        center="Design via function"
+        end="Page 1 / 1"
+      />
+    </>
   );
 }

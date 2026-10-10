@@ -1,0 +1,11 @@
+/* The negative margin takes the hairline back out of the line grid */
+.Rule {
+  width: 100%;
+  margin: -1px 0 0;
+  border: 0;
+  border-top: 1px solid var(--color-fg-main);
+}
+
+.Rule--dashed {
+  border-top-style: dashed;
+}

@@ -1,0 +1,27 @@
+.Masthead {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--line) calc(var(--tab) * 2);
+  padding-bottom: calc(var(--line) - 1px);
+  border-bottom: 1px dashed var(--color-fg-main);
+}
+
+.Masthead__start {
+  display: grid;
+  gap: var(--line);
+  align-content: start;
+}
+
+@media screen and (max-width: 720px) {
+  .Masthead {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media print {
+  .Masthead {
+    display: block;
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+}

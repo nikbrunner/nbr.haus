@@ -1,51 +1,40 @@
+/* Label and value on a tab stop, sharing one baseline */
 .SpecList {
-  container-type: inline-size;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.SpecList--bg-default {
-  background-color: var(--color-bg-main);
-}
-
-.SpecList--bg-transparent {
-  background-color: transparent;
-}
-
-.SpecList-padding--small {
-  padding: var(--size-4);
+  display: grid;
+  margin: 0;
 }
 
 .SpecList__item {
   display: grid;
-  width: 100%;
-  gap: var(--size-4);
-  padding: var(--size-3) 0;
-  align-items: start;
-  align-self: start;
-  font-size: var(--font-size-fluid-0);
-
-  &:first-child {
-    padding-top: 0;
-  }
-
-  &:last-child {
-    padding-bottom: 0;
-  }
-
-  &:not(:last-child) {
-    border-bottom: 1px dashed var(--color-fg-accent);
-  }
+  grid-template-columns: var(--label-width) minmax(0, 1fr);
+  column-gap: var(--tab);
+  align-items: baseline;
+  break-inside: avoid;
 }
 
 .SpecList__label {
-  color: var(--color-fg-support);
-  margin: 0;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
 }
 
 .SpecList__value {
-  color: var(--color-fg-main);
-  overflow-wrap: break-word;
   margin: 0;
+  text-wrap-style: pretty;
+}
+
+@media print {
+  .SpecList__item--screen-only {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .SpecList__item {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .SpecList__label {
+    color: var(--color-fg-minor);
+  }
 }

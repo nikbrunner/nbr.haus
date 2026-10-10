@@ -1,12 +1,4 @@
-export const STUDY_TAGS = [
-  "code",
-  "philosophy",
-  "tools",
-  "career",
-  "learning"
-] as const;
-
-export type StudyTag = (typeof STUDY_TAGS)[number];
+type StudyTag = "code" | "philosophy" | "tools" | "career" | "learning";
 
 export interface StudyFrontmatter {
   title: string;

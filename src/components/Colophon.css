@@ -1,0 +1,30 @@
+.Colophon {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 0 var(--tab);
+  margin-top: var(--line-double);
+  padding-top: calc(var(--line) - 1px);
+  border-top: 1px solid var(--color-fg-main);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
+
+.Colophon__center {
+  font-style: italic;
+  letter-spacing: var(--tracking-body);
+  text-transform: none;
+}
+
+.Colophon__end {
+  text-align: right;
+}
+
+@media screen and (max-width: 720px) {
+  .Colophon {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .Colophon__end {
+    text-align: left;
+  }
+}

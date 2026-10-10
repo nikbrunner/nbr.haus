@@ -1,0 +1,65 @@
+.Contents__heading {
+  margin: 0;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
+
+.Contents__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Tree lines: a vertical rule down the item, a branch into its row; the last item stops at its branch */
+.Contents__item {
+  position: relative;
+  padding-left: 4ch;
+
+  &::before,
+  &::after {
+    position: absolute;
+    left: 0.5ch;
+    content: "";
+  }
+
+  &::before {
+    top: 0;
+    bottom: 0;
+    border-left: 1px solid var(--color-fg-minor);
+  }
+
+  &:last-child::before {
+    bottom: auto;
+    height: calc(var(--line) / 2);
+  }
+
+  &::after {
+    top: calc(var(--line) / 2);
+    width: 2.5ch;
+    border-top: 1px solid var(--color-fg-minor);
+  }
+}
+
+.Contents__row {
+  display: flex;
+  align-items: baseline;
+  white-space: pre;
+}
+
+.Contents__marker {
+  min-width: 6ch;
+  margin-inline-end: 1ch;
+  color: var(--color-accent);
+}
+
+.Contents__current {
+  margin-inline-start: 2ch;
+  color: var(--color-fg-minor);
+}
+
+@media print {
+  .Contents {
+    display: none;
+  }
+}

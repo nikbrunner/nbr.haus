@@ -1,0 +1,11 @@
+.ControlBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 calc(var(--tab) * 2);
+}
+
+@media print {
+  .ControlBar {
+    display: none;
+  }
+}

@@ -66,32 +66,6 @@ export default defineConfig([
     ...reactHooks.configs.flat["recommended-latest"]
   },
   {
-    name: "project/useOnMount-exhaustive-deps-exception",
-    // useOnMount intentionally uses an empty dependency array to run only on mount
-    files: ["src/hooks/useOnMount.ts"],
-    rules: {
-      "react-hooks/exhaustive-deps": "off"
-    }
-  },
-  {
-    name: "project/control-panel-layout-effect-exception",
-    // ControlPanel uses useLayoutEffect with setState for DOM measurement positioning
-    // This is a legitimate pattern for layout calculations that need synchronous updates
-    files: ["src/components/ControlPanel/ControlPanel.tsx"],
-    rules: {
-      "react-hooks/set-state-in-effect": "off"
-    }
-  },
-  {
-    name: "project/glitch-effect-purity-exception",
-    // GlitchEffect and Float intentionally use Math.random() for visual variety - each instance
-    // should have different animation delays for a desynchronized effect
-    files: ["src/components/GlitchEffect.tsx", "src/components/Float.tsx"],
-    rules: {
-      "react-hooks/purity": "off"
-    }
-  },
-  {
     name: "project/json-strict-validation",
     files: ["**/*.json"],
     plugins: { json },
@@ -133,13 +107,9 @@ export default defineConfig([
       "css/use-baseline": [
         "error",
         {
-          allowProperties: [
-            "user-select",
-            "break-after",
-            "break-before",
-            "break-inside"
-          ],
-          allowSelectors: ["nesting", "has", "selection"],
+          allowProperties: ["break-after", "break-inside", "text-wrap-style"],
+          allowAtRules: ["page"],
+          allowSelectors: ["nesting", "selection"],
           allowFunctions: ["oklch", "light-dark", "color-mix"]
         }
       ]
@@ -153,31 +123,6 @@ export default defineConfig([
     files: ["src/styles/global.css"],
     rules: {
       "css/no-invalid-properties": "off"
-    }
-  },
-  {
-    name: "project/shadow-css-gradient-stop-exception",
-    // Shadow.css uses `var(--color-fg-accent) 0` as gradient color-stops in repeating-linear-gradient.
-    // The CSS linter resolves `0` as a bare number and incorrectly flags it as invalid for background-image.
-    files: ["src/components/Shadow.css"],
-    rules: {
-      "css/no-invalid-properties": "off"
-    }
-  },
-  {
-    name: "project/cv-css-important-exception",
-    // CV route uses !important for print styles to override browser defaults
-    files: ["src/routes/cv.css"],
-    rules: {
-      "css/no-important": "off"
-    }
-  },
-  {
-    name: "project/cover-letter-css-important-exception",
-    // Cover letter route uses !important for print styles to override browser defaults
-    files: ["src/routes/cover/$company.css"],
-    rules: {
-      "css/no-important": "off"
     }
   }
 ]);

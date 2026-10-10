@@ -1,154 +1,89 @@
-export const tech = {
-  // Languages
-  typescript: {
-    name: "TypeScript",
-    url: "https://www.typescriptlang.org",
-    color: "#3178c6"
-  },
-  javascript: {
-    name: "JavaScript",
-    url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-    color: "#f7df1e"
-  },
-  lua: {
-    name: "Lua",
-    url: "https://www.lua.org",
-    color: "#000080"
-  },
-  c: {
-    name: "C",
-    url: "https://en.cppreference.com/w/c",
-    color: "#555555"
-  },
-  bash: {
-    name: "Bash",
-    url: "https://www.gnu.org/software/bash/",
-    color: "#4eaa25"
-  },
-  markdown: {
-    name: "Markdown",
-    url: "https://www.markdownguide.org",
-    color: "#083fa1"
-  },
+export const GITHUB_USER = "nikbrunner";
 
-  // Frameworks & Libraries
-  react: {
-    name: "React",
-    url: "https://react.dev",
-    color: "#61dafb"
-  },
-  redux: {
-    name: "Redux (Toolkit)",
-    url: "https://redux-toolkit.js.org",
-    color: "#764abc"
-  },
-  electron: {
-    name: "Electron",
-    url: "https://www.electronjs.org",
-    color: "#47848f"
-  },
-  nodejs: {
-    name: "Node.js",
-    url: "https://nodejs.org",
-    color: "#339933"
-  },
-  deno: {
-    name: "Deno",
-    url: "https://deno.land",
-    color: "#70ffaf"
-  },
+export interface Pin {
+  repo: string;
+  name: string;
+  href: string;
+  description: string;
+  stack: string;
+}
 
-  // TanStack
-  tanstackSuite: {
-    name: "TanStack Suite",
-    url: "https://tanstack.com",
-    color: "#ff4154"
+export const pins: Pin[] = [
+  {
+    repo: "black-atom-industries/black-atom",
+    name: "black-atom",
+    href: "https://black-atom.industries/",
+    description:
+      "Themes defined once and generated for every tool I use. Livery switches all of them at once.",
+    stack: "Deno, TypeScript, Tauri"
   },
-  tanstackStart: {
-    name: "TanStack Start",
-    url: "https://tanstack.com/start",
-    color: "#ff4154"
+  {
+    repo: "nikbrunner/lazyjira",
+    name: "lazyjira",
+    href: "https://github.com/nikbrunner/lazyjira",
+    description: "Keyboard-driven terminal UI for Jira, in the spirit of lazygit.",
+    stack: "Go"
   },
-  tanstackRouter: {
-    name: "TanStack Router",
-    url: "https://tanstack.com/router",
-    color: "#ff4154"
-  },
-  tanstackQuery: {
-    name: "TanStack Query",
-    url: "https://tanstack.com/query",
-    color: "#ff4154"
-  },
-  tanstackForm: {
-    name: "TanStack Form",
-    url: "https://tanstack.com/form",
-    color: "#ff4154"
-  },
-
-  // Libraries
-  baseUI: {
-    name: "BaseUI",
-    url: "https://base-ui.dev",
-    color: "#000"
-  },
-
-  // Styling
-  css: {
-    name: "CSS",
-    url: "https://developer.mozilla.org/en-US/docs/Web/CSS",
-    color: "#264de4"
-  },
-  scss: {
-    name: "SCSS",
-    url: "https://sass-lang.com",
-    color: "#cc6699"
-  },
-  tailwind: {
-    name: "Tailwind CSS",
-    url: "https://tailwindcss.com",
-    color: "#06b6d4"
-  },
-  shadcn: {
-    name: "ShadCN",
-    url: "https://ui.shadcn.com",
-    color: "#000000"
-  },
-
-  // Data & APIs
-  graphql: {
-    name: "GraphQL",
-    url: "https://graphql.org",
-    color: "#e10098"
-  },
-
-  // Tools
-  figma: {
-    name: "Figma",
-    url: "https://www.figma.com",
-    color: "#864FFF"
-  },
-  storybook: {
-    name: "Storybook",
-    url: "https://storybook.js.org",
-    color: "#ff4785"
-  },
-  neovim: {
-    name: "Neovim",
-    url: "https://neovim.io",
-    color: "#57a143"
-  },
-  qmk: {
-    name: "QMK",
-    url: "https://qmk.fm",
-    color: "#5c5c5c"
-  },
-
-  // Concepts & Other
-  oklch: {
-    name: "OKLCH",
-    url: "https://oklch.com",
-    color: "#6366f1"
+  {
+    repo: "nikbrunner/koyo",
+    name: "koyo",
+    href: "https://github.com/nikbrunner/koyo",
+    description: "Split keyboard layout for QMK, with a small CLI.",
+    stack: "C, Shell"
   }
-} as const;
+];
 
-export type Tech = (typeof tech)[keyof typeof tech];
+interface Job {
+  period: [string, string];
+  company: string;
+  href: string;
+  role: string;
+  notes: string;
+}
+
+export const jobs: Job[] = [
+  {
+    period: ["2020-09", "2026-01"],
+    company: "DealerCenter Digital",
+    href: "https://www.bike.center/",
+    role: "Software Engineer, Frontend Lead",
+    notes:
+      "Electron app used by hundreds of bike retailers. Built the component library and color system from scratch, moved the team to TanStack Query and Redux Toolkit, rebuilt the storefront on TanStack Start, mentored juniors."
+  },
+  {
+    period: ["2020-03", "2020-09"],
+    company: "diva-e",
+    href: "https://www.diva-e.com/de/",
+    role: "Junior Frontend Developer",
+    notes: "E-commerce platform and an internal social app. React, GraphQL, SCSS."
+  },
+  {
+    period: ["2019-12", "2020-02"],
+    company: "Campudus",
+    href: "https://www.campudus.com/",
+    role: "Intern",
+    notes: "An ordering app, built alone from design to backend."
+  }
+];
+
+export const moreProjects = [
+  { name: "lager", href: "https://github.com/nikbrunner/lager" },
+  { name: "mdn.nvim", href: "https://github.com/nikbrunner/mdn.nvim" },
+  {
+    name: "helm.herdr",
+    href: "https://github.com/black-atom-industries/helm.herdr"
+  },
+  { name: "dots", href: "https://github.com/nikbrunner/dots" }
+];
+
+/** Repositories whose commits feed the log, as owner/name */
+export const logRepos = [
+  "nikbrunner/nbr.haus",
+  "nikbrunner/dots",
+  "black-atom-industries/black-atom",
+  "nikbrunner/lazyjira",
+  "nikbrunner/lager",
+  "nikbrunner/mdn.nvim",
+  "nikbrunner/koyo",
+  "black-atom-industries/helm.herdr"
+];

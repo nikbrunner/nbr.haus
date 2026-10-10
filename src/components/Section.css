@@ -1,9 +1,0 @@
-.Section {
-  container-type: inline-size;
-  scroll-margin-top: var(--header-height);
-}
-
-.Section__content {
-  display: grid;
-  gap: var(--size-3);
-}

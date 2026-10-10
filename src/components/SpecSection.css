@@ -1,0 +1,43 @@
+.SpecSection {
+  margin-top: var(--line-double);
+}
+
+/* Text, double rule and gap add up to one line unit below the head */
+.SpecSection__head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--tab);
+  align-items: baseline;
+  margin-bottom: calc(var(--line) - var(--line-quarter) - 4px);
+  padding-bottom: var(--line-quarter);
+  border-bottom: 4px double var(--color-fg-main);
+  break-after: avoid;
+}
+
+.SpecSection__title {
+  display: flex;
+  gap: var(--tab);
+  margin: 0;
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
+
+.SpecSection__number {
+  color: var(--color-accent);
+}
+
+.SpecSection__note {
+  margin-left: auto;
+  font-size: var(--font-size-small);
+  color: var(--color-fg-minor);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
+
+.SpecSection__body {
+  display: grid;
+  gap: var(--line);
+}

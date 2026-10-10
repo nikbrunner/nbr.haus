@@ -1,9 +1,0 @@
-.Connect__link {
-  color: var(--color-fg-main);
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-    color: var(--color-fg-accent);
-  }
-}

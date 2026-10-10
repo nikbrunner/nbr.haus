@@ -1,0 +1,83 @@
+.Sheet {
+  position: relative;
+  max-width: var(--sheet-max-width);
+  margin: 0 auto;
+  padding: var(--line-double) calc(var(--tab) * 4);
+  border: 1px solid var(--color-edge);
+  background-color: var(--color-bg-main);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0
+    color-mix(in oklch, var(--color-edge) 25%, transparent);
+}
+
+@media screen and (max-width: 720px) {
+  .Sheet {
+    padding: var(--line) var(--tab) var(--line-double);
+    border: 0;
+    box-shadow: none;
+  }
+}
+
+@media print {
+  .Sheet {
+    max-width: none;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+  }
+}
+
+.Sheet--punched {
+  padding-left: 8rem;
+
+  &::before {
+    position: absolute;
+    top: var(--line);
+    bottom: var(--line);
+    left: 2rem;
+    width: var(--line);
+    background: radial-gradient(
+        circle at 12px 12px,
+        transparent 8px,
+        var(--color-fg-main) 8.5px,
+        var(--color-fg-main) 9.5px,
+        transparent 10px
+      )
+      0 0 / var(--line) calc(var(--line) * 4) repeat-y;
+    opacity: 0.55;
+    content: "";
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 5.5rem;
+    width: 1px;
+    background: linear-gradient(var(--color-fg-main) 55%, transparent 0) 0 0 / 1px
+      8px repeat-y;
+    opacity: 0.5;
+    content: "";
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .Sheet--punched {
+    padding-left: var(--tab);
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+}
+
+@media print {
+  .Sheet--punched {
+    padding-left: 0;
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+}

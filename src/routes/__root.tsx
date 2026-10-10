@@ -1,6 +1,5 @@
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import {
-  ClientOnly,
   createRootRoute,
   HeadContent,
   retainSearchParams,
@@ -9,14 +8,21 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
-import NotFound from "@/components/NotFound";
-import ControlPanel from "@/partials/ControlPanel";
+import Grain from "@/components/Grain";
+import Sheet from "@/components/Sheet";
+import { getAllPosts } from "@/lib/study";
+import { NotFound } from "@/partials/NotFound";
+import curlHintScript from "@/scripts/curl-hint.js?raw";
 import themeBlockingScript from "@/scripts/theme-blocking.js?raw";
-import globalCss from "@/styles/global.css?url";
 import {
   defaultRootSearchParams,
   rootSearchParamsSchema
 } from "@/validators/rootSearchParams";
+
+import globalCss from "@/styles/global.css?url";
+
+const DESCRIPTION =
+  "Nikolaus Brunner, Design Engineer in Landshut. I build frontend architecture and design systems.";
 
 export const Route = createRootRoute({
   validateSearch: rootSearchParamsSchema,
@@ -26,6 +32,7 @@ export const Route = createRootRoute({
       retainSearchParams(["accent", "colorMode"])
     ]
   },
+  loader: async () => ({ posts: await getAllPosts() }),
   notFoundComponent: NotFound,
   shellComponent: RootDocument,
   head: () => ({
@@ -39,8 +46,7 @@ export const Route = createRootRoute({
       },
       {
         name: "description",
-        content:
-          "Software Engineer with 5+ years of experience building frontend architectures and design systems. Specialized in React, TypeScript, and modern web technologies. Available February 2026."
+        content: DESCRIPTION
       },
       {
         name: "robots",
@@ -56,12 +62,11 @@ export const Route = createRootRoute({
       },
       {
         property: "og:title",
-        content: "Nik Brunner - Senior Frontend Developer"
+        content: "Nik Brunner, Design Engineer"
       },
       {
         property: "og:description",
-        content:
-          "Senior Frontend Engineer with 5 years of experience. React, TypeScript, Design Systems, Technical Architecture."
+        content: DESCRIPTION
       },
       {
         property: "og:image",
@@ -77,12 +82,11 @@ export const Route = createRootRoute({
       },
       {
         name: "twitter:title",
-        content: "Nik Brunner - Senior Frontend Developer"
+        content: "Nik Brunner, Senior Design Engineer"
       },
       {
         name: "twitter:description",
-        content:
-          "Frontend Engineer with 5 years of experience. React, TypeScript, Design Systems, Technical Architecture."
+        content: DESCRIPTION
       },
       {
         name: "twitter:image",
@@ -93,44 +97,15 @@ export const Route = createRootRoute({
         content: "https://nbr.haus"
       },
       {
-        title: "Nik Brunner - Senior Frontend Developer & Software Engineer"
+        title: "Nik Brunner, Senior Design Engineer"
       }
     ],
     links: [
-      // Preload critical fonts to prevent layout shift
       {
         rel: "preload",
-        href: "/fonts/TX-02/Condensed/Condensed.ttf",
+        href: "/fonts/TX-02/woff2/TX-02-Condensed-400.woff2",
         as: "font",
-        type: "font/ttf",
-        crossOrigin: "anonymous"
-      },
-      {
-        rel: "preload",
-        href: "/fonts/TX-02/Condensed/Bold-Condensed.ttf",
-        as: "font",
-        type: "font/ttf",
-        crossOrigin: "anonymous"
-      },
-      {
-        rel: "preload",
-        href: "/fonts/TX-02/Condensed/Black-Condensed.ttf",
-        as: "font",
-        type: "font/ttf",
-        crossOrigin: "anonymous"
-      },
-      {
-        rel: "preload",
-        href: "/fonts/TX-02/Condensed/Light-Condensed.ttf",
-        as: "font",
-        type: "font/ttf",
-        crossOrigin: "anonymous"
-      },
-      {
-        rel: "preload",
-        href: "/fonts/TX-02/Condensed/SemiBold-Condensed.ttf",
-        as: "font",
-        type: "font/ttf",
+        type: "font/woff2",
         crossOrigin: "anonymous"
       },
       {
@@ -146,7 +121,8 @@ export const Route = createRootRoute({
         rel: "stylesheet",
         href: globalCss
       }
-    ]
+    ],
+    scripts: [{ children: curlHintScript }]
   })
 });
 
@@ -157,9 +133,8 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     "name": "Nik Brunner",
     "url": "https://www.nbr.haus",
     "image": "https://www.nbr.haus/og-image.jpg",
-    "jobTitle": "Software Engineer",
-    "description":
-      "Software Engineer with 5+ years of experience building frontend architectures and design systems. Specialized in React, TypeScript, and modern web technologies. Available February 2026.",
+    "jobTitle": "Senior Design Engineer",
+    "description": DESCRIPTION,
     "knowsAbout": [
       "React",
       "TypeScript",
@@ -198,11 +173,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
-        {/* <Header />  faded out until completed*/}
-        <main>{children}</main>
-        <ClientOnly>
-          <ControlPanel />
-        </ClientOnly>
+        <Sheet punched>
+          <main>{children}</main>
+        </Sheet>
+        <Grain />
         <TanStackDevtools
           config={{
             position: "bottom-left"

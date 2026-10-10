@@ -5,7 +5,6 @@
  * IMPORTANT: Keep in sync with:
  * - src/types/style.ts (values and defaults)
  * - src/hooks/useAccent.ts
- * - src/hooks/useContrast.ts
  * - src/hooks/useColorMode.ts
  */
 
@@ -24,9 +23,9 @@ function initTheme() {
     }
 
     // Accent hue (set on body)
-    // Valid values from src/types/style.ts: red=15, orange=90, green=175, blue=220
-    var validAccents = [15, 90, 175, 220];
-    var defaultAccent = 175; // green
+    // Valid values from src/types/style.ts: red=5, orange=65, green=155, blue=265
+    var validAccents = [5, 65, 155, 265];
+    var defaultAccent = 155; // green
     var accent = parseInt(params.get("accent") || "", 10);
     if (!validAccents.includes(accent)) {
       accent = parseInt(localStorage.getItem("accent") || "", 10);
@@ -35,18 +34,6 @@ function initTheme() {
       accent = defaultAccent;
     }
     document.body.style.setProperty("--hue-accent", accent.toString());
-
-    // Contrast / chroma (set on body)
-    // Valid values: "low" (0.6), "base" (1), "high" (1.4)
-    var contrastChroma = { low: 0.6, base: 1, high: 1.4 };
-    var contrast = params.get("contrast");
-    if (!contrast || !contrastChroma[contrast]) {
-      contrast = localStorage.getItem("contrast");
-    }
-    if (!contrast || !contrastChroma[contrast]) {
-      contrast = "base";
-    }
-    document.body.style.setProperty("--chroma", contrastChroma[contrast].toString());
   } catch {
     // Silently fail - React will handle it after hydration
   }

@@ -1,225 +1,28 @@
-@import "open-props/style";
-@import "open-props/borders";
-
 @import "./fonts.css";
-@import "./spacings.css";
-@import "./print.css";
-@import "./print-utils.css";
-
-/* Routes */
-@import "../routes/index.css";
-@import "../routes/cv.css";
-@import "../routes/study/route.css";
-@import "../routes/cover/$company.css";
-@import "../routes/cover/index.css";
 
 /* Components */
-@import "../components/Flex.css";
-@import "../components/Button.css";
-@import "../components/ClickableTag.css";
-@import "../components/Header.css";
-@import "../components/Hr.css";
-@import "../components/Job.css";
-@import "../components/Project.css";
-@import "../components/Section.css";
-@import "../components/SpecCard.css";
+@import "../components/Sheet.css";
+@import "../components/Grain.css";
+@import "../components/DocumentHeader.css";
+@import "../components/ControlBar.css";
+@import "../components/ControlButton.css";
+@import "../components/ControlGroup.css";
+@import "../components/SpecSection.css";
+@import "../components/SpecSubsection.css";
 @import "../components/SpecList.css";
-@import "../components/cv/CvHeader.css";
-@import "../components/cv/CvInterests.css";
-@import "../components/cv/CvJob.css";
-@import "../components/cv/CvPriorExperience.css";
-@import "../components/cv/CvProject.css";
-@import "../components/cv/CvSection.css";
-@import "../components/Connect.css";
-@import "../components/ProfilePicture.css";
-@import "../components/GlitchEffect.css";
-@import "../components/Tag.css";
-@import "../components/CopyButton.css";
-@import "../components/Hint.css";
-@import "../components/Note.css";
-@import "../components/Shadow.css";
-
-/* ControlPanel */
-@import "../components/ControlPanel/ControlPanelStrip.css";
-@import "../components/ControlPanel/ControlPanelExpanded.css";
-@import "../components/ControlPanel/ControlPanelRow.css";
-@import "../components/ControlPanel/ControlPanelOption.css";
-@import "../components/ControlPanel/ControlPanelIndicator.css";
-@import "../components/ControlPanel/ControlPanelColorDot.css";
-
-/* Typo */
-@import "../components/Typo/Typo.css";
-@import "../components/Typo/Typo.H1.css";
-@import "../components/Typo/Typo.H2.css";
-@import "../components/Typo/Typo.H3.css";
-@import "../components/Typo/Typo.H4.css";
-@import "../components/Typo/Typo.P.css";
-@import "../components/Typo/Typo.Blockquote.css";
-@import "../components/Typo/Typo.Highlight.css";
-@import "../components/Typo/Typo.InlineCode.css";
-@import "../components/Typo/Typo.Lead.css";
-@import "../components/Typo/Typo.List.css";
-@import "../components/Typo/Typo.Small.css";
-
-/* Study */
-@import "../components/study/StudyPostCard.css";
-@import "../components/study/StudyPostMeta.css";
-
-/* Cover Letter */
-@import "../components/coverletter/CoverLetterHeader.css";
+@import "../components/WebUiAgentFlow.css";
+@import "../components/Contents.css";
+@import "../components/Masthead.css";
+@import "../components/InlineList.css";
+@import "../components/Prose.css";
+@import "../components/Text.css";
+@import "../components/Entry.css";
+@import "../components/Rule.css";
+@import "../components/DataTable.css";
+@import "../components/Colophon.css";
 
 html {
   color-scheme: light dark;
-}
-
-html,
-body {
-  min-height: 100vh;
-  min-height: 100dvh;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  /* Checkered background pattern */
-  --bg-checker-size: 5px;
-  --bg-checker-half: calc(var(--bg-checker-size) / 2);
-  --bg-checker-color: color-mix(in oklch, var(--color-fg-accent) 10%, transparent);
-  background-color: var(--color-bg-main);
-  background-image:
-    linear-gradient(45deg, var(--bg-checker-color) 25%, transparent 25%),
-    linear-gradient(-45deg, var(--bg-checker-color) 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, var(--bg-checker-color) 75%),
-    linear-gradient(-45deg, transparent 75%, var(--bg-checker-color) 75%);
-  background-size: var(--bg-checker-size) var(--bg-checker-size);
-  background-position:
-    0 0,
-    0 var(--bg-checker-half),
-    var(--bg-checker-half) calc(var(--bg-checker-half) * -1),
-    calc(var(--bg-checker-half) * -1) 0;
-  /* eslint-disable-next-line css/use-baseline */
-  background-attachment: fixed;
-
-  /* Z-index stack (ordered lowest to highest) */
-  --z-base: 0;
-  --z-control-panel: 100;
-  --z-control-panel-strip: 101;
-  --z-tooltip: 200;
-
-  /* Accent hue system (oklch wraps hue values automatically, no clamping needed) */
-  --hue-accent: 0;
-  --hue-accent-compl-degree: 180;
-  --hue-accent-compl: calc(var(--hue-accent) + var(--hue-accent-compl-degree));
-
-  /* Chroma multiplier: low=0.6, base=1, high=1.4 */
-  --chroma: 1;
-
-  /* Accent colors */
-  --color-accent: light-dark(
-    oklch(0.45 calc(0.25 * var(--chroma)) var(--hue-accent)),
-    oklch(0.65 calc(0.25 * var(--chroma)) var(--hue-accent))
-  );
-  --color-accent-alt: light-dark(
-    oklch(0.45 calc(0.25 * var(--chroma)) var(--hue-accent-compl)),
-    oklch(0.65 calc(0.25 * var(--chroma)) var(--hue-accent-compl))
-  );
-
-  /* Background colors */
-  --color-bg-main: light-dark(
-    oklch(0.95 calc(0.005 * var(--chroma)) var(--hue-accent-compl)),
-    oklch(0.25 calc(0.005 * var(--chroma)) var(--hue-accent-compl))
-  );
-  --color-bg-support: light-dark(
-    oklch(0.9 calc(0.005 * var(--chroma)) var(--hue-accent-compl)),
-    oklch(0.28 calc(0.005 * var(--chroma)) var(--hue-accent-compl))
-  );
-  --color-bg-accent: var(--color-accent);
-  --color-bg-accent-alt: var(--color-accent-alt);
-
-  /* Foreground colors */
-  --color-fg-main: light-dark(
-    oklch(0.15 calc(0.01 * var(--chroma)) var(--hue-accent)),
-    oklch(0.95 calc(0.01 * var(--chroma)) var(--hue-accent))
-  );
-  --color-fg-support: light-dark(
-    oklch(0.2 calc(0.01 * var(--chroma)) var(--hue-accent)),
-    oklch(0.85 calc(0.01 * var(--chroma)) var(--hue-accent))
-  );
-  --color-fg-minor: light-dark(
-    oklch(0.6 calc(0.01 * var(--chroma)) var(--hue-accent)),
-    oklch(0.65 calc(0.01 * var(--chroma)) var(--hue-accent))
-  );
-  --color-fg-accent: var(--color-accent);
-  --color-fg-accent-alt: var(--color-accent-alt);
-  --color-fg-on-accent: light-dark(
-    oklch(0.98 calc(0.05 * var(--chroma)) var(--hue-accent)),
-    oklch(0.15 calc(0.05 * var(--chroma)) var(--hue-accent))
-  );
-
-  --content-max-width: var(--size-content-3);
-  --header-height: var(--size-10);
-
-  --font-family: "TX-02", monospace;
-
-  --font-size-fluid-0: clamp(0.75rem, 5cqw, 1rem);
-  --font-size-fluid-1: clamp(1rem, 5cqw, 1.5rem);
-  --font-size-fluid-2: clamp(1.5rem, 5cqw, 2.5rem);
-  --font-size-fluid-3: clamp(2rem, 5cqw, 3.5rem);
-
-  --base-layout-top-padding: var(--size-8);
-
-  --accent-picker-size: var(--size-8);
-
-  --bg-dots:
-    radial-gradient(var(--color-fg-accent) 1px, rgba(0, 0, 0, 0) 1px) 0 0 / 3px 3px,
-    var(--color-bg-main);
-
-  /* Grid background pattern */
-  --grid-line-color: light-dark(
-    oklch(0.88 calc(0.005 * var(--chroma)) var(--hue-accent-compl)),
-    oklch(0.3 calc(0.005 * var(--chroma)) var(--hue-accent-compl))
-  );
-  --grid-size: 80px;
-  --bg-grid:
-    linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
-
-  font-family: var(--font-family);
-  line-height: var(--font-lineheight-3);
-  font-size: 100%;
-  color: var(--color-fg-main);
-
-  /* ControlPanel */
-  --control-panel-top-offset: 60%;
-  --control-panel-right-offset: clamp(8px, 2vw, 12px);
-
-  --control-panel-cell: clamp(36px, 8vw, 44px);
-  --control-panel-gap: clamp(10px, 2vw, 16px);
-  --control-panel-padding: clamp(10px, 2vw, 12px);
-  --control-panel-font-size: clamp(0.65rem, 5cqw, 0.85rem);
-  --control-panel-label-width: clamp(80px, 20vw, 110px);
-  /* Strip width = border + cell + padding on both sides + border */
-  --control-panel-strip-width: calc(
-    var(--border-size-2) + var(--control-panel-cell) +
-      (var(--control-panel-padding) * 2) + var(--border-size-2)
-  );
-
-  /* Font smoothing */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  * {
-    box-sizing: border-box;
-  }
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-}
-
-::selection {
-  background-color: var(--color-bg-accent);
-  color: var(--color-bg-main);
 }
 
 /* Manual color mode overrides */
@@ -231,27 +34,161 @@ html[data-color-mode="dark"] {
   color-scheme: dark;
 }
 
-:where(strong) {
-  font-weight: var(--font-weight-7);
+html,
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * A typewriter document: one size and one line unit carry nearly everything.
+ * The sheet is tinted paper on a cutting-mat desk that takes the accent hue.
+ * Accent hues follow Black Atom's default theme.
+ */
+body {
+  --hue-accent: 155;
+
+  /* Color */
+  --color-desk: light-dark(
+    oklch(0.42 0.07 var(--hue-accent)),
+    oklch(0.21 0.04 var(--hue-accent))
+  );
+  --color-desk-line: light-dark(
+    oklch(0.57 0.08 var(--hue-accent)),
+    oklch(0.32 0.055 var(--hue-accent))
+  );
+  --color-desk-fine: light-dark(
+    oklch(0.47 0.075 var(--hue-accent)),
+    oklch(0.25 0.045 var(--hue-accent))
+  );
+  --color-edge: light-dark(oklch(0.16 0.02 250), oklch(0.06 0.01 250));
+  --color-bg-main: light-dark(oklch(0.955 0.016 88), oklch(0.19 0.01 75));
+  --color-fg-main: light-dark(oklch(0.25 0.035 258), oklch(0.89 0.022 85));
+  --color-fg-minor: light-dark(oklch(0.47 0.025 250), oklch(0.67 0.018 80));
+  --color-line: light-dark(oklch(0.84 0.022 85), oklch(0.31 0.012 75));
+  --color-accent: light-dark(
+    oklch(0.5 0.15 var(--hue-accent)),
+    oklch(0.75 0.15 var(--hue-accent))
+  );
+  --color-fg-on-accent: var(--color-bg-main);
+
+  /* Type */
+  --font-family: "TX-02", ui-monospace, monospace;
+  --font-size-base: 1rem;
+  --font-size-small: calc(var(--font-size-base) * 0.875);
+  --font-size-title: calc(var(--font-size-base) * 1.25);
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --tracking-body: 0.02em;
+  --tracking-caps: 0.06em;
+
+  /* Space: the line unit and its halves and doubles, ch for tab stops */
+  --line: 1.5rem;
+  --line-half: calc(var(--line) / 2);
+  --line-quarter: calc(var(--line) / 4);
+  --line-double: calc(var(--line) * 2);
+  --tab: 2ch;
+  --label-width: 14ch;
+  --measure: 80ch;
+  --sheet-max-width: 62.5rem;
+
+  --shadow-offset: 10px;
+
+  padding: var(--line-double) var(--line);
+  background-color: var(--color-desk);
+  background-image:
+    linear-gradient(var(--color-desk-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-desk-line) 1px, transparent 1px),
+    linear-gradient(var(--color-desk-fine) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-desk-fine) 1px, transparent 1px);
+  background-size:
+    80px 80px,
+    80px 80px,
+    16px 16px,
+    16px 16px;
+  /* eslint-disable-next-line css/use-baseline */
+  background-attachment: fixed;
+  color: var(--color-fg-main);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line);
+  letter-spacing: var(--tracking-body);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "ss01";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Phones: full-bleed paper, the same single size one step smaller */
+@media screen and (max-width: 720px) {
+  body {
+    --font-size-base: 0.9375rem;
+    --label-width: 12ch;
+
+    padding: 0;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-fg-on-accent);
 }
 
 :where(button) {
   font-family: var(--font-family);
-  border: none;
 }
 
 :where(a) {
-  color: var(--color-fg-main);
-  font-weight: var(--font-weight-7);
-  text-decoration-thickness: 3px;
-  text-decoration-color: var(--color-fg-accent);
-  text-underline-offset: var(--border-size-2);
-
-  &:visited {
-    color: var(--color-fg-main);
-  }
+  color: var(--color-accent);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-skip-ink: auto;
 
   &:hover {
-    color: var(--color-fg-accent);
+    background-color: var(--color-accent);
+    color: var(--color-fg-on-accent);
+    text-decoration-line: none;
+  }
+}
+
+/* The home page doubles as the CV: print renders ink on white A4, without desk or grain.
+   Last in the file so it wins over the screen rules above */
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+
+  html,
+  html[data-color-mode] {
+    color-scheme: light;
+  }
+
+  body {
+    --color-bg-main: #fff;
+    --color-fg-main: #111;
+    --color-fg-minor: #555;
+    --color-line: #bbb;
+    --color-accent: oklch(0.45 0.14 var(--hue-accent));
+    --font-size-base: 10pt;
+    --line: 15pt;
+
+    padding: 0;
+    background: #fff;
+  }
+
+  .no-print {
+    display: none;
   }
 }

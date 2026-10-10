@@ -9,17 +9,14 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as CvRouteImport } from './routes/cv'
-import { Route as StudyRouteRouteImport } from './routes/study/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as StudyRouteRouteImport } from './routes/study/route'
 import { Route as StudyIndexRouteImport } from './routes/study/index'
-import { Route as CoverIndexRouteImport } from './routes/cover/index'
 import { Route as StudySlugRouteImport } from './routes/study/$slug'
-import { Route as CoverCompanyRouteImport } from './routes/cover/$company'
 
-const CvRoute = CvRouteImport.update({
-  id: '/cv',
-  path: '/cv',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StudyRouteRoute = StudyRouteRouteImport.update({
@@ -27,97 +24,55 @@ const StudyRouteRoute = StudyRouteRouteImport.update({
   path: '/study',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const StudyIndexRoute = StudyIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => StudyRouteRoute,
-} as any)
-const CoverIndexRoute = CoverIndexRouteImport.update({
-  id: '/cover/',
-  path: '/cover/',
-  getParentRoute: () => rootRouteImport,
 } as any)
 const StudySlugRoute = StudySlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => StudyRouteRoute,
 } as any)
-const CoverCompanyRoute = CoverCompanyRouteImport.update({
-  id: '/cover/$company',
-  path: '/cover/$company',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/study': typeof StudyRouteRouteWithChildren
-  '/cv': typeof CvRoute
-  '/cover/$company': typeof CoverCompanyRoute
   '/study/$slug': typeof StudySlugRoute
-  '/cover/': typeof CoverIndexRoute
   '/study/': typeof StudyIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/cv': typeof CvRoute
-  '/cover/$company': typeof CoverCompanyRoute
   '/study/$slug': typeof StudySlugRoute
-  '/cover': typeof CoverIndexRoute
   '/study': typeof StudyIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/study': typeof StudyRouteRouteWithChildren
-  '/cv': typeof CvRoute
-  '/cover/$company': typeof CoverCompanyRoute
   '/study/$slug': typeof StudySlugRoute
-  '/cover/': typeof CoverIndexRoute
   '/study/': typeof StudyIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/study'
-    | '/cv'
-    | '/cover/$company'
-    | '/study/$slug'
-    | '/cover/'
-    | '/study/'
+  fullPaths: '/' | '/study' | '/study/$slug' | '/study/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cv' | '/cover/$company' | '/study/$slug' | '/cover' | '/study'
-  id:
-    | '__root__'
-    | '/'
-    | '/study'
-    | '/cv'
-    | '/cover/$company'
-    | '/study/$slug'
-    | '/cover/'
-    | '/study/'
+  to: '/' | '/study/$slug' | '/study'
+  id: '__root__' | '/' | '/study' | '/study/$slug' | '/study/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   StudyRouteRoute: typeof StudyRouteRouteWithChildren
-  CvRoute: typeof CvRoute
-  CoverCompanyRoute: typeof CoverCompanyRoute
-  CoverIndexRoute: typeof CoverIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/cv': {
-      id: '/cv'
-      path: '/cv'
-      fullPath: '/cv'
-      preLoaderRoute: typeof CvRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/study': {
@@ -127,13 +82,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StudyRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/study/': {
       id: '/study/'
       path: '/'
@@ -141,26 +89,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StudyIndexRouteImport
       parentRoute: typeof StudyRouteRoute
     }
-    '/cover/': {
-      id: '/cover/'
-      path: '/cover'
-      fullPath: '/cover/'
-      preLoaderRoute: typeof CoverIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/study/$slug': {
       id: '/study/$slug'
       path: '/$slug'
       fullPath: '/study/$slug'
       preLoaderRoute: typeof StudySlugRouteImport
       parentRoute: typeof StudyRouteRoute
-    }
-    '/cover/$company': {
-      id: '/cover/$company'
-      path: '/cover/$company'
-      fullPath: '/cover/$company'
-      preLoaderRoute: typeof CoverCompanyRouteImport
-      parentRoute: typeof rootRouteImport
     }
   }
 }
@@ -182,9 +116,6 @@ const StudyRouteRouteWithChildren = StudyRouteRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   StudyRouteRoute: StudyRouteRouteWithChildren,
-  CvRoute: CvRoute,
-  CoverCompanyRoute: CoverCompanyRoute,
-  CoverIndexRoute: CoverIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

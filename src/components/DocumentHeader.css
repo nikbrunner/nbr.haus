@@ -1,0 +1,29 @@
+.DocumentHeader__top {
+  display: grid;
+  gap: var(--line);
+}
+
+.DocumentHeader__block {
+  margin: 0;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
+
+.DocumentHeader__title {
+  width: max-content;
+  max-width: 100%;
+  margin: var(--line) 0 0;
+  padding: calc(var(--line-half) - 1px) calc(var(--tab) * 2);
+  border: 1px solid var(--color-fg-main);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line);
+  letter-spacing: var(--tracking-caps);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.DocumentHeader__title-line {
+  display: block;
+}
