@@ -147,9 +147,10 @@ export function centerSelected() {
   });
 }
 
+/** Selects the first block matching the selector without scrolling: the caller places the page */
 export function selectFirst(selector: string) {
   const block = blocks().find(candidate => candidate.matches(selector));
-  if (block) selectBlock(block);
+  if (block) selectBlock(block, true, "none");
 }
 
 /** `l` enters the block at its first item; `h` before the first item returns to the block */

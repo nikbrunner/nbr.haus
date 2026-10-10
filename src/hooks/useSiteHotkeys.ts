@@ -70,6 +70,9 @@ export function useSiteHotkeys() {
 
   async function goTo(to: "/" | "/study") {
     await navigate({ to });
+    // Jumping to the page you are on is no navigation, and the router's own reset scrolls
+    // smoothly; either way the page starts at the top
+    window.scrollTo({ top: 0, behavior: "instant" });
     // On a list page, start on the first entry so Enter opens it
     if (to === "/study") requestAnimationFrame(() => selectFirst(".Entry"));
   }
