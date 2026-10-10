@@ -6,6 +6,8 @@
   font: inherit;
   letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
+  /* One line, trailing spaces kept: "Play " and "Pause" share a width */
+  white-space: pre;
   cursor: pointer;
 
   &::before {
