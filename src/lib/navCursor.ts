@@ -215,15 +215,29 @@ function visibleSelection(): HTMLElement | null {
   return bottom > 0 && top < window.innerHeight ? current : null;
 }
 
-/** Blocks in visual reading order: top to bottom, then left to right (the header has columns) */
+/** The masthead's columns sit side by side; each is walked whole, the index before the controls */
+function columnRank(block: HTMLElement) {
+  if (block.closest(".Masthead__end")) return 0;
+  if (block.closest(".Masthead__start")) return 1;
+  return 2;
+}
+
+/** Blocks in visual reading order: top to bottom, then left to right */
 function blocks(): HTMLElement[] {
   return (
     [...document.querySelectorAll<HTMLElement>(BLOCK_SELECTOR)]
       // The floating media player is not part of the page's reading order
       .filter(block => isRendered(block) && !block.closest(".MediaPlayer"))
-      .map(block => ({ block, rect: block.getBoundingClientRect() }))
+      .map(block => ({
+        block,
+        rank: columnRank(block),
+        rect: block.getBoundingClientRect()
+      }))
       .sort(
-        (a, b) => Math.round(a.rect.top - b.rect.top) || a.rect.left - b.rect.left
+        (a, b) =>
+          a.rank - b.rank ||
+          Math.round(a.rect.top - b.rect.top) ||
+          a.rect.left - b.rect.left
       )
       .map(({ block }) => block)
   );

@@ -20,7 +20,7 @@ export default function DocumentHeader({
           {role}
         </p>
         {meta && (
-          <p className="DocumentHeader__block">
+          <p className="DocumentHeader__block DocumentHeader__block--meta">
             {meta[0]}
             <br />
             {meta[1]}

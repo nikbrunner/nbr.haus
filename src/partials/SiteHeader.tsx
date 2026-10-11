@@ -10,14 +10,9 @@ interface Props {
 
 export function SiteHeader({ meta, title }: Props) {
   return (
-    <Masthead
-      start={
-        <>
-          <DocumentHeader meta={meta} title={title} />
-          <SiteControls />
-        </>
-      }
-      end={<SiteIndex />}
-    />
+    <>
+      <DocumentHeader meta={meta} title={title} />
+      <Masthead start={<SiteControls />} end={<SiteIndex />} />
+    </>
   );
 }

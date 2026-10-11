@@ -1,6 +1,15 @@
-.DocumentHeader__top {
+.DocumentHeader {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--line);
+  margin-bottom: var(--line);
+}
+
+.DocumentHeader__top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--line) calc(var(--tab) * 2);
+  justify-content: space-between;
 }
 
 .DocumentHeader__block {
@@ -8,29 +17,35 @@
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
-
-  &:first-child {
-    color: var(--color-accent);
-  }
 }
 
+.DocumentHeader__block--meta {
+  text-align: right;
+}
+
+/* A box as wide as its text, centered on the sheet; the grid column above keeps a long title from pushing it wider */
 .DocumentHeader__title {
-  margin: var(--line) 0 0;
+  box-sizing: border-box;
+  justify-self: center;
+  width: max-content;
+  max-width: 100%;
+  margin: 0;
+  padding: calc(var(--line-half) - 1px) calc(var(--tab) * 2);
+  border: 1px solid var(--color-fg-main);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-regular);
   line-height: var(--line);
   letter-spacing: var(--tracking-caps);
+  text-align: center;
   text-transform: uppercase;
+  text-wrap-style: balance;
 }
 
-/* The title takes the sections' double rule; subtitle lines sit below it, smaller and quieter */
+/* The title carries weight and accent; subtitle lines step back */
 .DocumentHeader__title-line {
   display: block;
 
   &:first-child {
-    margin-bottom: var(--line-quarter);
-    padding-bottom: var(--line-quarter);
-    border-bottom: 4px double var(--color-fg-main);
     color: var(--color-accent);
     font-weight: var(--font-weight-bold);
   }
@@ -38,5 +53,20 @@
   &:not(:first-child) {
     color: var(--color-fg-minor);
     font-size: var(--font-size-small);
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .DocumentHeader__top {
+    flex-direction: column;
+  }
+
+  .DocumentHeader__block--meta {
+    text-align: left;
+  }
+
+  .DocumentHeader__title {
+    width: 100%;
+    padding-inline: var(--tab);
   }
 }

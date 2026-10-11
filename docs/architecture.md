@@ -118,7 +118,7 @@ UI reacts via CSS
 - `gh` `gs` go home or to the study list, which opens with its first entry selected. `gn` selects the first entry of the index in the header.
 - `c` + `a` `f` `k` `p` `v` sets the colors, `m` + `l` `d` `s` the color mode, `m t` toggles between light and dark.
 
-The cursor lives in `src/lib/navCursor.ts`, outside React, so it survives route changes. Blocks are found by `BLOCK_SELECTOR` in visual reading order; add `data-nav-block` to make another element one. The selection is real focus; `NavCursor` draws the brackets.
+The cursor lives in `src/lib/navCursor.ts`, outside React, so it survives route changes. Blocks are found by `BLOCK_SELECTOR` in visual reading order, with the masthead's columns walked whole, the index before the controls; add `data-nav-block` to make another element one. The selection is real focus; `NavCursor` draws the brackets.
 
 ## Audio
 
