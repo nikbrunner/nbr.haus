@@ -13,7 +13,7 @@
   position: absolute;
   inset: 0;
   background-color: light-dark(
-    color-mix(in oklch, var(--color-accent) 15%, transparent),
+    color-mix(in oklch, var(--color-accent) 5%, transparent),
     color-mix(in oklch, var(--color-accent) 40%, transparent)
   );
   mix-blend-mode: multiply;
