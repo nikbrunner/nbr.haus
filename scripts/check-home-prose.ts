@@ -7,7 +7,8 @@ const staged = execFileSync("git", ["diff", "--cached", "--name-only"], {
 }).split("\n");
 
 if (!staged.includes(HOME_PROSE)) {
-  console.warn(
-    `The home page changed, but ${HOME_PROSE} did not. If the change is something a visitor reads, update the spoken version too.`
+  console.error(
+    `The home page changed, but ${HOME_PROSE} did not. If the change is something a visitor reads, update the spoken version too. Otherwise commit with LEFTHOOK_EXCLUDE="home prose".`
   );
+  process.exit(1);
 }
