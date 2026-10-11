@@ -43,8 +43,11 @@ export const jobs: Job[] = [
     company: "DealerCenter Digital",
     href: "https://www.bike.center/",
     role: "Software Engineer, Frontend Lead",
-    notes:
-      "Electron app used by hundreds of bike retailers. Built the component library and color system from scratch, moved the team to TanStack Query and Redux Toolkit, rebuilt the storefront on TanStack Start, mentored juniors."
+    notes: `
+    Electron app used by hundreds of bike retailers. 
+    Maintained a from scratch written component library and built a color system from scratch, moved the main application to TanStack Query and Redux Toolkit. 
+    For a sister project I built a storefront on TanStack Start. 
+    2 years in I also mentored juniors.`
   },
   {
     period: ["2020-03", "2020-09"],
