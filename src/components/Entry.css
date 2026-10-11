@@ -16,7 +16,7 @@
   max-width: var(--measure);
 }
 
-@container (width < 40ch) {
+@media screen and (max-width: 720px) {
   .Entry {
     grid-template-columns: minmax(0, 1fr);
   }
