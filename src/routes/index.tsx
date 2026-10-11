@@ -46,9 +46,10 @@ function HomePage() {
   const { home } = rootRoute.useLoaderData();
   const homeTrack = home && studyAudioTrack(home);
   const commitLog = useQuery(getCommitLog());
+  const [visibleCommits, setVisibleCommits] = useState(COMMIT_PAGE_SIZE);
+
   const log = commitLog.data?.status === "ok" ? commitLog.data.log : null;
   const isLogUnavailable = commitLog.isError || commitLog.data?.status === "error";
-  const [visibleCommits, setVisibleCommits] = useState(COMMIT_PAGE_SIZE);
 
   return (
     <>
