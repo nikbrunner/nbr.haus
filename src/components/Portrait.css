@@ -7,14 +7,14 @@
   isolation: isolate;
 }
 
-/* Tints paper and ink toward the theme's accent, harder on dark paper where a plain print glares */
+/* Tints paper and ink toward the theme's accent; on dark paper it also dims the print, which would glare */
 .Portrait::after {
   content: "";
   position: absolute;
   inset: 0;
   background-color: light-dark(
     color-mix(in oklch, var(--color-accent) 5%, transparent),
-    color-mix(in oklch, var(--color-accent) 40%, transparent)
+    color-mix(in oklch, var(--color-accent) 10%, oklch(0.78 0.01 85))
   );
   mix-blend-mode: multiply;
   pointer-events: none;
