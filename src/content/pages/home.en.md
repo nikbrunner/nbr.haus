@@ -2,7 +2,7 @@
 title: "Nik Brunner"
 subtitle: "Personal spec sheet"
 speakTitle: false
-audio: "efdd0d1abb44"
+audio: "7b97861b3ee6"
 ---
 
 Hi! I'm Nikolaus Brunner, Nik for short, a senior design engineer in Landshut,
@@ -51,9 +51,10 @@ check they land in the right skill and follow the conventions.
 
 Before that, from September 2020 to January 2026, I was a software engineer and
 frontend lead at DealerCenter Digital. We made an Electron app that hundreds of
-bike retailers use. I maintained its component library and color system from
-scratch, moved the team to TanStack Query and Redux Toolkit, and rebuilt the
-storefront on TanStack Start. I also mentored the juniors.
+bike retailers use. I maintained its homegrown component library, built a color
+system for it from scratch, and moved the main app to TanStack Query and Redux
+Toolkit. For a sister project I built a storefront on TanStack Start. Two years
+in, I also started mentoring juniors.
 
 My first developer job was at diva-e, as a junior frontend developer in 2020, on
 an e-commerce platform and an internal social app, with React, GraphQL and SCSS.
