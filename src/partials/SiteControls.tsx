@@ -21,7 +21,7 @@ export function SiteControls() {
 
   return (
     <ControlBar>
-      <ControlGroup label="Keys">
+      <ControlGroup label="Keys" desktopOnly>
         <ControlButton
           aria-label="Keyboard shortcuts"
           pressed={groups !== null}

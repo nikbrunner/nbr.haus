@@ -56,6 +56,13 @@
   margin: 0;
 }
 
+/* Phones have no keyboard, and the panel is taller than their screen */
+@media screen and (max-width: 720px) {
+  .KeyHints {
+    display: none;
+  }
+}
+
 @media print {
   .KeyHints {
     display: none;

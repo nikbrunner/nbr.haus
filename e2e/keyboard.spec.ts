@@ -145,6 +145,19 @@ test("? lists every binding", async ({ page }) => {
   await expect(page.locator(".KeyHints")).toHaveCount(0);
 });
 
+test("phones get neither the keys button nor the panel", async ({ page }) => {
+  await page.setViewportSize({ width: 393, height: 852 });
+  await page.goto("/");
+  await expect(page.getByRole("button", { name: "Colors koyo" })).toBeVisible();
+  await page.waitForLoadState("networkidle");
+
+  await expect(
+    page.getByRole("button", { name: "Keyboard shortcuts" })
+  ).toBeHidden();
+  await page.keyboard.press("?");
+  await expect(page.locator(".KeyHints")).toBeHidden();
+});
+
 test.describe("prefixes", () => {
   test("m d sets dark mode without also scrolling half a page", async ({ page }) => {
     await open(page, "/");

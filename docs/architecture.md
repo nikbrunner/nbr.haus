@@ -110,7 +110,7 @@ UI reacts via CSS
 
 ## Keyboard
 
-`useSiteHotkeys` (`src/hooks/useSiteHotkeys.ts`, used by `SiteControls`) binds Vim-style keys with TanStack Hotkeys. `?` shows every binding in the `KeyHints` panel; a prefix (`g`, `c`, `m`, `z`) shows its next keys.
+`useSiteHotkeys` (`src/hooks/useSiteHotkeys.ts`, used by `SiteControls`) binds Vim-style keys with TanStack Hotkeys. `?` shows every binding in the `KeyHints` panel; a prefix (`g`, `c`, `m`, `z`) shows its next keys. Below 720px the panel and its `?` button stay hidden.
 
 - `j` `k` select the next or previous block, `h` `l` the links and buttons inside it, `Enter` opens. Arrow keys do the same once a block is selected; before that they scroll. `Esc` or a click clears the selection.
 - `J` `K` jump between section headings and scroll them to the top.

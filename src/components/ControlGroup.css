@@ -12,3 +12,9 @@
   min-inline-size: 7ch;
   color: var(--color-fg-minor);
 }
+
+@media screen and (max-width: 720px) {
+  .ControlGroup--desktop-only {
+    display: none;
+  }
+}
