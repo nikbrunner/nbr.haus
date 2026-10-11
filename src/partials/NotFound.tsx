@@ -20,7 +20,7 @@ export function NotFound({
           <p>{message}</p>
         </Prose>
       </SpecSection>
-      <Colophon start="nbr.haus" center="Design via function" end="Page 1 / 1" />
+      <Colophon start="nbr.haus" end="Page 1 / 1" />
     </>
   );
 }

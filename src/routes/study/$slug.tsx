@@ -163,11 +163,7 @@ function StudyPostPage() {
         </SpecSection>
       )}
 
-      <Colophon
-        start={`Study ${number}`}
-        center="Design via function"
-        end="Page 1 / 1"
-      />
+      <Colophon start={`Study ${number}`} end="Page 1 / 1" />
     </>
   );
 }

@@ -61,7 +61,7 @@ function StudyIndexPage() {
           </Entry>
         ))}
       </SpecSection>
-      <Colophon start="nbr.haus" center="Design via function" end="Page 1 / 1" />
+      <Colophon start="nbr.haus" end="Page 1 / 1" />
     </>
   );
 }

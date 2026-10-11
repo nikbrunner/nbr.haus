@@ -55,7 +55,7 @@ function AboutRoute() {
   return (
     <>
       <SiteHeader meta={["About", "2026-10-06"]} title={["About"]} />
-      <Colophon start="nbr.haus" center="Design via function" end="Page 1 / 1" />
+      <Colophon start="nbr.haus" end="Page 1 / 1" />
     </>
   );
 }
