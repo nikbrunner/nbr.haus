@@ -59,6 +59,24 @@ test("g s opens the study list on its first entry, Enter opens it", async ({
   await expect(page).toHaveURL(/\/study\/[^/]+$/);
 });
 
+test("g n selects the first entry of the header index, scrolled into view", async ({
+  page
+}) => {
+  await open(page, "/study");
+  await page.evaluate(() =>
+    window.scrollTo({ top: document.body.scrollHeight, behavior: "instant" })
+  );
+
+  await page.keyboard.press("g");
+  await page.keyboard.press("n");
+  await expect(selected(page)).toContainText("Spec sheet");
+  await expect(selected(page)).toBeFocused();
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+
+  await page.keyboard.press("j");
+  await expect(selected(page)).toContainText("Ident");
+});
+
 test.describe("g jumps start at the top of the page", () => {
   for (const [keys, from, to] of [
     ["gg", "/", /\/$/],

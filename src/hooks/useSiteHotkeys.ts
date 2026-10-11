@@ -35,6 +35,7 @@ type SecondKey =
   | "L"
   | "S"
   | "H"
+  | "N"
   | "Z"
   | "T";
 
@@ -46,7 +47,7 @@ interface PrefixMap {
 /**
  * Vim-style keys: `j` `k` select blocks, `J` `K` section headings, `h` `l` the links inside them (arrow keys too, once
  * a block is selected), `d` `u` `gg` `G` scroll, `c` + a/f/k/p/v sets the colors,
- * `m` + l/d/s sets the color mode and `m t` toggles it, `g` + g/h/s goes places,
+ * `m` + l/d/s sets the color mode and `m t` toggles it, `g` + g/h/n/s goes places,
  * `zt` / `zz` scroll the selection to the top / middle, `?` lists everything.
  * Returns the which-key groups to show: the next keys after a prefix, or the full list.
  */
@@ -77,6 +78,11 @@ export function useSiteHotkeys() {
     if (to === "/study") requestAnimationFrame(() => selectFirst(".Entry"));
   }
 
+  function focusNavigation() {
+    selectFirst(".Contents__row");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   const prefixes: Record<Prefix, PrefixMap> = {
     C: {
       title: "Colors",
@@ -102,6 +108,7 @@ export function useSiteHotkeys() {
       next: [
         { key: "G", label: "First block", run: () => selectEdge("first") },
         { key: "H", label: "Home", run: () => void goTo("/") },
+        { key: "N", label: "Navigation", run: focusNavigation },
         { key: "S", label: "Study", run: () => void goTo("/study") }
       ]
     },
