@@ -25,13 +25,7 @@
   background-color: var(--ink-light);
   /* Fills the frame like a trimmed print; the crop keeps the face, which sits high in the drawing */
   mask: var(--portrait-mask) center 30% / cover no-repeat;
-}
-
-/* Without a height from its surroundings, the frame keeps the drawing's proportion */
-@container (width < 64ch) {
-  .Portrait__drawing {
-    aspect-ratio: 4 / 5;
-  }
+  aspect-ratio: 4 / 5;
 }
 
 /* Print drops background colors, so the masked drawing would come out blank */

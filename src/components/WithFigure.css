@@ -1,41 +1,67 @@
 .WithFigure {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 28ch;
-  gap: var(--tab);
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "body figure"
+    "body caption";
+  gap: var(--line-half) var(--tab);
 }
 
 .WithFigure__body {
   display: grid;
+  grid-area: body;
   gap: var(--line);
+  align-content: start;
 }
 
-/* The figure takes exactly the height of the content beside it */
 .WithFigure__figure {
-  position: relative;
+  grid-area: figure;
+}
 
-  & > * {
-    position: absolute;
-    inset: 0;
+/* Under the figure beside the content; beside it, on its bottom edge, on narrow screens */
+.WithFigure__caption {
+  grid-area: caption;
+  margin: 0;
+  color: var(--color-fg-minor);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
+
+.WithFigure__caption-line {
+  display: block;
+
+  &:first-child {
+    color: var(--color-fg-main);
+    font-weight: var(--font-weight-bold);
   }
 }
 
 @container (width < 64ch) {
   .WithFigure {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: min(28ch, 60%) minmax(0, 1fr);
+    grid-template-rows: none;
+    gap: var(--tab);
+    grid-template-areas:
+      "figure caption"
+      "body body";
   }
 
-  .WithFigure__figure {
-    order: -1;
-    width: min(28ch, 70%);
-
-    & > * {
-      position: static;
-    }
+  .WithFigure__caption {
+    align-self: end;
   }
 }
 
 @media print {
   .WithFigure {
     grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    grid-template-areas:
+      "body"
+      "figure";
+  }
+
+  .WithFigure__caption {
+    display: none;
   }
 }

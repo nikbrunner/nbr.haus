@@ -63,6 +63,7 @@ function HomePage() {
           figure={
             <Portrait mask={portraitMask} label="Pencil sketch of Nik Brunner" />
           }
+          caption={["Fig. 01", "The specimen", "Pencil sketch"]}
         >
           <SpecList>
             <SpecItem label="Name">Nikolaus Brunner, Nik for short</SpecItem>
