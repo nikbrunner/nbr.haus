@@ -27,9 +27,8 @@ type Prefix = "C" | "M" | "G" | "Z";
 type SecondKey =
   | "A"
   | "D"
-  | "F"
   | "K"
-  | "P"
+  | "M"
   | "V"
   | "G"
   | "L"
@@ -88,9 +87,9 @@ export function useSiteHotkeys() {
       title: "Colors",
       next: [
         { key: "A", label: "Atom", run: () => setTheme("atom") },
-        { key: "F", label: "Facility", run: () => setTheme("facility") },
         { key: "K", label: "Koyo", run: () => setTheme("koyo") },
-        { key: "P", label: "Polymer", run: () => setTheme("polymer") },
+        { key: "M", label: "Murasaki", run: () => setTheme("murasaki") },
+        { key: "S", label: "Sienna", run: () => setTheme("sienna") },
         { key: "V", label: "Viridian", run: () => setTheme("viridian") }
       ]
     },

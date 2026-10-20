@@ -24,13 +24,13 @@ function initTheme() {
 
     // Theme (set on body)
     // Valid values from src/types/style.ts
-    var validThemes = ["atom", "facility", "koyo", "polymer", "viridian"];
+    var validThemes = ["atom", "koyo", "murasaki", "sienna", "viridian"];
     var theme = params.get("theme");
     if (!validThemes.includes(theme)) {
       theme = localStorage.getItem("theme");
     }
     if (!validThemes.includes(theme)) {
-      theme = "polymer";
+      theme = "murasaki";
     }
     document.body.dataset.theme = theme;
   } catch {

@@ -231,7 +231,7 @@ test.describe("prefixes", () => {
     await page.keyboard.press("c");
     await page.keyboard.press("Escape");
     await expect(page.locator(".KeyHints")).toHaveCount(0);
-    await page.keyboard.press("p");
+    await page.keyboard.press("s");
 
     await expect(page).toHaveURL(/theme=koyo/);
   });

@@ -16,9 +16,9 @@ export const Prefix: Story = {
         title: "Colors",
         hints: [
           { keys: ["c a"], label: "Atom" },
-          { keys: ["c f"], label: "Facility" },
           { keys: ["c k"], label: "Koyo" },
-          { keys: ["c p"], label: "Polymer" },
+          { keys: ["c m"], label: "Murasaki" },
+          { keys: ["c s"], label: "Sienna" },
           { keys: ["c v"], label: "Viridian" }
         ]
       }

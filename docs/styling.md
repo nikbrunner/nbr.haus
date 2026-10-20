@@ -49,7 +49,7 @@ Section heads are bold caps on a 4px double rule; sub-heads are semibold caps on
 
 ### Color
 
-Themes follow Black Atom: Atom (after its default theme), Facility, Koyo, Polymer and Viridian, with Polymer as the site default. Each takes its theme's hues and chroma at Atom's lightness levels. In Atom, the sheet is tinted paper with blue-black ink in light mode and warm charcoal with chalk ink in dark mode, and the desk behind it is a cutting mat (16px fine grid, 80px major grid) in the accent hue.
+Themes follow Black Atom: Atom (after its default theme), Koyo, Murasaki, Sienna and Viridian, with Murasaki as the site default. Each takes its theme's hues and chroma at Atom's lightness levels. In Atom, the sheet is tinted paper with blue-black ink in light mode and warm charcoal with chalk ink in dark mode, and the desk behind it is a cutting mat (16px fine grid, 80px major grid) in the accent hue.
 
 ```css
 --color-desk, --color-desk-line, --color-desk-fine  /* The mat */
@@ -62,7 +62,7 @@ Themes follow Black Atom: Atom (after its default theme), Facility, Koyo, Polyme
 --color-fg-on-accent
 ```
 
-The light accent sits around L 0.50 so links keep 4.5:1 or more on the tinted paper. Polymer is the exception: its orange stays Black Atom's, at about 2.8:1.
+The light accent sits around L 0.50 so links keep 4.5:1 or more on the tinted paper.
 
 Use the tokens, not raw values.
 

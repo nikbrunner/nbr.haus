@@ -5,10 +5,10 @@ import { z } from "zod";
  */
 
 // Theme (user-selected palette, after Black Atom themes)
-export const themes = ["atom", "facility", "koyo", "polymer", "viridian"] as const;
+export const themes = ["atom", "koyo", "murasaki", "sienna", "viridian"] as const;
 export const themeSchema = z.enum(themes);
 export type Theme = z.infer<typeof themeSchema>;
-export const defaultTheme: Theme = "polymer";
+export const defaultTheme: Theme = "murasaki";
 
 // Color Mode
 export const colorModeSchema = z.enum(["light", "system", "dark"]);
