@@ -305,8 +305,11 @@ function HomePage() {
               <ExternalLink href="https://ghostty.org">Ghostty</ExternalLink>
             </SpecItem>
             <SpecItem label="Workspace">
-              <ExternalLink href="https://herdr.dev">herdr</ExternalLink>, with
-              agents, shells and tools side by side. I move between workspaces with{" "}
+              <ExternalLink href="https://www.superlogical.com/rex">
+                Rex
+              </ExternalLink>
+              , with agents, shells and tools side by side. I move between sessions
+              with{" "}
               <ExternalLink href="https://github.com/black-atom-industries/helm">
                 Helm
               </ExternalLink>

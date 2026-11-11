@@ -89,8 +89,8 @@ libraries. I stay the reviewer. Agents propose, and I read every diff.
 
 I think juniors should still learn to code without LLMs first, the way I did.
 
-My terminal is Ghostty. Inside it I work in herdr, with agents, shells and tools
-side by side, and I move between its workspaces with Helm, my own navigator for
+My terminal is Ghostty. Inside it I work in Rex, with agents, shells and tools
+side by side, and I move between its sessions with Helm, my own navigator for
 it. I edit in Neovim and work with Claude Code and Pi. I read diffs with tuicr
 and handle git in LazyGit. All of that setup lives in my dots repository, agent
 skills included.
