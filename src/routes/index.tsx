@@ -307,7 +307,7 @@ function HomePage() {
             <SpecItem label="Workspace">
               <ExternalLink href="https://herdr.dev">herdr</ExternalLink>, with
               agents, shells and tools side by side. I move between workspaces with{" "}
-              <ExternalLink href="https://github.com/black-atom-industries/helm.herdr">
+              <ExternalLink href="https://github.com/black-atom-industries/helm">
                 Helm
               </ExternalLink>
               , my navigator for it.

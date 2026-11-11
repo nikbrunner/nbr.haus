@@ -68,10 +68,7 @@ export const jobs: Job[] = [
 export const moreProjects = [
   { name: "lager", href: "https://github.com/nikbrunner/lager" },
   { name: "mdn.nvim", href: "https://github.com/nikbrunner/mdn.nvim" },
-  {
-    name: "helm.herdr",
-    href: "https://github.com/black-atom-industries/helm.herdr"
-  },
+  { name: "helm", href: "https://github.com/black-atom-industries/helm" },
   { name: "dots", href: "https://github.com/nikbrunner/dots" }
 ];
 
@@ -84,5 +81,5 @@ export const logRepos = [
   "nikbrunner/lager",
   "nikbrunner/mdn.nvim",
   "nikbrunner/koyo",
-  "black-atom-industries/helm.herdr"
+  "black-atom-industries/helm"
 ];
