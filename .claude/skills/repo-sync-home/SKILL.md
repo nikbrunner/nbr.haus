@@ -25,9 +25,10 @@ Done when each visitor-facing change is on the list, or the list is empty and yo
 
 ## 2. Update the spoken version
 
-Edit the matching passages of `home.en.md` with the `humanizer` skill: Nik's voice, spoken prose, and only facts the page
-states. Where the page wording is ambiguous, pick the reading that claims less and name the choice to Nik. Keep the
-frontmatter, including `audio`, unchanged. Done when every item from step 1 is reflected in the prose.
+Edit the matching passages of `home.en.md` with the `nbr-voice` skill and its rewrite pass: Nik's voice, spoken
+prose, and only facts the page states. Where the page wording is ambiguous, pick the reading that claims less and name
+the choice to Nik. Keep the frontmatter, including `audio`, unchanged. Done when every item from step 1 is reflected in
+the prose.
 
 ## 3. Check the curl card
 
